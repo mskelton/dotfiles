@@ -1,0 +1,178 @@
+[
+  // Use cmd+r for replace
+  {
+    "key": "cmd+r",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction"
+  },
+  // Use cmd+n to create new files in the explorer
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus && explorerViewletVisible"
+  },
+  // Use shift+alt+n to create new folders in the explorer
+  {
+    "key": "shift+alt+n",
+    "command": "explorer.newFolder"
+  },
+  // use cmd+shift+g to open the Git panel
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm"
+  },
+  // Use meh+g to open the Git graph
+  {
+    "key": "alt+ctrl+shift+g",
+    "command": "git-graph.view"
+  },
+  // Use hyper+p to push changes. Might remove eventually now that I
+  // use the `push` shell alias most of the time.
+  {
+    "key": "ctrl+alt+cmd+shift+p",
+    "command": "git.push"
+  },
+  // Use meh+a or cmd+shift+a to focus the current file in the explorer
+  {
+    "key": "alt+ctrl+shift+a",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  {
+    "key": "cmd+shift+a",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  // Use alt+enter for triggering suggestions. It's a lot easier than ctrl+space
+  // which requires a pinky reach.
+  {
+    "key": "alt+enter",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  // Use cmd+y for redo. For no reason other than I'm a fan of less keystrokes.
+  {
+    "key": "cmd+y",
+    "command": "redo"
+  },
+  // I don't use save as, so use the shortcut it uses for save all
+  {
+    "key": "shift+cmd+s",
+    "command": "-workbench.action.files.saveAs"
+  },
+  {
+    "key": "alt+cmd+s",
+    "command": "-workbench.action.files.saveAll"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  // Use ctrl+g to go to the line number rather than using Vim's ctrl+g
+  {
+    "key": "ctrl+g",
+    "command": "-extension.vim_ctrl+g",
+    "when": "editorTextFocus && vim.active && vim.use<C-g> && !inDebugRepl"
+  },
+  // Use alt+cmd+t to open the task run panel
+  {
+    "key": "alt+cmd+t",
+    "command": "workbench.action.tasks.runTask"
+  },
+  // Use cmd+j to focus the panel or editor depending on which is currently
+  // in focus.
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.focusPanel",
+    "when": "!panelFocus"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "panelFocus"
+  },
+  // Remap the toggle panel shortcut to cmd+shift+j. This shortcut is not as
+  // useful as changing focus, so we make it the harder shortcut.
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.togglePanel"
+  },
+  // Use cmd+shift+r to open the workspace find replace in the sidebar.
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.replaceInFiles"
+  },
+  {
+    "key": "shift+cmd+h",
+    "command": "-workbench.action.replaceInFiles"
+  },
+  // Use cmd+n to create a new terminal when the terminal is focused.
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported"
+  },
+  // Use cmd+w to close a terminal when the terminal is focused.
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  // Open JSON settings with the same type of chord as keyboard shortcuts
+  {
+    "key": "cmd+k cmd+,",
+    "command": "workbench.action.openSettingsJson"
+  },
+  // Don't close the workspace using cmd+w. It's annoying.
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  // Insert console.log snippet when pressing cmd+option+l
+  {
+    "key": "cmd+alt+shift+ctrl+l",
+    "command": "editor.action.insertSnippet",
+    "args": { "snippet": "console.log($0)" }
+  },
+  // Use meh+b for running the build task
+  {
+    "key": "ctrl+shift+alt+b",
+    "command": "workbench.action.tasks.build"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "-workbench.action.tasks.build"
+  },
+  // Use hyper+. for inserting an arrow function
+  {
+    "key": "cmd+ctrl+shift+alt+=",
+    "command": "editor.action.insertSnippet",
+    "args": { "snippet": "() => ${1:{ $0 \\}}" }
+  },
+  // Use meh+t for inserting a translation interpolation
+  {
+    "key": "alt+ctrl+shift+t",
+    "command": "editor.action.insertSnippet",
+    "args": { "snippet": "{t('$0')}" }
+  }
+]

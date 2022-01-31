@@ -1,0 +1,50 @@
+snippet log "console.log (cl)"
+console.log($0)
+endsnippet
+
+snippet imr "add React import"
+import React from 'react'
+endsnippet
+
+snippet ut "i18next useTranslation()"
+const [t] = useTranslation()
+endsnippet
+
+# Jest snippets
+snippet jdesc "Jest describe block"
+describe('$1', () => {
+	$0
+})
+endsnippet
+
+snippet jit "Jest it block"
+it('$1', () => {
+	$0
+})
+endsnippet
+
+# Playwright
+snippet pdesc "Playwright describe block"
+test.describe('$1', () => {
+	$0
+})
+endsnippet
+
+snippet ptest "Playwright test block"
+test('$1', async ({ ${2:page} }) => {
+	$0
+})
+endsnippet
+
+snippet pbe "Playwright beforeEach"
+test.beforeEach(async ({ ${1:page} }) => {
+	$0
+})
+endsnippet
+
+snippet pbe "Playwright beforeAll"
+test.beforeAll(async ({ ${1:page} }) => {
+	$0
+})
+endsnippet
+

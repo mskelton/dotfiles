@@ -1,0 +1,12 @@
+# Taskwarrior program configuration file.
+
+# Files
+data.location=~/.task
+hooks.location=~/.config/task/hooks
+
+# Misc
+include dark-256.theme
+news.version=2.6.0
+
+# Filters
+report.next.filter=status:pending -WAITING -BLOCKED limit:page

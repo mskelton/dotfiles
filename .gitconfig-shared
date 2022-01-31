@@ -1,0 +1,68 @@
+[alias]
+	amend = commit --amend --no-edit
+  append = !git add -A && git commit --amend --no-edit
+	br = branch
+	c = commit -m
+	cl = clone
+	co = checkout
+	ca = !git add -A && git commit -m
+  name = branch -m
+  default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
+	publish = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+	pull-clean = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+	new = !git checkout $(git default) && git checkout -b $2
+  unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+  merge-last = !git co - && git merge $(git default)
+  changelog = !git add -A && git commit -m 'Update changelog'
+  changeset = !git add .changeset && git commit -m 'Add changeset'
+  pr-number = !git add -A && git commit -m 'PR number'
+  del = branch -D
+  dedupe = !git add -A && git commit -m 'Dedupe dependencies'
+  undo = reset --soft HEAD~
+  trash = !git reset --hard && git clean -fd
+
+[core]
+	autocrlf = input
+	trustctime = false
+	editor = vim
+	abbrev = 8
+	# pager = delta
+
+[color]
+	ui = true
+
+[delta]
+	features = decorations
+	plus-style = "syntax #213e4a"
+	plus-emph-style = "syntax #1c4e5e"
+	minus-style = "syntax #562730"
+	minus-emph-style = "syntax #771f26"
+	syntax-theme = OneHalfDark
+	navigate = true
+	# line-numbers = true
+
+[delta "decorations"]
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = blue box
+
+[diff]
+	colorMoved = default
+
+[push]
+	default = upstream
+
+[branch]
+	autosetuprebase = always
+
+[pull]
+	rebase = preserve
+
+[init]
+	defaultBranch = main
+
+[log]
+	abbrevcommit = yes
+
+[format]
+	pretty = oneline

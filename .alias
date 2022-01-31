@@ -1,0 +1,35 @@
+# Git aliases
+alias gg="git status"
+alias unstash="git stash pop"
+alias stash="git stash push -u"
+alias pd="git pull-clean"
+alias gcp="git cherry-pick"
+alias push="git push"
+alias pub="git publish"
+alias pull="git pull"
+alias dif="git diff"
+
+# Other aliases
+alias dock="docker exec -it $1 /bin/bash"
+alias yui="yarn upgrade-interactive"
+alias nui="npm-check -u"
+alias y="yarn"
+alias ys="yarn serve"
+alias ns="npm run serve"
+alias nr="npm run"
+alias c="code"
+alias t="task"
+
+# Testing
+alias tw="yarn test --watch"
+alias j="yarn test"
+alias p="yarn test"
+
+# Remap vim to nvim
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="/usr/bin/vim"
+
+# Python aliases
+alias py="python3"
+alias pip="pip3"

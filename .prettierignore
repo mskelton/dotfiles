@@ -1,0 +1,4 @@
+.yarn/
+.yarnrc.yml
+RectangleConfig.json
+dotbot/

@@ -1,0 +1,130 @@
+{
+  "Import React": {
+    "prefix": "imr",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": ["import React from 'react'"]
+  },
+  "Jest describe": {
+    "prefix": "jdesc",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": ["describe('$1', () => {", "\t$0", "})", ""]
+  },
+  "Jest it": {
+    "prefix": "jit",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": ["it('should $1', () => {", "\t$0", "})", ""]
+  },
+  "Lariat collection": {
+    "prefix": "col",
+    "scope": "typescript",
+    "description": "A generic Lariat collection",
+    "body": [
+      "import Collection from \"lariat\"",
+      "",
+      "export class ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g} extends Collection {",
+      "  $0",
+      "}"
+    ]
+  },
+  "Lariat page object": {
+    "prefix": "po",
+    "scope": "typescript",
+    "description": "A top-level Lariat collection intended to be used in tests or fixtures.",
+    "body": [
+      "import { Page } from \"@playwright/test\"",
+      "import Collection from \"lariat\"",
+      "",
+      "export class ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g} extends Collection {",
+      "  constructor(page: Page) {",
+      "    super(page.locator(\"$1\"))",
+      "  }",
+      "",
+      "  $0",
+      "}"
+    ]
+  },
+  "Playwright describe": {
+    "prefix": "pdesc",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": ["test.describe('$1', () => {", "\t$0", "})", ""]
+  },
+  "Playwright test": {
+    "prefix": "ptest",
+    "scope": "tavascript,javascriptreact,typescript,typescriptreact",
+    "body": ["test('$1', async ({ ${2:page} }) => {", "\t$0", "})", ""]
+  },
+  "React component (JS)": {
+    "prefix": "rc",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "description": "React component with name matching the current file.",
+    "body": [
+      "import React from 'react'",
+      "",
+      "export function ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}() {",
+      "\treturn (",
+      "\t\t$0",
+      "\t)",
+      "}",
+      ""
+    ]
+  },
+  "React component (TS)": {
+    "prefix": "rct",
+    "scope": "typescript,typescriptreact",
+    "description": "React component with name matching the current file.",
+    "body": [
+      "import React from 'react'",
+      "",
+      "export interface ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}Props {",
+      "\t$1",
+      "}",
+      "",
+      "export function ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}({ $2 }: ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}Props) {",
+      "\treturn (",
+      "\t\t$0",
+      "\t)",
+      "}",
+      ""
+    ]
+  },
+  "React component props": {
+    "prefix": "rp",
+    "scope": "typescript,typescriptreact",
+    "description": "TypeScript interface for React component props with name matching the current file.",
+    "body": [
+      "export interface ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}Props {",
+      "\t$1",
+      "}$0"
+    ]
+  },
+  "React component props name": {
+    "prefix": "rpn",
+    "scope": "typescript,typescriptreact",
+    "description": "TypeScript interface name for React component props with name matching the current file.",
+    "body": ["${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g}Props"]
+  },
+  "React hook": {
+    "prefix": "rh",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": [
+      "export function ${TM_FILENAME_BASE/-([A-z0-9])/${1:/upcase}/g}() {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "React useState": {
+    "prefix": "us",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "description": "Inserts a React useState hook",
+    "body": [
+      "const [${1:value}, set${1/(.*)/${1:/capitalize}/}] = useState($2)",
+      "$0"
+    ]
+  },
+  "Return new Promise": {
+    "prefix": "prom",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "description": "Creates and returns a new Promises",
+    "body": ["return new Promise((resolve, reject) => {", "\t$0", "})"]
+  }
+}

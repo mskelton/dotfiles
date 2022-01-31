@@ -1,0 +1,13 @@
+{
+  "name": "dotfiles",
+  "description": "My personal settings and dotfiles",
+  "packageManager": "yarn@3.1.1",
+  "license": "ISC",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "prettier-plugin-sort-json": "^0.0.2"
+  }
+}

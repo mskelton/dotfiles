@@ -1,0 +1,16 @@
+bat
+fish
+fzf
+gh
+git
+git-delta
+go
+jq
+neovim
+yarn
+ripgrep
+task
+tmux
+trash
+tree-sitter
+wget
