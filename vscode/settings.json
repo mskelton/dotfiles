@@ -30,6 +30,7 @@
   "cSpell.enableFiletypes": ["typescriptreact"],
   "cSpell.showStatus": false,
   "cSpell.userWords": [
+    "Acquia",
     "buildkite",
     "datepicker",
     "dropzone",
@@ -199,7 +200,7 @@
     "*": true,
     "yaml": true,
     "plaintext": false,
-    "markdown": true
+    "markdown": false
   },
   "githubIssues.queries": [
     {

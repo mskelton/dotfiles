@@ -8,5 +8,5 @@ hooks.location=~/.config/task/hooks
 include dark-256.theme
 news.version=2.6.0
 
-# Filters
+# Reports
 report.next.filter=status:pending -WAITING -BLOCKED limit:page
