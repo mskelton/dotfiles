@@ -181,7 +181,6 @@
     "**/.idea": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/build": true,
     "**/node_modules": true,
     "**/out": true
   },
@@ -256,6 +255,7 @@
   "material-icon-theme.showUpdateMessage": true,
   "notebook.markup.fontSize": 15,
   "oneDark.bold": true,
+  "rest-client.previewColumn": "current",
   "rust-analyzer.experimental.procAttrMacros": true,
   "rust-analyzer.inlayHints.enable": false,
   "search.exclude": {
@@ -274,7 +274,6 @@
     "typescriptreact"
   ],
   "svelte.enable-ts-plugin": true,
-  "tailwindCSS.experimental.classRegex": ["use\\(([^)]*)\\)"],
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
@@ -308,6 +307,6 @@
   "workbench.editor.untitled.hint": "hidden",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
-  "workbench.tree.renderIndentGuides": "none",
-  "css.lint.unknownAtRules": "ignore"
+  "workbench.tips.enabled": false,
+  "workbench.tree.renderIndentGuides": "none"
 }

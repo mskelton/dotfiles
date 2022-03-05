@@ -19,6 +19,7 @@ alias ns="npm run serve"
 alias nr="npm run"
 alias c="code"
 alias t="task"
+alias dup="docker-compose up -d"
 
 # Testing
 alias tw="yarn test --watch"
