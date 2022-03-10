@@ -13,6 +13,7 @@
 	new = !git checkout $(git default) && git checkout -b $2
   unpushed = log --branches --not --remotes --no-walk --decorate --oneline
   merge-last = !git co - && git merge $(git default)
+	rebase-last = !git co - && git rebase $(git default)
   changelog = !git add -A && git commit -m 'Update changelog'
   changeset = !git add .changeset && git commit -m 'Add changeset'
   pr-number = !git add -A && git commit -m 'PR number'

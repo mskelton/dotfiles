@@ -174,5 +174,14 @@
     "key": "alt+ctrl+shift+t",
     "command": "editor.action.insertSnippet",
     "args": { "snippet": "{t('$0')}" }
+  },
+  // Use cmd+o to jump to symbols in the current file
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "-workbench.action.gotoSymbol"
   }
 ]

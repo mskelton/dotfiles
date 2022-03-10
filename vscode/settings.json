@@ -248,6 +248,7 @@
   "gitlens.gitCommands.closeOnFocusOut": true,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.views.repositories.files.layout": "auto",
+  "gitlens.views.showRelativeDateMarkers": false,
   "go.toolsManagement.autoUpdate": true,
   "html.format.wrapLineLength": 80,
   "javascript.updateImportsOnFileMove.enabled": "always",
