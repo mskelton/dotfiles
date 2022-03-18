@@ -169,6 +169,7 @@
     "*.mq5": "cpp",
     "*.mqh": "cpp",
     "*.pro": "prolog",
+    "*.ftl": "html",
     ".stylelintrc": "json",
     ".releaserc": "json"
   },
