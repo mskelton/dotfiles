@@ -43,16 +43,6 @@
       "}"
     ]
   },
-  "Playwright describe": {
-    "prefix": "pdesc",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
-    "body": ["test.describe('$1', () => {", "\t$0", "})", ""]
-  },
-  "Playwright test": {
-    "prefix": "ptest",
-    "scope": "tavascript,javascriptreact,typescript,typescriptreact",
-    "body": ["test('$1', async ({ ${2:page} }) => {", "\t$0", "})", ""]
-  },
   "React component (JS)": {
     "prefix": "rc",
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
