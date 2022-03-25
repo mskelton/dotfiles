@@ -14,35 +14,6 @@
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "body": ["it('should $1', () => {", "\t$0", "})", ""]
   },
-  "Lariat collection": {
-    "prefix": "col",
-    "scope": "typescript",
-    "description": "A generic Lariat collection",
-    "body": [
-      "import Collection from \"lariat\"",
-      "",
-      "export class ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g} extends Collection {",
-      "  $0",
-      "}"
-    ]
-  },
-  "Lariat page object": {
-    "prefix": "po",
-    "scope": "typescript",
-    "description": "A top-level Lariat collection intended to be used in tests or fixtures.",
-    "body": [
-      "import { Page } from \"@playwright/test\"",
-      "import Collection from \"lariat\"",
-      "",
-      "export class ${TM_FILENAME_BASE/(^|-)([A-z0-9])/${2:/upcase}/g} extends Collection {",
-      "  constructor(page: Page) {",
-      "    super(page.locator(\"$1\"))",
-      "  }",
-      "",
-      "  $0",
-      "}"
-    ]
-  },
   "React component (JS)": {
     "prefix": "rc",
     "scope": "javascript,javascriptreact,typescript,typescriptreact",

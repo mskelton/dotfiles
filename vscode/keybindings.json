@@ -183,5 +183,10 @@
   {
     "key": "shift+cmd+o",
     "command": "-workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+o",
+    "command": "-workbench.action.files.openFile",
+    "when": "false"
   }
 ]
