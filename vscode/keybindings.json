@@ -188,5 +188,13 @@
     "key": "cmd+o",
     "command": "-workbench.action.files.openFile",
     "when": "false"
+  },
+  {
+    "key": "ctrl+shift+alt+x",
+    "command": "extension.cssrem.rem-switch-px"
+  },
+  {
+    "key": "alt+z",
+    "command": "-extension.cssrem.rem-switch-px"
   }
 ]

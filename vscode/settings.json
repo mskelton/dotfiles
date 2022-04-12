@@ -295,7 +295,6 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "workbench.activityBar.visible": true,
   "workbench.colorCustomizations": {
     "errorLens.errorBackground": "#0000",
     "errorLens.errorMessageBackground": "#e4545419",
