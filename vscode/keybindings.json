@@ -196,5 +196,19 @@
   {
     "key": "alt+z",
     "command": "-extension.cssrem.rem-switch-px"
+  },
+  {
+    "key": "cmd+k cmd+f",
+    "command": "git.openChange"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   }
 ]

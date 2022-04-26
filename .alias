@@ -8,6 +8,7 @@ alias push="git push"
 alias pub="git publish"
 alias pull="git pull"
 alias dif="git diff"
+alias gmc="git merge --continue"
 
 # Other aliases
 alias dock="docker exec -it $1 /bin/bash"
