@@ -58,3 +58,7 @@ fisher update
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g NSScrollViewRubberbanding -int 0
 ```
+
+### Nerd Fonts
+
+Download and install the [`Symbols Nerd Font`](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf) for Kitty to properly use Nerd font symbols.
