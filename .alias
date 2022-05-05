@@ -1,5 +1,4 @@
 # Git aliases
-alias gg="git status"
 alias unstash="git stash pop"
 alias stash="git stash push -u"
 alias pd="git pull-clean"
@@ -9,6 +8,7 @@ alias pub="git publish"
 alias pull="git pull"
 alias dif="git diff"
 alias gmc="git merge --continue"
+alias st="git status"
 
 # Other aliases
 alias dock="docker exec -it $1 /bin/bash"

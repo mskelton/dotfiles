@@ -15,4 +15,3 @@ report.next.filter=status:pending -WAITING -BLOCKED limit:page
 context.home.read=project != Analyzer
 context.analyzer.read=project:Analyzer
 context.analyzer.write=project:Analyzer
-context=home

@@ -70,7 +70,6 @@
     "yden",
     "zuul"
   ],
-  "comments.openView": "never",
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
   "debug.toolBarLocation": "docked",
@@ -78,6 +77,7 @@
   "diffEditor.renderSideBySide": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": false,
   "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll"],
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -85,6 +85,7 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
@@ -166,17 +167,6 @@
     "typescriptreact"
   ],
   "explorer.autoReveal": false,
-  "explorer.experimental.fileNesting.enabled": true,
-  "explorer.experimental.fileNesting.patterns": {
-    "*.ts": "$(capture).js, $(capture).*.ts",
-    "*.js": "$(capture).js.map, $(capture).min.js, $(capture).d.ts",
-    "*.jsx": "$(capture).js",
-    "*.tsx": "$(capture).ts",
-    "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, .npmrc, yarn.lock, .yarnrc.yml, .eslint*, .prettier*",
-    "remix.config.js": "remix.env.d.ts",
-    ".env": ".env.*"
-  },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     "*.mq5": "cpp",
@@ -265,6 +255,11 @@
   "gitlens.views.showRelativeDateMarkers": false,
   "go.toolsManagement.autoUpdate": true,
   "html.format.wrapLineLength": 80,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "literals",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.showUpdateMessage": true,
@@ -273,6 +268,9 @@
   "rest-client.previewColumn": "current",
   "rust-analyzer.experimental.procAttrMacros": true,
   "rust-analyzer.inlayHints.enable": false,
+  "scm.diffDecorationsGutterPattern": {
+    "modified": false
+  },
   "search.exclude": {
     "**/.yarn": true,
     "**/tsconfig.tsbuildinfo": true
@@ -298,6 +296,11 @@
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.easymotion": true,
   "vim.handleKeys": {
