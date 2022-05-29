@@ -254,6 +254,9 @@
   "gitlens.views.repositories.files.layout": "auto",
   "gitlens.views.showRelativeDateMarkers": false,
   "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    "ui.semanticTokens": true
+  },
   "html.format.wrapLineLength": 80,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "literals",
