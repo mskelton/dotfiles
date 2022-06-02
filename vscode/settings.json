@@ -2,7 +2,7 @@
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
-  "[go]": {
+  "[go,go.mod,go.sum]": {
     "editor.defaultFormatter": "golang.go"
   },
   "[html]": {

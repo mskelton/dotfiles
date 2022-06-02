@@ -53,3 +53,6 @@ nvim_lsp.tsserver.setup {
     debounce_text_changes = 150,
   }
 }
+
+-- Go
+nvim_lsp.gopls.setup {}
