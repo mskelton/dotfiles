@@ -74,7 +74,7 @@
     ]
   },
   "React useState": {
-    "prefix": "us",
+    "prefix": "react-useState",
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "description": "Inserts a React useState hook",
     "body": [
