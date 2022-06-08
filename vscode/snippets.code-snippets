@@ -87,5 +87,10 @@
     "scope": "javascript,javascriptreact,typescript,typescriptreact",
     "description": "Creates and returns a new Promises",
     "body": ["return new Promise((resolve, reject) => {", "\t$0", "})"]
+  },
+  "Go error guard": {
+    "prefix": "en",
+    "scope": "go",
+    "body": ["if err != nil {", "\treturn $1", "}\n$0"]
   }
 }

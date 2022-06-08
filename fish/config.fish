@@ -21,7 +21,8 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 
 # Go path
-set -g fish_user_paths "$HOME/go/bin" $fish_user_paths
+set -x GOPATH "$HOME/go"
+set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 
 # npm global binaries
 set -g fish_user_paths "$HOME/.local/npm/bin" $fish_user_paths

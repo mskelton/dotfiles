@@ -77,12 +77,14 @@ Plug('kyazdani42/nvim-web-devicons')
 -- Git
 Plug('tpope/vim-fugitive')
 Plug('airblade/vim-gitgutter')
+Plug('airblade/vim-rooter')
 
 -- Misc
 Plug('SirVer/ultisnips')
 Plug('tpope/vim-commentary')
 Plug('tpope/vim-eunuch')
 Plug('jiangmiao/auto-pairs')
+-- Plug('ray-x/go.nvim')
 
 vim.call('plug#end')
 
@@ -93,6 +95,7 @@ vim.call('plug#end')
 require('plugins.fzf')
 require('plugins.lualine')
 require('plugins.coc')
+-- require('plugins.go')
 require('plugins.lsp')
 require('plugins.onedark')
 require('plugins.treesitter')
