@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local function buf_set_keymap(bufnr, mode, trigger, cmd)
   vim.api.nvim_buf_set_keymap(bufnr, mode, trigger, cmd, {
@@ -30,7 +31,10 @@ end
 -- TypeScript
 local ts_utils = require("nvim-lsp-ts-utils")
 
+-- Setup lspconfig.
+
 nvim_lsp.tsserver.setup {
+  capabilities = capabilities,
   init_options = ts_utils.init_options,
   on_attach = function (client, bufnr)
     on_attach(client, bufnr)
@@ -56,6 +60,7 @@ nvim_lsp.tsserver.setup {
 
 -- Go
 nvim_lsp.gopls.setup {
+  capabilities = capabilities,
   on_attach = function (client, bufnr)
     on_attach(client, bufnr)
   end

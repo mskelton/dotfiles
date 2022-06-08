@@ -34,6 +34,7 @@ local map = require('utils.map').map
 vim.g.mapleader = ' '
 
 map('n', '<leader>k', ':nohlsearch<cr>')
+map('n', '<leader>w', ':bdelete<cr>')
 
 ---------------------------------------------------------------------------
 -- Plugins
@@ -66,10 +67,18 @@ Plug('nvim-treesitter/playground')
 Plug('neovim/nvim-lspconfig')
 Plug('jose-elias-alvarez/nvim-lsp-ts-utils')
 Plug('nvim-lua/plenary.nvim')
-Plug('neoclide/coc.nvim', { branch = 'release' })
+-- Plug('neoclide/coc.nvim', { branch = 'release' })
+
+-- Completion
+Plug('hrsh7th/cmp-nvim-lsp')
+Plug('hrsh7th/cmp-buffer')
+Plug('hrsh7th/cmp-path')
+Plug('hrsh7th/cmp-cmdline')
+Plug('hrsh7th/nvim-cmp')
+Plug('quangnguyen30192/cmp-nvim-ultisnips')
 
 -- Theme
-Plug('one-dark/onedark.nvim')
+Plug('mskelton/onedark.nvim')
 Plug('nvim-lualine/lualine.nvim')
 Plug('ryanoasis/vim-devicons')
 Plug('kyazdani42/nvim-web-devicons')
@@ -77,14 +86,13 @@ Plug('kyazdani42/nvim-web-devicons')
 -- Git
 Plug('tpope/vim-fugitive')
 Plug('airblade/vim-gitgutter')
-Plug('airblade/vim-rooter')
 
 -- Misc
 Plug('SirVer/ultisnips')
 Plug('tpope/vim-commentary')
 Plug('tpope/vim-eunuch')
 Plug('jiangmiao/auto-pairs')
--- Plug('ray-x/go.nvim')
+Plug('preservim/nerdtree')
 
 vim.call('plug#end')
 
@@ -92,10 +100,9 @@ vim.call('plug#end')
 -- Plugin config
 ---------------------------------------------------------------------------
 
+require('plugins.cmp')
 require('plugins.fzf')
 require('plugins.lualine')
-require('plugins.coc')
--- require('plugins.go')
 require('plugins.lsp')
 require('plugins.onedark')
 require('plugins.treesitter')

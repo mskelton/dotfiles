@@ -1,4 +1,11 @@
-vim.g.onedark_hide_endofbuffer = true
-vim.g.onedark_italics = true
+require('onedark').setup  {
+    code_style = {
+        comments = 'italic',
+        keywords = 'italic',
+        functions = 'bold',
+        strings = 'none',
+        variables = 'none'
+    }
+}
 
-require('onedark').setup()
+require('onedark').load()
