@@ -29,41 +29,15 @@ local on_attach = function(client, bufnr)
 end
 
 -- TypeScript
-local ts_utils = require("nvim-lsp-ts-utils")
-
--- Setup lspconfig.
-
-nvim_lsp.tsserver.setup {
+require'typescript'.setup {
   capabilities = capabilities,
-  init_options = ts_utils.init_options,
-  on_attach = function (client, bufnr)
-    on_attach(client, bufnr)
-
-    -- TS LSP Utils
-    ts_utils.setup({
-      enable_import_on_completion = true,
-      update_imports_on_move = true,
-      auto_inlay_hints = false,
-    })
-    ts_utils.setup_client(client)
-
-    -- Keymap
-    local function map(...) buf_set_keymap(bufnr, ...) end
-    map("n", "<leader>o", ":TSLspOrganize<CR>")
-    map("n", "<leader>rn", ":TSLspRenameFile<CR>")
-    map("n", "<leader>ia", ":TSLspImportAll<CR>", opts)
-  end,
-  flags = {
-    debounce_text_changes = 150,
-  }
+  on_attach = on_attach,
 }
 
 -- Go
 nvim_lsp.gopls.setup {
   capabilities = capabilities,
-  on_attach = function (client, bufnr)
-    on_attach(client, bufnr)
-  end
+  on_attach = on_attach,
 }
 
 function OrgImports(wait_ms)

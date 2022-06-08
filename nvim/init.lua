@@ -65,7 +65,7 @@ Plug('nvim-treesitter/playground')
 
 -- LSP
 Plug('neovim/nvim-lspconfig')
-Plug('jose-elias-alvarez/nvim-lsp-ts-utils')
+Plug('jose-elias-alvarez/typescript.nvim')
 Plug('nvim-lua/plenary.nvim')
 -- Plug('neoclide/coc.nvim', { branch = 'release' })
 
