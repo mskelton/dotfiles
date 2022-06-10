@@ -10,7 +10,7 @@ map('n', '<leader>k', ':nohlsearch<cr>')
 map('n', '<leader>w', ':bdelete<cr>')
 
 -- Telescope
-map('n', '<leader>p', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>p', '<cmd>Telescope find_files hidden=true<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fw', '<cmd>Telescope git_branches<cr>')
