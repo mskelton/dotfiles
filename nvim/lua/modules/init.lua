@@ -59,17 +59,13 @@ local plugins = {
     config = conf 'lualine',
     requires = { 'kyazdani42/nvim-web-devicons' },
   },
+  { 'airblade/vim-gitgutter' },
+  { 'jiangmiao/auto-pairs' },
+  { 'SirVer/ultisnips' },
+  { 'tpope/vim-commentary' },
+  { 'tpope/vim-eunuch' },
+  { 'tpope/vim-fugitive' },
 }
-
--- -- Git
--- Plug('tpope/vim-fugitive')
--- Plug('airblade/vim-gitgutter')
-
--- -- Misc
--- Plug('SirVer/ultisnips')
--- Plug('tpope/vim-commentary')
--- Plug('tpope/vim-eunuch')
--- Plug('jiangmiao/auto-pairs')
 
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then

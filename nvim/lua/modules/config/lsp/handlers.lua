@@ -1,23 +1,6 @@
 local M = {}
 
 M.setup = function()
-  -- function OrgImports(wait_ms)
-  --   local params = vim.lsp.util.make_range_params()
-  --   params.context = {only = {"source.organizeImports"}}
-  --   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-
-  --   for _, res in pairs(result or {}) do
-  --     for _, r in pairs(res.result or {}) do
-  --       if r.edit then
-  --         vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-  --       else
-  --         vim.lsp.buf.execute_command(r.command)
-  --       end
-  --     end
-  --   end
-  -- end
-
-  -- vim.api.nvim_exec([[ autocmd BufWritePre *.go lua OrgImports(1000) ]], false)
 end
 
 -- Use an on_attach function to only map keybindings to LSP commands after the
@@ -61,11 +44,29 @@ if cmp_nvim_lsp then
 end
 M.capabilities = capabilities
 
+-- https://github.com/neovim/nvim-lspconfig/issues/115
+function go_organize_imports(wait_ms)
+  local params = vim.lsp.util.make_range_params()
+  params.context = {only = {"source.organizeImports"}}
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+
+  for _, res in pairs(result or {}) do
+    for _, r in pairs(res.result or {}) do
+      if r.edit then
+        vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+      else
+        vim.lsp.buf.execute_command(r.command)
+      end
+    end
+  end
+end
+
 function M.enable_format_on_save()
   vim.cmd [[
     augroup format_on_save
       au!
       au BufWritePre *.js,*.jsx,*.ts,*.tsx EslintFixAll
+      au BufWritePre *.go lua go_organize_imports(1000)
       au BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 2000)
     augroup end
   ]]
