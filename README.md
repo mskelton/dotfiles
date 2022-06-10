@@ -24,6 +24,12 @@ cd dotfiles
 brew install $(cat config/formula.txt)
 ```
 
+### Install npm packages
+
+```sh
+npm i -g @fsouza/prettierd ls_emmet
+```
+
 ### Git config
 
 To setup the git config, add the following block to `~/.gitconfig` and remove
