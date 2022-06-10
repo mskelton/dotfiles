@@ -28,25 +28,9 @@
   trustctime = false
   editor = vim
   abbrev = 8
-  # pager = delta
 
 [color]
  ui = true
-
-[delta]
-  features = decorations
-  plus-style = "syntax #213e4a"
-  plus-emph-style = "syntax #1c4e5e"
-  minus-style = "syntax #562730"
-  minus-emph-style = "syntax #771f26"
-  syntax-theme = OneHalfDark
-  navigate = true
-  # line-numbers = true
-
-[delta "decorations"]
-  file-style = bold yellow ul
-  file-decoration-style = none
-  hunk-header-decoration-style = blue box
 
 [diff]
   colorMoved = default
