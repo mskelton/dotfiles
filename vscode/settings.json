@@ -330,5 +330,6 @@
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
-  "editor.foldingImportsByDefault": true
+  "editor.foldingImportsByDefault": true,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim"
 }
