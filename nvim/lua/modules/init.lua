@@ -38,7 +38,7 @@ local plugins = {
     config = conf 'lsp',
     requires = {
       'williamboman/nvim-lsp-installer',
-      -- 'jose-elias-alvarez/null-ls.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
       -- 'ray-x/lsp_signature.nvim',
       'jose-elias-alvarez/nvim-lsp-ts-utils',
     },

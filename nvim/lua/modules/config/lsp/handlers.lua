@@ -1,20 +1,6 @@
 local M = {}
 
 M.setup = function()
-  -- local nvim_lsp = require('lspconfig')
-
-  -- -- TypeScript
-  -- nvim_lsp.tsserver.setup {
-  --   capabilities = capabilities,
-  --   on_attach = on_attach,
-  -- }
-
-  -- -- Go
-  -- nvim_lsp.gopls.setup {
-  --   capabilities = capabilities,
-  --   on_attach = on_attach,
-  -- }
-
   -- function OrgImports(wait_ms)
   --   local params = vim.lsp.util.make_range_params()
   --   params.context = {only = {"source.organizeImports"}}
@@ -52,6 +38,18 @@ M.on_attach = function(client, bufnr)
   map('<leader>rn', 'vim.lsp.buf.rename()')
   map('[d', 'vim.diagnostic.goto_prev()')
   map(']d', 'vim.diagnostic.goto_next()')
+
+  if client.name ~= 'null-ls' then
+    client.resolved_capabilities.document_formatting = false
+  end
+
+  if client.name == 'tsserver' then
+    local ts_utils = safe_require 'nvim-lsp-ts-utils'
+    if ts_utils then
+      ts_utils.setup {}
+      ts_utils.setup_client(client)
+    end
+  end
 end
 
 -- Update the LSP capabilities to support completions.
