@@ -5,5 +5,5 @@ else
   require 'core.options'
   require 'core.keymap'
   require 'modules'
-  -- require 'core.autocmd'
+  require 'core.autocmd'
 end

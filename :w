@@ -10,9 +10,6 @@ return function()
         vim.fn["UltiSnips#Anon"](args.body)
       end,
     },
-    window = {
-      winhighlight = "Normal:CmpPmenu",
-    },
     experimental = {
       ghost_text = true,
     },

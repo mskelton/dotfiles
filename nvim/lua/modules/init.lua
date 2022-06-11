@@ -11,9 +11,9 @@ local plugins = {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = conf 'nvim-treesitter',
-    -- requires = {
-    --   -- 'windwp/nvim-ts-autotag',
-    -- },
+    requires = {
+      'windwp/nvim-ts-autotag',
+    },
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -39,7 +39,7 @@ local plugins = {
     requires = {
       'williamboman/nvim-lsp-installer',
       'jose-elias-alvarez/null-ls.nvim',
-      -- 'ray-x/lsp_signature.nvim',
+      'ray-x/lsp_signature.nvim',
       'jose-elias-alvarez/nvim-lsp-ts-utils',
     },
   },

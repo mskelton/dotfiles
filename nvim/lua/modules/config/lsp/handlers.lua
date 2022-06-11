@@ -1,6 +1,14 @@
 local M = {}
 
 M.setup = function()
+  local sign = function(name, text)
+    vim.fn.sign_define(name, { texthl = name, text = text, numhl = '' })
+  end
+
+  sign('DiagnosticSignError', '')
+  sign('DiagnosticSignWarn', '')
+  sign('DiagnosticSignHint', '')
+  sign('DiagnosticSignInfo', '')
 end
 
 -- Use an on_attach function to only map keybindings to LSP commands after the
@@ -31,6 +39,10 @@ M.on_attach = function(client, bufnr)
     if ts_utils then
       ts_utils.setup {}
       ts_utils.setup_client(client)
+
+      map("go", "require('nvim-lsp-ts-utils').import_all()")
+      map("gu", "require('nvim-lsp-ts-utils').organize_imports()")
+      map("gR", "require('nvim-lsp-ts-utils').rename_file()")
     end
   end
 end

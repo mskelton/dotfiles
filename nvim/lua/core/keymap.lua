@@ -8,6 +8,7 @@ vim.g.mapleader = ' '
 -- Normal mode
 map('n', '<leader>k', ':nohlsearch<cr>')
 map('n', '<leader>w', ':bdelete<cr>')
+map('n', '<leader>s', ':write<cr>')
 
 -- Telescope
 map('n', '<leader>p', '<cmd>Telescope find_files hidden=true<cr>')

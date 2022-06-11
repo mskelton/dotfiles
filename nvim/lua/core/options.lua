@@ -10,8 +10,11 @@ o.termguicolors = true
 o.undofile = true
 o.ignorecase = true
 o.smartcase = true
+
+-- Show trailing whitespace, but keep tabs invisible
 o.list = true
-o.listchars = { tab = '▸ ', trail = '·' }
+o.listchars = { tab = '  ', trail = '·' }
+
 o.mouse = 'a'
 o.scrolloff = 4
 o.sidescrolloff = 4

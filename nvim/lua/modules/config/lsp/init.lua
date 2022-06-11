@@ -20,7 +20,7 @@ return function()
     return
   end
 
-  local servers = { 'emmet_ls', 'eslint', 'gopls', 'tsserver' }
+  local servers = { 'emmet_ls', 'eslint', 'gopls' }
 
   for _, name in pairs(servers) do
     local server_is_found, server = lsp_installer.get_server(name)
