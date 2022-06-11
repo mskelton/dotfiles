@@ -15,8 +15,8 @@ end
 -- language server attaches to the current buffer.
 M.on_attach = function(client, bufnr)
   local function map(key, cmd)
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', key, '<cmd>lua ' .. cmd .. '<CR>', opts)
+    local opts = { buffer = bufnr, silent = true }
+    vim.keymap.set('n', key, '<cmd>lua ' .. cmd .. '<CR>', opts)
   end
 
   map('K', 'vim.lsp.buf.hover()')
@@ -24,9 +24,9 @@ M.on_attach = function(client, bufnr)
   map('gD', 'vim.lsp.buf.declaration()')
   map('gi', 'vim.lsp.buf.implementation()')
   map('gr', 'vim.lsp.buf.references()')
-  map('<leader>ca', 'vim.lsp.buf.code_action()')
-  map('<leader>gh', 'vim.lsp.buf.signature_help()')
-  map('<leader>rn', 'vim.lsp.buf.rename()')
+  map('<space>ca', 'vim.lsp.buf.code_action()')
+  map('<space>gh', 'vim.lsp.buf.signature_help()')
+  map('<space>rn', 'vim.lsp.buf.rename()')
   map('[d', 'vim.diagnostic.goto_prev()')
   map(']d', 'vim.diagnostic.goto_next()')
 

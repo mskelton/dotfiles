@@ -22,6 +22,9 @@ local plugins = {
       'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
+        config = function()
+          require("telescope").load_extension('fzf')
+        end,
         run = 'make',
       },
     },
@@ -29,9 +32,7 @@ local plugins = {
   {
     'kyazdani42/nvim-tree.lua',
     config = conf 'nvim-tree',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
+    requires = { 'kyazdani42/nvim-web-devicons' },
   },
   {
     'neovim/nvim-lspconfig',

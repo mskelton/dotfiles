@@ -20,6 +20,4 @@ return function()
       },
     }
   }
-
-  telescope.load_extension('fzf')
 end
