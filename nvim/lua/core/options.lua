@@ -15,6 +15,9 @@ o.smartcase = true
 o.list = true
 o.listchars = { tab = '  ', trail = '·' }
 
+-- Global status line
+o.laststatus = 3
+
 o.mouse = 'a'
 o.scrolloff = 4
 o.sidescrolloff = 4
