@@ -27,6 +27,16 @@ local plugins = {
         end,
         run = 'make',
       },
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function()
+          require("telescope").load_extension("frecency")
+        end,
+        requires = {
+          "tami5/sqlite.lua",
+          "kyazdani42/nvim-web-devicons",
+        },
+      },
     },
   },
   {

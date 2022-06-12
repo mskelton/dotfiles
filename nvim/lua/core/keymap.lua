@@ -9,6 +9,7 @@ map('n', '<space>s', '<cmd>write<cr>')
 
 -- Telescope
 map('n', '<space>p', '<cmd>Telescope find_files hidden=true<cr>')
+map('n', '<space>fr', '<cmd>Telescope frecency<cr>')
 map('n', '<space>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<space>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<space>fw', '<cmd>Telescope git_branches<cr>')
