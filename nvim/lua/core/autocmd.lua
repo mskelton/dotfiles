@@ -17,6 +17,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("VimLeave", {
   group = kitty,
   pattern = "*",
-  command = ":silent !kitty @ set-spacing padding=10",
+  command = ":silent !kitty @ set-spacing padding=15",
 })
 

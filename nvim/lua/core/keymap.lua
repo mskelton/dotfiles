@@ -9,12 +9,11 @@ map('n', '<space>s', '<cmd>write<cr>')
 
 -- Telescope
 map('n', '<space>p', '<cmd>Telescope find_files hidden=true<cr>')
-map('n', '<space>fr', '<cmd>Telescope frecency<cr>')
+map('n', '<space>ff', '<cmd>Telescope frecency<cr>')
 map('n', '<space>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<space>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<space>fw', '<cmd>Telescope git_branches<cr>')
 
 -- File tree
-map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')
-map('n', '<space>r', '<cmd>NvimTreeRefresh<CR>')
-map('n', '<space>n', '<cmd>NvimTreeFindFile<CR>')
+map('n', '<C-n>', '<cmd>NvimTreeToggle<cr>')
+

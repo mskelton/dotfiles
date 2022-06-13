@@ -70,7 +70,10 @@ local plugins = {
     config = conf 'lualine',
     requires = { 'kyazdani42/nvim-web-devicons' },
   },
-  { 'airblade/vim-gitgutter' },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = conf 'gitsigns',
+  },
   { 'jiangmiao/auto-pairs' },
   { 'SirVer/ultisnips' },
   { 'tpope/vim-commentary' },
