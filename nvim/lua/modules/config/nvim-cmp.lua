@@ -7,7 +7,7 @@ return function()
   cmp.setup({
     snippet = {
       expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
+        require('luasnip').lsp_expand(args.body)
       end,
     },
     window = {
@@ -27,17 +27,27 @@ return function()
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'ultisnips' },
+      { name = 'luasnip' },
     }, {
       { name = 'buffer' },
     })
   })
 
-  -- Use buffer source for `/`
+  -- Use buffer source for '/'
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' }
     }
+  })
+
+  -- Use cmdline & path source for ':'
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
   })
 end

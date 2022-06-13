@@ -61,8 +61,9 @@ local plugins = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
       'onsails/lspkind-nvim',
-      'quangnguyen30192/cmp-nvim-ultisnips',
+      'saadparwaiz1/cmp_luasnip',
     },
   },
   {
@@ -74,8 +75,11 @@ local plugins = {
     'lewis6991/gitsigns.nvim',
     config = conf 'gitsigns',
   },
+  {
+    'L3MON4D3/LuaSnip',
+    config = conf 'luasnip',
+  },
   { 'jiangmiao/auto-pairs' },
-  { 'SirVer/ultisnips' },
   { 'tpope/vim-commentary' },
   { 'tpope/vim-eunuch' },
   { 'tpope/vim-fugitive' },
