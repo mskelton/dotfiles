@@ -5,6 +5,9 @@ return function()
   end
 
   treesitter.setup {
+    autotag = {
+      enable = true,
+    },
     ensure_installed = {
       "bash", "css", "dockerfile", "fish", "go", "gomod", "gowork", "graphql",
       "html", "javascript", "jsdoc", "json", "lua", "markdown", "python", "regex",

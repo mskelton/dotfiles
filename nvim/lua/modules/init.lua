@@ -4,7 +4,7 @@ end
 
 local plugins = {
   {
-    'mskelton/onedark.nvim',
+    'navarasu/onedark.nvim',
     config = conf 'onedark',
   },
   {
