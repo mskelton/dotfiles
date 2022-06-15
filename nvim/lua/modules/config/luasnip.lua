@@ -4,14 +4,13 @@ return function()
     return
   end
 
-  -- Snippets
-  for _, lang in ipairs({ "javascript", "javascriptreact", "typescript", "typescriptreact" }) do
-    ls.add_snippets(lang, {
-      ls.parser.parse_snippet('log', "console.log($1)$0"),
-      ls.parser.parse_snippet('imr', "import React from 'react'"),
-      ls.parser.parse_snippet('trans', "const [t] = useTranslation()"),
-    }, { key = 'jtsx' })
-  end
+  -- Filetype mappings
+  ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact" })
+  ls.filetype_extend("typescript", { "javascript" })
+  ls.filetype_extend("javascriptreact", { "javascript" })
+
+  -- Load snippets
+  require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
 
   -- Keymaps
   vim.keymap.set({ 'i', 's' }, '<c-k>', function()

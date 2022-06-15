@@ -8,20 +8,12 @@ return function()
   require('modules.config.lsp.handlers').enable_format_on_save()
   require('modules.config.lsp.null-ls').setup()
 
-  local servers_config = {
-    emmet_ls = {
-      cmd = { 'ls_emmet', '--stdio' },
-      filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescriptreact' },
-    },
-  }
+  -- Custom config per LSP
+  local servers = { 'eslint', 'gopls' }
+  local servers_config = {}
 
-  local lsp_installer = safe_require('nvim-lsp-installer')
-  if not lsp_installer then
-    return
-  end
-
-  local servers = { 'emmet_ls', 'eslint', 'gopls' }
-
+  -- Install all LSPs
+  local lsp_installer = require('nvim-lsp-installer')
   for _, name in pairs(servers) do
     local server_is_found, server = lsp_installer.get_server(name)
 

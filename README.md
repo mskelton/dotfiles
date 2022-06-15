@@ -27,7 +27,7 @@ brew install $(cat config/formula.txt)
 ### Install npm packages
 
 ```sh
-npm i -g @fsouza/prettierd ls_emmet
+npm i -g @fsouza/prettierd
 ```
 
 ### Git config
