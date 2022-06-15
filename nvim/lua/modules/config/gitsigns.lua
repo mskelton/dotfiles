@@ -1,9 +1,8 @@
 return function()
-  local gitsigns = safe_require('gitsigns')
-  if not gitsigns then
-    return
-  end
+	local gitsigns = safe_require("gitsigns")
+	if not gitsigns then
+		return
+	end
 
-  gitsigns.setup {}
+	gitsigns.setup({})
 end
-

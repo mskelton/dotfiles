@@ -1,15 +1,15 @@
 return function()
-  local treesitter = safe_require('nvim-treesitter.configs')
-  if not treesitter then
-    return
-  end
+	local treesitter = safe_require("nvim-treesitter.configs")
+	if not treesitter then
+		return
+	end
 
-  treesitter.setup {
-    autotag = {
-      enable = true,
-    },
-    ensure_installed = {
-      "bash",
+	treesitter.setup({
+		autotag = {
+			enable = true,
+		},
+		ensure_installed = {
+			"bash",
 			"css",
 			"dockerfile",
 			"fish",
@@ -17,7 +17,7 @@ return function()
 			"gomod",
 			"gowork",
 			"graphql",
-      "html",
+			"html",
 			"java",
 			"javascript",
 			"jsdoc",
@@ -26,14 +26,14 @@ return function()
 			"markdown",
 			"python",
 			"regex",
-      "tsx",
+			"tsx",
 			"typescript",
 			"vim",
 			"yaml",
-    },
-    sync_install = false,
-    highlight = {
-      enable = true,
-    },
-  }
+		},
+		sync_install = false,
+		highlight = {
+			enable = true,
+		},
+	})
 end
