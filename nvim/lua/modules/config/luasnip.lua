@@ -1,6 +1,11 @@
 return function()
 	local ls = require("luasnip")
 
+	ls.config.set_config({
+		-- Update on each keypress
+		update_events = "TextChanged,TextChangedI",
+	})
+
 	-- Filetype mappings
 	ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact" })
 	ls.filetype_extend("typescript", { "javascript" })
