@@ -9,6 +9,7 @@ jq
 neovim
 yarn
 ripgrep
+stylua
 task
 tmux
 trash
