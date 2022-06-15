@@ -11,6 +11,9 @@ o.undofile = true
 o.ignorecase = true
 o.smartcase = true
 
+-- Lua filetype detection
+vim.g.do_filetype_lua = 1
+
 -- Show trailing whitespace, but keep tabs invisible
 o.list = true
 o.listchars = { tab = "  ", trail = "·" }
