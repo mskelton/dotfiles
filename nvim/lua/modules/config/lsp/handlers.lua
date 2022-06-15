@@ -35,7 +35,7 @@ M.on_attach = function(client, bufnr)
 	end
 
 	if client.name == "tsserver" then
-		local ts_utils = safe_require("nvim-lsp-ts-utils")
+		local ts_utils = require("nvim-lsp-ts-utils")
 		if ts_utils then
 			ts_utils.setup({})
 			ts_utils.setup_client(client)
@@ -50,7 +50,7 @@ end
 -- Update the LSP capabilities to support completions.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-local cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 if cmp_nvim_lsp then
 	capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end

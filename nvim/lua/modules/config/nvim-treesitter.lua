@@ -1,10 +1,5 @@
 return function()
-	local treesitter = safe_require("nvim-treesitter.configs")
-	if not treesitter then
-		return
-	end
-
-	treesitter.setup({
+	require("nvim-treesitter.configs").setup({
 		autotag = {
 			enable = true,
 		},

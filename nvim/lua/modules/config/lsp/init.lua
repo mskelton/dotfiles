@@ -1,9 +1,4 @@
 return function()
-	local lspconfig = safe_require("lspconfig")
-	if not lspconfig then
-		return
-	end
-
 	require("modules.config.lsp.handlers").setup()
 	require("modules.config.lsp.handlers").enable_format_on_save()
 	require("modules.config.lsp.null-ls").setup()

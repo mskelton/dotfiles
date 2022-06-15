@@ -1,10 +1,7 @@
 local M = {}
 
 M.setup = function()
-	local null_ls = safe_require("null-ls")
-	if not null_ls then
-		return
-	end
+	local null_ls = require("null-ls")
 
 	null_ls.setup({
 		sources = {

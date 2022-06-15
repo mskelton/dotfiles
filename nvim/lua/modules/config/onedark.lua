@@ -1,8 +1,5 @@
 return function()
-	local onedark = safe_require("onedark")
-	if not onedark then
-		return
-	end
+	local onedark = require("onedark")
 
 	onedark.setup({
 		code_style = {

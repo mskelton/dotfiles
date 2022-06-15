@@ -95,18 +95,16 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd("packadd packer.nvim")
 end
 
-local packer = safe_require("packer")
-if packer then
-	packer.init({
-		compile_path = vim.fn.stdpath("data") .. "/site/plugin/packer_compiled.lua",
-		package_root = vim.fn.stdpath("data") .. "/site/pack",
-	})
+local packer = require("packer")
+packer.init({
+	compile_path = vim.fn.stdpath("data") .. "/site/plugin/packer_compiled.lua",
+	package_root = vim.fn.stdpath("data") .. "/site/pack",
+})
 
-	return packer.startup(function(use)
-		use("wbthomason/packer.nvim")
+return packer.startup(function(use)
+	use("wbthomason/packer.nvim")
 
-		for _, plugin in ipairs(plugins) do
-			use(plugin)
-		end
-	end)
-end
+	for _, plugin in ipairs(plugins) do
+		use(plugin)
+	end
+end)

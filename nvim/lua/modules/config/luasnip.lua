@@ -1,8 +1,5 @@
 return function()
-	local ls = safe_require("luasnip")
-	if not ls then
-		return
-	end
+	local ls = require("luasnip")
 
 	-- Filetype mappings
 	ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact" })

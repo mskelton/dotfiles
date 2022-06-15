@@ -1,8 +1,5 @@
 return function()
-	local cmp = safe_require("cmp")
-	if not cmp then
-		return
-	end
+	local cmp = require("cmp")
 
 	cmp.setup({
 		snippet = {
