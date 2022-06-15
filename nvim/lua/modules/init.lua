@@ -79,6 +79,10 @@ local plugins = {
 		"L3MON4D3/LuaSnip",
 		config = conf("luasnip"),
 	},
+	{
+		"numToStr/Comment.nvim",
+		config = conf("comment"),
+	},
 	{ "jiangmiao/auto-pairs" },
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-eunuch" },

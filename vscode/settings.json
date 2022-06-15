@@ -197,7 +197,6 @@
   "git-graph.repository.commits.initialLoad": 100,
   "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
-  "git.branchProtection": ["master", "main"],
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
