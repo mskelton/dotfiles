@@ -1,23 +1,23 @@
-function capitalize(str)
-	return (str:gsub("^%l", string.upper))
-end
+local utils = require("core.utils")
 
 return {
 	parse("cl", "console.log($1)$0"),
+	parse("prom", "return new Promise((resolve, reject) => {", "\t$0", "})"),
+	parse("tout", "setTimeout(() => {$2}, ${1:1000}"),
 	-- React
 	parse("imr", "import React from 'react'"),
 	s(
-		"react-useState",
+		"useState",
 		fmt("const [{}, set{}] = useState({})", {
 			i(1, "value"),
 			d(2, function(args)
-				return sn(nil, { t(capitalize(args[1][1])) })
+				return sn(nil, { t(utils.capitalize(args[1][1])) })
 			end, { 1 }),
 			i(3),
 		})
 	),
 	s(
-		"react-useEffect",
+		"useEffect",
 		fmt(
 			[[
         useEffect(() => {{

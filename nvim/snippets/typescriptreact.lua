@@ -1,11 +1,7 @@
-function camel_case(str)
-	return string.gsub("-" .. str, "(%-)(%l)", function(_, b)
-		return string.upper(b)
-	end)
-end
+local utils = require("core.utils")
 
 function get_component_name(_, snip)
-	return camel_case(snip.env.TM_FILENAME_BASE)
+	return utils.camel_case(snip.env.TM_FILENAME_BASE)
 end
 
 function get_props_name(args, snip)
@@ -55,9 +51,9 @@ return {
 						return sn(nil, t(""))
 					end
 
-					local props = camel_case(parent.snippet.env.TM_FILENAME_BASE)
+					local props = get_props_name(args, parent.snippet)
 					return sn(nil, {
-						t({ "", args[1][1] .. "interface " .. props .. "Props {", "\t", "}", "" }),
+						t({ "", args[1][1] .. "interface " .. props .. " {", "\t", "}", "" }),
 					})
 				end, { 2, 3 }),
 			}

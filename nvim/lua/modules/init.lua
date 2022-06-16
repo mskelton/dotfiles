@@ -83,7 +83,6 @@ local plugins = {
 		"numToStr/Comment.nvim",
 		config = conf("comment"),
 	},
-	{ "jiangmiao/auto-pairs" },
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
