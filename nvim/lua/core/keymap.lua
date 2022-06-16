@@ -3,9 +3,11 @@ function map(mode, key, cmd, opts)
 end
 
 -- Normal mode
-map("n", "<space>k", "<cmd>nohlsearch<cr>")
-map("n", "<space>w", "<cmd>bdelete<cr>")
-map("n", "<space>s", "<cmd>write<cr>")
+map("n", "<space>k", "<cmd>noh<cr>")
+map("n", "<space>s", "<cmd>w<cr>")
+map("n", "<space>w", "<cmd>bd<cr>")
+map("n", "<leader>f", "<cmd>bn<cr>")
+map("n", "<leader>b", "<cmd>bp<cr>")
 
 -- Telescope
 map("n", "<space>p", "<cmd>Telescope find_files hidden=true<cr>")
