@@ -83,6 +83,10 @@ local plugins = {
 		"numToStr/Comment.nvim",
 		config = conf("comment"),
 	},
+	{
+		"windwp/nvim-autopairs",
+		config = conf("autopairs"),
+	},
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
