@@ -8,8 +8,8 @@ return {
 			c(1, { t("{"), t("") }),
 			i(2),
 			f(function(args)
-				return t("}")
-			end),
+				return args[1][1] == "{" and "}" or ""
+			end, { 1 }),
 		})
 	),
 	parse("pw-describe", "test.describe('$1', () => {\n\t$3\n})\n\n$0"),
