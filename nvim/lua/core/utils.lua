@@ -5,7 +5,7 @@ M.capitalize = function(str)
 end
 
 M.camel_case = function(str)
-	return string.gsub("-" .. str, "(%-)(%l)", function(_, b)
+	return string.gsub("-" .. str, "(%-)(%a)", function(_, b)
 		return string.upper(b)
 	end)
 end
