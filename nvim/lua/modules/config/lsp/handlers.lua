@@ -30,11 +30,9 @@ M.on_attach = function(client, bufnr)
 	map("[d", "vim.diagnostic.goto_prev()")
 	map("]d", "vim.diagnostic.goto_next()")
 
-	if client.name ~= "null-ls" then
-		client.resolved_capabilities.document_formatting = false
-	end
-
 	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
+
 		local ts_utils = require("nvim-lsp-ts-utils")
 		if ts_utils then
 			ts_utils.setup({})
