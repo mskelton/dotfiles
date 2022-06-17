@@ -53,4 +53,6 @@ return {
 	parse("pw-beforeEach", "test.beforeEach('$1', async ({ ${2:page} }) => {\n\t$3\n})\n\n$0"),
 	parse("pw-beforeAll", "test.beforeEach('$1', async ($2) => {\n\t$3\n})\n\n$0"),
 	parse("pw-afterAll", "test.beforeEach('$1', async ($2) => {\n\t$3\n})\n\n$0"),
+	-- Emotion
+	parse("ces", "const ${1:button}Style = css`\n\t$0\n`"),
 }
