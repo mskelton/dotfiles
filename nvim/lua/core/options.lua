@@ -1,5 +1,7 @@
 local o = vim.opt
 
+o.path:append("**")
+
 o.expandtab = true
 o.shiftwidth = 2
 o.tabstop = 2

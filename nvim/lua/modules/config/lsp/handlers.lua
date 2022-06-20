@@ -39,7 +39,6 @@ M.on_attach = function(client, bufnr)
 			ts_utils.setup_client(client)
 
 			map("go", "require('nvim-lsp-ts-utils').import_all()")
-			map("gu", "require('nvim-lsp-ts-utils').organize_imports()")
 			map("gR", "require('nvim-lsp-ts-utils').rename_file()")
 		end
 	end

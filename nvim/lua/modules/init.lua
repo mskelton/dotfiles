@@ -87,7 +87,6 @@ local plugins = {
 		"windwp/nvim-autopairs",
 		config = conf("autopairs"),
 	},
-	{ "tpope/vim-commentary" },
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
 }
