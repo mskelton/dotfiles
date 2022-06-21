@@ -74,7 +74,7 @@ function M.enable_format_on_save()
 	vim.cmd([[
     augroup format_on_save
       au!
-      au BufWritePre *.js,*.jsx,*.ts,*.tsx EslintFixAll
+      au BufWritePre *.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs,*.mts,*.cts EslintFixAll
       au BufWritePre *.go lua go_organize_imports(1000)
       au BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 2000)
     augroup end

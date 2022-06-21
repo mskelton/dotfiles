@@ -8,6 +8,7 @@ map("n", "<space>s", "<cmd>w<cr>")
 map("n", "<space>w", "<cmd>bd<cr>")
 map("n", "<leader>f", "<cmd>bn<cr>")
 map("n", "<leader>b", "<cmd>bp<cr>")
+map("n", "<leader>t", "<cmd>TSHighlightCapturesUnderCursor<cr>")
 
 -- Telescope
 map("n", "<space>p", "<cmd>Telescope find_files hidden=true<cr>")

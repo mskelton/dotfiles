@@ -13,6 +13,7 @@ local plugins = {
 		config = conf("nvim-treesitter"),
 		requires = {
 			"windwp/nvim-ts-autotag",
+			"nvim-treesitter/playground",
 		},
 	},
 	{

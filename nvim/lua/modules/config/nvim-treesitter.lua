@@ -30,5 +30,8 @@ return function()
 		highlight = {
 			enable = true,
 		},
+		playground = {
+			enable = true,
+		},
 	})
 end
