@@ -2,6 +2,9 @@ function map(mode, key, cmd, opts)
 	vim.keymap.set(mode, key, cmd, opts or { silent = true })
 end
 
+-- Allow using semicolon to enter command mode
+map("n", ";", ":")
+
 -- Normal mode
 map("n", "<space>k", "<cmd>noh<cr>")
 map("n", "<space>s", "<cmd>w<cr>")
