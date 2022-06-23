@@ -4,7 +4,7 @@ return function()
 	require("modules.config.lsp.null-ls").setup()
 
 	-- Custom config per LSP
-	local servers = { "eslint", "gopls" }
+	local servers = { "eslint", "gopls", "tsserver" }
 	local servers_config = {}
 
 	-- Install all LSPs
