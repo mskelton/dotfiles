@@ -34,5 +34,5 @@ o.clipboard = "unnamed"
 o.confirm = true
 o.shortmess = o.shortmess + "I"
 o.updatetime = 100
-o.colorcolumn = "80"
+o.colorcolumn = "81"
 o.completeopt = "menu,menuone,noselect"
