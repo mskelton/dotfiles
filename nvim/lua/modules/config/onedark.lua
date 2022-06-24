@@ -11,15 +11,17 @@ return function()
 			variables = "none",
 		},
 		highlights = {
+			IncSearch = { fg = "$fg", bg = "$bg3" },
+			Search = { fg = "$fg", bg = "$bg3" },
 			TSField = { fg = "$red" },
-			TSProperty = { fg = "$red" },
-			TSParameter = { fg = "$orange" },
-			TSType = { fg = "$yellow" },
-			TSTypeBuiltin = { fg = "$yellow" },
 			TSInclude = { fmt = "italic" },
 			TSMethod = { fmt = "bold" },
 			TSOperator = { fg = "$cyan" },
+			TSParameter = { fg = "$orange" },
+			TSProperty = { fg = "$red" },
 			TSStringEscape = { fg = "$cyan" },
+			TSType = { fg = "$yellow" },
+			TSTypeBuiltin = { fg = "$yellow" },
 		},
 	})
 
