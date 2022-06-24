@@ -22,6 +22,7 @@ return function()
 			TSStringEscape = { fg = "$cyan" },
 			TSType = { fg = "$yellow" },
 			TSTypeBuiltin = { fg = "$yellow" },
+			TSVariableBuiltin = { fg = "$yellow" },
 		},
 	})
 
