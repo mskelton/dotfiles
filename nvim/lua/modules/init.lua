@@ -80,6 +80,7 @@ local plugins = {
 	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
+	{ "christoomey/vim-tmux-navigator" },
 }
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
