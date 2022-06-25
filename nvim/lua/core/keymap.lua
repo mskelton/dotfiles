@@ -21,4 +21,5 @@ map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<space>fw", "<cmd>Telescope git_branches<cr>")
 
 -- File tree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<cr>")
+map("n", "<C-n>", "<cmd>NvimTreeFocus<cr>")
+map("n", "<M-n>", "<cmd>NvimTreeClose<cr>")
