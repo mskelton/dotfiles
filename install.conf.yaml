@@ -12,7 +12,7 @@
     ~/.zshrc: .zshrc
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
-    ~/.config/tmux/tmux.conf: tmux.conf
+    ~/.config/tmux: tmux
 
     # Taskwarrior
     ~/.taskrc: taskwarrior/.taskrc
