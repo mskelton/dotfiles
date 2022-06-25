@@ -27,7 +27,7 @@ brew install $(cat config/formula.txt)
 ### Install npm packages
 
 ```sh
-npm i -g @fsouza/prettierd
+npm i -g @fsouza/prettierd stylelint-lsp
 ```
 
 ### Git config

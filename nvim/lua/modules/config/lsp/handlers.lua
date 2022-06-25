@@ -30,6 +30,10 @@ M.on_attach = function(client, bufnr)
 	map("[d", "vim.diagnostic.goto_prev()")
 	map("]d", "vim.diagnostic.goto_next()")
 
+	if client.name == "eslint" then
+		client.resolved_capabilities.document_formatting = true
+	end
+
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
@@ -71,14 +75,27 @@ function go_organize_imports(wait_ms)
 end
 
 function M.enable_format_on_save()
-	vim.cmd([[
-    augroup format_on_save
-      au!
-      au BufWritePre *.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs,*.mts,*.cts EslintFixAll
-      au BufWritePre *.go lua go_organize_imports(1000)
-      au BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 2000)
-    augroup end
-  ]])
+	local group = vim.api.nvim_create_augroup("FormatOnSave", {})
+
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = group,
+		pattern = "*",
+		callback = function()
+			vim.lsp.buf.formatting_seq_sync(nil, 2000, {
+				"stylelint_lsp",
+				"eslint",
+				"null-ls",
+			})
+		end,
+	})
+
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = group,
+		pattern = "*.go",
+		callback = function()
+			go_organize_imports(1000)
+		end,
+	})
 end
 
 return M
