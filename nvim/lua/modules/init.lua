@@ -78,6 +78,14 @@ local plugins = {
 		"windwp/nvim-autopairs",
 		config = conf("autopairs"),
 	},
+	-- {
+	-- 	"mhinz/vim-startify",
+	-- 	config = conf("startify"),
+	-- },
+	{
+		"glepnir/dashboard-nvim",
+		config = conf("dashboard"),
+	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
 	{ "christoomey/vim-tmux-navigator" },
