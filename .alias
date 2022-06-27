@@ -20,17 +20,12 @@ alias ns="npm run serve"
 alias nr="npm run"
 alias c="code"
 alias t="task"
+alias tw="clear && t"
 alias dup="docker-compose up -d"
-
-# Testing
-alias tw="yarn test --watch"
-alias j="yarn test"
-alias p="yarn test"
 
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim"
 alias oldvim="/usr/bin/vim"
 
 # Python aliases
