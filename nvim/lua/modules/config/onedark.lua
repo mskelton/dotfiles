@@ -14,6 +14,7 @@ return function()
 			IncSearch = { fg = "$fg", bg = "$bg3" },
 			Search = { fg = "$fg", bg = "$bg3" },
 			TSField = { fg = "$red" },
+			TSTitle = { fg = "$red" },
 			TSInclude = { fmt = "italic" },
 			TSMethod = { fmt = "bold" },
 			TSOperator = { fg = "$cyan" },
