@@ -6,8 +6,8 @@ git
 git-delta
 go
 jq
+lolcat
 neovim
-yarn
 ripgrep
 stylua
 task
@@ -15,3 +15,4 @@ tmux
 trash
 tree-sitter
 wget
+yarn
