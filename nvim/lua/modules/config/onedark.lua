@@ -11,8 +11,18 @@ return function()
 			variables = "none",
 		},
 		highlights = {
+			-- Alpha header colors
+			AlphaColor1 = { fg = "$blue" },
+			AlphaColor2 = { fg = "$cyan" },
+			AlphaColor3 = { fg = "$green" },
+			AlphaColor4 = { fg = "$orange" },
+			AlphaColor5 = { fg = "$red" },
+			AlphaColor6 = { fg = "$purple" },
+			AlphaColor7 = { fg = "$yellow" },
+			-- Default search is too much, tone it down a bit
 			IncSearch = { fg = "$fg", bg = "$bg3" },
 			Search = { fg = "$fg", bg = "$bg3" },
+			-- Match up with VS Code styles a bit better
 			TSField = { fg = "$red" },
 			TSTitle = { fg = "$red" },
 			TSInclude = { fmt = "italic" },

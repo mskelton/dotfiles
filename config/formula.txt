@@ -1,5 +1,6 @@
 bat
 fish
+fortune
 fzf
 gh
 git

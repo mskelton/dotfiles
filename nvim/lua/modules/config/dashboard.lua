@@ -9,12 +9,6 @@ return function()
 
 	db.custom_center = {
 		{
-			icon = "  ",
-			desc = "Re-open last session                    ",
-			shortcut = "SPC sl",
-			action = "SessionLoad",
-		},
-		{
 			icon = "  ",
 			desc = "Recently opened files                   ",
 			action = "DashboardFindHistory",
@@ -35,7 +29,7 @@ return function()
 		{
 			icon = "  ",
 			desc = "Open Personal dotfiles                  ",
-			action = "Telescope dotfiles path=" .. home .. "/dev/dotfiles",
+			action = "Telescope find_files path=" .. home .. "/dev/dotfiles",
 			shortcut = "SPC fd",
 		},
 	}

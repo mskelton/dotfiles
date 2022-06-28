@@ -82,9 +82,13 @@ local plugins = {
 	-- 	"mhinz/vim-startify",
 	-- 	config = conf("startify"),
 	-- },
+	-- {
+	-- 	"glepnir/dashboard-nvim",
+	-- 	config = conf("dashboard"),
+	-- },
 	{
-		"glepnir/dashboard-nvim",
-		config = conf("dashboard"),
+		"goolord/alpha-nvim",
+		config = conf("alpha"),
 	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
