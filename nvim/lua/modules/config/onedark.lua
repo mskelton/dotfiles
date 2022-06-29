@@ -12,12 +12,13 @@ return function()
 		},
 		highlights = {
 			-- Dashboard header colors
-			StartLogo1 = { fg = "#1F7562" },
-			StartLogo2 = { fg = "#21825F" },
-			StartLogo3 = { fg = "#228E5C" },
-			StartLogo4 = { fg = "#239B59" },
-			StartLogo5 = { fg = "#24A755" },
-			StartLogo6 = { fg = "#26B352" },
+			StartLogo1 = { fg = "#1C506B" },
+			StartLogo2 = { fg = "#1D5D68" },
+			StartLogo3 = { fg = "#1E6965" },
+			StartLogo4 = { fg = "#1F7562" },
+			StartLogo5 = { fg = "#21825F" },
+			StartLogo6 = { fg = "#228E5C" },
+			StartLogo7 = { fg = "#239B59" },
 			-- Default search is too much, tone it down a bit
 			IncSearch = { fg = "$fg", bg = "$bg3" },
 			Search = { fg = "$fg", bg = "$bg3" },

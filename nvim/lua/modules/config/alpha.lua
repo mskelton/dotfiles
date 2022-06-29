@@ -3,13 +3,16 @@ return function()
 	local dashboard = require("alpha.themes.dashboard")
 	local fortune = require("alpha.fortune")
 
+	-- Inspired by https://github.com/glepnir/dashboard-nvim with my own flair
 	local header = {
-		[[  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  ]],
-		[[  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║  ]],
-		[[  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║  ]],
-		[[  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║  ]],
-		[[  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║  ]],
-		[[  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝  ]],
+		[[                                                                   ]],
+		[[      ████ ██████           █████      ██                    ]],
+		[[     ███████████             █████                            ]],
+		[[     █████████ ███████████████████ ███   ███████████  ]],
+		[[    █████████  ███    █████████████ █████ ██████████████  ]],
+		[[   █████████ ██████████ █████████ █████ █████ ████ █████  ]],
+		[[ ███████████ ███    ███ █████████ █████ █████ ████ █████ ]],
+		[[██████  █████████████████████ ████ █████ █████ ████ ██████]],
 	}
 
 	-- Make the header a bit more fun with some color!
@@ -33,10 +36,12 @@ return function()
 		return lines
 	end
 
-	-- dashboard.section.buttons.val = {
-	-- 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-	-- 	dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
-	-- }
+	dashboard.section.buttons.val = {
+		dashboard.button("e", "  New file", ":ene | startinsert <CR>"),
+		dashboard.button("SPC p", "  Find file", ":Telescope find_files<CR>"),
+		dashboard.button("SPC fg", "  Find word", ":Telescope live_grep<CR>"),
+		dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
+	}
 
 	-- Everyone could use a good fortune cookie from time to time, right?
 	dashboard.section.footer.val = fortune()
