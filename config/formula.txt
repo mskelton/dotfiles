@@ -1,13 +1,10 @@
 bat
 fish
-fortune
 fzf
 gh
 git
-git-delta
 go
 jq
-lolcat
 neovim
 ripgrep
 stylua

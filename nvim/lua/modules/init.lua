@@ -78,14 +78,6 @@ local plugins = {
 		"windwp/nvim-autopairs",
 		config = conf("autopairs"),
 	},
-	-- {
-	-- 	"mhinz/vim-startify",
-	-- 	config = conf("startify"),
-	-- },
-	-- {
-	-- 	"glepnir/dashboard-nvim",
-	-- 	config = conf("dashboard"),
-	-- },
 	{
 		"goolord/alpha-nvim",
 		config = conf("alpha"),

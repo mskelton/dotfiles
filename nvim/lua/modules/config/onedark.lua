@@ -11,14 +11,13 @@ return function()
 			variables = "none",
 		},
 		highlights = {
-			-- Alpha header colors
-			AlphaColor1 = { fg = "$blue" },
-			AlphaColor2 = { fg = "$cyan" },
-			AlphaColor3 = { fg = "$green" },
-			AlphaColor4 = { fg = "$orange" },
-			AlphaColor5 = { fg = "$red" },
-			AlphaColor6 = { fg = "$purple" },
-			AlphaColor7 = { fg = "$yellow" },
+			-- Dashboard header colors
+			StartLogo1 = { fg = "#1F7562" },
+			StartLogo2 = { fg = "#21825F" },
+			StartLogo3 = { fg = "#228E5C" },
+			StartLogo4 = { fg = "#239B59" },
+			StartLogo5 = { fg = "#24A755" },
+			StartLogo6 = { fg = "#26B352" },
 			-- Default search is too much, tone it down a bit
 			IncSearch = { fg = "$fg", bg = "$bg3" },
 			Search = { fg = "$fg", bg = "$bg3" },
