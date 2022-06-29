@@ -5,11 +5,12 @@ return function()
 				quit_on_open = true,
 			},
 		},
-		update_focused_file = {
-			enable = true,
-		},
 		filters = {
 			custom = { ".git" },
+		},
+		sync_root_with_cwd = true,
+		update_focused_file = {
+			enable = true,
 		},
 	})
 end

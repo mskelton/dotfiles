@@ -23,6 +23,7 @@ return function()
 				additional_args = function(opts)
 					return { "--hidden" }
 				end,
+				only_cwd = true,
 			},
 			oldfiles = {
 				only_cwd = true,

@@ -34,6 +34,10 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = true
 	end
 
+	if client.name == "stylelint_lsp" then
+		client.resolved_capabilities.document_formatting = true
+	end
+
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
