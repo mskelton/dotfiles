@@ -2,9 +2,13 @@ function map(mode, key, cmd, opts)
 	vim.keymap.set(mode, key, cmd, opts or { silent = true })
 end
 
+-- Backslash is a little tough to reach, so I use a comma instead. I would use
+-- a semi colon, but that is not available since I remaped that for a shiftless
+-- entry into command mode.
 vim.g.mapleader = ","
 
--- Allow using semicolon to enter command mode
+-- Allow using semicolon to enter command mode. Don't make it silent so that we
+-- can see when entering command mode.
 map("n", ";", ":", { silent = false })
 
 -- Normal mode

@@ -1,7 +1,11 @@
-local packer = vim.api.nvim_create_augroup("PackerCompile", {})
+vim.cmd([[
+  augroup PackerCompile
+    au!
+    au BufWritePost */nvim/lua/modules/*.lua source <afile> | PackerCompile
+  augroup END 
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = packer,
-	pattern = "*/nvim/lua/modules/*.lua",
-	command = "source <afile> | PackerCompile",
-})
+  augroup FormatOptions
+    au!
+    au BufEnter * set formatoptions-=cro
+  augroup END 
+]])

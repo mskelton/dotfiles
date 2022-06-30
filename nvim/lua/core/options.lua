@@ -22,10 +22,6 @@ o.listchars = { tab = "  ", trail = "·" }
 -- Global status line
 o.laststatus = 3
 
--- Disable continuation comments
-o.formatoptions:remove("r")
-o.formatoptions:remove("o")
-
 o.mouse = "a"
 o.scrolloff = 4
 o.sidescrolloff = 4
