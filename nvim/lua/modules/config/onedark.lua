@@ -19,6 +19,7 @@ return function()
 			StartLogo5 = { fg = "#21825F" },
 			StartLogo6 = { fg = "#228E5C" },
 			StartLogo7 = { fg = "#239B59" },
+			StartLogo8 = { fg = "#24A755" },
 			-- Default search is too much, tone it down a bit
 			IncSearch = { fg = "$fg", bg = "$bg3" },
 			Search = { fg = "$fg", bg = "$bg3" },
