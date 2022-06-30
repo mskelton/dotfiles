@@ -1,7 +1,7 @@
 # Git aliases
 alias unstash="git stash pop"
 alias stash="git stash push -u"
-alias pd="git pull-clean"
+alias pd="git pd"
 alias gcp="git cherry-pick"
 alias push="git push"
 alias pub="git publish"

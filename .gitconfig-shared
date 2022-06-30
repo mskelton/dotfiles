@@ -9,8 +9,8 @@
   cap = !git ca $2 && git push
   name = branch -m
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
-  publish = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
-  pull-clean = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+  pub = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+  pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   new = !git checkout $(git default) && git checkout -b $2
   unpushed = log --branches --not --remotes --no-walk --decorate --oneline
   merge-last = !git co - && git merge $(git default)
