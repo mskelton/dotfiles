@@ -6,6 +6,6 @@ vim.cmd([[
 
   augroup FormatOptions
     au!
-    au BufEnter * set formatoptions-=co
+    au BufEnter * set formatoptions-=c | set formatoptions-=o
   augroup END 
 ]])

@@ -20,11 +20,8 @@ return function()
 			["<C-n>"] = cmp.mapping.select_next_item(),
 			["<C-p>"] = cmp.mapping.select_prev_item(),
 			["<C-e>"] = cmp.mapping.abort(),
-			-- Tab will always complete, enter can complete but only if explicitly
-			-- selected. This helps to prevent accidentally selecting completions when
-			-- attempting to add newlines which is quite common.
 			["<Tab>"] = cmp.mapping.confirm({ select = true }),
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
