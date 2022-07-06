@@ -27,7 +27,7 @@ end)
 
 -- Telescope
 map("n", "<space>p", "<cmd>Telescope find_files<cr>")
-map("n", "<space>g", "<cmd>Telescope live_grep<cr>")
+map("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
 map("n", "<space>ff", "<cmd>Telescope oldfiles<cr>")
 map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<space>fg", "<cmd>Telescope git_branches<cr>")
