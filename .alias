@@ -22,7 +22,10 @@ alias c="code"
 alias t="task"
 alias tw="clear && t"
 alias dup="docker-compose up -d"
-alias tm="tmux"
+
+# Tmux
+alias tn="tmux new"
+alias ta="tmux at"
 
 # Remap vim to nvim
 alias vim="nvim"

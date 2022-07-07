@@ -11,13 +11,16 @@ vim.g.mapleader = ","
 -- can see when entering command mode.
 map("n", ";", ":", { silent = false })
 
+-- Disable the command line window. I hate it.
+map("n", "q:", "<nop>")
+
 -- Normal mode
 map("n", "<space>k", "<cmd>noh<cr>")
 map("n", "<space>s", "<cmd>w<cr>")
 map("n", "<space>w", "<cmd>bd<cr>")
 map("n", "<leader>f", "<cmd>bn<cr>")
 map("n", "<leader>b", "<cmd>bp<cr>")
-map("n", "<leader>t", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+map("n", "<leader>ts", "<cmd>TSHighlightCapturesUnderCursor<cr>")
 
 -- Packer compile
 vim.keymap.set("n", "<leader>pc", function()
