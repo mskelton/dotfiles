@@ -41,14 +41,10 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
-		local ts_utils = require("nvim-lsp-ts-utils")
-		if ts_utils then
-			ts_utils.setup({})
-			ts_utils.setup_client(client)
-
-			map("go", "require('nvim-lsp-ts-utils').import_all()")
-			map("gR", "require('nvim-lsp-ts-utils').rename_file()")
-		end
+		vim.keymap.set("n", "go", function()
+			require("typescript").actions.removeUnused()
+			require("typescript").actions.addMissingImports()
+		end)
 	end
 end
 

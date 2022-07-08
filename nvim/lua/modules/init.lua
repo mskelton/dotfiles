@@ -42,7 +42,7 @@ local plugins = {
 			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
-			"jose-elias-alvarez/nvim-lsp-ts-utils",
+			"jose-elias-alvarez/typescript.nvim",
 		},
 	},
 	{
