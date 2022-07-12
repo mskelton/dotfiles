@@ -4,6 +4,7 @@ return function()
 
 	telescope.setup({
 		defaults = {
+			layout_strategy = "vertical",
 			prompt_prefix = "❯ ",
 			selection_caret = "❯ ",
 			mappings = {
