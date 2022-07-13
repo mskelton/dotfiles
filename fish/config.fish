@@ -26,3 +26,8 @@ set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 
 # npm global binaries
 set -g fish_user_paths "$HOME/.local/npm/bin" $fish_user_paths
+
+# Bun
+set -Ux BUN_INSTALL "$HOME/.bun"
+set -px --path PATH "$HOME/.bun/bin"
+

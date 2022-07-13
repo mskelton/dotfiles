@@ -1,29 +1,38 @@
 return function()
+	local lsp_installer = require("nvim-lsp-installer")
+	local lspconfig = require("lspconfig")
 	local handlers = require("modules.config.lsp.handlers")
+	local null_ls = require("modules.config.lsp.null-ls")
+
 	handlers.setup()
 	handlers.enable_format_on_save()
-	require("modules.config.lsp.null-ls").setup()
+	null_ls.setup()
 
 	-- Custom config per LSP
-	local servers = { "eslint", "gopls", "stylelint_lsp" }
-	local servers_config = {}
+	local servers = {
+		eslint = {
+			root_dir = lspconfig.util.find_git_ancestor,
+			settings = {
+				autoFixOnSave = true,
+			},
+		},
+		gopls = {},
+		stylelint_lsp = {},
+	}
 
 	-- Install all LSPs
-	local lsp_installer = require("nvim-lsp-installer")
-	for _, name in pairs(servers) do
-		local server_is_found, server = lsp_installer.get_server(name)
+	lsp_installer.setup({
+		ensure_installed = vim.tbl_keys(servers),
+	})
 
-		if server_is_found and not server:is_installed() then
-			server:install()
-		end
+	-- Setup all LSP clients
+	for server, config in pairs(servers) do
+		lspconfig[server].setup({
+			capabilities = handlers.capabilities,
+			on_attach = handlers.on_attach,
+			unpack(config),
+		})
 	end
-
-	lsp_installer.on_server_ready(function(server)
-		local config = servers_config[server.name] or {}
-		config.capabilities = handlers.capabilities
-		config.on_attach = handlers.on_attach
-		server:setup(config)
-	end)
 
 	require("typescript").setup({
 		server = {

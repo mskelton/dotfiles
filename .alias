@@ -27,6 +27,9 @@ alias dup="docker-compose up -d"
 alias tn="tmux new"
 alias ta="tmux at"
 
+# Kitty
+alias icat="kitty +kitten icat"
+
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"

@@ -32,6 +32,7 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "eslint" then
 		client.resolved_capabilities.document_formatting = true
+		client.resolved_capabilities.document_range_formatting = true
 	end
 
 	if client.name == "stylelint_lsp" then
@@ -82,8 +83,8 @@ function M.enable_format_on_save()
 		pattern = "*",
 		callback = function()
 			vim.lsp.buf.formatting_seq_sync(nil, 2000, {
-				"stylelint_lsp",
 				"eslint",
+				"stylelint_lsp",
 				"null-ls",
 			})
 		end,
