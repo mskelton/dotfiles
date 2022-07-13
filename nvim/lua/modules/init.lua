@@ -38,6 +38,7 @@ local plugins = {
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
 			"jose-elias-alvarez/typescript.nvim",
+			"onsails/lspkind-nvim",
 		},
 	},
 	{
