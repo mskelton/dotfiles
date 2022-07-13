@@ -13,3 +13,7 @@ node_modules
 # Vim spell file
 nvim/spell/
 
+# Emacs
+emacs.d/auto-save-list
+emacs.d/backup
+emacs.d/elpa

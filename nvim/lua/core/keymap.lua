@@ -37,6 +37,3 @@ map("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
 map("n", "<space>ff", "<cmd>Telescope oldfiles<cr>")
 map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<space>fg", "<cmd>Telescope git_branches<cr>")
-
--- File tree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<cr>")

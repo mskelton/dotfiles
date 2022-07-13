@@ -13,6 +13,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
+    ~/.emacs.d: emacs.d
 
     # Taskwarrior
     ~/.taskrc: taskwarrior/.taskrc
