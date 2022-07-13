@@ -31,11 +31,6 @@ local plugins = {
 		},
 	},
 	{
-		"kyazdani42/nvim-tree.lua",
-		config = conf("nvim-tree"),
-		requires = { "kyazdani42/nvim-web-devicons" },
-	},
-	{
 		"neovim/nvim-lspconfig",
 		config = conf("lsp"),
 		requires = {

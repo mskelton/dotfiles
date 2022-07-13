@@ -6,7 +6,6 @@
   cl = clone
   co = checkout
   ca = !git add -A && git commit -m
-  cap = !git ca $2 && git push
   name = branch -m
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   pub = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
@@ -22,6 +21,7 @@
   dedupe = !git add -A && git commit -m 'Dedupe dependencies'
   undo = reset --soft HEAD~
   trash = !git reset --hard && git clean -fd
+  sync = !git ca $2 && git push
 
 [core]
   autocrlf = input
