@@ -79,6 +79,11 @@ local plugins = {
 		"goolord/alpha-nvim",
 		config = conf("alpha"),
 	},
+	{
+		"phaazon/hop.nvim",
+		branch = "v2",
+		config = conf("hop"),
+	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-fugitive" },
 	{ "christoomey/vim-tmux-navigator" },
