@@ -21,9 +21,10 @@ return function()
 		experimental = {
 			ghost_text = true,
 		},
-		mapping = cmp.mapping.preset.insert({
+		mapping = {
 			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Tab and S-Tab to navigate results. This is preferred over C-n and C-p
 			-- to prevent command line completion from interferring with navigating
@@ -42,10 +43,7 @@ return function()
 					fallback()
 				end
 			end,
-			-- Enter only completes if a completion was explicitly selected
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
-			["<C-y>"] = cmp.mapping.confirm({ select = true }),
-		}),
+		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
@@ -67,9 +65,33 @@ return function()
 		},
 	})
 
+	local cmdline_mapping = {
+		["<Tab>"] = {
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item()
+				else
+					fallback()
+				end
+			end,
+		},
+		["<S-Tab>"] = {
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item()
+				else
+					fallback()
+				end
+			end,
+		},
+		["<C-e>"] = {
+			c = cmp.mapping.close(),
+		},
+	}
+
 	-- Use buffer source for '/'
 	cmp.setup.cmdline("/", {
-		mapping = cmp.mapping.preset.cmdline(),
+		mapping = cmdline_mapping,
 		sources = {
 			{ name = "buffer" },
 		},
@@ -77,7 +99,7 @@ return function()
 
 	-- Use cmdline & path source for ':'
 	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
+		mapping = cmdline_mapping,
 		sources = cmp.config.sources({
 			{ name = "path" },
 		}, {
