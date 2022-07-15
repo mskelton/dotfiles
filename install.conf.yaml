@@ -10,10 +10,10 @@
     ~/.ignore: .ignore
     ~/.zshenv: .zshenv
     ~/.zshrc: .zshrc
-    ~/.config/emacs: emacs
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
+    ~/.emacs.d: emacs.d
 
     # Taskwarrior
     ~/.taskrc: taskwarrior/.taskrc
