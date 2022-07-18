@@ -26,17 +26,35 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Reload Emacs config
+(define-key evil-normal-state-map (kbd ", r") (lambda ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el")))
+
+(define-key evil-normal-state-map (kbd "SPC p") 'find-file)
+(define-key evil-normal-state-map (kbd "SPC s") 'save-buffer)
+(define-key evil-normal-state-map (kbd "SPC w") 'evil-delete-buffer)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; INTERFACE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-theme 'atom-one-dark t)
 
-;; Font
-(set-face-attribute 'default nil :family "Operator Mono SSm Lig" :height 150)
+;; Due to a bug in Emacs, we have to set the default font to a non-bold version
+;; of Operator, and then manually set the bold font when needed.
+(set-face-attribute 'default nil :family "Operator Mono SSm Reg" :height 150)
 (setq-default line-spacing 5)
 
+;; Org mode emphasis markers
+;; (setq org-hide-emphasis-markers t)
+(setq org-emphasis-alist
+  '(("*" (bold :family "Operator Mono Ssm Lig") org-bold)
+    ("/" italic)
+    ("_" underline)
+    ("+" (:strike-through t))))
+
 ;; Disable startup message
-(setq inhibit-startup-message t)
+;; (setq inhibit-startup-message t)
 
 ;; Hide unnecessary UI elements
 (tool-bar-mode -1)

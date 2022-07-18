@@ -14,6 +14,5 @@ node_modules
 nvim/spell/
 
 # Emacs
-emacs.d/auto-save-list
-emacs.d/backup
-emacs.d/elpa
+emacs.d/*
+!emacs.d/init.el
