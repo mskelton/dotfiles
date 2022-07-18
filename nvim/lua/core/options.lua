@@ -20,9 +20,7 @@ o.list = true
 o.listchars = { tab = "  ", trail = "·" }
 
 o.mouse = "a"
-o.scrolloff = 4
-o.sidescrolloff = 4
-o.clipboard = "unnamed"
+-- o.clipboard = "unnamed"
 o.confirm = true
 o.shortmess = o.shortmess + "I"
 o.updatetime = 100
@@ -30,4 +28,7 @@ o.colorcolumn = "81"
 o.completeopt = "menu,menuone,noselect"
 
 -- Abbreviations
-vim.cmd("ca <expr> %% expand('%:p:h')")
+vim.cmd([[
+  ia fn function
+  ca <expr> %% expand('%:p:h')
+]])
