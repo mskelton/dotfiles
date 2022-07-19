@@ -20,6 +20,7 @@ map("n", "<leader>q", "<cmd>ccl<cr>")
 -- Normal mode
 map("n", "<space>k", "<cmd>noh<cr>")
 map("n", "<space>s", "<cmd>w<cr>")
+map("n", "<space>S", "<cmd>noa w<cr>")
 map("n", "<space>w", "<cmd>bd<cr>")
 map("n", "<leader>f", "<cmd>bn<cr>")
 map("n", "<leader>b", "<cmd>bp<cr>")
