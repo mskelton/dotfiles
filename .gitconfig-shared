@@ -26,7 +26,7 @@
 [core]
   autocrlf = input
   trustctime = false
-  editor = vim
+  editor = nvim
   abbrev = 8
 
 [color]
