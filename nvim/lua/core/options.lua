@@ -20,7 +20,7 @@ o.list = true
 o.listchars = { tab = "  ", trail = "·" }
 
 o.mouse = "a"
--- o.clipboard = "unnamed"
+o.clipboard = "unnamed"
 o.confirm = true
 o.shortmess = o.shortmess + "I"
 o.updatetime = 100
