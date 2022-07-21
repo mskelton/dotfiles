@@ -11,9 +11,6 @@ vim.g.mapleader = ","
 -- can see when entering command mode.
 map("n", ";", ":", { silent = false })
 
--- Disable the command line window. I hate it.
-map("n", "q:", "<nop>")
-
 -- Quickly close the quick fix window
 map("n", "<leader>q", "<cmd>ccl<cr>")
 

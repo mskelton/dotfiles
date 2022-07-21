@@ -17,7 +17,11 @@ return function()
 			},
 		},
 		pickers = {
+			buffers = {
+				theme = "dropdown",
+			},
 			find_files = {
+				theme = "dropdown",
 				hidden = true,
 			},
 			live_grep = {
@@ -25,9 +29,11 @@ return function()
 					return { "--hidden" }
 				end,
 				only_cwd = true,
+				theme = "dropdown",
 			},
 			oldfiles = {
 				only_cwd = true,
+				theme = "dropdown",
 			},
 		},
 	})

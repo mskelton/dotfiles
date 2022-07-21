@@ -84,8 +84,11 @@ local plugins = {
 		branch = "v2",
 		config = conf("hop"),
 	},
+	{
+		"tpope/vim-fugitive",
+		requires = { "tpope/vim-rhubarb" },
+	},
 	{ "tpope/vim-eunuch" },
-	{ "tpope/vim-fugitive" },
 	{ "christoomey/vim-tmux-navigator" },
 }
 
