@@ -15,6 +15,17 @@ return function()
 					["<C-u>"] = false, -- Clear prompt with C-u
 				},
 			},
+			vimgrep_arguments = {
+				"rg",
+				"--color=never",
+				"--no-heading",
+				"--with-filename",
+				"--line-number",
+				"--column",
+				"--smart-case",
+				-- Trim leading whitespace in grep results
+				"--trim",
+			},
 		},
 		pickers = {
 			buffers = {
@@ -23,6 +34,8 @@ return function()
 			find_files = {
 				theme = "dropdown",
 				hidden = true,
+				-- Trim leading `./` in fd results
+				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 			},
 			live_grep = {
 				additional_args = function(opts)
