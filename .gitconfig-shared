@@ -21,7 +21,7 @@
   dedupe = !git add -A && git commit -m 'Dedupe dependencies'
   undo = reset --soft HEAD~
   trash = !git reset --hard && git clean -fd
-  sync = !git add -A && git commit -m $2 && git push
+  sync = "!f() { git add -A && git commit -m ${1-sync} && git push; }; f"
 
 [core]
   autocrlf = input
