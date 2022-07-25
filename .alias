@@ -22,6 +22,7 @@ alias c="code"
 alias t="task"
 alias tw="clear && t"
 alias dup="docker-compose up -d"
+alias gradle="./gradlew"
 
 # Tmux
 alias tn="tmux new"

@@ -26,6 +26,7 @@ o.shortmess = o.shortmess + "I"
 o.updatetime = 100
 o.colorcolumn = "81"
 o.completeopt = "menu,menuone,noselect"
+o.hlsearch = false
 
 -- Abbreviations
 vim.cmd([[
