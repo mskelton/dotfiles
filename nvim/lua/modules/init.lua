@@ -4,8 +4,8 @@ end
 
 local plugins = {
 	{
-		"navarasu/onedark.nvim",
-		config = conf("onedark"),
+		"folke/tokyonight.nvim",
+		config = conf("tokyonight"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -90,6 +90,7 @@ local plugins = {
 	},
 	{ "tpope/vim-eunuch" },
 	{ "christoomey/vim-tmux-navigator" },
+	{ "fladson/vim-kitty" },
 }
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
