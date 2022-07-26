@@ -33,7 +33,7 @@ set -g fish_color_search_match --background=$selection
 set -g fish_color_selection --background=$selection
 set -g fish_color_status $red
 set -g fish_color_user $brgreen
-set -g fish_color_valid_path --bold
+set -g fish_color_valid_path --underline
 
 # Completion Pager Colors
 set -g fish_pager_color_completion $foreground
