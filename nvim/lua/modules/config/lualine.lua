@@ -1,7 +1,14 @@
 return function()
 	require("lualine").setup({
 		tabline = {
-			lualine_a = { "buffers" },
+			lualine_a = {
+				{
+					"buffers",
+					symbols = {
+						alternate_file = "",
+					},
+				},
+			},
 		},
 		sections = {
 			lualine_a = { "mode" },
@@ -12,8 +19,6 @@ return function()
 			lualine_z = { "location" },
 		},
 		options = {
-			section_separators = { left = "", right = "" },
-			component_separators = "|",
 			globalstatus = true,
 			theme = "tokyonight",
 		},
