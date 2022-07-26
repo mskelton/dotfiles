@@ -1,1 +1,0 @@
-/Users/mskelton/dev/dotfiles/fish/functions/update-tag.fish
