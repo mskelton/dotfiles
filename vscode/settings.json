@@ -323,7 +323,7 @@
     "errorLens.warningBackground": "#0000",
     "errorLens.warningMessageBackground": "#ff942f19"
   },
-  "workbench.colorTheme": "One Dark",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,

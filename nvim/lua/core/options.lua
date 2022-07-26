@@ -27,6 +27,8 @@ o.updatetime = 100
 o.colorcolumn = "81"
 o.completeopt = "menu,menuone,noselect"
 o.hlsearch = false
+o.cursorline = true
+-- o.guicursor = o.guicursor + "c:ver25"
 
 -- Abbreviations
 vim.cmd([[
