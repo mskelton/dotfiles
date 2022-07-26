@@ -16,3 +16,8 @@ nvim/spell/
 # Emacs
 emacs.d/*
 !emacs.d/init.el
+
+# Fish
+fish/completions/
+fish/functions/
+fish/fish_variables
