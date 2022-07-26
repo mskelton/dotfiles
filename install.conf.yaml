@@ -5,31 +5,19 @@
 - clean: ["~"]
 - link:
     ~/.alias: .alias
-    ~/.gitconfig-shared: .gitconfig-shared
-    ~/.hushlogin: .hushlogin
-    ~/.ignore: .ignore
-    ~/.zshenv: .zshenv
-    ~/.zshrc: .zshrc
+    ~/.config/fish: fish
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
     ~/.emacs.d: emacs.d
-
-    # Taskwarrior
+    ~/.gitconfig-shared: .gitconfig-shared
+    ~/.hushlogin: .hushlogin
+    ~/.ignore: .ignore
     ~/.taskrc: taskwarrior/.taskrc
-
-    # Fish
-    ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/fish_plugins: fish/fish_plugins
-    ~/.config/fish/fish_variables.sample: fish/fish_variables.sample
-    ~/.config/fish/functions/update-tag.fish: fish/functions/update-tag.fish
-    ~/.config/fish/functions/idea.fish: fish/functions/idea.fish
+    ~/.zshenv: .zshenv
+    ~/.zshrc: .zshrc
 
     # VS Code settings and keybindings
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets/mskelton.code-snippets: vscode/snippets.code-snippets
-    ~/Library/Application Support/Code - Insiders/User/settings.json: vscode/settings.json
-    ~/Library/Application Support/Code - Insiders/User/keybindings.json: vscode/keybindings.json
-    # prettier-ignore
-    ~/Library/Application Support/Code - Insiders/User/snippets/mskelton.code-snippets: vscode/snippets.code-snippets

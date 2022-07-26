@@ -1,5 +1,7 @@
-# Hush the greeting message
-function fish_greeting; end
+set -g fish_greeting
+
+# Colors
+source ~/.config/fish/colors.fish
 
 # Include custom environment
 if test -f ~/.config/fish/env.fish
