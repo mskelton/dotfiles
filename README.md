@@ -42,15 +42,6 @@ much of your existing config.
 
 ### Fish
 
-Fish variables can't be directly symlinked, but there is a sample file to get
-things started.
-
-```sh
-cp ~/.config/fish/fish_variables.sample ~/.config/fish/fish_variables
-```
-
-Also make sure to install fish plugins.
-
 ```sh
 curl -sL https://git.io/fisher | source
 fisher update
