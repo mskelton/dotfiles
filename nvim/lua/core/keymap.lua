@@ -17,6 +17,8 @@ map("n", "<leader>w", "<cmd>bd<cr>")
 -- Deprecated
 map("n", "<space>s", "<cmd>w<cr>")
 map("n", "<space>w", "<cmd>bd<cr>")
+map("n", "<space>p", "<cmd>Telescope find_files<cr>")
+map("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
 
 -- Telescope
 map("n", "<space>fs", "<cmd>Telescope live_grep<cr>")
@@ -32,8 +34,8 @@ map("n", "<space>hc", "<cmd>HopChar1<cr>")
 map("n", "<space>hC", "<cmd>HopChar2<cr>")
 
 -- Packer
-map("n", "<space>ps", "<cmd>PackerSync<cr>")
-map("n", "<space>pc", function()
+map("n", "<leader>ps", "<cmd>PackerSync<cr>")
+map("n", "<leader>pc", function()
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)
