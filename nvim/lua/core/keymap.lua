@@ -2,38 +2,38 @@ function map(mode, key, cmd, opts)
 	vim.keymap.set(mode, key, cmd, opts or { silent = true })
 end
 
--- Backslash is a little tough to reach, so I use a comma instead. I would use
--- a semi colon, but that is not available since I remaped that for a shiftless
--- entry into command mode.
 vim.g.mapleader = ","
 
--- Allow using semicolon to enter command mode. Don't make it silent so that we
--- can see when entering command mode.
 map("n", ";", ":", { silent = false })
-
--- Quickly enter shell commands
 map("n", "!", ":!", { silent = false })
 
--- Quickly close the quick fix window
-map("n", "<leader>q", "<cmd>ccl<cr>")
-
--- Normal mode
-map("n", "<space>s", "<cmd>w<cr>")
-map("n", "<space>S", "<cmd>noa w<cr>")
-map("n", "<space>w", "<cmd>bd<cr>")
-map("n", "<leader>f", "<cmd>bn<cr>")
+map("n", "<leader>S", "<cmd>noa w<cr>")
 map("n", "<leader>b", "<cmd>bp<cr>")
-map("n", "<leader>ts", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+map("n", "<leader>f", "<cmd>bn<cr>")
+map("n", "<leader>q", "<cmd>ccl<cr>")
+map("n", "<leader>s", "<cmd>w<cr>")
+map("n", "<leader>w", "<cmd>bd<cr>")
 
--- Packer compile
-vim.keymap.set("n", "<leader>pc", function()
+-- Deprecated
+map("n", "<space>s", "<cmd>w<cr>")
+map("n", "<space>w", "<cmd>bd<cr>")
+
+-- Telescope
+map("n", "<space>fs", "<cmd>Telescope live_grep<cr>")
+map("n", "<space>ff", "<cmd>Telescope find_files<cr>")
+map("n", "<space>fo", "<cmd>Telescope oldfiles<cr>")
+map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
+map("n", "<space>fg", "<cmd>Telescope git_branches<cr>")
+
+-- Hop
+map("n", "<space>hl", "<cmd>HopLine<cr>")
+map("n", "<space>hw", "<cmd>HopWord<cr>")
+map("n", "<space>hc", "<cmd>HopChar1<cr>")
+map("n", "<space>hC", "<cmd>HopChar2<cr>")
+
+-- Packer
+map("n", "<space>ps", "<cmd>PackerSync<cr>")
+map("n", "<space>pc", function()
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)
-
--- Telescope
-map("n", "<space>p", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
-map("n", "<space>ff", "<cmd>Telescope oldfiles<cr>")
-map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
-map("n", "<space>fg", "<cmd>Telescope git_branches<cr>")
