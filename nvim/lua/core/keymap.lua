@@ -11,6 +11,9 @@ vim.g.mapleader = ","
 -- can see when entering command mode.
 map("n", ";", ":", { silent = false })
 
+-- Quickly enter shell commands
+map("n", "!", ":!", { silent = false })
+
 -- Quickly close the quick fix window
 map("n", "<leader>q", "<cmd>ccl<cr>")
 
