@@ -9,6 +9,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
+    ~/.config/pomo/config.json: pomo/config.json
     ~/.emacs.d: emacs.d
     ~/.gitconfig-shared: .gitconfig-shared
     ~/.hushlogin: .hushlogin
