@@ -11,10 +11,7 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		config = conf("nvim-treesitter"),
-		requires = {
-			"windwp/nvim-ts-autotag",
-			"nvim-treesitter/playground",
-		},
+		requires = { "windwp/nvim-ts-autotag" },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -96,6 +93,7 @@ local plugins = {
 	{ "tpope/vim-eunuch" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "fladson/vim-kitty" },
+	{ "lewis6991/impatient.nvim" },
 }
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"

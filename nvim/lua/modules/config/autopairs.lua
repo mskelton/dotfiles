@@ -1,3 +1,7 @@
 return function()
-	require("nvim-autopairs").setup({})
+	require("nvim-autopairs").setup({
+		fast_wrap = {
+			map = "<M-p>",
+		},
+	})
 end

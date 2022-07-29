@@ -26,12 +26,8 @@ o.shortmess = o.shortmess + "I"
 o.updatetime = 100
 o.colorcolumn = "81"
 o.completeopt = "menu,menuone,noselect"
-o.hlsearch = false
 o.cursorline = true
--- o.guicursor = o.guicursor + "c:ver25"
+o.guicursor = o.guicursor + "c:ver25"
 
 -- Abbreviations
-vim.cmd([[
-  ia fn function
-  ca <expr> %% expand('%:p:h')
-]])
+vim.cmd("ca <expr> %% expand('%:p:h')")

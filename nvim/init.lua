@@ -1,10 +1,8 @@
-if vim.fn.exists("g:vscode") == 1 then
-	require("vscode")
-else
-	require("core.options")
-	require("core.filetypes")
-	require("core.commands")
-	require("core.keymap")
-	require("modules")
-	require("core.autocmd")
-end
+require("impatient")
+
+require("core.options")
+require("core.filetypes")
+require("core.commands")
+require("core.keymap")
+require("core.autocmd")
+require("modules")
