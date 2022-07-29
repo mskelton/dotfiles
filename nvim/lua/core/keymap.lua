@@ -5,7 +5,7 @@ end
 vim.g.mapleader = ","
 
 map("n", ";", ":", { silent = false })
-map("n", "!", ":!", { silent = false })
+-- map("n", "!", ":!", { silent = false })
 
 map("n", "<leader>S", "<cmd>noa w<cr>")
 map("n", "<leader>b", "<cmd>bp<cr>")
