@@ -20,6 +20,7 @@ return function()
 	vim.api.nvim_set_hl(0, "LineNr", { fg = colors.blue })
 	vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.yellow })
 
-	-- Hop
+	-- Misc
 	vim.api.nvim_set_hl(0, "HopNextKey2", { fg = colors.blue2 })
+	vim.api.nvim_set_hl(0, "TroubleText", { fg = colors.fg })
 end
