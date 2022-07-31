@@ -28,20 +28,6 @@ map("n", "<leader>bn", "<cmd>bn<cr>")
 map("n", "<leader>bd", "<cmd>bd<cr>")
 map("n", "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 
-<<<<<<< HEAD
--- Deprecated
-map("n", "<space>s", "<cmd>w<cr>")
-map("n", "<space>w", "<cmd>bd<cr>")
-map("n", "<space>p", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
-
--- Telescope
-map("n", "<space>fs", "<cmd>Telescope live_grep<cr>")
-map("n", "<space>ff", "<cmd>Telescope find_files<cr>")
-map("n", "<space>fo", "<cmd>Telescope oldfiles<cr>")
-map("n", "<space>fb", "<cmd>Telescope buffers<cr>")
-map("n", "<space>fg", "<cmd>Telescope git_branches<cr>")
-=======
 -- Find ...
 map("n", "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
 map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- "Find String"
@@ -49,7 +35,6 @@ map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
 map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
->>>>>>> 6f48bb16 (Completely refactor keybindings)
 
 -- Hop
 map("n", "<leader>hl", "<cmd>HopLine<cr>")
