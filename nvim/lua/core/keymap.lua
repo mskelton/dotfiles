@@ -20,6 +20,12 @@ local map = require("core.utils").map
 -- Shiftless command mode
 map("n", ";", ":", { silent = false })
 
+-- Really common shortcuts
+map("n", ",s", "<cmd>w<cr>")
+map("n", ",w", "<cmd>bd<cr>")
+map("n", ",f", "<cmd>bn<cr>")
+map("n", ",b", "<cmd>bp<cr>")
+
 -- Buffers
 map("n", "<leader>bp", "<cmd>bp<cr>")
 map("n", "<leader>bn", "<cmd>bn<cr>")
