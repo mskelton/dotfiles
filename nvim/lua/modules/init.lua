@@ -90,6 +90,10 @@ local plugins = {
 		"tpope/vim-fugitive",
 		requires = { "tpope/vim-rhubarb" },
 	},
+	{
+		"folke/trouble.nvim",
+		config = conf("trouble"),
+	},
 	{ "tpope/vim-eunuch" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "fladson/vim-kitty" },

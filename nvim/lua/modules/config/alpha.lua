@@ -38,8 +38,8 @@ return function()
 
 	dashboard.section.buttons.val = {
 		dashboard.button("e", "  New file", ":ene | startinsert<cr>"),
-		dashboard.button("f", "  Find file", ":Telescope find_files<cr>"),
-		dashboard.button("g", "  Find word", ":Telescope live_grep<cr>"),
+		dashboard.button("SPC fp", "  Find file", ":Telescope find_files<cr>"),
+		dashboard.button("SPC fs", "  Find word", ":Telescope live_grep<cr>"),
 		dashboard.button("q", "  Quit NVIM", ":qa<cr>"),
 	}
 

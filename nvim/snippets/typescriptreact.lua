@@ -1,10 +1,10 @@
 local utils = require("core.utils")
 
-function get_component_name(_, snip)
+local function get_component_name(_, snip)
 	return utils.camel_case(snip.env.TM_FILENAME_BASE)
 end
 
-function get_props_name(args, snip)
+local function get_props_name(args, snip)
 	return get_component_name(args, snip) .. "Props"
 end
 
