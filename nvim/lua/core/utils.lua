@@ -1,5 +1,9 @@
 local M = {}
 
+M.map = function(mode, key, cmd, opts)
+	vim.keymap.set(mode, key, cmd, opts or { silent = true })
+end
+
 M.capitalize = function(str)
 	return (str:gsub("^%l", string.upper))
 end

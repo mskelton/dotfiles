@@ -16,19 +16,23 @@ end
 M.on_attach = function(client, bufnr)
 	local function map(key, cmd)
 		local opts = { buffer = bufnr, silent = true }
-		vim.keymap.set("n", key, "<cmd>lua " .. cmd .. "<CR>", opts)
+		vim.keymap.set("n", key, cmd, opts)
 	end
 
-	map("K", "vim.lsp.buf.hover()")
-	map("gd", "vim.lsp.buf.definition()")
-	map("gD", "vim.lsp.buf.declaration()")
-	map("gi", "vim.lsp.buf.implementation()")
-	map("gr", "vim.lsp.buf.references()")
-	map("<leader>gh", "vim.lsp.buf.signature_help()")
-	map("<leader>ca", "vim.lsp.buf.code_action()")
-	map("<leader>rn", "vim.lsp.buf.rename()")
-	map("[d", "vim.diagnostic.goto_prev()")
-	map("]d", "vim.diagnostic.goto_next()")
+	local function map_fn(key, cmd)
+		map(key, "<cmd>lua " .. cmd .. "<cr>")
+	end
+
+	map_fn("K", "vim.lsp.buf.hover()")
+	map_fn("gd", "vim.lsp.buf.definition()")
+	map_fn("gD", "vim.lsp.buf.declaration()")
+	map_fn("gi", "vim.lsp.buf.implementation()")
+	map_fn("gr", "vim.lsp.buf.references()")
+	map_fn("<leader>gh", "vim.lsp.buf.signature_help()")
+	map_fn("<leader>ca", "vim.lsp.buf.code_action()")
+	map_fn("<leader>rn", "vim.lsp.buf.rename()")
+	map_fn("[d", "vim.diagnostic.goto_prev()")
+	map_fn("]d", "vim.diagnostic.goto_next()")
 
 	if client.name == "eslint" then
 		client.resolved_capabilities.document_formatting = true
@@ -42,7 +46,7 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
-		vim.keymap.set("n", "go", function()
+		map("n", "go", function()
 			require("typescript").actions.removeUnused()
 			require("typescript").actions.addMissingImports()
 		end)

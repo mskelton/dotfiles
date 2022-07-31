@@ -1,11 +1,11 @@
 -- My approach to keymapping follows two important principles:
 --
--- 1. Keybindings should be pneumonic when possible (e.g. pc - packer compile)
--- 2. The same finger should not be used twice in heavily used eybinding
+-- 1. Keybindings should be pneumonic
+-- 2. The same finger should not be used twice in heavily used keybindings
 --
 -- The first principle is important for learnability of keybindings, especially
 -- bindings that are less frequently used. For example, you can remember "fg"
--- easily as it means "find git branches".
+-- easily as it means "Find Git branches".
 --
 -- The second principle is important for quickly executing common commands, and
 -- sometimes this results in breaking the first principle. For example, "ff"
@@ -15,11 +15,9 @@
 -- other editors such as VS Code, so it still has meaning. This second principle
 -- allows for more keybindings to be set while still keeping the speed of
 -- executing each keybinging relatively stable and fast.
+local map = require("core.utils").map
 
-local function map(mode, key, cmd, opts)
-	vim.keymap.set(mode, key, cmd, opts or { silent = true })
-end
-
+-- Shiftless command mode
 map("n", ";", ":", { silent = false })
 
 -- Buffers
