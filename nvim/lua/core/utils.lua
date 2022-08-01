@@ -14,4 +14,15 @@ M.camel_case = function(str)
 	end)
 end
 
+M.safe_require = function(module)
+	local ok, result = pcall(require, module)
+	if not ok then
+		vim.schedule(function()
+			vim.notify(string.format("Error requiring: %s", module), vim.log.levels.ERROR)
+		end)
+	end
+
+	return ok, result
+end
+
 return M

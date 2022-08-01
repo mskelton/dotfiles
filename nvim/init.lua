@@ -1,4 +1,4 @@
-require("impatient")
+require("core.utils").safe_require("impatient")
 
 require("core.options")
 require("core.filetypes")
