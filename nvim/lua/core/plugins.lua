@@ -1,5 +1,5 @@
 local function conf(name)
-	return require(string.format("modules.config.%s", name))
+	return require(string.format("config.%s", name))
 end
 
 local plugins = {

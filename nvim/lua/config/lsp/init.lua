@@ -1,8 +1,8 @@
 return function()
 	local lsp_installer = require("nvim-lsp-installer")
 	local lspconfig = require("lspconfig")
-	local handlers = require("modules.config.lsp.handlers")
-	local null_ls = require("modules.config.lsp.null-ls")
+	local handlers = require("config.lsp.handlers")
+	local null_ls = require("config.lsp.null-ls")
 
 	handlers.setup()
 	handlers.enable_format_on_save()
