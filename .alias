@@ -1,3 +1,5 @@
+# vim:ft=fish
+
 # Git aliases
 alias dif="git diff"
 alias gcp="git cherry-pick"
@@ -27,6 +29,9 @@ alias yui="yarn upgrade-interactive"
 # Tmux
 alias tn="tmux new"
 alias ta="tmux at"
+function tp --description 'alias tp=tmux new -s $1 -c ~/dev/$1'
+  tmux new -s $argv -c ~/dev/$argv
+end
 
 # Kitty
 alias icat="kitty +kitten icat"

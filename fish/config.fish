@@ -16,20 +16,14 @@ source $HOME/.alias
 alias gmm "git merge (git default)"
 alias grm "git rebase (git default)"
 
-# Homebrew sbin path
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-
-# Cargo path
-set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
-
-# Go path
+# Environment variables
+set -x EDITOR "nvim"
 set -x GOPATH "$HOME/go"
+set -x BUN_INSTALL "$HOME/.bun"
+
+# Path
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
-
-# npm global binaries
 set -g fish_user_paths "$HOME/.local/npm/bin" $fish_user_paths
-
-# Bun
-set -Ux BUN_INSTALL "$HOME/.bun"
-set -px --path PATH "$HOME/.bun/bin"
-
+set -g fish_user_paths "$HOME/.bun/bun" $fish_user_paths
