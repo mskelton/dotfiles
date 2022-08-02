@@ -36,11 +36,6 @@ local plugins = {
 			"ray-x/lsp_signature.nvim",
 			"jose-elias-alvarez/typescript.nvim",
 			"onsails/lspkind-nvim",
-			{
-				"glepnir/lspsaga.nvim",
-				branch = "main",
-				config = conf("lspsaga"),
-			},
 		},
 	},
 	{

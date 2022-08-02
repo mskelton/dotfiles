@@ -46,7 +46,7 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
-		map("n", "go", function()
+		map("go", function()
 			require("typescript").actions.removeUnused()
 			require("typescript").actions.addMissingImports()
 		end)
