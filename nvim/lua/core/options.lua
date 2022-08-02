@@ -26,6 +26,7 @@ o.tabstop = 2
 o.termguicolors = true
 o.undofile = true
 o.updatetime = 100
+o.path = "**"
 
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")
