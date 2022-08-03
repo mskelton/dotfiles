@@ -10,7 +10,7 @@
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   pub = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
-  new = !git checkout $(git default) && git checkout -b $2
+  new = !git checkout $(git default) -b $2
   unpushed = log --branches --not --remotes --no-walk --decorate --oneline
   merge-last = !git co - && git merge $(git default)
   rebase-last = !git co - && git rebase $(git default)
