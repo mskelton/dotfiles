@@ -57,6 +57,11 @@ local plugins = {
 		requires = { "kyazdani42/nvim-web-devicons" },
 	},
 	{
+		"phaazon/hop.nvim",
+		branch = "v2",
+		config = conf("hop"),
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		config = conf("gitsigns"),
 	},
@@ -77,22 +82,20 @@ local plugins = {
 		config = conf("alpha"),
 	},
 	{
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = conf("hop"),
+		"folke/trouble.nvim",
+		config = conf("trouble"),
 	},
 	{
 		"tpope/vim-fugitive",
 		requires = { "tpope/vim-rhubarb" },
 	},
-	{
-		"folke/trouble.nvim",
-		config = conf("trouble"),
-	},
 	{ "tpope/vim-eunuch" },
+	{ "tpope/vim-unimpaired" },
+	{ "tpope/vim-surround" },
+	{ "tpope/vim-repeat" },
 	{ "christoomey/vim-tmux-navigator" },
-	{ "fladson/vim-kitty" },
 	{ "lewis6991/impatient.nvim" },
+	{ "fladson/vim-kitty" },
 }
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
