@@ -40,7 +40,6 @@ return function()
 		dashboard.button("e", "  New file", ":ene | startinsert<cr>"),
 		dashboard.button("SPC fp", "  Find file", ":Telescope find_files<cr>"),
 		dashboard.button("SPC fs", "  Find word", ":Telescope live_grep<cr>"),
-		dashboard.button("q", "  Quit NVIM", ":qa<cr>"),
 	}
 
 	-- Everyone could use a good fortune cookie from time to time, right?
