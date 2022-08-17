@@ -97,7 +97,6 @@ local plugins = {
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{ "christoomey/vim-tmux-navigator" },
-	{ "lewis6991/impatient.nvim" },
 	{ "fladson/vim-kitty" },
 }
 

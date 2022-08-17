@@ -19,6 +19,11 @@ return function()
 		gopls = {},
 		stylelint_lsp = {
 			root_dir = lspconfig.util.find_git_ancestor,
+			settings = {
+				stylelintplus = {
+					autoFixOnFormat = true,
+				},
+			},
 		},
 	}
 
