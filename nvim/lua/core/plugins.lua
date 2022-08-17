@@ -11,7 +11,10 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		config = conf("nvim-treesitter"),
-		requires = { "windwp/nvim-ts-autotag" },
+		requires = {
+			"nvim-treesitter/playground",
+			"windwp/nvim-ts-autotag",
+		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",

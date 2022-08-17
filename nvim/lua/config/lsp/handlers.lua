@@ -1,14 +1,16 @@
 local M = {}
 
 M.setup = function()
-	local sign = function(name, text)
-		vim.fn.sign_define(name, { texthl = name, text = text, numhl = "" })
-	end
+	local signs = {
+		DiagnosticSignError = "",
+		DiagnosticSignWarn = "",
+		DiagnosticSignHint = "",
+		DiagnosticSignInfo = "",
+	}
 
-	sign("DiagnosticSignError", "")
-	sign("DiagnosticSignWarn", "")
-	sign("DiagnosticSignHint", "")
-	sign("DiagnosticSignInfo", "")
+	for key, value in pairs(signs) do
+		vim.fn.sign_define(key, { texthl = key, text = value, numhl = "" })
+	end
 end
 
 -- Use an on_attach function to only map keybindings to LSP commands after the

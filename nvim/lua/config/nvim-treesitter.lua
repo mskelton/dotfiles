@@ -34,4 +34,7 @@ return function()
 			enable = true,
 		},
 	})
+
+	require("modules.treesitter").directives()
+	require("modules.treesitter").queries()
 end
