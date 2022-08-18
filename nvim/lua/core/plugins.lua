@@ -62,11 +62,15 @@ local plugins = {
 	{
 		"phaazon/hop.nvim",
 		branch = "v2",
-		config = conf("hop"),
+		config = function()
+			require("hop").setup()
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		config = conf("gitsigns"),
+		config = function()
+			require("gitsigns").setup({})
+		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -74,28 +78,40 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
-		config = conf("comment"),
+		config = function()
+			require("Comment").setup()
+		end,
 	},
 	{
 		"windwp/nvim-autopairs",
-		config = conf("autopairs"),
+		config = function()
+			require("nvim-autopairs").setup({
+				fast_wrap = {
+					map = "<C-l>",
+				},
+			})
+		end,
 	},
 	{
 		"goolord/alpha-nvim",
 		config = conf("alpha"),
 	},
 	{
-		"folke/trouble.nvim",
-		config = conf("trouble"),
-	},
-	{
 		"tpope/vim-fugitive",
 		requires = { "tpope/vim-rhubarb" },
+	},
+	{
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("todo-comments").setup({})
+		end,
 	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
+	{ "folke/trouble.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "fladson/vim-kitty" },
 }
