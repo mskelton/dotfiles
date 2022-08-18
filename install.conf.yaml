@@ -13,6 +13,7 @@
     ~/.emacs.d: emacs.d
     ~/.gitconfig-shared: .gitconfig-shared
     ~/.hushlogin: .hushlogin
+    ~/.ideavimrc: .ideavimrc
     ~/.ignore: .ignore
     ~/.taskrc: taskwarrior/.taskrc
     ~/.zshenv: .zshenv
