@@ -1,10 +1,17 @@
 return function()
 	local config = require("tokyonight.config")
-	local colors = require("tokyonight.colors").setup(config)
+	local c = require("tokyonight.colors").setup(config)
 
 	vim.g.tokyonight_style = "storm"
 
 	vim.cmd("colorscheme tokyonight")
+
+	-- Tokyonight customizations
+	vim.api.nvim_set_hl(0, "Function", { fg = c.blue, bold = true })
+	vim.api.nvim_set_hl(0, "TSKeywordFunction", { fg = c.purple, italic = true })
+	vim.api.nvim_set_hl(0, "TSConstructor", { fg = c.red })
+	vim.api.nvim_set_hl(0, "TSTag", { fg = c.red })
+	vim.api.nvim_set_hl(0, "TSTagAttribute", { fg = c.purple })
 
 	-- Dashboard header colors
 	vim.api.nvim_set_hl(0, "StartLogo1", { fg = "#1C506B" })
@@ -17,10 +24,10 @@ return function()
 	vim.api.nvim_set_hl(0, "StartLogo8", { fg = "#24A755" })
 
 	-- Make line numbers easier to read
-	vim.api.nvim_set_hl(0, "LineNr", { fg = colors.blue })
-	vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.yellow })
+	vim.api.nvim_set_hl(0, "LineNr", { fg = c.blue })
+	vim.api.nvim_set_hl(0, "CursorLineNr", { fg = c.yellow })
 
 	-- Misc
-	vim.api.nvim_set_hl(0, "HopNextKey2", { fg = colors.blue2 })
-	vim.api.nvim_set_hl(0, "TroubleText", { fg = colors.fg })
+	vim.api.nvim_set_hl(0, "HopNextKey2", { fg = c.blue2 })
+	vim.api.nvim_set_hl(0, "TroubleText", { fg = c.fg })
 end

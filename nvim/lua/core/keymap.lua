@@ -22,9 +22,11 @@ map("n", ";", ":", { silent = false })
 
 -- Really common shortcuts
 map("n", ",s", "<cmd>w<cr>")
+map("n", ",b", "<cmd>bp<cr>")
+
+-- TODO: Remove these
 map("n", ",w", "<cmd>bd<cr>")
 map("n", ",f", "<cmd>bn<cr>")
-map("n", ",b", "<cmd>bp<cr>")
 
 -- Buffers
 map("n", "<leader>bp", "<cmd>bp<cr>")
@@ -62,11 +64,5 @@ map("n", "<leader>xl", "<cmd>Trouble loclist<cr>")
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
 -- map("n", "gR", "<cmd>Trouble lsp_references<cr>")
 
--- Deprecated keymappings
-local function nop()
-	print("This keybinding is now a nop")
-end
-
-map("n", "<leader>p", nop)
-map("n", "<leader>s", nop)
-map("n", "<leader>w", nop)
+-- Misc
+map("n", "<leader>ts", "<cmd>TSHighlightCapturesUnderCursor<cr>")

@@ -4,7 +4,7 @@ My personal settings and dotfiles.
 
 ## Installation
 
-```sh
+```bash
 git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
 ./install
@@ -14,19 +14,19 @@ cd dotfiles
 
 ### Install Homebrew
 
-```sh
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### Install Homebrew formulas
 
-```sh
+```bash
 brew install $(cat config/formula.txt)
 ```
 
 ### Install npm packages
 
-```sh
+```bash
 npm i -g @fsouza/prettierd stylelint-lsp
 ```
 
@@ -42,7 +42,7 @@ much of your existing config.
 
 ### Fish
 
-```sh
+```bash
 curl -sL https://git.io/fisher | source
 fisher update
 ```
@@ -51,7 +51,7 @@ fisher update
 
 ### macOS settings
 
-```sh
+```bash
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g NSScrollViewRubberbanding -int 0
 ```
@@ -64,6 +64,6 @@ for Kitty to properly use Nerd font symbols.
 
 ### Tmux
 
-```
+```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
