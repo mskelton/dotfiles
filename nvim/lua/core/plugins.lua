@@ -57,7 +57,7 @@ local plugins = {
 	{
 		"nvim-lualine/lualine.nvim",
 		config = conf("lualine"),
-		requires = { "kyazdani42/nvim-web-devicons" },
+		requires = "kyazdani42/nvim-web-devicons",
 	},
 	{
 		"phaazon/hop.nvim",
@@ -69,7 +69,7 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup({})
+			require("gitsigns").setup()
 		end,
 	},
 	{
@@ -85,11 +85,7 @@ local plugins = {
 	{
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({
-				fast_wrap = {
-					map = "<C-l>",
-				},
-			})
+			require("nvim-autopairs").setup()
 		end,
 	},
 	{
@@ -98,13 +94,13 @@ local plugins = {
 	},
 	{
 		"tpope/vim-fugitive",
-		requires = { "tpope/vim-rhubarb" },
+		requires = "tpope/vim-rhubarb",
 	},
 	{
 		"folke/todo-comments.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
+		requires = "nvim-lua/plenary.nvim",
 		config = function()
-			require("todo-comments").setup({})
+			require("todo-comments").setup()
 		end,
 	},
 	{ "tpope/vim-eunuch" },
