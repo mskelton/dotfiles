@@ -29,8 +29,9 @@ alias yui="yarn upgrade-interactive"
 # Tmux
 alias tn="tmux new"
 alias ta="tmux at"
+alias tl="tmux list-sessions"
 function tp --description 'alias tp=tmux new -s $1 -c ~/dev/$1'
-  tmux new -s $argv -c ~/dev/$argv
+  tmux new -A -s $argv -c ~/dev/$argv
 end
 
 # Kitty
