@@ -53,7 +53,13 @@ return {
 
 					local props = get_props_name(args, parent.snippet)
 					return sn(nil, {
-						t({ "", args[1][1] .. "interface " .. props .. " {", "\t", "}", "" }),
+						t({
+							"",
+							args[1][1] .. "interface " .. props .. " {",
+							"\t",
+							"}",
+							"",
+						}),
 					})
 				end, { 2, 3 }),
 			}

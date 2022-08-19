@@ -1,3 +1,5 @@
+local utils = require("config.lsp.utils")
+
 local M = {}
 
 M.setup = function()
@@ -49,8 +51,9 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 
 		map("go", function()
-			require("typescript").actions.removeUnused()
-			require("typescript").actions.addMissingImports()
+			utils.run_code_action("source.addMissingImports")
+			utils.run_code_action("source.removeUnused")
+			utils.run_code_action("source.fixAll")
 		end)
 	end
 end
@@ -58,28 +61,7 @@ end
 -- Update the LSP capabilities to support completions.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-if cmp_nvim_lsp then
-	capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-end
-M.capabilities = capabilities
-
--- https://github.com/neovim/nvim-lspconfig/issues/115
-function go_organize_imports(wait_ms)
-	local params = vim.lsp.util.make_range_params()
-	params.context = { only = { "source.organizeImports" } }
-	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-
-	for _, res in pairs(result or {}) do
-		for _, r in pairs(res.result or {}) do
-			if r.edit then
-				vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-			else
-				vim.lsp.buf.execute_command(r.command)
-			end
-		end
-	end
-end
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 function M.enable_format_on_save()
 	local group = vim.api.nvim_create_augroup("FormatOnSave", {})
@@ -100,7 +82,7 @@ function M.enable_format_on_save()
 		group = group,
 		pattern = "*.go",
 		callback = function()
-			go_organize_imports(1000)
+			utils.run_code_action_sync("source.organizeImports")
 		end,
 	})
 end

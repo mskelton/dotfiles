@@ -197,6 +197,7 @@
   "git-graph.repository.commits.initialLoad": 100,
   "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
+  "git.branchProtection": ["main", "master"],
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -332,6 +333,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "git.branchProtection": ["main", "master"]
+  "workbench.tree.renderIndentGuides": "none"
 }

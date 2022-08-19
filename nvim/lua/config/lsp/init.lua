@@ -25,6 +25,7 @@ return function()
 				},
 			},
 		},
+		tsserver = {},
 	}
 
 	-- Install all LSPs
@@ -40,11 +41,4 @@ return function()
 			unpack(config),
 		})
 	end
-
-	require("typescript").setup({
-		server = {
-			capabilities = handlers.capabilities,
-			on_attach = handlers.on_attach,
-		},
-	})
 end

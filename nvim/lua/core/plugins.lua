@@ -37,7 +37,6 @@ local plugins = {
 			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
-			"jose-elias-alvarez/typescript.nvim",
 			"onsails/lspkind-nvim",
 		},
 	},
@@ -96,13 +95,13 @@ local plugins = {
 		"tpope/vim-fugitive",
 		requires = "tpope/vim-rhubarb",
 	},
-	{
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	},
+	-- {
+	-- 	"folke/todo-comments.nvim",
+	-- 	requires = "nvim-lua/plenary.nvim",
+	-- 	config = function()
+	-- 		require("todo-comments").setup()
+	-- 	end,
+	-- },
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-surround" },
@@ -114,7 +113,14 @@ local plugins = {
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 	vim.cmd("packadd packer.nvim")
 end
 
