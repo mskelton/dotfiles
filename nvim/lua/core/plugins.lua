@@ -98,9 +98,7 @@ local plugins = {
 	{
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
+		config = conf("todo-comments"),
 	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-unimpaired" },

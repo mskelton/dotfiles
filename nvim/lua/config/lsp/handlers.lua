@@ -51,9 +51,9 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 
 		map("go", function()
-			utils.run_code_action("source.addMissingImports")
-			utils.run_code_action("source.removeUnused")
-			utils.run_code_action("source.fixAll")
+			utils.run_code_action(bufnr, "source.addMissingImports")
+			utils.run_code_action(bufnr, "source.removeUnused")
+			utils.run_code_action(bufnr, "source.fixAll")
 		end)
 	end
 end
@@ -82,7 +82,7 @@ function M.enable_format_on_save()
 		group = group,
 		pattern = "*.go",
 		callback = function()
-			utils.run_code_action_sync("source.organizeImports")
+			utils.run_code_action_sync(0, "source.organizeImports")
 		end,
 	})
 end

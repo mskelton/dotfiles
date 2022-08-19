@@ -16,9 +16,9 @@ function M.make_params(code_action)
 	return position_params
 end
 
-function M.run_code_action(code_action, callback)
+function M.run_code_action(bufnr, code_action)
 	vim.lsp.buf_request(
-		0,
+		bufnr,
 		"textDocument/codeAction",
 		M.make_params(code_action),
 		function(err, result)
@@ -27,9 +27,9 @@ function M.run_code_action(code_action, callback)
 	)
 end
 
-function M.run_code_action_sync(code_action)
+function M.run_code_action_sync(bufnr, code_action)
 	local result = vim.lsp.buf_request_sync(
-		0,
+		bufnr,
 		"textDocument/codeAction",
 		M.make_params(code_action)
 	)
