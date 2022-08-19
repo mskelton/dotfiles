@@ -1,25 +1,13 @@
 local utils = require("core.utils")
-
-local function get_component_name(_, snip)
-	return utils.camel_case(snip.env.TM_FILENAME_BASE)
-end
+local snip_utils = require("utils.snip_utils")
 
 local function get_props_name(args, snip)
-	return get_component_name(args, snip) .. "Props"
+	return snip_utils.get_filename(args, snip) .. "Props"
 end
 
 return {
-	s(
-		"rp",
-		fmt(
-			[[
-        export interface {1} {{
-          {2}
-        }}
-      ]],
-			{ f(get_props_name), i(1) }
-		)
-	),
+	-- React components
+	s("rp", fmt(snip_utils.export_interface, { f(get_props_name), i(1) })),
 	s("rpn", f(get_props_name)),
 	s(
 		"rc",
@@ -38,7 +26,7 @@ return {
 					t(""),
 				}),
 				c(2, { t("export "), t("") }),
-				f(get_component_name),
+				f(snip_utils.get_filename),
 				c(3, {
 					f(function(args, snip)
 						return "props: " .. get_props_name(args, snip)

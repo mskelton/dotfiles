@@ -100,6 +100,14 @@ local plugins = {
 		requires = "nvim-lua/plenary.nvim",
 		config = conf("todo-comments"),
 	},
+	{
+		"RRethy/nvim-treesitter-endwise",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				endwise = { enable = true },
+			})
+		end,
+	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-surround" },
