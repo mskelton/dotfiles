@@ -28,6 +28,7 @@
   trustctime = false
   editor = nvim
   abbrev = 8
+	pager = less -x2
 
 [color]
  ui = true
