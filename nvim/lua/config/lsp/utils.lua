@@ -17,13 +17,22 @@ function M.make_params(code_action)
 end
 
 function M.run_code_action(code_action, callback)
-	vim.lsp.buf_request(0, "textDocument/codeAction", M.make_params(code_action), function(err, result)
-		M.apply_edits(result)
-	end)
+	vim.lsp.buf_request(
+		0,
+		"textDocument/codeAction",
+		M.make_params(code_action),
+		function(err, result)
+			M.apply_edits(result)
+		end
+	)
 end
 
 function M.run_code_action_sync(code_action)
-	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", M.make_params(code_action))
+	local result = vim.lsp.buf_request_sync(
+		0,
+		"textDocument/codeAction",
+		M.make_params(code_action)
+	)
 
 	for _, res in pairs(result or {}) do
 		M.apply_edits(res.result)

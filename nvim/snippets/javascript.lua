@@ -50,7 +50,10 @@ return {
 	-- Playwright
 	parse("pw-describe", "test.describe('$1', () => {\n\t$3\n})\n\n$0"),
 	parse("pw-test", "test('$1', async ({ ${2:page} }) => {\n\t$3\n})\n\n$0"),
-	parse("pw-beforeEach", "test.beforeEach(async ({ ${1:page} }) => {\n\t$2\n})\n\n$0"),
+	parse(
+		"pw-beforeEach",
+		"test.beforeEach(async ({ ${1:page} }) => {\n\t$2\n})\n\n$0"
+	),
 	parse("pw-beforeAll", "test.beforeAll(async ($1) => {\n\t$2\n})\n\n$0"),
 	parse("pw-afterEach", "test.afterEach(async ($1) => {\n\t$2\n})\n\n$0"),
 	parse("pw-afterAll", "test.afterAll(async ($1) => {\n\t$2\n})\n\n$0"),

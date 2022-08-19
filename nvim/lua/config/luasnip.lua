@@ -9,7 +9,10 @@ return function()
 	})
 
 	-- Filetype mappings
-	ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact", "javascript" })
+	ls.filetype_extend(
+		"typescriptreact",
+		{ "typescript", "javascriptreact", "javascript" }
+	)
 	ls.filetype_extend("typescript", { "javascript" })
 	ls.filetype_extend("javascriptreact", { "javascript" })
 
