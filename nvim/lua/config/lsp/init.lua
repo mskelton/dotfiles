@@ -21,7 +21,7 @@ return function()
 			root_dir = lspconfig.util.find_git_ancestor,
 			settings = {
 				stylelintplus = {
-					autoFixOnFormat = true,
+					autoFixOnSave = true,
 				},
 			},
 		},
