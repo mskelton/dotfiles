@@ -48,7 +48,6 @@ local plugins = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lua",
 			"onsails/lspkind-nvim",
 			"saadparwaiz1/cmp_luasnip",
 		},
@@ -95,11 +94,11 @@ local plugins = {
 		"tpope/vim-fugitive",
 		requires = "tpope/vim-rhubarb",
 	},
-	{
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = conf("todo-comments"),
-	},
+	-- {
+	-- 	"folke/todo-comments.nvim",
+	-- 	requires = "nvim-lua/plenary.nvim",
+	-- 	config = conf("todo-comments"),
+	-- },
 	{
 		"RRethy/nvim-treesitter-endwise",
 		config = function()

@@ -35,6 +35,8 @@ M.on_attach = function(client, bufnr)
 	map_fn("<leader>gh", "vim.lsp.buf.signature_help()")
 	map_fn("<leader>ca", "vim.lsp.buf.code_action()")
 	map_fn("<leader>rn", "vim.lsp.buf.rename()")
+
+	-- unimpaired style navigation through diagnostics
 	map_fn("[d", "vim.diagnostic.goto_prev()")
 	map_fn("]d", "vim.diagnostic.goto_next()")
 
@@ -45,6 +47,10 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "stylelint_lsp" then
 		client.resolved_capabilities.document_formatting = true
+	end
+
+	if client.name == "nemneko_lua" then
+		client.resolved_capabilities.document_formatting = false
 	end
 
 	if client.name == "tsserver" then
