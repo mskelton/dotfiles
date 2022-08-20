@@ -50,10 +50,9 @@ return function()
 
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do
-		lspconfig[server].setup({
-			capabilities = handlers.capabilities,
-			on_attach = handlers.on_attach,
-			unpack(config),
-		})
+		config.capabilities = handlers.capabilities
+		config.on_attach = handlers.on_attach
+
+		lspconfig[server].setup(config)
 	end
 end

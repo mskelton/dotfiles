@@ -94,11 +94,11 @@ local plugins = {
 		"tpope/vim-fugitive",
 		requires = "tpope/vim-rhubarb",
 	},
-	-- {
-	-- 	"folke/todo-comments.nvim",
-	-- 	requires = "nvim-lua/plenary.nvim",
-	-- 	config = conf("todo-comments"),
-	-- },
+	{
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = conf("todo-comments"),
+	},
 	{
 		"RRethy/nvim-treesitter-endwise",
 		config = function()
