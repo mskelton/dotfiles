@@ -6,7 +6,7 @@ set clipboard+=unnamed
 :map <space>fp <Action>(GotoFile)
 :map go <Action>(OptimizeImports)
 
-:map ]b <Action>(PreviousTab)
-:map [b <Action>(NextTab)
+:map [b <Action>(PreviousTab)
+:map ]b <Action>(NextTab)
 
 :map <space>pc :source ~/.ideavimrc<CR>
