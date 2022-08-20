@@ -8,11 +8,7 @@ return function()
 
 	-- Tokyonight customizations
 	vim.api.nvim_set_hl(0, "Function", { fg = c.blue, bold = true })
-	vim.api.nvim_set_hl(
-		0,
-		"TSKeywordFunction",
-		{ fg = c.purple, italic = true }
-	)
+	vim.api.nvim_set_hl(0, "TSKeywordFunction", { fg = c.purple, italic = true })
 	vim.api.nvim_set_hl(0, "TSConstructor", { fg = c.red })
 	vim.api.nvim_set_hl(0, "TSTag", { fg = c.red })
 	vim.api.nvim_set_hl(0, "TSTagAttribute", { fg = c.purple })

@@ -38,16 +38,8 @@ return function()
 
 	dashboard.section.buttons.val = {
 		dashboard.button("e", "  New file", ":ene | startinsert<cr>"),
-		dashboard.button(
-			"SPC fp",
-			"  Find file",
-			":Telescope find_files<cr>"
-		),
-		dashboard.button(
-			"SPC fs",
-			"  Find word",
-			":Telescope live_grep<cr>"
-		),
+		dashboard.button("SPC fp", "  Find file", ":Telescope find_files<cr>"),
+		dashboard.button("SPC fs", "  Find word", ":Telescope live_grep<cr>"),
 	}
 
 	-- Everyone could use a good fortune cookie from time to time, right?

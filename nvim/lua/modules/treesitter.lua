@@ -18,9 +18,7 @@ function M.directives()
 	end
 
 	local function is_range_empty_or_invalid(range)
-		if
-			range[3] < range[1] or (is_one_line(range) and range[4] <= range[2])
-		then
+		if range[3] < range[1] or (is_one_line(range) and range[4] <= range[2]) then
 			return true
 		end
 
@@ -93,12 +91,9 @@ function M.directives()
 			metadata
 		)
 			local node = match[predicate[2]]
-			metadata.content = make_subranges_between_children_like(
-				node,
-				function(_)
-					return true
-				end
-			)
+			metadata.content = make_subranges_between_children_like(node, function(_)
+				return true
+			end)
 		end)
 	end
 end
@@ -187,16 +182,8 @@ arguments: ((template_string) @css
 ]]
 
 function M.queries()
-	vim.treesitter.query.set_query(
-		"javascript",
-		"injections",
-		M.ecma_injections
-	)
-	vim.treesitter.query.set_query(
-		"typescript",
-		"injections",
-		M.ecma_injections
-	)
+	vim.treesitter.query.set_query("javascript", "injections", M.ecma_injections)
+	vim.treesitter.query.set_query("typescript", "injections", M.ecma_injections)
 	vim.treesitter.query.set_query("tsx", "injections", M.ecma_injections)
 end
 
