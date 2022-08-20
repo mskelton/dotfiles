@@ -32,11 +32,10 @@ M.on_attach = function(client, bufnr)
 	map_fn("gD", "vim.lsp.buf.declaration()")
 	map_fn("gi", "vim.lsp.buf.implementation()")
 	map_fn("gr", "vim.lsp.buf.references()")
-	map_fn("<leader>gh", "vim.lsp.buf.signature_help()")
 	map_fn("<leader>ca", "vim.lsp.buf.code_action()")
 	map_fn("<leader>rn", "vim.lsp.buf.rename()")
 
-	-- unimpaired style navigation through diagnostics
+	-- Unimpaired style diagnostic navigation
 	map_fn("[d", "vim.diagnostic.goto_prev()")
 	map_fn("]d", "vim.diagnostic.goto_next()")
 
@@ -56,6 +55,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
+		-- Organize everything at once. Potentially dangerous if edits conflict,
+		-- but that happens infrequent enough that a single atomic update for
+		-- everything is worth it.
 		map("go", function()
 			utils.run_code_action(bufnr, "source.addMissingImports")
 			utils.run_code_action(bufnr, "source.removeUnused")

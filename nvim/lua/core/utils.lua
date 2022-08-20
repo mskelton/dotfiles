@@ -5,7 +5,11 @@ M.map = function(mode, key, cmd, opts)
 end
 
 M.capitalize = function(str)
-	return (str:gsub("^%l", string.upper))
+	return str:gsub("^%l", string.upper)
+end
+
+M.ends_with = function(str, ending)
+	return ending == "" or str:sub(-#ending) == ending
 end
 
 M.camel_case = function(str)

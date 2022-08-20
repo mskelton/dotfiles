@@ -1,6 +1,7 @@
 return function()
 	local lsp_installer = require("nvim-lsp-installer")
 	local lspconfig = require("lspconfig")
+	local utils = require("core.utils")
 	local handlers = require("config.lsp.handlers")
 	local null_ls = require("config.lsp.null-ls")
 
@@ -40,7 +41,29 @@ return function()
 				},
 			},
 		},
-		tsserver = {},
+		tsserver = {
+			handlers = {
+				["textDocument/definition"] = function(_, result, ...)
+					-- Don't ever suggest results from React types if there is more than 1
+					-- result. Unless I'm going to definition for a React type itself, I
+					-- don't want to go there.
+					if vim.tbl_islist(result) then
+						local react_path = "react/index.d.ts"
+
+						for key, value in ipairs(result) do
+							-- If React is the first result, keep it as it's likely
+							-- intentional to navigate to the React types.
+							if key ~= 1 and utils.ends_with(value.uri, react_path) then
+								table.remove(result, key)
+							end
+						end
+					end
+
+					-- Defer to the built-in handler after filtering the results
+					vim.lsp.handlers["textDocument/definition"](_, result, ...)
+				end,
+			},
+		},
 	}
 
 	-- Install all LSPs
