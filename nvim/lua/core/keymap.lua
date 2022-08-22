@@ -38,12 +38,12 @@ map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
 
--- Hop
-map("n", "<leader>hl", "<cmd>HopLine<cr>")
-map("n", "<leader>ht", "<cmd>HopWordCurrentLine<cr>") -- "Hop This line"
-map("n", "<leader>hw", "<cmd>HopWord<cr>")
-map("n", "<leader>hc", "<cmd>HopChar1<cr>")
-map("n", "<leader>hC", "<cmd>HopChar2<cr>")
+-- Jump ...
+map("n", "<leader>jl", "<cmd>HopLine<cr>")
+map("n", "<leader>jt", "<cmd>HopWordCurrentLine<cr>") -- "Jump on This line"
+map("n", "<leader>jw", "<cmd>HopWord<cr>")
+map("n", "<leader>jc", "<cmd>HopChar1<cr>")
+map("n", "<leader>jC", "<cmd>HopChar2<cr>")
 
 -- Packer
 map("n", "<leader>ps", "<cmd>PackerSync<cr>")
