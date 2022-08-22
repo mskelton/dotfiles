@@ -22,11 +22,7 @@ map("n", ";", ":", { silent = false })
 
 -- Really common shortcuts
 map("n", ",s", "<cmd>w<cr>")
-map("n", ",b", "<cmd>bp<cr>")
-
--- TODO: Remove these
 map("n", ",w", "<cmd>bd<cr>")
-map("n", ",f", "<cmd>bn<cr>")
 
 -- Buffers
 map("n", "<leader>bp", "<cmd>bp<cr>")
@@ -66,3 +62,8 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
 
 -- Misc
 map("n", "<leader>ts", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+
+-- TODO: Remove
+local noop = "<cmd>echo 'This key is a noop'<cr>"
+map("n", ",b", noop)
+map("n", ",f", noop)
