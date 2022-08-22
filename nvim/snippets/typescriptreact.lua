@@ -1,4 +1,4 @@
-local utils = require("core.utils")
+---@diagnostic disable: undefined-global
 local snip_utils = require("utils.snip_utils")
 
 local function get_props_name(args, snip)

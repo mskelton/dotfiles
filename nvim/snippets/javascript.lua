@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local utils = require("core.utils")
 
 return {

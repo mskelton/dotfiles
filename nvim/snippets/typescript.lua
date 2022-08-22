@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local utils = require("core.utils")
 local snip_utils = require("utils.snip_utils")
 
