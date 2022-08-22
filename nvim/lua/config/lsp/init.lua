@@ -50,17 +50,22 @@ return function()
 		tsserver = {
 			handlers = {
 				["textDocument/definition"] = function(_, result, ...)
-					-- Don't ever suggest results from React types if there is more than 1
-					-- result. Unless I'm going to definition for a React type itself, I
-					-- don't want to go there.
+					-- Filter out certain paths from the results that are 99% of the time
+					-- false positive results for my use case. If I explicitly jump to
+					-- them, go there, otherwise ignore them.
 					if vim.tbl_islist(result) then
-						local react_path = "react/index.d.ts"
+						local ignored_paths = {
+							"react/index.d.ts",
+							"patterns-core/src/types/polymorphic.ts",
+						}
 
 						for key, value in ipairs(result) do
-							-- If React is the first result, keep it as it's likely
-							-- intentional to navigate to the React types.
-							if key ~= 1 and utils.ends_with(value.uri, react_path) then
-								table.remove(result, key)
+							for _, path in pairs(ignored_paths) do
+								-- If an ignored path is the first result, keep it as it's
+								-- likely the intended path.
+								if key ~= 1 and utils.ends_with(value.uri, path) then
+									table.remove(result, key)
+								end
 							end
 						end
 					end

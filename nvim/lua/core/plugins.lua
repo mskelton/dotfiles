@@ -95,7 +95,7 @@ local plugins = {
 		requires = "tpope/vim-rhubarb",
 	},
 	{
-		"~/dev/todo-comments.nvim",
+		"mskelton/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("todo-comments").setup()
