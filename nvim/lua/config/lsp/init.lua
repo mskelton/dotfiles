@@ -9,6 +9,10 @@ return function()
 	handlers.enable_format_on_save()
 	null_ls.setup()
 
+	local runtime_path = vim.split(package.path, ";")
+	table.insert(runtime_path, "lua/?.lua")
+	table.insert(runtime_path, "lua/?/init.lua")
+
 	-- Custom config per LSP
 	local servers = {
 		eslint = {
@@ -29,14 +33,16 @@ return function()
 		sumneko_lua = {
 			settings = {
 				Lua = {
-					runtime = { version = "LuaJIT" },
+					runtime = { version = "LuaJIT", path = runtime_path },
 					diagnostics = {
-						-- Get the language server to recognize the `vim` global
 						globals = { "vim" },
 					},
 					workspace = {
-						-- Make the server aware of Neovim runtime files
-						library = vim.api.nvim_get_runtime_file("", true),
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
 					},
 				},
 			},
