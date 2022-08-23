@@ -1,5 +1,4 @@
 return function()
-	local lsp_installer = require("nvim-lsp-installer")
 	local lspconfig = require("lspconfig")
 	local utils = require("core.utils")
 	local handlers = require("config.lsp.handlers")
@@ -77,10 +76,9 @@ return function()
 		},
 	}
 
-	-- Install all LSPs
-	lsp_installer.setup({
-		ensure_installed = vim.tbl_keys(servers),
-	})
+	-- Install all servers
+	require("mason").setup()
+	require("mason-lspconfig").setup({ automatic_installation = true })
 
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do

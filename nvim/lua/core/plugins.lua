@@ -34,7 +34,8 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		config = conf("lsp"),
 		requires = {
-			"williamboman/nvim-lsp-installer",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
 			"onsails/lspkind-nvim",

@@ -24,12 +24,6 @@ cd dotfiles
 brew install $(cat config/formula.txt)
 ```
 
-### Install npm packages
-
-```bash
-npm i -g @fsouza/prettierd stylelint-lsp
-```
-
 ### Git config
 
 To setup the git config, add the following block to `~/.gitconfig` and remove
