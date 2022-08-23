@@ -28,9 +28,8 @@ return function()
 			},
 		},
 		pickers = {
-			buffers = {
-				theme = "dropdown",
-			},
+			buffers = { theme = "dropdown" },
+			current_buffer_fuzzy_find = { theme = "dropdown" },
 			find_files = {
 				theme = "dropdown",
 				hidden = true,
@@ -38,7 +37,7 @@ return function()
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 			},
 			live_grep = {
-				additional_args = function(opts)
+				additional_args = function()
 					return { "--hidden" }
 				end,
 				only_cwd = true,

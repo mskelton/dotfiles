@@ -37,6 +37,7 @@ map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
 map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
+map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- "Find Git branches"
 
 -- Jump ...
 map("n", "<leader>jl", "<cmd>HopLine<cr>")
