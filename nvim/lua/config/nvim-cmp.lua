@@ -1,18 +1,25 @@
 return function()
 	local cmp = require("cmp")
 	local context = require("cmp.config.context")
-	local luasnip = require("luasnip")
 	local lspkind = require("lspkind")
 
 	cmp.setup({
-		-- Disable completion when editing comments
 		enabled = function()
+			-- Completion is always allowed in command mode
 			if vim.api.nvim_get_mode().mode == "c" then
 				return true
-			else
-				return not context.in_treesitter_capture("comment")
-					and not context.in_syntax_group("Comment")
 			end
+
+			-- Disable completion in prompt buffers (e.g. Telescope)
+			if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+				return false
+			end
+
+			-- Disable completion when editing comments
+			return not (
+					context.in_treesitter_capture("comment")
+					or context.in_syntax_group("Comment")
+				)
 		end,
 		snippet = {
 			expand = function(args)
