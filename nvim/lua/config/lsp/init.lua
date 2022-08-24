@@ -62,7 +62,7 @@ return function()
 							for _, path in pairs(ignored_paths) do
 								-- If an ignored path is the first result, keep it as it's
 								-- likely the intended path.
-								if key ~= 1 and utils.ends_with(value.uri, path) then
+								if key ~= 1 and utils.ends_with(value.targetUri, path) then
 									table.remove(result, key)
 								end
 							end
