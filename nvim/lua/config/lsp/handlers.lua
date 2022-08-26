@@ -61,7 +61,6 @@ M.on_attach = function(client, bufnr)
 		map("go", function()
 			utils.run_code_action(bufnr, "source.addMissingImports")
 			utils.run_code_action(bufnr, "source.removeUnused")
-			utils.run_code_action(bufnr, "source.fixAll")
 		end)
 	end
 end
