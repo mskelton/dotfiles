@@ -54,15 +54,12 @@ map("n", "<leader>pc", function()
 end)
 
 -- Trouble
-map("n", "<leader>xx", "<cmd>Trouble<cr>")
-map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>")
-map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>")
-map("n", "<leader>xl", "<cmd>Trouble loclist<cr>")
-map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
--- map("n", "gR", "<cmd>Trouble lsp_references<cr>")
-
--- Misc
-map("n", "<leader>ts", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+map("n", "<leader>to", "<cmd>Trouble<cr>")
+map("n", "<leader>tw", "<cmd>Trouble workspace_diagnostics<cr>")
+map("n", "<leader>td", "<cmd>Trouble document_diagnostics<cr>")
+map("n", "<leader>tl", "<cmd>Trouble loclist<cr>")
+map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>")
+map("n", "gR", "<cmd>Trouble lsp_references<cr>")
 
 -- TODO: Remove
 local noop = "<cmd>echo 'This key is a noop'<cr>"

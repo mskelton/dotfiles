@@ -110,11 +110,20 @@ local plugins = {
 			})
 		end,
 	},
+	{
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				action_keys = {
+					toggle_fold = "t",
+				},
+			})
+		end,
+	},
 	{ "tpope/vim-eunuch" },
 	{ "tpope/vim-unimpaired" },
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
-	{ "folke/trouble.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "fladson/vim-kitty" },
 }
