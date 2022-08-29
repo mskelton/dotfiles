@@ -27,6 +27,11 @@ return function()
 				"--trim",
 			},
 		},
+		extensions = {
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown(),
+			},
+		},
 		pickers = {
 			buffers = { theme = "dropdown" },
 			current_buffer_fuzzy_find = { theme = "dropdown" },
@@ -49,4 +54,7 @@ return function()
 			},
 		},
 	})
+
+	require("telescope").load_extension("fzf")
+	require("telescope").load_extension("ui-select")
 end
