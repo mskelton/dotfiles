@@ -18,7 +18,9 @@ emacs.d/*
 !emacs.d/init.el
 
 # Fish
-fish/completions/
-fish/functions/
-fish/fish_variables
 fish/env.fish
+fish/completions/
+fish/fish_variables
+fish/functions/*
+!fish/functions/mp4.fish
+!fish/functions/update-tag.fish
