@@ -3,7 +3,7 @@ local utils = require("core.utils")
 
 return {
 	parse("cl", "console.log($1)$0"),
-	parse("prom", "return new Promise((resolve, reject) => {", "\t$0", "})"),
+	parse("prom", "return new Promise((resolve, reject) => {\n\t$0\n})"),
 	parse("tout", "setTimeout(() => {$2}, ${1:1000}"),
 	-- Imports
 	parse("imr", "import React from 'react'"),
