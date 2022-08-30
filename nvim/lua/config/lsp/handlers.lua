@@ -55,12 +55,12 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
-		-- Organize everything at once. Potentially dangerous if edits conflict,
-		-- but that happens infrequent enough that a single atomic update for
-		-- everything is worth it.
 		map("go", function()
-			utils.run_code_action(bufnr, "source.addMissingImports")
-			utils.run_code_action(bufnr, "source.removeUnused")
+			utils.run_code_action_sync(bufnr, "source.addMissingImports")
+		end)
+
+		map("gO", function()
+			utils.run_code_action_sync(bufnr, "source.removeUnused")
 		end)
 	end
 end
