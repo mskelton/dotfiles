@@ -82,13 +82,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"L3MON4D3/LuaSnip",
-		config = conf("luasnip"),
-		-- https://github.com/L3MON4D3/LuaSnip/pull/440 broke something
-		commit = "17b880be1db054dce0f497de823a6e6a2484053a",
-	})
-
+	use({ "L3MON4D3/LuaSnip", config = conf("luasnip") })
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -139,4 +133,5 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 	use("christoomey/vim-tmux-navigator")
 	use("fladson/vim-kitty")
+	use("kamykn/spelunker.vim")
 end)
