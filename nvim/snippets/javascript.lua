@@ -2,12 +2,31 @@
 local utils = require("core.utils")
 
 return {
+	-- Const variables
+	parse("cmap", "const $1 = new Map([\n\t$0\n])"),
+	parse("cset", "const $1 = new Set([\n\t$0\n])"),
+	-- Functions
+	parse("fn", "function $1($2) {\n\t$0\n}"),
+	s(
+		"afn",
+		fmt("() => {}", {
+			c(1, {
+				sn(nil, { t({ "{", "\t" }), i(1), t({ "", "}" }) }),
+				sn(nil, { i(1), t("") }),
+			}),
+		})
+	),
+	-- Utility functions
 	parse("cl", "console.log($1)$0"),
 	parse("prom", "return new Promise((resolve, reject) => {\n\t$0\n})"),
-	parse("tout", "setTimeout(() => {$2}, ${1:1000}"),
+	parse("stout", "setTimeout(() => {$2}, ${1:1000}"),
+	parse("sint", "setInterval(() => {$2}, ${1:1000}"),
+	parse("sleep", "await new Promise((r) => setTimeout(r, ${1:1000}))"),
 	-- Imports
 	parse("imr", "import React from 'react'"),
 	parse("imt", "import { render, screen } from '@testing-library/react'"),
+	parse("imu", "import userEvent from '@testing-library/user-event'"),
+	parse("ime", "import * as ESTree from 'estree'"),
 	-- React hooks
 	s(
 		"rus",
@@ -62,4 +81,5 @@ return {
 	parse("pw-afterAll", "test.afterAll(async ($1) => {\n\t$2\n})\n\n$0"),
 	-- Emotion
 	parse("ces", "const ${1:wrapper}Style = css`\n\t$0\n`"),
+	parse("cec", "const ${1:Component} = styled.${2:div}`\n\t$0\n`"),
 }
