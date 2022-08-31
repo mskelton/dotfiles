@@ -65,7 +65,5 @@ map("n", "<leader>tl", "<cmd>Trouble loclist<cr>")
 map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>")
 map("n", "gR", "<cmd>Trouble lsp_references<cr>")
 
--- TODO: Remove
-local noop = "<cmd>echo 'This key is a noop'<cr>"
-map("n", ",b", noop)
-map("n", ",f", noop)
+map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
+map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
