@@ -27,11 +27,19 @@ return function()
 			"yaml",
 		},
 		sync_install = false,
-		highlight = {
-			enable = true,
-		},
-		playground = {
-			enable = true,
+		highlight = { enable = true },
+		playground = { enable = true },
+		textobjects = {
+			select = {
+				enable = true,
+				lookahead = true,
+				keymaps = {
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@comment.outer",
+					["ic"] = "@comment.outer",
+				},
+			},
 		},
 	})
 

@@ -47,7 +47,11 @@ map("n", "<leader>jc", "<cmd>HopChar1<cr>")
 map("n", "<leader>jC", "<cmd>HopChar2<cr>")
 
 -- Packer
-map("n", "<leader>ps", "<cmd>PackerSync<cr>")
+map("n", "<leader>ps", function()
+	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
+	require("packer").sync()
+end)
+
 map("n", "<leader>pc", function()
 	require("packer").compile()
 	print("Packer compiled successfully!")

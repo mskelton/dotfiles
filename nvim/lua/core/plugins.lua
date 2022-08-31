@@ -19,6 +19,7 @@ return require("packer").startup(function(use)
 		config = conf("nvim-treesitter"),
 		requires = {
 			"nvim-treesitter/playground",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 			"windwp/nvim-ts-autotag",
 		},
 	})
@@ -133,4 +134,5 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 	use("christoomey/vim-tmux-navigator")
 	use("fladson/vim-kitty")
+	use("michaeljsmith/vim-indent-object")
 end)
