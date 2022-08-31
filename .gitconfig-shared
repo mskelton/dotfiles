@@ -1,24 +1,23 @@
+# vim:ft=gitconfig
+
 [alias]
   amend = commit --amend --no-edit
   append = !git add -A && git commit --amend --no-edit
   br = branch
-  c = commit -m
   cl = clone
   co = checkout
+  c = commit -m
   ca = !git add -A && git commit -m
   name = branch -m
+  del = branch -D
+  message = commit --amend -m
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   pub = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   new = !git checkout $(git default) -b $2
-  unpushed = log --branches --not --remotes --no-walk --decorate --oneline
   merge-last = !git co - && git merge $(git default)
   rebase-last = !git co - && git rebase $(git default)
-  changelog = !git add -A && git commit -m 'Update changelog'
   changeset = !git add .changeset && git commit -m 'Add changeset'
-  pr-number = !git add -A && git commit -m 'PR number'
-  del = branch -D
-  dedupe = !git add -A && git commit -m 'Dedupe dependencies'
   undo = reset --soft HEAD~
   trash = !git reset --hard && git clean -fd
   sync = "!f() { git add -A && git commit -m ${1-sync} && git push; }; f"
@@ -53,3 +52,4 @@
 
 [format]
   pretty = oneline
+
