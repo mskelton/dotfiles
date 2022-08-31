@@ -1,7 +1,17 @@
 .git/
 .idea/
 .yarn/
+
+# Lockfiles
+package-lock.json
+yarn.lock
+
+# Build outputs
 lib/
+
+# DAM
+js/_libs/
+js/npm-managed-libs/
 
 # Binary files
 *.jpg
