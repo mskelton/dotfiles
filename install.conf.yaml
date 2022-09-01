@@ -12,8 +12,9 @@
       create: true
       glob: true
     ~/.config/fish/:
-      path: fish/*.fish
+      path: fish/*
       glob: true
+      exclude: [fish/functions]
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
