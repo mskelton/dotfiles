@@ -53,8 +53,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ### macOS settings
 
 ```bash
-defaults write -g ApplePressAndHoldEnabled -bool false
-defaults write -g NSScrollViewRubberbanding -int 0
+./macos-setup.sh
 ```
 
 ### Nerd Fonts
