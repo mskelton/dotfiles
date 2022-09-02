@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "widen"]
+	path = widen
+	url = git@github.com:mskelton/dotfiles-widen.git
