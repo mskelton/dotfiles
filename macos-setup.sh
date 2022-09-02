@@ -17,3 +17,6 @@ defaults write com.apple.dock tilesize -int 45
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g KeyRepeat -int 2
 defaults write -g InitialKeyRepeat -int 15
+
+# Use all F1, F2 as standard keys
+defaults write -g com.apple.keyboard.fnState -bool true
