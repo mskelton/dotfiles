@@ -20,7 +20,7 @@
   changeset = !git add .changeset && git commit -m 'Add changeset'
   undo = reset --soft HEAD~
   trash = !git reset --hard && git clean -fd
-  sync = "!f() { git add -A && git commit -m ${1-sync} && git push; }; f"
+  sync = "!f() { git add -A && git commit -m ${1-Sync} && git push; }; f"
 
 [core]
   autocrlf = input
