@@ -1,18 +1,2 @@
-# Yarn
-node_modules
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-# VS Code
-.vscode/
-
 # Vim spell file
 nvim/spell/
-
-# Emacs
-emacs.d/*
-!emacs.d/init.el
