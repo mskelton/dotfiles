@@ -32,10 +32,10 @@ return {
 		"rus",
 		fmt("const [{}, set{}] = useState({})", {
 			i(1, "value"),
-			d(2, function(args)
-				return sn(nil, { t(utils.capitalize(args[1][1])) })
+			f(function(args)
+				return utils.capitalize(args[1][1])
 			end, { 1 }),
-			i(3),
+			i(2),
 		})
 	),
 	s(
