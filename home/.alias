@@ -29,6 +29,7 @@ alias yui="yarn upgrade-interactive"
 alias tn="tmux new"
 alias ta="tmux at"
 alias tl="tmux list-sessions"
+alias tk="tmux kill-session"
 
 # Kitty
 alias icat="kitty +kitten icat"

@@ -1,5 +1,6 @@
 set visualbell
 set clipboard+=unnamed
+set ignorecase
 
 :map ,s <Action>(SaveDocument)
 :map ,w <Action>(CloseEditor)
