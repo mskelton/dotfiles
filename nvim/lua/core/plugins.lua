@@ -25,6 +25,15 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"RRethy/nvim-treesitter-endwise",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				endwise = { enable = true },
+			})
+		end,
+	})
+
+	use({
 		"nvim-telescope/telescope.nvim",
 		config = conf("telescope"),
 		requires = {
@@ -63,11 +72,17 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"L3MON4D3/LuaSnip",
+		config = conf("luasnip"),
+	})
+
+	use({
 		"nvim-lualine/lualine.nvim",
 		config = conf("lualine"),
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
+	-- TODO: I don't really use this, so probably remove it
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
@@ -83,7 +98,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "L3MON4D3/LuaSnip", config = conf("luasnip") })
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -99,24 +113,20 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "goolord/alpha-nvim", config = conf("alpha") })
-	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })
+
+	-- Git clients
 	use({
-		"mskelton/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
+		"tpope/vim-fugitive",
+		requires = "tpope/vim-rhubarb",
+	})
+	use({
+		"TimUntersberger/neogit",
 		config = function()
-			require("todo-comments").setup()
+			require("neogit").setup()
 		end,
 	})
 
-	use({
-		"RRethy/nvim-treesitter-endwise",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				endwise = { enable = true },
-			})
-		end,
-	})
-
+	-- TODO: probably remove, I don't really use this
 	use({
 		"folke/trouble.nvim",
 		config = function()
@@ -128,11 +138,22 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- TODO: Build a simpler and more reliable plugin
+	use({
+		"mskelton/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	})
+
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
-	use("christoomey/vim-tmux-navigator")
-	use("fladson/vim-kitty")
 	use("michaeljsmith/vim-indent-object")
+	use("christoomey/vim-tmux-navigator")
+
+	-- Syntaxes
+	use("fladson/vim-kitty")
 end)
