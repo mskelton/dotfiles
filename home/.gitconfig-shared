@@ -17,6 +17,8 @@
   new = !git checkout $(git default) -b $2
   merge-last = !git co - && git merge $(git default)
   rebase-last = !git co - && git rebase $(git default)
+  merge-default = !git merge $(git default)
+  rebase-default = !git rebase $(git default)
   changeset = !git add .changeset && git commit -m 'Add changeset'
   undo = reset --soft HEAD~
   trash = !git reset --hard && git clean -fd

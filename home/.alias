@@ -3,6 +3,9 @@
 # Git aliases
 alias dif="git diff"
 alias gmc="git merge --continue"
+alias grc="git rebase --continue"
+alias gmm="git merge-default"
+alias grm="git rebase-default"
 alias pd="git pd"
 alias pub="git pub"
 alias pull="git pull"
