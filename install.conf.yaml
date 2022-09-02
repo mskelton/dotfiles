@@ -19,7 +19,7 @@
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
     ~/.config/pomo/config.json: pomo/config.json
-    ~/.emacs.d: emacs.d
+    ~/.emacs.d/init.el: emacs.d/init.el
 
     # VS Code settings and keybindings
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
