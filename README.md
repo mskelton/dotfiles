@@ -12,15 +12,10 @@ cd dotfiles
 
 ## Pre-requisites
 
-### Install Homebrew
+### Install Homebrew formula
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### Install Homebrew formulas
-
-```bash
 brew install $(cat config/formula.txt)
 ```
 
@@ -38,6 +33,7 @@ much of your existing config.
 
 ```bash
 curl -sL https://git.io/fisher | source
+git checkout HEAD fish/fish_plugins
 fisher update
 ```
 
