@@ -22,7 +22,7 @@ alias grm='git rebase $(git default)'
 # Make warp play nicely with the GitHub CLI
 PAGER=""
 
-# Update tag for GitHub action
+# Update the major tag to the newest release
 function update-tag() {
   latest_tag=$(git tag -l --sort -version:refname | head -n 1)
   tag=$(printf %.2s $latest_tag)

@@ -16,13 +16,3 @@ nvim/spell/
 # Emacs
 emacs.d/*
 !emacs.d/init.el
-
-# Fish
-fish/env.fish
-fish/completions/
-fish/fish_variables
-fish/functions/*
-!fish/functions/commit-url.fish
-!fish/functions/mp4.fish
-!fish/functions/update-tag.fish
-!fish/functions/zoom.fish

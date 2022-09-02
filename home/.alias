@@ -1,8 +1,7 @@
-# vim:ft=fish
+# vim:ft=bash
 
 # Git aliases
 alias dif="git diff"
-alias gcp="git cherry-pick"
 alias gmc="git merge --continue"
 alias pd="git pd"
 alias pub="git pub"
@@ -30,9 +29,6 @@ alias yui="yarn upgrade-interactive"
 alias tn="tmux new"
 alias ta="tmux at"
 alias tl="tmux list-sessions"
-function tp --description 'alias tp=tmux new -s $1 -c ~/dev/$1'
-  tmux new -A -s $argv -c ~/dev/$argv
-end
 
 # Kitty
 alias icat="kitty +kitten icat"
@@ -41,7 +37,3 @@ alias icat="kitty +kitten icat"
 alias vim="nvim"
 alias vi="nvim"
 alias oldvim="/usr/bin/vim"
-
-# Python aliases
-alias py="python3"
-alias pip="pip3"
