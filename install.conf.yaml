@@ -7,6 +7,10 @@
     ~/:
       path: home/.*
       glob: true
+    ~/.config/fish/completions/:
+      path: fish/completions/*
+      create: true
+      glob: true
     ~/.config/fish/functions/:
       path: fish/functions/*
       create: true
@@ -14,7 +18,7 @@
     ~/.config/fish/:
       path: fish/*
       glob: true
-      exclude: [fish/functions]
+      exclude: [fish/completions, fish/functions]
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux

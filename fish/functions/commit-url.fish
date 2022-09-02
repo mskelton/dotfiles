@@ -1,8 +1,6 @@
-function commit-url --description 'Print the GitHub URL of a commit'
-  set commit $argv[1]
-
-  # Default to the latest commit
-  test -z $commit; and set commit (git rev-parse HEAD)
+function commit-url -a commit -d 'Print the GitHub URL of a commit'
+  # Default to the latest commit if no commit was provided
+  test -z $commit; and set commit (git rev-parse --short HEAD)
 
   # Read the repo base URL from the git config
   set base_url (git config --get remote.origin.url)
@@ -18,6 +16,6 @@ function commit-url --description 'Print the GitHub URL of a commit'
   echo "$base_url/commit/$commit"
 end
 
-function commit-url! --description 'Copy the GitHub URL of a commit'
-  commit-url $args | pbcopy
+function commit-url! -w commit-url -d 'Copy the GitHub URL of a commit'
+  commit-url $argv | pbcopy
 end
