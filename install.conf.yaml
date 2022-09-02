@@ -29,3 +29,8 @@
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/snippets/mskelton.code-snippets: vscode/snippets.code-snippets
+
+    # Widen config
+    ~/.config/fish/widen.fish:
+      path: widen/fish/widen.fish
+      if: '[ -n "$WIDEN" ]'
