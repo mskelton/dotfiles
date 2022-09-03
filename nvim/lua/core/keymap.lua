@@ -20,6 +20,9 @@ local map = require("core.utils").map
 -- Shiftless command mode
 map("n", ";", ":", { silent = false })
 
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+
 -- Really common shortcuts
 map("n", ",s", "<cmd>w<cr>")
 map("n", ",w", "<cmd>bd<cr>")
@@ -39,13 +42,6 @@ map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbo
 map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- "Find Git branches"
 
--- Jump ...
-map("n", "<leader>jl", "<cmd>HopLine<cr>")
-map("n", "<leader>jt", "<cmd>HopWordCurrentLine<cr>") -- "Jump on This line"
-map("n", "<leader>jw", "<cmd>HopWord<cr>")
-map("n", "<leader>jc", "<cmd>HopChar1<cr>")
-map("n", "<leader>jC", "<cmd>HopChar2<cr>")
-
 -- Packer
 map("n", "<leader>ps", function()
 	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
@@ -57,13 +53,6 @@ map("n", "<leader>pc", function()
 	print("Packer compiled successfully!")
 end)
 
--- Trouble
-map("n", "<leader>to", "<cmd>Trouble<cr>")
-map("n", "<leader>tw", "<cmd>Trouble workspace_diagnostics<cr>")
-map("n", "<leader>td", "<cmd>Trouble document_diagnostics<cr>")
-map("n", "<leader>tl", "<cmd>Trouble loclist<cr>")
-map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>")
-map("n", "gR", "<cmd>Trouble lsp_references<cr>")
-
+-- "entire" text object
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
 map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })

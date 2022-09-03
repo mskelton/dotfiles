@@ -26,8 +26,4 @@ return function()
 	-- Make line numbers easier to read
 	vim.api.nvim_set_hl(0, "LineNr", { fg = c.blue })
 	vim.api.nvim_set_hl(0, "CursorLineNr", { fg = c.yellow })
-
-	-- Misc
-	vim.api.nvim_set_hl(0, "HopNextKey2", { fg = c.blue2 })
-	vim.api.nvim_set_hl(0, "TroubleText", { fg = c.fg })
 end

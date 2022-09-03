@@ -11,8 +11,8 @@ require("packer").init({
 
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
-	use({ "folke/tokyonight.nvim", config = conf("tokyonight") })
 
+	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -21,6 +21,14 @@ return require("packer").startup(function(use)
 			"nvim-treesitter/playground",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"windwp/nvim-ts-autotag",
+			{
+				"RRethy/nvim-treesitter-endwise",
+				config = function()
+					require("nvim-treesitter.configs").setup({
+						endwise = { enable = true },
+					})
+				end,
+			},
 		},
 	})
 
@@ -33,6 +41,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = conf("telescope"),
@@ -46,6 +55,7 @@ return require("packer").startup(function(use)
 		},
 	})
 
+	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
 		config = conf("lsp"),
@@ -58,6 +68,7 @@ return require("packer").startup(function(use)
 		},
 	})
 
+	-- Completion and snippets
 	use({
 		"hrsh7th/nvim-cmp",
 		config = conf("nvim-cmp"),
@@ -82,22 +93,6 @@ return require("packer").startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-	-- TODO: I don't really use this, so probably remove it
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			require("hop").setup()
-		end,
-	})
-
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	})
-
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -112,12 +107,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "goolord/alpha-nvim", config = conf("alpha") })
-
-	-- Git clients
+	-- Git
+	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })
 	use({
-		"tpope/vim-fugitive",
-		requires = "tpope/vim-rhubarb",
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
 	})
 	use({
 		"TimUntersberger/neogit",
@@ -126,34 +122,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- TODO: probably remove, I don't really use this
-	use({
-		"folke/trouble.nvim",
-		config = function()
-			require("trouble").setup({
-				action_keys = {
-					toggle_fold = "t",
-				},
-			})
-		end,
-	})
-
-	-- TODO: Build a simpler and more reliable plugin
-	use({
-		"mskelton/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	})
-
+	-- Misc
+	use({ "folke/tokyonight.nvim", config = conf("tokyonight") })
+	use({ "goolord/alpha-nvim", config = conf("alpha") })
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use("michaeljsmith/vim-indent-object")
 	use("christoomey/vim-tmux-navigator")
-
-	-- Syntaxes
 	use("fladson/vim-kitty")
 end)
