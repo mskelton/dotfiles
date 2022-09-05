@@ -20,6 +20,8 @@ local map = require("core.utils").map
 -- Shiftless command mode
 map("n", ";", ":", { silent = false })
 
+-- Make half screen mappings easier to see by always returning the cursor to the
+-- middle of the window.
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 

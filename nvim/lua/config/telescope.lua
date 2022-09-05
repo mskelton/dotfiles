@@ -3,22 +3,18 @@ return function()
 	local layout_strategies = require("telescope.pickers.layout_strategies")
 	local dropdown = require("telescope.themes").get_dropdown()
 
-	-- Override the default flex layout with my customized flex layout that uses
-	-- the horizontal and modified center layouts.
-	layout_strategies.flex = require("config.telescope-layout")
+	-- Customized flex layout with dropdown style prompt.
+	layout_strategies.mskelton = require("config.telescope-layout")
 
 	require("telescope").setup({
 		defaults = {
 			borderchars = dropdown.borderchars,
-			layout_strategy = "flex",
+			layout_strategy = "mskelton",
 			sorting_strategy = "ascending",
 			results_title = false,
 			layout_config = {
 				preview_cutoff = 1,
 				prompt_position = "top",
-				center = vim.tbl_extend("error", dropdown.layout_config, {
-					anchor = "N",
-				}),
 				vertical = {
 					anchor = "N",
 					mirror = true,

@@ -33,6 +33,7 @@ return function()
 			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Tab and S-Tab to navigate results. This is preferred over C-n and C-p
 			-- to prevent command line completion from interferring with navigating
@@ -54,7 +55,6 @@ return function()
 		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
-			{ name = "nvim_lua" },
 			{ name = "luasnip" },
 			{ name = "buffer" },
 		}),
@@ -64,10 +64,8 @@ return function()
 				menu = {
 					buffer = "[buf]",
 					nvim_lsp = "[LSP]",
-					nvim_lua = "[api]",
 					path = "[path]",
 					luasnip = "[snip]",
-					tn = "[TabNine]",
 				},
 			}),
 		},
