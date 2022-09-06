@@ -37,12 +37,14 @@ map("n", "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 
 -- Find ...
 map("n", "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
+map("n", "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar to cmd+p
 map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- "Find String"
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
+map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
 map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
-map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
-map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>") -- "Find Git branches"
+map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
+map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 
 -- Packer
 map("n", "<leader>ps", function()
@@ -51,6 +53,7 @@ map("n", "<leader>ps", function()
 end)
 
 map("n", "<leader>pc", function()
+	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)

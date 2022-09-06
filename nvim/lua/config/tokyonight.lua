@@ -26,4 +26,7 @@ return function()
 	-- Make line numbers easier to read
 	vim.api.nvim_set_hl(0, "LineNr", { fg = c.blue })
 	vim.api.nvim_set_hl(0, "CursorLineNr", { fg = c.yellow })
+
+	-- Improve readability of the window separators.
+	vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", fg = c.comment })
 end

@@ -47,6 +47,7 @@ return require("packer").startup(function(use)
 		config = conf("telescope"),
 		requires = {
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
@@ -87,6 +88,22 @@ return require("packer").startup(function(use)
 		config = conf("luasnip"),
 	})
 
+	-- Git
+	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
+	use({
+		"TimUntersberger/neogit",
+		config = function()
+			require("neogit").setup()
+		end,
+	})
+
+	-- Misc
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = conf("lualine"),
@@ -107,24 +124,17 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- Git
-	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })
 	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	})
-	use({
-		"TimUntersberger/neogit",
-		config = function()
-			require("neogit").setup()
-		end,
+		"folke/tokyonight.nvim",
+		config = conf("tokyonight"),
 	})
 
-	-- Misc
-	use({ "folke/tokyonight.nvim", config = conf("tokyonight") })
-	use({ "goolord/alpha-nvim", config = conf("alpha") })
+	use({
+		"goolord/alpha-nvim",
+		config = conf("alpha"),
+		disable = true,
+	})
+
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-surround")
