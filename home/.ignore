@@ -2,9 +2,9 @@
 .idea/
 .yarn/
 
-# Lockfiles
-package-lock.json
-yarn.lock
+# # Lockfiles
+# package-lock.json
+# yarn.lock
 
 # Build outputs
 lib/

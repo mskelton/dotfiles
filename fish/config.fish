@@ -1,15 +1,12 @@
 set -g fish_greeting
 
-function __source_if_exists
-  test -f $argv; and source $argv
-end
-
 source $HOME/.alias
 source $HOME/.config/fish/colors.fish
 
-# Custom environment
-__source_if_exists $HOME/.config/fish/widen.fish
-__source_if_exists $HOME/.config/fish/env.fish
+# Custom environment files that might not exist
+for file in $HOME/.config/fish/widen.fish $HOME/.config/fish/env.fish
+  test -f $file; and source $file
+end
 
 # FZF keybindings
 set -g fish_key_bindings fish_default_key_bindings
