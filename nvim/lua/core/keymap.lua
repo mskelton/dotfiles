@@ -46,6 +46,16 @@ map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbo
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 
+-- "entire" text object
+map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
+map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
+
+-- remap "sentence" text object to capital S since I use lowercase s for statement
+map("v", "aS", "as")
+map("v", "iS", "is")
+map("o", "aS", "as")
+map("o", "iS", "is")
+
 -- Packer
 map("n", "<leader>ps", function()
 	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
@@ -57,7 +67,3 @@ map("n", "<leader>pc", function()
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)
-
--- "entire" text object
-map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
-map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
