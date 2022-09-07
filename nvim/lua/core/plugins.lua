@@ -135,11 +135,20 @@ return require("packer").startup(function(use)
 		disable = true,
 	})
 
+	use({
+		"akinsho/toggleterm.nvim",
+		config = conf("toggleterm"),
+	})
+
+	use({
+		"christoomey/vim-tmux-navigator",
+		config = conf("vim-tmux-navigator"),
+	})
+
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use("michaeljsmith/vim-indent-object")
-	use("christoomey/vim-tmux-navigator")
 	use("fladson/vim-kitty")
 end)
