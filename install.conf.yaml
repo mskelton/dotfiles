@@ -34,3 +34,9 @@
     ~/.config/fish/widen.fish:
       path: widen/fish/widen.fish
       if: '[ -n "$WIDEN" ]'
+    # Until multiple glob paths are supported
+    /usr/local/share/fish/vendor_functions.d/:
+      path: widen/fish/functions/*
+      create: true
+      glob: true
+      if: '[ -n "$WIDEN" ]'
