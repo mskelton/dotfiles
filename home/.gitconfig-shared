@@ -12,7 +12,6 @@
   del = branch -D
   message = commit --amend -m
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
-  pub = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   new = !git checkout $(git default) -b $2
   merge-last = !git co - && git merge $(git default)
@@ -50,8 +49,10 @@
   defaultBranch = main
 
 [log]
-  abbrevcommit = yes
+  abbrevcommit = true
 
 [format]
   pretty = oneline
 
+[push]
+  autoSetupRemote = true
