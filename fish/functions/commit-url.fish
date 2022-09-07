@@ -16,6 +16,3 @@ function commit-url -a commit -d 'Print the GitHub URL of a commit'
   echo "$base_url/commit/$commit"
 end
 
-function commit-url! -w commit-url -d 'Copy the GitHub URL of a commit'
-  commit-url $argv | pbcopy
-end
