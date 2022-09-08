@@ -20,10 +20,10 @@ local map = require("core.utils").map
 -- Shiftless command mode
 map("n", ";", ":", { silent = false })
 
--- Make half screen mappings easier to see by always returning the cursor to the
--- middle of the window.
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+-- I never can find where my cursor is after jumping by half. This makes it a
+-- bit easier.
+map("n", "<C-d>", "<cmd>lua MoveHalf(1)<cr>")
+map("n", "<C-u>", "<cmd>lua MoveHalf(-1)<cr>")
 
 -- Really common shortcuts
 map("n", ",s", "<cmd>w<cr>")
@@ -45,6 +45,9 @@ map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+
+-- Window
+map("n", "<leader>w=", "<C-w>=")
 
 -- "entire" text object
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
