@@ -38,21 +38,19 @@ return {
 					t(""),
 				}),
 				i(0),
-				d(3, function(args, parent)
+				f(function(args, parent)
 					if args[2][1] == "" then
-						return sn(nil, t(""))
+						return ""
 					end
 
 					local options = get_options_name(args, parent.snippet)
-					return sn(nil, {
-						t({
-							"",
-							args[1][1] .. "interface " .. options .. " {",
-							"\t",
-							"}",
-							"",
-						}),
-					})
+					return {
+						"",
+						args[1][1] .. "interface " .. options .. " {",
+						"\t",
+						"}",
+						"",
+					}
 				end, { 1, 2 }),
 			}
 		)

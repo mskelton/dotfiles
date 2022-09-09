@@ -34,21 +34,19 @@ return {
 					t(""),
 				}),
 				i(0),
-				d(4, function(args, parent)
+				f(function(args, parent)
 					if args[2][1] == "" then
-						return sn(nil, t(""))
+						return ""
 					end
 
 					local props = get_props_name(args, parent.snippet)
-					return sn(nil, {
-						t({
-							"",
-							args[1][1] .. "interface " .. props .. " {",
-							"\t",
-							"}",
-							"",
-						}),
-					})
+					return {
+						"",
+						args[1][1] .. "interface " .. props .. " {",
+						"\t",
+						"}",
+						"",
+					}
 				end, { 2, 3 }),
 			}
 		)
