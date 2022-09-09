@@ -11,8 +11,8 @@ return {
 		"afn",
 		fmt("() => {}", {
 			c(1, {
-				sn(nil, { t({ "{", "\t" }), i(1), t({ "", "}" }) }),
 				sn(nil, { i(1), t("") }),
+				sn(nil, { t({ "{", "\t" }), i(1), t({ "", "}" }) }),
 			}),
 		})
 	),
@@ -60,15 +60,8 @@ return {
 		)
 	),
 	-- i18next
-	parse("in-use", "const [t] = useTranslation()"),
-	s(
-		"in-t",
-		fmt("{}t('{}'){}", {
-			c(1, { t("{"), t("") }),
-			i(2),
-			m(1, "^{$", "}", ""),
-		})
-	),
+	parse("inu", "const [t] = useTranslation()"),
+	parse("int", "{t('$0')}"),
 	-- Playwright
 	parse("pw-describe", "test.describe('$1', () => {\n\t$3\n})\n\n$0"),
 	parse("pw-test", "test('$1', async ({ ${2:page} }) => {\n\t$3\n})\n\n$0"),

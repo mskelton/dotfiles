@@ -4,4 +4,7 @@
 (return_statement (_) @statement.inner) @statement.outer
 
 ;; Declarations
-(lexical_declaration (_) @declaration.inner) @declaration.outer
+(lexical_declaration
+  (variable_declarator
+    name: (identifier)
+    value: (_) @declaration.inner)) @declaration.outer
