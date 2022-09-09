@@ -8,9 +8,8 @@ return function()
 	handlers.enable_format_on_save()
 	null_ls.setup()
 
-	local runtime_path = vim.split(package.path, ";")
-	table.insert(runtime_path, "lua/?.lua")
-	table.insert(runtime_path, "lua/?/init.lua")
+	-- Better completion for Neovim Lua
+	require("lua-dev").setup()
 
 	-- Custom config per LSP
 	local servers = {
@@ -29,23 +28,7 @@ return function()
 				},
 			},
 		},
-		sumneko_lua = {
-			settings = {
-				Lua = {
-					runtime = { version = "LuaJIT", path = runtime_path },
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-				},
-			},
-		},
+		sumneko_lua = {},
 		tsserver = {
 			handlers = {
 				["textDocument/definition"] = function(_, result, ...)

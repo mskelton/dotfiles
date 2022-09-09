@@ -66,6 +66,7 @@ return require("packer").startup(function(use)
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
 			"onsails/lspkind-nvim",
+			"folke/lua-dev.nvim",
 		},
 	})
 
