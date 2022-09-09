@@ -20,15 +20,8 @@ return require("packer").startup(function(use)
 		requires = {
 			"nvim-treesitter/playground",
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"RRethy/nvim-treesitter-endwise",
 			"windwp/nvim-ts-autotag",
-			{
-				"RRethy/nvim-treesitter-endwise",
-				config = function()
-					require("nvim-treesitter.configs").setup({
-						endwise = { enable = true },
-					})
-				end,
-			},
 		},
 	})
 

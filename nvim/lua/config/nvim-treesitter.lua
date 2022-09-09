@@ -1,8 +1,7 @@
 return function()
 	require("nvim-treesitter.configs").setup({
-		autotag = {
-			enable = true,
-		},
+		autotag = { enable = true },
+		endwise = { enable = true },
 		ensure_installed = {
 			"bash",
 			"css",

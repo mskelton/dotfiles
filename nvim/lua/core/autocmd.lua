@@ -3,5 +3,6 @@ vim.cmd([[
     au!
     au BufEnter * set formatoptions-=c | set formatoptions-=o
     au BufWritePost */nvim/lua/core/keymap.lua source <afile>
+    au BufEnter *.md set spell
   augroup END 
 ]])
