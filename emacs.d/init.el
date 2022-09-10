@@ -11,12 +11,15 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Install all packages
+;; Install use-package automatically
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-;; My packages
+;; use-package setup
 (require 'use-package)
+(setq use-package-always-ensure t)
+
+;; My packages
 (use-package atom-one-dark-theme)
 (use-package evil)
 
@@ -34,6 +37,7 @@
 (define-key evil-normal-state-map (kbd "SPC p") 'find-file)
 (define-key evil-normal-state-map (kbd "SPC s") 'save-buffer)
 (define-key evil-normal-state-map (kbd "SPC w") 'evil-delete-buffer)
+(define-key evil-normal-state-map ";" 'evil-ex)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; INTERFACE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
