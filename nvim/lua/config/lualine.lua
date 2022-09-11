@@ -2,12 +2,7 @@ return function()
 	require("lualine").setup({
 		tabline = {
 			lualine_a = {
-				{
-					"buffers",
-					symbols = {
-						alternate_file = "",
-					},
-				},
+				"buffers",
 			},
 		},
 		extensions = { "fugitive", "quickfix" },
@@ -23,5 +18,18 @@ return function()
 			globalstatus = true,
 			theme = "tokyonight",
 		},
+	})
+
+	local group = vim.api.nvim_create_augroup("LualineRefreshOnWrite", {})
+
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		group = group,
+		pattern = "*",
+		callback = function()
+			require("lualine").refresh({
+				scope = "tabpage",
+				place = { "tabline" },
+			})
+		end,
 	})
 end
