@@ -3,6 +3,6 @@ vim.cmd([[
     au!
     au BufEnter * set formatoptions-=c | set formatoptions-=o
     au BufWritePost */nvim/lua/core/*.lua source <afile>
-    au FileType markdown setlocal spell
+    au FileType markdown setlocal spell spelllang=en_us
   augroup END
 ]])

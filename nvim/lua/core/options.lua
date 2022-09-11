@@ -35,6 +35,7 @@ o.splitright = true
 o.splitbelow = true
 
 -- Spell checking
+o.spelllang = "en_us"
 o.spelloptions = "camel"
 
 -- Abbreviations
