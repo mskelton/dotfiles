@@ -61,12 +61,12 @@ map("o", "iS", "is")
 
 -- Packer
 map("n", "<leader>ps", function()
-	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
+	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
 	require("packer").sync()
 end)
 
 map("n", "<leader>pc", function()
-	vim.cmd("luafile ~/.config/nvim/lua/core/plugins.lua")
+	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)

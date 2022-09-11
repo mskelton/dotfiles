@@ -1,8 +1,8 @@
 vim.cmd([[
-  augroup MarkSkelton
+  augroup mskelton
     au!
     au BufEnter * set formatoptions-=c | set formatoptions-=o
-    au BufWritePost */nvim/lua/core/keymap.lua source <afile>
-    au BufEnter *.md set spell
-  augroup END 
+    au BufWritePost */nvim/lua/core/*.lua source <afile>
+    au FileType markdown setlocal spell
+  augroup END
 ]])
