@@ -55,8 +55,17 @@ return function()
 				find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 			},
 			live_grep = {
-				additional_args = function()
-					return { "--hidden" }
+				additional_args = function(opts)
+					local args = { "--hidden" }
+
+					-- Disable regex searching when requested. This is useful since 99% of
+					-- the time, I'm doing exact string searching and don't want to use a
+					-- regex search.
+					if opts.regex == false then
+						table.insert(args, "--fixed-strings")
+					end
+
+					return args
 				end,
 				only_cwd = true,
 			},
