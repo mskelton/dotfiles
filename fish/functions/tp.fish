@@ -1,3 +1,7 @@
+function __tmux_list_sessions
+  tmux list-sessions -F "#{session_id} #{session_name} #{session_path}" &> /dev/null
+end
+
 function tp -a dir name -d 'Create or connect to a tmux session'
   # If no directory was specified, use the working directory
   set -q dir[1]; or set dir (pwd)
@@ -9,11 +13,17 @@ function tp -a dir name -d 'Create or connect to a tmux session'
   set -q name[1]; or set name (basename $dir)
 
   # Loop over existing session to check if the requested session already exists
-  for session in (tmux list-sessions -F "#{session_id} #{session_name} #{session_path}")
+  for session in (__tmux_list_sessions)
     echo $session | read -d ' ' session_id session_name session_path
 
     if test "$name" = "$session_name";  or test "$dir" = "$session_path"
-      tmux switch-client -t $session_id
+      # Attach if outside of Tmux, otherwise switch to it
+      if test -z "$TMUX"
+        tmux attach-session -t $session_id
+      else
+        tmux switch-client -t $session_id
+      end
+
       return
     end
   end
