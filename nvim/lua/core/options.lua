@@ -34,5 +34,8 @@ o.listchars = { tab = "  ", trail = "·" }
 o.splitright = true
 o.splitbelow = true
 
+-- Spell checking
+o.spelloptions = "camel"
+
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")
