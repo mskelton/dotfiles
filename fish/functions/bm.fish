@@ -18,16 +18,16 @@ function __bm_list_bookmarks
   cat $bookmarks_path | jq $filter
 end
 
-function __bm_filter_bookmarks -a query
-  jq -c --arg query $query 'select(.slug | startswith($query))'
+function __bm_filter_bookmarks -a key value
+  jq -c --arg key $key --arg value $value 'select(.[$key] | startswith($value))'
 end
 
-function bm -a query -d "Open Chrome bookmark"
+function bm -a slug -d "Open Chrome bookmark"
   # If bm is called without argument, show all bookmarks
-  set -q query[1]; or set query ""
+  set -q slug[1]; or set slug ""
 
-  # Filter the bookmarks by the provided query
-  set bookmarks (__bm_list_bookmarks | __bm_filter_bookmarks $query)
+  # Filter the bookmarks by the provided slug
+  set bookmarks (__bm_list_bookmarks | __bm_filter_bookmarks 'slug' $slug)
 
   switch (count $bookmarks)
     # No bookmark found, exit with error
@@ -41,13 +41,13 @@ function bm -a query -d "Open Chrome bookmark"
 
     # Multiple matching bookmarks found, launch FZF to filter
     case '*'
-      # Get the exact slug of the bookmark
-      set slug (printf %"s\n" $bookmarks | jq -r '.slug' | fzf)
+      # Get the exact name of the bookmark
+      set name (printf %"s\n" $bookmarks | jq -r '.name' | fzf --no-info)
 
-      # Find the bookmark by slug and open the URL in Chrome. If no bookmark is
+      # Find the bookmark by name and open the URL in Chrome. If no bookmark is
       # selected from the list, exit with an error.
-      if test -n "$slug"
-        echo $bookmarks | __bm_filter_bookmarks $slug | jq '.url' | xargs open
+      if test -n "$name"
+        echo $bookmarks | __bm_filter_bookmarks 'name' $name | jq '.url' | xargs open
       else
         echo 'No bookmark selected, exiting'
         return 1

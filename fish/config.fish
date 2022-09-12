@@ -17,6 +17,9 @@ end
 # Use my custom keybindings
 set -g fish_key_bindings fish_hybrid_key_bindings
 
+# FZF defaults
+set -x FZF_DEFAULT_OPTS "--reverse --info=inline"
+
 # Environment variables
 set -x EDITOR "nvim"
 set -x GOPATH "$HOME/go"
