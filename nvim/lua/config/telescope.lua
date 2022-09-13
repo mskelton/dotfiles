@@ -28,8 +28,9 @@ return function()
 			mappings = {
 				i = {
 					["<esc>"] = actions.close,
-					["<C-j>"] = actions.move_selection_next,
-					["<C-k>"] = actions.move_selection_previous,
+					-- TODO: remove if I'm sure about this.
+					-- ["<C-j>"] = actions.move_selection_next,
+					-- ["<C-k>"] = actions.move_selection_previous,
 					["<C-u>"] = false, -- Clear prompt with C-u
 				},
 			},
