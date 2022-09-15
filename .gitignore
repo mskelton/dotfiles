@@ -1,2 +1,5 @@
 # Vim spell file
 nvim/spell/*.spl
+
+# Tmux logs
+*.log
