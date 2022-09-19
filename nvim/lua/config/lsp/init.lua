@@ -60,7 +60,7 @@ return function()
 	}
 
 	-- Install all servers
-	require("mason").setup()
+	require("mason").setup({ ui = { border = "rounded" } })
 	require("mason-lspconfig").setup({ automatic_installation = true })
 
 	-- Setup all LSP clients

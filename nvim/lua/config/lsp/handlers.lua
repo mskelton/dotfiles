@@ -39,20 +39,12 @@ M.on_attach = function(client, bufnr)
 	map_fn("[d", "vim.diagnostic.goto_prev()")
 	map_fn("]d", "vim.diagnostic.goto_next()")
 
-	if client.name == "eslint" then
+	if client.name == "eslint" or client.name == "stylelint_lsp" then
 		client.resolved_capabilities.document_formatting = true
 		client.resolved_capabilities.document_range_formatting = true
 	end
 
-	if client.name == "stylelint_lsp" then
-		client.resolved_capabilities.document_formatting = true
-	end
-
-	if client.name == "nemneko_lua" then
-		client.resolved_capabilities.document_formatting = false
-	end
-
-	if client.name == "tsserver" then
+	if client.name == "jsonls" or client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 
 		map("go", function()
