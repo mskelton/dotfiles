@@ -1,5 +1,4 @@
 function __bm_list_bookmarks
-  set bookmarks_path '/Users/mark/Library/Application Support/Google/Chrome/Default/Bookmarks'
   set filter '.roots
     | to_entries[].value
     | recurse(.children[]?)
@@ -15,7 +14,7 @@ function __bm_list_bookmarks
           | ascii_downcase
       }'
 
-  cat $bookmarks_path | jq $filter
+  cat $BOOKMARKS_PATH | jq $filter
 end
 
 function __bm_filter_bookmarks -a key value
