@@ -13,18 +13,12 @@ return function()
 
 	-- Custom config per LSP
 	local servers = {
-		eslint = {
-			root_dir = lspconfig.util.find_git_ancestor,
-			settings = {
-				autoFixOnSave = true,
-			},
-		},
+		eslint = {},
 		gopls = {},
 		stylelint_lsp = {
-			root_dir = lspconfig.util.find_git_ancestor,
 			settings = {
 				stylelintplus = {
-					autoFixOnSave = true,
+					autoFixOnFormat = true,
 				},
 			},
 		},
