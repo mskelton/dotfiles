@@ -7,7 +7,7 @@
 # yarn.lock
 
 # Build outputs
-lib/
+# lib/
 
 # DAM
 js/_libs/
