@@ -4,8 +4,13 @@ set ignorecase
 
 :map ,s <Action>(SaveDocument)
 :map ,w <Action>(CloseEditor)
-:map <space>fp <Action>(GotoFile)
 :map go <Action>(OptimizeImports)
+:map <space>fp <Action>(GotoFile)
+:map <space>fs <Action>(FindInPath)
+:map <space>fp <Action>(GotoFile)
+:map <space>rn <Action>(RenameElement)
+
+:map ; :
 
 :map [b <Action>(PreviousTab)
 :map ]b <Action>(NextTab)
