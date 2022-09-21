@@ -10,9 +10,9 @@ function tp -a dir name -d 'Create or connect to a tmux session'
   set resolved_dir (path resolve $dir)
 
   # If the directory is not found, assume it's in ~/dev
-  # if not test -d $resolved_dir
-  #   set resolved_dir $HOME/dev/$dir
-  # end
+  if not test -d $resolved_dir
+    set resolved_dir $HOME/dev/$dir
+  end
 
   # If no name was provided, use the directory name
   set -q name[1]; or set name (basename $resolved_dir)
