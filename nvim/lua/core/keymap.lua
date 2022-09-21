@@ -50,6 +50,11 @@ map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 -- Window
 map("n", "<leader>w=", "<C-w>=")
 
+-- Git (VCS)
+map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")
+map("n", "<leader>vs", "<cmd>G show<cr>")
+map("n", "<leader>vl", "<cmd>G log<cr>")
+
 -- "entire" text object
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
 map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
