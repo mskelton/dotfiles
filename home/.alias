@@ -23,7 +23,7 @@ alias t="task"
 alias tw="clear && t"
 alias y="yarn"
 alias ys="yarn serve"
-alias yui="yarn upgrade-interactive"
+alias sf="source-fish"
 
 # Tmux
 alias tn="tmux new"
