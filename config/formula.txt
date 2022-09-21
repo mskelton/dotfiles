@@ -1,4 +1,5 @@
 bat
+dict
 fd
 fish
 fzf
