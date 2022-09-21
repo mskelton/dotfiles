@@ -1,5 +1,5 @@
 return function()
-	local lspconfig = require("lspconfig")
+	local util = require("lspconfig.util")
 	local utils = require("core.utils")
 	local handlers = require("config.lsp.handlers")
 	local null_ls = require("config.lsp.null-ls")
@@ -13,9 +13,13 @@ return function()
 
 	-- Custom config per LSP
 	local servers = {
+		-- emmet_ls = {
+		-- 	cmd = { "/usr/local/bin/emmet-ls", "--stdio" },
+		-- },
 		eslint = {},
 		gopls = {},
 		stylelint_lsp = {
+			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
 			settings = {
 				stylelintplus = {
 					autoFixOnFormat = true,
@@ -62,6 +66,6 @@ return function()
 		config.capabilities = handlers.capabilities
 		config.on_attach = handlers.on_attach
 
-		lspconfig[server].setup(config)
+		require("lspconfig")[server].setup(config)
 	end
 end
