@@ -9,6 +9,8 @@ set ignorecase
 :map <space>fs <Action>(FindInPath)
 :map <space>fp <Action>(GotoFile)
 :map <space>rn <Action>(RenameElement)
+:map gd <Action>(GotoImplementation)
+:map gr <Action>(GotoDeclaration)
 
 :map ; :
 

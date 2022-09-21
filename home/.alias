@@ -1,6 +1,6 @@
 # vim:ft=bash
 
-# Git aliases
+# Git
 alias dif="git diff"
 alias gmc="git merge --continue"
 alias grc="git rebase --continue"
@@ -14,17 +14,13 @@ alias st="git status"
 alias stash="git stash push -u"
 alias unstash="git stash pop"
 
-# Other aliases
-alias def="dict -d '!'"
-alias dock="docker exec -it $1 /bin/bash"
-alias dup="docker-compose up -d"
-alias gradle="./gradlew"
-alias pb="pbcopy"
+# Task Warrior
 alias t="task"
 alias tw="clear && t"
+
+# Yarn
 alias y="yarn"
 alias ys="yarn serve"
-alias sf="source-fish"
 
 # Tmux
 alias tn="tmux new"
@@ -32,10 +28,20 @@ alias ta="tmux at"
 alias tl="tmux list-sessions"
 alias tk="tmux kill-session"
 
-# Kitty
-alias icat="kitty +kitten icat"
-
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim"
 alias oldvim="/usr/bin/vim"
+
+# Kitty
+alias icat="kitty +kitten icat"
+
+# Misc
+alias def="dict -d '!'"
+alias dock="docker exec -it $1 /bin/bash"
+alias dup="docker-compose up -d"
+alias gim="gimme-aws-creds"
+alias gradle="./gradlew"
+alias pb="pbcopy"
+alias sf="source-fish"
