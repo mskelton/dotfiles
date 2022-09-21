@@ -17,6 +17,7 @@ return function()
 		-- 	cmd = { "/usr/local/bin/emmet-ls", "--stdio" },
 		-- },
 		eslint = {},
+		jsonls = {},
 		gopls = {},
 		stylelint_lsp = {
 			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
