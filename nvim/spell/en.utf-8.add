@@ -59,3 +59,9 @@ eula
 goto
 async
 wrn
+frontend
+api
+url
+openapi
+http
+https
