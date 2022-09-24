@@ -28,6 +28,7 @@ return function()
 			"query",
 			"regex",
 			"sql",
+			"swift",
 			"tsx",
 			"typescript",
 			"vim",

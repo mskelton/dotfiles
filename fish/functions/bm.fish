@@ -22,6 +22,11 @@ function __bm_filter_bookmarks -a key value
 end
 
 function bm -a slug -d "Open Chrome bookmark"
+  if test -z $BOOKMARKS_PATH
+    echo 'No bookmarks found. Make sure you have BOOKMARKS_PATH set in your shell.'
+    return 1
+  end
+
   # If bm is called without argument, show all bookmarks
   set -q slug[1]; or set slug ""
 

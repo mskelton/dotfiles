@@ -19,6 +19,7 @@ return function()
 		eslint = {},
 		jsonls = {},
 		gopls = {},
+		sourcekit = {},
 		stylelint_lsp = {
 			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
 			settings = {
