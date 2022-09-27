@@ -17,7 +17,56 @@ return function()
 		-- 	cmd = { "/usr/local/bin/emmet-ls", "--stdio" },
 		-- },
 		eslint = {},
-		jsonls = {},
+		jsonls = {
+			settings = {
+				json = {
+					schemas = {
+						{
+							fileMatch = { "package.json" },
+							url = "https://json.schemastore.org/package.json",
+						},
+						{
+							fileMatch = {
+								"tsconfig.json",
+								"tsconfig.*.json",
+								"tsconfig-*.json",
+							},
+							url = "https://json.schemastore.org/tsconfig",
+						},
+						{
+							fileMatch = {
+								".babelrc",
+								".babelrc.json",
+								"babelrc.config.json",
+							},
+							url = "https://json.schemastore.org/babelrc",
+						},
+						{
+							fileMatch = {
+								".prettierrc",
+								".prettierrc.json",
+								".prettierrc.json5",
+							},
+							url = "https://json.schemastore.org/prettierrc",
+						},
+						{
+							fileMatch = {
+								".eslintrc",
+								".eslintrc.json",
+							},
+							url = "https://json.schemastore.org/eslintrc",
+						},
+						{
+							fileMatch = {
+								".stylelintrc",
+								".stylelintrc.json",
+							},
+							url = "https://json.schemastore.org/stylelintrc",
+						},
+					},
+				},
+			},
+		},
 		gopls = {},
 		sourcekit = {},
 		stylelint_lsp = {

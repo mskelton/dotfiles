@@ -33,7 +33,7 @@ return function()
 			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<C-Space>"] = cmp.mapping.complete(),
+			["<C-Space>"] = cmp.mapping.complete({}),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- Tab and S-Tab to navigate results. This is preferred over C-n and C-p
 			-- to prevent command line completion from interferring with navigating
