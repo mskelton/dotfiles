@@ -5,6 +5,7 @@ set ignorecase
 :map ,s <Action>(SaveDocument)
 :map ,w <Action>(CloseEditor)
 :map go <Action>(OptimizeImports)
+:map gO <Action>(OptimizeImports)
 :map <space>fp <Action>(GotoFile)
 :map <space>fs <Action>(FindInPath)
 :map <space>fp <Action>(GotoFile)

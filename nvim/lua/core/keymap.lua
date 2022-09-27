@@ -17,8 +17,17 @@
 -- executing each keybinging relatively stable and fast.
 local map = require("core.utils").map
 
--- Shiftless command mode
+-- Shiftless command mode. I've debated this one some since other tools with Vim
+-- emultation don't use this, so it kind of makes life a little harder when
+-- working between tools. That said, my goal is to use other tools as little as
+-- possible, and tools like IntelliJ have good enough Vim emulation where it
+-- allows replicating this functionality.
 map("n", ";", ":", { silent = false })
+map("v", ";", ":", { silent = false })
+
+-- Map regular ol' colon to semicolon to still allow using the semicolon motion
+-- (next f/t match) since that motion is quite handy.
+map("n", ":", ";")
 
 -- I never can find where my cursor is after jumping by half. This makes it a
 -- bit easier.
@@ -49,6 +58,15 @@ map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 
 -- Window
 map("n", "<leader>w=", "<C-w>=")
+map("n", "<leader>w+", "<C-w>+")
+map("n", "<leader>w-", "<C-w>-")
+map("n", "<leader>w<", "<C-w><")
+map("n", "<leader>w>", "<C-w>>")
+map("n", "<leader>wh", "<C-w>H")
+map("n", "<leader>wj", "<C-w>J")
+map("n", "<leader>wk", "<C-w>K")
+map("n", "<leader>wl", "<C-w>L")
+map("n", "<leader>wp", "<C-w>P")
 
 -- Git (VCS)
 map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")

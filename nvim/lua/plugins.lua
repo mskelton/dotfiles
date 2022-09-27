@@ -139,6 +139,7 @@ return require("packer").startup(function(use)
 		config = conf("vim-tmux-navigator"),
 	})
 
+	use("tpope/vim-abolish")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-surround")
