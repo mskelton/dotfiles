@@ -22,12 +22,18 @@ local map = require("core.utils").map
 -- working between tools. That said, my goal is to use other tools as little as
 -- possible, and tools like IntelliJ have good enough Vim emulation where it
 -- allows replicating this functionality.
+--
+-- I've considered remapping colon to semicolon, but I often find myself
+-- pressing shift before colon for commands like :Duplicate or :G as it's easier
+-- do a chorded reach with the left hand then the alternative which would be
+-- non-shift click of semicolon, then right-shift the uppercase letter.
 map("n", ";", ":", { silent = false })
 map("v", ";", ":", { silent = false })
 
--- Map regular ol' colon to semicolon to still allow using the semicolon motion
--- (next f/t match) since that motion is quite handy.
-map("n", ":", ";")
+-- Map leader semicolon to the original semicolon motion to still allow using
+-- (next f/t match) since that motion is quite handy. I don't use it much, so
+-- the extra keypress is fine.
+map("n", "<leader>;", ";")
 
 -- I never can find where my cursor is after jumping by half. This makes it a
 -- bit easier.
