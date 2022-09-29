@@ -1,7 +1,11 @@
 return function()
 	local cmp = require("cmp")
 	local context = require("cmp.config.context")
-	local lspkind = require("lspkind")
+	local format = require("lspkind").cmp_format({
+		mode = "symbol_text",
+		maxwidth = 50,
+		preset = "codicons",
+	})
 
 	cmp.setup({
 		enabled = function()
@@ -12,6 +16,11 @@ return function()
 
 			-- Disable completion in prompt buffers (e.g. Telescope)
 			if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+				return false
+			end
+
+			-- Disable completion in markdown files
+			if vim.api.nvim_buf_get_option(0, "filetype") == "markdown" then
 				return false
 			end
 
@@ -59,15 +68,26 @@ return function()
 			{ name = "buffer" },
 		}),
 		formatting = {
-			format = lspkind.cmp_format({
-				with_text = true,
-				menu = {
-					buffer = "[buf]",
-					nvim_lsp = "[LSP]",
-					path = "[path]",
-					luasnip = "[snip]",
-				},
-			}),
+			fields = { "kind", "abbr", "menu" },
+			format = function(entry, vim_item)
+				local original_kind = vim_item.kind
+				local kind = format(entry, vim_item)
+
+				-- Split the kind from lspkind into two parts so we can place the icon
+				-- on the left and the text on the right. This allows for quick scanning
+				-- on the left near the text while still providing the full completion
+				-- information if needed.
+				---@diagnostic disable-next-line: param-type-mismatch
+				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+
+				kind.kind = strings[1] .. " "
+				kind.menu = "   " .. strings[2]
+
+				-- Highlight the menu text the same as the kind icon
+				kind.menu_hl_group = "CmpItemKind" .. original_kind
+
+				return kind
+			end,
 		},
 	})
 
@@ -95,9 +115,14 @@ return function()
 		},
 	}
 
+	local no_format = {
+		fields = { "abbr" },
+	}
+
 	-- Use buffer source for '/'
 	cmp.setup.cmdline("/", {
 		mapping = cmdline_mapping,
+		formatting = no_format,
 		sources = {
 			{ name = "buffer" },
 		},
@@ -106,6 +131,7 @@ return function()
 	-- Use cmdline & path source for ':'
 	cmp.setup.cmdline(":", {
 		mapping = cmdline_mapping,
+		formatting = no_format,
 		sources = cmp.config.sources({
 			{ name = "path" },
 		}, {
