@@ -34,5 +34,5 @@ return function()
 	hl("WinSeparator", { bg = "none", fg = c.comment })
 
 	-- De-emphasize text completions
-	hl("CmpItemKindText", { fg = "#9fa6c6" })
+	hl("CmpItemKindText", { fg = c.fg_dark })
 end
