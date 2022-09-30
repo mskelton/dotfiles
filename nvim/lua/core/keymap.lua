@@ -72,6 +72,7 @@ map("n", "<leader>wh", "<C-w>H")
 map("n", "<leader>wj", "<C-w>J")
 map("n", "<leader>wk", "<C-w>K")
 map("n", "<leader>wl", "<C-w>L")
+map("n", "<leader>wo", "<C-w>o")
 map("n", "<leader>wp", "<C-w>P")
 
 -- Git (VCS)
