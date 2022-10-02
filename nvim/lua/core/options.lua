@@ -1,7 +1,6 @@
 local g = vim.g
 local o = vim.opt
 
-g.do_filetype_lua = 1
 g.mapleader = " "
 
 o.clipboard = "unnamedplus"
