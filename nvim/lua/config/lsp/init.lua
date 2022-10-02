@@ -1,12 +1,10 @@
 return function()
 	local util = require("lspconfig.util")
 	local utils = require("core.utils")
-	local handlers = require("config.lsp.handlers")
-	local null_ls = require("config.lsp.null-ls")
 
-	handlers.setup()
-	handlers.enable_format_on_save()
-	null_ls.setup()
+	-- Setup autocmds and null-ls server
+	require("config.lsp.autocmd")
+	require("config.lsp.null-ls")
 
 	-- Better completion for Neovim Lua
 	require("lua-dev").setup()
@@ -112,10 +110,14 @@ return function()
 	require("mason").setup({ ui = { border = "rounded" } })
 	require("mason-lspconfig").setup({ automatic_installation = true })
 
+	-- Update the LSP capabilities to support completions and snippets.
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do
-		config.capabilities = handlers.capabilities
-		config.on_attach = handlers.on_attach
+		config.capabilities = capabilities
 
 		require("lspconfig")[server].setup(config)
 	end
