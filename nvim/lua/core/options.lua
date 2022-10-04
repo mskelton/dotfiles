@@ -3,27 +3,18 @@ local o = vim.opt
 
 g.mapleader = " "
 
+-- I've debated a lot about the clipboard. Accessing my system clipboard for
+-- pasting is something I do all the time, so it does feel right to
 o.clipboard = "unnamedplus"
+
+-- Setting the color column to 81 feels wrong, but text can advanced up to and
+-- including the 80th column. Only when it hits column 81 (now overlapping the
+-- color column), should it be shown as an issue.
 o.colorcolumn = "81"
-o.completeopt = "menu,menuone,noselect"
-o.confirm = true
-o.cursorline = true
-o.expandtab = true
+
+-- Use a vertical bar in the command line window to reduce the flashing that
+-- results from Kitty, Tmux, and Vim not playing well together.
 o.guicursor = o.guicursor + "c:ver25"
-o.hlsearch = false
-o.ignorecase = true
-o.mouse = "a"
-o.number = true
-o.relativenumber = true
-o.shiftwidth = 2
-o.shortmess = o.shortmess + "I"
-o.showbreak = "    "
-o.signcolumn = "yes"
-o.smartcase = true
-o.tabstop = 2
-o.termguicolors = true
-o.undofile = true
-o.updatetime = 100
 
 -- Show trailing spaces
 o.list = true
@@ -36,6 +27,40 @@ o.splitbelow = true
 -- Spell checking
 o.spelllang = "en_us"
 o.spelloptions = "camel"
+
+-- I don't use the mouse often, in fact when I do it's often wrong. But
+-- sometimes when you are in a meeting leaning back in your chair, just clicking
+-- on a buffer is easier than leaning back into the keyboard. That said, I'm
+-- really not a fan of the right-click popups.
+o.mouse = "a"
+o.mousem = "extend"
+
+-- Relative line numbers
+o.number = true
+o.relativenumber = true
+
+-- Hide the intro message
+o.shortmess = o.shortmess + "I"
+
+-- Use the same spacing for tabs and spaces. While more confusing perhaps which
+-- is used, I never actually care which is used. Go uses tabs, Prettier uses
+-- spaces. It's all 2 visual spaces though.
+o.shiftwidth = 2
+o.tabstop = 2
+
+-- These don't need much explanation
+o.completeopt = "menu,menuone,noselect"
+o.confirm = true
+o.cursorline = true
+o.expandtab = true
+o.hlsearch = false
+o.ignorecase = true
+o.showbreak = "    "
+o.signcolumn = "yes"
+o.smartcase = true
+o.termguicolors = true
+o.undofile = true
+o.updatetime = 100
 
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")

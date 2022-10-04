@@ -2,71 +2,28 @@ return function()
 	local util = require("lspconfig.util")
 	local utils = require("core.utils")
 
-	-- Setup autocmds and null-ls server
+	-- Setup autocmds and null-ls
 	require("config.lsp.autocmd")
 	require("config.lsp.null-ls")
 
 	-- Better completion for Neovim Lua
 	require("lua-dev").setup()
 
-	-- Custom config per LSP
+	-- Custom config per LSP. The order of keys in this table is very important
+	-- when it comes to code actions. Code actions will be prioritized bottom
+	-- to top in this table.
 	local servers = {
+		gopls = {},
+		sourcekit = {},
+		sumneko_lua = {},
+		jsonls = {
+			settings = {
+				json = { schemas = require("config.lsp.json-schemas") },
+			},
+		},
 		-- emmet_ls = {
 		-- 	cmd = { "/usr/local/bin/emmet-ls", "--stdio" },
 		-- },
-		eslint = {},
-		jsonls = {
-			settings = {
-				json = {
-					schemas = {
-						{
-							fileMatch = { "package.json" },
-							url = "https://json.schemastore.org/package.json",
-						},
-						{
-							fileMatch = {
-								"tsconfig.json",
-								"tsconfig.*.json",
-								"tsconfig-*.json",
-							},
-							url = "https://json.schemastore.org/tsconfig",
-						},
-						{
-							fileMatch = {
-								".babelrc",
-								".babelrc.json",
-								"babelrc.config.json",
-							},
-							url = "https://json.schemastore.org/babelrc",
-						},
-						{
-							fileMatch = {
-								".prettierrc",
-								".prettierrc.json",
-								".prettierrc.json5",
-							},
-							url = "https://json.schemastore.org/prettierrc",
-						},
-						{
-							fileMatch = {
-								".eslintrc",
-								".eslintrc.json",
-							},
-							url = "https://json.schemastore.org/eslintrc",
-						},
-						{
-							fileMatch = {
-								".stylelintrc",
-								".stylelintrc.json",
-							},
-							url = "https://json.schemastore.org/stylelintrc",
-						},
-					},
-				},
-			},
-		},
-		gopls = {},
-		sourcekit = {},
 		stylelint_lsp = {
 			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
 			settings = {
@@ -75,7 +32,7 @@ return function()
 				},
 			},
 		},
-		sumneko_lua = {},
+		eslint = {},
 		tsserver = {
 			handlers = {
 				["textDocument/definition"] = function(_, result, ...)
