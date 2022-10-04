@@ -26,7 +26,7 @@ o.splitbelow = true
 
 -- Spell checking
 o.spelllang = "en_us"
-o.spelloptions = "camel"
+o.spelloptions = "camel,noplainbuffer"
 
 -- I don't use the mouse often, in fact when I do it's often wrong. But
 -- sometimes when you are in a meeting leaning back in your chair, just clicking

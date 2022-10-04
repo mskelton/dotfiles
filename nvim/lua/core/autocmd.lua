@@ -12,7 +12,7 @@ vim.cmd([[
     " Enable spelling in markdown files
     au FileType markdown setlocal spell spelllang=en_us
 
-    " TS config files use jsonc sntax
+    " TS config files use jsonc syntax
     au BufEnter,BufNew tsconfig*.json set ft=jsonc
   augroup END
 ]])
