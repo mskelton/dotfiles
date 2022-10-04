@@ -16,20 +16,10 @@ function M.make_params(code_action)
 	return position_params
 end
 
-function M.run_code_action(bufnr, code_action)
-	vim.lsp.buf_request(
-		bufnr,
-		"textDocument/codeAction",
-		M.make_params(code_action),
-		function(err, result)
-			M.apply_edits(result)
-		end
-	)
-end
-
-function M.run_code_action_sync(bufnr, code_action)
+function M.run_code_action(code_action)
+	---@diagnostic disable-next-line: missing-parameter
 	local result = vim.lsp.buf_request_sync(
-		bufnr,
+		0,
 		"textDocument/codeAction",
 		M.make_params(code_action)
 	)

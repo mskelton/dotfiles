@@ -1,6 +1,13 @@
 local utils = require("config.lsp.utils")
 local group = vim.api.nvim_create_augroup("lsp", {})
 
+local formatters = {
+	"eslint",
+	"gopls",
+	"null-ls",
+	"stylelint_lsp",
+}
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = group,
 	callback = function(args)
@@ -26,24 +33,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
 		end
 
-		if client.name == "eslint" or client.name == "stylelint_lsp" then
-			client.server_capabilities.documentFormattingProvider = true
-			client.server_capabilities.documentRangeFormattingProvider = true
-		end
+		-- Only enable formatting for specific LSP's. Many LSPs that have built-in
+		-- formatting don't have robust enough formatting (e.g. tsserver is not as
+		-- complete as Prettier).
+		local format = vim.tbl_contains(formatters, client.name)
+		client.server_capabilities.documentFormattingProvider = format
+		client.server_capabilities.documentRangeFormattingProvider = format
 
-		if client.name == "jsonls" then
-			client.server_capabilities.documentFormattingProvider = false
-		end
-
+		-- Organize imports for TypeScript files. Unfortunate to have to do two
+		-- separate actions, but unfortunately it's the way the language server is
+		-- setup.
 		if client.name == "tsserver" then
-			client.server_capabilities.documentFormattingProvider = false
-
 			vim.keymap.set("n", "go", function()
-				utils.run_code_action_sync(bufnr, "source.addMissingImports")
+				utils.run_code_action("source.addMissingImports.ts")
 			end, opts)
 
 			vim.keymap.set("n", "gO", function()
-				utils.run_code_action_sync(bufnr, "source.removeUnused")
+				utils.run_code_action("source.removeUnused.ts")
 			end, opts)
 		end
 	end,
@@ -52,13 +58,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = group,
 	callback = function()
-		local clients = { "eslint", "stylelint_lsp", "null-ls" }
-
-		vim.lsp.buf.format({
-			filter = function(client)
-				return vim.tbl_contains(clients, client.name)
-			end,
-		})
+		vim.lsp.buf.format()
 	end,
 })
 
@@ -66,6 +66,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = group,
 	pattern = "*.go",
 	callback = function()
-		utils.run_code_action_sync(0, "source.organizeImports")
+		utils.run_code_action("source.organizeImports")
 	end,
 })
