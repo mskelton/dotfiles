@@ -1,6 +1,8 @@
 set visualbell
 set clipboard+=unnamed
 set ignorecase
+set number
+set relativenumber
 
 :map ,s <Action>(SaveDocument)
 :map ,w <Action>(CloseEditor)
