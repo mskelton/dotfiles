@@ -1,5 +1,3 @@
-print("vscode", vim.g.vscode)
-
 if vim.g.vscode == nil then
 	require("core.globals")
 	require("core.options")
