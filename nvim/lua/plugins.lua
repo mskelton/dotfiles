@@ -57,6 +57,7 @@ return require("packer").startup(function(use)
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
+			"jose-elias-alvarez/typescript.nvim",
 			"ray-x/lsp_signature.nvim",
 			"onsails/lspkind-nvim",
 			"folke/lua-dev.nvim",

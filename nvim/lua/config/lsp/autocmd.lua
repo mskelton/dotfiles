@@ -1,4 +1,5 @@
 local utils = require("config.lsp.utils")
+local tsserver = require("config.lsp.tsserver")
 local group = vim.api.nvim_create_augroup("lsp", {})
 
 local formatters = {
@@ -40,17 +41,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		client.server_capabilities.documentFormattingProvider = format
 		client.server_capabilities.documentRangeFormattingProvider = format
 
-		-- Organize imports for TypeScript files. Unfortunate to have to do two
-		-- separate actions, but unfortunately it's the way the language server is
-		-- setup.
 		if client.name == "tsserver" then
-			vim.keymap.set("n", "go", function()
-				utils.run_code_action("source.addMissingImports.ts")
-			end, opts)
+			-- Organize imports for TypeScript files. Unfortunate to have to do two
+			-- separate actions, but unfortunately it's the way the language server is
+			-- setup.
+			vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
+			vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
 
-			vim.keymap.set("n", "gO", function()
-				utils.run_code_action("source.removeUnused.ts")
-			end, opts)
+			vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
 		end
 	end,
 })
