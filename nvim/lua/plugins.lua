@@ -133,12 +133,6 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"goolord/alpha-nvim",
-		config = conf("alpha"),
-		disable = true,
-	})
-
-	use({
 		"akinsho/toggleterm.nvim",
 		config = conf("toggleterm"),
 	})
