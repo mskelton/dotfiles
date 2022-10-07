@@ -14,6 +14,23 @@ local function get_options_name(args, snip)
 end
 
 return {
+	-- TypeScript
+	s(
+		"tt",
+		fmt("{}type {} = {}", {
+			c(1, { t("export "), t("") }),
+			i(2),
+			i(0),
+		})
+	),
+	s(
+		"tin",
+		fmt("{}interface {} {{\n\t{}\n}}", {
+			c(1, { t("export "), t("") }),
+			i(2),
+			i(0),
+		})
+	),
 	-- React hooks
 	s("ro", fmt(snip_utils.export_interface, { f(get_options_name), i(1) })),
 	s("ron", f(get_options_name)),
