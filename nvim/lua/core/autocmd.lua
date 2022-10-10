@@ -22,3 +22,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	command = "setlocal spell spelllang=en_us",
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
+	group = vim.api.nvim_create_augroup("log_no_wrap", {}),
+	pattern = "*.log",
+	command = "setlocal nowrap",
+})

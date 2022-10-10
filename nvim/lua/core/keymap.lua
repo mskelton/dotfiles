@@ -105,5 +105,5 @@ end)
 -- Pomo
 map("n", "<leader>pms", "<cmd>Pomo start --notify<cr>")
 map("n", "<leader>pmf", "<cmd>Pomo start 10m --notify<cr>")
-map("n", "<leader>pme", "<cmd>Pomo stop --notify<cr>")
+map("n", "<leader>pmS", "<cmd>Pomo stop --notify<cr>")
 map("n", "<leader>pmb", "<cmd>Pomo break --notify<cr>")

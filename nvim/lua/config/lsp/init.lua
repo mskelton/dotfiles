@@ -32,6 +32,9 @@ return function()
 			},
 		},
 		eslint = {},
+		tailwindcss = {
+			root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
+		},
 	}
 
 	-- Install all servers
