@@ -20,9 +20,6 @@ return function()
 				json = { schemas = require("config.lsp.json-schemas") },
 			},
 		},
-		-- emmet_ls = {
-		-- 	cmd = { "/usr/local/bin/emmet-ls", "--stdio" },
-		-- },
 		stylelint_lsp = {
 			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
 			settings = {
@@ -43,7 +40,6 @@ return function()
 
 	-- Update the LSP capabilities to support completions and snippets.
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 	-- Setup all LSP clients
