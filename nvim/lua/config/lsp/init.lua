@@ -53,6 +53,33 @@ return function()
 	require("typescript").setup({
 		server = {
 			handlers = require("config.lsp.tsserver").handlers,
+			init_options = {
+				hostInfo = "neovim",
+				plugins = {
+					{
+						name = "typescript-styled-plugin",
+						location = "/Users/mark/dev/typescript-styled-plugin",
+					},
+				},
+			},
+			-- on_init = function(client)
+			-- 	local params = {
+			-- 		command = "typescript.configurePlugin",
+			-- 		arguments = {
+			-- 			"typescript-styled-plugin",
+			-- 			{
+			-- 				validate = false,
+			-- 				-- emmet = {
+			-- 				-- 	showSuggestionsAsSnippets = true,
+			-- 				-- },
+			-- 			},
+			-- 		},
+			-- 	}
+			--
+			-- 	client.request("workspace/executeCommand", params, function()
+			-- 		print("done")
+			-- 	end)
+			-- end,
 		},
 	})
 end

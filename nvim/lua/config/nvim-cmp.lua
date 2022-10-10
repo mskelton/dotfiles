@@ -63,7 +63,22 @@ return function()
 			end,
 		},
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
+			{
+				name = "nvim_lsp",
+				entry_filter = function(entry)
+					local completion_item = entry:get_completion_item()
+					if completion_item.labelDetails == nil then
+						return true
+					end
+
+					local description = completion_item.labelDetails.description
+					if description == "Emmet Abbreviation" then
+						completion_item.kind = 15
+					end
+
+					return true
+				end,
+			},
 			{ name = "luasnip" },
 			{ name = "buffer" },
 		}),
