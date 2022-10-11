@@ -103,7 +103,7 @@ map("n", "<leader>pc", function()
 end)
 
 -- Pomo
-map("n", "<leader>pms", "<cmd>Pomo start --notify<cr>")
-map("n", "<leader>pmf", "<cmd>Pomo start 10m --notify<cr>")
-map("n", "<leader>pmS", "<cmd>Pomo stop --notify<cr>")
-map("n", "<leader>pmb", "<cmd>Pomo break --notify<cr>")
+map("n", "<leader>pms", "<cmd>Pomo start<cr>")
+map("n", "<leader>pmf", "<cmd>Pomo start 10m<cr>")
+map("n", "<leader>pmS", "<cmd>Pomo stop<cr>")
+map("n", "<leader>pmb", "<cmd>Pomo break<cr>")
