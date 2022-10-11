@@ -40,3 +40,6 @@
       create: true
       glob: true
       if: '[ -n "$WIDEN" ]'
+    ~/.config/gh-dash/config.yml:
+      path: widen/gh-dash/config.yml
+      if: '[ -n "$WIDEN" ]'
