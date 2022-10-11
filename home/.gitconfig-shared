@@ -10,7 +10,7 @@
   ca = !git add -A && git commit -m
   name = branch -m
   del = branch -D
-  message = commit --amend -m
+  msg = commit --amend -m
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   new = !git checkout $(git default) -b $2
