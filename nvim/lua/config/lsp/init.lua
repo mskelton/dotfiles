@@ -1,5 +1,6 @@
 return function()
 	local util = require("lspconfig.util")
+	local tsserver = require("config.lsp.tsserver")
 
 	-- Setup autocmds and null-ls
 	require("config.lsp.autocmd")
@@ -45,41 +46,21 @@ return function()
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do
 		config.capabilities = capabilities
-
 		require("lspconfig")[server].setup(config)
 	end
 
 	-- Setup TypeScript separately through the plugin
 	require("typescript").setup({
 		server = {
-			handlers = require("config.lsp.tsserver").handlers,
 			init_options = {
-				hostInfo = "neovim",
-				plugins = {
-					{
-						name = "typescript-styled-plugin",
-						location = "/Users/mark/dev/typescript-styled-plugin",
-					},
-				},
+				plugins = tsserver.get_plugins(),
 			},
-			-- on_init = function(client)
-			-- 	local params = {
-			-- 		command = "typescript.configurePlugin",
-			-- 		arguments = {
-			-- 			"typescript-styled-plugin",
-			-- 			{
-			-- 				validate = false,
-			-- 				-- emmet = {
-			-- 				-- 	showSuggestionsAsSnippets = true,
-			-- 				-- },
-			-- 			},
-			-- 		},
-			-- 	}
-			--
-			-- 	client.request("workspace/executeCommand", params, function()
-			-- 		print("done")
-			-- 	end)
-			-- end,
+			on_init = tsserver.on_init,
+			handlers = tsserver.handlers,
+			cmd = {
+				tsserver.npm_global_bin("typescript-language-server"),
+				"--stdio",
+			},
 		},
 	})
 end
