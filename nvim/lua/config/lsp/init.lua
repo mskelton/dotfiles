@@ -53,12 +53,6 @@ return function()
 	require("typescript").setup({
 		server = {
 			handlers = require("config.lsp.tsserver").handlers,
-			cmd = {
-				"/Users/mark/dev/typescript-language-server/lib/cli.js",
-				"--stdio",
-				-- "--tsserver-log-verbosity=verbose",
-				"--log-level=4",
-			},
 			init_options = {
 				hostInfo = "neovim",
 				plugins = {
@@ -68,26 +62,24 @@ return function()
 					},
 				},
 			},
-			on_init = function(client)
-				local params = {
-					command = "_typescript.configurePlugin",
-					arguments = {
-						"typescript-styled-plugin",
-						{
-							validate = false,
-							-- emmet = {
-							-- 	showSuggestionsAsSnippets = true,
-							-- },
-						},
-					},
-				}
-
-				client.request("workspace/executeCommand", params, function()
-					print("done")
-				end)
-			end,
+			-- on_init = function(client)
+			-- 	local params = {
+			-- 		command = "typescript.configurePlugin",
+			-- 		arguments = {
+			-- 			"typescript-styled-plugin",
+			-- 			{
+			-- 				validate = false,
+			-- 				-- emmet = {
+			-- 				-- 	showSuggestionsAsSnippets = true,
+			-- 				-- },
+			-- 			},
+			-- 		},
+			-- 	}
+			--
+			-- 	client.request("workspace/executeCommand", params, function()
+			-- 		print("done")
+			-- 	end)
+			-- end,
 		},
 	})
-
-	vim.lsp.set_log_level("debug")
 end
