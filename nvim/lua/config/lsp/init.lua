@@ -13,7 +13,13 @@ return function()
 	-- when it comes to code actions. Code actions will be prioritized bottom
 	-- to top in this table.
 	local servers = {
-		gopls = {},
+		gopls = {
+			settings = {
+				gopls = {
+					buildFlags = { "-tags=tools" },
+				},
+			},
+		},
 		sourcekit = {},
 		sumneko_lua = {},
 		jsonls = {
