@@ -46,10 +46,9 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 ## Miscellaneous system setup
 
-### macOS settings
-
 ```bash
-./macos-setup.sh
+./scripts/macos-setup.sh
+./scripts/npm-setup.sh
 ```
 
 ### Nerd Fonts
