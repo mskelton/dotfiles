@@ -1,3 +1,6 @@
 [submodule "widen"]
 	path = widen
 	url = git@github.com:mskelton/dotfiles-widen.git
+[submodule "dottie"]
+	path = dottie
+	url = https://github.com/mskelton/dottie
