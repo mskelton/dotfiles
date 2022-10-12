@@ -5,10 +5,11 @@
 # configuration, so the YAML format was less desirable.
 
 function install {
-	link kitty ~/.config/kitty/
-	link nvim ~/.config/nvim/
-	link nvim ~/.config/nvim/
-	link tmux ~/.config/tmux/
+	link bin ~/.local/bin
+	link kitty ~/.config/kitty
+	link nvim ~/.config/nvim
+	link nvim ~/.config/nvim
+	link tmux ~/.config/tmux
 
 	link pomo/config.json ~/.config/pomo/config.json
 	link emacs.d/init.el ~/.emacs.d/init.el
