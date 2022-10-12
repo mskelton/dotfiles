@@ -13,6 +13,7 @@ return function()
 	-- when it comes to code actions. Code actions will be prioritized bottom
 	-- to top in this table.
 	local servers = {
+		bashls = {},
 		gopls = {
 			settings = {
 				gopls = {
