@@ -1,0 +1,25 @@
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me -org:widen
+  - title: Needs My Review
+    filters: is:open review-requested:@me -org:widen
+  - title: Involved
+    filters: is:open -author:@me involves:@me -org:widen
+issuesSections:
+  - title: Created
+    filters: is:open author:@me -org:widen
+  - title: Assigned
+    filters: is:open assignee:@me -org:widen
+  - title: Involved
+    filters: is:open -author:@me involves:@me -org:widen
+defaults:
+  prsLimit: 20
+  issuesLimit: 20
+  preview:
+    open: true
+    width: 80
+repoPaths:
+  mskelton/*: ~/dev/*
+keybindings:
+pager:
+  diff: less
