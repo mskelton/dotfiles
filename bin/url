@@ -1,0 +1,6 @@
+#!/bin/bash
+# Print each URL in the input stream
+
+while IFS= read line; do
+	echo $line | grep -oE 'https?://\S+'
+done
