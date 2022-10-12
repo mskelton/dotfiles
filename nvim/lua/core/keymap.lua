@@ -107,3 +107,10 @@ map("n", "<leader>pms", "<cmd>Pomo start<cr>")
 map("n", "<leader>pmf", "<cmd>Pomo start 10m<cr>")
 map("n", "<leader>pmS", "<cmd>Pomo stop<cr>")
 map("n", "<leader>pmb", "<cmd>Pomo break<cr>")
+
+-- File management
+map("n", "<leader>df", function()
+	if vim.fn.confirm("Delete file?", "&Yes\n&No") == 1 then
+		vim.cmd("Delete!")
+	end
+end)
