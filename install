@@ -3,12 +3,17 @@
 source ./dottie/dottie.sh
 
 # Clean old files
+rm -f ~/.config/fish/functions/bob.fish
+rm -f ~/.config/fish/functions/commit-url!.fish
+rm -f ~/.config/fish/functions/commit-url.fish
+rm -f ~/.config/fish/functions/mp4.fish
+rm -f ~/.config/fish/functions/restart-nginx.fish
+rm -f ~/.config/fish/functions/set-nginx-account.fish
 rm -f ~/.config/fish/functions/source-fish.fish
 rm -f ~/.config/fish/functions/update-tag.fish
 rm -f ~/.config/fish/functions/url!.fish
 rm -f ~/.config/fish/functions/url.fish
-rm -f ~/.config/fish/functions/set-nginx-account.fish
-rm -f ~/.config/fish/functions/restart-nginx.fish
+rm -f ~/.config/fish/functions/zoom.fish
 
 # Link files and directories
 link bin ~/.local/bin
