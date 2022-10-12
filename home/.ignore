@@ -11,5 +11,3 @@ js/npm-managed-libs/
 *.png
 *.jar
 
-# dotbot submodule
-dotbot/
