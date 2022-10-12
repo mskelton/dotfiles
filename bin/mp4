@@ -1,6 +1,4 @@
 #!/bin/bash
 # Convert an MOV file to MP4 using ffmpeg
 
-function mp4 {
-	ffmpeg -i $1 -vcodec h264 -acodec mp2 $1
-}
+ffmpeg -i $1 -vcodec h264 -acodec mp2 $1

@@ -1,0 +1,16 @@
+#!/bin/bash
+# Print the GitHub URL of a commit
+
+# Default to the latest commit if no commit was provided
+commit=${1:-$(git rev-parse --short HEAD)}
+
+# Read the repo base URL from the git config
+url=$(git config --get remote.origin.url)
+
+# take the git@hostname.com:account/repo.git format and turn it into
+# https://hostname.com/account/repo/commit/...
+if [[ $url != "https://"* ]]; then
+	url=$(echo $url | sed 's/\.git$//' | sed 's/:/\//' | sed 's/^git@/https:\/\//')
+fi
+
+echo "$url/commit/$commit"

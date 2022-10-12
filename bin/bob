@@ -1,0 +1,18 @@
+#!/bin/bash
+# Your automation friend
+
+# Ensure a script argument was provided
+if [[ -z $1 ]]; then
+	echo "no script provided"
+	exit 1
+fi
+
+# Ensure the script exists
+resolved_script="$HOME/dev/bob/$1.fish"
+if [ ! -f $resolved_script ]; then
+	echo "script not found"
+	exit 1
+fi
+
+# Run the requested script
+$resolved_script

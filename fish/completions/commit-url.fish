@@ -5,3 +5,4 @@ function __fish_git_commits
 end
 
 complete -f -c commit-url -ka '(__fish_git_commits)'
+
