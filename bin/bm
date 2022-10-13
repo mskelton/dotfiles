@@ -1,0 +1,75 @@
+#!/bin/bash
+# Open Chrome bookmark
+
+filter=$(
+	cat <<EOF
+    .roots
+	  | to_entries[].value
+	  | recurse(.children[]?)
+	  | select(.type == "url")
+	  | {
+	      name,
+	      url,
+	      slug: .name
+	        | gsub("'"; "")
+	        | gsub("[^a-zA-Z0-9]"; "-")
+	        | gsub("-{2,}"; "-")
+	        | gsub("(^-|-\$)"; "")
+	        | ascii_downcase
+	    }
+EOF
+)
+
+function list_bookmarks {
+	cat "$BOOKMARKS_PATH" | jq "$filter"
+}
+
+function filter_bookmarks {
+	jq -c --arg key $1 --arg value "$2" 'select(.[$key] | startswith($value))'
+}
+
+function find_bookmark {
+	jq -c --arg key $1 --arg value "$2" 'select(.[$key] == $value)'
+}
+
+if [[ -z $BOOKMARKS_PATH ]]; then
+	echo 'No bookmarks found. Make sure you have BOOKMARKS_PATH set in your shell.'
+	exit 1
+fi
+
+# If bm is called without argument, show all bookmarks
+slug=${1:-}
+
+# Print raw JSON when requested for completions
+if [[ "$slug" == '--json' ]]; then
+	list_bookmarks | jq -cM
+	exit 0
+fi
+
+# Filter the bookmarks by the provided slug
+bookmarks=$(list_bookmarks | filter_bookmarks 'slug' $slug)
+
+# If no bookmarks matched the query, exit early
+if [[ -z "$bookmarks" ]]; then
+	echo 'No bookmark found matching the provided slug'
+	exit 1
+fi
+
+# If the slug matches an item exactly, open it without prompting to choose other
+# options.
+match=$(echo "$bookmarks" | find_bookmark 'slug' "$slug")
+if [[ -n "$match" ]]; then
+	echo "$match" | jq '.url' | xargs open
+	exit 0
+fi
+
+# Get the exact name of the bookmark
+name=$(echo -e "$bookmarks" | jq -r '.name' | fzf --no-info)
+
+# Find the bookmark by name and open the URL in Chrome. If no bookmark is
+# selected from the list, exit with an error.
+if [[ -n "$name" ]]; then
+	echo "$bookmarks" | find_bookmark 'name' $name | jq '.url' | xargs open
+else
+	exit 1
+fi
