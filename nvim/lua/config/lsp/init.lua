@@ -7,7 +7,7 @@ return function()
 	require("config.lsp.null-ls")
 
 	-- Better completion for Neovim Lua
-	require("lua-dev").setup({})
+	require("neodev").setup({})
 
 	-- Custom config per LSP. The order of keys in this table is very important
 	-- when it comes to code actions. Code actions will be prioritized bottom
@@ -47,8 +47,7 @@ return function()
 	require("mason-lspconfig").setup({ automatic_installation = true })
 
 	-- Update the LSP capabilities to support completions and snippets.
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do

@@ -34,6 +34,10 @@ alias vi="nvim"
 alias v="nvim"
 alias oldvim="/usr/bin/vim"
 
+# Use new bash
+alias bash="/usr/local/bin/bash"
+alias oldbash="/bin/bash"
+
 # Kitty
 alias icat="kitty +kitten icat"
 

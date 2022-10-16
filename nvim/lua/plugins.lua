@@ -11,6 +11,7 @@ require("packer").init({
 
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
+	use("lewis6991/impatient.nvim")
 
 	-- Treesitter
 	use({
@@ -60,7 +61,7 @@ return require("packer").startup(function(use)
 			"jose-elias-alvarez/typescript.nvim",
 			"ray-x/lsp_signature.nvim",
 			"onsails/lspkind-nvim",
-			"folke/lua-dev.nvim",
+			"folke/neodev.nvim",
 		},
 	})
 
