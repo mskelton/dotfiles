@@ -56,8 +56,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = group,
-	callback = function()
-		vim.lsp.buf.format()
+	callback = function(opts)
+		local clients = vim.lsp.get_active_clients({ bufnr = opts.buf })
+
+		-- Only run formatting if there are connected LSP clients
+		if vim.tbl_count(clients) ~= 0 then
+			vim.lsp.buf.format()
+		end
 	end,
 })
 

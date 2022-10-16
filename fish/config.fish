@@ -1,5 +1,8 @@
 set -g fish_greeting
 
+# Starship theme
+starship init fish | source
+
 source $HOME/.alias
 source $HOME/.config/fish/colors.fish
 
