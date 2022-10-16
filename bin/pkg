@@ -1,0 +1,11 @@
+#!/usr/local/bin/bash
+# Parse package.json files
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+if [[ -f package.json ]]; then
+	jq ".$1" package.json
+else
+	echo -e "${RED}Error:${NC} Couldn't find a package.json file in the current directory."
+fi
