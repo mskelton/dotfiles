@@ -1,10 +1,24 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+'$schema' = 'https://starship.rs/config-schema.json'
+add_newline = false
 
 [character]
-# success_symbol = "[➜](bold green)"
-error_symbol = "[✗](bold red)"
-# vicmd_symbol = "[N](bold red)"
-vimcmd_replace_one_symbol = "[R](bold green)"
-vimcmd_replace_symbol = "[R](bold green)"
-vimcmd_visual_symbol = "[V](bold purple)"
+vicmd_symbol = '[](bold green)'
+vimcmd_replace_one_symbol = '[r](bold red)'
+vimcmd_replace_symbol = '[R](bold red)'
+vimcmd_visual_symbol = '[V](bold purple)'
 
+[golang]
+symbol = ' '
+
+[lua]
+symbol = ' '
+
+[shell]
+format = '[$indicator]($style)'
+fish_indicator = ''
+bash_indicator = 'bsh '
+zsh_indicator = 'zsh '
+disabled = false
+
+[swift]
+symbol = ' '

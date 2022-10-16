@@ -5,6 +5,10 @@ source ./dottie/dottie.sh
 # Clean old files
 rm -f ~/.config/fish/functions/bm.fish
 rm -f ~/.config/fish/functions/tp.fish
+rm -f ~/.config/fish/functions/pkg.fish
+rm -f ~/.config/fish/completions/pkg.fish
+rm -f ~/.config/fish/functions/fisher.fish
+rm -f ~/.config/fish/completions/fisher.fish
 
 # Link files and directories
 link bin ~/.local/bin

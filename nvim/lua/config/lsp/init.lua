@@ -23,6 +23,7 @@ return function()
 		},
 		sourcekit = {},
 		sumneko_lua = {},
+		rust_analyzer = {},
 		jsonls = {
 			settings = {
 				json = { schemas = require("config.lsp.json-schemas") },
