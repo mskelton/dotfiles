@@ -80,6 +80,17 @@ map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")
 map("n", "<leader>vs", "<cmd>G show<cr>")
 map("n", "<leader>vl", "<cmd>G log<cr>")
 
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("diff_keymap", {}),
+	pattern = "diff",
+	callback = function(args)
+		local opts = { buffer = args.buf, silent = true }
+
+		map("n", "gdh", "<cmd>diffget //2<cr>", opts)
+		map("n", "gdl", "<cmd>diffget //3<cr>", opts)
+	end,
+})
+
 -- "entire" text object
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
 map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })

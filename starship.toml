@@ -1,5 +1,5 @@
 '$schema' = 'https://starship.rs/config-schema.json'
-# add_newline = false
+add_newline = false
 
 [character]
 vicmd_symbol = '[](bold green)'
