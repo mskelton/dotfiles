@@ -13,8 +13,14 @@ stashed = ""
 [golang]
 symbol = ' '
 
+[java]
+disabled = true
+
 [lua]
 symbol = ' '
+
+[nodejs]
+disabled = true
 
 [shell]
 format = '[$indicator]($style)'
