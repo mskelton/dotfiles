@@ -22,30 +22,34 @@ fi
 
 # If no name was provided, use the directory name
 name=${2:-$(basename $resolved_dir)}
+session_id=
 
 # Loop over existing session to check if the requested session already exists
 while IFS= read line; do
 	IFS=' ' read -a session <<<"$line"
 
 	if [[ "$name" == "${session[1]}" || "$resolved_dir" == "${session[2]}" ]]; then
-		# Attach if outside of Tmux, otherwise switch to it
-		if [[ -z "$TMUX" ]]; then
-			tmux attach-session -t "${session[0]}"
-		else
-			tmux switch-client -t "${session[0]}"
-		fi
-
-		exit 0
+		session_id="${session[0]}"
+		break
 	fi
 done < <(list_sessions)
 
-if [[ -z "$TMUX" ]]; then
-	# If we are outside a Tmux session, we can create a new session and attach
-	# to it in one pass.
-	tmux new-session -A -c $resolved_dir -s $name
+if [[ -n $session_id ]]; then
+	# Attach if outside of Tmux, otherwise switch to it
+	if [[ -z "$TMUX" ]]; then
+		tmux attach-session -t $session_id
+	else
+		tmux switch-client -t $session_id
+	fi
 else
-	# If we are inside a Tmux session, it's a little more work. First we create
-	# a detached session and then we switch to it.
-	tmux new-session -d -c $resolved_dir -s $name
-	tmux switch-client -t $name
+	if [[ -z "$TMUX" ]]; then
+		# If we are outside a Tmux session, we can create a new session and attach
+		# to it in one pass.
+		tmux new-session -A -c $resolved_dir -s $name
+	else
+		# If we are inside a Tmux session, it's a little more work. First we create
+		# a detached session and then we switch to it.
+		tmux new-session -d -c $resolved_dir -s $name
+		tmux switch-client -t $name
+	fi
 fi
