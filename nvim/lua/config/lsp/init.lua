@@ -24,6 +24,11 @@ return function()
 		sourcekit = {},
 		sumneko_lua = {},
 		rust_analyzer = {},
+		yamlls = {
+			settings = {
+				yaml = { schemas = require("config.lsp.yaml-schemas") },
+			},
+		},
 		jsonls = {
 			settings = {
 				json = { schemas = require("config.lsp.json-schemas") },
@@ -45,7 +50,9 @@ return function()
 
 	-- Install all servers
 	require("mason").setup({ ui = { border = "rounded" } })
-	require("mason-lspconfig").setup({ automatic_installation = true })
+	require("mason-lspconfig").setup({
+		automatic_installation = { exclude = { "emmet_ls", "tsserver" } },
+	})
 
 	-- Update the LSP capabilities to support completions and snippets.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
