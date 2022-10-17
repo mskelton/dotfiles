@@ -28,3 +28,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
 	pattern = "*.log",
 	command = "setlocal nowrap",
 })
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+	group = vim.api.nvim_create_augroup("zet_template", {}),
+	pattern = "*/zettels/*.md",
+	command = "0r ~/.config/nvim/templates/zet.md",
+})
