@@ -1,6 +1,6 @@
 local M = {}
 
-M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
+M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 M.setup = function()
 	for key, value in pairs(M.signs) do
