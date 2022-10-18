@@ -5,6 +5,18 @@ function list_sessions {
 	tmux list-sessions -F "#{session_id} #{session_name} #{session_path}" 2>/dev/null
 }
 
+# Loop over existing session to check if the requested session already exists
+function find_session {
+	while IFS= read line; do
+		IFS=' ' read -a session <<<"$line"
+
+		if [[ "$1" == "${session[1]}" || "$2" == "${session[2]}" ]]; then
+			echo "${session[0]}"
+			return
+		fi
+	done
+}
+
 # Default to the current working directory if not specified
 dir=${1:-$(pwd)}
 resolved_dir=$(readlink -f $dir)
@@ -22,17 +34,7 @@ fi
 
 # If no name was provided, use the directory name
 name=${2:-$(basename $resolved_dir)}
-session_id=
-
-# Loop over existing session to check if the requested session already exists
-while IFS= read line; do
-	IFS=' ' read -a session <<<"$line"
-
-	if [[ "$name" == "${session[1]}" || "$resolved_dir" == "${session[2]}" ]]; then
-		session_id="${session[0]}"
-		break
-	fi
-done < <(list_sessions)
+session_id=$(list_sessions | find_session $name $resolved_dir)
 
 if [[ -n $session_id ]]; then
 	# Attach if outside of Tmux, otherwise switch to it
