@@ -63,7 +63,16 @@ return function()
 			end,
 		},
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
+			{
+				name = "nvim_lsp",
+				entry_filter = function(entry)
+					local client_name = entry.source.source.client.name
+
+					-- Only return Emmet results in Emotion template strings
+					return client_name ~= "emmet_ls"
+						or context.in_treesitter_capture("emotion")
+				end,
+			},
 			{ name = "luasnip" },
 			{ name = "buffer" },
 		}),

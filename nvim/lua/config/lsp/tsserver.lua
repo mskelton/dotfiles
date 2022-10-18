@@ -27,8 +27,7 @@ M.plugins = {
 		location = M.npm_global_lib("typescript-styled-plugin"),
 		config = {
 			validate = false,
-			-- TODO: Once a real Emmet server is installed, uncomment this
-			-- emmet = { showExpandedAbbreviation = "never" },
+			emmet = { showExpandedAbbreviation = "never" },
 		},
 	},
 }

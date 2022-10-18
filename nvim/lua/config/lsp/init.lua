@@ -29,6 +29,12 @@ return function()
 				yaml = { schemas = require("config.lsp.yaml-schemas") },
 			},
 		},
+		emmet_ls = {
+			cmd = {
+				tsserver.npm_global_bin("emmet-ls"),
+				"--stdio",
+			},
+		},
 		jsonls = {
 			settings = {
 				json = { schemas = require("config.lsp.json-schemas") },

@@ -1,6 +1,6 @@
-;; extends
+; extends
 
-;; Declarations
+; Declarations
 (type_alias_declaration
   name: (type_identifier)
   value: (_) @declaration.inner) @declaration.outer
