@@ -1,36 +1,36 @@
--- Disable continuation comments when using o/O. CR will still add the
--- comment leader.
-vim.api.nvim_create_autocmd("BufEnter", {
-	group = vim.api.nvim_create_augroup("disable_continuation_comments", {}),
-	command = "set formatoptions-=c | set formatoptions-=o",
-})
+vim.cmd([[
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("auto_source_dotfiles", {}),
-	pattern = "*/nvim/lua/core/*.lua",
-	command = "source <afile>",
-})
+" Disable continuation comments when using o/O. CR will still add the
+" comment leader.
+augroup disable_continuation_comments
+  au!
+  au BufEnter * set formatoptions-=c | set formatoptions-=o
+augroup END
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
-	group = vim.api.nvim_create_augroup("tsconfig_jsonc", {}),
-	pattern = "tsconfig*.json",
-	command = "set ft=jsonc",
-})
+augroup auto_source_dotfiles
+  au!
+  au BufWritePost */nvim/lua/core/*.lua source <afile>
+augroup END
 
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("markdown_spell_check", {}),
-	pattern = "markdown",
-	command = "setlocal spell spelllang=en_us",
-})
+augroup markdown_spell_check
+  au!
+  au FileType markdown setlocal spell spelllang=en_us
+augroup END
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufNew" }, {
-	group = vim.api.nvim_create_augroup("log_no_wrap", {}),
-	pattern = "*.log",
-	command = "setlocal nowrap",
-})
+augroup log_no_wrap
+  au!
+  au BufEnter,BufNew *.log setlocal nowrap
+augroup END
 
-vim.api.nvim_create_autocmd("BufNewFile", {
-	group = vim.api.nvim_create_augroup("zet_template", {}),
-	pattern = "*/zettels/*.md",
-	command = "0r ~/.config/nvim/templates/zet.md",
-})
+augroup zet_template
+  au!
+  au BufNewFile */zettles/*.md 0r ~/.config/nvim/templates/zet.md
+augroup END
+
+augroup incsearch_hl
+ au!
+ au CmdlineEnter /,\? :set hlsearch
+ au CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+]])

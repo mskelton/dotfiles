@@ -7,6 +7,9 @@ vimcmd_replace_one_symbol = '[r](bold red)'
 vimcmd_replace_symbol = '[R](bold red)'
 vimcmd_visual_symbol = '[V](bold purple)'
 
+[cmd_duration]
+disabled = true
+
 [git_status]
 stashed = ""
 
