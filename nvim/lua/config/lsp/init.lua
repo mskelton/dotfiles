@@ -59,6 +59,7 @@ return function()
 	require("mason-lspconfig").setup({
 		automatic_installation = { exclude = { "emmet_ls", "tsserver" } },
 	})
+	require("mason-null-ls").setup({ automatic_installation = true })
 
 	-- Update the LSP capabilities to support completions and snippets.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()

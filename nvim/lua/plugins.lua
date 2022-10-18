@@ -52,37 +52,31 @@ return require("packer").startup(function(use)
 
 	-- LSP
 	use({
-		"neovim/nvim-lspconfig",
-		config = conf("lsp"),
-		requires = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-			"jose-elias-alvarez/typescript.nvim",
-			"ray-x/lsp_signature.nvim",
-			"onsails/lspkind-nvim",
-			"folke/neodev.nvim",
-		},
+		{ "neovim/nvim-lspconfig", config = conf("lsp") },
+		"jose-elias-alvarez/null-ls.nvim",
+		"jose-elias-alvarez/typescript.nvim",
+		"ray-x/lsp_signature.nvim",
+		"onsails/lspkind-nvim",
+		"folke/neodev.nvim",
+	})
+
+	-- Mason
+	use({
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"jayp0521/mason-null-ls.nvim",
 	})
 
 	-- Completion and snippets
 	use({
-		"hrsh7th/nvim-cmp",
-		config = conf("nvim-cmp"),
-		requires = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"onsails/lspkind-nvim",
-			"saadparwaiz1/cmp_luasnip",
-		},
+		{ "hrsh7th/nvim-cmp", config = conf("nvim-cmp") },
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"saadparwaiz1/cmp_luasnip",
 	})
-
-	use({
-		"L3MON4D3/LuaSnip",
-		config = conf("luasnip"),
-	})
+	use({ "L3MON4D3/LuaSnip", config = conf("luasnip") })
 
 	-- Git
 	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })

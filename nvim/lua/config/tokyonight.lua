@@ -1,11 +1,12 @@
 return function()
 	require("tokyonight").setup({
 		on_highlights = function(hl, c)
-			hl.Function = { fg = c.blue, bold = true }
-			hl.TSKeywordFunction = { fg = c.purple, italic = true }
-			hl.TSConstructor = { fg = c.red }
-			hl.TSTag = { fg = c.red }
-			hl.TSTagAttribute = { fg = c.purple }
+			hl["@function.call"] = { fg = c.blue, bold = true }
+			hl["@keyword"] = { fg = c.purple, italic = true } -- TODO: Remove
+			hl["@keyword.return"] = { fg = c.purple, italic = true }
+			hl["@constructor"] = { fg = c.red }
+			hl["@tag"] = { fg = c.red }
+			hl["@tag.attribute"] = { fg = c.purple }
 
 			-- Make line numbers easier to read
 			hl.LineNr = { fg = c.blue }
