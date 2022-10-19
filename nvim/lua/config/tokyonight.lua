@@ -2,7 +2,7 @@ return function()
 	require("tokyonight").setup({
 		on_highlights = function(hl, c)
 			hl["@function.call"] = { fg = c.blue, bold = true }
-			hl["@keyword"] = { fg = c.purple, italic = true } -- TODO: Remove
+			hl["@method.call"] = { fg = c.blue, bold = true }
 			hl["@keyword.return"] = { fg = c.purple, italic = true }
 			hl["@constructor"] = { fg = c.red }
 			hl["@tag"] = { fg = c.red }
