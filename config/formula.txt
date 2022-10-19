@@ -7,6 +7,7 @@ fzf
 gh
 git
 go
+jesseduffield/lazygit/lazygit
 jq
 neovim
 rename
