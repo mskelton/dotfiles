@@ -12,6 +12,7 @@ link nvim ~/.config/nvim
 link tmux ~/.config/tmux
 
 link emacs.d/init.el ~/.emacs.d/init.el
+link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
 

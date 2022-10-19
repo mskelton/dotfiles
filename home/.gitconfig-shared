@@ -51,8 +51,5 @@
 [log]
   abbrevcommit = true
 
-[format]
-  pretty = oneline
-
 [push]
   autoSetupRemote = true
