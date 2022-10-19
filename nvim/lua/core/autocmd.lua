@@ -24,7 +24,7 @@ augroup END
 
 augroup zet_template
   au!
-  au BufNewFile */zettles/*.md 0r ~/.config/nvim/templates/zet.md
+  au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
 augroup END
 
 augroup incsearch_hl
