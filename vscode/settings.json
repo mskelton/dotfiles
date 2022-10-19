@@ -45,7 +45,6 @@
     "mixins",
     "nginx",
     "pageview",
-    "pendo",
     "pixelfront",
     "preheader",
     "rollbar",
