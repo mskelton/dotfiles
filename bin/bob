@@ -8,7 +8,7 @@ if [[ -z $1 ]]; then
 fi
 
 # Ensure the script exists
-resolved_script="$HOME/dev/bob/$1.fish"
+resolved_script="$HOME/dev/bob/bin/$1"
 if [ ! -f $resolved_script ]; then
 	echo "script not found"
 	exit 1
