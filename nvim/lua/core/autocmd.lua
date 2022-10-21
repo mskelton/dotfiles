@@ -17,11 +17,6 @@ augroup markdown_spell_check
   au FileType markdown setlocal spell spelllang=en_us
 augroup END
 
-augroup log_no_wrap
-  au!
-  au BufEnter,BufNew *.log setlocal nowrap
-augroup END
-
 augroup zet_template
   au!
   au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
