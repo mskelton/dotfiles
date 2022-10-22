@@ -332,5 +332,25 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [",", "s"],
+      "commands": ["workbench.action.files.save"],
+      "silent": true
+    },
+    {
+      "before": [",", "w"],
+      "commands": ["workbench.action.closeActiveEditor"],
+      "silent": true
+    },
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+    }
+  ]
 }
