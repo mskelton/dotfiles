@@ -5,6 +5,7 @@ return function()
 		ensure_installed = {
 			"bash",
 			"css",
+			"cpp",
 			"comment",
 			"dockerfile",
 			"fish",

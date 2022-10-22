@@ -14,6 +14,7 @@ return function()
 	-- to top in this table.
 	local servers = {
 		bashls = {},
+		clangd = {},
 		gopls = {
 			settings = {
 				gopls = {
@@ -21,7 +22,9 @@ return function()
 				},
 			},
 		},
-		sourcekit = {},
+		sourcekit = {
+			filetypes = { "swift" },
+		},
 		sumneko_lua = {},
 		rust_analyzer = {},
 		yamlls = {

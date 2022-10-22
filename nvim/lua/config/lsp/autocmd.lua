@@ -1,8 +1,8 @@
 local utils = require("config.lsp.utils")
-local tsserver = require("config.lsp.tsserver")
 local group = vim.api.nvim_create_augroup("lsp", {})
 
 local formatters = {
+	"clangd",
 	"eslint",
 	"gopls",
 	"null-ls",
