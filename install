@@ -24,6 +24,8 @@ link_contents fish ~/.config/fish/
 if [[ -n "$WIDEN" ]]; then
 	link widen/bin ~/.local/bin-widen
 	link widen/gh-dash/config.yml ~/.config/gh-dash/config.yml
+
+	link_contents widen/home ~/
 	link_contents widen/fish ~/.config/fish/
 else
 	link gh-dash/config.yml ~/.config/gh-dash/config.yml
