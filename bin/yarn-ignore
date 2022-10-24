@@ -1,0 +1,12 @@
+#!/usr/local/bin/bash
+# Prints the directories that should be ignored by Yarn
+
+cat <<EOF >>/dev/stdout
+node_modules/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+EOF
