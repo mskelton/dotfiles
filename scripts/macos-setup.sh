@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 # Enable dark theme
 defaults write -g AppleInterfaceStyle -string "Dark"

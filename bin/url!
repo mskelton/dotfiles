@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 # Opens any URLs in the input stream
 
 while IFS= read line; do

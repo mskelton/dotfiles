@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 # Your automation friend
 
 # Ensure a script argument was provided

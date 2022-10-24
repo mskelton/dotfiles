@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 # Use a user directory so sudo is not required for installation
 npm config set prefix=~/.local/share/npm

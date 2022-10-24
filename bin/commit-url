@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 # Print the GitHub URL of a commit
 
 # Default to the latest commit if no commit was provided
