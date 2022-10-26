@@ -11,6 +11,7 @@
   co = checkout
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   del = branch -D
+  diffd = !git diff $(git default)..HEAD
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
   merge-default = !git merge $(git default)
   merge-last = !git co - && git merge $(git default)
