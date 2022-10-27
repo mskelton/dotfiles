@@ -81,10 +81,6 @@ return function()
 			},
 			on_init = tsserver.on_init,
 			handlers = tsserver.handlers,
-			cmd = {
-				tsserver.npm_global_bin("typescript-language-server"),
-				"--stdio",
-			},
 		},
 	})
 end
