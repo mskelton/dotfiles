@@ -50,3 +50,4 @@ alias gradle="./gradlew"
 alias pb="pbcopy"
 alias sf="source-fish"
 alias lg='lazygit'
+alias python='python3'

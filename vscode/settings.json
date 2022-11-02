@@ -159,7 +159,7 @@
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
   "emmet.triggerExpansionOnTab": true,
-  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning"],
+  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning", "hint"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",

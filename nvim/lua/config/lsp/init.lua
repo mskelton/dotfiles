@@ -78,6 +78,8 @@ return function()
 		server = {
 			init_options = {
 				plugins = tsserver.get_plugins(),
+				-- NOTE: Uncomment to enable verbose logging
+				-- tsserver = { logVerbosity = "verbose" },
 			},
 			on_init = tsserver.on_init,
 			handlers = tsserver.handlers,
