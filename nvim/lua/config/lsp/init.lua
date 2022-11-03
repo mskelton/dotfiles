@@ -60,7 +60,7 @@ return function()
 	-- Install all servers
 	require("mason").setup({ ui = { border = "rounded" } })
 	require("mason-lspconfig").setup({
-		automatic_installation = { exclude = { "emmet_ls", "tsserver" } },
+		automatic_installation = { exclude = { "emmet_ls" } },
 	})
 	require("mason-null-ls").setup({ automatic_installation = true })
 

@@ -31,7 +31,6 @@ alias tk="tmux kill-session"
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"
-alias v="nvim"
 alias oldvim="/usr/bin/vim"
 
 # Use new bash

@@ -80,6 +80,7 @@ map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")
 map("n", "<leader>vs", "<cmd>G show<cr>")
 map("n", "<leader>vl", "<cmd>G log<cr>")
 
+-- WIP: This isn't working yet
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("diff_keymap", {}),
 	pattern = "diff",
