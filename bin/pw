@@ -1,0 +1,45 @@
+#!/usr/local/bin/bash
+# Playwright CLI
+
+function one {
+	lines=$(</dev/stdin)
+
+	if [ -z "$lines" ]; then
+		return 1
+	elif [ $(echo "$lines" | wc -w) -eq 1 ]; then
+		echo "$lines"
+	else
+		echo "$lines" | fzf
+	fi
+}
+
+function view_test_results {
+	result=$(fd -Ipg '**/test-results/**/*.png' | one)
+
+	if [ -n "$result" ]; then
+		open "$result"
+	else
+		echo "No test results found"
+		return 1
+	fi
+}
+
+function open_trace {
+	result=$(fd -Ipg '**/test-results/**/*.zip' | one)
+
+	if [ -n "$result" ]; then
+		yarn playwright show-trace "$result"
+	else
+		echo "No traces found"
+		return 1
+	fi
+}
+
+if [ "$1" == "results" ]; then
+	view_test_results
+elif [ "$1" == "trace" ]; then
+	open_trace
+else
+	echo "Invalid command"
+	exit 1
+fi
