@@ -126,3 +126,9 @@ map("n", "<leader>df", function()
 		vim.cmd("Delete!")
 	end
 end)
+
+-- Force restart LSP
+map("n", "<leader>lr", function()
+	vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
+	vim.cmd.edit()
+end)
