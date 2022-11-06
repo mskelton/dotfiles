@@ -15,6 +15,9 @@ function fish_hybrid_key_bindings
   fzf_key_bindings
   fish_default_key_bindings -M insert
   fish_vi_key_bindings --no-erase
+
+  # Use Ctrl+x since it's something we can map cmd+k to for clearing the screen
+  bind -M insert \cx 'echo -n (clear | string replace \e\[3J ""); commandline -f repaint'
 end
 
 # Use my custom keybindings
