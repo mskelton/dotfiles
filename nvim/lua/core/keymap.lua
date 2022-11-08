@@ -127,6 +127,13 @@ map("n", "<leader>df", function()
 	end
 end)
 
+-- Make file executable
+map(
+	"n",
+	"<leader>cm",
+	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
+)
+
 -- Force restart LSP
 map("n", "<leader>lr", function()
 	vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
