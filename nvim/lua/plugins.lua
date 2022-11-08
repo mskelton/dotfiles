@@ -128,11 +128,6 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"akinsho/toggleterm.nvim",
-		config = conf("toggleterm"),
-	})
-
-	use({
 		"christoomey/vim-tmux-navigator",
 		config = conf("vim-tmux-navigator"),
 	})
