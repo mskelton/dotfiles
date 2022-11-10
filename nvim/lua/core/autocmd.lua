@@ -23,9 +23,14 @@ augroup zet_template
 augroup END
 
 augroup incsearch_hl
- au!
- au CmdlineEnter /,\? :set hlsearch
- au CmdlineLeave /,\? :set nohlsearch
+  au!
+  au CmdlineEnter /,\? :set hlsearch
+  au CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+augroup keymap_nowrap
+  au!
+  au FileType dts set nowrap
 augroup END
 
 ]])

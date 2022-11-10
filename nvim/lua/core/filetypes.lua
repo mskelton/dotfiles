@@ -4,6 +4,7 @@ vim.filetype.add({
 		mq5 = "cpp",
 		mq4 = "cpp",
 		mqh = "cpp",
+		keymap = "dts",
 	},
 	filename = {
 		[".stylelintrc"] = "json",

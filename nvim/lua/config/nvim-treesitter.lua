@@ -7,6 +7,7 @@ return function()
 			"css",
 			"cpp",
 			"comment",
+			"devicetree",
 			"dockerfile",
 			"fish",
 			"gitattributes",
