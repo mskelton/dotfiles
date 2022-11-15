@@ -3,7 +3,6 @@ return function()
 	local map = require("core.utils").map
 
 	ls.config.set_config({
-		history = true,
 		update_events = "TextChanged,TextChangedI",
 		delete_check_events = "TextChanged,InsertLeave",
 	})
