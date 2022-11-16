@@ -4,7 +4,7 @@
 return {
 	{
 		fileMatch = { "package.json" },
-		url = "https://json.schemastore.org/package.json",
+		url = "https://json.schemastore.org/package",
 	},
 	{
 		fileMatch = {
