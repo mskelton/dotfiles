@@ -52,6 +52,8 @@ return function()
 					["id"] = "@declaration.inner",
 					["as"] = "@statement.outer",
 					["is"] = "@statement.inner",
+					["aT"] = "@test.outer",
+					["iT"] = "@test.inner",
 				},
 			},
 		},
