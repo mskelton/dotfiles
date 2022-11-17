@@ -12,8 +12,7 @@ o.clipboard = "unnamedplus"
 -- color column), should it be shown as an issue.
 o.colorcolumn = "81"
 
--- Use a vertical bar in the command line window to reduce the flashing that
--- results from Kitty, Tmux, and Vim not playing well together.
+-- Use a vertical bar cursor in the command line window
 o.guicursor = o.guicursor + "c:ver25"
 
 -- Show trailing spaces
