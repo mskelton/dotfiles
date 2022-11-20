@@ -1,0 +1,43 @@
+#!/usr/local/bin/bash
+# Flash new firmware to the Advantage 360
+
+firmware_path=$HOME/dev/key-config/firmware/
+sleep_time=0.5
+
+function get_board {
+	mount | awk '$3 ~ /ADV360PRO/ {print $3 " " $4}'
+}
+
+function wait_for_board {
+	while [[ -z "$(get_board)" ]]; do
+		sleep $sleep_time
+	done
+}
+
+function wait_for_disconnect {
+	while [[ -n "$(get_board)" ]]; do
+		sleep $sleep_time
+	done
+}
+
+function copy_to_board {
+	rsync "$firmware_path$1" "$(get_board)"
+}
+
+# Get the most recent firmware filenames
+right=$(ls -t1 $firmware_path | head -n 1)
+left=$(echo $right | sed "s/right/left/")
+
+# Flash the left side
+echo "Set left board to bootloader mode..."
+wait_for_board
+copy_to_board "$left"
+
+# Wait for the left side to disconnect before waiting for the right board to connect
+echo "Waiting for left board to disconnect..."
+wait_for_disconnect
+
+# Flash the right side
+echo "Set right board to bootloader mode..."
+wait_for_board
+copy_to_board "$right"

@@ -20,3 +20,6 @@ defaults write -g InitialKeyRepeat -int 15
 
 # Use all F1, F2 as standard keys
 defaults write -g com.apple.keyboard.fnState -bool true
+
+# Disable disk not ejected properly notification
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
