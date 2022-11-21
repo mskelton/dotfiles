@@ -3,4 +3,4 @@
 [
   (LINESTRING)
   (STRINGLITERALSINGLE)
-] @string @spell
+] @string @nospell

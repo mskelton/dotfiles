@@ -1,3 +1,3 @@
 ; extends
 
-(string_content) @spell
+(string_content) @nospell
