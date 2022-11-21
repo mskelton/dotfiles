@@ -6,4 +6,5 @@ aliases:
   prw: pr view -w
   squash: pr merge --squash
   w: repo view -w
+  url: pr view --json url -q .url
 editor: nvim
