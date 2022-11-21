@@ -1,3 +1,6 @@
+--- The type defs for options are buggy
+--- @diagnostic disable: assign-type-mismatch
+
 local g = vim.g
 local o = vim.opt
 
@@ -24,7 +27,7 @@ o.splitright = true
 o.splitbelow = true
 
 -- Spell checking
--- o.spell = true
+o.spell = true
 o.spelllang = "en_us"
 o.spelloptions = "camel,noplainbuffer"
 

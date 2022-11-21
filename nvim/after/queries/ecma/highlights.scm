@@ -1,6 +1,7 @@
 ; extends
 
-; Emotion
+; Don't spell check strings
+(string) @string @nospell
 
 ; styled.div`<css>`
 (call_expression
