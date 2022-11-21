@@ -1,0 +1,9 @@
+aliases:
+  aus: pr merge --squash --auto
+  clone: repo clone mskelton/$1
+  dbot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
+  draft: pr create --draft
+  prw: pr view -w
+  squash: pr merge --squash
+  w: repo view -w
+editor: nvim
