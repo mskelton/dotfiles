@@ -64,6 +64,7 @@ o.smartcase = true
 o.termguicolors = true
 o.undofile = true
 o.updatetime = 100
+o.equalalways = true
 
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")
