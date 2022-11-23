@@ -3,3 +3,4 @@ gui:
   theme:
     selectedLineBgColor: ["#364A82"]
     selectedRangeBgColor: ["#364A82"]
+promptToReturnFromSubprocess: false
