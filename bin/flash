@@ -5,7 +5,7 @@ firmware_path=$HOME/dev/key-config/firmware/
 sleep_time=0.5
 
 function get_board {
-	mount | awk '$3 ~ /ADV360PRO/ {print $3 " " $4}'
+	mount | awk '$3 ~ /ADV360PRO/ {print $3 " " $4}' | sed "s/ (.*//"
 }
 
 function wait_for_board {
@@ -21,14 +21,19 @@ function wait_for_disconnect {
 }
 
 function copy_to_board {
-	rsync "$firmware_path$1" "$(get_board)"
+	sudo rsync "$firmware_path$1" "$(get_board)"
 }
+
+# Pre-authenticate so that we can type the sudo password before the boards are
+# set to bootloader mode so that once in bootloader mode, the firmware can be
+# automatically flashed.
+sudo echo '' >/dev/null
 
 # Get the most recent firmware filenames
 right=$(ls -t1 $firmware_path | head -n 1)
 left=$(echo $right | sed "s/right/left/")
 
-# Flash the left side
+# Flash the left side.
 echo "Set left board to bootloader mode..."
 wait_for_board
 copy_to_board "$left"
