@@ -14,11 +14,11 @@
 -- alternative keys can be used such as "fp" since cmd+p is a common shortcut in
 -- other editors such as VS Code, so it still has meaning. This second principle
 -- allows for more keybindings to be set while still keeping the speed of
--- executing each keybinging relatively stable and fast.
+-- executing each keybinding relatively stable and fast.
 local map = require("core.utils").map
 
 -- Shiftless command mode. I've debated this one some since other tools with Vim
--- emultation don't use this, so it kind of makes life a little harder when
+-- emulation don't use this, so it kind of makes life a little harder when
 -- working between tools. That said, my goal is to use other tools as little as
 -- possible, and tools like IntelliJ have good enough Vim emulation where it
 -- allows replicating this functionality.
@@ -44,13 +44,17 @@ map("n", "<C-u>", "<cmd>lua MoveHalf(-1)<cr>")
 map("n", ",s", "<cmd>w<cr>")
 map("n", ",w", "<cmd>bd<cr>")
 
--- Buffers
+--------------------------------------------------------------------------------
+--- BUFFERS --------------------------------------------------------------------
+--------------------------------------------------------------------------------
 map("n", "<leader>bp", "<cmd>bp<cr>")
 map("n", "<leader>bn", "<cmd>bn<cr>")
 map("n", "<leader>bd", "<cmd>bd<cr>")
 map("n", "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 
--- Find ...
+--------------------------------------------------------------------------------
+--- TELESCOPE ------------------------------------------------------------------
+--------------------------------------------------------------------------------
 map("n", "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
 map("n", "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar to cmd+p
 map("n", "<leader>fs", "<cmd>Telescope live_grep regex=false<cr>") -- "Find exact String"
@@ -62,8 +66,11 @@ map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbo
 map("n", "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+map("n", "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
 
--- Window
+--------------------------------------------------------------------------------
+--- WINDOW ---------------------------------------------------------------------
+--------------------------------------------------------------------------------
 map("n", "<leader>w=", "<C-w>=")
 map("n", "<leader>w+", "<C-w>+")
 map("n", "<leader>w-", "<C-w>-")
@@ -76,7 +83,9 @@ map("n", "<leader>wl", "<C-w>L")
 map("n", "<leader>wo", "<C-w>o")
 map("n", "<leader>wp", "<C-w>P")
 
--- Git (VCS)
+--------------------------------------------------------------------------------
+--- GIT (VCS) ------------------------------------------------------------------
+--------------------------------------------------------------------------------
 map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")
 map("n", "<leader>vs", "<cmd>G show<cr>")
 map("n", "<leader>vl", "<cmd>G log<cr>")
@@ -93,6 +102,49 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+--------------------------------------------------------------------------------
+--- OPERATIONS -----------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+-- Delete file
+map("n", "<leader>odf", function()
+	if vim.fn.confirm("Delete file?", "&Yes\n&No") == 1 then
+		vim.cmd("Delete!")
+	end
+end)
+
+-- Make file executable (chmod)
+map(
+	"n",
+	"<leader>ocm",
+	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
+)
+
+-- Packer sync
+map("n", "<leader>ops", function()
+	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
+	require("packer").sync()
+end)
+
+-- Packer compile
+map("n", "<leader>opc", function()
+	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
+	require("packer").compile()
+	print("Packer compiled successfully!")
+end)
+
+--------------------------------------------------------------------------------
+--- Pomo -----------------------------------------------------------------------
+--------------------------------------------------------------------------------
+map("n", "<leader>pms", "<cmd>Pomo start<cr>")
+map("n", "<leader>pmf", "<cmd>Pomo start 10m<cr>")
+map("n", "<leader>pmS", "<cmd>Pomo stop<cr>")
+map("n", "<leader>pmb", "<cmd>Pomo break<cr>")
+
+--------------------------------------------------------------------------------
+--- TEXT OBJECTS ---------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 -- "entire" text object
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
 map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
@@ -102,41 +154,3 @@ map("v", "aS", "as")
 map("v", "iS", "is")
 map("o", "aS", "as")
 map("o", "iS", "is")
-
--- Packer
-map("n", "<leader>ps", function()
-	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
-	require("packer").sync()
-end)
-
-map("n", "<leader>pc", function()
-	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
-	require("packer").compile()
-	print("Packer compiled successfully!")
-end)
-
--- Pomo
-map("n", "<leader>pms", "<cmd>Pomo start<cr>")
-map("n", "<leader>pmf", "<cmd>Pomo start 10m<cr>")
-map("n", "<leader>pmS", "<cmd>Pomo stop<cr>")
-map("n", "<leader>pmb", "<cmd>Pomo break<cr>")
-
--- File management
-map("n", "<leader>df", function()
-	if vim.fn.confirm("Delete file?", "&Yes\n&No") == 1 then
-		vim.cmd("Delete!")
-	end
-end)
-
--- Make file executable
-map(
-	"n",
-	"<leader>cm",
-	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
-)
-
--- Force restart LSP
-map("n", "<leader>lr", function()
-	vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
-	vim.cmd.edit()
-end)
