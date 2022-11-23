@@ -33,6 +33,11 @@ augroup keymap_nowrap
   au FileType dts set nowrap
 augroup END
 
+augroup auto_mkdir
+  au!
+  au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
+
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
