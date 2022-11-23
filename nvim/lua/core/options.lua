@@ -27,7 +27,6 @@ o.splitright = true
 o.splitbelow = true
 
 -- Spell checking
-o.spell = true
 o.spelllang = "en_us"
 o.spelloptions = "camel,noplainbuffer"
 

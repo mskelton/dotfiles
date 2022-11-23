@@ -36,4 +36,12 @@ M.home_dir = function()
 	return os.getenv("HOME")
 end
 
+M.to_bool = function(value)
+	if value then
+		return true
+	end
+
+	return false
+end
+
 return M

@@ -101,3 +101,5 @@ cli
 svg
 runtime
 analytics
+vscode
+treesitter
