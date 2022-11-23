@@ -1,5 +1,6 @@
 return function()
 	local cmp = require("cmp")
+	local luasnip = require("luasnip")
 	local context = require("cmp.config.context")
 	local format = require("lspkind").cmp_format({
 		mode = "symbol_text",
@@ -44,19 +45,27 @@ return function()
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-Space>"] = cmp.mapping.complete({}),
 			["<C-e>"] = cmp.mapping.abort(),
-			-- Tab and S-Tab to navigate results. This is preferred over C-n and C-p
-			-- to prevent command line completion from interferring with navigating
-			-- the command history.
-			["<Tab>"] = function(fallback)
+			["<C-j>"] = function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				else
 					fallback()
 				end
 			end,
-			["<S-Tab>"] = function(fallback)
+			["<C-k>"] = function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
+				else
+					fallback()
+				end
+			end,
+			["<C-l>"] = function(fallback)
+				if cmp.visible() then
+					cmp.confirm({ select = true })
+				elseif luasnip.expandable() then
+					luasnip.expand({})
+				elseif luasnip.choice_active() then
+					luasnip.change_choice(1)
 				else
 					fallback()
 				end
