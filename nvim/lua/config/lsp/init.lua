@@ -51,7 +51,46 @@ return function()
 				},
 			},
 		},
-		eslint = {},
+		eslint = {
+			cmd = {
+				tsserver.npm_global_bin("vscode-eslint-language-server"),
+				"--stdio",
+			},
+			settings = {
+				validate = "on",
+				packageManager = "npm",
+				problems = {
+					shortenToSingleLine = false,
+				},
+				experimental = {
+					useFlatConfig = false,
+				},
+				useESLintClass = false,
+				codeActionOnSave = {
+					enable = false,
+					mode = "all",
+				},
+				format = true,
+				quiet = false,
+				onIgnoredFiles = "off",
+				rulesCustomizations = {},
+				run = "onType",
+				-- nodePath configures the directory in which the eslint server should start its node_modules resolution.
+				-- This path is relative to the workspace folder (root dir) of the server instance.
+				nodePath = "",
+				-- use the workspace folder location or the file location (if no workspace folder is open) as the working directory
+				workingDirectory = { mode = "location" },
+				codeAction = {
+					disableRuleComment = {
+						enable = true,
+						location = "separateLine",
+					},
+					showDocumentation = {
+						enable = true,
+					},
+				},
+			},
+		},
 		tailwindcss = {
 			root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
 		},
