@@ -32,12 +32,7 @@ return function()
 				yaml = { schemas = require("config.lsp.yaml-schemas") },
 			},
 		},
-		emmet_ls = {
-			cmd = {
-				tsserver.npm_global_bin("emmet-ls"),
-				"--stdio",
-			},
-		},
+		emmet_ls = {},
 		jsonls = {
 			settings = {
 				json = { schemas = require("config.lsp.json-schemas") },
@@ -95,13 +90,6 @@ return function()
 			root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
 		},
 	}
-
-	-- Install all servers
-	require("mason").setup({ ui = { border = "rounded" } })
-	require("mason-lspconfig").setup({
-		automatic_installation = { exclude = { "emmet_ls" } },
-	})
-	require("mason-null-ls").setup({ automatic_installation = true })
 
 	-- Update the LSP capabilities to support completions and snippets.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()

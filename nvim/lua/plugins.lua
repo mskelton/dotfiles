@@ -62,7 +62,7 @@ return require("packer").startup(function(use)
 
 	-- Mason
 	use({
-		"williamboman/mason.nvim",
+		{ "williamboman/mason.nvim", config = conf("mason") },
 		"williamboman/mason-lspconfig.nvim",
 		"jayp0521/mason-null-ls.nvim",
 	})
