@@ -33,7 +33,7 @@ if [[ ! -d "$resolved_dir" ]]; then
 fi
 
 # If no name was provided, use the directory name
-name="${2:-$(basename $resolved_dir)}"
+name="${2:-$(basename $resolved_dir | sed 's/[^A-z\d]/-/g')}"
 session_id=$(list_sessions | find_session "$name" "$resolved_dir")
 
 if [[ -n $session_id ]]; then
