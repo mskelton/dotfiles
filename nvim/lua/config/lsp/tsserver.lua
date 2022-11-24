@@ -1,30 +1,13 @@
 local utils = require("core.utils")
-local path = require("core.utils.path")
+local npm = require("config.lsp.npm-utils")
 
 local M = {}
-
--- Returns the location where global npm packages are installed.
-M.npm_global_path = function()
-	return path.join(utils.home_dir(), ".local/share/npm")
-end
-
--- Returns the location of a global npm binary. This can be used to set the cmd
--- of an lsp server to a globally linked package.
-M.npm_global_bin = function(pkg)
-	return path.join(M.npm_global_path(), "bin", pkg)
-end
-
--- Returns the location of a global npm plugin. This is used to instruct
--- tsserver of plugin locations so they can be properly loaded.
-M.npm_global_lib = function(pkg)
-	return path.join(M.npm_global_path(), "lib", pkg)
-end
 
 -- Global plugins to be loaded when starting tsserver
 M.plugins = {
 	{
 		name = "typescript-styled-plugin",
-		location = M.npm_global_lib("typescript-styled-plugin"),
+		location = npm.global_lib("typescript-styled-plugin"),
 		config = {
 			validate = false,
 			emmet = { showExpandedAbbreviation = "never" },

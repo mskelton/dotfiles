@@ -18,23 +18,23 @@ function find_session {
 }
 
 # Default to the current working directory if not specified
-dir=${1:-$(pwd)}
-resolved_dir=$(readlink -f $dir)
+dir="${1:-$(pwd)}"
+resolved_dir=$(readlink -f "$dir")
 
 # If a directory is provided but does not exist, attempt to find it in the
 # current directory.
-if [[ ! -d $resolved_dir ]]; then
-	resolved_dir=$(pwd)/$dir
+if [[ ! -d "$resolved_dir" ]]; then
+	resolved_dir="$(pwd)/$dir"
 fi
 
 # If the directory is still not found, assume it's in ~/dev
-if [[ ! -d $resolved_dir ]]; then
-	resolved_dir=$HOME/dev/$dir
+if [[ ! -d "$resolved_dir" ]]; then
+	resolved_dir="$HOME/dev/$dir"
 fi
 
 # If no name was provided, use the directory name
-name=${2:-$(basename $resolved_dir)}
-session_id=$(list_sessions | find_session $name $resolved_dir)
+name="${2:-$(basename $resolved_dir)}"
+session_id=$(list_sessions | find_session "$name" "$resolved_dir")
 
 if [[ -n $session_id ]]; then
 	# Attach if outside of Tmux, otherwise switch to it
@@ -47,11 +47,11 @@ else
 	if [[ -z "$TMUX" ]]; then
 		# If we are outside a Tmux session, we can create a new session and attach
 		# to it in one pass.
-		tmux new-session -A -c $resolved_dir -s $name
+		tmux new-session -A -c "$resolved_dir" -s "$name"
 	else
 		# If we are inside a Tmux session, it's a little more work. First we create
 		# a detached session and then we switch to it.
-		tmux new-session -d -c $resolved_dir -s $name
-		tmux switch-client -t $name
+		tmux new-session -d -c "$resolved_dir" -s "$name"
+		tmux switch-client -t "$name"
 	fi
 fi
