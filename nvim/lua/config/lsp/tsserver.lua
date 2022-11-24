@@ -7,7 +7,7 @@ local M = {}
 M.plugins = {
 	{
 		name = "typescript-styled-plugin",
-		location = npm.global_lib("typescript-styled-plugin"),
+		location = npm.mason_lib("typescript-styled-plugin"),
 		config = {
 			validate = false,
 			emmet = { showExpandedAbbreviation = "never" },
