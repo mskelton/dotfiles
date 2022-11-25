@@ -1,6 +1,7 @@
 return function()
 	local util = require("lspconfig.util")
 	local tsserver = require("config.lsp.tsserver")
+	local npm = require("config.npm-utils")
 
 	-- Setup autocmds and null-ls
 	require("config.lsp.autocmd")
@@ -48,7 +49,7 @@ return function()
 		},
 		eslint = {
 			cmd = {
-				tsserver.npm_global_bin("vscode-eslint-language-server"),
+				npm.global_bin("vscode-eslint-language-server"),
 				"--stdio",
 			},
 			settings = {

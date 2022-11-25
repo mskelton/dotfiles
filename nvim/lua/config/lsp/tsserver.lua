@@ -1,5 +1,5 @@
 local utils = require("core.utils")
-local npm = require("config.lsp.npm-utils")
+local npm = require("config.npm-utils")
 
 local M = {}
 
