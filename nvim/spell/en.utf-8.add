@@ -104,3 +104,6 @@ analytics
 vscode
 treesitter
 keymap
+ESLint
+nodejs
+eslint
