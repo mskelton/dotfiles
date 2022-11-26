@@ -132,6 +132,12 @@ return require("packer").startup(function(use)
 		config = conf("vim-tmux-navigator"),
 	})
 
+	use({
+		"nvim-lua/plenary.nvim",
+		config = conf("harpoon"),
+		requires = "ThePrimeagen/harpoon",
+	})
+
 	use("tpope/vim-abolish")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
