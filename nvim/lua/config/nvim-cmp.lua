@@ -27,9 +27,9 @@ return function()
 
 			-- Disable completion when editing comments
 			return not (
-					context.in_treesitter_capture("comment")
-					or context.in_syntax_group("Comment")
-				)
+				context.in_treesitter_capture("comment")
+				or context.in_syntax_group("Comment")
+			)
 		end,
 		snippet = {
 			expand = function(args)

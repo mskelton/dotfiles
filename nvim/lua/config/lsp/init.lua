@@ -71,10 +71,7 @@ return function()
 				onIgnoredFiles = "off",
 				rulesCustomizations = {},
 				run = "onType",
-				-- nodePath configures the directory in which the eslint server should start its node_modules resolution.
-				-- This path is relative to the workspace folder (root dir) of the server instance.
 				nodePath = "",
-				-- use the workspace folder location or the file location (if no workspace folder is open) as the working directory
 				workingDirectory = { mode = "location" },
 				codeAction = {
 					disableRuleComment = {
@@ -107,7 +104,10 @@ return function()
 			init_options = {
 				plugins = tsserver.get_plugins(),
 				-- NOTE: Uncomment to enable verbose logging
-				-- tsserver = { logVerbosity = "verbose" },
+				-- tsserver = {
+				-- 	logDirectory = "/tmp/tsserver-logs",
+				-- 	logVerbosity = "verbose",
+				-- },
 			},
 			on_init = tsserver.on_init,
 			handlers = tsserver.handlers,
