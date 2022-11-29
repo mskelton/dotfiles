@@ -23,6 +23,7 @@ return function()
 				},
 			},
 		},
+		pyright = {},
 		sourcekit = {
 			filetypes = { "swift" },
 		},
@@ -33,6 +34,7 @@ return function()
 				yaml = { schemas = require("config.lsp.yaml-schemas") },
 			},
 		},
+		-- Frontend
 		emmet_ls = {},
 		jsonls = {
 			settings = {
