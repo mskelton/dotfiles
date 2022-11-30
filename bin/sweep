@@ -1,0 +1,4 @@
+#!/usr/local/bin/bash
+# Cleans up files in common locations
+
+rm -r ~/Downloads/*
