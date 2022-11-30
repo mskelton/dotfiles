@@ -111,3 +111,8 @@ autocomplete
 mixin
 spinset
 spinsets
+timestamp
+numpy
+tensorflow
+ISO8601
+OHLC
