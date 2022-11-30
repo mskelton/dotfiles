@@ -5,6 +5,8 @@ return {
 	-- Const variables
 	parse("cmap", "const $1 = new Map([\n\t$0\n])"),
 	parse("cset", "const $1 = new Set([\n\t$0\n])"),
+	-- Comment
+	parse("bc", "/**\n * $0\n */"),
 	-- Functions
 	parse("fn", "function $1($2) {\n\t$0\n}"),
 	s(
