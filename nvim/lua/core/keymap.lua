@@ -3,7 +3,7 @@
 -- 1. Keybindings should be pneumonic
 -- 2. The same finger should not be used twice in heavily used keybindings
 --
--- The first principle is important for learnability of keybindings, especially
+-- The first principle is important for learn-ability of keybindings, especially
 -- bindings that are less frequently used. For example, you can remember "fg"
 -- easily as it means "Find Git branches".
 --
@@ -27,8 +27,13 @@ local map = require("core.utils").map
 -- pressing shift before colon for commands like :Duplicate or :G as it's easier
 -- do a chorded reach with the left hand then the alternative which would be
 -- non-shift click of semicolon, then right-shift the uppercase letter.
-map("n", ";", ":", { silent = false })
-map("v", ";", ":", { silent = false })
+map({ "n", "v" }, ";", ":", { silent = false })
+
+-- In addition to shiftless command mode, I use the command line window a fair
+-- bit, but it requires pressing q, then shifting the left pinky to shift to
+-- press colon. This mapping makes it much easier to enter the command line
+-- window without requiring shift.
+map({ "n", "v" }, "q;", "q:")
 
 -- Map leader semicolon to the original semicolon motion to still allow using
 -- (next f/t match) since that motion is quite handy. I don't use it much, so
@@ -150,7 +155,5 @@ map("v", "ae", ":<C-U>silent! normal! ggVG<cr>", { silent = false })
 map("o", "ae", "<cmd>normal Vae<cr>", { remap = true })
 
 -- remap "sentence" text object to capital S since I use lowercase s for statement
-map("v", "aS", "as")
-map("v", "iS", "is")
-map("o", "aS", "as")
-map("o", "iS", "is")
+map({ "v", "o" }, "aS", "as")
+map({ "v", "o" }, "iS", "is")
