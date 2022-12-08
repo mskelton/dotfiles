@@ -17,6 +17,9 @@
 -- executing each keybinding relatively stable and fast.
 local map = require("core.utils").map
 
+-- Most of my mappings are applicable to both normal and visual mode
+local nv = { "n", "v" }
+
 -- Shiftless command mode. I've debated this one some since other tools with Vim
 -- emulation don't use this, so it kind of makes life a little harder when
 -- working between tools. That said, my goal is to use other tools as little as
@@ -27,13 +30,13 @@ local map = require("core.utils").map
 -- pressing shift before colon for commands like :Duplicate or :G as it's easier
 -- do a chorded reach with the left hand then the alternative which would be
 -- non-shift click of semicolon, then right-shift the uppercase letter.
-map({ "n", "v" }, ";", ":", { silent = false })
+map(nv, ";", ":", { silent = false })
 
 -- In addition to shiftless command mode, I use the command line window a fair
 -- bit, but it requires pressing q, then shifting the left pinky to shift to
 -- press colon. This mapping makes it much easier to enter the command line
 -- window without requiring shift.
-map({ "n", "v" }, "q;", "q:")
+map(nv, "q;", "q:")
 
 -- Map leader semicolon to the original semicolon motion to still allow using
 -- (next f/t match) since that motion is quite handy. I don't use it much, so
@@ -60,18 +63,18 @@ map("n", "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 --------------------------------------------------------------------------------
 --- TELESCOPE ------------------------------------------------------------------
 --------------------------------------------------------------------------------
-map("n", "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
-map("n", "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar to cmd+p
-map("n", "<leader>fs", "<cmd>Telescope live_grep regex=false<cr>") -- "Find exact String"
-map("n", "<leader>fS", "<cmd>Telescope live_grep<cr>") -- "Find regex String"
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
-map("n", "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
-map("n", "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
-map("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
-map("n", "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
-map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-map("n", "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
+map(nv, "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
+map(nv, "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar to cmd+p
+map(nv, "<leader>fs", "<cmd>Telescope live_grep regex=false<cr>") -- "Find exact String"
+map(nv, "<leader>fS", "<cmd>Telescope live_grep<cr>") -- "Find regex String"
+map(nv, "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
+map(nv, "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
+map(nv, "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
+map(nv, "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
+map(nv, "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
+map(nv, "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
+map(nv, "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+map(nv, "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
 
 --------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
