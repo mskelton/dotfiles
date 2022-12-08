@@ -31,14 +31,6 @@ much of your existing config.
 	path = /Users/USER/.gitconfig-shared
 ```
 
-### Fish
-
-```bash
-curl -sL https://git.io/fisher | source
-git checkout HEAD fish/fish_plugins
-fisher update
-```
-
 ### Neovim
 
 ```bash
@@ -56,7 +48,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ### Nerd Fonts
 
 Download and install the
-[`Symbols Nerd Font`](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf)
+[`Symbols Nerd Font`](https://github.com/ryanoasis/nerd-fonts/blob/da88bdb6/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-2048-em%20Nerd%20Font%20Complete.ttf)
 for Kitty to properly use Nerd font symbols.
 
 ### Tmux
