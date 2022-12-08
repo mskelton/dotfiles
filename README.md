@@ -6,6 +6,8 @@ My personal settings and dotfiles.
 
 ```bash
 git clone git@github.com:mskelton/dotfiles.git
+git submodule init
+git submodule update --remote
 cd dotfiles
 ./install
 ```
