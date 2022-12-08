@@ -1,0 +1,33 @@
+#!/usr/local/bin/bash
+# Start developing an app
+
+session=${1/./-}
+dir="$HOME/dev/$1"
+
+# Attach to a Tmux session, whether in Tmux or not
+function attach {
+	if [[ -z "$TMUX" ]]; then
+		tmux attach-session -t $session
+	else
+		tmux switch-client -t $session
+	fi
+}
+
+# If the session already exists, attach to it
+if tmux has-session -t $session 2>/dev/null; then
+	attach
+else
+	# Create a new detached session
+	tmux new-session -d -c $dir -s $session
+
+	window=0
+	tmux rename-window -t $session:$window 'vim'
+	tmux send-keys -t $session:$window 'vi' C-m
+
+	window=1
+	tmux new-window -c $dir -t $session:$window -n 'serve'
+	tmux send-keys -t $session:$window 'ys'
+
+	# Attach to the newly created session
+	attach
+fi
