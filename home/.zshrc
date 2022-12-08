@@ -1,11 +1,3 @@
-# oh-my-zsh configuration
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=()
-
-# Initialize oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
 # Custom aliases
 source $HOME/.alias
 
@@ -17,3 +9,5 @@ fi
 # Make warp play nicely with the GitHub CLI
 PAGER=""
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
