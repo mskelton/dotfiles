@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Print each URL in the input stream
 
 while IFS= read line; do

@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Displays a simple notification to test sound output
 
 osascript -e 'display notification "Did you hear it?" with title "Sound test" sound name "Glass"'

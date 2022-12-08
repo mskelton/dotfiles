@@ -313,7 +313,7 @@
     "<C-v>": true
   },
   "vim.useSystemClipboard": true,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}",

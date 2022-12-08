@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Update the major tag to the newest release
 
 latest_tag=$(git tag -l --sort -version:refname | head -n 1)

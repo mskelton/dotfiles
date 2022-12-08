@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Prints the directories that should be ignored by Yarn
 
 cat <<EOF >>/dev/stdout

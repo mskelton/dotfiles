@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Update the Kitty terminal
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin

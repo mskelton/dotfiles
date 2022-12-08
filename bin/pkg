@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Parse package.json files
 
 RED='\033[0;31m'

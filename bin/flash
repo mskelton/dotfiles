@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Flash new firmware to the Advantage 360
 
 firmware_path=$HOME/dev/key-config/firmware/

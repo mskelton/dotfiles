@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Create or connect to a tmux session
 
 function list_sessions {

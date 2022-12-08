@@ -34,7 +34,7 @@ alias vi="nvim"
 alias oldvim="/usr/bin/vim"
 
 # Use new bash
-alias bash="/usr/local/bin/bash"
+alias bash="/usr/bin/env bash"
 alias oldbash="/bin/bash"
 
 # Kitty

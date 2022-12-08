@@ -31,6 +31,13 @@ set -x EDITOR "nvim"
 set -x GOPATH "$HOME/go"
 set -x BUN_INSTALL "$HOME/.bun"
 
+# Setup Homebrew env
+if test (uname -m) = "arm64"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else 
+  eval "$(/usr/local/bin/brew shellenv)"
+end
+
 # Path
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin-widen"
@@ -39,4 +46,3 @@ set -g fish_user_paths $fish_user_paths "$HOME/.cargo/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.local/npm/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.bun/bun"
 set -g fish_user_paths $fish_user_paths "$fzf_base/bin"
-set -g fish_user_paths $fish_user_paths "/usr/local/sbin"
