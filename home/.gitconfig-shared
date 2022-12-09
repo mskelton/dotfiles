@@ -24,34 +24,25 @@
   sync = "!f() { git add -A && git commit -m ${1-Sync} && git push; }; f"
   trash = !git reset --hard && git clean -fd
   undo = reset --soft HEAD~
-
 [core]
   autocrlf = input
   trustctime = false
   editor = nvim
   abbrev = 8
-	pager = less -x2
-
+  pager = less -x2
 [color]
- ui = true
-
+  ui = true
 [diff]
   colorMoved = default
-
 [push]
   default = upstream
-
 [branch]
   autosetuprebase = always
-
 [pull]
-  rebase = preserve
-
+  rebase = merges
 [init]
   defaultBranch = main
-
 [log]
   abbrevcommit = true
-
 [push]
   autoSetupRemote = true
