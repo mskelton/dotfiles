@@ -38,6 +38,9 @@ else
   eval "$(/usr/local/bin/brew shellenv)"
 end
 
+# Setup asdf package manager
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
 # Path
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin-widen"
