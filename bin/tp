@@ -19,7 +19,7 @@ function find_session {
 
 # Default to the current working directory if not specified
 dir="${1:-$(pwd)}"
-resolved_dir=$(readlink -f "$dir")
+resolved_dir=$(readlink "$dir")
 
 # If a directory is provided but does not exist, attempt to find it in the
 # current directory.
