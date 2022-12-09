@@ -21,14 +21,12 @@ cd dotfiles
 brew install $(cat config/formula.txt)
 ```
 
-### Git config
+## Miscellaneous system setup
 
-To setup the git config, add the following block to `~/.gitconfig` and remove
-much of your existing config.
-
-```
-[include]
-	path = /Users/USER/.gitconfig-shared
+```bash
+./scripts/macos-setup.sh
+./scripts/git-setup.sh
+./scripts/npm-setup.sh
 ```
 
 ### Neovim
@@ -38,11 +36,10 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
-## Miscellaneous system setup
+### Tmux
 
 ```bash
-./scripts/macos-setup.sh
-./scripts/npm-setup.sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ### Nerd Fonts
@@ -50,9 +47,3 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 Download and install the
 [`Symbols Nerd Font`](https://github.com/ryanoasis/nerd-fonts/blob/da88bdb6/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-2048-em%20Nerd%20Font%20Complete.ttf)
 for Kitty to properly use Nerd font symbols.
-
-### Tmux
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
