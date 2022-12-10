@@ -39,7 +39,7 @@ else
 end
 
 # Setup asdf package manager
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.fish
 
 # Path
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin"
