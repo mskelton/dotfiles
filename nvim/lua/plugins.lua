@@ -10,6 +10,22 @@ require("packer").init({
 })
 
 return require("packer").startup(function(use)
+	local function local_use(opts)
+		if type(opts) == "string" then
+			opts = { opts }
+		end
+
+		local root_dir = "~/dev/"
+		local dir = vim.split(opts[1], "/", {})[2]
+
+		-- If there is a local copy of the plugin, use it instead of downloading it
+		if vim.fn.isdirectory(vim.fn.expand(root_dir .. dir)) == 1 then
+			opts[1] = root_dir .. dir
+		end
+
+		use(opts)
+	end
+
 	use("wbthomason/packer.nvim")
 	use("lewis6991/impatient.nvim")
 
@@ -83,8 +99,8 @@ return require("packer").startup(function(use)
 		"tpope/vim-fugitive",
 		requires = "tpope/vim-rhubarb",
 	})
-	use({
-		"~/dev/bandit.nvim",
+	local_use({
+		"mskelton/bandit.nvim",
 		requires = "MunifTanjim/nui.nvim",
 		config = conf("bandit"),
 	})
@@ -138,6 +154,11 @@ return require("packer").startup(function(use)
 		"ThePrimeagen/harpoon",
 		config = conf("harpoon"),
 		requires = "nvim-lua/plenary.nvim",
+	})
+
+	local_use({
+		"mskelton/live-reload.nvim",
+		config = conf("live-reload"),
 	})
 
 	use("tpope/vim-abolish")

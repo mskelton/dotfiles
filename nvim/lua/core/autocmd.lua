@@ -38,11 +38,6 @@ augroup auto_mkdir
   au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
-augroup live_reload_commit
-  au!
-  au BufWritePost */bandit.nvim/* lua package.loaded["bandit"] = nil
-augroup END
-
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
