@@ -38,6 +38,11 @@ augroup auto_mkdir
   au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
+augroup live_reload_commit
+  au!
+  au BufWritePost */bandit.nvim/* lua package.loaded["bandit"] = nil
+augroup END
+
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
@@ -50,6 +55,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		local utils = require("core.utils")
 		local buf = vim.api.nvim_get_current_buf()
 
+		---@diagnostic disable-next-line: assign-type-mismatch
 		vim.opt_local.spell = utils.to_bool(highlighter.active[buf])
 	end,
 })
