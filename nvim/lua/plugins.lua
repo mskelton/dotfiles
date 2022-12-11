@@ -79,17 +79,19 @@ return require("packer").startup(function(use)
 	use({ "L3MON4D3/LuaSnip", config = conf("luasnip") })
 
 	-- Git
-	use({ "tpope/vim-fugitive", requires = "tpope/vim-rhubarb" })
+	use({
+		"tpope/vim-fugitive",
+		requires = "tpope/vim-rhubarb",
+	})
+	use({
+		"~/dev/bandit.nvim",
+		requires = "MunifTanjim/nui.nvim",
+		config = conf("bandit"),
+	})
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup()
-		end,
-	})
-	use({
-		"TimUntersberger/neogit",
-		config = function()
-			require("neogit").setup()
 		end,
 	})
 
@@ -133,9 +135,9 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"nvim-lua/plenary.nvim",
+		"ThePrimeagen/harpoon",
 		config = conf("harpoon"),
-		requires = "ThePrimeagen/harpoon",
+		requires = "nvim-lua/plenary.nvim",
 	})
 
 	use("tpope/vim-abolish")

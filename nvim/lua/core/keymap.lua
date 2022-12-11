@@ -51,6 +51,7 @@ map("n", "<C-u>", "<cmd>lua MoveHalf(-1)<cr>")
 -- Really common shortcuts
 map("n", ",s", "<cmd>w<cr>")
 map("n", ",w", "<cmd>bd<cr>")
+map("n", ",c", "<cmd>clo<cr>")
 
 --------------------------------------------------------------------------------
 --- BUFFERS --------------------------------------------------------------------
@@ -94,9 +95,25 @@ map("n", "<leader>wp", "<C-w>P")
 --------------------------------------------------------------------------------
 --- GIT (VCS) ------------------------------------------------------------------
 --------------------------------------------------------------------------------
-map("n", "<leader>vd", "<cmd>Gvdiffsplit<cr>")
-map("n", "<leader>vs", "<cmd>G show<cr>")
-map("n", "<leader>vl", "<cmd>G log<cr>")
+map(nv, "<leader>vo", "<cmd>vertical lefta Git<cr>")
+map(nv, "<leader>vd", "<cmd>Gvdiffsplit<cr>")
+map(nv, "<leader>vs", "<cmd>Git show<cr>")
+map(nv, "<leader>vl", "<cmd>Git log<cr>")
+map(nv, "<leader>vp", "<cmd>Git push<cr>")
+map(nv, "<leader>vP", "<cmd>Git pull<cr>")
+map(nv, "<leader>vc", function()
+	require("bandit").commit()
+end)
+
+-- -- Stage/reset individual hunks under cursor in a file
+-- map("n", '<leader>gs', ':Gitsigns stage_hunk<CR>')
+-- map("n", '<leader>gr', ':Gitsigns reset_hunk<CR>')
+-- map("n", '<leader>gu', ':Gitsigns undo_stage_hunk<CR>')
+
+-- -- Stage/reset all hunks in a file
+-- map("n", '<leader>gS', ':Gitsigns stage_buffer<CR>')
+-- map("n", '<leader>gU', ':Gitsigns reset_buffer_index<CR>')
+-- map("n", '<leader>gR', ':Gitsigns reset_buffer<CR>')
 
 -- WIP: This isn't working yet
 vim.api.nvim_create_autocmd("FileType", {
