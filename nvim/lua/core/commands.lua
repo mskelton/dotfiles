@@ -8,3 +8,6 @@ vim.api.nvim_create_user_command("Task", "!task <args>", { nargs = "*" })
 -- Format/unformat files with JQ
 vim.api.nvim_create_user_command("FormatJson", ":%!jq .", {})
 vim.api.nvim_create_user_command("UnformatJson", ":%!jq -c .", {})
+
+-- Create an ISC license in a project
+vim.api.nvim_create_user_command("CreateLicense", "!gh license isc", {})
