@@ -13,6 +13,7 @@
   del = branch -D
   diffd = !git diff $(git default)..HEAD
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+  jira = "!f() { git checkout $(git default) -b \"$(basename $(pbpaste))-$1\"; }; f"
   merge-default = !git merge $(git default)
   merge-last = !git co - && git merge $(git default)
   msg = commit --amend -m
