@@ -1,6 +1,5 @@
 return function()
 	local index = require("mason-registry.index")
-	local server = require("mason-lspconfig.mappings.server")
 
 	-- Registry overrides
 	index["emmet-ls"] = "config.mason-registry.emmet-ls"
