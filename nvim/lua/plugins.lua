@@ -111,6 +111,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Copilot
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = conf("copilot"),
+	})
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	})
+
 	-- Misc
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -168,5 +182,4 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 	use("michaeljsmith/vim-indent-object")
 	use("fladson/vim-kitty")
-	use("github/copilot.vim")
 end)
