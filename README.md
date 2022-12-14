@@ -26,6 +26,7 @@ brew install $(cat config/formula.txt)
 ```bash
 ./scripts/macos-setup.sh
 ./scripts/git-setup.sh
+./scripts/gh-setup.sh
 ./scripts/npm-setup.sh
 ```
 
