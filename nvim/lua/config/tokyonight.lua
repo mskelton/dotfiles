@@ -1,6 +1,4 @@
 return function()
-	local util = require("tokyonight.util")
-
 	require("tokyonight").setup({
 		on_highlights = function(hl, c)
 			hl["@function.call"] = { fg = c.blue, bold = true }
@@ -19,9 +17,6 @@ return function()
 
 			-- De-emphasize text completions
 			hl.CmpItemKindText = { fg = c.fg_dark }
-
-			-- Copilot highlighting
-			hl.CmpItemKindCopilot = { fg = "#6CC644" }
 		end,
 	})
 

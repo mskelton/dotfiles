@@ -6,7 +6,6 @@ return function()
 		mode = "symbol_text",
 		maxwidth = 50,
 		preset = "codicons",
-		symbol_map = { Copilot = "" },
 	})
 
 	cmp.setup({
@@ -43,10 +42,7 @@ return function()
 		mapping = {
 			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),
-			["<CR>"] = cmp.mapping.confirm({
-				select = true,
-				behavior = cmp.ConfirmBehavior.Replace,
-			}),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-Space>"] = cmp.mapping.complete({}),
 			["<C-e>"] = cmp.mapping.abort(),
 			["<C-j>"] = function(fallback)
@@ -74,21 +70,8 @@ return function()
 					fallback()
 				end
 			end,
-			["<Tab>"] = vim.schedule_wrap(function(fallback)
-				if cmp.visible() then
-					cmp.confirm({ select = true })
-				else
-					fallback()
-				end
-			end),
 		},
 		sources = cmp.config.sources({
-			{
-				name = "copilot",
-				formatters = {
-					insert_text = require("copilot_cmp.format").remove_existing,
-				},
-			},
 			{
 				name = "nvim_lsp",
 				entry_filter = function(entry)
