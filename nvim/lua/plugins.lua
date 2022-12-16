@@ -161,6 +161,11 @@ return require("packer").startup(function(use)
 		config = conf("live-reload"),
 	})
 
+	use({
+		"github/copilot.vim",
+		config = conf("copilot"),
+	})
+
 	use("tpope/vim-abolish")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
@@ -168,5 +173,4 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 	use("michaeljsmith/vim-indent-object")
 	use("fladson/vim-kitty")
-	use("github/copilot.vim")
 end)
