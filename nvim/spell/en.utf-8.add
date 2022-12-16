@@ -131,3 +131,6 @@ params
 metadata
 https
 jsx
+keypress
+chorded
+keymapping

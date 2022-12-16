@@ -32,34 +32,38 @@ local nv = { "n", "v" }
 -- non-shift click of semicolon, then right-shift the uppercase letter.
 map(nv, ";", ":", { silent = false })
 
--- In addition to shiftless command mode, I use the command line window a fair
--- bit, but it requires pressing q, then shifting the left pinky to shift to
--- press colon. This mapping makes it much easier to enter the command line
--- window without requiring shift.
-map(nv, "q;", "q:")
-
 -- Map leader semicolon to the original semicolon motion to still allow using
 -- (next f/t match) since that motion is quite handy. I don't use it much, so
 -- the extra keypress is fine.
 map("n", "<leader>;", ";")
 
+-- I use the command line window a fair bit, but it requires pressing q, then
+-- shifting the left pinky to shift to press colon. This mapping makes it much
+-- easier to enter the command line window.
+map(nv, "<leader>q", "q:")
+
 -- I never can find where my cursor is after jumping by half. This makes it a
 -- bit easier.
-map("n", "<C-d>", "<cmd>lua MoveHalf(1)<cr>")
-map("n", "<C-u>", "<cmd>lua MoveHalf(-1)<cr>")
+map(nv, "<C-d>", "<cmd>lua MoveHalf(1)<cr>")
+map(nv, "<C-u>", "<cmd>lua MoveHalf(-1)<cr>")
 
 -- Really common shortcuts
-map("n", ",s", "<cmd>w<cr>")
-map("n", ",w", "<cmd>bd<cr>")
-map("n", ",c", "<cmd>clo<cr>")
+map(nv, ",s", "<cmd>w<cr>")
+map(nv, ",w", "<cmd>bd<cr>")
+map(nv, ",c", "<cmd>clo<cr>")
 
---------------------------------------------------------------------------------
---- BUFFERS --------------------------------------------------------------------
---------------------------------------------------------------------------------
-map("n", "<leader>bp", "<cmd>bp<cr>")
-map("n", "<leader>bn", "<cmd>bn<cr>")
-map("n", "<leader>bd", "<cmd>bd<cr>")
-map("n", "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
+-- Open netrw easily
+map("n", "<leader>pv", vim.cmd.Ex)
+
+-- Move lines up and down in visual mode
+map("v", "J", ":m '>+1<cr>gv=gv")
+map("v", "K", ":m '<-2<cr>gv=gv")
+
+-- Join lines without losing your cursor position
+map("n", "J", "mzJ`z")
+
+-- Paste without yanking
+map("x", "<leader>p", '"_dP')
 
 --------------------------------------------------------------------------------
 --- TELESCOPE ------------------------------------------------------------------
@@ -75,6 +79,7 @@ map(nv, "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbol
 map(nv, "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
 map(nv, "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
 map(nv, "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+map(nv, "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 map(nv, "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
 
 --------------------------------------------------------------------------------
@@ -138,10 +143,10 @@ map("n", "<leader>odf", function()
 	end
 end)
 
--- Make file executable (chmod)
+-- Make file executable
 map(
 	"n",
-	"<leader>ocm",
+	"<leader>ox",
 	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
 )
 
@@ -157,14 +162,6 @@ map("n", "<leader>opc", function()
 	require("packer").compile()
 	print("Packer compiled successfully!")
 end)
-
---------------------------------------------------------------------------------
---- Pomo -----------------------------------------------------------------------
---------------------------------------------------------------------------------
-map("n", "<leader>pms", "<cmd>Pomo start<cr>")
-map("n", "<leader>pmf", "<cmd>Pomo start 10m<cr>")
-map("n", "<leader>pmS", "<cmd>Pomo stop<cr>")
-map("n", "<leader>pmb", "<cmd>Pomo break<cr>")
 
 --------------------------------------------------------------------------------
 --- TEXT OBJECTS ---------------------------------------------------------------
