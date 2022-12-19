@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Cleans up files in common locations
 
-rm -r ~/Downloads/*
+trash -r ~/Downloads/*
