@@ -28,3 +28,6 @@ defaults write com.apple.Dock static-others '()'
 # Disable disk not ejected properly notification. This notification is very
 # annoying when flashing firmware to the Advantage 360 keyboard.
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
+
+# Install Docker completion
+curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
