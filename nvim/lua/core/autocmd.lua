@@ -38,11 +38,6 @@ augroup auto_mkdir
   au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
-augroup highlight_on_yank
-  au!
-  au TextYankPost * silent! lua vim.highlight.on_yank()
-augroup END
-
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
