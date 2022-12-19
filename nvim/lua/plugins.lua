@@ -36,10 +36,13 @@ return require("packer").startup(function(use)
 		config = conf("nvim-treesitter"),
 		requires = {
 			"nvim-treesitter/playground",
-			"nvim-treesitter/nvim-treesitter-textobjects",
 			"RRethy/nvim-treesitter-endwise",
 			"windwp/nvim-ts-autotag",
 		},
+	})
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
 	})
 
 	use({
