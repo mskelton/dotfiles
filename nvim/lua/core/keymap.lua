@@ -104,7 +104,8 @@ map("n", "<leader>wp", "<C-w>P")
 --------------------------------------------------------------------------------
 --- GIT (VCS) ------------------------------------------------------------------
 --------------------------------------------------------------------------------
-map(nv, "<leader>vo", "<cmd>vertical lefta Git<cr>")
+-- map(nv, "<leader>vo", "<cmd>vertical lefta Git<cr>")
+map(nv, "<leader>vo", "<cmd>LazyGit<cr>")
 map(nv, "<leader>vd", "<cmd>Gvdiffsplit<cr>")
 map(nv, "<leader>vs", "<cmd>Git show<cr>")
 map(nv, "<leader>vl", "<cmd>Git log<cr>")
