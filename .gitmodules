@@ -4,3 +4,6 @@
 [submodule "dottie"]
 	path = dottie
 	url = https://github.com/mskelton/dottie
+[submodule "personal"]
+	path = personal
+	url = git@github.com:mskelton/dotfiles-personal.git
