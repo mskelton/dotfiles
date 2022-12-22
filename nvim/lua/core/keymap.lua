@@ -102,27 +102,27 @@ map("n", "<leader>wo", "<C-w>o")
 map("n", "<leader>wp", "<C-w>P")
 
 --------------------------------------------------------------------------------
---- GIT ------------------------------------------------------------------------
+--- GIT (VCS) ------------------------------------------------------------------
 --------------------------------------------------------------------------------
-map(nv, "<leader>go", "<cmd>LazyGit<cr>")
-map(nv, "<leader>gb", "<cmd>Git blame<cr>")
-map(nv, "<leader>gd", "<cmd>Gvdiffsplit<cr>")
-map(nv, "<leader>gl", "<cmd>vertical Git log<cr>")
-map(nv, "<leader>gP", "<cmd>Git push<cr>")
-map(nv, "<leader>gp", "<cmd>Git pull<cr>")
-map(nv, "<leader>gc", function()
+map(nv, "<leader>vo", "<cmd>LazyGit<cr>")
+map(nv, "<leader>vb", "<cmd>Git blame<cr>")
+map(nv, "<leader>vd", "<cmd>Gvdiffsplit<cr>")
+map(nv, "<leader>vl", "<cmd>vertical Git log<cr>")
+map(nv, "<leader>vP", "<cmd>Git push<cr>")
+map(nv, "<leader>vp", "<cmd>Git pull<cr>")
+map(nv, "<leader>vc", function()
 	require("bandit").commit()
 end)
 
 -- -- Stage/reset individual hunks under cursor in a file
--- map("v", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>")
--- map("v", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>")
--- map("v", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>")
+-- map("v", "<leader>vs", "<cmd>Gitsigns stage_hunk<cr>")
+-- map("v", "<leader>vr", "<cmd>Gitsigns reset_hunk<cr>")
+-- map("v", "<leader>vu", "<cmd>Gitsigns undo_stage_hunk<cr>")
 --
 -- -- Stage/reset all hunks in a file
--- map("n", "<leader>gs", "<cmd>Gitsigns stage_buffer<cr>")
--- map("n", "<leader>gu", "<cmd>Gitsigns reset_buffer_index<cr>")
--- map("n", "<leader>gr", "<cmd>Gitsigns reset_buffer<cr>")
+-- map("n", "<leader>vs", "<cmd>Gitsigns stage_buffer<cr>")
+-- map("n", "<leader>vu", "<cmd>Gitsigns reset_buffer_index<cr>")
+-- map("n", "<leader>vr", "<cmd>Gitsigns reset_buffer<cr>")
 
 -- WIP: This isn't working yet
 vim.api.nvim_create_autocmd("FileType", {
