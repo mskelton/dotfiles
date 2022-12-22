@@ -83,6 +83,7 @@ return function()
 				end,
 			},
 			{ name = "luasnip" },
+		}, {
 			{ name = "buffer" },
 		}),
 		formatting = {

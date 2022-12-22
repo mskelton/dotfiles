@@ -169,6 +169,11 @@ return require("packer").startup(function(use)
 		config = conf("copilot"),
 	})
 
+	use({
+		"akinsho/toggleterm.nvim",
+		config = conf("toggleterm"),
+	})
+
 	use("tpope/vim-abolish")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")

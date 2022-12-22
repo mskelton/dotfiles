@@ -3,7 +3,10 @@ return function()
 		autochdir = true,
 		direction = "float",
 		insert_mappings = true,
-		open_mapping = [[<c-\>]],
+		open_mapping = "<C-\\>",
 		shade_terminals = false,
+		float_opts = {
+			border = "rounded",
+		},
 	})
 end
