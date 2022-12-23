@@ -111,7 +111,8 @@ return function()
 	})
 
 	local cmdline_mapping = {
-		["<Tab>"] = {
+		["<C-e>"] = cmp.mapping.abort(),
+		["<C-j>"] = {
 			c = function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
@@ -120,7 +121,7 @@ return function()
 				end
 			end,
 		},
-		["<S-Tab>"] = {
+		["<C-k>"] = {
 			c = function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
@@ -128,9 +129,6 @@ return function()
 					fallback()
 				end
 			end,
-		},
-		["<C-e>"] = {
-			c = cmp.mapping.close(),
 		},
 	}
 
