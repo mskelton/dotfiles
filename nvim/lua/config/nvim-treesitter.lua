@@ -1,4 +1,28 @@
 return function()
+	local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+	-- Use the local version of a parser if available, otherwise download the
+	-- remote version.
+	local function local_parser(parser, base_url)
+		local dir = vim.fn.expand("~/dev/" .. parser)
+
+		if vim.fn.isdirectory(dir) == 1 then
+			return dir
+		end
+
+		return base_url .. parser
+	end
+
+	parser_config.styled = {
+		install_info = {
+			url = local_parser("tree-sitter-styled", "https://github.com/mskelton/"),
+			branch = "main",
+			files = { "src/parser.c", "src/scanner.c" },
+			generate_requires_npm = true,
+		},
+		maintainers = { "@mskelton" },
+	}
+
 	require("nvim-treesitter.configs").setup({
 		autotag = { enable = true },
 		endwise = { enable = true },
@@ -30,6 +54,7 @@ return function()
 			"query",
 			"regex",
 			"sql",
+			"styled",
 			"swift",
 			"tsx",
 			"typescript",
@@ -59,6 +84,5 @@ return function()
 		},
 	})
 
-	require("modules.treesitter").directives()
 	require("modules.treesitter").queries()
 end
