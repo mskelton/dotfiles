@@ -1,6 +1,11 @@
 gui:
+  scrollHeight: 20
   showIcons: true
   theme:
     selectedLineBgColor: ["#364A82"]
     selectedRangeBgColor: ["#364A82"]
+keybinding:
+  universal:
+    pushFiles: 'p'
+    pullFiles: 'P'
 promptToReturnFromSubprocess: false
