@@ -83,6 +83,4 @@ return function()
 			},
 		},
 	})
-
-	require("modules.treesitter").queries()
 end

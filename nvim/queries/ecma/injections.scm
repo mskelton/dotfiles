@@ -1,7 +1,3 @@
-local M = {}
-
-M.ecma_injections = [[
-
 (comment) @jsdoc
 (comment) @comment
 (regex_pattern) @regex
@@ -29,12 +25,3 @@ M.ecma_injections = [[
   arguments: ((template_string) @styled
     (#offset! @styled 0 1 0 -1)))
 
-]]
-
-function M.queries()
-	vim.treesitter.query.set_query("javascript", "injections", M.ecma_injections)
-	vim.treesitter.query.set_query("typescript", "injections", M.ecma_injections)
-	vim.treesitter.query.set_query("tsx", "injections", M.ecma_injections)
-end
-
-return M
