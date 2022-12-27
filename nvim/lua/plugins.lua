@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		config = conf("nvim-treesitter"),
+		config = conf("treesitter"),
 		requires = {
 			"nvim-treesitter/playground",
 			"RRethy/nvim-treesitter-endwise",
