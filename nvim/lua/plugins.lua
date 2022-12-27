@@ -131,9 +131,8 @@ return require("packer").startup(function(use)
 
 	use({
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
+		requires = "JoosepAlviste/nvim-ts-context-commentstring",
+		config = conf("comment"),
 	})
 
 	use({
