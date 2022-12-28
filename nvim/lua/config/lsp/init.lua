@@ -94,6 +94,9 @@ return function()
 	-- Update the LSP capabilities to support completions and snippets.
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+	-- Patch the offset encoding to fix issue with clangd
+	capabilities.offsetEncoding = { "utf-16" }
+
 	-- Setup all LSP clients
 	for server, config in pairs(servers) do
 		config.capabilities = capabilities
