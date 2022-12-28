@@ -65,6 +65,11 @@ map("n", "J", "mzJ`z")
 -- Paste without yanking
 map("x", "<leader>p", '"_dP')
 
+-- I frequently roll zv for visually selection which doesn't work great on my
+-- keyboard since I use a multi-function key for z/ctrl. This mapping sets
+-- zv to the same as C-v.
+map("n", "zv", "<C-v>")
+
 -- Modify j and k to navigate wrapped lines
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

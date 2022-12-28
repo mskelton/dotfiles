@@ -50,6 +50,11 @@ o.shortmess = o.shortmess + "I"
 o.shiftwidth = 2
 o.tabstop = 2
 
+-- Use tree-sitter for folds
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldlevel = 20
+
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
 o.confirm = true
