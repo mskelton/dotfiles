@@ -1,7 +1,12 @@
 local M = {}
 
 M.map = function(mode, key, cmd, opts)
-	vim.keymap.set(mode, key, cmd, opts or { silent = true })
+	vim.keymap.set(
+		mode,
+		key,
+		cmd,
+		vim.tbl_extend("keep", opts or {}, { silent = true })
+	)
 end
 
 M.capitalize = function(str)

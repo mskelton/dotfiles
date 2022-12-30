@@ -71,8 +71,16 @@ map("x", "<leader>p", '"_dP')
 map("n", "zv", "<C-v>")
 
 -- Modify j and k to navigate wrapped lines
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+-- Rename the word under the cursor
+map(
+	"n",
+	"<leader>rf",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ silent = false }
+)
 
 --------------------------------------------------------------------------------
 --- TELESCOPE ------------------------------------------------------------------
@@ -134,7 +142,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("diff_keymap", {}),
 	pattern = "diff",
 	callback = function(args)
-		local opts = { buffer = args.buf, silent = true }
+		local opts = { buffer = args.buf }
 
 		map("n", "gdh", "<cmd>diffget //2<cr>", opts)
 		map("n", "gdl", "<cmd>diffget //3<cr>", opts)

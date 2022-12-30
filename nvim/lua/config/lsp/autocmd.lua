@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
 
 			-- Rename file keymap similar to rename variable
-			vim.keymap.set("n", "<leader>orf", "<cmd>TypescriptRenameFile<cr>", opts)
+			vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
 		end
 	end,
 })
