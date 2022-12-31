@@ -25,3 +25,9 @@
   arguments: ((template_string) @styled
     (#offset! @styled 0 1 0 -1)))
 
+; lit-html
+(call_expression
+  function: (identifier) @_name
+    (#eq? @_name "html")
+  arguments: ((template_string) @html
+    (#offset! @html 0 1 0 -1)))
