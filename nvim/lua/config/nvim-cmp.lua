@@ -77,9 +77,9 @@ return function()
 				entry_filter = function(entry)
 					local client_name = entry.source.source.client.name
 
-					-- Only return Emmet results in Emotion template strings
+					-- Only return Emmet results in styled-component template strings
 					return client_name ~= "emmet_ls"
-						or context.in_treesitter_capture("emotion")
+						or context.in_treesitter_capture("styled")
 				end,
 			},
 			{ name = "luasnip" },
