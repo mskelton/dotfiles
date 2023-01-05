@@ -83,4 +83,63 @@ return function()
 			},
 		},
 	})
+
+	local function is_one_line(range)
+		return range[1] == range[3]
+	end
+
+	local function is_range_empty_or_invalid(range)
+		return range[3] < range[1] or (is_one_line(range) and range[4] <= range[2])
+	end
+
+	local function make_subranges_between_children_like(node, predicate)
+		local content = { { node:range() } }
+
+		for child in node:iter_children() do
+			if predicate(child) then
+				local child_range = { child:range() }
+				local last_content_range = content[#content]
+				local first_part = {
+					last_content_range[1],
+					last_content_range[2],
+					child_range[1],
+					child_range[2],
+				}
+				local second_part = {
+					child_range[3],
+					child_range[4],
+					last_content_range[3],
+					last_content_range[4],
+				}
+				if is_range_empty_or_invalid(first_part) then
+					if not is_range_empty_or_invalid(second_part) then
+						content[#content] = second_part
+					end
+				elseif is_range_empty_or_invalid(second_part) then
+					content[#content] = first_part
+				else
+					content[#content] = first_part
+					content[#content + 1] = second_part
+				end
+			end
+		end
+
+		return content
+	end
+
+	local directives = vim.treesitter.query.list_directives()
+	if not vim.tbl_contains(directives, "inject_without_children!") then
+		vim.treesitter.query.add_directive(
+			"inject_without_children!",
+			function(match, _, _, predicate, metadata)
+				local node = match[predicate[2]]
+				metadata.content = make_subranges_between_children_like(
+					node,
+					function(_)
+						return true
+					end
+				)
+			end
+		)
+	end
 end
