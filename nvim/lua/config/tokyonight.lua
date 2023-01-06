@@ -8,10 +8,6 @@ return function()
 			hl["@tag"] = { fg = c.red }
 			hl["@tag.attribute"] = { fg = c.purple }
 
-			-- Improve CSS and styled-components highlighting
-			hl["@unit"] = { fg = c.red }
-			hl["@color"] = { fg = c.fg }
-
 			-- Make line numbers easier to read
 			hl.LineNr = { fg = c.blue }
 			hl.CursorLineNr = { fg = c.yellow }
