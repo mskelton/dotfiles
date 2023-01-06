@@ -7,6 +7,7 @@ aliases:
   prw: pr view -w
   setup-repo: api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -f "has_projects=false" -f "allow_merge_commit=false" -f "allow_rebase_merge=false" -f "allow_auto_merge=true" -f "delete_branch_on_merge=true"
   squash: pr merge --squash
+  st: status -o mskelton
   url: pr view --json url -q .url
   w: repo view -w
 editor: nvim
