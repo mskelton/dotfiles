@@ -3,9 +3,12 @@
 (unit) @variable.builtin
 
 ; Hex colors
-(color_value) @string.special
-"#" @string.special
+(color_value) @constant
+"#" @constant
 
-; Class names and pseudo-elements
-(class_name) @string
-(pseudo_class_selector (class_name) @keyword)
+; Class name
+(class_name) @type
+(class_selector "." @type)
+
+; Pseudo elements (e.g., :first-child, ::before)
+(pseudo_class_selector (class_name) @property)
