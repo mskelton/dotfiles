@@ -15,7 +15,17 @@ return function()
 	-- to top in this table.
 	local servers = {
 		bashls = {},
-		clangd = {},
+		clangd = {
+			filetypes = {
+				"c",
+				"cpp",
+				"objc",
+				"objcpp",
+				"cuda",
+				"proto",
+				"mql5",
+			},
+		},
 		gopls = {
 			settings = {
 				gopls = {

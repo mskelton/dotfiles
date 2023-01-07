@@ -13,6 +13,16 @@ return function()
 		return base_url .. parser
 	end
 
+	parser_config.mql5 = {
+		install_info = {
+			url = local_parser("tree-sitter-mql5", "https://github.com/mskelton/"),
+			branch = "main",
+			files = { "src/parser.c", "src/scanner.cc" },
+			generate_requires_npm = true,
+		},
+		maintainers = { "@mskelton" },
+	}
+
 	parser_config.styled = {
 		install_info = {
 			url = local_parser("tree-sitter-styled", "https://github.com/mskelton/"),
@@ -50,6 +60,7 @@ return function()
 			"lua",
 			"markdown",
 			"markdown_inline",
+			"mql5",
 			"python",
 			"query",
 			"regex",
