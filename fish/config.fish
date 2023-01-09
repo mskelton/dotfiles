@@ -20,7 +20,7 @@ function fish_hybrid_key_bindings
   bind -M insert \cx 'echo -n (clear | string replace \e\[3J ""); commandline -f repaint'
 
   # Open tmux-sessionizer with Ctrl+f
-  bind -M insert \cf "tmux-sessionizer"
+  bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
 end
 
 # Use my custom keybindings
