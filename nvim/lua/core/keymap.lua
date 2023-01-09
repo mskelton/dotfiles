@@ -52,9 +52,6 @@ map(nv, ",s", "<cmd>w<cr>")
 map(nv, ",w", "<cmd>bd<cr>")
 map(nv, ",c", "<cmd>clo<cr>")
 
--- Open netrw easily
-map("n", "<leader>pv", vim.cmd.Ex)
-
 -- Move lines up and down in visual mode
 map("v", "J", ":m '>+1<cr>gv=gv")
 map("v", "K", ":m '<-2<cr>gv=gv")
@@ -95,6 +92,7 @@ map(nv, "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map(nv, "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map(nv, "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
 map(nv, "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
+map(nv, "<leader>fd", "<cmd>Lex<cr>vertical resize 30<cr>") -- "Find Directory"
 map(nv, "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 map(nv, "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 map(nv, "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest

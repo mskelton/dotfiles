@@ -68,7 +68,13 @@ o.smartcase = true
 o.termguicolors = true
 o.undofile = true
 o.updatetime = 100
-o.equalalways = true
 
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")
+
+-- Netrw
+g.netrw_banner = 0
+g.netrw_liststyle = 3
+g.netrw_browse_split = 4
+g.netrw_keepdir = 0
+g.netrw_localcopydircmd = "cp -r"
