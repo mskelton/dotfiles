@@ -77,7 +77,7 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 -- Rename the word under the cursor
 map(
 	"n",
-	"<leader>rf",
+	"<leader>rw",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ silent = false }
 )
