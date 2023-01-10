@@ -24,23 +24,10 @@ brew install $(cat config/formula.txt)
 ## Miscellaneous system setup
 
 ```bash
-./scripts/macos-setup.sh
-./scripts/git-setup.sh
-./scripts/gh-setup.sh
-./scripts/npm-setup.sh
-```
-
-### Neovim
-
-```bash
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-### Tmux
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+./scripts/macos.sh
+./scripts/git.sh
+./scripts/tools.sh
+./scripts/editor.sh
 ```
 
 ### Nerd Fonts
