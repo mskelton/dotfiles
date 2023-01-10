@@ -33,6 +33,7 @@ return function()
 				},
 			},
 		},
+		marksman = {},
 		pyright = {},
 		sourcekit = {
 			filetypes = { "swift" },
