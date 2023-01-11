@@ -12,7 +12,7 @@ git submodule update --remote
 ./install
 ```
 
-## Git
+### Git
 
 <details>
   <summary>
