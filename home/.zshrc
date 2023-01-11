@@ -11,3 +11,5 @@ PAGER=""
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /Users/mark/.docker/init-zsh.sh || true # Added by Docker Desktop

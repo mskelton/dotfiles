@@ -18,7 +18,8 @@ cd dotfiles
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install $(cat config/formula.txt)
+/opt/homebrew/bin/brew install $(cat config/formula.txt)
+/opt/homebrew/bin/brew install --cask $(cat config/casks.txt)
 ```
 
 ## Miscellaneous system setup

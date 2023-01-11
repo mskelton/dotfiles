@@ -1,0 +1,8 @@
+docker
+firefox
+microsoft-edge
+mimestream
+raycast
+shottr
+todoist
+visual-studio-code

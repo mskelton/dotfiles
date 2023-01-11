@@ -37,3 +37,5 @@ fi
 # Enable fzf
 export FZF_DEFAULT_OPTS="--reverse --info=inline"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /Users/mark/.docker/init-bash.sh || true # Added by Docker Desktop
