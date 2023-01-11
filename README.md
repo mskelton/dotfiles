@@ -14,6 +14,11 @@ git submodule update --remote
 
 ## Git
 
+<details>
+  <summary>
+    Expand to see Git setup instructions
+  </summary>
+
 ```bash
 user=$(whoami)
 read -p 'Email: ' email
@@ -45,6 +50,8 @@ echo ""
 echo "cat ~/.ssh/id_ed25519.pub | pbcopy"
 echo ""
 ```
+
+</details>
 
 ### Homebrew
 
