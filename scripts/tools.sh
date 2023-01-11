@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Make fish the default shell
-sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
-chsh -s /opt/hombrew/bin/fish
+sudo sh -c "echo $(brew --prefix)/bin/fish >> /etc/shells"
+chsh -s $(brew --prefix)/bin/fish
 
 # Install Kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -15,6 +15,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install tpm plugins
 ~/.tmux/plugins/tpm/bin/install_plugins
+
+# Install fzf keybindings
+$(brew --prefix)/opt/fzf/install
 
 # Install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
