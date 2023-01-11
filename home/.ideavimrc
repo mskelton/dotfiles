@@ -20,4 +20,9 @@ set relativenumber
 :map [b <Action>(PreviousTab)
 :map ]b <Action>(NextTab)
 
-:map <space>pc :source ~/.ideavimrc<CR>
+:map <space>opc :source ~/.ideavimrc<CR>
+
+" Plugins
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'kana/vim-textobj-entire'
