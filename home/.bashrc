@@ -28,11 +28,7 @@ export PATH="$PATH:$HOME/.bun/bun"
 export PATH="$PATH:$fzf_base/bin"
 
 # Setup Homebrew env
-if [[ "$(uname -m)" == "arm64" ]]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-	eval "$(/usr/local/bin/brew shellenv)"
-fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Enable fzf
 export FZF_DEFAULT_OPTS="--reverse --info=inline"

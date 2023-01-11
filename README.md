@@ -12,9 +12,41 @@ cd dotfiles
 ./install
 ```
 
-## Pre-requisites
+## Git
 
-### Install Homebrew formula
+```bash
+user=$(whoami)
+read -p 'Email: ' email
+ssh-keygen -t ed25519 -C $email
+
+cat <<EOF >$HOME/.ssh/config
+Host *.github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
+EOF
+
+cat <<EOF >$HOME/.gitconfig
+[user]
+	name = Mark Skelton
+	email = $email
+  signingKey = /Users/$user/.ssh/id_ed25519.pub
+[core]
+	excludesfile = /Users/$user/.gitignore-global
+[commit]
+  gpgsign = true
+[gpg]
+	format = ssh
+[include]
+	path = /Users/$user/.gitconfig-shared
+EOF
+
+echo "Run the following command to copy the ssh key to your clipboard."
+echo ""
+echo "cat ~/.ssh/id_ed25519.pub | pbcopy"
+echo ""
+```
+
+### Homebrew
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -22,13 +54,11 @@ cd dotfiles
 /opt/homebrew/bin/brew install --cask $(cat config/casks.txt)
 ```
 
-## Miscellaneous system setup
+### Miscellaneous system setup
 
 ```bash
 ./scripts/macos.sh
-./scripts/git.sh
 ./scripts/tools.sh
-./scripts/editor.sh
 ```
 
 ### Nerd Fonts
