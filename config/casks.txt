@@ -6,3 +6,4 @@ raycast
 shottr
 todoist
 visual-studio-code
+quicken
