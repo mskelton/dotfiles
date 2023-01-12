@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Disable natural scrolling
+defaults write -g com.apple.swipescrolldirection -int 0
+
+# Enable tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+
 # Enable dark theme
 defaults write -g AppleInterfaceStyle -string "Dark"
 
