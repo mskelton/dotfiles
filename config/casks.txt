@@ -1,9 +1,12 @@
+discord
 docker
 firefox
+google-chrome
 microsoft-edge
 mimestream
 raycast
 shottr
+telegram
 todoist
 visual-studio-code
 quicken
