@@ -16,8 +16,11 @@ link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
 
 # Home and fish configs have to be linked individually
-link_contents home ~/
-link_contents fish ~/.config/fish/
+link_dir home ~/
+link_dir fish ~/.config/fish/
+
+# Add custom fonts to the user fonts library
+copy_dir personal/fonts ~/Library/Fonts/
 
 # Widen config
 if [[ -n "$WIDEN" ]]; then
@@ -25,8 +28,8 @@ if [[ -n "$WIDEN" ]]; then
 	link widen/gh/config.yml ~/.config/gh/config.yml
 	link widen/gh-dash/config.yml ~/.config/gh-dash/config.yml
 
-	link_contents widen/home ~/
-	link_contents widen/fish ~/.config/fish/
+	link_dir widen/home ~/
+	link_dir widen/fish ~/.config/fish/
 else
 	link gh/config.yml ~/.config/gh/config.yml
 	link gh-dash/config.yml ~/.config/gh-dash/config.yml

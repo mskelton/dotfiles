@@ -4,19 +4,9 @@ My personal settings and dotfiles.
 
 ## Installation
 
-```bash
-git clone git@github.com:mskelton/dotfiles.git
-cd dotfiles
-git submodule init
-git submodule update --remote
-./install
-```
-
-### Git
-
 <details>
   <summary>
-    Expand to see Git setup instructions
+    Before continuing, expand and follow the Git setup instructions.
   </summary>
 
 ```bash
@@ -53,6 +43,14 @@ echo ""
 
 </details>
 
+```bash
+git clone git@github.com:mskelton/dotfiles.git
+cd dotfiles
+git submodule init
+git submodule update --remote
+./install
+```
+
 ### Homebrew
 
 ```bash
@@ -67,9 +65,3 @@ echo ""
 ./scripts/macos.sh
 ./scripts/tools.sh
 ```
-
-### Nerd Fonts
-
-Download and install the
-[`Symbols Nerd Font`](https://github.com/ryanoasis/nerd-fonts/blob/da88bdb6/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-2048-em%20Nerd%20Font%20Complete.ttf)
-for Kitty to properly use Nerd font symbols.
