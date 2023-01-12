@@ -34,15 +34,16 @@ defaults write com.apple.Dock static-others '()'
 # Shortcuts
 disable_shortcut="<dict><key>enabled</key><false/></dict>"
 
-# Disable spotlight search
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 $disable_shortcut
-
 # Disable screenshot shortcuts to allow Shottr to use them
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 28 $disable_shortcut
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 $disable_shortcut
 
 # Disable input source switching, it conflicts with Neovim autocompletion
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 $disable_shortcut
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 $disable_shortcut
+
+# Disable spotlight search
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 $disable_shortcut
 
 # Add Option+D for toggling do not disturb
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
