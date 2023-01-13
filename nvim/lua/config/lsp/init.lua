@@ -3,6 +3,9 @@ return function()
 	local tsserver = require("config.lsp.tsserver")
 	local npm = require("config.npm-utils")
 
+	-- Register custom LSP handlers
+	require("config.lsp.handlers").register_handlers()
+
 	-- Setup autocmds and null-ls
 	require("config.lsp.autocmd")
 	require("config.lsp.null-ls")
