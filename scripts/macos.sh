@@ -1,13 +1,29 @@
 #!/usr/bin/env bash
 
-# Disable natural scrolling
-defaults write -g com.apple.swipescrolldirection -int 0
-
-# Enable tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
-
 # Enable dark theme
 defaults write -g AppleInterfaceStyle -string "Dark"
+
+# Disable disk not ejected properly notification. This notification is very
+# annoying when flashing firmware to the Advantage 360 keyboard.
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
+
+################################################################################
+### DOCK #######################################################################
+################################################################################
+
+# Make the Dock icons a more reasonable size
+defaults write com.apple.dock tilesize -int 45
+
+# Remove downloads and recent apps from the dock
+defaults write com.apple.Dock show-recents -int 0
+defaults write com.apple.Dock static-others '()'
+
+################################################################################
+### TRACKPAD ###################################################################
+################################################################################
+
+# Disable natural scrolling
+defaults write -g com.apple.swipescrolldirection -int 0
 
 # Disable rubber band scrolling
 defaults write -g NSScrollViewRubberbanding -int 0
@@ -16,8 +32,12 @@ defaults write -g NSScrollViewRubberbanding -int 0
 # doesn't hide scrollbars automatically.
 defaults write -g AppleShowScrollBars -string "WhenScrolling"
 
-# Make the Dock icons a more reasonable size
-defaults write com.apple.dock tilesize -int 45
+# Enable tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+
+################################################################################
+### KEYBOARD ###################################################################
+################################################################################
 
 # Enable key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
@@ -27,11 +47,31 @@ defaults write -g InitialKeyRepeat -int 15
 # Use all F1, F2 as standard keys
 defaults write -g com.apple.keyboard.fnState -bool true
 
-# Remove downloads and recent apps from the dock
-defaults write com.apple.Dock show-recents -int 0
-defaults write com.apple.Dock static-others '()'
+# Disable globe key
+defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 
-# Shortcuts
+# Disable smart quotes and dashes
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable add period with double-space
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable default text replacement items
+defaults write -g NSUserDictionaryReplacementItems '()'
+
+# Map caps lock to escape
+hidutil property --set '{
+  "UserKeyMapping":[{
+    "HIDKeyboardModifierMappingSrc":0x700000039,
+    "HIDKeyboardModifierMappingDst":0x700000029
+  }]
+}'
+
+################################################################################
+### SHORTCUTS ##################################################################
+################################################################################
+
 disable_shortcut="<dict><key>enabled</key><false/></dict>"
 
 # Disable screenshot shortcuts to allow Shottr to use them
@@ -63,10 +103,3 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
     </dict>
   </dict>
 "
-
-# Disable disk not ejected properly notification. This notification is very
-# annoying when flashing firmware to the Advantage 360 keyboard.
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
-
-# Install Docker completion
-curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
