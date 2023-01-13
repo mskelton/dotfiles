@@ -1,11 +1,39 @@
 #!/usr/bin/env bash
 
 # Enable dark theme
-defaults write -g AppleInterfaceStyle -string "Dark"
+defaults write -g AppleInterfaceStyle -string 'Dark'
+
+# Set screenshot location to ~/Downloads
+defaults write com.apple.screencapture location -string '~/Downloads'
+
+# Disable screenshot thumbnail after capture
+defaults write com.apple.screencapture show-thumbnail -bool false
 
 # Disable disk not ejected properly notification. This notification is very
 # annoying when flashing firmware to the Advantage 360 keyboard.
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
+
+################################################################################
+### FINDER #####################################################################
+################################################################################
+
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Set column view as default
+defaults write com.apple.finder FXPreferredViewStyle -string clmv
+
+# Show folders on top in finder
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Search the current folder
+defaults write com.apple.finder FXDefaultSearchScope -string SCcf
+
+# Empty trash after 30 days
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
+# Disable delay when hovering toolbar title
+defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
 ################################################################################
 ### DOCK #######################################################################
