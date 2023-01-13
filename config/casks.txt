@@ -10,3 +10,4 @@ telegram
 todoist
 visual-studio-code
 quicken
+zoom
