@@ -2,12 +2,16 @@ discord
 docker
 firefox
 google-chrome
+kitty
+kitty
 microsoft-edge
 mimestream
+notion
+quicken
 raycast
 shottr
+slack
 telegram
 todoist
 visual-studio-code
-quicken
 zoom
