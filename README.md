@@ -10,6 +10,8 @@ My personal settings and dotfiles.
   </summary>
 
 ```bash
+xcode-select --install
+
 user=$(whoami)
 read -p 'Email: ' email
 ssh-keygen -t ed25519 -C $email
@@ -65,3 +67,16 @@ git submodule update --remote
 ./scripts/macos.sh
 ./scripts/tools.sh
 ```
+
+<details>
+  <summary>
+    Before continuing, expand and follow the Git setup instructions.
+  </summary>
+
+- Copy Quicken data files
+- Copy `~/.config/fish/env.fish`
+- Copy Taskwarrior data `~/.task`
+- Copy `~/.local/share/fish/fish_history`
+- Copy pictures and documents
+
+</details>

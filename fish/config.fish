@@ -7,7 +7,8 @@ source $HOME/.alias
 source $HOME/.config/fish/colors.fish
 
 # Custom environment files that might not exist
-for file in $HOME/.config/fish/widen.fish $HOME/.config/fish/env.fish
+for f in widen personal env
+  set file $HOME/.config/fish/$f.fish
   test -f $file; and source $file
 end
 
@@ -33,6 +34,7 @@ set -x FZF_DEFAULT_OPTS "--reverse --info=inline"
 set -x EDITOR "nvim"
 set -x GOPATH "$HOME/go"
 set -x BUN_INSTALL "$HOME/.bun"
+set -x HOMEBREW_NO_ENV_HINTS true
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv)"

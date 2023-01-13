@@ -14,6 +14,7 @@ link emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
+link zet/config.yaml ~/.config/zet/config.yaml
 
 # Home and fish configs have to be linked individually
 link_dir home ~/
@@ -33,6 +34,8 @@ if [[ -n "$WIDEN" ]]; then
 else
 	link gh/config.yml ~/.config/gh/config.yml
 	link gh-dash/config.yml ~/.config/gh-dash/config.yml
+
+	link_dir personal/fish ~/.config/fish/
 fi
 
 # VS Code settings and keybindings

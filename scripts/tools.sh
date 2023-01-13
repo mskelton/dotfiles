@@ -4,12 +4,6 @@
 sudo sh -c "echo $(brew --prefix)/bin/fish >> /etc/shells"
 chsh -s $(brew --prefix)/bin/fish
 
-# Install Kitty
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
-# Install Starship
-curl -sS https://starship.rs/install.sh | sh
-
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
