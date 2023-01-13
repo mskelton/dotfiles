@@ -70,7 +70,7 @@ git submodule update --remote
 
 <details>
   <summary>
-    Before continuing, expand and follow the Git setup instructions.
+    Additional steps to copy data from old machine
   </summary>
 
 - Copy Quicken data files

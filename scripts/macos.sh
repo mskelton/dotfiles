@@ -11,7 +11,7 @@ defaults write com.apple.screencapture show-thumbnail -bool false
 
 # Disable disk not ejected properly notification. This notification is very
 # annoying when flashing firmware to the Advantage 360 keyboard.
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool true
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd DADisableEjectNotification -bool true
 
 ################################################################################
 ### FINDER #####################################################################
@@ -60,6 +60,9 @@ defaults write -g NSScrollViewRubberbanding -int 0
 # doesn't hide scrollbars automatically.
 defaults write -g AppleShowScrollBars -string "WhenScrolling"
 
+# Adjust trackpad tracking speed
+defaults write -g com.apple.trackpad.scaling -float 0.875
+
 # Enable tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
 
@@ -95,6 +98,25 @@ hidutil property --set '{
     "HIDKeyboardModifierMappingDst":0x700000029
   }]
 }'
+
+################################################################################
+### MENU BAR ###################################################################
+################################################################################
+
+# Remove Spotlight
+defaults -currentHost write com.apple.Spotlight MenuItemHidden -bool true
+
+# Show battery percentage
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# Show bluetooth always
+defaults -currentHost write com.apple.controlcenter Bluetooth -int 2
+
+# Show focus always
+defaults -currentHost write com.apple.controlcenter FocusModes -int 18
+
+# Show sound always
+defaults -currentHost write com.apple.controlcenter Sound -int 16
 
 ################################################################################
 ### SHORTCUTS ##################################################################
