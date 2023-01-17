@@ -1,5 +1,4 @@
 asdf
-starship
 bash
 bat
 dict
@@ -16,9 +15,11 @@ neovim
 rename
 ripgrep
 starship
+starship
 stylua
 task
 tmux
 trash
 tree-sitter
+watchman
 wget

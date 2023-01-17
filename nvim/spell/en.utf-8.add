@@ -140,3 +140,7 @@ tooltip
 DOM
 URI
 videojs
+struct
+YAML
+unmarshal
+unmarshals
