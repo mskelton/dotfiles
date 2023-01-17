@@ -48,5 +48,5 @@ alias gim="gimme-aws-creds"
 alias gradle="./gradlew"
 alias pb="pbcopy"
 alias sf="source-fish"
-alias lg='lazygit'
+alias vo='lazygit'
 alias python='python3'
