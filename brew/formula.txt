@@ -1,6 +1,7 @@
 asdf
 bash
 bat
+clang-format
 dict
 fd
 fish

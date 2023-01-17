@@ -19,6 +19,7 @@ return function()
 	local servers = {
 		bashls = {},
 		clangd = {
+			cmd = { "clangd", "-header-insertion=never" },
 			filetypes = {
 				"c",
 				"cpp",
