@@ -23,6 +23,9 @@ link_dir fish ~/.config/fish/
 # Add custom fonts to the user fonts library
 copy_dir personal/fonts ~/Library/Fonts/
 
+# Metatrader templates
+link_dir -s metatrader ~/Library/Application\ Support/MetaTrader\ 5/Bottles/metatrader5/drive_c/Program\ Files/MetaTrader\ 5/MQL5/Profiles/Templates/
+
 # Widen config
 if [[ -n "$WIDEN" ]]; then
 	link widen/bin ~/.local/bin-widen
