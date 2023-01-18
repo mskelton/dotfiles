@@ -3,6 +3,7 @@ bash
 bat
 clang-format
 dict
+dos2unix
 fd
 fish
 fzf
