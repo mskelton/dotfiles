@@ -33,6 +33,7 @@ corepack enable
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pomo@latest
 go install github.com/mskelton/zet@latest
+go install github.com/spf13/cobra-cli@latest
 
 # Install gh extensions
 gh extension install dlvhdr/gh-dash
