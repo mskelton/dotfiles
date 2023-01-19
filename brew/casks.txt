@@ -4,6 +4,7 @@ firefox
 google-chrome
 kitty
 kitty
+mic-drop
 microsoft-edge
 mimestream
 notion
