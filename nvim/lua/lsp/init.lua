@@ -1,4 +1,6 @@
-return function()
+local M = {}
+
+M.setup = function()
 	local util = require("lspconfig.util")
 	local tsserver = require("lsp.tsserver")
 	local npm = require("utils.npm")
@@ -134,3 +136,5 @@ return function()
 		},
 	})
 end
+
+return M

@@ -7,6 +7,6 @@ return {
 		"onsails/lspkind-nvim",
 	},
 	config = function()
-		return require("lsp")()
+		return require("lsp").setup()
 	end,
 }
