@@ -16,8 +16,8 @@ $(brew --prefix)/opt/fzf/install
 # Install Docker completion
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
 
-# Install packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# Install lazy.nvim
+git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
 
 # Use a user directory so sudo is not required for installation
 npm config set prefix=~/.local/share/npm
