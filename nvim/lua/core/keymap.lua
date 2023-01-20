@@ -87,14 +87,14 @@ map(nv, "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar t
 map(nv, "<leader>fs", "<cmd>Telescope live_grep regex=false<cr>") -- "Find exact String"
 map(nv, "<leader>fS", "<cmd>Telescope live_grep<cr>") -- "Find regex String"
 map(nv, "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
-map(nv, "<leader>fg", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
+map(nv, "<leader>fw", "<cmd>Telescope buffers<cr>") -- "Find Windows (buffers)"
+map(nv, "<leader>fn", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
 map(nv, "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
 map(nv, "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
 map(nv, "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
 map(nv, "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
 map(nv, "<leader>fd", "<cmd>Lex %:p:h | vertical resize 30<cr>") -- "Find Directory"
 map(nv, "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-map(nv, "<leader>bl", "<cmd>Telescope buffers<cr>") -- "Buffer List"
 map(nv, "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
 
 --------------------------------------------------------------------------------
