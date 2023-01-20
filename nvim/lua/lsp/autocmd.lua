@@ -1,4 +1,4 @@
-local utils = require("config.lsp.utils")
+local utils = require("lsp.utils")
 local group = vim.api.nvim_create_augroup("lsp", {})
 
 local formatters = {

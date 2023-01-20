@@ -9,7 +9,7 @@ augroup END
 
 augroup auto_source_dotfiles
   au!
-  au BufWritePost */nvim/lua/core/*.lua source <afile>
+  au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
 augroup END
 
 augroup markdown_spell_check

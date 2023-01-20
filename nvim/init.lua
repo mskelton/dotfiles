@@ -1,5 +1,3 @@
-require("core.utils").safe_require("impatient")
-
 require("core.globals")
 require("core.options")
 require("core.commands")
@@ -7,4 +5,4 @@ require("core.filetypes")
 require("core.keymap")
 require("core.signs").setup()
 require("core.autocmd")
-require("plugins")
+require("core.plugins")

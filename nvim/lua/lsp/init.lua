@@ -1,14 +1,16 @@
-return function()
+local M = {}
+
+M.setup = function()
 	local util = require("lspconfig.util")
-	local tsserver = require("config.lsp.tsserver")
-	local npm = require("config.npm-utils")
+	local tsserver = require("lsp.tsserver")
+	local npm = require("utils.npm")
 
 	-- Register custom LSP handlers
-	require("config.lsp.handlers").register_handlers()
+	require("lsp.handlers").register_handlers()
 
 	-- Setup autocmds and null-ls
-	require("config.lsp.autocmd")
-	require("config.lsp.null-ls")
+	require("lsp.autocmd")
+	require("lsp.null-ls")
 
 	-- Better completion for Neovim Lua
 	require("neodev").setup({})
@@ -46,14 +48,14 @@ return function()
 		rust_analyzer = {},
 		yamlls = {
 			settings = {
-				yaml = { schemas = require("config.lsp.yaml-schemas") },
+				yaml = { schemas = require("lsp.yaml-schemas") },
 			},
 		},
 		-- Frontend
 		emmet_ls = {},
 		jsonls = {
 			settings = {
-				json = { schemas = require("config.lsp.json-schemas") },
+				json = { schemas = require("lsp.json-schemas") },
 			},
 		},
 		stylelint_lsp = {
@@ -134,3 +136,5 @@ return function()
 		},
 	})
 end
+
+return M
