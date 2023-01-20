@@ -7,10 +7,10 @@ augroup disable_continuation_comments
   au BufEnter * set formatoptions-=c | set formatoptions-=o
 augroup END
 
-" augroup auto_source_dotfiles
-"   au!
-"   au BufWritePost */nvim/lua/core/*.lua source <afile>
-" augroup END
+augroup auto_source_dotfiles
+  au!
+  au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
+augroup END
 
 augroup markdown_spell_check
   au!
