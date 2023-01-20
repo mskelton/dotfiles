@@ -1,4 +1,4 @@
-require("core.utils").safe_require("impatient")
+-- require("core.utils").safe_require("impatient")
 
 require("core.globals")
 require("core.options")
