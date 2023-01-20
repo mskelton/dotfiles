@@ -6,17 +6,14 @@ require("lazy").setup("plugins", {
 		enabled = false,
 		notify = false,
 	},
-	-- dev = {
-	-- 	path = "~/dev",
-	-- 	patterns = { "mskelton" },
-	-- },
+	dev = {
+		path = "~/dev",
+		patterns = { "mskelton" },
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {
 				"gzip",
-				-- "matchit",
-				-- "matchparen",
-				-- "netrwPlugin",
 				"rplugin",
 				"tarPlugin",
 				"tohtml",
