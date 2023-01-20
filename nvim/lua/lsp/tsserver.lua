@@ -1,5 +1,5 @@
 local utils = require("core.utils")
-local npm = require("config.npm-utils")
+local npm = require("utils.npm")
 
 local M = {}
 

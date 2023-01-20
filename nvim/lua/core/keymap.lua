@@ -171,17 +171,10 @@ map(
 	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
 )
 
--- Packer sync
-map("n", "<leader>ops", function()
-	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
-	require("packer").sync()
-end)
-
--- Packer compile
-map("n", "<leader>opc", function()
-	vim.cmd("luafile ~/.config/nvim/lua/plugins.lua")
-	require("packer").compile()
-	print("Packer compiled successfully!")
+-- Update plugins
+map("n", "<leader>op", function()
+	vim.cmd.luafile("~/.config/nvim/lua/core/plugins.lua")
+	require("lazy").sync()
 end)
 
 --------------------------------------------------------------------------------

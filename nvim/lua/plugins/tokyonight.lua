@@ -1,5 +1,8 @@
-return function()
-	require("tokyonight").setup({
+return {
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	opts = {
 		on_highlights = function(hl, c)
 			hl["@function.call"] = { fg = c.blue, bold = true }
 			hl["@method.call"] = { fg = c.blue, bold = true }
@@ -18,7 +21,8 @@ return function()
 			-- De-emphasize text completions
 			hl.CmpItemKindText = { fg = c.fg_dark }
 		end,
-	})
-
-	vim.cmd("colorscheme tokyonight")
-end
+	},
+	config = function()
+		vim.cmd("colorscheme tokyonight")
+	end,
+}
