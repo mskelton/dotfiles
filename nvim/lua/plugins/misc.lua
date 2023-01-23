@@ -3,7 +3,7 @@ return {
 	"tpope/vim-eunuch",
 	"tpope/vim-unimpaired",
 	"tpope/vim-surround",
-	"tpope/vim-repeat",
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 	"michaeljsmith/vim-indent-object",
 	"fladson/vim-kitty",
 	"kdheepak/lazygit.nvim",
@@ -106,6 +106,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
 		config = true,
 	},
 }
