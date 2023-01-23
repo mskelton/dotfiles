@@ -50,6 +50,7 @@ return {
 	},
 	{
 		"mskelton/live-reload.nvim",
+		enabled = false,
 		opts = {
 			root_dir = "~/dev",
 			plugins = {
