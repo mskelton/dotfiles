@@ -57,22 +57,6 @@ return {
 			preset = "codicons",
 		})
 
-		local next = function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end
-
-		local prev = function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end
-
 		cmp.setup({
 			enabled = function()
 				-- Completion is always allowed in command mode
@@ -101,19 +85,26 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
-			-- experimental = {
-			-- 	ghost_text = true,
-			-- },
 			mapping = {
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete({}),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<Tab>"] = next,
-				["<S-Tab>"] = prev,
-				["<C-j>"] = next,
-				["<C-k>"] = prev,
+				["<C-j>"] = function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					else
+						fallback()
+					end
+				end,
+				["<C-k>"] = function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					else
+						fallback()
+					end
+				end,
 				["<C-l>"] = function(fallback)
 					if cmp.visible() then
 						cmp.confirm({ select = true })
