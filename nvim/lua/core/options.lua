@@ -55,6 +55,9 @@ o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldlevel = 20
 
+-- Store more oldfiles in the shada file
+o.shada = "!,'1000,<500,s10,h"
+
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
 o.confirm = true
