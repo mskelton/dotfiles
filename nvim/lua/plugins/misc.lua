@@ -6,17 +6,23 @@ return {
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	"michaeljsmith/vim-indent-object",
 	"fladson/vim-kitty",
-	"kdheepak/lazygit.nvim",
+	{
+		"kdheepak/lazygit.nvim",
+		keys = {
+			{ "<leader>vo", "<cmd>LazyGit<cr>", mode = { "n", "v" } },
+		},
+	},
 	{
 		"windwp/nvim-autopairs",
 		config = true,
 	},
 	{
 		"christoomey/vim-tmux-navigator",
+		init = function()
+			vim.g.tmux_navigator_no_mappings = 1
+		end,
 		config = function()
 			local map = require("core.utils").map
-
-			vim.g.tmux_navigator_no_mappings = 1
 
 			map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 			map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
@@ -95,6 +101,15 @@ return {
 		"mskelton/bandit.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		config = true,
+		keys = {
+			{
+				"<leader>vc",
+				function()
+					require("bandit").commit()
+				end,
+				mode = { "n", "v" },
+			},
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",

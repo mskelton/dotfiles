@@ -115,15 +115,11 @@ map("n", "<leader>wp", "<C-w>P")
 --------------------------------------------------------------------------------
 --- GIT (VCS) ------------------------------------------------------------------
 --------------------------------------------------------------------------------
-map(nv, "<leader>vo", "<cmd>LazyGit<cr>")
 map(nv, "<leader>vb", "<cmd>Git blame<cr>")
 map(nv, "<leader>vd", "<cmd>Gvdiffsplit<cr>")
 map(nv, "<leader>vl", "<cmd>vertical Git log<cr>")
 map(nv, "<leader>vp", "<cmd>Git push<cr>")
 map(nv, "<leader>vP", "<cmd>Git pull<cr>")
-map(nv, "<leader>vc", function()
-	require("bandit").commit()
-end)
 
 -- -- Stage/reset individual hunks under cursor in a file
 -- map("v", "<leader>vs", "<cmd>Gitsigns stage_hunk<cr>")
