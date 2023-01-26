@@ -34,3 +34,4 @@ disabled = false
 
 [swift]
 symbol = ' '
+disabled = true
