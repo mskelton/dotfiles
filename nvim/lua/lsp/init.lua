@@ -58,6 +58,7 @@ M.setup = function()
 				json = { schemas = require("lsp.json-schemas") },
 			},
 		},
+		svelte = {},
 		stylelint_lsp = {
 			root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
 			settings = {

@@ -81,6 +81,7 @@ return {
 				"sql",
 				"styled",
 				"swift",
+				"svelte",
 				"tsx",
 				"typescript",
 				"vim",
