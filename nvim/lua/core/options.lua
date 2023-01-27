@@ -74,11 +74,3 @@ o.updatetime = 100
 
 -- Abbreviations
 vim.cmd("ca <expr> %% expand('%:p:h')")
-
--- Netrw
-g.netrw_banner = 0 -- Hide banner
-g.netrw_liststyle = 3 -- Tree view
-g.netrw_browse_split = 4 -- Open in previous window
-g.netrw_keepdir = 0
-g.netrw_localcopydircmd = "cp -r"
-g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) -- use .gitignore
