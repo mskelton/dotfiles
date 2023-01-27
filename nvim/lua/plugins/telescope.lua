@@ -2,7 +2,12 @@ return {
 	"nvim-telescope/telescope.nvim",
 	cmd = "Telescope",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
+		{
+			"nvim-lua/plenary.nvim",
+			config = function()
+				require("plenary.filetype").add_file("mskelton")
+			end,
+		},
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
 		{
