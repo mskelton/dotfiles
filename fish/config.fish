@@ -22,6 +22,14 @@ function fish_hybrid_key_bindings
 
   # Open tmux-sessionizer with Ctrl+f
   bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
+
+  # Use _ to go to the beginning of the line as I use this a lot in Vim
+  bind -s --preset _ beginning-of-line
+  bind -s --preset -M visual _ beginning-of-line
+
+  # TODO: Switch between modes with escape, a little out of the ordinary, but I
+  # find myself doing it a lot
+  # bind -s --preset -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f backward-char repaint-mode; end"
 end
 
 # Use my custom keybindings
