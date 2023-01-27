@@ -9,7 +9,7 @@ return {
 	{
 		"kdheepak/lazygit.nvim",
 		keys = {
-			{ "<leader>vo", "<cmd>LazyGit<cr>", mode = { "n", "v" } },
+			{ "<leader>v;", "<cmd>LazyGit<cr>", mode = { "n", "v" } },
 		},
 	},
 	{
