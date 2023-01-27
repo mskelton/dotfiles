@@ -6,7 +6,7 @@ return {
 	keys = {
 		{
 			"<leader>fd",
-			"<cmd>NvimTreeToggle<cr>",
+			"<cmd>NvimTreeFindFileToggle!<cr>",
 			mode = { "n", "v" },
 		},
 	},
