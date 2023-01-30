@@ -56,12 +56,12 @@ return {
 	},
 	{
 		"mskelton/live-reload.nvim",
-		enabled = false,
 		opts = {
 			root_dir = "~/dev",
 			plugins = {
 				{ "bandit", dir = "bandit.nvim" },
 				{ "live-reload", dir = "live-reload.nvim" },
+				{ "local-yokel", dir = "local-yokel.nvim" },
 			},
 		},
 	},
@@ -114,6 +114,11 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"mskelton/local-yokel.nvim",
+		cmd = { "E" },
 		config = true,
 	},
 }
