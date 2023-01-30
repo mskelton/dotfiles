@@ -96,29 +96,45 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			local map = require("core.utils").map
-			local ui = require("harpoon.ui")
-
-			map("n", "<leader>ho", function()
-				ui.toggle_quick_menu()
-			end)
-
-			map("n", "<leader>ha", function()
-				require("harpoon.mark").add_file()
-			end)
-
-			map("n", "[h", function()
-				ui.nav_next()
-			end)
-
-			map("n", "]h", function()
-				ui.nav_prev()
-			end)
-		end,
+		keys = {
+			{
+				"<leader>ho",
+				function()
+					require("harpoon.ui").toggle_quick_menu()
+				end,
+				mode = utils.nv,
+				desc = "Open Harpoon menu",
+			},
+			{
+				"<leader>ha",
+				function()
+					require("harpoon.mark").add_file()
+				end,
+				mode = utils.nv,
+				desc = "Add file to Harpoon",
+			},
+			{
+				"]h",
+				function()
+					require("harpoon.ui").nav_next()
+				end,
+				mode = "n",
+				desc = "Next harpoon mark",
+			},
+			{
+				"[h",
+				function()
+					require("harpoon.ui").nav_prev()
+				end,
+				mode = "n",
+				desc = "Previous harpoon mark",
+			},
+		},
 	},
 	{
 		"mskelton/live-reload.nvim",
+		lazy = false,
+		enabled = false,
 		opts = {
 			root_dir = "~/dev",
 			plugins = {
@@ -140,6 +156,7 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim",
+		lazy = false,
 		opts = {
 			autochdir = true,
 			direction = "float",
