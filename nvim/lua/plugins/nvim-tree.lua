@@ -1,7 +1,19 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		{
+			"nvim-tree/nvim-web-devicons",
+			opts = {
+				override = {
+					[".eslintrc"] = {
+						icon = "󰱺",
+						color = "#4b32c3",
+						cterm_color = "60",
+						name = "Eslint",
+					},
+				},
+			},
+		},
 	},
 	keys = {
 		{
