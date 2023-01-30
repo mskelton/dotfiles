@@ -1,15 +1,51 @@
+local utils = require("core.utils")
+
 return {
-	"tpope/vim-abolish",
-	"tpope/vim-eunuch",
-	"tpope/vim-unimpaired",
-	"tpope/vim-surround",
-	{ "tpope/vim-repeat", event = "VeryLazy" },
-	"michaeljsmith/vim-indent-object",
-	"fladson/vim-kitty",
+	{
+		"tpope/vim-abolish",
+		event = "CmdLineEnter",
+	},
+	{
+		"tpope/vim-eunuch",
+		cmd = {
+			"Remove",
+			"Delete",
+			"Move",
+			"Chmod",
+			"Mkdir",
+			"Cfind",
+			"Clocate",
+			"Lfind",
+			"Llocate",
+			"Wall",
+			"SudoWrite",
+			"SudoEdit",
+		},
+	},
+	{
+		"tpope/vim-unimpaired",
+		event = "VeryLazy",
+	},
+	{
+		"tpope/vim-surround",
+		event = "VeryLazy",
+	},
+	{
+		"tpope/vim-repeat",
+		event = "VeryLazy",
+	},
+	{
+		"michaeljsmith/vim-indent-object",
+		event = "VeryLazy",
+	},
+	{
+		"fladson/vim-kitty",
+		ft = "kitty",
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		keys = {
-			{ "<leader>v;", "<cmd>LazyGit<cr>", mode = { "n", "v" } },
+			{ "<leader>v;", "<cmd>LazyGit<cr>", mode = utils.nv },
 		},
 	},
 	{
@@ -18,16 +54,14 @@ return {
 	},
 	{
 		"christoomey/vim-tmux-navigator",
+		keys = {
+			{ "<C-h>", "<cmd>TmuxNavigateLeft<cr>", mode = utils.nv },
+			{ "<C-j>", "<cmd>TmuxNavigateDown<cr>", mode = utils.nv },
+			{ "<C-k>", "<cmd>TmuxNavigateUp<cr>", mode = utils.nv },
+			{ "<C-l>", "<cmd>TmuxNavigateRight<cr>", mode = utils.nv },
+		},
 		init = function()
 			vim.g.tmux_navigator_no_mappings = 1
-		end,
-		config = function()
-			local map = require("core.utils").map
-
-			map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
-			map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
-			map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
-			map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 		end,
 	},
 	{
@@ -94,20 +128,33 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
-		cmd = { "Git", "G", "Gvdiffsplit" },
+		cmd = {
+			"G",
+			"GBrowse",
+			"GDelete",
+			"GMove",
+			"GRename",
+			"Gdiffsplit",
+			"Gedit",
+			"Ggrep",
+			"Git",
+			"Gread",
+			"Gsplit",
+			"Gvdiffsplit",
+			"Gwrite",
+		},
 		dependencies = { "tpope/vim-rhubarb" },
 	},
 	{
 		"mskelton/bandit.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
-		config = true,
 		keys = {
 			{
 				"<leader>vc",
 				function()
 					require("bandit").commit()
 				end,
-				mode = { "n", "v" },
+				mode = utils.nv,
 			},
 		},
 	},
