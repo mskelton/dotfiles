@@ -49,4 +49,7 @@ M.to_bool = function(value)
 	return false
 end
 
+-- Most of my key mappings are applicable to both normal and visual mode
+M.nv = { "n", "v" }
+
 return M
