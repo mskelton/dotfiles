@@ -55,6 +55,7 @@ return {
 			"<leader>fd",
 			"<cmd>NvimTreeFindFileToggle!<cr>",
 			mode = { "n", "v" },
+			desc = "Toggle file tree",
 		},
 	},
 	init = function()

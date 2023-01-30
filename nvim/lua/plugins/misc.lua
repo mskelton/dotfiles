@@ -48,7 +48,12 @@ return {
 	{
 		"kdheepak/lazygit.nvim",
 		keys = {
-			{ "<leader>v;", "<cmd>LazyGit<cr>", mode = utils.nv },
+			{
+				"<leader>v;",
+				"<cmd>LazyGit<cr>",
+				mode = utils.nv,
+				desc = "Open LazyGit",
+			},
 		},
 	},
 	{
@@ -59,10 +64,30 @@ return {
 	{
 		"christoomey/vim-tmux-navigator",
 		keys = {
-			{ "<C-h>", "<cmd>TmuxNavigateLeft<cr>", mode = utils.nv },
-			{ "<C-j>", "<cmd>TmuxNavigateDown<cr>", mode = utils.nv },
-			{ "<C-k>", "<cmd>TmuxNavigateUp<cr>", mode = utils.nv },
-			{ "<C-l>", "<cmd>TmuxNavigateRight<cr>", mode = utils.nv },
+			{
+				"<C-h>",
+				"<cmd>TmuxNavigateLeft<cr>",
+				mode = utils.nv,
+				desc = "Navigate left split or Tmux window",
+			},
+			{
+				"<C-j>",
+				"<cmd>TmuxNavigateDown<cr>",
+				mode = utils.nv,
+				desc = "Navigate down one split or Tmux window",
+			},
+			{
+				"<C-k>",
+				"<cmd>TmuxNavigateUp<cr>",
+				mode = utils.nv,
+				desc = "Navigate up one split or Tmux window",
+			},
+			{
+				"<C-l>",
+				"<cmd>TmuxNavigateRight<cr>",
+				mode = utils.nv,
+				desc = "Navigate right one split or Tmux window",
+			},
 		},
 		init = function()
 			vim.g.tmux_navigator_no_mappings = 1
@@ -159,6 +184,7 @@ return {
 					require("bandit").commit()
 				end,
 				mode = utils.nv,
+				desc = "Commit changes",
 			},
 		},
 	},
