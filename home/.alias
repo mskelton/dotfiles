@@ -23,6 +23,9 @@ alias tw="clear && t"
 alias y="yarn"
 alias ys="yarn serve"
 
+# pnpm
+alias pn=pnpm
+
 # Tmux
 alias tn="tmux new"
 alias ta="tmux at"
