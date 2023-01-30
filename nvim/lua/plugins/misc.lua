@@ -49,7 +49,7 @@ return {
 		"kdheepak/lazygit.nvim",
 		keys = {
 			{
-				"<leader>v;",
+				"<leader>lg",
 				"<cmd>LazyGit<cr>",
 				mode = utils.nv,
 				desc = "Open LazyGit",
@@ -214,5 +214,9 @@ return {
 		"mskelton/local-yokel.nvim",
 		cmd = { "E" },
 		config = true,
+	},
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
 	},
 }

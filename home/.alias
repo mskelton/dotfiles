@@ -47,10 +47,8 @@ alias icat="kitty +kitten icat"
 # Misc
 alias def="dict -d '!'"
 alias dock="docker exec -it $1 /bin/bash"
-alias dup="docker-compose up -d"
-alias gim="gimme-aws-creds"
 alias gradle="./gradlew"
 alias pb="pbcopy"
 alias sf="source-fish"
-alias vo='lazygit'
+alias lg='lazygit'
 alias python='python3'
