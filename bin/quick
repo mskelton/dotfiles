@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Quickly create a new issue
+
+gh issue create --repo mskelton/dotfiles -a "@me" -t "$*" -b ''
