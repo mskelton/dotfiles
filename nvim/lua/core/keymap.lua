@@ -16,7 +16,9 @@
 -- allows for more keybindings to be set while still keeping the speed of
 -- executing each keybinding relatively stable and fast.
 local map = require("core.utils").map
-local nv = require("core.utils").nv
+
+-- Most of my key mappings are applicable to both normal and visual mode
+local nv = { "n", "v" }
 
 -- Shiftless command mode. I've debated this one some since other tools with Vim
 -- emulation don't use this, so it kind of makes life a little harder when
