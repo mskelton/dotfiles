@@ -1,5 +1,3 @@
-local utils = require("core.utils")
-
 return {
 	{
 		"tpope/vim-abolish",
@@ -51,7 +49,7 @@ return {
 			{
 				"<leader>lg",
 				"<cmd>LazyGit<cr>",
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Open LazyGit",
 			},
 		},
@@ -67,25 +65,25 @@ return {
 			{
 				"<C-h>",
 				"<cmd>TmuxNavigateLeft<cr>",
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Navigate left split or Tmux window",
 			},
 			{
 				"<C-j>",
 				"<cmd>TmuxNavigateDown<cr>",
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Navigate down one split or Tmux window",
 			},
 			{
 				"<C-k>",
 				"<cmd>TmuxNavigateUp<cr>",
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Navigate up one split or Tmux window",
 			},
 			{
 				"<C-l>",
 				"<cmd>TmuxNavigateRight<cr>",
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Navigate right one split or Tmux window",
 			},
 		},
@@ -102,7 +100,7 @@ return {
 				function()
 					require("harpoon.ui").toggle_quick_menu()
 				end,
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Open Harpoon menu",
 			},
 			{
@@ -110,7 +108,7 @@ return {
 				function()
 					require("harpoon.mark").add_file()
 				end,
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Add file to Harpoon",
 			},
 			{
@@ -155,20 +153,6 @@ return {
 		end,
 	},
 	{
-		"akinsho/toggleterm.nvim",
-		lazy = false,
-		opts = {
-			autochdir = true,
-			direction = "float",
-			insert_mappings = true,
-			open_mapping = "<C-\\>",
-			shade_terminals = false,
-			float_opts = {
-				border = "rounded",
-			},
-		},
-	},
-	{
 		"folke/neodev.nvim",
 		ft = "lua",
 	},
@@ -200,7 +184,7 @@ return {
 				function()
 					require("bandit").commit()
 				end,
-				mode = utils.nv,
+				mode = { "n", "v" },
 				desc = "Commit changes",
 			},
 		},
