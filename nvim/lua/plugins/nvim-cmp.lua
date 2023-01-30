@@ -142,7 +142,6 @@ return {
 					-- on the left and the text on the right. This allows for quick scanning
 					-- on the left near the text while still providing the full completion
 					-- information if needed.
-					---@diagnostic disable-next-line: param-type-mismatch
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 
 					kind.kind = strings[1] .. " "
@@ -189,7 +188,7 @@ return {
 		}
 
 		-- Use buffer source for '/'
-		cmp.setup.cmdline("/", {
+		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmdline_mapping,
 			formatting = no_format,
 			sources = {
@@ -202,8 +201,6 @@ return {
 			mapping = cmdline_mapping,
 			formatting = no_format,
 			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
 				{ name = "cmdline" },
 			}),
 		})
