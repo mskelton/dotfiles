@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Loop through each argument and echo it so it can be filtered
+
+for arg in "$@"; do
+	echo "$arg"
+done
