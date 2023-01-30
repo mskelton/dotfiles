@@ -167,10 +167,9 @@ map(
 	"<cmd>Chmod +x % | echo 'File permissions set to executable'<cr>"
 )
 
--- Update plugins
+-- Open plugin homepage
 map("n", "<leader>op", function()
-	vim.cmd.luafile("~/.config/nvim/lua/core/plugins.lua")
-	require("lazy").sync()
+	require("lazy").home()
 end)
 
 --------------------------------------------------------------------------------
