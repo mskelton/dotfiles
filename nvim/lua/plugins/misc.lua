@@ -204,6 +204,7 @@ return {
 		opts = {
 			input = {
 				relative = "editor",
+				prefer_width = 50,
 				win_options = {
 					winblend = 0,
 				},
