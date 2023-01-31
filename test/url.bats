@@ -50,3 +50,20 @@ fn=./bin/url
   [ "$res" == "$u" ]
 }
 
+@test "hyphens" {
+  u='https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/'
+  res=$(echo "Description $u" | $fn)
+  [ "$res" == "$u" ]
+}
+
+@test "file extension" {
+  u="http://google.com/index.js"
+  res=$(echo "Description $u" | $fn)
+  [ "$res" == "$u" ]
+}
+
+@test "spaces" {
+  u='http://google.com/foo+bar/spam%20eggs?foo=bar+baz&green=spam%20eggs'
+  res=$(echo "Description $u" | $fn)
+  [ "$res" == "$u" ]
+}

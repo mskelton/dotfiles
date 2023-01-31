@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 # Print each URL in the input stream
 
+regex=$(
+	printf "%s" \
+		"https?:\/\/" \
+		"(\.?[a-zA-Z0-9_\-])+" \
+		"(\.[a-zA-Z]+)?" \
+		"(:[0-9]+)?" \
+		"(\.?[a-zA-Z0-9%_=~/+-]+)*" \
+		"(\?[a-zA-Z0-9&%_=~+-]+)?"
+)
+
 while IFS= read line; do
-	echo $line | grep -oE 'https?://(\.?[a-zA-Z0-9_-])+(\.[a-zA-Z]+)?(:[0-9]+)?([a-zA-Z0-9@_-~=/\+]+)?(\?[a-zA-Z0-9&=_-~=\+]+)?'
+	echo $line | grep -oE "$regex"
 done
