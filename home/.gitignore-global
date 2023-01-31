@@ -1,1 +1,7 @@
+# vim:ft=gitignore
+
+# Why mac, just why
 .DS_Store
+
+# npm package archives
+*.tgz
