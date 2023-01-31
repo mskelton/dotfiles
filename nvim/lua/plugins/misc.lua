@@ -11,7 +11,7 @@ return {
 			"Clocate",
 			"Copy",
 			"Delete",
-			"Delete",
+			"Duplicate",
 			"Lfind",
 			"Llocate",
 			"Mkdir",
