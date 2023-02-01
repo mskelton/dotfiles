@@ -8,8 +8,6 @@ require("lazy").setup("plugins", {
 	},
 	dev = {
 		path = "~/dev",
-		patterns = { "mskelton" },
-		fallback = true,
 	},
 	performance = {
 		rtp = {
