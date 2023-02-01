@@ -14,6 +14,12 @@ fn=./bin/url
   [ "$res" == "$u" ]
 }
 
+@test "ftp" {
+  u='ftp://ftp.vim.org/pub/vim/README'
+  res=$(echo "My ftp URL $u is here." | $fn)
+  [ "$res" == "$u" ]
+}
+
 @test "path params" {
   u='https://foo.com/bar/baz'
   res=$(echo "My paths $u are here." | $fn)
