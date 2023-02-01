@@ -83,23 +83,6 @@ map("n", "gx", ':silent! !echo "<c-r><c-a>" | url | xargs open<cr>')
 -- map("v", "gx", ":'<,'>silent! !echo "<c-r>*" | url | xargs open<cr>')
 
 --------------------------------------------------------------------------------
---- TELESCOPE ------------------------------------------------------------------
---------------------------------------------------------------------------------
-map(nv, "<leader>fp", "<cmd>Telescope find_files<cr>") -- Similar to cmd+p
-map(nv, "<leader>fP", "<cmd>Telescope file_browser path=%:p:h<cr>") -- Similar to cmd+p
-map(nv, "<leader>fs", "<cmd>Telescope live_grep regex=false<cr>") -- "Find exact String"
-map(nv, "<leader>fS", "<cmd>Telescope live_grep<cr>") -- "Find regex String"
-map(nv, "<leader>fo", "<cmd>Telescope oldfiles<cr>") -- "Find Old file"
-map(nv, "<leader>fw", "<cmd>Telescope buffers<cr>") -- "Find Windows (buffers)"
-map(nv, "<leader>fn", "<cmd>Telescope git_branches<cr>") -- "Find Git branches"
-map(nv, "<leader>fl", "<cmd>Telescope resume<cr>") -- "Find Last"
-map(nv, "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>") -- "Find sYmbols"
-map(nv, "<leader>fY", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>") -- "Find workspace sYmbols"
-map(nv, "<leader>fh", "<cmd>Telescope help_tags<cr>") -- "Find Help tags"
-map(nv, "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
-map(nv, "z=", "<cmd>Telescope spell_suggest<cr>") -- Override default spell suggest
-
---------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
 map("n", "<leader>w=", "<C-w>=")
@@ -133,23 +116,17 @@ map(nv, "<leader>vP", "<cmd>Git pull<cr>")
 -- map("n", "<leader>vu", "<cmd>Gitsigns reset_buffer_index<cr>")
 -- map("n", "<leader>vr", "<cmd>Gitsigns reset_buffer<cr>")
 
--- WIP: This isn't working yet
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("diff_keymap", {}),
-	pattern = "diff",
-	callback = function(args)
-		local opts = { buffer = args.buf }
-
-		map("n", "gdh", "<cmd>diffget //2<cr>", opts)
-		map("n", "gdl", "<cmd>diffget //3<cr>", opts)
-	end,
-})
-
---------------------------------------------------------------------------------
---- TREE SITTER ----------------------------------------------------------------
---------------------------------------------------------------------------------
-map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr>")
-map("n", "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+-- -- WIP: This isn't working yet
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("diff_keymap", {}),
+-- 	pattern = "diff",
+-- 	callback = function(args)
+-- 		local opts = { buffer = args.buf }
+--
+-- 		map("n", "gdh", "<cmd>diffget //2<cr>", opts)
+-- 		map("n", "gdl", "<cmd>diffget //3<cr>", opts)
+-- 	end,
+-- })
 
 --------------------------------------------------------------------------------
 --- OPERATIONS -----------------------------------------------------------------

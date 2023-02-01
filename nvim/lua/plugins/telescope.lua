@@ -1,6 +1,43 @@
+local nv = { "n", "v" }
+
 return {
 	"nvim-telescope/telescope.nvim",
 	cmd = "Telescope",
+	keys = {
+		{ "<leader>fp", "<cmd>Telescope find_files<cr>", mode = nv },
+		{
+			"<leader>fP",
+			"<cmd>Telescope file_browser path=%:p:h<cr>",
+			mode = nv,
+		},
+		{
+			"<leader>fs",
+			"<cmd>Telescope live_grep regex=false<cr>",
+			mode = nv,
+		},
+		{ "<leader>fS", "<cmd>Telescope live_grep<cr>", mode = nv },
+		{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", mode = nv },
+		{ "<leader>fw", "<cmd>Telescope buffers<cr>", mode = nv },
+		{ "<leader>fn", "<cmd>Telescope git_branches<cr>", mode = nv },
+		{ "<leader>fl", "<cmd>Telescope resume<cr>", mode = nv },
+		{
+			"<leader>fy",
+			"<cmd>Telescope lsp_document_symbols<cr>",
+			mode = nv,
+		},
+		{
+			"<leader>fY",
+			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+			mode = nv,
+		},
+		{ "<leader>fh", "<cmd>Telescope help_tags<cr>", mode = nv },
+		{
+			"<leader>/",
+			"<cmd>Telescope current_buffer_fuzzy_find<cr>",
+			mode = nv,
+		},
+		{ "z=", "<cmd>Telescope spell_suggest<cr>", mode = nv },
+	},
 	dependencies = {
 		{
 			"nvim-lua/plenary.nvim",
