@@ -148,6 +148,7 @@ return {
 		cmd = { "Copilot" },
 		config = function()
 			vim.g.copilot_filetypes = {
+				DressingInput = false,
 				TelescopePrompt = false,
 			}
 		end,
