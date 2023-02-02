@@ -111,9 +111,6 @@ M.setup = function()
 				"tailwind.config.mjs",
 				"tailwind.config.ts"
 			),
-			on_attach = function(client)
-				client.server_capabilities.completionProvider = false
-			end,
 		},
 	}
 
