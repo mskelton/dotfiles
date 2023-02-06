@@ -99,7 +99,6 @@ return {
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-h>"] = actions.move_to_top,
-						["<C-m>"] = actions.move_to_middle,
 						["<C-l>"] = actions.move_to_bottom,
 						-- Clear prompt with C-u
 						["<C-u>"] = false,
