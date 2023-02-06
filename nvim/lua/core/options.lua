@@ -1,6 +1,3 @@
---- The type defs for options are buggy
---- @diagnostic disable: assign-type-mismatch
-
 local g = vim.g
 local o = vim.opt
 
@@ -58,12 +55,20 @@ o.foldlevel = 20
 -- Store more oldfiles in the shada file
 o.shada = "!,'1000,<500,s10,h"
 
+-- Limit total completions to 10 items
+vim.opt.pumheight = 15
+
+-- Highlight the cursor line
+o.cursorline = true
+
+-- Disable search highlighting by default. I enable this with an autocmd during
+-- searches and then disable it again when the search is done.
+o.hlsearch = false
+
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
 o.confirm = true
-o.cursorline = true
 o.expandtab = true
-o.hlsearch = false
 o.ignorecase = true
 o.showbreak = "    "
 o.signcolumn = "yes"

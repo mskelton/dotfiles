@@ -7,11 +7,13 @@ augroup disable_continuation_comments
   au BufEnter * set formatoptions-=c | set formatoptions-=o
 augroup END
 
+" Automatically source core nvim config when saved.
 augroup auto_source_dotfiles
   au!
   au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
 augroup END
 
+" Enable spell checking in markdown
 augroup markdown_spell_check
   au!
   au FileType markdown setlocal spell spelllang=en_us
@@ -22,17 +24,20 @@ augroup zet_template
   au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
 augroup END
 
+" Enable search highlighting while searching
 augroup incsearch_hl
   au!
   au CmdlineEnter /,\? :set hlsearch
   au CmdlineLeave /,\? :set nohlsearch
 augroup END
 
+" Disabling line wrapping in keymap files
 augroup keymap_nowrap
   au!
   au FileType dts set nowrap
 augroup END
 
+" Automatically create directories when writing a file
 augroup auto_mkdir
   au!
   au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
@@ -50,7 +55,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		local utils = require("core.utils")
 		local buf = vim.api.nvim_get_current_buf()
 
-		---@diagnostic disable-next-line: assign-type-mismatch
 		vim.opt_local.spell = utils.to_bool(highlighter.active[buf])
 	end,
 })
