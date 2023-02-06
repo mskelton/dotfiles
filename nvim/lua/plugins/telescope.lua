@@ -93,10 +93,19 @@ return {
 				selection_caret = "❯ ",
 				mappings = {
 					i = {
+						-- Close rather than going to normal mode
 						["<esc>"] = actions.close,
+						-- Easier up/down shortcuts
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
-						["<C-u>"] = false, -- Clear prompt with C-u
+						["<C-h>"] = actions.move_to_top,
+						["<C-m>"] = actions.move_to_middle,
+						["<C-l>"] = actions.move_to_bottom,
+						-- Clear prompt with C-u
+						["<C-u>"] = false,
+						-- Ctrl/Alt + q is hard to type, so use `i` instead
+						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
+						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
 				vimgrep_arguments = {
