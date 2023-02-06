@@ -4,6 +4,7 @@ firefox
 google-chrome
 kitty
 kitty
+logi-options-plus
 mic-drop
 microsoft-edge
 mimestream
@@ -16,3 +17,4 @@ telegram
 todoist
 visual-studio-code
 zoom
+zsa-wally
