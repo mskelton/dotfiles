@@ -5,6 +5,7 @@ google-chrome
 kitty
 kitty
 logi-options-plus
+logitune
 mic-drop
 microsoft-edge
 mimestream
