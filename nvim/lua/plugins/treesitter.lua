@@ -76,6 +76,7 @@ return {
 					"markdown",
 					"markdown_inline",
 					"mql5",
+					"prisma",
 					"python",
 					"query",
 					"regex",

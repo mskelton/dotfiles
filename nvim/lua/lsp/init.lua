@@ -41,6 +41,7 @@ M.setup = function()
 		},
 		marksman = {},
 		pyright = {},
+		prismals = {},
 		sourcekit = {
 			filetypes = { "swift" },
 		},
