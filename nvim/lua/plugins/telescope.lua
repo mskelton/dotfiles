@@ -95,16 +95,23 @@ return {
 					i = {
 						-- Close rather than going to normal mode
 						["<esc>"] = actions.close,
+
 						-- Easier up/down shortcuts
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-h>"] = actions.move_to_top,
 						["<C-l>"] = actions.move_to_bottom,
+
 						-- Clear prompt with C-u
 						["<C-u>"] = false,
+
 						-- Ctrl/Alt + q is hard to type, so use `i` instead
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
 						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+						-- The tab mapping doesn't play well with Copilot
+						["<Tab>"] = false,
+						["<S-Tab>"] = false,
 					},
 				},
 				vimgrep_arguments = {
