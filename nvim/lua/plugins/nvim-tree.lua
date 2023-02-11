@@ -64,7 +64,6 @@ return {
 	end,
 	config = function()
 		local api = require("nvim-tree.api")
-		local map = require("core.utils").map
 
 		require("nvim-tree").setup({
 			trash = {
@@ -72,22 +71,71 @@ return {
 			},
 			ui = {
 				confirm = {
+					remove = false,
 					trash = false,
 				},
 			},
-			remove_keymaps = { "<CR>", "d" },
+			remove_keymaps = true,
 			on_attach = function(bufnr)
-				local opts = { buffer = bufnr }
+				local function map(key, cmd, desc)
+					vim.keymap.set(
+						"n",
+						key,
+						cmd,
+						{ buffer = bufnr, nowait = true, silent = true, desc = desc }
+					)
+				end
 
-				-- `dd` is much more familiar for deleting files. Also, I use the trash
-				-- command, so it's pretty safe to use.
-				map("n", "dd", api.fs.trash, opts)
-
-				-- Auto close the tree after selecting a file. Use tab to preview.
-				map("n", "<cr>", function()
+				local function edit_and_close_tree()
 					api.node.open.edit()
 					api.tree.close()
-				end, opts)
+				end
+
+				map("<cr>", edit_and_close_tree, "Open")
+				map("<C-]>", api.tree.change_root_to_node, "CD")
+				map("<C-k>", api.node.show_info_popup, "Info")
+				map("<C-r>", api.fs.rename_sub, "Rename: Omit filename")
+				map("<C-v>", api.node.open.vertical, "Open: Vertical split")
+				map("<C-x>", api.node.open.horizontal, "Open: Horizontal split")
+				map("<BS>", api.node.navigate.parent_close, "Close directory")
+				map("<CR>", edit_and_close_tree, "Open")
+				map("<Tab>", api.node.open.preview, "Open preview")
+				map(">", api.node.navigate.sibling.next, "Next sibling")
+				map("<", api.node.navigate.sibling.prev, "Previous sibling")
+				map(".", api.node.run.cmd, "Run command")
+				map("-", api.tree.change_root_to_parent, "Up")
+				map("a", api.fs.create, "Create")
+				map(
+					"bmv",
+					api.marks.bulk.move,
+					"Move all bookmarked nodes into specified location"
+				)
+				map("c", api.fs.copy.node, "Copy")
+				map("[c", api.node.navigate.git.prev, "Previous Git")
+				map("]c", api.node.navigate.git.next, "Next Git")
+				map("dd", api.fs.remove, "Delete")
+				map("D", api.fs.trash, "Trash")
+				map("E", api.tree.expand_all, "Expand All")
+				map("e", api.fs.rename_basename, "Rename: Basename")
+				map("]e", api.node.navigate.diagnostics.next, "Next diagnostic")
+				map("[e", api.node.navigate.diagnostics.prev, "Previous diagnostic")
+				map("gy", api.fs.copy.absolute_path, "Copy absolute path")
+				map("H", api.tree.toggle_hidden_filter, "Toggle dotfiles")
+				map("I", api.tree.toggle_gitignore_filter, "Toggle Git ignore")
+				map("J", api.node.navigate.sibling.last, "Last sibling")
+				map("K", api.node.navigate.sibling.first, "First sibling")
+				map("m", api.marks.toggle, "Toggle bookmark")
+				map("o", edit_and_close_tree, "Open")
+				map("p", api.fs.paste, "Paste")
+				map("P", api.node.navigate.parent, "Parent directory")
+				map("q", api.tree.close, "Close")
+				map("r", api.fs.rename, "Rename")
+				map("R", api.tree.reload, "Refresh")
+				map("s", api.node.run.system, "Run system")
+				map("W", api.tree.collapse_all, "Collapse")
+				map("x", api.fs.cut, "Cut")
+				map("y", api.fs.copy.filename, "Copy name")
+				map("Y", api.fs.copy.relative_path, "Copy relative path")
 			end,
 		})
 	end,
