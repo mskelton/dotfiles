@@ -62,5 +62,33 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 	end,
-	config = true,
+	config = function()
+		local api = require("nvim-tree.api")
+		local map = require("core.utils").map
+
+		require("nvim-tree").setup({
+			trash = {
+				cmd = "trash",
+			},
+			ui = {
+				confirm = {
+					trash = false,
+				},
+			},
+			remove_keymaps = { "<CR>", "d" },
+			on_attach = function(bufnr)
+				local opts = { buffer = bufnr }
+
+				-- `dd` is much more familiar for deleting files. Also, I use the trash
+				-- command, so it's pretty safe to use.
+				map("n", "dd", api.fs.trash, opts)
+
+				-- Auto close the tree after selecting a file. Use tab to preview.
+				map("n", "<cr>", function()
+					api.node.open.edit()
+					api.tree.close()
+				end, opts)
+			end,
+		})
+	end,
 }
