@@ -1,6 +1,8 @@
 vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
 
-require("lazy").setup("plugins", {
+local lazy = require("lazy")
+
+lazy.setup("plugins", {
 	defaults = { lazy = true },
 	change_detection = {
 		enabled = false,
@@ -22,4 +24,9 @@ require("lazy").setup("plugins", {
 			},
 		},
 	},
+})
+
+vim.keymap.set("n", "<leader>op", lazy.home, {
+	silent = true,
+	desc = "Open lazy.nvim",
 })
