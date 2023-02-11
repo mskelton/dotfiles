@@ -86,9 +86,24 @@ return {
 					)
 				end
 
+				-- When I open a file to edit, 90% of the time I no longer want the tree
+				-- open anymore. If I'm exploring, <Tab> works better to keep focus in
+				-- the tree while viewing files.
 				local function edit_and_close_tree()
 					api.node.open.edit()
 					api.tree.close()
+				end
+
+				-- The preview command doesn't work when using `on_attach` for reasons
+				-- unknown to me.
+				local function preview()
+					local node = api.tree.get_node_under_cursor()
+
+					if node and node.type == "directory" then
+						api.node.open.edit()
+					else
+						api.node.open.preview()
+					end
 				end
 
 				map("<cr>", edit_and_close_tree, "Open")
@@ -99,7 +114,7 @@ return {
 				map("<C-x>", api.node.open.horizontal, "Open: Horizontal split")
 				map("<BS>", api.node.navigate.parent_close, "Close directory")
 				map("<CR>", edit_and_close_tree, "Open")
-				map("<Tab>", api.node.open.preview, "Open preview")
+				map("<Tab>", preview, "Open preview")
 				map(">", api.node.navigate.sibling.next, "Next sibling")
 				map("<", api.node.navigate.sibling.prev, "Previous sibling")
 				map(".", api.node.run.cmd, "Run command")
