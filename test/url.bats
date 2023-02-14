@@ -79,3 +79,9 @@ fn=./bin/url
   res=$(echo "Description $u" | $fn)
   [ "$res" == "$u" ]
 }
+
+@test "commas in query params" {
+  u='https://google.com?foo=bar,baz'
+  res=$(echo "Description $u" | $fn)
+  [ "$res" == "$u" ]
+}
