@@ -1,6 +1,8 @@
 discord
 docker
 firefox
+font-jetbrains-mono
+font-symbols-only-nerd-font
 google-chrome
 kitty
 kitty

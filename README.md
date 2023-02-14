@@ -58,6 +58,7 @@ git submodule update --remote
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 /opt/homebrew/bin/brew tap homebrew/cask-drivers
+/opt/homebrew/bin/brew tap homebrew/cask-fonts
 /opt/homebrew/bin/brew install $(cat config/formula.txt)
 /opt/homebrew/bin/brew install --cask $(cat config/casks.txt)
 ```
