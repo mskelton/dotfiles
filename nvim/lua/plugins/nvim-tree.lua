@@ -26,6 +26,13 @@ local tailwind = {
 	name = "Tailwind",
 }
 
+local makefile = {
+	icon = "",
+	color = "#767676",
+	cterm_color = "243",
+	name = "Makefile",
+}
+
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
@@ -34,6 +41,7 @@ return {
 			opts = {
 				override = {
 					[".eslintrc"] = eslint,
+					[".eslintignore"] = eslint,
 					["eslint.config.js"] = eslint,
 					["eslint.config.cjs"] = eslint,
 					["eslint.config.mjs"] = eslint,
@@ -46,6 +54,7 @@ return {
 					["tailwind.config.js"] = tailwind,
 					["tailwind.config.cjs"] = tailwind,
 					["tailwind.config.mjs"] = tailwind,
+					["Makefile"] = makefile,
 				},
 			},
 		},
