@@ -1,64 +1,6 @@
-local eslint = {
-	icon = "",
-	color = "#8080F2",
-	cterm_color = "60",
-	name = "Eslint",
-}
-
-local typescript = {
-	icon = "",
-	color = "#519aba",
-	cterm_color = "67",
-	name = "Ts",
-}
-
-local babel = {
-	icon = "",
-	color = "#f9dc3e",
-	cterm_color = "179",
-	name = "Babel",
-}
-
-local tailwind = {
-	icon = "󱏿",
-	color = "#38bdf8",
-	cterm_color = "75",
-	name = "Tailwind",
-}
-
-local makefile = {
-	icon = "",
-	color = "#767676",
-	cterm_color = "243",
-	name = "Makefile",
-}
-
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = {
-		{
-			"nvim-tree/nvim-web-devicons",
-			opts = {
-				override = {
-					[".eslintrc"] = eslint,
-					[".eslintignore"] = eslint,
-					["eslint.config.js"] = eslint,
-					["eslint.config.cjs"] = eslint,
-					["eslint.config.mjs"] = eslint,
-					["cts"] = typescript,
-					["mts"] = typescript,
-					[".babelrc"] = babel,
-					["babel.config.js"] = babel,
-					["babel.config.cjs"] = babel,
-					["babel.config.mjs"] = babel,
-					["tailwind.config.js"] = tailwind,
-					["tailwind.config.cjs"] = tailwind,
-					["tailwind.config.mjs"] = tailwind,
-					["Makefile"] = makefile,
-				},
-			},
-		},
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
 			"<leader>fd",
