@@ -144,3 +144,4 @@ struct
 YAML
 unmarshal
 unmarshals
+contenteditable
