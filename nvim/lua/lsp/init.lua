@@ -45,7 +45,7 @@ M.setup = function()
 		sourcekit = {
 			filetypes = { "swift" },
 		},
-		sumneko_lua = {},
+		lua_ls = {},
 		rust_analyzer = {},
 		yamlls = {
 			settings = {
