@@ -27,9 +27,11 @@ function fish_hybrid_key_bindings
   bind -s --preset _ beginning-of-line
   bind -s --preset -M visual _ beginning-of-line
 
-  # TODO: Switch between modes with escape, a little out of the ordinary, but I
-  # find myself doing it a lot
-  # bind -s --preset -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f backward-char repaint-mode; end"
+  # Switch between modes with escape. A little out of the ordinary, but I find
+  # myself doing it a lot. Also updates escape in insert mode to not move
+  # backwards one character.
+  bind -s --preset -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f repaint-mode; end"
+  bind -s --preset \e "set fish_bind_mode insert; commandline -f repaint-mode"
 end
 
 # Use my custom keybindings
