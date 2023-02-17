@@ -146,17 +146,10 @@ M.setup_servers = function()
 end
 
 M.setup = function()
-	-- Register custom LSP handlers
 	require("lsp.handlers").register_handlers()
-
-	-- Setup autocmds and null-ls
 	require("lsp.autocmd")
 	require("lsp.null-ls")
-
-	-- Better completion for Neovim Lua
 	require("neodev").setup({})
-
-	-- Setup LSP servers
 	M.setup_servers()
 end
 
