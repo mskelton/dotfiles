@@ -7,7 +7,9 @@ end
 M.server = function(server, config)
 	config = config or {}
 
-	-- Update the LSP capabilities to support completions and snippets.
+	-- Unless the server explicitly specifies capabilities, use the default
+	-- capabilities from nvim-cmp. This ensures completions and snippets work
+	-- properly.
 	if config.capabilities == nil then
 		config.capabilities = M.default_capabilities()
 	end
@@ -17,8 +19,6 @@ end
 
 M.setup_servers = function()
 	local util = require("lspconfig.util")
-	local tsserver = require("lsp.tsserver")
-	local npm = require("utils.npm")
 
 	-- Simple servers
 	M.server("bashls")
@@ -50,26 +50,26 @@ M.setup_servers = function()
 		},
 	})
 
-	-- Go uses the `tools` convention to separate build-time dependencies from
-	-- runtime dependencies. This is a common convention in the Go community, so
-	-- I support it out of the box.
 	M.server("gopls", {
 		settings = {
 			gopls = {
+				-- Go uses the `tools` convention to separate build-time dependencies from
+				-- runtime dependencies. This is a common convention in the Go community, so
+				-- I support it out of the box.
 				buildFlags = { "-tags=tools" },
 			},
-		},
-	})
-
-	M.server("yamlls", {
-		settings = {
-			yaml = { schemas = require("lsp.yaml-schemas") },
 		},
 	})
 
 	M.server("jsonls", {
 		settings = {
 			json = { schemas = require("lsp.json-schemas") },
+		},
+	})
+
+	M.server("yamlls", {
+		settings = {
+			yaml = { schemas = require("lsp.yaml-schemas") },
 		},
 	})
 
@@ -84,42 +84,15 @@ M.setup_servers = function()
 
 	M.server("eslint", {
 		cmd = {
-			npm.global_bin("vscode-eslint-language-server"),
+			--  Because Neovim always uses the `file` scheme for LSP URIs, I have a
+			--  customized version of the ESLint language server that will not fail
+			--  if the file doesn't exist.
+			require("utils.npm").global_bin("vscode-eslint-language-server"),
 			"--stdio",
-		},
-		settings = {
-			validate = "on",
-			packageManager = "npm",
-			problems = {
-				shortenToSingleLine = false,
-			},
-			experimental = {
-				useFlatConfig = false,
-			},
-			useESLintClass = false,
-			codeActionOnSave = {
-				enable = false,
-				mode = "all",
-			},
-			format = true,
-			quiet = false,
-			onIgnoredFiles = "off",
-			rulesCustomizations = {},
-			run = "onType",
-			nodePath = "",
-			workingDirectory = { mode = "location" },
-			codeAction = {
-				disableRuleComment = {
-					enable = true,
-					location = "separateLine",
-				},
-				showDocumentation = {
-					enable = true,
-				},
-			},
 		},
 	})
 
+	-- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
 		root_dir = util.root_pattern(
 			"tailwind.config.js",
@@ -132,6 +105,8 @@ M.setup_servers = function()
 	-- Setup TypeScript separately through the plugin. Long term, I don't want to
 	-- use this plugin as I don't like that it's setup so differently from my
 	-- other servers, but for now it is what it is.
+	local tsserver = require("lsp.tsserver")
+
 	require("typescript").setup({
 		server = {
 			capabilities = M.default_capabilities(),
