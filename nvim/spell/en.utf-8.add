@@ -149,3 +149,5 @@ LSP
 autocmd
 autocmds
 clangd
+deserialize
+deserializing
