@@ -54,11 +54,18 @@ local yarn = {
 	name = "Yarn",
 }
 
-local test = {
+local javascript_test = {
 	icon = "",
-	color = "#f9dc3e",
-	cterm_color = "11",
-	name = "Test",
+	color = "#cbcb41",
+	cterm_color = "185",
+	name = "JavaScriptTest",
+}
+
+local typescript_test = {
+	icon = "",
+	color = "#519aba",
+	cterm_color = "67",
+	name = "TypeScriptTest",
 }
 
 return {
@@ -66,16 +73,23 @@ return {
 	opts = {
 		override = {
 			-- JS testing
-			["spec.js"] = test,
-			["test.js"] = test,
+			["spec.js"] = javascript_test,
+			["spec.jsx"] = javascript_test,
+			["spec.mjs"] = javascript_test,
+			["spec.cjs"] = javascript_test,
+			["test.js"] = javascript_test,
+			["test.jsx"] = javascript_test,
+			["test.mjs"] = javascript_test,
+			["test.cjs"] = javascript_test,
 			-- TS testing
-			["spec.ts"] = test,
-			["spec.mts"] = test,
-			["spec.cts"] = test,
-			["test.ts"] = test,
-			["test.mts"] = test,
-			["test.cts"] = test,
-			["spec.tsx"] = test,
+			["spec.ts"] = typescript_test,
+			["spec.tsx"] = typescript_test,
+			["spec.mts"] = typescript_test,
+			["spec.cts"] = typescript_test,
+			["test.ts"] = typescript_test,
+			["test.tsx"] = typescript_test,
+			["test.mts"] = typescript_test,
+			["test.cts"] = typescript_test,
 		},
 		override_by_extension = {
 			-- CJS/ESM
