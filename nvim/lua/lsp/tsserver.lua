@@ -22,6 +22,18 @@ M.get_plugins = function()
 	end, M.plugins)
 end
 
+M.get_tsserver_options = function(opts)
+	opts = opts or {}
+
+	-- If Neovim is started with `TSSERVER_LOG=1`, then we enable verbose logging.
+	if os.getenv("TSSERVER_LOG") == "1" then
+		opts.logDirectory = "/tmp/tsserver-logs"
+		opts.logVerbosity = "verbose"
+	end
+
+	return opts
+end
+
 -- Configure global plugins when tsserver initializes
 M.on_init = function(client)
 	for _, value in ipairs(M.plugins) do
