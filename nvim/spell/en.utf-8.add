@@ -145,3 +145,7 @@ YAML
 unmarshal
 unmarshals
 contenteditable
+LSP
+autocmd
+autocmds
+clangd
