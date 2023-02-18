@@ -151,3 +151,4 @@ autocmds
 clangd
 deserialize
 deserializing
+lockfile
