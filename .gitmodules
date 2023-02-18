@@ -1,12 +1,15 @@
-[submodule "widen"]
-	path = widen
-	url = git@github.com:mskelton/dotfiles-widen.git
 [submodule "dottie"]
 	path = dottie
 	url = git@github.com:mskelton/dottie.git
 [submodule "personal"]
 	path = personal
 	url = git@github.com:mskelton/dotfiles-personal.git
+[submodule "federato"]
+	path = federato
+	url = git@github.com:mskelton/dotfiles-federato
+[submodule "widen"]
+	path = widen
+	url = git@github.com:mskelton/dotfiles-widen.git
 [submodule "test/bats"]
 	path = test/bats
 	url = https://github.com/bats-core/bats-core.git
