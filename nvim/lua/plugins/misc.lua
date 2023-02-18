@@ -57,7 +57,11 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
+		config = {
+			fast_wrap = {
+				map = "<M-p>",
+			},
+		},
 	},
 	{
 		"christoomey/vim-tmux-navigator",
