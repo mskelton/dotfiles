@@ -124,43 +124,6 @@ return {
 		ft = "lua",
 	},
 	{
-		"tpope/vim-fugitive",
-		cmd = {
-			"G",
-			"GBrowse",
-			"GDelete",
-			"GMove",
-			"GRename",
-			"Gdiffsplit",
-			"Gedit",
-			"Ggrep",
-			"Git",
-			"Gread",
-			"Gsplit",
-			"Gvdiffsplit",
-			"Gwrite",
-		},
-		dependencies = { "tpope/vim-rhubarb" },
-	},
-	{
-		"mskelton/bandit.nvim",
-		keys = {
-			{
-				"<leader>vc",
-				function()
-					require("bandit").commit()
-				end,
-				mode = { "n", "v" },
-				desc = "Commit changes",
-			},
-		},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre",
-		config = true,
-	},
-	{
 		"mskelton/local-yokel.nvim",
 		cmd = { "E" },
 		config = true,

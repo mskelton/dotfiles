@@ -82,6 +82,8 @@ map(
 	':silent! !echo "<c-r><c-a>" | url | xargs open<cr>',
 	"Open URL under cursor"
 )
+
+-- TODO: Figure out how to make this work
 -- map(
 -- 	"v",
 -- 	"gx",
@@ -104,20 +106,7 @@ map("n", "<leader>wj", "<C-w>J", "Move current window to the very bottom")
 map("n", "<leader>wo", "<C-w>o", "Make current window the only window")
 map("n", "<leader>wp", "<C-w>P", "Go to previous window")
 
---------------------------------------------------------------------------------
---- GIT (VCS) ------------------------------------------------------------------
---------------------------------------------------------------------------------
-map(nv, "<leader>vb", "<cmd>Git blame<cr>", "Git blame")
-map(nv, "<leader>vd", "<cmd>Gvdiffsplit<cr>", "Git diff")
-map(nv, "<leader>vl", "<cmd>vertical Git log<cr>", "Git log")
-map(nv, "<leader>vp", "<cmd>Git push<cr>", "Git push")
-map(nv, "<leader>vP", "<cmd>Git pull<cr>", "Git pull")
-
--- Stage/reset individual hunks under cursor in a file
-map("v", "<leader>vs", "<cmd>Gitsigns stage_hunk<cr>", "Git: stage hunk")
-map("v", "<leader>vr", "<cmd>Gitsigns reset_hunk<cr>", "Git: reset hunk")
-
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 --- OPERATIONS -----------------------------------------------------------------
 --------------------------------------------------------------------------------
 
