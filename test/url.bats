@@ -85,3 +85,9 @@ fn=./bin/url
   res=$(echo "Description $u" | $fn)
   [ "$res" == "$u" ]
 }
+
+@test "hash" {
+  u='https://github.github.com/gfm/#html-blocks'
+  res=$(echo "This is $u my url" | $fn)
+  [ "$res" == "$u" ]
+}
