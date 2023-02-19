@@ -2,6 +2,7 @@ asdf
 bash
 bat
 clang-format
+cmake
 dict
 dos2unix
 fd
@@ -14,6 +15,7 @@ go
 jesseduffield/lazygit/lazygit
 jq
 neovim
+ninja
 rename
 ripgrep
 starship
