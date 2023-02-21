@@ -76,7 +76,7 @@ git submodule update --remote
   </summary>
 
 - Copy Quicken data files
-- Copy `~/.config/fish/env.fish`
+- Copy `~/.config/fish/custom.fish`
 - Copy Taskwarrior data `~/.task`
 - Copy `~/.local/share/fish/fish_history`
 - Copy pictures and documents
