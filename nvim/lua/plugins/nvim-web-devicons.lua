@@ -1,43 +1,43 @@
 local eslint = {
-	icon = "",
+	icon = "큤",
 	color = "#8080F2",
 	cterm_color = "60",
 	name = "Eslint",
 }
 
 local javascript = {
-	icon = "",
+	icon = "킠",
 	color = "#cbcb41",
 	cterm_color = "185",
 	name = "Js",
 }
 
 local typescript = {
-	icon = "",
+	icon = "텚",
 	color = "#519aba",
 	cterm_color = "67",
 	name = "Ts",
 }
 
 local babel = {
-	icon = "",
+	icon = "퀛",
 	color = "#f9dc3e",
 	cterm_color = "179",
 	name = "Babel",
 }
 
 local tailwind = {
-	icon = "󱏿",
+	icon = "텄",
 	color = "#38bdf8",
 	cterm_color = "75",
 	name = "Tailwind",
 }
 
-local gnu = {
-	icon = "",
+local makefile = {
+	icon = "킻",
 	color = "#767676",
 	cterm_color = "243",
-	name = "GNU",
+	name = "Makefile",
 }
 
 local bash = {
@@ -48,24 +48,31 @@ local bash = {
 }
 
 local yarn = {
-	icon = "",
+	icon = "텽",
 	color = "#2188b6",
 	cterm_color = "9",
 	name = "Yarn",
 }
 
 local javascript_test = {
-	icon = "",
+	icon = "텊",
 	color = "#cbcb41",
 	cterm_color = "185",
 	name = "JavaScriptTest",
 }
 
 local typescript_test = {
-	icon = "",
+	icon = "텊",
 	color = "#519aba",
 	cterm_color = "67",
 	name = "TypeScriptTest",
+}
+
+local prettier = {
+	icon = "탴",
+	color = "#c596c7",
+	cterm_color = "135",
+	name = "Prettier",
 }
 
 return {
@@ -110,6 +117,12 @@ return {
 			["eslint.config.js"] = eslint,
 			["eslint.config.cjs"] = eslint,
 			["eslint.config.mjs"] = eslint,
+			-- Prettier
+			[".prettierrc"] = prettier,
+			[".prettierignore"] = prettier,
+			["prettier.config.js"] = prettier,
+			["prettier.config.cjs"] = prettier,
+			["prettier.config.mjs"] = prettier,
 			-- Tailwind
 			["tailwind.config.js"] = tailwind,
 			["tailwind.config.cjs"] = tailwind,
@@ -118,7 +131,7 @@ return {
 			["yarn.lock"] = yarn,
 			[".yarnrc.yml"] = yarn,
 			-- Misc
-			["Makefile"] = gnu,
+			["Makefile"] = makefile,
 			["bats"] = bash,
 		},
 	},
