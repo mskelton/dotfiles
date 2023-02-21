@@ -1,5 +1,6 @@
 return {
-	"hrsh7th/nvim-cmp",
+	-- "hrsh7th/nvim-cmp",
+	"yioneko/nvim-cmp",
 	event = { "InsertEnter", "CmdLineEnter" },
 	dependencies = {
 		"hrsh7th/cmp-buffer",
