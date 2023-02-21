@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Cleans the Neovim swap folder
+
+rm -r ~/.local/state/nvim/swap
