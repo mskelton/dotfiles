@@ -10,6 +10,7 @@ lazy.setup("plugins", {
 	},
 	dev = {
 		path = "~/dev",
+		patterns = { "mskelton" },
 	},
 	performance = {
 		rtp = {
