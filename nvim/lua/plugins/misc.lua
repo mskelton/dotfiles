@@ -105,6 +105,7 @@ return {
 				{ "bandit", dir = "bandit.nvim" },
 				{ "live-reload", dir = "live-reload.nvim" },
 				{ "local-yokel", dir = "local-yokel.nvim" },
+				{ "termicons", dir = "termicons.nvim" },
 			},
 		},
 	},
