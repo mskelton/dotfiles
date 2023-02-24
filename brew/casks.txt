@@ -1,6 +1,8 @@
+android-file-transfer
 arc
 discord
 docker
+figma
 firefox
 font-jetbrains-mono
 font-symbols-only-nerd-font
