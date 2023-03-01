@@ -1,6 +1,15 @@
 '$schema' = 'https://starship.rs/config-schema.json'
 add_newline = false
 
+[aws]
+symbol = "  " # TODO
+
+[buf]
+symbol = " " # TODO
+
+[c]
+symbol = "퀩 "
+
 [character]
 vicmd_symbol = '[](bold green)'
 vimcmd_replace_one_symbol = '[r](bold red)'
@@ -10,20 +19,127 @@ vimcmd_visual_symbol = '[V](bold purple)'
 [cmd_duration]
 disabled = true
 
+[conda]
+symbol = " " # TODO
+
+[dart]
+symbol = "큎 "
+
+[directory]
+read_only = " 킷"
+
+[docker_context]
+symbol = "큗 "
+
+[elixir]
+symbol = "큠 "
+
+[elm]
+symbol = "큡 "
+
 [git_status]
 stashed = ""
 
+[git_branch]
+symbol = "큸 "
+
 [golang]
-symbol = ' '
+symbol = '큽 '
+
+[guix_shell]
+symbol = " " # TODO
+
+[haskell]
+symbol = "킌 "
+
+[haxe]
+symbol = "킍 "
+
+[hg_branch]
+symbol = "큸 "
 
 [java]
 disabled = true
+symbol = "킞 "
 
 [lua]
-symbol = ' '
+symbol = '킺 '
+
+[julia]
+symbol = "킦 "
+
+[memory_usage]
+symbol = " " # TODO
+
+[meson]
+symbol = "탂 "
+
+[nim]
+symbol = "탑 "
+
+[nix_shell]
+symbol = "탒 "
 
 [nodejs]
 disabled = true
+symbol = "탓 "
+
+# TODO
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " " # TODO
+
+[python]
+symbol = "탼 "
+
+[rlang]
+symbol = "탿 "
+
+[ruby]
+symbol = "턖 "
+
+[rust]
+symbol = "턗 "
+
+[scala]
+symbol = "턝 "
 
 [shell]
 format = '[$indicator]($style)'
@@ -32,6 +148,9 @@ bash_indicator = 'bsh '
 zsh_indicator = 'zsh '
 disabled = false
 
+[spack]
+symbol = "🅢 " # TODO
+
 [swift]
-symbol = ' '
+symbol = '텀 '
 disabled = true
