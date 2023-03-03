@@ -27,6 +27,36 @@ return {
 				},
 			},
 			remove_keymaps = true,
+			renderer = {
+				icons = {
+					glyphs = {
+						default = "큪",
+						symlink = "", -- TODO
+						bookmark = "", -- TODO
+						modified = "●", -- TODO
+						folder = {
+							arrow_closed = "", -- TODO
+							arrow_open = "", -- TODO
+							default = "톀",
+							open = "톁",
+							empty = "", -- TODO
+							empty_open = "", -- TODO
+							symlink = "", -- TODO
+							symlink_open = "", -- TODO
+						},
+						-- TODO
+						-- git = {
+						-- 	unstaged = "✗",
+						-- 	staged = "✓",
+						-- 	unmerged = "",
+						-- 	renamed = "➜",
+						-- 	untracked = "★",
+						-- 	deleted = "",
+						-- 	ignored = "◌",
+						-- },
+					},
+				},
+			},
 			on_attach = function(bufnr)
 				local function map(key, cmd, desc)
 					vim.keymap.set(
