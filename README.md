@@ -13,9 +13,10 @@ My personal settings and dotfiles.
 xcode-select --install
 
 user=$(whoami)
-read -p 'Email: ' email
+read '?What is your email?: ' email
 ssh-keygen -t ed25519 -C $email
 
+mkdir $HOME/.ssh
 cat <<EOF >$HOME/.ssh/config
 Host *.github.com
   AddKeysToAgent yes
