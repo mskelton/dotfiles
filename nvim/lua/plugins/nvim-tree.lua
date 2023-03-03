@@ -39,8 +39,8 @@ return {
 							arrow_open = "", -- TODO
 							default = "톀",
 							open = "톁",
-							empty = "", -- TODO
-							empty_open = "", -- TODO
+							empty = "톂",
+							empty_open = "톃",
 							symlink = "", -- TODO
 							symlink_open = "", -- TODO
 						},
