@@ -21,7 +21,7 @@ return {
 				lualine_c = {
 					{
 						function()
-							return ""
+							return "텣"
 						end,
 						color = function()
 							local mode_color = {
@@ -85,7 +85,7 @@ return {
 					},
 					{
 						"branch",
-						icon = "",
+						icon = "큸",
 						color = { fg = colors.magenta, gui = "bold" },
 						padding = 1,
 					},
