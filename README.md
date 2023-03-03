@@ -64,6 +64,7 @@ _If on a work device, run `export WORK=1` before the following commands._
 ./scripts/tools.sh
 ```
 
+### Additional setup
 
 <details>
   <summary>
@@ -77,8 +78,6 @@ _If on a work device, run `export WORK=1` before the following commands._
 - Copy pictures and documents
 
 </details>
-
-### Additional setup
 
 <details>
   <summary>
