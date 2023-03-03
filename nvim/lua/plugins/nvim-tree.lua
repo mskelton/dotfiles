@@ -31,29 +31,15 @@ return {
 				icons = {
 					glyphs = {
 						default = "큪",
-						symlink = "", -- TODO
-						bookmark = "", -- TODO
-						modified = "●", -- TODO
+						symlink = "톇",
 						folder = {
-							arrow_closed = "", -- TODO
-							arrow_open = "", -- TODO
 							default = "톀",
 							open = "톁",
 							empty = "톂",
 							empty_open = "톃",
-							symlink = "", -- TODO
-							symlink_open = "", -- TODO
+							symlink = "톅",
+							symlink_open = "톆",
 						},
-						-- TODO
-						-- git = {
-						-- 	unstaged = "✗",
-						-- 	staged = "✓",
-						-- 	unmerged = "",
-						-- 	renamed = "➜",
-						-- 	untracked = "★",
-						-- 	deleted = "",
-						-- 	ignored = "◌",
-						-- },
 					},
 				},
 			},
