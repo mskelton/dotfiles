@@ -1,5 +1,5 @@
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin"
-set -g fish_user_paths $fish_user_paths "$HOME/.local/bin-widen"
+set -g fish_user_paths $fish_user_paths "$HOME/.local/bin-work"
 set -g fish_user_paths $fish_user_paths "$GOPATH/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.cargo/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.local/npm/bin"

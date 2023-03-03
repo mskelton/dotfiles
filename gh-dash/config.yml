@@ -1,17 +1,17 @@
 prSections:
   - title: My Pull Requests
-    filters: is:open author:@me -org:widen
+    filters: is:open author:@me -org:federato
   - title: Needs My Review
-    filters: is:open review-requested:@me -org:widen
+    filters: is:open review-requested:@me -org:federato
   - title: Involved
-    filters: is:open -author:@me involves:@me -org:widen
+    filters: is:open -author:@me involves:@me -org:federato
 issuesSections:
   - title: Created
-    filters: is:open author:@me -org:widen
+    filters: is:open author:@me -org:federato
   - title: Assigned
-    filters: is:open assignee:@me -org:widen
+    filters: is:open assignee:@me -org:federato
   - title: Involved
-    filters: is:open -author:@me involves:@me -org:widen
+    filters: is:open -author:@me involves:@me -org:federato
 defaults:
   prsLimit: 20
   issuesLimit: 20

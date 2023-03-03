@@ -11,7 +11,7 @@ source $HOME/.config/fish/path.fish
 source $HOME/.config/fish/env.fish
 
 # Custom environment files that might not exist
-for f in personal custom widen work
+for f in custom personal work
   set file $HOME/.config/fish/$f.fish
   test -f $file; and source $file
 end

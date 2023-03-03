@@ -7,12 +7,6 @@ eval "$(starship init bash)"
 # Custom aliases
 source $HOME/.alias
 
-# Custom environment files that might not exist
-files=($HOME/.bashrc-widen $HOME/.bashenv-widen)
-for file in "${files[@]}"; do
-	[ -f $file ] && source $file
-done
-
 # Environment variables
 export EDITOR=nvim
 export GOPATH="$HOME/go"
@@ -20,7 +14,7 @@ export BUN_INSTALL="$HOME/.bun"
 
 # Path
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/bin-widen"
+export PATH="$PATH:$HOME/.local/bin-work"
 export PATH="$PATH:$HOME/.local/npm/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.cargo/bin"

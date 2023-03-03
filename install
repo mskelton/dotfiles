@@ -28,7 +28,7 @@ link_dir -s metatrader ~/Library/Application\ Support/MetaTrader\ 5/Bottles/meta
 
 # Work config
 if [[ -n "$WORK" ]]; then
-	link federato/bin ~/.local/bin-federato
+	link federato/bin ~/.local/bin-work
 	link federato/gh/config.yml ~/.config/gh/config.yml
 	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml
 
