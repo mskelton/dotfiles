@@ -77,3 +77,74 @@ _If on a work device, run `export WORK=1` before the following commands._
 - Copy pictures and documents
 
 </details>
+
+### Additional setup
+
+<details>
+  <summary>
+    Refined GitHub
+  </summary>
+
+Refined GitHub has terrible defaults IMO, so this simple script that enables
+just the features that I use.
+
+```javascript
+;[...document.querySelectorAll('input.feature-checkbox:checked')]
+  .forEach(node => node.click())
+
+const enabled = [
+  'batch-mark-files-as-viewed',
+  'bypass-checks',
+  'clean-conversation-filters',
+  'clean-conversation-headers',
+  'clean-repo-tabs',
+  'command-palette-navigation-shortcuts',
+  'comment-fields-keyboard-shortcuts',
+  'conflict-marker',
+  'cross-deleted-pr-branches',
+  'dim-bots',
+  'download-folder-button',
+  'easy-toggle-commit-messages',
+  'easy-toggle-files',
+  'embed-gist-inline',
+  'esc-to-cancel',
+  'expand-all-hidden-comments',
+  'fit-textareas',
+  'github-actions-indicators',
+  'hidden-review-comments-indicator',
+  'hide-diff-signs',
+  'hide-disabled-milestone-sorter',
+  'hide-inactive-deployments',
+  'hide-low-quality-comments',
+  'jump-to-change-requested-comment',
+  'jump-to-conversation-close-event',
+  'linkify-code',
+  'list-prs-for-branch',
+  'new-repo-disable-projects-and-wikis',
+  'no-duplicate-list-update-time',
+  'one-click-diff-options',
+  'one-click-review-submission',
+  'one-key-formatting',
+  'pinned-issues-update-time',
+  'pr-jump-to-first-non-viewed-file',
+  'prevent-link-loss',
+  'preview-hidden-comments',
+  'quick-comment-edit',
+  'quick-mention',
+  'quick-new-issue',
+  'reload-failed-proxied-images',
+  'resolve-conflicts',
+  'restore-file',
+  'set-default-repositories-type-to-sources',
+  'swap-branches-on-compare',
+  'tab-to-indent',
+  'vertical-front-matter',
+]
+
+enabled.forEach(feature => {
+  document.querySelector(`input[name="feature:${feature}"]:not(:checked)`)
+    ?.click()
+})
+```
+
+</details>
