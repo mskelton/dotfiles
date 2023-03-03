@@ -18,6 +18,3 @@ end
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Setup asdf package manager
-source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.fish

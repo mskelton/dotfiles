@@ -53,22 +53,16 @@ git submodule update --remote
 ./install
 ```
 
-### Homebrew
+### System setup
+
+_If on a work device, run `export WORK=1` before the following commands._
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-/opt/homebrew/bin/brew tap homebrew/cask-drivers
-/opt/homebrew/bin/brew tap homebrew/cask-fonts
-/opt/homebrew/bin/brew install $(cat config/formula.txt)
-/opt/homebrew/bin/brew install --cask $(cat config/casks.txt)
-```
-
-### Miscellaneous system setup
-
-```bash
+./scripts/brew.sh
 ./scripts/macos.sh
 ./scripts/tools.sh
 ```
+
 
 <details>
   <summary>
