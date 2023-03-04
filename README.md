@@ -68,7 +68,7 @@ _If on a work device, run `export WORK=1` before the following commands._
 
 <details>
   <summary>
-    Additional steps to copy data from old machine
+    Copy data from old machine
   </summary>
 
 - Copy Quicken data files

@@ -96,7 +96,7 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-		"mskelton/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
 		local actions = require("telescope.actions")

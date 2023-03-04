@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = { "mskelton/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
 			"<leader>fd",
