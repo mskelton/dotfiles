@@ -29,6 +29,12 @@ M.register_handlers = function()
 			end
 		end,
 	})
+
+	--- Disable warnings about dynamic registration. I really don't care.
+	--- @diagnostic disable-next-line: duplicate-set-field
+	vim.lsp.handlers["client/registerCapability"] = function()
+		return { result = nil, error = nil }
+	end
 end
 
 return M
