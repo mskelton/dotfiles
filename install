@@ -36,7 +36,6 @@ if [[ -n "$WORK" ]]; then
 	link federato/gh/config.yml ~/.config/gh/config.yml
 	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml
 
-	link_dir federato/home ~/
 	link_dir federato/fish ~/.config/fish/
 else
 	link gh/config.yml ~/.config/gh/config.yml
