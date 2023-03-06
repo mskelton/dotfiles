@@ -4,6 +4,9 @@
 sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
 chsh -s /opt/homebrew/bin/fish
 
+# Install Starship
+curl -sS https://starship.rs/install.sh | sh
+
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
