@@ -4,7 +4,7 @@ user=$(whoami)
 read -p 'What is your email? ' email
 
 # Create the ssh key
-mkdir $HOME/.ssh
+mkdir -p $HOME/.ssh
 ssh-keygen -t ed25519 -C $email
 cat <<EOF >$HOME/.ssh/config
 Host *.github.com
