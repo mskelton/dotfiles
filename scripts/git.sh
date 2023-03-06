@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 user=$(whoami)
-read '?What is your email?: ' email
+read -p 'What is your email? ' email
 
 # Create the ssh key
 mkdir $HOME/.ssh
