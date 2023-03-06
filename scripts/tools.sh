@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Make fish the default shell
-sudo sh -c "echo $(brew --prefix)/bin/fish >> /etc/shells"
-chsh -s $(brew --prefix)/bin/fish
+sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
+chsh -s /opt/homebrew/bin/fish
 
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -11,7 +11,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
 # Install fzf keybindings
-$(brew --prefix)/opt/fzf/install
+/opt/homebrew/opt/fzf/install
 
 # Install Docker completion
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
