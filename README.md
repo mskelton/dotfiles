@@ -4,69 +4,23 @@ My personal settings and dotfiles.
 
 ## Installation
 
-<details>
-  <summary>
-    Before continuing, expand and follow the Git setup instructions.
-  </summary>
+_If on a work device, run `export WORK=1` before the following commands._
 
 ```bash
 xcode-select --install
-
-user=$(whoami)
-read '?What is your email?: ' email
-ssh-keygen -t ed25519 -C $email
-
-mkdir $HOME/.ssh
-cat <<EOF >$HOME/.ssh/config
-Host *.github.com
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_ed25519
-EOF
-
-cat <<EOF >$HOME/.gitconfig
-[user]
-	name = Mark Skelton
-	email = $email
-  signingKey = /Users/$user/.ssh/id_ed25519.pub
-[core]
-	excludesfile = /Users/$user/.gitignore-global
-[commit]
-  gpgsign = true
-[gpg]
-	format = ssh
-[include]
-	path = /Users/$user/.gitconfig-shared
-EOF
-
-echo "Run the following command to copy the ssh key to your clipboard."
-echo ""
-echo "cat ~/.ssh/id_ed25519.pub | pbcopy"
-echo ""
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/git.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/brew.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/macos.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/tools.sh)"
 ```
 
-</details>
+After installing pre-requisites, run the following to setup the dotfiles.
 
 ```bash
 git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
 git submodule init
 git submodule update --remote
-```
-
-### System setup
-
-_If on a work device, run `export WORK=1` before the following commands._
-
-```bash
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/brew.sh)"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/macos.sh)"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/tools.sh)"
-```
-
-After installing system dependencies, run the following to setup the dotfiles.
-
-```bash
 ./install
 ```
 
