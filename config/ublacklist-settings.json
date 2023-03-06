@@ -1,0 +1,22 @@
+{
+  "blacklist": "*://www.w3schools.com/*",
+  "blockColor": "default",
+  "blockWholeSite": false,
+  "dialogTheme": "default",
+  "enablePathDepth": false,
+  "hideBlockLinks": true,
+  "hideControl": true,
+  "highlightColors": [
+    "#ddeeff"
+  ],
+  "linkColor": "default",
+  "skipBlockDialog": true,
+  "subscriptions": [],
+  "syncAppearance": false,
+  "syncBlocklist": true,
+  "syncGeneral": false,
+  "syncInterval": 15,
+  "syncSubscriptions": false,
+  "updateInterval": 120,
+  "version": "8.2.6"
+}

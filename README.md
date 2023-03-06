@@ -51,7 +51,6 @@ git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
 git submodule init
 git submodule update --remote
-./install
 ```
 
 ### System setup
@@ -59,29 +58,43 @@ git submodule update --remote
 _If on a work device, run `export WORK=1` before the following commands._
 
 ```bash
-./scripts/brew.sh
-./scripts/macos.sh
-./scripts/tools.sh
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/brew.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/macos.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/tools.sh)"
+```
+
+After installing system dependencies, run the following to setup the dotfiles.
+
+```bash
+./install
 ```
 
 ### Additional setup
 
 <details>
   <summary>
-    Copy data from old machine
+    Install Chrome extensions
   </summary>
 
-- Copy Quicken data files
-- Copy `~/.config/fish/custom.fish`
-- Copy Taskwarrior data `~/.task`
-- Copy `~/.local/share/fish/fish_history`
-- Copy pictures and documents
+- [1Password](https://chrome.google.com/webstore/detail/1password-%E2%80%93-password-mana/aeblfdkhhhdcdjpifhhbdiojplfjncoa)
+- [Bookmark Sync](https://chrome.google.com/webstore/detail/bookmark-sync/eandejdimaomjfhmobeofcgljmmbgkde)
+- [Dark Reader](https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh)
+- [Material Icons for GitHub](https://chrome.google.com/webstore/detail/material-icons-for-github/bggfcpfjbdkhfhfmkjpbhnkhnpjjeomc)
+- [Picture-in-Picture Extension](https://chrome.google.com/webstore/detail/picture-in-picture-extens/hkgfoiooedgoejojocmhlaklaeopbecg)
+- [RSS Feed Reader](https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+- [Refined GitHub](https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf)
+- [Stylus](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
+- [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+- [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
+- [uBlacklist](https://chrome.google.com/webstore/detail/ublacklist/pncfbmialoiaghdehhbnbhkkgmjanfhe)
 
 </details>
 
 <details>
   <summary>
-    Refined GitHub
+    Configure Refined GitHub
   </summary>
 
 Refined GitHub has terrible defaults IMO, so this simple script that enables
@@ -145,5 +158,29 @@ enabled.forEach(feature => {
     ?.click()
 })
 ```
+
+</details>
+
+<details>
+  <summary>
+    Configure uBlacklist
+  </summary>
+
+1. Navigate to the extension options
+1. Where it says "Restore settings", click **Restore**
+1. Upload `config/ublacklist-settings.json`
+
+</details>
+
+<details>
+  <summary>
+    Copy data from old machine
+  </summary>
+
+- Copy Quicken data files
+- Copy `~/.config/fish/custom.fish`
+- Copy Taskwarrior data `~/.task`
+- Copy `~/.local/share/fish/fish_history`
+- Copy pictures and documents
 
 </details>
