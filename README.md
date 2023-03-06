@@ -11,7 +11,6 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/git.sh)"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/brew.sh)"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/macos.sh)"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/tools.sh)"
 ```
 
 After installing pre-requisites, run the following to setup the dotfiles.
@@ -25,6 +24,19 @@ git submodule update --remote
 ```
 
 ### Additional setup
+
+<details>
+  <summary>
+    Setup tools
+  </summary>
+
+Before installing tools, install [Node.js](https://nodejs.org/en/), then run the following commands.
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/tools.sh)"
+```
+
+</details>
 
 <details>
   <summary>

@@ -27,7 +27,7 @@ npm config set audit=false
 npm config set fund=false
 
 # Enable corepack
-corepack enable
+sudo corepack enable
 
 # Install go binaries
 go install github.com/mskelton/lorem@latest
