@@ -11,3 +11,5 @@ js/npm-managed-libs/
 *.png
 *.jar
 
+# pdf.js
+pdf.worker.js
