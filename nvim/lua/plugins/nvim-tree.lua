@@ -26,6 +26,12 @@ return {
 					trash = false,
 				},
 			},
+			view = {
+				width = {
+					min = 30,
+					max = 50,
+				},
+			},
 			remove_keymaps = true,
 			renderer = {
 				icons = {
