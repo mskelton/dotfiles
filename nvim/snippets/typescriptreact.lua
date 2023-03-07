@@ -13,7 +13,7 @@ return {
 		"rc",
 		fmt(
 			[[
-        {}{}function {}({}) {{
+        {}function {}({}) {{
           return (
             {}
           )
@@ -21,13 +21,9 @@ return {
         {}
       ]],
 			{
-				c(1, {
-					t({ "import React from 'react'", "", "" }),
-					t(""),
-				}),
-				c(2, { t("export "), t("") }),
+				c(1, { t("export "), t("") }),
 				f(snip_utils.get_filename),
-				c(3, {
+				c(2, {
 					f(function(args, snip)
 						return "props: " .. get_props_name(args, snip)
 					end),
@@ -47,7 +43,7 @@ return {
 						"}",
 						"",
 					}
-				end, { 2, 3 }),
+				end, { 1, 2 }),
 			}
 		)
 	),
