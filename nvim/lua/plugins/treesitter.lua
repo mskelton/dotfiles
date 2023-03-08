@@ -125,6 +125,8 @@ return {
 							["is"] = "@statement.inner",
 							["aT"] = "@test.outer",
 							["iT"] = "@test.inner",
+							["aa"] = "@tag.attribute.outer",
+							["ia"] = "@tag.attribute.inner",
 						},
 					},
 				},
