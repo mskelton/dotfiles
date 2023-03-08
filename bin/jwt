@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Decode JWT
+
+while IFS= read line; do
+	sed 's/\./\n/g' <<<$(cut -d. -f2 <<<$line) | base64 --decode | jq
+done
