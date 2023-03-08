@@ -2,14 +2,7 @@
 .idea/
 .yarn/
 
-# DAM
-js/_libs/
-js/npm-managed-libs/
-
 # Binary files
 *.jpg
 *.png
 *.jar
-
-# pdf.js
-pdf.worker.js
