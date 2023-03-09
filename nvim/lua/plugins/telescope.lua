@@ -134,6 +134,7 @@ return {
 						flip_columns = 120,
 					},
 				},
+				-- Use custom prompt prefix which is more compact than the default.
 				prompt_prefix = "❯ ",
 				selection_caret = "❯ ",
 				-- Truncate long paths in the middle rather than the start/end. This
@@ -163,15 +164,6 @@ return {
 						-- Scroll preview
 						["<C-d>"] = actions.preview_scrolling_down,
 
-						-- FIXME: Tab is having issues with Copilot
-						-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-						-- ["<S-Tab>"] = actions.toggle_selection
-						-- 	+ actions.move_selection_better,
-
-						-- Which key
-						["<C-/>"] = actions.which_key,
-						["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-
 						-- Remove current word
 						["<C-w>"] = { "<c-s-w>", type = "command" },
 
@@ -180,6 +172,15 @@ return {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-h>"] = actions.move_to_top,
 						["<C-l>"] = actions.move_to_bottom,
+
+						-- Use Ctrl-n/p to select items
+						["<C-n>"] = actions.toggle_selection + actions.move_selection_next,
+						["<C-p>"] = actions.toggle_selection
+							+ actions.move_selection_previous,
+
+						-- Which key
+						["<C-/>"] = actions.which_key,
+						["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
 
 						-- Ctrl/Alt + q is hard to type, so use `i` instead
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
