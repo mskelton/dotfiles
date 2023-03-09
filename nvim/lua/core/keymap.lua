@@ -78,7 +78,7 @@ map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 })
 
 map("n", "gx", function()
-	open_url(vim.fn.expand("<cWORD>"))
+	require("core.utils").open_url(vim.fn.expand("<cWORD>"))
 end, "Open URL under cursor")
 
 -- TODO: Figure out how to make this work

@@ -13,14 +13,27 @@ return {
 		"rc",
 		fmt(
 			[[
-        {}function {}({}) {{
+        {}{}function {}({}) {{
           return (
             {}
           )
         }}
-        {}
       ]],
 			{
+				f(function(args, parent)
+					if args[2][1] == "" then
+						return ""
+					end
+
+					local props = get_props_name(args, parent.snippet)
+					return {
+						args[1][1] .. "interface " .. props .. " {",
+						"\t",
+						"}",
+						"",
+						"",
+					}
+				end, { 1, 2 }),
 				c(1, { t("export "), t("") }),
 				f(snip_utils.get_filename),
 				c(2, {
@@ -30,20 +43,6 @@ return {
 					t(""),
 				}),
 				i(0),
-				f(function(args, parent)
-					if args[2][1] == "" then
-						return ""
-					end
-
-					local props = get_props_name(args, parent.snippet)
-					return {
-						"",
-						args[1][1] .. "interface " .. props .. " {",
-						"\t",
-						"}",
-						"",
-					}
-				end, { 1, 2 }),
 			}
 		)
 	),
