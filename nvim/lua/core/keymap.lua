@@ -77,12 +77,9 @@ map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 	desc = "Rename the word under the cursor",
 })
 
-map(
-	"n",
-	"gx",
-	':silent! !echo "<c-r><c-a>" | url | xargs open<cr>',
-	"Open URL under cursor"
-)
+map("n", "gx", function()
+	open_url(vim.fn.expand("<cWORD>"))
+end, "Open URL under cursor")
 
 -- TODO: Figure out how to make this work
 -- map(
