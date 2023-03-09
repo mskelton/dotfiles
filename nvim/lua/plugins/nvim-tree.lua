@@ -91,7 +91,7 @@ return {
 				map(">", api.node.navigate.sibling.next, "Next sibling")
 				map("<", api.node.navigate.sibling.prev, "Previous sibling")
 				map(".", api.node.run.cmd, "Run command")
-				map("-", api.tree.change_root_to_parent, "Up")
+				map("-", api.node.navigate.parent, "Parent directory")
 				map("a", api.fs.create, "Create")
 				map(
 					"bmv",
@@ -115,7 +115,6 @@ return {
 				map("m", api.marks.toggle, "Toggle bookmark")
 				map("o", edit_and_close_tree, "Open")
 				map("p", api.fs.paste, "Paste")
-				map("P", api.node.navigate.parent, "Parent directory")
 				map("q", api.tree.close, "Close")
 				map("r", api.fs.rename, "Rename")
 				map("R", api.tree.reload, "Refresh")
