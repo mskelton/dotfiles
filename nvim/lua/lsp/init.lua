@@ -101,6 +101,15 @@ M.setup_servers = function()
 			"tailwind.config.mjs",
 			"tailwind.config.ts"
 		),
+		settings = {
+			tailwindCSS = {
+				experimental = {
+					-- Support Tailwind completions in clsx calls
+					-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
+					classRegex = { { [[clsx\(([^)]*)\)]], [["([^"]*)"]] } },
+				},
+			},
+		},
 	})
 
 	-- Setup TypeScript separately through the plugin. Long term, I don't want to
