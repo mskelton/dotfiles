@@ -136,6 +136,19 @@ return {
 				},
 				prompt_prefix = "❯ ",
 				selection_caret = "❯ ",
+				-- Truncate long paths in the middle rather than the start/end. This
+				-- ensures that you can see the filename which is arguably most
+				-- important as well as the top-level directory which is useful for
+				-- distinguishing components in a monorepo.
+				path_display = function(_, path)
+					local bufnr = vim.api.nvim_get_current_buf()
+					local status = require("telescope.state").get_status(bufnr)
+					local len = vim.api.nvim_win_get_width(status.results_win)
+						- status.picker.selection_caret:len()
+						- 2
+
+					return require("plenary.strings").truncate(path, len, nil, 0)
+				end,
 				default_mappings = {
 					i = {
 						-- Close rather than going to normal mode
