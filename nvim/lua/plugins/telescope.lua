@@ -191,8 +191,7 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
-					-- Trim leading `./` in fd results
-					find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+					find_command = { "fd", "--type", "f" },
 				},
 				live_grep = {
 					additional_args = function(opts)
