@@ -46,4 +46,43 @@ return {
 			}
 		)
 	),
+	s(
+		"rd",
+		fmt(
+			[[
+        {}function {}({}) {{
+          return (
+            {}
+          )
+        }}
+
+        export default {}
+      ]],
+			{
+				f(function(args, parent)
+					if args[1][1] == "" then
+						return ""
+					end
+
+					local props = get_props_name(args, parent.snippet)
+					return {
+						"export interface " .. props .. " {",
+						"\t",
+						"}",
+						"",
+						"",
+					}
+				end, { 1 }),
+				f(snip_utils.get_filename),
+				c(1, {
+					f(function(args, snip)
+						return "props: " .. get_props_name(args, snip)
+					end),
+					t(""),
+				}),
+				i(0),
+				f(snip_utils.get_filename),
+			}
+		)
+	),
 }
