@@ -63,10 +63,13 @@ $brew install --cask \
 	zoom \
 	zsa-wally
 
-# Personal casks
+# Personal/work casks
 if [[ -z "$WORK" ]]; then
 	$brew install --cask \
 		quicken \
 		obsidian \
 		todoist
+else
+	brew install --cask \
+		altair-graphql-client
 fi
