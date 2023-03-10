@@ -24,7 +24,7 @@
   rebase-default = !git rebase $(git default)
   rebase-last = !git co - && git rebase $(git default)
   ri = !git rebase -i $(git default)
-  sync = "!f() { git add -A && git commit -m \"${@-Sync}\" && git push; }; f"
+  sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
   trash = !git reset --hard && git clean -fd
   undo = reset --soft HEAD~
 [core]
