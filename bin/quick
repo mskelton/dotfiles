@@ -1,4 +1,30 @@
 #!/usr/bin/env bash
 # Quickly create a new issue
 
-gh issue create --repo mskelton/dotfiles -a "@me" -t "$*" -b ''
+repo="--repo mskelton/dotfiles"
+cmd="$1"
+shift
+
+# Print help if no args are provided
+if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
+	echo 'Usage: quick [command] [args]'
+	echo ''
+	echo 'Commands:'
+	echo '  list'
+	echo '  add [title]'
+	echo '  close [issue number]'
+	exit 0
+fi
+
+if [[ "$cmd" == 'list' ]]; then
+	gh issue list $repo
+elif [[ "$cmd" == 'add' ]]; then
+	gh issue create $repo -a "@me" -t "$*" -b ''
+elif [[ "$cmd" == 'close' ]]; then
+	for num in "$@"; do
+		gh issue close $repo $num
+	done
+else
+	echo "Unknown command \"$cmd\" for \"quick\"."
+	exit 1
+fi
