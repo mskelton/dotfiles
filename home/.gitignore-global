@@ -9,3 +9,6 @@
 # Unless I explicitly commit them, I don't want ignore files committed, as they
 # are primarily for my setup.
 .ignore
+
+# Temporary ignores for now, will possibly contribute back later
+.graphqlrc.yml
