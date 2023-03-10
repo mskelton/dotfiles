@@ -83,7 +83,6 @@ const enabled = [
   'dim-bots',
   'download-folder-button',
   'easy-toggle-commit-messages',
-  'easy-toggle-files',
   'embed-gist-inline',
   'esc-to-cancel',
   'expand-all-hidden-comments',

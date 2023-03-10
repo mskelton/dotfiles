@@ -6,3 +6,6 @@
 *.jpg
 *.png
 *.jar
+
+# Even though .env files are ignored from Git, I want to see them in Telescope
+!.env
