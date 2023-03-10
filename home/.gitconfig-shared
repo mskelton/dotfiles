@@ -12,6 +12,7 @@
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   del = branch -D
   diffd = !git diff $(git default)..HEAD
+  edit = commit --amend
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
   jira = "!f() { git checkout $(git default) -b \"$(basename $(pbpaste))-$1\"; }; f"
   merge-default = !git merge $(git default)
