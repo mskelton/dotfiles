@@ -38,13 +38,6 @@ return {
 		url = "https://json.schemastore.org/eslintrc",
 	},
 	{
-		fileMatch = {
-			".stylelintrc",
-			".stylelintrc.json",
-		},
-		url = "https://json.schemastore.org/stylelintrc",
-	},
-	{
 		fileMatch = { "vercel.json" },
 		url = "https://openapi.vercel.sh/vercel.json",
 	},

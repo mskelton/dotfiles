@@ -28,7 +28,6 @@ M.setup_servers = function()
 	M.server("prismals")
 	M.server("sourcekit", { filetypes = { "swift" } })
 	M.server("rust_analyzer")
-	M.server("emmet_ls")
 	M.server("svelte")
 	M.server("graphql", {
 		root_dir = util.root_pattern(
@@ -77,15 +76,6 @@ M.setup_servers = function()
 	M.server("yamlls", {
 		settings = {
 			yaml = { schemas = require("lsp.yaml-schemas") },
-		},
-	})
-
-	M.server("stylelint_lsp", {
-		root_dir = util.root_pattern(".stylelintrc", ".stylelintrc.js"),
-		settings = {
-			stylelintplus = {
-				autoFixOnFormat = true,
-			},
 		},
 	})
 

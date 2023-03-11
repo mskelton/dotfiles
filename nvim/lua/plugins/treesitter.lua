@@ -52,19 +52,6 @@ return {
 				maintainers = { "@mskelton" },
 			}
 
-			parser_config.styled = {
-				install_info = {
-					url = local_parser(
-						"tree-sitter-styled",
-						"https://github.com/mskelton/"
-					),
-					branch = "main",
-					files = { "src/parser.c", "src/scanner.c" },
-					generate_requires_npm = true,
-				},
-				maintainers = { "@mskelton" },
-			}
-
 			require("nvim-treesitter.configs").setup({
 				autotag = { enable = true },
 				endwise = { enable = true },
@@ -99,7 +86,6 @@ return {
 					"query",
 					"regex",
 					"sql",
-					"styled",
 					"swift",
 					"svelte",
 					"tsx",

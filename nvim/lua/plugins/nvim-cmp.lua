@@ -119,16 +119,7 @@ return {
 				end,
 			},
 			sources = cmp.config.sources({
-				{
-					name = "nvim_lsp",
-					entry_filter = function(entry)
-						local client_name = entry.source.source.client.name
-
-						-- Only return Emmet results in styled-component template strings
-						return client_name ~= "emmet_ls"
-							or context.in_treesitter_capture("styled")
-					end,
-				},
+				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 			}, {
 				{ name = "buffer" },

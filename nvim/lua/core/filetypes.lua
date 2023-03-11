@@ -6,7 +6,6 @@ vim.filetype.add({
 		keymap = "dts",
 	},
 	filename = {
-		[".stylelintrc"] = "json",
 		[".clangd"] = "yaml",
 		[".clang-format"] = "yaml",
 		["tsconfig.json"] = "jsonc",

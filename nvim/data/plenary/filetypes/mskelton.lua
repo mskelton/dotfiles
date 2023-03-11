@@ -7,7 +7,6 @@ return {
 		cts = "typescript",
 	},
 	file_name = {
-		[".stylelintrc"] = "json",
 		[".clangd"] = "yaml",
 		["tsconfig.json"] = "jsonc",
 		["tsconfig.base.json"] = "jsonc",

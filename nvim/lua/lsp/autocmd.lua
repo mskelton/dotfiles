@@ -6,7 +6,6 @@ local formatters = {
 	"eslint",
 	"gopls",
 	"null-ls",
-	"stylelint_lsp",
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
