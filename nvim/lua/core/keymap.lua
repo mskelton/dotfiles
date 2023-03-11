@@ -108,11 +108,15 @@ map("n", "<leader>wp", "<C-w>P", "Go to previous window")
 --- OPERATIONS -----------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-map("n", "<leader>odf", function()
+map("n", "<leader>od", function()
 	if vim.fn.confirm("Delete file?", "&Yes\n&No") == 1 then
 		vim.cmd("Delete!")
 	end
 end, "Delete file")
+
+map("n", "<leader>of", function()
+	os.execute('open "' .. vim.fn.expand("%:p:h") .. '"')
+end, "Open file in finder")
 
 map(
 	"n",
