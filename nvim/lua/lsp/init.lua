@@ -30,7 +30,13 @@ M.setup_servers = function()
 	M.server("rust_analyzer")
 	M.server("emmet_ls")
 	M.server("svelte")
-	M.server("graphql")
+	M.server("graphql", {
+		root_dir = util.root_pattern(
+			".graphqlrc*",
+			".graphql.config.*",
+			"graphql.config.*"
+		),
+	})
 
 	-- clangd requires a custom offset encoding, so we have to patch the default
 	-- capabilities to make that work.
