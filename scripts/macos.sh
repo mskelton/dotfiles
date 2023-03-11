@@ -145,3 +145,15 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
     </dict>
   </dict>
 "
+
+################################################################################
+### APP SHORTCUTS ##############################################################
+################################################################################
+#  @   Command
+#  ~   Option
+#  $   Shift
+#  ^   Control
+
+# Figma
+defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add "Show/Hide UI" -string '@$u'
+defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add "Copy as SVG" -string '@$s'
