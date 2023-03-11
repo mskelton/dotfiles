@@ -1,5 +1,9 @@
 local M = {}
 
+local function noop()
+	return { result = nil, error = nil }
+end
+
 M.register_handlers = function()
 	local find_references = vim.lsp.handlers["textDocument/references"]
 
@@ -31,10 +35,8 @@ M.register_handlers = function()
 	})
 
 	--- Disable warnings about dynamic registration. I really don't care.
-	--- @diagnostic disable-next-line: duplicate-set-field
-	vim.lsp.handlers["client/registerCapability"] = function()
-		return { result = nil, error = nil }
-	end
+	vim.lsp.handlers["client/registerCapability"] = noop
+	vim.lsp.handlers["client/unregisterCapability"] = noop
 end
 
 return M
