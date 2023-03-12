@@ -1,13 +1,15 @@
 aliases:
   aus: pr merge --squash --auto
-  clone: repo clone mskelton/$1
+  clone: '!gh repo clone $GH_ORG/$1'
   dbot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
   draft: pr create --draft
   mkrelease: "!gh pr review -a changeset-release/$(git default) && gh pr merge -s --auto changeset-release/$(git default)"
+  quick: issue create -b '' -t "$1"
+  upcoming: "!gh pr view changeset-release/$(git default)"
   prw: pr view -w
   setup-repo: '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -f "has_projects=false" -f "allow_merge_commit=false" -f "allow_rebase_merge=false" -f "allow_auto_merge=true" -f "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo} --silent'
   squash: pr merge --squash
-  st: status -o mskelton
+  st: '!gh status -o $GH_ORG'
   url: pr view --json url -q .url
   w: repo view -w
 editor: nvim
