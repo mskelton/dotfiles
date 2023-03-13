@@ -1,32 +1,38 @@
 # vim:ft=gitconfig
 
 [alias]
-  amend = commit --amend --no-edit
-  append = !git add -A && git commit --amend --no-edit
-  br = branch
-  c = commit -m
-  ca = !git add -A && git commit -m
+  # Misc
   changeset = !git add .changeset && git commit -m 'Add changeset'
   cl = clone
-  co = checkout
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
-  del = branch -D
   diffd = !git diff $(git default)..HEAD
-  edit = commit --amend
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
-  jira = "!f() { git checkout $(git default) -b \"$(basename $(pbpaste))-$1\"; }; f"
-  merge-default = !git merge $(git default)
-  merge-last = !git co - && git merge $(git default)
-  msg = commit --amend -m
+  trash = !git reset --hard && git clean -fd
+  undo = reset --soft HEAD~
+  unstash = stash pop
+  # Branch
+  br = branch
+  del = branch -D
   name = branch -m
+  # Commit
+  amend = commit --amend --no-edit
+  append = !git add -A && git commit --amend --no-edit
+  c = commit -m
+  ca = !git add -A && git commit -m
+  edit = commit --amend
+  msg = commit --amend -m
+  sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
+  # Checkout
+  co = checkout
   new = !git checkout $(git default) -b $2
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+  # Merge
+  merge-default = !git merge $(git default)
+  merge-last = !git co - && git merge $(git default)
+  # Rebase
   rebase-default = !git rebase $(git default)
   rebase-last = !git co - && git rebase $(git default)
   ri = !git rebase -i $(git default)
-  sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
-  trash = !git reset --hard && git clean -fd
-  undo = reset --soft HEAD~
 [core]
   autocrlf = input
   trustctime = false

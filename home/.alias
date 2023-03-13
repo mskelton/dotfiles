@@ -1,11 +1,17 @@
 # vim:ft=bash
 
-# Git
+# Git merge
 alias dif="git diff"
 alias gmc="git merge --continue"
-alias grc="git rebase --continue"
 alias gmm="git merge-default"
+alias gml="git merge-last"
+
+# Git rebase
+alias grc="git rebase --continue"
 alias grm="git rebase-default"
+alias grl="git rebase-last"
+
+# Git
 alias pd="git pd"
 alias pub="git pub"
 alias pull="git pull"
@@ -13,7 +19,7 @@ alias push="git push"
 alias psh="git push"
 alias st="git status"
 alias stash="git stash push -u"
-alias unstash="git stash pop"
+alias unstash="git unstash"
 
 # Task Warrior
 alias t="task"
