@@ -57,7 +57,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = {
+		opts = {
 			fast_wrap = {
 				map = "<M-p>",
 			},

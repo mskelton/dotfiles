@@ -30,6 +30,7 @@ M.setup_servers = function()
 	M.server("rust_analyzer")
 	M.server("svelte")
 	M.server("graphql", {
+		filetypes = { "graphql" },
 		root_dir = util.root_pattern(
 			".graphqlrc*",
 			".graphql.config.*",
@@ -100,9 +101,14 @@ M.setup_servers = function()
 		settings = {
 			tailwindCSS = {
 				experimental = {
-					-- Support Tailwind completions in clsx calls
-					-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
-					classRegex = { { [[clsx\(([^)]*)\)]], [["([^"]*)"]] } },
+					classRegex = {
+						-- Support Tailwind completions in clsx calls
+						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
+						{ [[clsx\(([^)]*)\)]], [["([^"]*)"]] },
+						-- Support Tailwind completions in tv calls
+						-- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
+						{ [[tv\(([^)]*)\)]], "[\"'`]([^\"'`]*).*?[\"'`]" },
+					},
 				},
 			},
 		},
