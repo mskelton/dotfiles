@@ -111,12 +111,13 @@ return {
 	},
 	{
 		"github/copilot.vim",
-		event = "InsertEnter",
+		event = "VimEnter",
 		cmd = { "Copilot" },
 		config = function()
 			vim.g.copilot_filetypes = {
 				DressingInput = false,
 				TelescopePrompt = false,
+				TelescopeResults = false,
 			}
 		end,
 	},

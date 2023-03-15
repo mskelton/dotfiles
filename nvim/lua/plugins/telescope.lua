@@ -150,37 +150,19 @@ return {
 
 					return require("plenary.strings").truncate(path, len, nil, 0)
 				end,
-				default_mappings = {
+				mappings = {
 					i = {
 						-- Close rather than going to normal mode
 						["<esc>"] = actions.close,
 
-						-- Select options
-						["<CR>"] = actions.select_default,
-						["<C-x>"] = actions.select_horizontal,
-						["<C-v>"] = actions.select_vertical,
-						["<C-t>"] = actions.select_tab,
-
-						-- Scroll preview
-						["<C-d>"] = actions.preview_scrolling_down,
-
-						-- Remove current word
-						["<C-w>"] = { "<c-s-w>", type = "command" },
+						-- Clear prompt with C-u
+						["<C-u>"] = false,
 
 						-- Easier up/down shortcuts
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-h>"] = actions.move_to_top,
 						["<C-l>"] = actions.move_to_bottom,
-
-						-- Use Ctrl-n/p to select items
-						["<C-n>"] = actions.toggle_selection + actions.move_selection_next,
-						["<C-p>"] = actions.toggle_selection
-							+ actions.move_selection_previous,
-
-						-- Which key
-						["<C-/>"] = actions.which_key,
-						["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
 
 						-- Ctrl/Alt + q is hard to type, so use `i` instead
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
