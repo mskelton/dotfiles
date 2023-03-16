@@ -29,6 +29,9 @@ npm config set prefix=~/.local/share/npm
 npm config set audit=false
 npm config set fund=false
 
+# Disable pnpm update notifier
+npm config set update-notifier=false
+
 # Enable corepack
 sudo corepack enable
 
