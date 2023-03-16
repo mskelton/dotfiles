@@ -6,6 +6,31 @@ end
 
 M.register_handlers = function()
 	local find_references = vim.lsp.handlers["textDocument/references"]
+	local definition = vim.lsp.handlers["textDocument/definition"]
+
+	-- When there are multiple results on the same line for a definition, only
+	-- show the first one. This prevents many times where going to definition
+	-- opens a quickfix list when it really doesn't need to.
+	vim.lsp.handlers["textDocument/definition"] = function(_, result, ...)
+		if vim.tbl_islist(result) then
+			local seen = {}
+
+			for index, value in ipairs(result) do
+				local key = value.targetUri
+					.. ":"
+					.. value.targetSelectionRange.start.line
+
+				if seen[key] then
+					table.remove(result, index)
+				else
+					seen[key] = true
+				end
+			end
+		end
+
+		-- Defer to the built-in handler after filtering the results
+		definition(_, result, ...)
+	end
 
 	-- Language servers often include the current line in find references calls
 	-- which is really unnecessary since I know there is a reference where my
