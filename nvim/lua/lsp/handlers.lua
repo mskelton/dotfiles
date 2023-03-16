@@ -4,6 +4,15 @@ local function noop()
 	return { result = nil, error = nil }
 end
 
+--- Normalize a location to a uri and range
+--- @param location table
+M.normalize_location = function(location)
+	return {
+		uri = location.uri or location.targetUri,
+		range = location.range or location.targetSelectionRange,
+	}
+end
+
 M.register_handlers = function()
 	local find_references = vim.lsp.handlers["textDocument/references"]
 	local definition = vim.lsp.handlers["textDocument/definition"]
@@ -16,9 +25,8 @@ M.register_handlers = function()
 			local seen = {}
 
 			for index, value in ipairs(result) do
-				local key = value.targetUri
-					.. ":"
-					.. value.targetSelectionRange.start.line
+				local location = M.normalize_location(value)
+				local key = location.uri .. ":" .. location.range.start.line
 
 				if seen[key] then
 					table.remove(result, index)
