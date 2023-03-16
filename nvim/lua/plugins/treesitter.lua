@@ -24,34 +24,6 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
-			local parser_config =
-				require("nvim-treesitter.parsers").get_parser_configs()
-
-			-- Use the local version of a parser if available, otherwise download the
-			-- remote version.
-			local function local_parser(parser, base_url)
-				local dir = vim.fn.expand("~/dev/" .. parser)
-
-				if vim.fn.isdirectory(dir) == 1 then
-					return dir
-				end
-
-				return base_url .. parser
-			end
-
-			parser_config.mql5 = {
-				install_info = {
-					url = local_parser(
-						"tree-sitter-mql5",
-						"https://github.com/mskelton/"
-					),
-					branch = "main",
-					files = { "src/parser.c", "src/scanner.cc" },
-					generate_requires_npm = true,
-				},
-				maintainers = { "@mskelton" },
-			}
-
 			require("nvim-treesitter.configs").setup({
 				autotag = { enable = true },
 				endwise = { enable = true },
@@ -80,7 +52,6 @@ return {
 					"lua",
 					"markdown",
 					"markdown_inline",
-					"mql5",
 					"prisma",
 					"python",
 					"query",
