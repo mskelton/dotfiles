@@ -56,7 +56,7 @@ o.foldlevel = 20
 o.shada = "!,'1000,<500,s10,h"
 
 -- Limit total completions to 10 items
-vim.opt.pumheight = 15
+o.pumheight = 15
 
 -- Highlight the cursor line
 o.cursorline = true

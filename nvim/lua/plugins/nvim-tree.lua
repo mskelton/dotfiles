@@ -1,6 +1,7 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	cmd = { "NvimTreeFindFileToggle" },
 	keys = {
 		{
 			"<leader>fd",
@@ -31,6 +32,9 @@ return {
 					min = 30,
 					max = 50,
 				},
+			},
+			git = {
+				ignore = false,
 			},
 			remove_keymaps = true,
 			renderer = {
