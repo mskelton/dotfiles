@@ -27,16 +27,11 @@ alias tw="clear && t"
 
 # Yarn
 alias y="yarn"
-alias ys="yarn serve"
 
 # pnpm
-alias pn=pnpm
-
-# Tmux
-alias tn="tmux new"
-alias ta="tmux at"
-alias tl="tmux list-sessions"
-alias tk="tmux kill-session"
+alias pn="pnpm"
+alias pout="pnpm outdated --format=list"
+alias pup="pnpm up --latest '*'"
 
 # Remap vim to nvim
 alias vim="nvim"
