@@ -21,6 +21,10 @@ alias st="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
 
+# Tmux
+alias ta="tmux attach"
+alias tk="tmux kill-server"
+
 # Task Warrior
 alias t="task"
 alias tw="clear && t"
