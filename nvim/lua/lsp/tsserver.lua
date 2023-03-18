@@ -57,7 +57,10 @@ M.handlers = {
 		-- false positive results for my use case. If I explicitly jump to
 		-- them, go there, otherwise ignore them.
 		if vim.tbl_islist(result) then
-			local ignored_paths = { "react/index.d.ts" }
+			local ignored_paths = {
+				"react/index.d.ts",
+				"tailwind-variants/dist/index.d.ts",
+			}
 
 			for key, value in ipairs(result) do
 				for _, ignored_path in pairs(ignored_paths) do
