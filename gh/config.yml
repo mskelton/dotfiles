@@ -4,6 +4,7 @@ aliases:
   dbot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
   draft: pr create --draft
   mkrelease: "!gh pr review -a changeset-release/$(git default) && gh pr merge -s --auto changeset-release/$(git default)"
+  merge-icons: "pr merge --squash --repo=mskelton/termicons.nvim chore/update-icons"
   quick: issue create -b '' -t "$1"
   upcoming: "!gh pr view changeset-release/$(git default)"
   prw: pr view -w
