@@ -99,6 +99,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
+		local Path = require("plenary.path")
 		local actions = require("telescope.actions")
 		local layout_strategies = require("telescope.pickers.layout_strategies")
 		local dropdown = require("telescope.themes").get_dropdown()
@@ -115,6 +116,16 @@ return {
 			layout.results.line = layout.results.line - 1
 
 			return layout
+		end
+
+		local function truncate_path(path)
+			local bufnr = vim.api.nvim_get_current_buf()
+			local status = require("telescope.state").get_status(bufnr)
+			local len = vim.api.nvim_win_get_width(status.results_win)
+				- status.picker.selection_caret:len()
+				- 2
+
+			return require("plenary.strings").truncate(path, len, nil, 0)
 		end
 
 		require("telescope").setup({
@@ -142,13 +153,7 @@ return {
 				-- important as well as the top-level directory which is useful for
 				-- distinguishing components in a monorepo.
 				path_display = function(_, path)
-					local bufnr = vim.api.nvim_get_current_buf()
-					local status = require("telescope.state").get_status(bufnr)
-					local len = vim.api.nvim_win_get_width(status.results_win)
-						- status.picker.selection_caret:len()
-						- 2
-
-					return require("plenary.strings").truncate(path, len, nil, 0)
+					truncate_path(path)
 				end,
 				mappings = {
 					i = {
@@ -204,7 +209,15 @@ return {
 					end,
 					only_cwd = true,
 				},
-				oldfiles = { only_cwd = true },
+				oldfiles = {
+					only_cwd = true,
+					path_display = function(_, path)
+						local cwd = vim.fn.getcwd() .. "/"
+						local relative_path = Path:new(path):make_relative(cwd)
+
+						return truncate_path(relative_path)
+					end,
+				},
 			},
 		})
 
