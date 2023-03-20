@@ -38,13 +38,13 @@ return {
 					if ls.jumpable(1) then
 						ls.jump(1)
 					end
-				end)
+				end, "Next snippet jump point")
 
 				map({ "i", "s" }, "<c-p>", function()
 					if ls.jumpable(-1) then
 						ls.jump(-1)
 					end
-				end)
+				end, "Previous snippet jump point")
 			end,
 		},
 	},

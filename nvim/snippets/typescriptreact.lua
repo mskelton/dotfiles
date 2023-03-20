@@ -21,7 +21,7 @@ return {
       ]],
 			{
 				f(function(args, parent)
-					if args[2][1] == "" then
+					if not string.match(args[2][1], "props:") then
 						return ""
 					end
 
@@ -60,7 +60,7 @@ return {
       ]],
 			{
 				f(function(args, parent)
-					if args[1][1] == "" then
+					if not string.match(args[1][1], "props:") then
 						return ""
 					end
 
