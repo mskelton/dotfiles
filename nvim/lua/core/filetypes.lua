@@ -8,6 +8,7 @@ vim.filetype.add({
 	filename = {
 		[".clangd"] = "yaml",
 		[".clang-format"] = "yaml",
+		[".releaserc"] = "json",
 		["tsconfig.json"] = "jsonc",
 	},
 	pattern = {

@@ -8,6 +8,7 @@ return {
 	},
 	file_name = {
 		[".clangd"] = "yaml",
+		[".releaserc"] = "json",
 		["tsconfig.json"] = "jsonc",
 		["tsconfig.base.json"] = "jsonc",
 	},
