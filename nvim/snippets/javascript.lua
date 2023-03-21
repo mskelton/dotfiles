@@ -37,7 +37,7 @@ return {
 			f(function(args)
 				return utils.capitalize(args[1][1])
 			end, { 1 }),
-			i(2),
+			i(0),
 		})
 	),
 	s(
