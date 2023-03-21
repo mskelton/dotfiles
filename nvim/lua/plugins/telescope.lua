@@ -153,7 +153,7 @@ return {
 				-- important as well as the top-level directory which is useful for
 				-- distinguishing components in a monorepo.
 				path_display = function(_, path)
-					truncate_path(path)
+					return truncate_path(path)
 				end,
 				mappings = {
 					i = {
