@@ -23,12 +23,10 @@ M.setup_servers = function()
 	-- Simple servers
 	M.server("bashls")
 	M.server("lua_ls")
-	M.server("marksman")
+	-- M.server("marksman")
 	M.server("pyright")
 	M.server("prismals")
-	M.server("sourcekit", { filetypes = { "swift" } })
 	M.server("rust_analyzer")
-	M.server("svelte")
 	M.server("graphql", {
 		filetypes = { "graphql" },
 		root_dir = util.root_pattern(
