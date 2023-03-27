@@ -28,6 +28,7 @@ return {
 				autotag = { enable = true },
 				endwise = { enable = true },
 				ensure_installed = {
+					"awk",
 					"bash",
 					"css",
 					"cpp",
