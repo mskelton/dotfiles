@@ -105,7 +105,10 @@ M.setup_servers = function()
 						{ [[clsx\(([^)]*)\)]], [["([^"]*)"]] },
 						-- Support Tailwind completions in tv calls
 						-- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
-						{ [[tv\(([^)]*)\)]], "[\"'`]([^\"'`]*).*?[\"'`]" },
+						{ [[tv\(([^)]*)\)]], [==[["'`]([^"'`]*).*?["'`]]==] },
+						-- Support Tailwind completions in styles objects
+						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
+						{ [[styles =([^;]*);]], [==[["'`]([^"'`]*).*?["'`]]==] },
 					},
 				},
 			},
