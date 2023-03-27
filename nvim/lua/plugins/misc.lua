@@ -1,9 +1,5 @@
 return {
 	{
-		"tpope/vim-abolish",
-		event = "CmdLineEnter",
-	},
-	{
 		"tpope/vim-eunuch",
 		cmd = {
 			"Cfind",
