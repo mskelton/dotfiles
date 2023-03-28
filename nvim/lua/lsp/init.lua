@@ -108,7 +108,7 @@ M.setup_servers = function()
 						{ [[tv\(([^)]*)\)]], [==[["'`]([^"'`]*).*?["'`]]==] },
 						-- Support Tailwind completions in styles objects
 						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
-						{ [[styles =([^;]*);]], [==[["'`]([^"'`]*).*?["'`]]==] },
+						{ [[styles =([^}]*)\}]], [==[["'`]([^"'`]*).*?["'`]]==] },
 					},
 				},
 			},
