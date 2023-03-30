@@ -139,4 +139,25 @@ return {
 			},
 		},
 	},
+	{
+		"mskelton/oldies.nvim",
+		keys = {
+			{
+				"[x",
+				function()
+					require("oldies").prev()
+				end,
+				mode = { "n", "v" },
+				desc = "Go to newer file",
+			},
+			{
+				"]x",
+				function()
+					require("oldies").next()
+				end,
+				mode = { "n", "v" },
+				desc = "Go to older file",
+			},
+		},
+	},
 }
