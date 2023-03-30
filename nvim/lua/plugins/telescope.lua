@@ -56,7 +56,9 @@ return {
 		{
 			"<leader>fn",
 			function()
-				require("telescope.builtin").git_branches()
+				require("telescope.builtin").git_branches({
+					show_remote_tracking_branches = false,
+				})
 			end,
 			mode = nv,
 			desc = "Find Git branch",
