@@ -55,6 +55,5 @@ alias def="dict -d '!'"
 alias dock="docker exec -it $1 /bin/bash"
 alias gradle="./gradlew"
 alias pb="pbcopy"
-alias sf="source-fish"
 alias lg='lazygit'
 alias python='python3'

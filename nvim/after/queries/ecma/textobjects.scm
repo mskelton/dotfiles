@@ -8,7 +8,7 @@
 ; Declarations
 (lexical_declaration
   (variable_declarator
-    name: (identifier)
+    name: (_)
     value: (_) @declaration.inner)) @declaration.outer
 
 
