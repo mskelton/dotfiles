@@ -6,7 +6,9 @@ return {
 	keys = {
 		{
 			"<leader>fp",
-			"<cmd>Telescope find_files<cr>",
+			function()
+				require("telescope.builtin").find_files()
+			end,
 			mode = nv,
 			desc = "Find files",
 		},
@@ -18,67 +20,84 @@ return {
 		},
 		{
 			"<leader>fs",
-			"<cmd>Telescope live_grep regex=false<cr>",
+			function()
+				require("telescope.builtin").live_grep({ regex = false })
+			end,
 			mode = nv,
 			desc = "Search for exact text",
 		},
 		{
 			"<leader>fS",
-			"<cmd>Telescope live_grep<cr>",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
 			mode = nv,
 			desc = "Search for pattern",
 		},
 		{
 			"<leader>fo",
-			"<cmd>Telescope oldfiles<cr>",
+			function()
+				require("telescope.builtin").oldfiles()
+			end,
 			mode = nv,
 			desc = "Open oldfiles",
 		},
 		{
 			"<leader>fw",
-			"<cmd>Telescope buffers<cr>",
+			function()
+				require("telescope.builtin").buffers({
+					ignore_current_buffer = true,
+					sort_mru = true,
+				})
+			end,
 			mode = nv,
 			desc = "Find buffer",
 		},
 		{
 			"<leader>fn",
-			"<cmd>Telescope git_branches<cr>",
+			function()
+				require("telescope.builtin").git_branches()
+			end,
 			mode = nv,
 			desc = "Find Git branch",
 		},
 		{
 			"<leader>fl",
-			"<cmd>Telescope resume<cr>",
+			function()
+				require("telescope.builtin").resume()
+			end,
 			mode = nv,
 			desc = "Open last Telescope picker",
 		},
 		{
 			"<leader>fy",
-			"<cmd>Telescope lsp_document_symbols<cr>",
+			function()
+				require("telescope.builtin").lsp_document_symbols()
+			end,
 			mode = nv,
 			desc = "Open LSP symbols",
 		},
 		{
-			"<leader>fY",
-			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			mode = nv,
-			desc = "Open LSP workspace symbols",
-		},
-		{
 			"<leader>fh",
-			"<cmd>Telescope help_tags<cr>",
+			function()
+				require("telescope.builtin").help_tags()
+			end,
 			mode = nv,
 			desc = "Find help tags",
 		},
 		{
 			"<leader>/",
-			"<cmd>Telescope current_buffer_fuzzy_find<cr>",
+			function()
+				require("telescope.builtin").current_buffer_fuzzy_find()
+			end,
 			mode = nv,
 			desc = "Fuzzy find cin current buffer",
 		},
 		{
 			"z=",
-			"<cmd>Telescope spell_suggest<cr>",
+			function()
+				require("telescope.builtin").spell_suggest()
+			end,
 			mode = nv,
 			desc = "Suggest spellings for current word",
 		},
