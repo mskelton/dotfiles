@@ -4,3 +4,4 @@ vim.cmd.inoreabbrev("RN", "React.ReactNode")
 
 -- Typos
 vim.cmd.inoreabbrev("teh", "the")
+vim.cmd.inoreabbrev("deductable", "deductible")
