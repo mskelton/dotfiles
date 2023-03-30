@@ -47,9 +47,8 @@ o.shortmess = o.shortmess + "I"
 o.shiftwidth = 2
 o.tabstop = 2
 
--- Use tree-sitter for folds
-o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
+-- Fold by indent
+o.foldmethod = "indent"
 o.foldlevel = 20
 
 -- Store more oldfiles in the shada file
