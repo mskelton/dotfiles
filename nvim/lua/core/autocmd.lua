@@ -19,6 +19,12 @@ augroup markdown_spell_check
   au FileType markdown setlocal spell spelllang=en_us
 augroup END
 
+" Hard wrapping in markdown
+augroup markdown_spell_check
+  au!
+  au FileType markdown setlocal textwidth=80 formatoptions+=t
+augroup END
+
 augroup zet_template
   au!
   au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
