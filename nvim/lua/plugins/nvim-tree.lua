@@ -33,6 +33,11 @@ return {
 					max = 50,
 				},
 			},
+			filters = {
+				custom = {
+					".DS_Store",
+				},
+			},
 			git = {
 				ignore = false,
 			},
