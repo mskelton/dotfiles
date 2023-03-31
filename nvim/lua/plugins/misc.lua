@@ -124,6 +124,24 @@ return {
 	{
 		"mskelton/local-yokel.nvim",
 		cmd = { "E" },
+		keys = {
+			{
+				"]r",
+				function()
+					require("local-yokel.relatives").next_sibling()
+				end,
+				mode = { "n", "v" },
+				desc = "Go to next sibling file",
+			},
+			{
+				"[r",
+				function()
+					require("local-yokel.relatives").prev_sibling()
+				end,
+				mode = { "n", "v" },
+				desc = "Go to previous sibling file",
+			},
+		},
 		config = true,
 	},
 	{
