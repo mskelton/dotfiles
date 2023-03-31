@@ -77,4 +77,23 @@ M.open_url = function(text)
 	os.execute('echo "' .. url .. '" | url | xargs open')
 end
 
+--- Returns a function that truncates a string to the provided width based on
+--- the current window size.
+--- @param default number
+--- @param spec table
+M.trunc = function(default, spec)
+	--- @param str string
+	return function(str)
+		local current_width = vim.fn.winwidth(0)
+
+		for _, item in pairs(spec) do
+			if current_width < item.max then
+				return require("plenary.strings").truncate(str, item.width, nil, 0)
+			end
+		end
+
+		return default
+	end
+end
+
 return M

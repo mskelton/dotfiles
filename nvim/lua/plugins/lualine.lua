@@ -1,9 +1,13 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"nvim-lua/plenary.nvim",
+	},
 	config = function()
 		local colors = require("tokyonight.colors").setup()
+		local utils = require("core.utils")
 
 		require("lualine").setup({
 			options = {
@@ -27,9 +31,9 @@ return {
 							local mode_color = {
 								n = colors.red,
 								i = colors.green,
-								v = colors.blue,
-								[""] = colors.blue,
-								V = colors.blue,
+								v = colors.purple,
+								[""] = colors.purple,
+								V = colors.purple,
 								c = colors.magenta,
 								no = colors.red,
 								s = colors.orange,
@@ -53,6 +57,10 @@ return {
 					},
 					{
 						"filename",
+						fmt = utils.trunc(50, {
+							{ max = 100, width = 15 },
+							{ max = 140, width = 30 },
+						}),
 						cond = function()
 							return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
 						end,
@@ -85,6 +93,10 @@ return {
 					},
 					{
 						"branch",
+						fmt = utils.trunc(50, {
+							{ max = 100, width = 15 },
+							{ max = 140, width = 30 },
+						}),
 						icon = "큸",
 						color = { fg = colors.magenta, gui = "bold" },
 						padding = 1,
