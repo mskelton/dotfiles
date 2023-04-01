@@ -70,14 +70,16 @@ return {
 		keys = {
 			{
 				"<leader>vs",
-				"<cmd>Gitsigns stage_hunk<cr>",
-				mode = { "n", "v" },
+				":Gitsigns stage_hunk<cr>",
+				silent = true,
+				mode = "v",
 				desc = "Git: stage hunk",
 			},
 			{
-				"<leader>vr",
-				"<cmd>Gitsigns reset_hunk<cr>",
-				mode = { "n", "v" },
+				"<leader>vu",
+				":Gitsigns reset_hunk<cr>",
+				silent = true,
+				mode = "v",
 				desc = "Git: reset hunk",
 			},
 		},
