@@ -139,12 +139,13 @@ return {
 			return layout
 		end
 
-		local function truncate_path(path)
+		local function truncate_path(opts, path)
+			local padding = opts.__prefix or 3
 			local bufnr = vim.api.nvim_get_current_buf()
 			local status = require("telescope.state").get_status(bufnr)
 			local len = vim.api.nvim_win_get_width(status.results_win)
 				- status.picker.selection_caret:len()
-				- 2
+				- padding
 
 			return require("plenary.strings").truncate(path, len, nil, 0)
 		end
@@ -173,8 +174,8 @@ return {
 				-- ensures that you can see the filename which is arguably most
 				-- important as well as the top-level directory which is useful for
 				-- distinguishing components in a monorepo.
-				path_display = function(_, path)
-					return truncate_path(path)
+				path_display = function(opts, path)
+					return truncate_path(opts, path)
 				end,
 				mappings = {
 					i = {
@@ -232,11 +233,11 @@ return {
 				},
 				oldfiles = {
 					only_cwd = true,
-					path_display = function(_, path)
+					path_display = function(opts, path)
 						local cwd = vim.fn.getcwd() .. "/"
 						local relative_path = Path:new(path):make_relative(cwd)
 
-						return truncate_path(relative_path)
+						return truncate_path(opts, relative_path)
 					end,
 				},
 			},
