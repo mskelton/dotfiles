@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-  "Lua.workspace.checkThirdParty": false,
-    "diagnostics.disable": [
-        "param-type-mismatch"
-    ]
+  "diagnostics.disable": [
+      "param-type-mismatch"
+  ]
 }

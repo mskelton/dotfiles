@@ -22,7 +22,6 @@ M.setup_servers = function()
 
 	-- Simple servers
 	M.server("bashls")
-	M.server("lua_ls")
 	-- M.server("marksman")
 	M.server("pyright")
 	M.server("prismals")
@@ -55,6 +54,21 @@ M.setup_servers = function()
 		},
 	})
 
+	-- Lua
+	M.server("lua_ls", {
+		settings = {
+			Lua = {
+				workspace = {
+					checkThirdParty = false,
+				},
+				telemetry = {
+					enable = false,
+				},
+			},
+		},
+	})
+
+	-- Go
 	M.server("gopls", {
 		settings = {
 			gopls = {
