@@ -137,8 +137,16 @@ return {
 			"TSPlaygroundToggle",
 		},
 		keys = {
-			{ "<leader>tp", "<cmd>TSPlaygroundToggle<cr>" },
-			{ "<leader>th", "<cmd>TSHighlightCapturesUnderCursor<cr>" },
+			{
+				"<leader>tp",
+				"<cmd>TSPlaygroundToggle<cr>",
+				desc = "Toggle treesitter playground",
+			},
+			{
+				"<leader>th",
+				"<cmd>TSHighlightCapturesUnderCursor<cr>",
+				desc = "Highlight captures under cursor",
+			},
 		},
 	},
 	{
