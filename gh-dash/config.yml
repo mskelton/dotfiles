@@ -17,7 +17,7 @@ defaults:
   issuesLimit: 20
   preview:
     open: true
-    width: 80
+    width: 40
 repoPaths:
   mskelton/*: ~/dev/*
 keybindings:
