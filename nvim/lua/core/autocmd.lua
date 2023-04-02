@@ -49,6 +49,14 @@ augroup auto_mkdir
   au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
+" Automatically restart prettierd when .prettierc is saved. This helps
+" especially when creating new Prettier config files which usually fails to
+" be loaded by prettierd.
+augroup restart_prettierd
+  au!
+  au BufWritePost .prettierrc,.prettierignore,prettier.config.* silent !pkill prettierd
+augroup END
+
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
