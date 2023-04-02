@@ -6,7 +6,7 @@
   cl = clone
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   diffd = !git diff $(git default)..HEAD
-  fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+  fix-ref = remote set-head origin -a
   trash = !git reset --hard && git clean -fd
   undo = reset --soft HEAD~
   unstash = stash pop
@@ -25,7 +25,7 @@
   # Checkout
   co = checkout
   new = !git checkout $(git default) -b $2
-  pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+  pd = !git fetch -pq origin $(git default) && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   # Merge
   merge-default = !git merge $(git default)
   merge-last = !git co - && git merge $(git default)
