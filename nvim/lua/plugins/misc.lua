@@ -142,7 +142,11 @@ return {
 				desc = "Go to previous sibling file",
 			},
 		},
-		config = true,
+		config = {
+			relatives = {
+				postfixes = { "_test" },
+			},
+		},
 	},
 	{
 		"stevearc/dressing.nvim",
