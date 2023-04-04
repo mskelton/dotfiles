@@ -92,13 +92,9 @@ map("n", "gx", function()
 	require("core.utils").open_url(vim.fn.expand("<cWORD>"))
 end, "Open URL under cursor")
 
--- TODO: Figure out how to make this work
--- map(
--- 	"v",
--- 	"gx",
--- 	[[:'<,'>silent! !echo "<c-r>*" | url | xargs open<cr>]],
--- 	"Open the URL in the selection"
--- )
+map("v", "gx", [[:'<,'>w <Home>silent<End> !url | xargs open<cr>]], {
+	desc = "Open URL in selection",
+})
 
 --------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
