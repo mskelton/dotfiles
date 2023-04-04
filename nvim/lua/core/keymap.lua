@@ -73,10 +73,19 @@ map("n", "zv", "<C-v>", "Start visual block selection")
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
+-- Rename the word under the cursor
 map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 	silent = false,
 	desc = "Rename the word under the cursor",
 })
+
+-- Open help to last location. Sadly due to some issues I don't understand,
+-- opening help immediately requires wrapping it in `vim.schedule`.
+map("n", "<leader>oh", function()
+	vim.schedule(function()
+		vim.cmd("help | only | normal 'H")
+	end)
+end, "Reopen help")
 
 -- Open URLs under the cursor
 map("n", "gx", function()
