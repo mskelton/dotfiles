@@ -4,7 +4,7 @@ local M = {}
 --- @param mode string
 --- @param key string
 --- @param cmd string|function
---- @param opts_or_desc table|string
+--- @param opts_or_desc table|string|nil
 M.map = function(mode, key, cmd, opts_or_desc)
 	local opts
 
