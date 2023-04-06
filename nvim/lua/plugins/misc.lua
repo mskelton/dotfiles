@@ -97,7 +97,9 @@ return {
 	{
 		"mskelton/live-reload.nvim",
 		lazy = false,
-		enabled = false,
+		enabled = function()
+			return vim.env.LIVE_RELOAD == "1"
+		end,
 		opts = {
 			root_dir = "~/dev",
 			plugins = {
@@ -105,6 +107,7 @@ return {
 				{ "live-reload", dir = "live-reload.nvim" },
 				{ "local-yokel", dir = "local-yokel.nvim" },
 				{ "termicons", dir = "termicons.nvim" },
+				{ "oldies", dir = "oldies.nvim" },
 			},
 		},
 	},
@@ -184,5 +187,6 @@ return {
 				desc = "Go to older file",
 			},
 		},
+		config = true,
 	},
 }
