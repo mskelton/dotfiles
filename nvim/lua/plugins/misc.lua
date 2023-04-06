@@ -22,6 +22,9 @@ return {
 	{
 		"tpope/vim-unimpaired",
 		event = "VeryLazy",
+		init = function()
+			vim.g.nremap = { ["[x"] = "", ["]x"] = "" }
+		end,
 	},
 	{
 		"tpope/vim-surround",
