@@ -37,12 +37,7 @@ name="${2:-$(basename $resolved_dir | sed "s/^\.\$/$(basename $(pwd))/" | sed 's
 session_id=$(list_sessions | find_session "$name" "$resolved_dir")
 
 if [[ -n $session_id ]]; then
-	# Attach if outside of Tmux, otherwise switch to it
-	if [[ -z "$TMUX" ]]; then
-		tmux attach-session -t $session_id
-	else
-		tmux switch-client -t $session_id
-	fi
+	tmux-switch -t $session_id
 else
 	if [[ -z "$TMUX" ]]; then
 		# If we are outside a Tmux session, we can create a new session and attach

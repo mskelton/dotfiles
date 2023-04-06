@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Attach or switch to a Tmux session regardless of if currently in Tmux or not
+
+if [[ -z "$TMUX" ]]; then
+	tmux attach-session $@
+else
+	tmux switch-client $@
+fi
