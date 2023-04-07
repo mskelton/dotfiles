@@ -1,3 +1,4 @@
+--- @diagnostic disable: duplicate-set-field
 local M = {}
 
 local function noop()
@@ -14,8 +15,8 @@ M.normalize_location = function(location)
 end
 
 M.register_handlers = function()
-	local find_references = vim.lsp.handlers["textDocument/references"]
 	local definition = vim.lsp.handlers["textDocument/definition"]
+	local references = vim.lsp.handlers["textDocument/references"]
 
 	-- When there are multiple results on the same line for a definition, only
 	-- show the first one. This prevents many times where going to definition
@@ -24,16 +25,18 @@ M.register_handlers = function()
 		if vim.tbl_islist(result) then
 			local seen = {}
 
-			for index, value in ipairs(result) do
-				local location = M.normalize_location(value)
+			result = vim.tbl_filter(function(item)
+				local location = M.normalize_location(item)
 				local key = location.uri .. ":" .. location.range.start.line
 
+				-- Skip this line if we already have a reference to the same line
 				if seen[key] then
-					table.remove(result, index)
-				else
-					seen[key] = true
+					return false
 				end
-			end
+
+				seen[key] = true
+				return true
+			end, result)
 		end
 
 		-- Defer to the built-in handler after filtering the results
@@ -44,28 +47,21 @@ M.register_handlers = function()
 	-- which is really unnecessary since I know there is a reference where my
 	-- cursor is. This filters out the current line before sending the results to
 	-- the quickfix list.
-	vim.lsp.handlers["textDocument/references"] = vim.lsp.with(find_references, {
-		on_list = function(args)
+	vim.lsp.handlers["textDocument/references"] = function(_, result, ...)
+		if vim.tbl_islist(result) then
 			local cursor_line = unpack(vim.api.nvim_win_get_cursor(0))
-			local items = vim.tbl_filter(function(item)
-				return item.lnum ~= cursor_line
-			end, args.items)
 
-			if vim.tbl_isempty(items) then
-				-- Since we filter the results after the internal LSP no-results check
-				-- we have to re-check if there are no results.
-				vim.notify("No references found")
-			else
-				vim.fn.setqflist(
-					{},
-					" ",
-					{ title = args.title, items = items, context = args.ctx }
-				)
+			result = vim.tbl_filter(function(item)
+				local location = M.normalize_location(item)
+				local line = location.range.start.line + 1
 
-				vim.api.nvim_command("botright copen")
-			end
-		end,
-	})
+				return line ~= cursor_line
+			end, result)
+		end
+
+		-- Defer to the built-in handler after filtering the results
+		references(_, result, ...)
+	end
 
 	--- Disable warnings about dynamic registration. I really don't care.
 	vim.lsp.handlers["client/registerCapability"] = noop

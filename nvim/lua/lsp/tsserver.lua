@@ -52,10 +52,10 @@ end
 
 -- Custom handlers for TypeScript LSP actions
 M.handlers = {
+	-- Filter out certain paths from the results that are 99% of the time
+	-- false positive results for my use case. If I explicitly jump to
+	-- them, go there, otherwise ignore them.
 	["textDocument/definition"] = function(_, result, ...)
-		-- Filter out certain paths from the results that are 99% of the time
-		-- false positive results for my use case. If I explicitly jump to
-		-- them, go there, otherwise ignore them.
 		if vim.tbl_islist(result) then
 			local ignored_paths = {
 				"react/index.d.ts",
