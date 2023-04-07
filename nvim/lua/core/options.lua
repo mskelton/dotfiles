@@ -64,6 +64,9 @@ o.cursorline = true
 -- searches and then disable it again when the search is done.
 o.hlsearch = false
 
+-- More stable screen splitting
+o.splitkeep = "screen"
+
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
 o.confirm = true
