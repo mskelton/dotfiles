@@ -43,12 +43,6 @@ augroup keymap_nowrap
   au FileType dts set nowrap
 augroup END
 
-" Automatically create directories when writing a file
-augroup auto_mkdir
-  au!
-  au BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
-augroup END
-
 " Automatically restart prettierd when .prettierc is saved. This helps
 " especially when creating new Prettier config files which usually fails to
 " be loaded by prettierd.
