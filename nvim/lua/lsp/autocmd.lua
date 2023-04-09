@@ -40,6 +40,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		client.server_capabilities.documentFormattingProvider = format
 		client.server_capabilities.documentRangeFormattingProvider = format
 
+		-- Disable semantic tokens for now. It's not quite ready for prime time.
+		client.server_capabilities.semanticTokensProvider = nil
+
 		if client.name == "tsserver" then
 			-- Organize imports for TypeScript files. Unfortunate to have to do two
 			-- separate actions, but unfortunately it's the way the language server is
