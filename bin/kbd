@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Reconnect Advantage 360 keyboard
 
-DEVICE="Adv360-Pro"
+DEVICE="Adv360 Pro"
 
 blueutil --unpair "$DEVICE"
 

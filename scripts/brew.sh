@@ -60,6 +60,7 @@ $brew install --cask \
 	shottr \
 	slack \
 	telegram \
+	tradingview \
 	visual-studio-code \
 	zoom \
 	zsa-wally
