@@ -14,14 +14,21 @@ return {
 		},
 		{
 			"<leader>fP",
-			"<cmd>Telescope file_browser path=%:p:h<cr>",
+			function()
+				require("telescope").extensions.file_browser.file_browser({
+					path = vim.fn.expand("%:p:h"),
+				})
+			end,
 			mode = nv,
 			desc = "Open file browser",
 		},
 		{
 			"<leader>fs",
 			function()
-				require("telescope.builtin").live_grep({ regex = false })
+				require("telescope.builtin").live_grep({
+					prompt_title = "Find Exact String",
+					regex = false,
+				})
 			end,
 			mode = nv,
 			desc = "Search for exact text",
@@ -29,7 +36,9 @@ return {
 		{
 			"<leader>fS",
 			function()
-				require("telescope.builtin").live_grep()
+				require("telescope.builtin").live_grep({
+					prompt_title = "Find Pattern",
+				})
 			end,
 			mode = nv,
 			desc = "Search for pattern",
@@ -74,7 +83,9 @@ return {
 		{
 			"<leader>fy",
 			function()
-				require("telescope.builtin").lsp_document_symbols()
+				require("telescope.builtin").lsp_document_symbols({
+					prompt_title = "Symbols",
+				})
 			end,
 			mode = nv,
 			desc = "Open LSP symbols",
@@ -91,7 +102,7 @@ return {
 			"<leader>fa",
 			function()
 				require("telescope.builtin").find_files({
-					prompt_title = "Adjacent",
+					prompt_title = "Find Adjacent Files",
 					cwd = vim.fn.expand("%:h"),
 				})
 			end,
