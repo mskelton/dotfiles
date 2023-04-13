@@ -11,6 +11,7 @@ $brew tap homebrew/cask-fonts
 
 # Install formulae
 $brew install \
+	arc \
 	bash \
 	bat \
 	blueutil \
