@@ -1,0 +1,10 @@
+{
+  "name": "dotfiles",
+  "description": "My personal settings and dotfiles.",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^2.8.7"
+  }
+}
