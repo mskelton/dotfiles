@@ -127,6 +127,9 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 $disa
 # Disable spotlight search
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 $disable_shortcut
 
+# Disable Switch to Desktop 1, it conflicts with Arc shortcuts
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 $disable_shortcut
+
 # Add Option+D for toggling do not disturb
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
   <dict>
