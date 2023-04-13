@@ -114,13 +114,15 @@ M.setup_servers = function()
 			tailwindCSS = {
 				experimental = {
 					classRegex = {
-						-- Support Tailwind completions in clsx calls
+						-- Custom class name attributes (e.g. buttonClassName)
+						{ [==[[a-zA-Z]*ClassName=["'`]([^"'`]+)["'`]]==] },
+						-- cls, clsx
 						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
-						{ [[clsx\(([^)]*)\)]], [["([^"]*)"]] },
-						-- Support Tailwind completions in tv calls
+						{ [[clsx?\(([^)]*)\)]], [["([^"]*)"]] },
+						-- Tailwind Variants
 						-- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
 						{ [[tv\(([^)]*)\)]], [==[["'`]([^"'`]*).*?["'`]]==] },
-						-- Support Tailwind completions in styles objects
+						-- `styles` objects
 						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
 						{ [[styles =([^}]*)\}]], [==[["'`]([^"'`]*).*?["'`]]==] },
 					},
