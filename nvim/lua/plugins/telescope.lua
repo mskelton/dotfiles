@@ -88,6 +88,14 @@ return {
 			desc = "Find help tags",
 		},
 		{
+			"<leader>fa",
+			function()
+				require("telescope").extensions.adjacent.adjacent()
+			end,
+			mode = nv,
+			desc = "Find adjacent files",
+		},
+		{
 			"<leader>/",
 			function()
 				require("telescope.builtin").current_buffer_fuzzy_find()
@@ -118,6 +126,7 @@ return {
 			build = "make",
 		},
 		"nvim-tree/nvim-web-devicons",
+		"MaximilianLloyd/adjacent.nvim",
 	},
 	config = function()
 		local Path = require("plenary.path")
@@ -246,5 +255,6 @@ return {
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("ui-select")
+		require("telescope").load_extension("adjacent")
 	end,
 }
