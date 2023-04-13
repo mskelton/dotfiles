@@ -90,7 +90,10 @@ return {
 		{
 			"<leader>fa",
 			function()
-				require("telescope").extensions.adjacent.adjacent()
+				require("telescope.builtin").find_files({
+					prompt_title = "Adjacent",
+					cwd = vim.fn.expand("%:h"),
+				})
 			end,
 			mode = nv,
 			desc = "Find adjacent files",
@@ -126,7 +129,6 @@ return {
 			build = "make",
 		},
 		"nvim-tree/nvim-web-devicons",
-		"MaximilianLloyd/adjacent.nvim",
 	},
 	config = function()
 		local Path = require("plenary.path")
@@ -255,6 +257,5 @@ return {
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("ui-select")
-		require("telescope").load_extension("adjacent")
 	end,
 }
