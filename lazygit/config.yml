@@ -6,6 +6,6 @@ gui:
     selectedRangeBgColor: ["#364A82"]
 keybinding:
   universal:
-    pushFiles: 'p'
-    pullFiles: 'P'
+    pushFiles: "p"
+    pullFiles: "P"
 promptToReturnFromSubprocess: false

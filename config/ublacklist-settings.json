@@ -6,9 +6,7 @@
   "enablePathDepth": false,
   "hideBlockLinks": true,
   "hideControl": true,
-  "highlightColors": [
-    "#ddeeff"
-  ],
+  "highlightColors": ["#ddeeff"],
   "linkColor": "default",
   "skipBlockDialog": true,
   "subscriptions": [],
