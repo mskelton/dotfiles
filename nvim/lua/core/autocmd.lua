@@ -51,6 +51,12 @@ augroup restart_prettierd
   au BufWritePost .prettierrc,.prettierignore,prettier.config.* silent !pkill prettierd
 augroup END
 
+" Disable persistance for gitcommit buffers
+augroup gitcommit_disable_persistance
+  au!
+  au FileType gitcommit silent lua require("persistence").stop()
+augroup END
+
 ]])
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
