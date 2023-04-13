@@ -17,6 +17,7 @@ end
 M.register_handlers = function()
 	local definition = vim.lsp.handlers["textDocument/definition"]
 	local references = vim.lsp.handlers["textDocument/references"]
+	local logMessage = vim.lsp.handlers["window/logMessage"]
 
 	-- When there are multiple results on the same line for a definition, only
 	-- show the first one. This prevents many times where going to definition
@@ -61,6 +62,18 @@ M.register_handlers = function()
 
 		-- Defer to the built-in handler after filtering the results
 		references(_, result, ...)
+	end
+
+	-- Add client ID to the start of log messages to make it easier to debug which
+	-- server was the cause of an error.
+	vim.lsp.handlers["window/logMessage"] = function(_, result, ctx, ...)
+		local client = vim.lsp.get_client_by_id(ctx.client_id)
+
+		if client ~= nil then
+			result.message = "[" .. client.name .. "]: " .. result.message
+		end
+
+		logMessage(_, result, ctx, ...)
 	end
 
 	--- Disable warnings about dynamic registration. I really don't care.
