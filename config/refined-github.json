@@ -107,7 +107,7 @@
   "feature:no-duplicate-list-update-time": true,
   "feature:no-unnecessary-split-diff-view": false,
   "feature:one-click-diff-options": true,
-  "feature:one-click-pr-or-gist": false,
+  "feature:one-click-pr-or-gist": true,
   "feature:one-click-review-submission": true,
   "feature:one-key-formatting": true,
   "feature:open-all-conversations": false,
