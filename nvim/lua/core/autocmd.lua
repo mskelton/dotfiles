@@ -13,18 +13,6 @@ augroup auto_source_dotfiles
   au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
 augroup END
 
-" Enable spell checking in markdown
-augroup markdown_spell_check
-  au!
-  au FileType markdown setlocal spell spelllang=en_us
-augroup END
-
-" Hard wrapping in markdown
-augroup markdown_spell_check
-  au!
-  au FileType markdown setlocal textwidth=80 formatoptions+=t
-augroup END
-
 augroup zet_template
   au!
   au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
@@ -37,24 +25,12 @@ augroup incsearch_hl
   au CmdlineLeave /,\? :set nohlsearch
 augroup END
 
-" Disabling line wrapping in keymap files
-augroup keymap_nowrap
-  au!
-  au FileType dts set nowrap
-augroup END
-
 " Automatically restart prettierd when .prettierc is saved. This helps
 " especially when creating new Prettier config files which usually fails to
 " be loaded by prettierd.
 augroup restart_prettierd
   au!
   au BufWritePost .prettierrc,.prettierignore,prettier.config.* silent !pkill prettierd
-augroup END
-
-" Disable persistance for gitcommit buffers
-augroup gitcommit_disable_persistance
-  au!
-  au FileType gitcommit silent lua require("persistence").stop()
 augroup END
 
 ]])
