@@ -19,6 +19,7 @@
   append = !git add -A && git commit --amend --no-edit
   c = commit -m
   ca = !git add -A && git commit -m
+  cm = commit --edit
   edit = commit --amend
   msg = commit --amend -m
   sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
