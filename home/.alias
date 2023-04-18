@@ -1,15 +1,13 @@
-# vim:ft=bash
-
 # Git merge
 alias dif="git diff"
 alias gmc="git merge --continue"
-alias gmm="git merge-default"
-alias gml="git merge-last"
+alias gmm="git mm"
+alias gml="git ml"
 
 # Git rebase
 alias grc="git rebase --continue"
-alias grm="git rebase-default"
-alias grl="git rebase-last"
+alias grm="git rm"
+alias grl="git rl"
 
 # Git
 alias pd="git pd"
@@ -57,3 +55,5 @@ alias gradle="./gradlew"
 alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
+
+# vim:ft=bash
