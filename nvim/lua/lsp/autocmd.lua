@@ -23,9 +23,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-		-- Unimpaired style diagnostic navigation
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+		-- Unimpaired style diagnostic navigation for warnings and errors. Info and
+		-- hints are ignored.
+		local diagnostic_opts = {
+			severity = { min = vim.diagnostic.severity.WARN },
+		}
+
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.goto_prev(diagnostic_opts)
+		end, opts)
+
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.goto_next(diagnostic_opts)
+		end, opts)
 
 		-- While I'll likely continuing using gd for go to definition, configuring
 		-- tagfunc is no big deal and makes that work as well.
