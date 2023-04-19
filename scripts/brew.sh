@@ -11,7 +11,6 @@ $brew tap homebrew/cask-fonts
 
 # Install formulae
 $brew install \
-	arc \
 	bash \
 	bat \
 	blueutil \
@@ -43,7 +42,7 @@ $brew install \
 
 # Install casks
 $brew install --cask \
-	discord \
+	arc \
 	docker \
 	figma \
 	firefox \
@@ -56,15 +55,13 @@ $brew install --cask \
 	mic-drop \
 	microsoft-edge \
 	mimestream \
-	notion \
 	raycast \
 	shottr \
 	slack \
 	telegram \
 	tradingview \
 	visual-studio-code \
-	zoom \
-	zsa-wally
+	zoom
 
 # Personal/work casks
 if [[ -z "$WORK" ]]; then
