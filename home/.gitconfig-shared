@@ -1,5 +1,3 @@
-# vim:ft=gitconfig
-
 [alias]
   # Misc
   changeset = !git add .changeset && git commit -m 'Add changeset'
@@ -12,7 +10,9 @@
   unstash = stash pop
   # Branch
   br = branch
+  clean-releases = !git branch --list 'release/*' | xargs -r git branch -D
   del = branch -D
+  dump = "!f() { current=$(git branch --show-current) && git checkout $(git default) && git branch -D $current; }; f"
   name = branch -m
   # Commit
   amend = commit --amend --no-edit
@@ -58,3 +58,5 @@
   abbrevcommit = true
 [push]
   autoSetupRemote = true
+
+# vim:ft=gitconfig
