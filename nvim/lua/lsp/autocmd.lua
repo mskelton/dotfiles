@@ -1,6 +1,21 @@
 local utils = require("lsp.utils")
 local group = vim.api.nvim_create_augroup("lsp", {})
 
+--- When there are warnings/errors, skip info/hint diagnostics
+local function get_diagnostic_opts()
+	local diagnostics = vim.diagnostic.get()
+	local severe = vim.tbl_filter(function(diagnostic)
+		return diagnostic.severity == vim.diagnostic.severity.WARN
+			or diagnostic.severity == vim.diagnostic.severity.ERROR
+	end, diagnostics)
+
+	if vim.tbl_isempty(severe) then
+		return {}
+	else
+		return { severity = { min = vim.diagnostic.severity.WARN } }
+	end
+end
+
 local formatters = {
 	"clangd",
 	"eslint",
@@ -25,16 +40,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Unimpaired style diagnostic navigation for warnings and errors. Info and
 		-- hints are ignored.
-		local diagnostic_opts = {
-			severity = { min = vim.diagnostic.severity.WARN },
-		}
-
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_prev(diagnostic_opts)
+			vim.diagnostic.goto_prev(get_diagnostic_opts())
 		end, opts)
 
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_next(diagnostic_opts)
+			vim.diagnostic.goto_next(get_diagnostic_opts())
 		end, opts)
 
 		-- While I'll likely continuing using gd for go to definition, configuring
