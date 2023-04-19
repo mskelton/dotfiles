@@ -144,6 +144,11 @@ map(
 --------------------------------------------------------------------------------
 
 function ClassName()
+	local captures = vim.treesitter.get_captures_at_cursor(0)
+	if not vim.tbl_contains(captures, "string") then
+		return
+	end
+
 	local pattern = '[" ]'
 	local found_separator = false
 	local line = vim.fn.getline(".")
