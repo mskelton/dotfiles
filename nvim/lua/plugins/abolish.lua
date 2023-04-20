@@ -1,7 +1,13 @@
 return {
 	{
 		"tpope/vim-abolish",
-		event = "CmdLineEnter",
+		cmd = { "Abolish", "Subvert" },
+		lazy = false,
+		config = function()
+			vim.cmd.Abolish("teh", "the")
+			vim.cmd.Abolish("deductable", "deductible")
+			vim.cmd.Abolish("calender", "calendar")
+		end,
 	},
 	{
 		"markonm/traces.vim",
