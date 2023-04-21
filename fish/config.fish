@@ -18,3 +18,8 @@ end
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Setup pyenv
+# if test -d "$PYENV_ROOT"
+#   pyenv init - | source
+# end
