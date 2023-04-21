@@ -49,6 +49,7 @@ map(nv, "<C-u>", "<cmd>lua MoveHalf(-1)<cr>", "Scroll up half screen")
 
 -- Really common shortcuts
 map(nv, ",s", "<cmd>w ++p<cr>", "Save buffer")
+map(nv, ",S", "<cmd>noa w<cr>", "Save buffer without autocmds")
 map(nv, ",w", "<cmd>bd<cr>", "Delete buffer")
 map(nv, ",q", "<cmd>qa<cr>", "Quit all")
 map(nv, ",c", "<cmd>clo<cr>", "Close buffer")
