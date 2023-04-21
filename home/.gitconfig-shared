@@ -32,7 +32,7 @@
   ml = !git co - && git merge $(git default)
   mc = merge --continue
   # Rebase
-  rm = !git rebase $(git default)
+  rd = !git rebase $(git default)
   rl = !git co - && git rebase $(git default)
   rc = rebase --continue
   ri = !git rebase -i $(git default)

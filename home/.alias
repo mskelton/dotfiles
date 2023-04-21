@@ -6,7 +6,7 @@ alias gml="git ml"
 
 # Git rebase
 alias grc="git rebase --continue"
-alias grm="git rm"
+alias grd="git rd"
 alias grl="git rl"
 
 # Git
