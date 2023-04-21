@@ -11,6 +11,7 @@ return {
 				hl["@constructor"] = { fg = c.red }
 				hl["@tag"] = { fg = c.red }
 				hl["@tag.attribute"] = { fg = c.purple }
+				hl["@type.builtin"] = { fg = c.blue1 }
 
 				-- Make line numbers easier to read
 				hl.LineNr = { fg = c.blue }

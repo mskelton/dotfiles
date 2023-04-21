@@ -2,7 +2,8 @@ return {
 	"folke/noice.nvim",
 	dependencies = { "MunifTanjim/nui.nvim" },
 	lazy = false,
-	enabled = false,
+	-- TODO
+	-- enabled = false,
 	config = {
 		cmdline = {
 			view = "cmdline",

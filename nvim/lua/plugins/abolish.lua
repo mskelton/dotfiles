@@ -34,6 +34,7 @@ return {
 	{
 		"markonm/traces.vim",
 		event = "VeryLazy",
+		-- TODO
 		enabled = false,
 		init = function()
 			vim.g.traces_substitute_preview = 1
