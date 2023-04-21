@@ -3,7 +3,7 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 	lazy = false,
 	-- TODO
-	-- enabled = false,
+	enabled = false,
 	config = {
 		cmdline = {
 			view = "cmdline",

@@ -154,10 +154,17 @@ M.setup_servers = function()
 end
 
 M.setup = function()
+	-- Set the log level for the LSP client if an environment variable was provided
+	local log_level = os.getenv("LOG_LEVEL")
+	if log_level ~= nil then
+		vim.lsp.set_log_level(log_level)
+	end
+
 	require("lsp.handlers").register_handlers()
 	require("lsp.autocmd")
 	require("lsp.null-ls")
 	require("neodev").setup({})
+
 	M.setup_servers()
 end
 
