@@ -115,7 +115,7 @@ return {
 		"github/copilot.vim",
 		event = "VimEnter",
 		cmd = { "Copilot" },
-		config = function()
+		init = function()
 			vim.g.copilot_filetypes = {
 				DressingInput = false,
 				TelescopePrompt = false,

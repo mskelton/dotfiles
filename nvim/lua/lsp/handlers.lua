@@ -69,6 +69,16 @@ M.register_handlers = function()
 	vim.lsp.handlers["window/logMessage"] = function(_, result, ctx, ...)
 		local client = vim.lsp.get_client_by_id(ctx.client_id)
 
+		-- BUG: Ignore a known error with Copilot
+		-- https://github.com/orgs/community/discussions/53484
+		if
+			client ~= nil
+			and client.name == "copilot"
+			and string.match(result.message, "Cannot read properties of undefined")
+		then
+			return
+		end
+
 		if client ~= nil then
 			result.message = "[" .. client.name .. "]: " .. result.message
 		end
