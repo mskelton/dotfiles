@@ -170,3 +170,5 @@ enums
 pnpm
 rebase
 rebase
+oldfiles
+zod

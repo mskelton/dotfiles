@@ -37,9 +37,8 @@ augroup END
 
 -- Enable spell checking only when Treesitter is enabled in the current buffer.
 -- I set up spell checking this way as I only want spell checking in comments.
-local spell_check = vim.api.nvim_create_augroup("treesitter_spell_check", {})
 vim.api.nvim_create_autocmd("BufEnter", {
-	group = spell_check,
+	group = vim.api.nvim_create_augroup("mskelton_treesitter_spell_check", {}),
 	callback = function()
 		local highlighter = require("vim.treesitter.highlighter")
 		local utils = require("core.utils")
