@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 		-- Only run formatting if there are connected LSP clients
 		if vim.tbl_count(clients) ~= 0 then
-			utils.format(opts.buf)
+			vim.lsp.buf.format()
 		end
 	end,
 })

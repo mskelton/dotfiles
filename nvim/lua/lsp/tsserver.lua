@@ -59,6 +59,7 @@ M.handlers = {
 		if vim.tbl_islist(result) then
 			local ignored_paths = {
 				"react/index.d.ts",
+				"react/ts5.0/index.d.ts",
 				"tailwind-variants/dist/index.d.ts",
 			}
 

@@ -29,34 +29,4 @@ function M.run_code_action(code_action)
 	end
 end
 
---- BUG: Vim doesn't properly restore the cursor position after formatting.
---- https://github.com/neovim/neovim/issues/14645
---- @param bufnr number
-M.format = function(bufnr)
-	local windows = vim.fn.win_findbuf(bufnr)
-	local ns = vim.api.nvim_create_namespace("lsp_format")
-	local marks = {}
-
-	for _, window in ipairs(windows) do
-		local line, col = unpack(vim.api.nvim_win_get_cursor(window))
-		marks[window] = vim.api.nvim_buf_set_extmark(bufnr, ns, line - 1, col, {})
-	end
-
-	-- Run the formatter
-	vim.lsp.buf.format()
-
-	for _, window in ipairs(windows) do
-		local mark = marks[window]
-		local max_line_index = vim.api.nvim_buf_line_count(bufnr) - 1
-		local line, col =
-			unpack(vim.api.nvim_buf_get_extmark_by_id(bufnr, ns, mark, {}))
-
-		if line and col and line <= max_line_index then
-			vim.api.nvim_win_set_cursor(window, { line + 1, col })
-		end
-	end
-
-	vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-end
-
 return M
