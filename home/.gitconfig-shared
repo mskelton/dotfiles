@@ -28,7 +28,7 @@
   new = !git checkout $(git default) -b $2
   pd = !git checkout $(git default) && git pull && git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
   # Merge
-  mm = !git merge $(git default)
+  md = !git merge $(git default)
   ml = !git co - && git merge $(git default)
   mc = merge --continue
   # Rebase

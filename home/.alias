@@ -1,8 +1,10 @@
 # Git merge
 alias dif="git diff"
 alias gmc="git merge --continue"
-alias gmm="git mm"
+alias gmd="git md"
 alias gml="git ml"
+
+alias gmm="git md" # Deprecated
 
 # Git rebase
 alias grc="git rebase --continue"
