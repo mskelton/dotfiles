@@ -29,5 +29,6 @@ null_ls.setup({
 		}),
 		null_ls.builtins.formatting.shfmt,
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.fish_indent,
 	},
 })
