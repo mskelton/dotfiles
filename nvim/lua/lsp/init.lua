@@ -96,15 +96,7 @@ M.setup_servers = function()
 		},
 	})
 
-	M.server("eslint", {
-		cmd = {
-			--  Because Neovim always uses the `file` scheme for LSP URIs, I have a
-			--  customized version of the ESLint language server that will not fail
-			--  if the file doesn't exist.
-			require("utils.npm").global_bin("vscode-eslint-language-server"),
-			"--stdio",
-		},
-	})
+	M.server("eslint")
 
 	-- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
