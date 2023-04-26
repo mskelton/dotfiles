@@ -67,6 +67,10 @@ o.hlsearch = false
 -- More stable screen splitting
 o.splitkeep = "screen"
 
+-- Use ripgrep for grepping
+o.grepprg = "rg --vimgrep"
+o.grepformat = "%f:%l:%c:%m"
+
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
 o.confirm = true

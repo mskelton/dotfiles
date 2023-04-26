@@ -80,6 +80,11 @@ map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 	desc = "Rename the word under the cursor",
 })
 
+-- Find the word under cursor in the project
+map("n", "gw", ":silent! grep <C-r><C-w> | copen<cr>", {
+	desc = "Go to word under cursor",
+})
+
 -- Open help to last location. Sadly due to some issues I don't understand,
 -- opening help immediately requires wrapping it in `vim.schedule`.
 map("n", "<leader>oh", function()
