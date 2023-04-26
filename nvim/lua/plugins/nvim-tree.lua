@@ -102,16 +102,11 @@ return {
 				map(".", api.node.run.cmd, "Run command")
 				map("-", api.node.navigate.parent, "Parent directory")
 				map("a", api.fs.create, "Create")
-				map(
-					"bmv",
-					api.marks.bulk.move,
-					"Move all bookmarked nodes into specified location"
-				)
 				map("c", api.fs.copy.node, "Copy")
 				map("[c", api.node.navigate.git.prev, "Previous Git")
 				map("]c", api.node.navigate.git.next, "Next Git")
-				map("dd", api.fs.trash, "Delete")
-				map("D", api.fs.remove, "Trash")
+				map("dd", api.fs.trash, "Trash")
+				map("D", api.fs.remove, "Delete")
 				map("E", api.tree.expand_all, "Expand All")
 				map("e", api.fs.rename_basename, "Rename: Basename")
 				map("]e", api.node.navigate.diagnostics.next, "Next diagnostic")
@@ -121,13 +116,11 @@ return {
 				map("I", api.tree.toggle_gitignore_filter, "Toggle Git ignore")
 				map("J", api.node.navigate.sibling.last, "Last sibling")
 				map("K", api.node.navigate.sibling.first, "First sibling")
-				map("m", api.marks.toggle, "Toggle bookmark")
 				map("o", edit_and_close_tree, "Open")
 				map("p", api.fs.paste, "Paste")
 				map("q", api.tree.close, "Close")
 				map("r", api.fs.rename, "Rename")
 				map("R", api.tree.reload, "Refresh")
-				map("s", api.node.run.system, "Run system")
 				map("W", api.tree.collapse_all, "Collapse")
 				map("x", api.fs.cut, "Cut")
 				map("y", api.fs.copy.filename, "Copy name")
