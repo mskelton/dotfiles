@@ -105,4 +105,13 @@ M.trunc = function(default, spec)
 	end
 end
 
+--- Returns a function that returns true when the current window width is
+--- greater than the provided width.
+--- @param width number
+M.min_width = function(width)
+	return function()
+		return vim.fn.winwidth(0) > width
+	end
+end
+
 return M

@@ -66,8 +66,15 @@ return {
 						end,
 						color = { fg = colors.magenta, gui = "bold" },
 					},
-					{ "location" },
-					{ "progress", color = { fg = colors.fg, gui = "bold" } },
+					{
+						"location",
+						cond = utils.min_width(120),
+					},
+					{
+						"progress",
+						color = { fg = colors.fg, gui = "bold" },
+						cond = utils.min_width(120),
+					},
 					{
 						"diagnostics",
 						sources = { "nvim_diagnostic" },
@@ -87,9 +94,7 @@ return {
 							modified = { fg = colors.orange },
 							removed = { fg = colors.red },
 						},
-						cond = function()
-							return vim.fn.winwidth(0) > 80
-						end,
+						cond = utils.min_width(80),
 					},
 					{
 						"branch",
