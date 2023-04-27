@@ -1,19 +1,9 @@
 local utils = require("core.utils")
-local npm = require("utils.npm")
 
 local M = {}
 
 -- Global plugins to be loaded when starting tsserver
-M.plugins = {
-	{
-		name = "typescript-styled-plugin",
-		location = npm.mason_lib("typescript-styled-plugin"),
-		config = {
-			validate = false,
-			emmet = { showExpandedAbbreviation = "never" },
-		},
-	},
-}
+M.plugins = {}
 
 -- Get's the list of global plugins to load
 M.get_plugins = function()
