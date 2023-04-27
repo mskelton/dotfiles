@@ -68,6 +68,7 @@ return {
 					"python",
 					"query",
 					"regex",
+					"rust",
 					"sql",
 					"svelte",
 					"swift",

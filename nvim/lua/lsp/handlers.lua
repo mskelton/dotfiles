@@ -1,4 +1,3 @@
---- @diagnostic disable: duplicate-set-field
 local M = {}
 
 local function noop()
