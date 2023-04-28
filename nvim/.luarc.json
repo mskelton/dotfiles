@@ -1,4 +1,4 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-  "diagnostics.disable": ["param-type-mismatch"]
+  "diagnostics.disable": ["param-type-mismatch", "duplicate-set-field"]
 }
