@@ -23,6 +23,13 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
+		keys = {
+			{
+				"<leader>th",
+				"<cmd>Inspect<cr>",
+				desc = "Highlight captures under cursor",
+			},
+		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				autotag = { enable = true },
@@ -142,11 +149,6 @@ return {
 				"<leader>tp",
 				"<cmd>TSPlaygroundToggle<cr>",
 				desc = "Toggle treesitter playground",
-			},
-			{
-				"<leader>th",
-				"<cmd>TSHighlightCapturesUnderCursor<cr>",
-				desc = "Highlight captures under cursor",
 			},
 		},
 	},
