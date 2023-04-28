@@ -20,18 +20,6 @@ return {
 			"TSUpdate",
 			"TSUpdateSync",
 		},
-		keys = {
-			{
-				"<leader>tp",
-				"<cmd>InspectTree<cr>",
-				desc = "Toggle treesitter playground",
-			},
-			{
-				"<leader>th",
-				"<cmd>Inspect<cr>",
-				desc = "Highlight captures under cursor",
-			},
-		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
@@ -142,6 +130,25 @@ return {
 				true
 			)
 		end,
+	},
+	{
+		"nvim-treesitter/playground",
+		cmd = {
+			"TSHighlightCapturesUnderCursor",
+			"TSPlaygroundToggle",
+		},
+		keys = {
+			{
+				"<leader>tp",
+				"<cmd>TSPlaygroundToggle<cr>",
+				desc = "Toggle treesitter playground",
+			},
+			{
+				"<leader>th",
+				"<cmd>TSHighlightCapturesUnderCursor<cr>",
+				desc = "Highlight captures under cursor",
+			},
+		},
 	},
 	{
 		"windwp/nvim-ts-autotag",
