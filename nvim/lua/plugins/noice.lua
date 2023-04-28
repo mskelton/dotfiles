@@ -3,6 +3,7 @@ return {
 		"folke/noice.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		lazy = false,
+		enabled = false,
 		config = function()
 			require("noice").setup({
 				cmdline = {
