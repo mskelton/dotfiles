@@ -18,6 +18,7 @@ return {
 		local api = require("nvim-tree.api")
 
 		require("nvim-tree").setup({
+			sync_root_with_cwd = true,
 			trash = {
 				cmd = "trash",
 			},
