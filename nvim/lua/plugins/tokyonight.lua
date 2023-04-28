@@ -7,19 +7,21 @@ return {
 			on_highlights = function(hl, c)
 				hl["@constructor"] = { fg = c.red }
 				hl["@tag"] = { fg = c.red }
-				hl["@tag.attribute"] = { fg = c.purple }
+				hl["@tag.attribute"] = { fg = c.magenta }
+
+				-- The defaults of darkening default types is just distracting
 				hl["@type.builtin"] = { fg = c.blue1 }
 
 				-- Blue bold for functions
+				hl["@function"] = { fg = c.blue, bold = true }
 				hl["@function.call"] = { fg = c.blue, bold = true }
 				hl["@function.macro"] = { fg = c.blue, bold = true }
 				hl["@method.call"] = { fg = c.blue, bold = true }
 
-				-- Italic purple for keyword type things
-				hl["@keyword.function"] = { fg = c.purple, italic = true }
-				hl["@keyword.return"] = { fg = c.purple, italic = true }
-				hl.Statement = { fg = c.purple, italic = true }
-				hl.PreProc = { fg = c.purple, italic = true }
+				-- Italic magenta for keyword type things
+				hl["@keyword"] = { fg = c.magenta, italic = true }
+				hl["@keyword.function"] = { fg = c.magenta, italic = true }
+				hl["@keyword.return"] = { fg = c.magenta, italic = true }
 
 				-- Make line numbers easier to read
 				hl.LineNr = { fg = c.blue }
