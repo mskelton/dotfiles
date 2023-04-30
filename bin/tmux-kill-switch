@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Kill current Tmux session and swtich to the last session
+
+CURRENT_SESSION=$(tmux display-message -p "#{session_name}")
+LAST_SESSION=$(tmux display-message -p "#{client_last_session}")
+
+if [ -n "$LAST_SESSION" ]; then
+	tmux switch-client -t "$LAST_SESSION"
+	tmux kill-session -t "$CURRENT_SESSION"
+elif [[ $(tmux list-sessions | wc -l) -gt 1 ]]; then
+	tmux switch-client -n
+	tmux kill-session -t "$CURRENT_SESSION"
+else
+	tmux kill-server
+fi
