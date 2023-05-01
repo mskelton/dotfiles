@@ -269,6 +269,7 @@
   "material-icon-theme.showUpdateMessage": true,
   "notebook.markup.fontSize": 15,
   "oneDark.bold": true,
+  "playwright.reuseBrowser": true,
   "rest-client.previewColumn": "current",
   "rust-analyzer.experimental.procAttrMacros": true,
   "rust-analyzer.inlayHints.enable": false,

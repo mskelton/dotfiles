@@ -35,7 +35,7 @@ alias y="yarn"
 # pnpm
 alias pn="pnpm"
 alias pout="pnpm outdated --format=list"
-alias pup="pnpm up --latest '*'"
+alias pup="pnpm up --filter='*' --latest"
 
 # Remap vim to nvim
 alias vim="nvim"
