@@ -39,9 +39,7 @@ return {
 		fmt(
 			[[
         {}function {}({}) {{
-          return (
-            {}
-          )
+          {}
         }}
         {}
       ]],
