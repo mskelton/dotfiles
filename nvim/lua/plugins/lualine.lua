@@ -58,7 +58,8 @@ return {
 					{
 						"filename",
 						fmt = utils.trunc(50, {
-							{ max = 100, width = 15 },
+							{ max = 80, width = 15 },
+							{ max = 120, width = 30 },
 							{ max = 140, width = 30 },
 						}),
 						cond = function()
@@ -94,12 +95,13 @@ return {
 							modified = { fg = colors.orange },
 							removed = { fg = colors.red },
 						},
-						cond = utils.min_width(80),
+						cond = utils.min_width(120),
 					},
 					{
 						"branch",
 						fmt = utils.trunc(50, {
-							{ max = 100, width = 15 },
+							{ max = 80, width = 15 },
+							{ max = 120, width = 30 },
 							{ max = 140, width = 30 },
 						}),
 						icon = "큸",
@@ -118,6 +120,7 @@ return {
 							return cwd
 						end,
 						color = { fg = colors.blue },
+						cond = utils.min_width(120),
 					},
 				},
 				lualine_y = {},
