@@ -22,6 +22,11 @@ return {
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			{
+				"nvim-treesitter/nvim-treesitter-context",
+				enabled = false,
+				config = true,
+			},
 		},
 		keys = {
 			{
