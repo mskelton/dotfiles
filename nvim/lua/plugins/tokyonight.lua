@@ -2,7 +2,6 @@ return {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
-	commit = "606d4d9e7c3c95ae9243d652ce6c228958fb395b",
 	config = function()
 		require("tokyonight").setup({
 			on_highlights = function(hl, c)
@@ -11,7 +10,7 @@ return {
 				hl["@tag.attribute"] = { fg = c.magenta }
 
 				-- The defaults of darkening default types is just distracting
-				hl["@type.builtin"] = { fg = c.blue1 }
+				hl["@type.builtin"] = nil
 
 				-- Blue bold for functions
 				hl["@function"] = { fg = c.blue, bold = true }
@@ -23,6 +22,11 @@ return {
 				hl["@keyword"] = { fg = c.magenta, italic = true }
 				hl["@keyword.function"] = { fg = c.magenta, italic = true }
 				hl["@keyword.return"] = { fg = c.magenta, italic = true }
+
+				-- Reset some of the defaults
+				hl["@tag.tsx"] = nil
+				hl["@constructor.tsx"] = nil
+				hl["@tag.delimiter.tsx"] = nil
 
 				-- Make line numbers easier to read
 				hl.LineNr = { fg = c.blue }
