@@ -44,6 +44,7 @@ return {
 			},
 			remove_keymaps = true,
 			renderer = {
+				highlight_git = true,
 				icons = {
 					glyphs = {
 						default = "큪",
@@ -56,6 +57,9 @@ return {
 							symlink = "톅",
 							symlink_open = "톆",
 						},
+					},
+					show = {
+						git = false,
 					},
 				},
 			},
