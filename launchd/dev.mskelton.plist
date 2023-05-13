@@ -7,10 +7,23 @@
     <key>Program</key>
     <string>/Users/mark/.local/bin/prime-website</string>
     <key>StartCalendarInterval</key>
-    <dict>
-      <!-- Every hour at the top of the hour -->
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
+    <array>
+      <dict>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+      <dict>
+        <key>Minute</key>
+        <integer>15</integer>
+      </dict>
+      <dict>
+        <key>Minute</key>
+        <integer>30</integer>
+      </dict>
+      <dict>
+        <key>Minute</key>
+        <integer>45</integer>
+      </dict>
+    </array>
   </dict>
 </plist>

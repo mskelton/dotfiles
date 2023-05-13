@@ -24,7 +24,6 @@ M.setup_servers = function()
 
 	-- Simple servers
 	M.server("bashls")
-	-- M.server("marksman")
 	M.server("pyright")
 	M.server("prismals")
 	M.server("rust_analyzer")
