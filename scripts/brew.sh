@@ -30,6 +30,7 @@ $brew install \
 	ninja \
 	rename \
 	ripgrep \
+	sponge \
 	starship \
 	stylua \
 	task \
