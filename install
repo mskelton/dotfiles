@@ -17,9 +17,10 @@ link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
 link zet/config.yaml ~/.config/zet/config.yaml
 
-# Home and fish configs have to be linked individually
+# Some directories need to be partially copied
 link_dir home ~/
 link_dir fish ~/.config/fish/
+link_dir launchd ~/Library/LaunchAgents/
 
 # Add custom fonts to the user fonts library
 copy_dir personal/fonts ~/Library/Fonts/

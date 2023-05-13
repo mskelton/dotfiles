@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Prime website
+
+urls=('/' '/blog' '/projects' '/about' '/uses' '/blog/using-yarn-constraints')
+log_file="/tmp/prime-website.log"
+
+echo "" >>$log_file
+
+for url in ${urls[@]}; do
+	curl -s -o /dev/null -w "%{http_code} $url" "https://mskelton.dev$url" >>$log_file
+	echo "" >>$log_file
+done
+
+echo "Website primed at $(date '+%Y-%m-%d %H:%M:%S') CST" >>$log_file

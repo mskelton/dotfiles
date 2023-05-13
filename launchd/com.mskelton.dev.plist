@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.mskelton.dev</string>
+    <key>Program</key>
+    <string>/Users/mark/.local/bin/prime-website</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+      <!-- Every hour at the top of the hour -->
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+  </dict>
+</plist>
