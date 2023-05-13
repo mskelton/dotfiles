@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Reload all my custom launchd agents
+
+for file_path in "$HOME/dev/dotfiles/launchd/"*; do
+	path="$HOME/Library/LaunchAgents/$(basename "$file_path")"
+
+	launchctl unload "$path"
+	launchctl load "$path"
+done

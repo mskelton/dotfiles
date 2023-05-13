@@ -3,7 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>com.mskelton.dev</string>
+    <string>dev.mskelton</string>
     <key>Program</key>
     <string>/Users/mark/.local/bin/prime-website</string>
     <key>StartCalendarInterval</key>
