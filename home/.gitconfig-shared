@@ -32,6 +32,7 @@
   md = !git merge $(git default)
   ml = !git co - && git merge $(git default)
   mc = merge --continue
+  import = merge --no-commit --no-ff
   # Rebase
   rd = !git rebase $(git default)
   rl = !git co - && git rebase $(git default)
