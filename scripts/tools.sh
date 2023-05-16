@@ -32,6 +32,9 @@ npm config set fund=false
 # Disable pnpm update notifier
 npm config set update-notifier=false
 
+# Disable pnpm workspace root check
+npm config set ignore-workspace-root-check=true
+
 # Enable corepack
 sudo corepack enable
 
