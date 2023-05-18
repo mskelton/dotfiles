@@ -13,6 +13,7 @@ $brew tap homebrew/cask-fonts
 $brew install \
 	bash \
 	bat \
+	blueutil \
 	clang-format \
 	cmake \
 	dict \
