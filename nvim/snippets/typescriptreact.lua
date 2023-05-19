@@ -26,15 +26,20 @@ return {
 					end
 
 					local props = get_props_name(args, parent.snippet)
+					local export = ""
+					if string.match(args[1][1], "export") then
+						export = "export "
+					end
+
 					return {
-						args[1][1] .. "interface " .. props .. " {",
+						export .. "interface " .. props .. " {",
 						"\t",
 						"}",
 						"",
 						"",
 					}
 				end, { 1, 2 }),
-				c(1, { t("export "), t("") }),
+				c(1, { t("export default "), t("") }),
 				f(snip_utils.get_filename),
 				c(2, {
 					f(function(args, snip)
