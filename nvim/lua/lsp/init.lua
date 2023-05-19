@@ -27,6 +27,9 @@ M.setup_servers = function()
 	M.server("pyright")
 	M.server("prismals")
 	M.server("rust_analyzer")
+	M.server("dartls")
+
+	-- GraphQL
 	M.server("graphql", {
 		-- TODO: Remove this once all the GraphQL LSP issues are resolved
 		cmd = { npm.global_bin("graphql-lsp"), "server", "-m", "stream" },

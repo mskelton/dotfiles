@@ -194,4 +194,8 @@ return {
 		dependencies = { "folke/trouble.nvim" },
 		config = true,
 	},
+	{
+		"reisub0/hot-reload.vim",
+		ft = "dart",
+	},
 }

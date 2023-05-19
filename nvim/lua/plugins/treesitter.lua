@@ -45,6 +45,7 @@ return {
 					"comment",
 					"cpp",
 					"css",
+					"dart",
 					"devicetree",
 					"dockerfile",
 					"fish",
