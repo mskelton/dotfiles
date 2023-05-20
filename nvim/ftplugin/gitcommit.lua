@@ -1,2 +1,2 @@
--- Disable persistence for gitcommit buffers
-require("persistence").stop()
+-- Disable persisted for gitcommit buffers
+require("persisted").stop()
