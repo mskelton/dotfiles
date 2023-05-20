@@ -1,11 +1,11 @@
 return {
-	"folke/persistence.nvim",
+	"olimorris/persisted.nvim",
 	event = "BufReadPre",
 	keys = {
 		{
 			"<leader>so",
 			function()
-				require("persistence").load()
+				require("persisted").load()
 			end,
 			mode = { "n", "v" },
 			desc = "Load session for current directory",
@@ -13,7 +13,7 @@ return {
 		{
 			"<leader>sl",
 			function()
-				require("persistence").load({ last = true })
+				require("persisted").load({ last = true })
 			end,
 			mode = { "n", "v" },
 			desc = "Load last session",
@@ -22,7 +22,7 @@ return {
 			"<leader>sq",
 			mode = { "n", "v" },
 			function()
-				require("persistence").stop()
+				require("persisted").stop()
 			end,
 			desc = "Stop session",
 		},
