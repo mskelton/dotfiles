@@ -23,52 +23,6 @@
     "editor.defaultFormatter": "matklad.rust-analyzer",
     "editor.tabSize": 4
   },
-  "branchwarnings.protectedBranches": ["main", "master"],
-  "branchwarnings.suppressPopup": true,
-  "cSpell.diagnosticLevel": "Hint",
-  "cSpell.dictionaries": ["css", "html", "node", "typescript"],
-  "cSpell.enableFiletypes": ["typescriptreact"],
-  "cSpell.showStatus": false,
-  "cSpell.userWords": [
-    "Acquia",
-    "buildkite",
-    "datepicker",
-    "dropzone",
-    "errored",
-    "favicon",
-    "init",
-    "interactable",
-    "keras",
-    "kubernetes",
-    "languagedetector",
-    "memoized",
-    "mixins",
-    "nginx",
-    "pageview",
-    "pixelfront",
-    "preheader",
-    "rollbar",
-    "shortcode",
-    "shortcodes",
-    "shutil",
-    "skelton",
-    "snackbar",
-    "snackbars",
-    "sourcemap",
-    "stylelint",
-    "subheader",
-    "tappable",
-    "testid",
-    "toastr",
-    "trello",
-    "udecode",
-    "uploader",
-    "uppy",
-    "Usidore",
-    "xsmall",
-    "yden",
-    "zuul"
-  ],
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
   "debug.toolBarLocation": "docked",
@@ -97,68 +51,9 @@
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "onlySnippets",
   "editor.tabSize": 2,
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "name": "One Dark bold",
-        "scope": [
-          "entity.name.function",
-          "entity.name.type.class",
-          "entity.name.type.module",
-          "entity.name.type.namespace",
-          "keyword.other.important"
-        ],
-        "settings": {
-          "fontStyle": "bold"
-        }
-      },
-      {
-        "name": "One Dark italic",
-        "scope": [
-          "comment",
-          "entity.other.attribute-name",
-          "keyword",
-          "markup.underline.link",
-          "storage.modifier",
-          "storage.type",
-          "string.url",
-          "variable.language.super",
-          "variable.language.this"
-        ],
-        "settings": {
-          "fontStyle": "italic"
-        }
-      },
-      {
-        "name": "One Dark italic reset",
-        "scope": [
-          "keyword.operator",
-          "keyword.other.type",
-          "storage.modifier.import",
-          "storage.modifier.package",
-          "storage.type.built-in",
-          "storage.type.function.arrow",
-          "storage.type.generic",
-          "storage.type.java",
-          "storage.type.primitive"
-        ],
-        "settings": {
-          "fontStyle": ""
-        }
-      },
-      {
-        "name": "One Dark bold italic",
-        "scope": ["keyword.other.important"],
-        "settings": {
-          "fontStyle": "bold italic"
-        }
-      }
-    ]
-  },
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
   "emmet.triggerExpansionOnTab": true,
-  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning", "hint"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -190,73 +85,16 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git-graph.date.format": "Date Only",
-  "git-graph.repository.commits.fetchAvatars": true,
-  "git-graph.repository.commits.initialLoad": 100,
-  "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
   "git.branchProtection": ["main", "master"],
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "git.experimental.mergeEditor": true,
   "github.copilot.enable": {
     "*": true,
     "yaml": true,
     "plaintext": false,
     "markdown": false
-  },
-  "githubIssues.queries": [
-    {
-      "label": "All Issues",
-      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
-    },
-    {
-      "label": "Closed Issues",
-      "query": "state:closed repo:${owner}/${repository} sort:updated-desc"
-    },
-    {
-      "label": "Created Issues",
-      "query": "author:${user} state:open repo:${owner}/${repository} sort:updated-desc"
-    },
-    {
-      "label": "My Issues",
-      "query": "default"
-    }
-  ],
-  "githubPullRequests.defaultMergeMethod": "squash",
-  "githubPullRequests.queries": [
-    {
-      "label": "Assigned To Me",
-      "query": "is:open assignee:${user}"
-    },
-    {
-      "label": "Created By Me",
-      "query": "is:open author:${user}"
-    },
-    {
-      "label": "Waiting For My Review",
-      "query": "is:open review-requested:${user}"
-    }
-  ],
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false
-  },
-  "gitlens.codeLens.enabled": false,
-  "gitlens.codeLens.scopes": ["blocks", "containers", "document"],
-  "gitlens.currentLine.enabled": false,
-  "gitlens.gitCommands.closeOnFocusOut": true,
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.views.repositories.files.layout": "auto",
-  "gitlens.views.showRelativeDateMarkers": false,
-  "go.toolsManagement.autoUpdate": true,
-  "gopls": {
-    "ui.semanticTokens": true
   },
   "html.format.wrapLineLength": 80,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
@@ -266,13 +104,8 @@
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "material-icon-theme.activeIconPack": "react",
-  "material-icon-theme.showUpdateMessage": true,
   "notebook.markup.fontSize": 15,
-  "oneDark.bold": true,
   "playwright.reuseBrowser": true,
-  "rest-client.previewColumn": "current",
-  "rust-analyzer.experimental.procAttrMacros": true,
-  "rust-analyzer.inlayHints.enable": false,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
   },
@@ -282,16 +115,6 @@
   },
   "search.quickOpen.history.filterSortOrder": "recency",
   "security.workspace.trust.startupPrompt": "never",
-  "stylelint.validate": [
-    "css",
-    "less",
-    "postcss",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "svelte.enable-ts-plugin": true,
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
@@ -313,7 +136,6 @@
     "<C-v>": true
   },
   "vim.useSystemClipboard": true,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}",
@@ -351,6 +173,27 @@
     {
       "before": ["<C-r>"],
       "commands": ["redo"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["<Space>", "f", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<Space>", "f", "d"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    },
+    {
+      "before": ["<Space>", "f", "s"],
+      "commands": ["workbench.action.findInFiles"]
     }
-  ]
+  ],
+  "editor.guides.highlightActiveBracketPair": false,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.occurrencesHighlight": false,
+  "editor.selectionHighlight": false,
+  "editor.matchBrackets": "never"
 }
