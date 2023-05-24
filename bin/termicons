@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Updates termicons
+
+dir="$HOME/dev/termicons"
+
+cd $dir
+pnpm sync
+
+if [[ $(git diff --stat) != '' ]]; then
+	tmux split-window -h -c $dir
+fi
