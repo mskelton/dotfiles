@@ -31,7 +31,7 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
-  "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll"],
+  "editor.codeActionsOnSave": ["source.fixAll"],
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "JetBrains Mono, Symbols Nerd Font, Monaco, 'Courier New', monospace",
