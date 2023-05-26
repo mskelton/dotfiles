@@ -22,6 +22,8 @@ cat <<EOF >$HOME/.gitconfig
 	excludesfile = /Users/$user/.gitignore-global
 [commit]
   gpgsign = true
+[tag]
+  gpgsign = true
 [gpg]
 	format = ssh
 [include]
