@@ -58,19 +58,19 @@ $brew install --cask \
 	mimestream \
 	raycast \
 	shottr \
-	slack \
 	telegram \
-	tradingview \
 	visual-studio-code \
 	zoom
 
 # Personal/work casks
 if [[ -z "$WORK" ]]; then
 	$brew install --cask \
+		android-studio \
 		quicken \
 		obsidian \
-		todoist
+		todoist \
+		tradingview
 else
 	brew install --cask \
-		altair-graphql-client
+		slack
 fi
