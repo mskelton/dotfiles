@@ -8,3 +8,4 @@ set -x BUN_INSTALL "$HOME/.bun"
 set -x HOMEBREW_NO_ENV_HINTS true
 set -x GH_NO_UPDATE_NOTIFIER true
 set -x PYENV_ROOT "$HOME/.pyenv"
+set -x ANDROID_HOME "$HOME/Library/Android/sdk"
