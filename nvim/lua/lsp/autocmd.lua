@@ -79,22 +79,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = group,
-	callback = function(opts)
-		local clients = vim.lsp.get_active_clients({ bufnr = opts.buf })
+--- Register a autocmd that runs on BufWritePre for a given pattern
+--- @param pattern string
+--- @param callback function
+local function on_write(pattern, callback)
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = group,
+		pattern = pattern,
+		callback = callback,
+	})
+end
 
-		-- Only run formatting if there are connected LSP clients
-		if vim.tbl_count(clients) ~= 0 then
-			vim.lsp.buf.format({ bufnr = opts.buf })
-		end
-	end,
-})
+--- Register a autocmd that runs a code action on BufWritePre for a given pattern
+--- @param pattern string
+--- @param code_action string
+local function code_action_on_write(pattern, code_action)
+	on_write(pattern, function(opts)
+		utils.run_code_action(opts.buf, code_action)
+	end)
+end
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = group,
-	pattern = "*.go",
-	callback = function()
-		utils.run_code_action("source.organizeImports")
-	end,
-})
+on_write("*", function(opts)
+	local clients = vim.lsp.get_active_clients({ bufnr = opts.buf })
+
+	-- Only run formatting if there are connected LSP clients
+	if vim.tbl_count(clients) ~= 0 then
+		vim.lsp.buf.format({ bufnr = opts.buf })
+	end
+end)
+
+code_action_on_write("*.go", "source.organizeImports")
+code_action_on_write("*.dart", "source.fixAll")

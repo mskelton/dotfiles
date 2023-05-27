@@ -10,18 +10,30 @@ function M.apply_edits(result)
 	end
 end
 
-function M.make_params(code_action)
+--- Make params for a code action
+--- @param bufnr number
+--- @param code_action string
+function M.make_params(bufnr, code_action)
 	local position_params = vim.lsp.util.make_range_params()
-	position_params.context = { only = { code_action } }
+
+	position_params.context = {
+		diagnostics = vim.lsp.diagnostic.get_line_diagnostics(bufnr),
+		triggerKind = vim.lsp.protocol.CodeActionTriggerKind.Invoked,
+		only = { code_action },
+	}
+
 	return position_params
 end
 
-function M.run_code_action(code_action)
-	---@diagnostic disable-next-line: missing-parameter
+--- Run a code action synchronously. This is useful for running code actions
+--- on save.
+--- @param bufnr number
+--- @param code_action string
+function M.run_code_action(bufnr, code_action)
 	local result = vim.lsp.buf_request_sync(
-		0,
+		bufnr,
 		"textDocument/codeAction",
-		M.make_params(code_action)
+		M.make_params(bufnr, code_action)
 	)
 
 	for _, res in pairs(result or {}) do

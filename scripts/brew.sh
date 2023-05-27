@@ -16,6 +16,7 @@ $brew install \
 	blueutil \
 	clang-format \
 	cmake \
+	cocoapods \
 	dict \
 	dos2unix \
 	fd \
