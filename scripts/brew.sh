@@ -57,6 +57,7 @@ $brew install --cask \
 	mic-drop \
 	microsoft-edge \
 	mimestream \
+	phoenix \
 	raycast \
 	shottr \
 	telegram \
