@@ -6,6 +6,18 @@ M.default_capabilities = function()
 	return require("cmp_nvim_lsp").default_capabilities()
 end
 
+--- Make capabilities for a server. This is a helper function that allows you to
+--- easily add custom capabilities to a server's capabilities.
+--- @param fn function
+--- @return table
+M.make_capabilities = function(fn)
+	local capabilities = M.default_capabilities()
+	return fn(capabilities)
+end
+
+--- Setup a language server
+--- @param server string
+--- @param config table?
 M.server = function(server, config)
 	config = config or {}
 
@@ -27,7 +39,6 @@ M.setup_servers = function()
 	M.server("pyright")
 	M.server("prismals")
 	M.server("rust_analyzer")
-	M.server("dartls")
 
 	-- GraphQL
 	M.server("graphql", {
@@ -41,13 +52,13 @@ M.setup_servers = function()
 		),
 	})
 
-	-- clangd requires a custom offset encoding, so we have to patch the default
-	-- capabilities to make that work.
-	local clangd_capabilities = M.default_capabilities()
-	clangd_capabilities.offsetEncoding = { "utf-16" }
-
 	M.server("clangd", {
-		capabilities = clangd_capabilities,
+		-- clangd requires a custom offset encoding, so we have to patch the default
+		-- capabilities to make that work.
+		capabilities = M.make_capabilities(function(capabilities)
+			capabilities.offsetEncoding = { "utf-16" }
+			return capabilities
+		end),
 		cmd = { "clangd", "-header-insertion=never" },
 		filetypes = {
 			"c",
