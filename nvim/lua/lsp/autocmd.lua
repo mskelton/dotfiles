@@ -90,12 +90,14 @@ local function on_write(pattern, callback)
 	})
 end
 
---- Register a autocmd that runs a code action on BufWritePre for a given pattern
+--- Register a autocmd that runs code action(s) on BufWritePre for a given pattern
 --- @param pattern string
---- @param code_action string
-local function code_action_on_write(pattern, code_action)
+--- @param code_actions table
+local function code_actions_on_write(pattern, code_actions)
 	on_write(pattern, function(opts)
-		utils.run_code_action(opts.buf, code_action)
+		for _, value in ipairs(code_actions) do
+			utils.run_code_action(opts.buf, value)
+		end
 	end)
 end
 
@@ -108,5 +110,5 @@ on_write("*", function(opts)
 	end
 end)
 
-code_action_on_write("*.go", "source.organizeImports")
-code_action_on_write("*.dart", "source.fixAll")
+code_actions_on_write("*.go", { "source.organizeImports" })
+code_actions_on_write("*.dart", { "source.fixAll", "source.sortMembers" })
