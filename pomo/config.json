@@ -3,5 +3,8 @@
     "break": "💤",
     "focus": "🧙"
   },
-  "sound": "Blow"
+  "sound": {
+    "start": "Blow",
+    "end": "Glass"
+  }
 }
