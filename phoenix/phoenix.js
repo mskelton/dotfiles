@@ -21,16 +21,28 @@ function split(leftWindows, rightWindows) {
   })
 }
 
-// Split browser and terminal
-Key.on("k", ["cmd", "option"], () => {
+// Main layout, browser on right most screen, Figma behind browser, Kitty on
+// main screen. Email/Slack on left most screen.
+Key.on("u", ["cmd", "option"], () => {
   const arc = App.get("Arc")
   const kitty = App.get("kitty")
+  const figma = App.get("Figma")
+  const slack = App.get("Slack")
+  const mimestream = App.get("Mimestream")
+})
 
-  split(arc ? arc.windows() : [], kitty ? kitty.windows() : [])
+// Split layout, browser on left of main screen, Kitty on right of main screen.
+// Figma maximized on the right most screen, Email/Slack on left most screen.
+Key.on("i", ["cmd", "control"], () => {
+  const arc = App.get("Arc")
+  const kitty = App.get("kitty")
+  const figma = App.get("Figma")
+  const slack = App.get("Slack")
+  const mimestream = App.get("Mimestream")
 })
 
 // Maximize everything
-Key.on("l", ["cmd", "option"], () => {
+Key.on("o", ["cmd", "control"], () => {
   App.all().forEach((app) => {
     app.windows().forEach((window) => {
       window.maximise()
