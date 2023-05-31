@@ -1,6 +1,6 @@
 aliases:
   aus: pr merge --squash --auto
-  clone: '!gh repo clone "$GH_ORG/$1" -- "${@:2}"'
+  clone: '!gh repo clone "mskelton/$1" -- "${@:2}"'
   dbot:
     '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {}
     gh pr comment {} -b "@dependabot merge"'
