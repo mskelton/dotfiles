@@ -164,6 +164,13 @@ return {
 				win_options = {
 					winblend = 0,
 				},
+				mappings = {
+					i = {
+						["<C-u>"] = function()
+							vim.api.nvim_buf_set_lines(0, 0, -1, false, {})
+						end,
+					},
+				},
 			},
 		},
 	},
