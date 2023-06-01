@@ -24,6 +24,15 @@ M.get_tsserver_options = function(opts)
 	return opts
 end
 
+M.get_tsserver_preferences = function()
+	return {
+		autoImportFileExcludePatterns = {
+			"**/carbon-components-react",
+			"**/react-aria-components",
+		},
+	}
+end
+
 -- Configure global plugins when tsserver initializes
 M.on_init = function(client)
 	for _, value in ipairs(M.plugins) do

@@ -151,6 +151,7 @@ M.setup_servers = function()
 			init_options = {
 				plugins = tsserver.get_plugins(),
 				tsserver = tsserver.get_tsserver_options(),
+				preferences = tsserver.get_tsserver_preferences(),
 			},
 			on_init = tsserver.on_init,
 			handlers = tsserver.handlers,
