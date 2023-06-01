@@ -10,7 +10,7 @@ return {
 	s("rp", fmt(snip_utils.export_interface, { f(get_props_name), i(1) })),
 	s("rpn", f(get_props_name)),
 	s(
-		"rc",
+		"rd",
 		fmt(
 			[[
         {}{}function {}({}) {{
@@ -48,45 +48,6 @@ return {
 					t(""),
 				}),
 				i(0),
-			}
-		)
-	),
-	s(
-		"rd",
-		fmt(
-			[[
-        {}function {}({}) {{
-          return (
-            {}
-          )
-        }}
-
-        export default {}
-      ]],
-			{
-				f(function(args, parent)
-					if not string.match(args[1][1], "props:") then
-						return ""
-					end
-
-					local props = get_props_name(args, parent.snippet)
-					return {
-						"export interface " .. props .. " {",
-						"\t",
-						"}",
-						"",
-						"",
-					}
-				end, { 1 }),
-				f(snip_utils.get_filename),
-				c(1, {
-					f(function(args, snip)
-						return "props: " .. get_props_name(args, snip)
-					end),
-					t(""),
-				}),
-				i(0),
-				f(snip_utils.get_filename),
 			}
 		)
 	),
