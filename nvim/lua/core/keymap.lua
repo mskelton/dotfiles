@@ -62,8 +62,7 @@ map("v", "K", ":m '<-2<cr>gv=gv", "Move line down")
 map("n", "J", "mzJ`z", "Join lines")
 
 -- Paste commands
-map("x", "<leader>po", '"_dP', "Paste without yanking") -- Paste Over
-map("n", "<leader>pa", 'ggVG"_dP', "Paste over entire file") -- Paste All
+map("n", "<leader>pa", 'ggVG"_dP', "Paste over entire file")
 
 -- I frequently roll zv for visually selection which doesn't work great on my
 -- keyboard since I use a multi-function key for z/ctrl. This mapping sets
