@@ -111,4 +111,4 @@ on_write("*", function(opts)
 end)
 
 code_actions_on_write("*.go", { "source.organizeImports" })
-code_actions_on_write("*.dart", { "source.fixAll", "source.sortMembers" })
+code_actions_on_write("*.dart", { "source.fixAll" })
