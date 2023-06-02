@@ -10,6 +10,7 @@ link kitty ~/.config/kitty
 link nvim ~/.config/nvim
 link tmux ~/.config/tmux
 link phoenix ~/.config/phoenix
+link hammerspoon ~/.hammerspoon
 
 link emacs.d/init.el ~/.emacs.d/init.el
 link gh/config.yml ~/.config/gh/config.yml
