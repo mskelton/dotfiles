@@ -57,7 +57,6 @@ $brew install --cask \
 	mic-drop \
 	microsoft-edge \
 	mimestream \
-	phoenix \
 	raycast \
 	shottr \
 	telegram \
@@ -68,6 +67,7 @@ $brew install --cask \
 if [[ -z "$WORK" ]]; then
 	$brew install --cask \
 		android-studio \
+		dozer \
 		quicken \
 		obsidian \
 		todoist \
