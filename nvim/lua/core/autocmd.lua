@@ -13,11 +13,6 @@ augroup auto_source_dotfiles
   au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
 augroup END
 
-augroup zet_template
-  au!
-  au BufNewFile */zettels/*.md 0r ~/.config/nvim/templates/zet.md
-augroup END
-
 " Enable search highlighting while searching
 augroup incsearch_hl
   au!
