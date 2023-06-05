@@ -9,3 +9,6 @@ nvim/lazy-lock.json
 
 # Tmux logs
 *.log
+
+# EmmyLua annotations for hammerspoon
+hammerspoon/Spoons/EmmyLua.spoon/annotations/

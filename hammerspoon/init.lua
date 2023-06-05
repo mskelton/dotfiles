@@ -9,23 +9,17 @@ hs.window.animationDuration = 0.1
 -- local hyper = { "cmd", "option", "ctrl", "shift" }
 local layer_key = { "cmd", "ctrl" }
 
---- Live reload config
-function LiveReload(files)
-	for _, file in pairs(files) do
-		if file:sub(-4) == ".lua" then
-			hs.reload()
-			return
-		end
-	end
-end
-
-local config_path = os.getenv("HOME") .. "/.hammerspoon/"
-LiveReloadWatcher = hs.pathwatcher.new(config_path, LiveReload):start()
-
 -- Load SpoonInstall to install Spoons
 hs.loadSpoon("SpoonInstall")
-spoon.SpoonInstall.use_syncinstall = true
+spoon.SpoonInstall.use_syncinstall = false
 Install = spoon.SpoonInstall
+
+-- Autocompletion for Hammerspoon config. This is disabled since it's slow to
+-- load, so I only enable it when I need to regenerate types.
+Install:andUse("EmmyLua", { disable = true })
+
+-- Live reload config
+Install:andUse("ReloadConfiguration", { start = true })
 
 -- Launch common apps
 Install:andUse("AppLauncher", {

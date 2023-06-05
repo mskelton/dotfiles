@@ -27,6 +27,7 @@ end
 M.get_tsserver_preferences = function()
 	return {
 		autoImportFileExcludePatterns = {
+			"**/@mobily/ts-belt",
 			"**/carbon-components-react",
 			"**/react-aria-components",
 		},
