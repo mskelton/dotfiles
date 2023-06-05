@@ -2,10 +2,10 @@
 add_newline = false
 
 [aws]
-symbol = "  " # TODO
+symbol = "톛 "
 
 [buf]
-symbol = " " # TODO
+symbol = "톜 "
 
 [c]
 symbol = "퀩 "
@@ -20,7 +20,7 @@ vimcmd_visual_symbol = '[V](bold purple)'
 disabled = true
 
 [conda]
-symbol = " " # TODO
+symbol = "톝 "
 
 [dart]
 symbol = "큎 "
@@ -47,7 +47,7 @@ symbol = "큸 "
 symbol = '큽 '
 
 [guix_shell]
-symbol = " " # TODO
+symbol = "톞 "
 
 [haskell]
 symbol = "킌 "
@@ -69,7 +69,7 @@ symbol = '킺 '
 symbol = "킦 "
 
 [memory_usage]
-symbol = " " # TODO
+symbol = "톟 "
 
 [meson]
 symbol = "탂 "
@@ -124,7 +124,7 @@ Unknown = " "
 Windows = " "
 
 [package]
-symbol = " " # TODO
+symbol = "퀀 "
 
 [python]
 symbol = "탼 "
@@ -149,7 +149,7 @@ zsh_indicator = 'zsh '
 disabled = false
 
 [spack]
-symbol = "🅢 " # TODO
+symbol = "토 "
 
 [swift]
 symbol = '텀 '
