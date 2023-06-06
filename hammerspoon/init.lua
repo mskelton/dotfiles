@@ -34,20 +34,14 @@ Install:andUse("AppLauncher", {
 	},
 })
 
--- hs.hotkey.bind(layer_key, "i", function()
--- 	hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
--- end)
---
--- hs.hotkey.bind(layer_key, "i", function()
--- 	hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
--- end)
---
--- hs.hotkey.bind(layer_key, "i", function()
--- 	hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
--- end)
---
--- -- Main layout, browser on right most screen, Figma behind browser, Kitty on
--- -- main screen. Email/Slack on left most screen.
---
--- -- Split layout, browser on left of main screen, Kitty on right of main screen.
--- -- Figma maximized on the right most screen, Email/Slack on left most screen.
+-- Main layout, browser on right most screen, Figma behind browser, Kitty on
+-- main screen. Email/Slack on left most screen.
+hs.hotkey.bind(layer_key, "u", function()
+	-- hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
+end)
+
+-- Split layout, browser on left of main screen, Kitty on right of main screen.
+-- Figma maximized on the right most screen, Email/Slack on left most screen.
+hs.hotkey.bind(layer_key, "i", function()
+	-- hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
+end)
