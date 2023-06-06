@@ -50,9 +50,17 @@ map(nv, "<C-u>", "<cmd>lua MoveHalf(-1)<cr>", "Scroll up half screen")
 -- Really common shortcuts
 map(nv, ",s", "<cmd>w ++p<cr>", "Save buffer")
 map(nv, ",S", "<cmd>noa w<cr>", "Save buffer without autocmds")
-map(nv, ",w", "<cmd>bd<cr>", "Delete buffer")
 map(nv, ",q", "<cmd>qa<cr>", "Quit all")
 map(nv, ",c", "<cmd>clo<cr>", "Close buffer")
+
+-- Close window or buffer
+map(nv, ",w", function()
+	if vim.api.nvim_win_get_number(0) > 1 then
+		vim.cmd("close")
+	else
+		vim.cmd("bdelete!")
+	end
+end, "Close window or buffer")
 
 -- Move lines up and down in visual mode
 map("v", "J", ":m '>+1<cr>gv=gv", "Move line up")
