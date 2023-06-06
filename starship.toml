@@ -87,7 +87,7 @@ symbol = "탓 "
 # TODO
 [os.symbols]
 Alpine = " "
-Amazon = " "
+Amazon = "톡 "
 Android = " "
 Arch = " "
 CentOS = " "
@@ -102,7 +102,7 @@ Gentoo = " "
 HardenedBSD = "ﲊ "
 Illumos = " "
 Linux = " "
-Macos = " "
+Macos = "퀋 "
 Manjaro = " "
 Mariner = " "
 MidnightBSD = " "
@@ -121,10 +121,10 @@ Solus = "ﴱ "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "톢 "
 
 [package]
-symbol = "퀀 "
+symbol = "톣 "
 
 [python]
 symbol = "탼 "
