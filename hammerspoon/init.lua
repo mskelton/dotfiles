@@ -11,9 +11,9 @@ local layer_key = { "cmd", "ctrl" }
 
 -- Screens
 local screens = {
-	left = "",
-	main = "Built-in Retina Display",
-	right = "",
+	laptop = "Built-in Retina Display",
+	primary = "LG HDR 4K",
+	secondary = "LG Ultra HD",
 }
 
 -- Debugging
@@ -58,15 +58,19 @@ end
 -- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
-		{ "Arc", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Kitty", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Mimestream", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.main, hs.layout.maximized, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {
-		{ "Arc", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Kitty", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Mimestream", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.main, hs.layout.maximized, nil, nil },
+		-- Primary
+		{ "Kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
+		-- Secondary
+		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		-- Laptop
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -74,16 +78,19 @@ end)
 -- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
-		{ "Arc", nil, screens.main, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.main, hs.layout.right50, nil, nil },
-		{ "Mimestream", nil, screens.main, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.main, hs.layout.maximized, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
+		{ "Kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {
-		{ "Arc", nil, screens.main, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.main, hs.layout.right50, nil, nil },
-		{ "Mimestream", nil, screens.left, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.left, hs.layout.maximized, nil, nil },
-		{ "Figma", nil, screens.right, hs.layout.maximized, nil, nil },
+		-- Primary
+		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "Kitty", nil, screens.primary, hs.layout.right50, nil, nil },
+		-- Secondary
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		-- Laptop
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		-- { "zoom.us", nil, screens.right, hs.layout.maximized, nil, nil },
 	})
 end)
