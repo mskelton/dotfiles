@@ -95,6 +95,30 @@ hs.hotkey.bind(layer_key, "i", function()
 	})
 end)
 
+-- Zoom layout, browser and Kitty on left of main screen, Zoom on the right of
+-- main screen. Figma maximized on the right most screen, Email/Slack on left
+-- most screen.
+hs.hotkey.bind(layer_key, "p", function()
+	apply_layout({
+		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
+		{ "Kitty", nil, screens.laptop, hs.layout.left50, nil, nil },
+		{ "zoom.us", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
+	}, {
+		-- Primary
+		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "Kitty", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "zoom.us", nil, screens.primary, hs.layout.right50, nil, nil },
+		-- Secondary
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		-- Laptop
+		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		-- { "zoom.us", nil, screens.right, hs.layout.maximized, nil, nil },
+	})
+end)
+
 -- Escape paste-blocking
 hs.hotkey.bind({ "cmd", "alt" }, "v", function()
 	hs.eventtap.keyStrokes(hs.pasteboard.getContents())
