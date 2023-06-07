@@ -61,6 +61,16 @@ following commands.
 
 <details>
   <summary>
+    Install Arc boosts
+  </summary>
+
+- [npm](https://arc.net/boost/0E7D0C8B-4F81-4078-B356-15216038A7F4)
+- [Growthbook](https://arc.net/boost/B651E339-8850-418C-B3F4-B0B27E6C4438)
+
+</details>
+
+<details>
+  <summary>
     Configure Refined GitHub
   </summary>
 
