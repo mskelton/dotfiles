@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 # Flash new firmware to the Advantage 360
 
-firmware_path=$HOME/dev/key-config/firmware/
 sleep_time=0.5
+firmware_path=$HOME/dev/key-config/firmware/
+
+# If "remote" is specified, download the firmware from GitHub instead of using
+# the locally built firmware.
+if [[ "$1" == "remote" ]]; then
+	firmware_path=/tmp/firmware
+	rm -rf $firmware_path
+	gh run download --repo mskelton/key-config --dir $firmware_path --name firmware
+fi
 
 function get_board {
 	mount | awk '$3 ~ /ADV360PRO/ {print $3 " " $4}' | sed "s/ (.*//"
