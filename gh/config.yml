@@ -5,6 +5,7 @@ aliases:
     '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {}
     gh pr comment {} -b "@dependabot merge"'
   draft: pr create --draft
+  needs-review: "!gh pr edit $REVIEWERS"
   mkrelease:
     "!gh pr review -a changeset-release/$(git default) && gh pr merge -s --auto
     changeset-release/$(git default)"
