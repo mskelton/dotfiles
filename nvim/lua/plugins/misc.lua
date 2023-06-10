@@ -113,7 +113,7 @@ return {
 	},
 	{
 		"github/copilot.vim",
-		event = "VimEnter",
+		event = "InsertEnter",
 		cmd = { "Copilot" },
 		init = function()
 			vim.g.copilot_filetypes = {
