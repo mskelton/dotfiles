@@ -22,7 +22,7 @@ aliases:
     "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo}
     --silent'
   squash: pr merge --squash
-  st: "!gh status -o $GH_ORG"
+  st: status -o mskelton
   url: pr view --json url -q .url
   w: repo view -w
 editor: nvim

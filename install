@@ -12,7 +12,6 @@ link tmux ~/.config/tmux
 link hammerspoon ~/.hammerspoon
 
 link emacs.d/init.el ~/.emacs.d/init.el
-link gh/config.yml ~/.config/gh/config.yml
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
@@ -35,9 +34,11 @@ link_dir -s metatrader ~/Library/Application\ Support/MetaTrader\ 5/Bottles/meta
 # Work config
 if [[ -n "$WORK" ]]; then
 	link federato/bin ~/.local/bin-work
+	link federato/gh/config.yml ~/.config/gh/config.yml
 	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml
 	link_dir federato/fish ~/.config/fish/
 else
+	link gh/config.yml ~/.config/gh/config.yml
 	link gh-dash/config.yml ~/.config/gh-dash/config.yml
 	link_dir personal/fish ~/.config/fish/
 fi
