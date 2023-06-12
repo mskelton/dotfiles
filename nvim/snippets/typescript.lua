@@ -31,7 +31,8 @@ return {
 			i(0),
 		})
 	),
-	-- React hooks
+	-- React
+	s("ed", fmt('export {{ default }} from "./{}"', { f(snip_utils.get_dir) })),
 	s("ro", fmt(snip_utils.export_interface, { f(get_options_name), i(1) })),
 	s("ron", f(get_options_name)),
 	s(
