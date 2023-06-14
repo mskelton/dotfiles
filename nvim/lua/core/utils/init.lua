@@ -33,7 +33,7 @@ end
 --- Converts a string to camel case
 --- @param str string
 M.camel_case = function(str)
-	return string.gsub("-" .. str, "(%-)(%a)", function(_, b)
+	return string.gsub("-" .. str, "([-_])(%a)", function(_, b)
 		return string.upper(b)
 	end)
 end
