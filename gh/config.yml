@@ -6,9 +6,7 @@ aliases:
     gh pr comment {} -b "@dependabot merge"'
   draft: pr create --draft
   needs-review: "!gh pr edit $REVIEWERS"
-  mkrelease:
-    "!gh pr review -a changeset-release/$(git default) && gh pr merge -s --auto
-    changeset-release/$(git default)"
+  mkrelease: workflow run release.yml
   merge-icons:
     "pr merge --squash --repo=mskelton/termicons.nvim chore/update-icons"
   quick: issue create -b '' -t "$1"
