@@ -2,6 +2,9 @@
 vim.api.nvim_create_user_command("Pomo", "silent !pomo <args>", { nargs = "*" })
 vim.api.nvim_create_user_command("Task", "!task <args>", { nargs = "*" })
 
+-- GitHub CLI
+vim.api.nvim_create_user_command("H", "!gh <args>", { nargs = "*" })
+
 -- Format/unformat files with JQ
 vim.api.nvim_create_user_command("JsonFormat", ":%!jq .", {})
 vim.api.nvim_create_user_command("JsonUnformat", ":%!jq -c .", {})
