@@ -25,6 +25,7 @@ null_ls.setup({
 				"graphql",
 				"handlebars",
 				"svg",
+				"svelte",
 			},
 		}),
 		null_ls.builtins.formatting.shfmt,
