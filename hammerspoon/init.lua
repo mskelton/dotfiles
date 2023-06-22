@@ -40,31 +40,63 @@ Install:andUse("AppLauncher", {
 	},
 	hotkeys = {
 		j = "Arc",
-		k = "Kitty",
+		k = "kitty",
 		l = "Mimestream",
 		[";"] = "Slack",
 	},
 })
 
-local function apply_layout(single_layout, multi_layout)
-	if #hs.screen.allScreens() == 3 then
-		hs.layout.apply(multi_layout)
-	else
-		hs.layout.apply(single_layout)
+--- Apply a layout based on the number of screens
+local function apply_layout(...)
+	local layouts = { ... }
+	local count = #hs.screen.allScreens()
+
+	hs.layout.apply(layouts[count])
+end
+
+--- Raise all windows of the given apps
+--- @param apps table
+local function raise(apps)
+	local app
+
+	for _, value in ipairs(apps) do
+		app = hs.application.find(value)
+
+		-- Raise all windows of the app if it's open
+		if app then
+			for _, window in ipairs(app:allWindows()) do
+				window:raise()
+			end
+		end
+	end
+
+	-- Focus the main window of the last app. This is necessary for some reason
+	-- otherwise, the raise operation doesn't do anything.
+	if app then
+		app:mainWindow():focus()
 	end
 end
 
--- Main layout, browser on right most screen, Figma behind browser, Kitty on
+-- Main layout, browser on right most screen, Figma behind browser, kitty on
 -- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {
 		-- Primary
-		{ "Kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
+		-- Secondary
+		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Mimestream", nil, screens.secondary, hs.layout.right50, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
+	}, {
+		-- Primary
+		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
 		-- Secondary
 		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -73,21 +105,34 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
+
+	hs.timer.doAfter(0.2, function()
+		raise({ "Arc", "kitty" })
+	end)
 end)
 
--- Split layout, browser on left of main screen, Kitty on right of main screen.
+-- Split layout, browser on left of main screen, kitty on right of main screen.
 -- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {
 		-- Primary
 		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.primary, hs.layout.right50, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
+		-- Secondary
+		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Mimestream", nil, screens.secondary, hs.layout.right50, nil, nil },
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
+	}, {
+		-- Primary
+		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
@@ -95,22 +140,35 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
+
+	hs.timer.doAfter(0.2, function()
+		raise({ "Arc", "kitty", "Mimestream", "Slack" })
+	end)
 end)
 
--- Zoom layout, browser and Kitty on left of main screen, Zoom on the right of
+-- Zoom layout, browser and kitty on left of main screen, Zoom on the right of
 -- main screen. Figma maximized on the right most screen, Email/Slack on left
 -- most screen.
 hs.hotkey.bind(layer_key, "o", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.laptop, hs.layout.left50, nil, nil },
+		{ "kitty", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.right50, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {
 		-- Primary
 		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
-		{ "Kitty", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.right50, nil, nil },
+		-- Secondary
+		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Mimestream", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.right50, nil, nil },
+	}, {
+		-- Primary
+		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.left50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.right50, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -118,6 +176,22 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
+
+	hs.timer.doAfter(0.2, function()
+		raise({ "Arc", "kitty", "zoom.us" })
+	end)
+end)
+
+-- Bring messaging to front, or send to back
+hs.hotkey.bind(layer_key, "p", function()
+	local focused_window = hs.window.focusedWindow()
+	local title = focused_window:application():title()
+
+	if title == "Mimestream" or title == "Slack" then
+		raise({ "Arc", "kitty" })
+	else
+		raise({ "Mimestream", "Slack" })
+	end
 end)
 
 -- Escape paste-blocking
