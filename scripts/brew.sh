@@ -30,6 +30,7 @@ $brew install \
 	jq \
 	neovim \
 	ninja \
+	pngpaste \
 	rename \
 	ripgrep \
 	sponge \
