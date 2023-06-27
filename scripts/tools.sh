@@ -4,6 +4,9 @@
 sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
 chsh -s /opt/homebrew/bin/fish
 
+# Install bun
+curl -fsSL https://bun.sh/install | bash
+
 # Install Starship
 curl -sS https://starship.rs/install.sh | sh
 
