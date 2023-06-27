@@ -2,10 +2,17 @@
 # Updates termicons
 
 dir="$HOME/dev/termicons"
-
 cd $dir
-pnpm sync
 
+# Record the current commit
+sha=$(git rev-parse HEAD:material-icons)
+
+# Update the submodule
+git submodule update --remote
+
+# Check if there are any changes. If there are, open the diff and create a new
+# Tmux split.
 if [[ $(git diff --stat) != '' ]]; then
+	open https://github.com/PKief/vscode-material-icon-theme/compare/$sha..main
 	tmux split-window -h -c $dir
 fi
