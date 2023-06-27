@@ -15,4 +15,6 @@ git submodule update --remote
 if [[ $(git diff --stat) != '' ]]; then
 	open https://github.com/PKief/vscode-material-icon-theme/compare/$sha..main
 	tmux split-window -h -c $dir
+else
+	echo "No changes"
 fi
