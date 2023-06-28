@@ -42,8 +42,6 @@ M.setup_servers = function()
 
 	-- GraphQL
 	M.server("graphql", {
-		-- TODO: Remove this once all the GraphQL LSP issues are resolved
-		cmd = { npm.global_bin("graphql-lsp"), "server", "-m", "stream" },
 		filetypes = { "graphql" },
 		root_dir = util.root_pattern(
 			".graphqlrc*",
