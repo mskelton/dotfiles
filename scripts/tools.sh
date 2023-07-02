@@ -43,6 +43,7 @@ sudo corepack enable
 
 # Install cargo binaries
 cargo install --git https://github.com/mskelton/pomo-rs
+cargo install --git https://github.com/mskelton/flashlight
 
 # Install go binaries
 go install github.com/mskelton/lorem@latest
