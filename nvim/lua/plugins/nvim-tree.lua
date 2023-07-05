@@ -95,7 +95,6 @@ return {
 
 				map("<cr>", edit_and_close_tree, "Open")
 				map("<C-]>", api.tree.change_root_to_node, "CD")
-				map("<C-k>", api.node.show_info_popup, "Info")
 				map("<C-r>", api.fs.rename_sub, "Rename: Omit filename")
 				map("<C-v>", api.node.open.vertical, "Open: Vertical split")
 				map("<C-x>", api.node.open.horizontal, "Open: Horizontal split")
