@@ -1,15 +1,15 @@
 ; extends
 
 ; Statements
-(import_statement (import_clause) @statement.inner) @statement.outer
-(expression_statement (_) @statement.inner) @statement.outer
-(return_statement (_) @statement.inner) @statement.outer
+(import_statement (import_clause) @decl.inner) @decl.outer
+(expression_statement (_) @decl.inner) @decl.outer
+(return_statement (_) @decl.inner) @decl.outer
 
 ; Declarations
 (lexical_declaration
   (variable_declarator
     name: (_)
-    value: (_) @declaration.inner)) @declaration.outer
+    value: (_) @decl.inner)) @decl.outer
 
 
 ; Jest/Playwright Tests
