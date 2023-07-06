@@ -27,6 +27,7 @@ alias tk="tmux kill-server"
 
 # Task Warrior
 alias t="task"
+alias tt="taskwarrior-tui"
 alias tw="clear && t"
 
 # Yarn

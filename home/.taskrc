@@ -17,3 +17,7 @@ context.home.read=project != Analyzer
 context.analyzer.read=project:Analyzer
 context.analyzer.write=project:Analyzer
 bulk=4
+
+# Taskwarrior TUI
+uda.taskwarrior-tui.task-report.show-info=false
+uda.taskwarrior-tui.shortcuts.1=~/.config/taskwarrior-tui/shortcuts/complete-learning.sh

@@ -9,6 +9,7 @@ link bin ~/.local/bin
 link kitty ~/.config/kitty
 link nvim ~/.config/nvim
 link tmux ~/.config/tmux
+link taskwarrior-tui ~/.config/taskwarrior-tui
 link hammerspoon ~/.hammerspoon
 
 link emacs.d/init.el ~/.emacs.d/init.el
