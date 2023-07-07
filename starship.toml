@@ -37,6 +37,9 @@ symbol = "큠 "
 [elm]
 symbol = "큡 "
 
+[gcloud]
+disabled = true
+
 [git_status]
 stashed = ""
 
