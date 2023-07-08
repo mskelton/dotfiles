@@ -48,17 +48,18 @@
   ui = true
 [diff]
   colorMoved = default
-[push]
-  default = upstream
 [branch]
   autosetuprebase = always
-[pull]
-  rebase = merges
 [init]
   defaultBranch = main
 [log]
   abbrevcommit = true
+[pull]
+  rebase = merges
 [push]
+  default = upstream
   autoSetupRemote = true
+[submodule]
+	recurse = true
 
 # vim:ft=gitconfig
