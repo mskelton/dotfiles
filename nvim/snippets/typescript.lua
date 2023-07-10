@@ -1,5 +1,4 @@
 ---@diagnostic disable: undefined-global
-local utils = require("core.utils")
 local snip_utils = require("utils.snip_utils")
 
 local function get_hook_name(args, snip)
@@ -9,11 +8,9 @@ local function get_hook_name(args, snip)
 	return "use" .. string.gsub(snip_utils.get_filename(args, snip), "^Use", "")
 end
 
-local function get_options_name(args, snip)
-	return utils.camel_case(get_hook_name(args, snip)) .. "Options"
-end
-
 return {
+	s("rp", fmt(snip_utils.export_interface, { f(get_props_name), i(1) })),
+	s("rpn", f(snip_utils.get_props_name)),
 	-- TypeScript
 	s(
 		"tt",
@@ -33,8 +30,6 @@ return {
 	),
 	-- React
 	s("ed", fmt('export {{ default }} from "./{}"', { f(snip_utils.get_dir) })),
-	s("ro", fmt(snip_utils.export_interface, { f(get_options_name), i(1) })),
-	s("ron", f(get_options_name)),
 	s(
 		"rh",
 		fmt(
@@ -49,7 +44,7 @@ return {
 				f(get_hook_name),
 				c(2, {
 					f(function(args, snip)
-						return "options: " .. get_options_name(args, snip)
+						return "options: " .. snip_utils.get_props_name(args, snip)
 					end),
 					t(""),
 				}),
@@ -59,10 +54,10 @@ return {
 						return ""
 					end
 
-					local options = get_options_name(args, parent.snippet)
+					local props = get_props_name(args, parent.snippet)
 					return {
 						"",
-						args[1][1] .. "interface " .. options .. " {",
+						args[1][1] .. "interface " .. props .. " {",
 						"\t",
 						"}",
 						"",

@@ -16,4 +16,8 @@ M.export_interface = [[
   }}
 ]]
 
+M.get_props_name = function(args, snip)
+	return M.get_filename(args, snip) .. "Props"
+end
+
 return M
