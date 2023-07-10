@@ -29,9 +29,6 @@ copy_dir personal/fonts ~/Library/Fonts/
 curl -sL https://mskelton.github.io/termicons/termicons.ttf -o ~/Library/Fonts/termicons.ttf
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o ~/Library/Fonts/codicon.ttf
 
-# Metatrader templates
-link_dir -s metatrader ~/Library/Application\ Support/MetaTrader\ 5/Bottles/metatrader5/drive_c/Program\ Files/MetaTrader\ 5/MQL5/Profiles/Templates/
-
 # Work config
 if [[ -n "$WORK" ]]; then
 	link federato/bin ~/.local/bin-work
