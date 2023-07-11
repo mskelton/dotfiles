@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
 
 return {
-	parse("cl", 'println!("{}", $0);'),
+	parse("cl", 'println!("{:?}", $0);'),
 }
