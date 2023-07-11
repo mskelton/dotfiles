@@ -59,7 +59,5 @@
 [push]
   default = upstream
   autoSetupRemote = true
-[submodule]
-	recurse = true
 
 # vim:ft=gitconfig
