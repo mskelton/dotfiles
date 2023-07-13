@@ -1,6 +1,4 @@
 local null_ls = require("null-ls")
-local helpers = require("null-ls.helpers")
-local methods = require("null-ls.methods")
 
 null_ls.setup({
 	sources = {

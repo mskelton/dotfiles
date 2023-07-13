@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",
 	dependencies = {
-		"jose-elias-alvarez/null-ls.nvim",
+		"mskelton/null-ls.nvim",
 		"jose-elias-alvarez/typescript.nvim",
 		"ray-x/lsp_signature.nvim",
 		"onsails/lspkind-nvim",
