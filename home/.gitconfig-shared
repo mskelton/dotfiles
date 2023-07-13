@@ -30,7 +30,7 @@
   pp = !git pull && git push
   # Merge
   md = !git merge origin $(git default)
-  ml = !git co - && git ml
+  ml = !git co - && git md
   mc = merge --continue
   import = merge --no-commit --no-ff
   # Rebase
