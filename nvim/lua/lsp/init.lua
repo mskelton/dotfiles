@@ -138,16 +138,7 @@ M.setup_servers = function()
 		},
 	})
 
-	local tsserver = require("lsp.tsserver")
-
-	require("typescript-tools").setup({
-		handlers = tsserver.handlers,
-		settings = {
-			publish_diagnostic_on = "change",
-			tsserver_plugins = {},
-			tsserver_file_preferences = tsserver.get_tsserver_preferences(),
-		},
-	})
+	require("lsp.tsserver").setup()
 end
 
 M.setup = function()

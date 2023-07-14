@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Disable semantic tokens for now. It's not quite ready for prime time.
 		client.server_capabilities.semanticTokensProvider = nil
 
-		if client.name == "tsserver" then
+		if client.name == "typescript-tools" then
 			-- Organize imports for TypeScript files. Unfortunate to have to do two
 			-- separate actions, but unfortunately it's the way the language server is
 			-- setup.
@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", "gO", "<cmd>TSToolsRemoveUnusedImports<cr>", opts)
 
 			-- Rename file keymap similar to rename variable
-			vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
+			vim.keymap.set("n", "<leader>rf", "<cmd>TSToolsRenameFile<cr>", opts)
 		end
 	end,
 })

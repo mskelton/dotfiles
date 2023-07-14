@@ -2,6 +2,51 @@ local utils = require("core.utils")
 
 local M = {}
 
+M.setup = function()
+	M.setup_commands()
+
+	require("typescript-tools").setup({
+		on_attach = M.on_attach,
+		handlers = M.handlers,
+		settings = {
+			publish_diagnostic_on = "change",
+			tsserver_plugins = {},
+			tsserver_file_preferences = M.get_tsserver_preferences(),
+		},
+	})
+end
+
+M.setup_commands = function()
+	vim.api.nvim_create_user_command("TSToolsRenameFile", function()
+		local source_file = vim.api.nvim_buf_get_name(0)
+		local source_dir = vim.fn.fnamemodify(source_file, ":p:h") .. "/"
+
+		vim.ui.input({
+			prompt = "Rename",
+			completion = "file",
+			default = source_dir,
+		}, function(target_file)
+			if target_file == nil then
+				return
+			end
+
+			local params = {
+				command = "_typescript.applyRenameFile",
+				arguments = {
+					{
+						sourceUri = source_file,
+						targetUri = target_file,
+					},
+				},
+				title = "",
+			}
+
+			vim.lsp.util.rename(source_file, target_file, {})
+			vim.lsp.buf.execute_command(params)
+		end)
+	end, {})
+end
+
 M.get_tsserver_preferences = function()
 	return {
 		autoImportFileExcludePatterns = {
