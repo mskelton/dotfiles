@@ -138,21 +138,14 @@ M.setup_servers = function()
 		},
 	})
 
-	-- Setup TypeScript separately through the plugin. Long term, I don't want to
-	-- use this plugin as I don't like that it's setup so differently from my
-	-- other servers, but for now it is what it is.
 	local tsserver = require("lsp.tsserver")
 
-	require("typescript").setup({
-		server = {
-			capabilities = M.default_capabilities(),
-			init_options = {
-				plugins = tsserver.get_plugins(),
-				tsserver = tsserver.get_tsserver_options(),
-				preferences = tsserver.get_tsserver_preferences(),
-			},
-			on_init = tsserver.on_init,
-			handlers = tsserver.handlers,
+	require("typescript-tools").setup({
+		handlers = tsserver.handlers,
+		settings = {
+			publish_diagnostic_on = "change",
+			tsserver_plugins = {},
+			tsserver_file_preferences = tsserver.get_tsserver_preferences(),
 		},
 	})
 end
