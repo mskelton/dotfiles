@@ -18,6 +18,15 @@ end
 
 M.setup_commands = function()
 	vim.api.nvim_create_user_command("TSToolsRenameFile", function()
+		local clients = vim.lsp.get_active_clients()
+		local client = vim.tbl_filter(function(client)
+			return client.name == "typescript-tools"
+		end, clients)[1]
+
+		if client == nil then
+			return
+		end
+
 		local source_file = vim.api.nvim_buf_get_name(0)
 		local source_dir = vim.fn.fnamemodify(source_file, ":p:h") .. "/"
 
@@ -30,19 +39,14 @@ M.setup_commands = function()
 				return
 			end
 
-			local params = {
-				command = "_typescript.applyRenameFile",
-				arguments = {
+			vim.lsp.buf_request(0, "workspace/willRenameFiles", {
+				files = {
 					{
-						sourceUri = source_file,
-						targetUri = target_file,
+						oldUri = vim.uri_from_fname(source_file),
+						newUri = vim.uri_from_fname(target_file),
 					},
 				},
-				title = "",
-			}
-
-			vim.lsp.util.rename(source_file, target_file, {})
-			vim.lsp.buf.execute_command(params)
+			})
 		end)
 	end, {})
 end
