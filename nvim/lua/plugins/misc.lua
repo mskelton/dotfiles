@@ -205,6 +205,18 @@ return {
 	{
 		"mskelton/hoverdown.nvim",
 		event = "BufReadPre",
-		config = true,
+		config = {
+			overrides = {
+				go = function(blocks)
+					for _, block in ipairs(blocks) do
+						if block.type == "line" then
+							block.value = block.value:gsub(" on pkg.go.dev", "")
+						end
+					end
+
+					return blocks
+				end,
+			},
+		},
 	},
 }
