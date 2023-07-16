@@ -201,4 +201,8 @@ return {
 		dependencies = { "folke/trouble.nvim" },
 		config = true,
 	},
+	{
+		"mskelton/hoverdown.nvim",
+		config = true,
+	},
 }
