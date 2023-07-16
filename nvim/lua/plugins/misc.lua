@@ -104,10 +104,11 @@ return {
 			root_dir = "~/dev",
 			plugins = {
 				{ "bandit", dir = "bandit.nvim" },
+				{ "hoverdown", dir = "hoverdown.nvim" },
 				{ "live-reload", dir = "live-reload.nvim" },
 				{ "local-yokel", dir = "local-yokel.nvim" },
-				{ "termicons", dir = "termicons.nvim" },
 				{ "oldies", dir = "oldies.nvim" },
+				{ "termicons", dir = "termicons.nvim" },
 			},
 		},
 	},
@@ -203,6 +204,7 @@ return {
 	},
 	{
 		"mskelton/hoverdown.nvim",
+		event = "BufReadPre",
 		config = true,
 	},
 }
