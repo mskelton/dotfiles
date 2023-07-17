@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
-		"jayp0521/mason-null-ls.nvim",
+		"jay-babu/mason-null-ls.nvim",
 	},
 	config = function()
 		require("mason").setup({ ui = { border = "rounded" } })
