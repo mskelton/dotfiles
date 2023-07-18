@@ -218,3 +218,7 @@ map("o", "il", ":normal vil<cr>", { remap = true })
 -------------------------
 map("v", "an", ":<C-U>silent! lua ClassName()<cr>")
 map("o", "an", ":normal van<cr>", { remap = true })
+
+-- Open netrw
+-------------
+map(nv, "<leader>fd", "<cmd>Ex<cr>", "Open file explorer")
