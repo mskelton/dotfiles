@@ -76,8 +76,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- TODO: Remove once typescript-tools is more stable
 		if client.name == "tsserver" then
-			vim.keymap.set("n", "go", "<cmd>TSToolsAddMissingImports<cr>", opts)
-			vim.keymap.set("n", "gO", "<cmd>TSToolsRemoveUnusedImports<cr>", opts)
+			vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
+			vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
 			vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
 		end
 
