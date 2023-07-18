@@ -5,6 +5,5 @@ vim.cmd([[
   nmap <buffer> . gh
   nmap <buffer> P <C-w>z
 
-  nmap <buffer> L <CR>:Lexplore<CR>
-  nmap <buffer> <Leader>fd :Lexplore<CR>
+  nmap <buffer> <Leader>fd <cmd>bdelete<cr>
 ]])
