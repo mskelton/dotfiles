@@ -1,5 +1,3 @@
-local npm = require("utils.npm")
-
 local M = {}
 
 M.default_capabilities = function()
@@ -137,8 +135,6 @@ M.setup_servers = function()
 			},
 		},
 	})
-
-	require("lsp.tsserver").setup()
 end
 
 M.setup = function()

@@ -3,7 +3,6 @@ return {
 	event = "BufReadPre",
 	dependencies = {
 		"mskelton/null-ls.nvim",
-		"pmizio/typescript-tools.nvim",
 		"ray-x/lsp_signature.nvim",
 		"onsails/lspkind-nvim",
 	},
