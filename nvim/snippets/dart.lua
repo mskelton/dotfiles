@@ -32,6 +32,7 @@ class _${1}State extends State<$1> {
 ]]
 
 return {
+	parse("cl", "print($0);"),
 	parse("sl", stateless_widget),
 	parse("sf", stateful_widget),
 }
