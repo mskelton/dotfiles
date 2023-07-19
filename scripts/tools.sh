@@ -46,6 +46,7 @@ cargo install --git https://github.com/mskelton/pomo-rs
 cargo install --git https://github.com/mskelton/flashlight
 
 # Install go binaries
+go install github.com/mskelton/jira@latest
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/url@latest
 go install github.com/mskelton/zet@latest
