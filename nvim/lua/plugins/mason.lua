@@ -8,6 +8,8 @@ return {
 	config = function()
 		require("mason").setup({ ui = { border = "rounded" } })
 		require("mason-lspconfig").setup({ automatic_installation = true })
-		require("mason-null-ls").setup({ automatic_installation = true })
+		require("mason-null-ls").setup({
+			automatic_installation = { exclude = { "rustfmt" } },
+		})
 	end,
 }
