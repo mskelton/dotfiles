@@ -42,7 +42,7 @@ npm config set ignore-workspace-root-check=true
 sudo corepack enable
 
 # Install cargo binaries
-cargo install --git https://github.com/mskelton/pomo-rs
+cargo install --git https://github.com/mskelton/pomo
 cargo install --git https://github.com/mskelton/flashlight
 
 # Install go binaries
