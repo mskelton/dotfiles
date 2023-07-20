@@ -48,6 +48,7 @@ cargo install --git https://github.com/mskelton/flashlight
 # Install go binaries
 go install github.com/mskelton/jira@latest
 go install github.com/mskelton/lorem@latest
+go install github.com/mskelton/pr@latest
 go install github.com/mskelton/url@latest
 go install github.com/mskelton/zet@latest
 go install github.com/spf13/cobra-cli@latest
