@@ -221,4 +221,4 @@ map("o", "an", ":normal van<cr>", { remap = true })
 
 -- Open netrw
 -------------
-map(nv, "<leader>fd", "<cmd>Ex<cr>", "Open file explorer")
+map(nv, "<leader>fd", "<cmd>Lex %<cr>", "Open file explorer")
