@@ -10,59 +10,66 @@ $brew tap homebrew/cask-drivers
 $brew tap homebrew/cask-fonts
 
 # Install formulae
-$brew install \
-	bash \
-	bat \
-	blueutil \
-	clang-format \
-	cmake \
-	cocoapods \
-	dict \
-	dos2unix \
-	fd \
-	fish \
-	fzf \
-	gh \
-	git \
-	gnu-sed \
-	go \
-	jesseduffield/lazygit/lazygit \
-	jq \
-	neovim \
-	ninja \
-	pngpaste \
-	rename \
-	ripgrep \
-	sponge \
-	starship \
-	stylua \
-	task \
-	tmux \
-	trash \
-	tree-sitter \
-	watchman \
+formula=(
+	bash
+	bat
+	blueutil
+	ccache
+	clang-format
+	cmake
+	cocoapods
+	dict
+	fd
+	fish
+	fzf
+	gh
+	git
+	gnu-sed
+	go
+	jesseduffield/lazygit/lazygit
+	jq
+	luarocks
+	neovim
+	ninja
+	p7zip
+	pngpaste
+	rename
+	ripgrep
+	sponge
+	starship
+	stylua
+	task
+	tmux
+	trash
+	tree-sitter
+	watchman
 	wget
+)
 
-# Install casks
-$brew install --cask \
-	arc \
-	docker \
-	figma \
-	firefox \
-	font-jetbrains-mono \
-	font-symbols-only-nerd-font \
-	google-chrome \
-	kitty \
-	logi-options-plus \
-	logitune \
-	mic-drop \
-	microsoft-edge \
-	mimestream \
-	raycast \
-	shottr \
-	telegram \
-	visual-studio-code \
+casks=(
+	arc
+	docker
+	figma
+	firefox
+	font-jetbrains-mono
+	font-symbols-only-nerd-font
+	google-chrome
+	kitty
+	logi-options-plus
+	logitune
+	mic-drop
+	microsoft-edge
+	mimestream
+	raycast
+	shottr
+	telegram
+	visual-studio-code
 	zoom
+)
+
+# Install formula and casks
+$brew install ${formula[@]}
+$brew install --cask ${casks[@]}
 
 # Personal/work casks
 if [[ -z "$WORK" ]]; then
