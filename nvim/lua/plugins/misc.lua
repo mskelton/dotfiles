@@ -104,7 +104,6 @@ return {
 			root_dir = "~/dev",
 			plugins = {
 				{ "bandit", dir = "bandit.nvim" },
-				{ "hoverdown", dir = "hoverdown.nvim" },
 				{ "live-reload", dir = "live-reload.nvim" },
 				{ "local-yokel", dir = "local-yokel.nvim" },
 				{ "oldies", dir = "oldies.nvim" },
@@ -201,22 +200,5 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		dependencies = { "folke/trouble.nvim" },
 		config = true,
-	},
-	{
-		"mskelton/hoverdown.nvim",
-		event = "BufReadPre",
-		config = {
-			overrides = {
-				go = function(blocks)
-					for _, block in ipairs(blocks) do
-						if block.type == "line" then
-							block.value = block.value:gsub(" on pkg.go.dev", "")
-						end
-					end
-
-					return blocks
-				end,
-			},
-		},
 	},
 }
