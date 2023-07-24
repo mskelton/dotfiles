@@ -29,3 +29,11 @@ vim.api.nvim_create_user_command(
 	":RemoveEmptyLines | sort u",
 	{ bar = true }
 )
+
+-- Browse a URL in the default browser. Needed for vim-fugitive
+-- Search/replace type commands
+vim.api.nvim_create_user_command(
+	"Browse",
+	"silent !open <args>",
+	{ nargs = "*" }
+)
