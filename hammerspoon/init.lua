@@ -60,14 +60,24 @@ local function raise(apps)
 	local app
 
 	for _, value in ipairs(apps) do
-		app = hs.application.find(value)
+		if type(value) == "string" then
+			value = hs.application.find(value)
+		end
+
+		if value == nil then
+			goto continue
+		end
 
 		-- Raise all windows of the app if it's open
-		if app then
-			for _, window in ipairs(app:allWindows()) do
+		if getmetatable(value).__name == "hs.application" then
+			for _, window in ipairs(value:allWindows()) do
 				window:raise()
 			end
+		else
+			value:raise()
 		end
+
+		::continue::
 	end
 
 	-- Focus the main window of the last app. This is necessary for some reason
@@ -178,7 +188,11 @@ hs.hotkey.bind(layer_key, "o", function()
 	})
 
 	hs.timer.doAfter(0.2, function()
-		raise({ "Arc", "kitty", "zoom.us" })
+		raise({
+			"Arc",
+			"kitty",
+			hs.window.find("Zoom Meeting"),
+		})
 	end)
 end)
 
