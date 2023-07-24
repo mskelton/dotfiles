@@ -33,6 +33,7 @@ M.setup_servers = function()
 	local util = require("lspconfig.util")
 
 	-- Simple servers
+	M.server("vimls")
 	M.server("bashls")
 	M.server("pyright")
 	M.server("prismals")
