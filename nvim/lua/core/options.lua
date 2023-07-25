@@ -1,6 +1,7 @@
 local g = vim.g
 local o = vim.opt
 
+-- Space is a much better leader key.
 g.mapleader = " "
 
 -- I've debated a lot about the clipboard. Accessing my system clipboard for
@@ -76,6 +77,9 @@ g.netrw_banner = 0
 g.netrw_keepdir = 0
 g.netrw_localcopydircmd = "cp -r"
 g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) -- use .gitignore
+
+-- Trying out a taller cmdline to attempt to reduce "Press ENTER" prompts.
+o.cmdheight = 2
 
 -- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
