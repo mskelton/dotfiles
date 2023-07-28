@@ -14,4 +14,4 @@
 .graphqlrc.yml
 
 # Vim quickfix lists
-*.qfix
+*.err

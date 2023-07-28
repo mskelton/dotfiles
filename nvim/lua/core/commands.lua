@@ -37,3 +37,10 @@ vim.api.nvim_create_user_command(
 	"silent !open <args>",
 	{ nargs = "*" }
 )
+
+-- Load Flashlight results into quickfix list
+vim.api.nvim_create_user_command(
+	"Flashlight",
+	'cexpr system("flashlight --format=vi -s @federato/athena-new -n " . shellescape(<q-args>))',
+	{ nargs = "*" }
+)
