@@ -116,9 +116,9 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 
-	hs.timer.doAfter(0.2, function()
-		raise({ "Arc", "kitty" })
-	end)
+	-- hs.timer.doAfter(0.2, function()
+	-- 	raise({ "Arc", "kitty" })
+	-- end)
 end)
 
 -- Split layout, browser on left of main screen, kitty on right of main screen.
@@ -151,9 +151,9 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 
-	hs.timer.doAfter(0.2, function()
-		raise({ "Arc", "kitty", "Mimestream", "Slack" })
-	end)
+	-- hs.timer.doAfter(0.2, function()
+	-- 	raise({ "Mimestream", "Slack", "Arc", "kitty" })
+	-- end)
 end)
 
 -- Zoom layout, browser and kitty on left of main screen, Zoom on the right of
@@ -187,13 +187,13 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 
-	hs.timer.doAfter(0.2, function()
-		raise({
-			"Arc",
-			"kitty",
-			hs.window.find("Zoom Meeting"),
-		})
-	end)
+	-- hs.timer.doAfter(0.2, function()
+	-- 	raise({
+	-- 		"Arc",
+	-- 		"kitty",
+	-- 		hs.window.find("Zoom Meeting"),
+	-- 	})
+	-- end)
 end)
 
 -- Bring messaging to front, or send to back
