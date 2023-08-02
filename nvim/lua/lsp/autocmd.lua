@@ -125,5 +125,7 @@ on_write("*", function(opts)
 	end
 end)
 
-code_actions_on_write("*.go", { "source.organizeImports" })
 code_actions_on_write("*.dart", { "source.fixAll" })
+code_actions_on_write("*.go", { "source.organizeImports" })
+-- TODO
+-- code_actions_on_write({ "*.go", "*.rs" }, { "source.organizeImports" })
