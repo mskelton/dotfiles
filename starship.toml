@@ -4,6 +4,9 @@ add_newline = false
 [aws]
 symbol = "톛 "
 
+[battery]
+discharging_symbol = '󰁺 '
+
 [buf]
 symbol = "톜 "
 
