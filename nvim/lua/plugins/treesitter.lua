@@ -39,7 +39,7 @@ return {
 			local parser_config =
 				require("nvim-treesitter.parsers").get_parser_configs()
 
-			-- TODO: Temporary until https://github.com/UserNobody14/tree-sitter-dart/issues/46 is fixed
+			-- BUG: Temporary until https://github.com/UserNobody14/tree-sitter-dart/issues/46 is fixed
 			parser_config.dart.install_info.revision =
 				"8aa8ab977647da2d4dcfb8c4726341bee26fbce4"
 
@@ -81,6 +81,7 @@ return {
 					"sql",
 					"svelte",
 					"swift",
+					"terraform",
 					"tsx",
 					"typescript",
 					"vim",
