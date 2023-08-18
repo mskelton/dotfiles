@@ -44,6 +44,7 @@ formula=(
 	tree-sitter
 	watchman
 	wget
+	dprint
 )
 
 casks=(
@@ -73,6 +74,9 @@ $brew install --cask ${casks[@]}
 
 # Personal/work casks
 if [[ -z "$WORK" ]]; then
+	$brew install \
+		teleport
+
 	$brew install --cask \
 		android-studio \
 		dozer \
