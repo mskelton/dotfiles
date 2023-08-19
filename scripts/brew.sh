@@ -44,7 +44,6 @@ formula=(
 	tree-sitter
 	watchman
 	wget
-	dprint
 )
 
 casks=(
