@@ -155,7 +155,12 @@
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
+  "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
+    {
+      "before": [";"],
+      "commands": ["vim.showQuickpickCmdLine"]
+    },
     {
       "before": [",", "s"],
       "commands": ["workbench.action.files.save"],
@@ -179,21 +184,31 @@
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
-      "before": ["<Space>", "f", "p"],
+      "before": ["<leader>", "f", "p"],
       "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": ["<Space>", "f", "d"],
+      "before": ["<leader>", "f", "d"],
       "commands": ["workbench.files.action.showActiveFileInExplorer"]
     },
     {
-      "before": ["<Space>", "f", "s"],
+      "before": ["<leader>", "f", "s"],
       "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["]", "b"],
+      "commands": ["workbench.action.nextEditor"]
     }
   ],
   "editor.guides.highlightActiveBracketPair": false,
   "editor.guides.bracketPairsHorizontal": false,
   "editor.occurrencesHighlight": false,
   "editor.selectionHighlight": false,
-  "editor.matchBrackets": "never"
+  "editor.matchBrackets": "never",
+  "git.openRepositoryInParentFolders": "never",
+  "prettier.requireConfig": true
 }
