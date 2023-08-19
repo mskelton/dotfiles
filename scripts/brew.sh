@@ -55,6 +55,7 @@ casks=(
 	font-jetbrains-mono
 	font-symbols-only-nerd-font
 	google-chrome
+	hammerspoon
 	kitty
 	logi-options-plus
 	logitune
@@ -79,11 +80,7 @@ if [[ -z "$WORK" ]]; then
 
 	$brew install --cask \
 		android-studio \
-		dozer \
-		quicken \
-		obsidian \
-		todoist \
-		tradingview
+		quicken
 else
 	brew install --cask \
 		slack
