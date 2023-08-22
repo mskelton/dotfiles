@@ -2,10 +2,10 @@
 vim.api.nvim_create_user_command("H", "!gh <args>", { nargs = "*" })
 
 -- Format JSON with jq
-vim.api.nvim_create_user_command("JsonFormat", ":!jq .", {})
+vim.api.nvim_create_user_command("JsonFormat", ":%!jq .", {})
 
 -- Minify JSON with jq
-vim.api.nvim_create_user_command("JsonMinify", ":!jq -c .", {})
+vim.api.nvim_create_user_command("JsonMinify", ":%!jq -c .", {})
 
 -- Copy stringified JSON to clipboard
 vim.api.nvim_create_user_command(
