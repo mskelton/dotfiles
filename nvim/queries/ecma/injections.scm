@@ -4,7 +4,7 @@
 
 ; {lang}`<{lang}>`
 (call_expression
- function: ((identifier) @language
-  (#match? @language "^(gql|hbs|html)"))
- arguments: ((template_string) @content
-  (#offset! @content 0 1 0 -1)))
+ function: ((identifier) @injection.language
+  (#match? @injection.language "^(gql|hbs|html)"))
+ arguments: ((template_string) @injection.content
+  (#offset! @injection.content 0 1 0 -1)))
