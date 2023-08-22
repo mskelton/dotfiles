@@ -9,7 +9,10 @@ local function get_hook_name(args, snip)
 end
 
 return {
-	s("rp", fmt(snip_utils.export_interface, { f(get_props_name), i(1) })),
+	s(
+		"rp",
+		fmt(snip_utils.export_interface, { f(snip_utils.get_props_name), i(1) })
+	),
 	s("rpn", f(snip_utils.get_props_name)),
 	-- TypeScript
 	s(
@@ -54,7 +57,7 @@ return {
 						return ""
 					end
 
-					local props = get_props_name(args, parent.snippet)
+					local props = snip_utils.get_props_name(args, parent.snippet)
 					return {
 						"",
 						args[1][1] .. "interface " .. props .. " {",
