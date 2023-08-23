@@ -2,6 +2,7 @@
 local snip_utils = require("utils.snip_utils")
 
 return {
+	parse("chil", "{ children }: { children: React.ReactNode }"),
 	-- React components
 	s(
 		"rd",
