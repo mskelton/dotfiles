@@ -42,7 +42,6 @@ return {
 			git = {
 				ignore = false,
 			},
-			remove_keymaps = true,
 			renderer = {
 				highlight_git = true,
 				icons = {
