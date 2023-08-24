@@ -54,6 +54,21 @@ local function apply_layout(...)
 	hs.layout.apply(layouts[count])
 end
 
+--- Get's the active Around meeting window
+local function get_around_window(app_name)
+	local app = hs.application.get(app_name)
+	local windows = app:allWindows()
+
+	-- For some reason, when there is only one window, Around is the name of the
+	-- lobby, but when in a meeting, it's the name of the meeting. I only ever
+	-- want to move the meeting window.
+	if #windows == 2 then
+		return { app:getWindow("Around") }
+	end
+
+	return {}
+end
+
 -- Main layout, browser on right most screen, Figma behind browser, kitty on
 -- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
@@ -69,7 +84,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -83,7 +98,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Around", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Around", get_around_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
@@ -93,7 +108,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -115,7 +130,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Arc", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
-		{ "Around", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "Around", get_around_window, screens.primary, hs.layout.left50, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
