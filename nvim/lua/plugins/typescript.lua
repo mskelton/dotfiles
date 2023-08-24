@@ -9,6 +9,7 @@ return {
 			init_options = {
 				preferences = {
 					autoImportFileExcludePatterns = {
+						"**/.next/*",
 						"**/@mobily/ts-belt",
 						"**/carbon-components-react",
 						"**/react-aria-components",
