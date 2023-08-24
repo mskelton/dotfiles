@@ -69,6 +69,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Around", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -82,6 +83,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Around", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
@@ -91,6 +93,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Around", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -109,9 +112,10 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
-		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
-		{ "kitty", nil, screens.primary, hs.layout.left50, nil, nil },
-		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.right50, nil, nil },
+		{ "Arc", nil, screens.primary, hs.layout.right50, nil, nil },
+		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
+		{ "Around", nil, screens.primary, hs.layout.left50, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
