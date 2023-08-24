@@ -4,8 +4,6 @@ alias gmc="git merge --continue"
 alias gmd="git md"
 alias gml="git ml"
 
-alias gmm="git md" # Deprecated
-
 # Git rebase
 alias grc="git rebase --continue"
 alias grd="git rd"
@@ -20,6 +18,9 @@ alias psh="git push"
 alias st="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
+
+# GitHub CLI
+alias prw="gh prw"
 
 # Tmux
 alias ta="tmux attach"
