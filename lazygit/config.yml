@@ -8,4 +8,6 @@ keybinding:
   universal:
     pushFiles: "p"
     pullFiles: "P"
+  files:
+    confirmDiscard: "d"
 promptToReturnFromSubprocess: false
