@@ -174,6 +174,9 @@ return {
 			"typescriptreact",
 			"svelte",
 		},
+		config = {
+			enable_close_on_slash = false,
+		},
 	},
 	{
 		"RRethy/nvim-treesitter-endwise",
