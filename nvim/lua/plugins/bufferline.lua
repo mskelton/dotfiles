@@ -8,6 +8,7 @@ return {
 			indicator = { style = "none" },
 			separator_style = "thin",
 			show_buffer_close_icons = false,
+			unnamed_title = "Untitled",
 		},
 	},
 }
