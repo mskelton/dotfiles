@@ -157,6 +157,16 @@ map(
 	"Replace props with spread props"
 )
 
+map("n", "<leader>on", function()
+	local current_buffer = vim.fn.bufnr("%")
+
+	for _, buffer in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+		if buffer.bufnr ~= current_buffer then
+			vim.api.nvim_buf_delete(buffer.bufnr, {})
+		end
+	end
+end, "Close other buffers")
+
 --------------------------------------------------------------------------------
 --- TEXT OBJECTS ---------------------------------------------------------------
 --------------------------------------------------------------------------------
