@@ -8,7 +8,13 @@ return {
 			indicator = { style = "none" },
 			separator_style = "thin",
 			show_buffer_close_icons = false,
-			unnamed_title = "Untitled",
+			name_formatter = function(args)
+				if args.name == "[No Name]" then
+					return "Untitled"
+				end
+
+				return args.name
+			end,
 		},
 	},
 }
