@@ -130,12 +130,8 @@ end)
 -- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
-		{ "Arc", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
-		{ "zoom.us", "Zoom", screens.laptop, put_left, nil, nil },
-		{ "Around", get_around_window, screens.laptop, hs.layout.left50, nil, nil },
-		{ "Around", "Around", screens.laptop, put_left, nil, nil },
 		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
