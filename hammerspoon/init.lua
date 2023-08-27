@@ -71,6 +71,22 @@ local function get_around_window(app_name)
 	return {}
 end
 
+--- Get's the Mimestream inbox window. We don't want to maximize draft emails
+--- since they are not full size.
+local function get_mimestream_window()
+	local app = hs.application.get("Mimestream")
+	if app == nil then
+		return {}
+	end
+
+	local inbox = app:findWindow("Inbox.*")
+	if inbox == nil then
+		return {}
+	end
+
+	return { inbox }
+end
+
 --- Puts a window on the left side of the screen without resizing it
 --- @param window hs.window
 local function put_left(window)
@@ -109,7 +125,7 @@ hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
@@ -121,7 +137,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
@@ -132,7 +148,7 @@ hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
@@ -145,7 +161,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", "Around", screens.laptop, put_center, nil, nil },
 		-- Laptop
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
@@ -161,7 +177,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
 		{ "Around", get_around_window, screens.primary, hs.layout.left50, nil, nil },
 		{ "Around", "Around", screens.primary, put_left, nil, nil },
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
@@ -174,7 +190,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
-		{ "Mimestream", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
