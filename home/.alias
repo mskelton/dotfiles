@@ -43,7 +43,7 @@ alias pup="pnpm up --filter='*' --latest"
 alias vim="nvim"
 alias vi="nvim"
 alias vis="VIMRUNTIME=$HOME/dev/neovim/runtime $HOME/dev/neovim/build/bin/nvim --luamod-dev"
-alias oldvim="/usr/bin/vim"
+alias ovim="/usr/bin/vim"
 
 # Use new bash
 alias bash="/usr/bin/env bash"
