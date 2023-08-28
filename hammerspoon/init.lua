@@ -157,9 +157,9 @@ hs.hotkey.bind(layer_key, "i", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
-		{ "zoom.us", "Zoom", screens.laptop, put_center, nil, nil },
+		{ "zoom.us", "Zoom", screens.secondary, put_center, nil, nil },
 		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", "Around", screens.laptop, put_center, nil, nil },
+		{ "Around", "Around", screens.secondary, put_center, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
