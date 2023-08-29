@@ -21,4 +21,3 @@ bulk=4
 # Taskwarrior TUI
 uda.taskwarrior-tui.task-report.show-info=false
 uda.taskwarrior-tui.shortcuts.1=~/.config/taskwarrior-tui/shortcuts/complete-learning.sh
-uda.taskwarrior-tui.shortcuts.2=~/.config/taskwarrior-tui/shortcuts/complete-tips.sh
