@@ -10,10 +10,11 @@ return {
 				preferences = {
 					autoImportFileExcludePatterns = {
 						"**/.next/*",
+						"**/@federato/deprecated-athena",
 						"**/@mobily/ts-belt",
 						"**/carbon-components-react",
-						"**/react-aria-components",
 						"**/postcss",
+						"**/react-aria-components",
 					},
 				},
 			},
