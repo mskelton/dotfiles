@@ -41,7 +41,9 @@ end
 --- Safely requires a lua module. Returns a boolean indicating if the module was
 --- successfully required and the module itself.
 --- @param module string
-M.safe_require = function(module)
+--- @param callback function|nil
+--- @return boolean, any
+M.safe_require = function(module, callback)
 	local ok, result = pcall(require, module)
 	if not ok then
 		vim.schedule(function()
@@ -50,6 +52,11 @@ M.safe_require = function(module)
 				vim.log.levels.ERROR
 			)
 		end)
+	end
+
+	-- If a callback was provided, then call it with the result
+	if ok and callback then
+		callback(result)
 	end
 
 	return ok, result

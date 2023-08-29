@@ -165,6 +165,11 @@ map("n", "<leader>on", function()
 			vim.api.nvim_buf_delete(buffer.bufnr, {})
 		end
 	end
+
+	-- Bufferline doesn't refresh automatically, so we have to manually refresh it
+	require("core.utils").safe_require("bufferline.ui", function(ui)
+		ui.refresh()
+	end)
 end, "Close other buffers")
 
 --------------------------------------------------------------------------------
