@@ -44,3 +44,17 @@ vim.api.nvim_create_user_command(
 	'cexpr system("flashlight --format=vi " . <q-args>)',
 	{ nargs = "*" }
 )
+
+--- Returns a function that copies the given expanded expression to the clipboard
+--- @param expression string
+local function copy(expression)
+	return function()
+		vim.cmd(':let @+ = expand("' .. expression .. '")')
+	end
+end
+
+-- Copy file path to the clipboard
+vim.api.nvim_create_user_command("CopyPath", copy("%"), {})
+vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), {})
+vim.api.nvim_create_user_command("CopyDir", copy("%:h"), {})
+vim.api.nvim_create_user_command("CopyAbsDir", copy("%:p:h"), {})
