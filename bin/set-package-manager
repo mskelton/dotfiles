@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Set the packageManager key in package.json to the latest version of the given
+# package manager.
+
+# Ensure there is a manifest file
+if [[ ! -f package.json ]]; then
+	echo "error: no manifest file found"
+	exit 1
+fi
+
+# Get the repo name for the given package manager
+if [[ $1 == 'npm' ]]; then
+	repo='npm/cli'
+elif [[ $1 == 'yarn' ]]; then
+	repo='yarnpkg/berry'
+elif [[ $1 == 'pnpm' ]]; then
+	repo='pnpm/pnpm'
+else
+	echo "error: unknown package manager '$1'"
+	exit 1
+fi
+
+# Get the latest version from GitHub
+version=$(
+	curl -s https://api.github.com/repos/$repo/releases/latest |
+		jq ".name" |
+		tr -d v\"
+)
+
+# Set the packageManager key in the manifest
+key="$packageManager@$version"
+jq ".packageManager = \"$key\"" package.json | sponge package.json
