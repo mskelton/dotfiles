@@ -23,6 +23,7 @@ aliases:
     --silent'
   squash: pr merge --squash
   st: status -o mskelton
+  undo: pr ready --undo
   url: pr view --json url -q .url
   w: repo view -w
 editor: nvim
