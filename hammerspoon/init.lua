@@ -7,7 +7,22 @@ hs.window.animationDuration = 0
 
 -- Hotkeys
 -- local hyper = { "cmd", "option", "ctrl", "shift" }
+-- local meh = { "ctrl", "option", "shift" }
 local layer_key = { "cmd", "ctrl" }
+
+-- Environment variables
+local is_work = os.getenv("WORK") == "1"
+
+--- Returns the first argument if at work, otherwise the second
+--- @param work any
+--- @param home any
+local function if_work(work, home)
+	if is_work then
+		return work
+	end
+
+	return home
+end
 
 -- Screens
 local screens = {
@@ -45,7 +60,7 @@ Install:andUse("AppLauncher", {
 		[";"] = "Slack",
 		m = "Chatter",
 		[","] = "Figma",
-		["."] = "Around",
+		["."] = if_work("Around", "Telegram"),
 		["/"] = "zoom.us",
 	},
 })
