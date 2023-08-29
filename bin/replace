@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Replace text in all files in the current directory
+
+rg "$1" -l | xargs sed -i '' "s/$1/$2/g"
