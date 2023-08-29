@@ -28,5 +28,5 @@ version=$(
 )
 
 # Set the packageManager key in the manifest
-key="$packageManager@$version"
+key="$1@$version"
 jq ".packageManager = \"$key\"" package.json | sponge package.json
