@@ -30,7 +30,7 @@ curl -sL https://mskelton.github.io/termicons/termicons.ttf -o ~/Library/Fonts/t
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o ~/Library/Fonts/codicon.ttf
 
 # Work config
-if [[ -n "$WORK" ]]; then
+if [[ -f "$HOME/.work" ]]; then
 	link federato/bin ~/.local/bin-work
 	link federato/gh/config.yml ~/.config/gh/config.yml
 	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml

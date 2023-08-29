@@ -73,7 +73,7 @@ $brew install ${formula[@]}
 $brew install --cask ${casks[@]}
 
 # Personal/work casks
-if [[ -z "$WORK" ]]; then
+if [[ -f "$HOME/.work" ]]; then
 	$brew install \
 		teleport
 

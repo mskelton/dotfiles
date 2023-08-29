@@ -4,7 +4,7 @@ My personal settings and dotfiles.
 
 ## Installation
 
-_If on a work device, run `export WORK=1` before the following commands._
+_If on a work device, run `touch ~/.work` before the following commands._
 
 ```bash
 xcode-select --install
