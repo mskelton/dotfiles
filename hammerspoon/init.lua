@@ -233,9 +233,9 @@ end)
 
 -- Audio presets
 hs.hotkey.bind({ "cmd", "ctrl" }, "f9", function()
-	hs.audiodevice.defaultOutputDevice():setOutputVolume(40)
+	hs.audiodevice.defaultOutputDevice():setOutputVolume(25)
 end)
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "f10", function()
-	hs.audiodevice.defaultOutputDevice():setOutputVolume(80)
+	hs.audiodevice.defaultOutputDevice():setOutputVolume(60)
 end)
