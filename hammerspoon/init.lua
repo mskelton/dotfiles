@@ -10,8 +10,20 @@ hs.window.animationDuration = 0
 -- local meh = { "ctrl", "option", "shift" }
 local layer_key = { "cmd", "ctrl" }
 
--- Environment variables
-local is_work = os.getenv("WORK") == "1"
+--- Check if a file exists at the given path
+--- @param filename string
+local function file_exists(filename)
+	local file = io.open(filename, "r")
+	if file then
+		file:close()
+		return true
+	end
+
+	return false
+end
+
+-- Check if we are at work by looking for a ~/.work file
+local is_work = file_exists(os.getenv("HOME") .. "/.work")
 
 --- Returns the first argument if at work, otherwise the second
 --- @param work any
@@ -56,11 +68,11 @@ Install:andUse("AppLauncher", {
 	hotkeys = {
 		j = "Arc",
 		k = "kitty",
-		l = "Mimestream",
-		[";"] = "Slack",
+		l = if_work("Slack", "Telegram"),
+		[";"] = "Mimestream",
 		m = "Chatter",
 		[","] = "Figma",
-		["."] = if_work("Around", "Telegram"),
+		["."] = "Around",
 		["/"] = "zoom.us",
 	},
 })
