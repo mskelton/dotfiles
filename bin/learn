@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Completes TaskWarrior tasks that have the +learn tag
+
+task +learn +PENDING done
