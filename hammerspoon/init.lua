@@ -43,6 +43,10 @@ Install:andUse("AppLauncher", {
 		k = "kitty",
 		l = "Mimestream",
 		[";"] = "Slack",
+		m = "Chatter",
+		[","] = "Figma",
+		["."] = "Around",
+		["/"] = "zoom.us",
 	},
 })
 
