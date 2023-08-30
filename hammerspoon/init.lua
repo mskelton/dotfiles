@@ -1,4 +1,5 @@
 --- @diagnostic disable: undefined-global
+--- vim: set colorcolumn=100:
 
 hs.console.consoleFont("JetBrains Mono")
 
@@ -85,21 +86,26 @@ local function apply_layout(...)
 	hs.layout.apply(layouts[count])
 end
 
---- Get's the active Around meeting window
-local function get_around_window(app_name)
-	local app = hs.application.get(app_name)
-	if app == nil then
-		return {}
-	end
+--- Places the Around window in the desired position. This is required since Around uses the same
+--- name for both the lobby and the meeting window, so we have to use a heuristic to determine
+--- if we are placing the lobby or the main meeting window.
+local function place_around(lobby, meeting)
+	--- @param window hs.window
+	return function(window)
+		local placement = meeting
+		local size = window:size()
 
-	-- For some reason, when there is only one window, Around is the name of the
-	-- lobby, but when in a meeting, it's the name of the meeting. I only ever
-	-- want to move the meeting window.
-	if #app:allWindows() == 2 then
-		return { app:getWindow("Around") }
-	end
+		-- If the window is small, it's probably the lobby
+		if size.h < 800 or size.w < 1000 then
+			placement = lobby
+		end
 
-	return {}
+		if type(placement) == "function" then
+			return placement(window)
+		end
+
+		return placement
+	end
 end
 
 --- Get's the Mimestream inbox window. We don't want to maximize draft emails
@@ -166,7 +172,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -189,8 +195,14 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom", screens.secondary, put_center, nil, nil },
-		{ "Around", get_around_window, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", "Around", screens.secondary, put_center, nil, nil },
+		{
+			"Around",
+			nil,
+			screens.secondary,
+			place_around(put_center, hs.layout.maximized),
+			nil,
+			nil,
+		},
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -206,8 +218,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
-		{ "Around", get_around_window, screens.primary, hs.layout.left50, nil, nil },
-		{ "Around", "Around", screens.primary, put_left, nil, nil },
+		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
@@ -216,8 +227,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
-		{ "Around", get_around_window, screens.primary, hs.layout.left50, nil, nil },
-		{ "Around", "Around", screens.primary, put_left, nil, nil },
+		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		-- Laptop
