@@ -54,7 +54,7 @@ local function copy(expression)
 end
 
 -- Copy file path to the clipboard
-vim.api.nvim_create_user_command("CopyPath", copy("%"), {})
-vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), {})
-vim.api.nvim_create_user_command("CopyDir", copy("%:h"), {})
-vim.api.nvim_create_user_command("CopyAbsDir", copy("%:p:h"), {})
+vim.api.nvim_create_user_command("CopyPath", copy("%"), { bar = true })
+vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), { bar = true })
+vim.api.nvim_create_user_command("CopyDir", copy("%:h"), { bar = true })
+vim.api.nvim_create_user_command("CopyAbsDir", copy("%:p:h"), { bar = true })

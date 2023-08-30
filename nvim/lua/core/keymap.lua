@@ -116,6 +116,17 @@ map("n", "<leader>si", "!ii<bs>sort<cr>", {
 	remap = true,
 })
 
+-- Copy file path to clipboard
+map(
+	nv,
+	"<leader>cp",
+	"<cmd>CopyPath | echo 'File path copied to clipboard!'<cr>",
+	"Copy file path to clipboard"
+)
+
+-- Open man page for word under cursor
+map(nv, "<leader>k", "<cmd>Man<cr>", "Open man page")
+
 --------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -231,12 +242,3 @@ map("o", "il", ":normal vil<cr>", { remap = true })
 -------------------------
 map("v", "an", ":<C-U>silent! lua ClassName()<cr>")
 map("o", "an", ":normal van<cr>", { remap = true })
-
--- Open netrw
--------------
--- map(
--- 	nv,
--- 	"<leader>fd",
--- 	"<cmd>Lex %:p:h | vertical resize 30<cr>",
--- 	"Open file explorer"
--- )
