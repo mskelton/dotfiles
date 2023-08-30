@@ -31,6 +31,7 @@ local formatters = {
 	"gopls",
 	"null-ls",
 	"dartls",
+	"prismals",
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
