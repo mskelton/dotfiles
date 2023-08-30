@@ -162,6 +162,9 @@ hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Zoom", "Zoom", screens.primary, put_center, nil, nil },
+		{ "Around", nil, screens.primary, place_around(put_center, hs.layout.maximized), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
@@ -185,6 +188,9 @@ hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
+		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
+		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
