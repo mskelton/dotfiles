@@ -40,7 +40,7 @@ o.number = true
 o.relativenumber = true
 
 -- Hide the intro message
-o.shortmess = o.shortmess + "I"
+o.shortmess = o.shortmess + "atTI"
 
 -- Use the same spacing for tabs and spaces. While more confusing perhaps which
 -- is used, I never actually care which is used. Go uses tabs, Prettier uses
