@@ -55,6 +55,12 @@ map(nv, ",c", "<cmd>clo<cr>", "Close buffer")
 
 -- Close window or buffer
 map(nv, ",w", function()
+	-- Auto-close the quickfix list if it's open
+	if #vim.fn.getqflist() > 0 and vim.o.buftype ~= "quickfix" then
+		vim.cmd("cclose")
+	end
+
+	-- Close the window if there are multiple windows open
 	if vim.api.nvim_win_get_number(0) > 1 then
 		vim.cmd("close")
 	else
@@ -142,6 +148,10 @@ map(
 
 -- Open man page for word under cursor
 map(nv, "<leader>k", "<cmd>Man<cr>", "Open man page")
+
+-- TODO use this mapping
+-- I don't use = for indenting lines, I use auto formatters for that.
+-- map(nv, "=", "", { desc = "", nowait = true })
 
 --------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
