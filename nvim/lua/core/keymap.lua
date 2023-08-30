@@ -100,6 +100,22 @@ map("n", "<leader>oh", function()
 	end)
 end, "Reopen help")
 
+-- Close other buffers. Like :only but for buffers.
+map("n", "<leader>on", function()
+	local current_buffer = vim.fn.bufnr("%")
+
+	for _, buffer in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+		if buffer.bufnr ~= current_buffer then
+			vim.api.nvim_buf_delete(buffer.bufnr, {})
+		end
+	end
+
+	-- Bufferline doesn't refresh automatically, so we have to manually refresh it
+	require("core.utils").safe_require("bufferline.ui", function(ui)
+		ui.refresh()
+	end)
+end, "Close other buffers")
+
 -- Open URLs under the cursor
 map("n", "gx", function()
 	require("core.utils").open_url(vim.fn.expand("<cWORD>"))
@@ -131,16 +147,12 @@ map(nv, "<leader>k", "<cmd>Man<cr>", "Open man page")
 --- WINDOW ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
 map("n", "<leader>w=", "<C-w>=", "Resize windows equally")
-map("n", "<leader>w+", "<C-w>+", "Increase window height")
-map("n", "<leader>w-", "<C-w>-", "Decrease window height")
-map("n", "<leader>w>", "<C-w>>", "Increase window width")
-map("n", "<leader>w<", "<C-w><", "Decrease window width")
 map("n", "<leader>wh", "<C-w>H", "Move current window to the far left")
 map("n", "<leader>wl", "<C-w>L", "Move current window to the far right")
 map("n", "<leader>wk", "<C-w>K", "Move current window to the very top")
 map("n", "<leader>wj", "<C-w>J", "Move current window to the very bottom")
 map("n", "<leader>wo", "<C-w>o", "Make current window the only window")
-map("n", "<leader>wp", "<C-w>P", "Go to previous window")
+map("n", "<leader>wp", "<C-w>p", "Go to previous window")
 
 -------------------------------------------------------------------------------
 --- OPERATIONS -----------------------------------------------------------------
@@ -167,21 +179,6 @@ map(
 	"<cmd>s/props/{ ...props }/<cr>",
 	"Replace props with spread props"
 )
-
-map("n", "<leader>on", function()
-	local current_buffer = vim.fn.bufnr("%")
-
-	for _, buffer in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
-		if buffer.bufnr ~= current_buffer then
-			vim.api.nvim_buf_delete(buffer.bufnr, {})
-		end
-	end
-
-	-- Bufferline doesn't refresh automatically, so we have to manually refresh it
-	require("core.utils").safe_require("bufferline.ui", function(ui)
-		ui.refresh()
-	end)
-end, "Close other buffers")
 
 --------------------------------------------------------------------------------
 --- TEXT OBJECTS ---------------------------------------------------------------
