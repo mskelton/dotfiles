@@ -15,7 +15,7 @@ export function timeAgo(date: string) {
     if (range < Math.abs(secondsElapsed)) {
       return formatter.format(
         Math.round(secondsElapsed / range),
-        unit as Intl.RelativeTimeFormatUnit
+        unit as Intl.RelativeTimeFormatUnit,
       )
     }
   }

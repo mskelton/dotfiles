@@ -23,7 +23,7 @@ const MUTATION = (type: string) => `
 
 function getStateIcon(
   state: PullRequest["state"],
-  isDraft: boolean
+  isDraft: boolean,
 ): Image.ImageLike {
   return state === "CLOSED"
     ? "icons/git-pull-request-closed.png"
