@@ -1,3 +1,16 @@
+local function diff_source()
+	--- @diagnostic disable-next-line: undefined-field
+	local gitsigns = vim.b.gitsigns_status_dict
+
+	if gitsigns then
+		return {
+			added = gitsigns.added,
+			modified = gitsigns.changed,
+			removed = gitsigns.removed,
+		}
+	end
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
@@ -89,6 +102,7 @@ return {
 				lualine_x = {
 					{
 						"diff",
+						diff_source = diff_source,
 						diff_color = {
 							added = { fg = colors.green },
 							modified = { fg = colors.orange },
