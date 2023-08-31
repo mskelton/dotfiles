@@ -51,4 +51,4 @@ osascript -e "
   tell application \"$browser\"
     $(_wrap "execute javascript \"$code\"")
   end tell
-" >/dev/null
+" >/dev/null 2>&1 &
