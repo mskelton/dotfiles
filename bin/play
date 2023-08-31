@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Play music on YouTube Music
+
+js --url music.youtube.com \
+	"document.querySelector('#play-pause-button[aria-label=Play]').click()"
