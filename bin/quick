@@ -5,15 +5,20 @@ repo="--repo mskelton/dotfiles"
 cmd="$1"
 shift
 
-# Print help if no args are provided
-if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
+_print_help() {
 	echo 'Usage: quick [command] [args]'
 	echo ''
 	echo 'Commands:'
 	echo '  list'
 	echo '  add [title]'
 	echo '  close [issue number]'
+	echo '  view [issue number]'
 	exit 0
+}
+
+# Print help if no args are provided
+if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
+	_print_help
 fi
 
 if [[ "$cmd" == 'list' ]]; then
@@ -24,7 +29,11 @@ elif [[ "$cmd" == 'close' ]]; then
 	for num in "$@"; do
 		gh issue close $repo $num
 	done
+elif [[ "$cmd" == 'view' ]]; then
+	for num in "$@"; do
+		gh issue view -w $repo $num
+	done
 else
-	echo "Unknown command \"$cmd\" for \"quick\"."
+	_print_help
 	exit 1
 fi
