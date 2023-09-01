@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Show the current time in my coworker's timezones
+
+# Colors
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+# Timezones
+current=CST
+tzs=(
+	"PST" "America/Los_Angeles"
+	"CST" "America/Chicago"
+	"EST" "America/Toronto"
+)
+
+for ((i = 0; i < ${#tzs[@]}; i += 2)); do
+	abbr=${tzs[$i]}
+	tz=${tzs[$i + 1]}
+
+	# Show the current timezone in blue
+	if [[ "$abbr" == "$current" ]]; then
+		printf "$BLUE"
+	fi
+
+	printf "$abbr: "
+	TZ="$tz" date +"%I:%M %p"
+
+	# Reset the color before the next timezone
+	if [[ "$abbr" == "$current" ]]; then
+		printf "$NC"
+	fi
+done
