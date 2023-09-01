@@ -88,7 +88,16 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Rename the word under the cursor
-map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
+map("n", "<leader>rw", function()
+	local value = vim.fn.expand("<cword>")
+
+	vim.ui.input({
+		prompt = "Rename word",
+		default = value,
+	}, function(new_value)
+		vim.cmd("%s/" .. value .. "/" .. new_value .. "/gI")
+	end)
+end, {
 	silent = false,
 	desc = "Rename the word under the cursor",
 })
