@@ -3,5 +3,5 @@
 return {
 	parse("cl", 'fmt.Println("$1")$0'),
 	parse("fn", "func $1($2) {\n\t$0\n}"),
-	parse("eif", "if err != nil {\n\treturn err\n}$0"),
+	parse("ife", "if err != nil {\n\treturn err\n}$0"),
 }
