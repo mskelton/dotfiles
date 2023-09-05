@@ -9,6 +9,9 @@ include dark-256.theme
 news.version=2.6.0
 verbose=affected,blank,context,edit,header,footnote,label,new-id,project,special,sync,override
 
+# Disable case-sensitive search
+search.case.sensitive=no
+
 # Reports
 report.next.filter=status:pending -WAITING -BLOCKED limit:page
 
