@@ -9,6 +9,7 @@ return {
 	parse("bc", "/**\n * $0\n */"),
 	-- Functions
 	parse("fn", "function $1($2) {\n\t$0\n}"),
+	parse("efn", "export function $1($2) {\n\t$0\n}"),
 	s(
 		"afn",
 		fmt("() => {}", {
