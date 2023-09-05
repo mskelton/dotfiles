@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Alias for lazygit
 
-lg "$@"
+lazygit "$@"
