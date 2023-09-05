@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Pull default branch and clean up deleted branches
+
+set -euo pipefail
+
+git checkout $(git default)
+git pull
+git fetch -p
+
+# Delete local branches that have been deleted on remote
+git branch -vv |
+	grep 'origin/.*: gone]' |
+	grep -v '^+' |
+	awk '{print $1}' |
+	xargs git branch -D

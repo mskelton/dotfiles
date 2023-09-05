@@ -10,7 +10,6 @@ alias grd="git rd"
 alias grl="git rl"
 
 # Git
-alias pd="git pd"
 alias pub="git pub"
 alias pull="git pull"
 alias push="git push"
