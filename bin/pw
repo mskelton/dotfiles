@@ -6,7 +6,7 @@ function one {
 
 	if [ -z "$lines" ]; then
 		return 1
-	elif [ $(echo "$lines" | wc -w) -eq 1 ]; then
+	elif [ "$(echo "$lines" | wc -w)" -eq 1 ]; then
 		echo "$lines"
 	else
 		echo "$lines" | fzf

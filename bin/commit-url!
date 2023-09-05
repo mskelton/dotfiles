@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Copy the GitHub URL of a commit
 
-commit-url $1 | pbcopy
+commit-url "$1" | pbcopy

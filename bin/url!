@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Opens any URLs in the input stream
 
-while IFS= read line; do
-	echo $line | url | xargs open
+while IFS= read -r line; do
+	echo "$line" | url | xargs open
 done

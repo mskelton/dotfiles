@@ -6,7 +6,7 @@
 shopt -s nullglob
 
 function find_dirs() {
-	find -E $HOME/dev $HOME/dev/*.git -mindepth 1 -maxdepth 1 -type d \
+	find -E "$HOME/dev" "$HOME/dev/*.git" -mindepth 1 -maxdepth 1 -type d \
 		-regex ".*/(hooks|info|misc|objects|logs|worktrees|refs)" -prune \
 		-o -type d \
 		-print
@@ -23,9 +23,8 @@ if [[ -z "$selected" ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if ! tmux has-session -t=$selected_name 2>/dev/null; then
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
 	tmux new-session -ds "$selected_name" -c "$selected"
 fi
 

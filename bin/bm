@@ -25,11 +25,11 @@ function list_bookmarks {
 }
 
 function filter_bookmarks {
-	jq -c --arg key $1 --arg value "$2" 'select(.[$key] | startswith($value))'
+	jq -c --arg key "$1" --arg value "$2" 'select(.[$key] | startswith($value))'
 }
 
 function find_bookmark {
-	jq -c --arg key $1 --arg value "$2" 'select(.[$key] == $value)'
+	jq -c --arg key "$1" --arg value "$2" 'select(.[$key] == $value)'
 }
 
 if [[ -z $BOOKMARKS_PATH ]]; then
@@ -47,7 +47,7 @@ if [[ "$slug" == '--json' ]]; then
 fi
 
 # Filter the bookmarks by the provided slug
-bookmarks=$(list_bookmarks | filter_bookmarks 'slug' $slug)
+bookmarks=$(list_bookmarks | filter_bookmarks 'slug' "$slug")
 
 # If no bookmarks matched the query, exit early
 if [[ -z "$bookmarks" ]]; then
@@ -69,7 +69,7 @@ name=$(echo -e "$bookmarks" | jq -r '.name' | fzf --no-info)
 # Find the bookmark by name and open the URL in Chrome. If no bookmark is
 # selected from the list, exit with an error.
 if [[ -n "$name" ]]; then
-	echo "$bookmarks" | find_bookmark 'name' $name | jq '.url' | xargs open
+	echo "$bookmarks" | find_bookmark 'name' "$name" | jq '.url' | xargs open
 else
 	exit 1
 fi

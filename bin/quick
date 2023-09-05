@@ -13,25 +13,25 @@ _print_help() {
 	echo '  add [title]'
 	echo '  close [issue number]'
 	echo '  view [issue number]'
-	exit 0
 }
 
 # Print help if no args are provided
 if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 	_print_help
+	exit 0
 fi
 
 if [[ "$cmd" == 'list' ]]; then
-	gh issue list $repo
+	gh issue list "$repo"
 elif [[ "$cmd" == 'add' ]]; then
-	gh issue create $repo -a "@me" -t "$*" -b ''
+	gh issue create "$repo" -a "@me" -t "$*" -b ''
 elif [[ "$cmd" == 'close' ]]; then
 	for num in "$@"; do
-		gh issue close $repo $num
+		gh issue close "$repo" "$num"
 	done
 elif [[ "$cmd" == 'view' ]]; then
 	for num in "$@"; do
-		gh issue view -w $repo $num
+		gh issue view -w "$repo" "$num"
 	done
 else
 	_print_help

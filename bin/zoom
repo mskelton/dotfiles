@@ -2,4 +2,4 @@
 # Increase or decrease the font size of the active Kitty window. If no size is
 # specified, it resets to the default font size.
 
-kitty @ set-font-size ${1:-0}
+kitty @ set-font-size "${1:-0}"

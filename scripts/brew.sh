@@ -35,6 +35,7 @@ formula=(
 	pngpaste
 	rename
 	ripgrep
+	shellcheck
 	sponge
 	starship
 	stylua

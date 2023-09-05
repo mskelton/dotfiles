@@ -10,7 +10,7 @@ url=$(git config --get remote.origin.url)
 # take the git@hostname.com:account/repo.git format and turn it into
 # https://hostname.com/account/repo/commit/...
 if [[ $url != "https://"* ]]; then
-	url=$(echo $url | sed 's/\.git$//' | sed 's/:/\//' | sed 's/^git@/https:\/\//')
+	url=$(echo "$url" | sed 's/\.git$//' | sed 's/:/\//' | sed 's/^git@/https:\/\//')
 fi
 
 echo "$url/commit/$commit"

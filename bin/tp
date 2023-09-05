@@ -7,8 +7,8 @@ function list_sessions {
 
 # Loop over existing session to check if the requested session already exists
 function find_session {
-	while IFS= read line; do
-		IFS=' ' read -a session <<<"$line"
+	while IFS= read -r line; do
+		IFS=' ' read -r -a session <<<"$line"
 
 		if [[ "$1" == "${session[1]}" || "$2" == "${session[2]}" ]]; then
 			echo "${session[0]}"
@@ -33,11 +33,11 @@ if [[ ! -d "$resolved_dir" ]]; then
 fi
 
 # If no name was provided, use the directory name
-name="${2:-$(basename $resolved_dir | sed "s/^\.\$/$(basename $(pwd))/" | sed 's/[^A-z\d]/-/g')}"
+name="${2:-$(basename "$resolved_dir" | sed "s/^\.\$/$(basename "$(pwd)")/" | sed 's/[^A-z\d]/-/g')}"
 session_id=$(list_sessions | find_session "$name" "$resolved_dir")
 
 if [[ -n $session_id ]]; then
-	tmux-switch -t $session_id
+	tmux-switch -t "$session_id"
 else
 	if [[ -z "$TMUX" ]]; then
 		# If we are outside a Tmux session, we can create a new session and attach
