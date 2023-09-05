@@ -9,6 +9,7 @@ local function get_hook_name(args, snip)
 end
 
 return {
+	parse("rec", "Record<string, unknown>$0"),
 	s(
 		"rp",
 		fmt(snip_utils.export_interface, { f(snip_utils.get_props_name), i(1) })
