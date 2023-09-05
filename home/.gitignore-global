@@ -10,8 +10,5 @@
 # are primarily for my setup.
 .ignore
 
-# Temporary ignores for now, will possibly contribute back later
-.graphqlrc.yml
-
 # Vim quickfix lists
 *.err
