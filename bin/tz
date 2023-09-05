@@ -19,7 +19,7 @@ for ((i = 0; i < ${#tzs[@]}; i += 2)); do
 
 	# Show the current timezone in blue
 	if [[ "$abbr" == "$current" ]]; then
-		printf '%s' "$BLUE"
+		printf '%b' "$BLUE"
 	fi
 
 	printf "%s: " "$abbr"
@@ -27,6 +27,6 @@ for ((i = 0; i < ${#tzs[@]}; i += 2)); do
 
 	# Reset the color before the next timezone
 	if [[ "$abbr" == "$current" ]]; then
-		printf "%s" "$NC"
+		printf "%b" "$NC"
 	fi
 done
