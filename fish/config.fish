@@ -3,6 +3,9 @@ set -g fish_greeting
 # Starship theme
 starship init fish | source
 
+# Setup Homebrew env
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 source $HOME/.alias
 source $HOME/.config/fish/colors.fish
 source $HOME/.config/fish/abbreviations.fish
@@ -15,9 +18,6 @@ for f in custom personal work
     set file $HOME/.config/fish/$f.fish
     test -f $file; and source $file
 end
-
-# Setup Homebrew env
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Setup pyenv
 # if test -d "$PYENV_ROOT"
