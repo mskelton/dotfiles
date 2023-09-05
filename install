@@ -14,6 +14,7 @@ link hammerspoon ~/.hammerspoon
 link byte/config.yaml ~/.config/byte/config.yaml
 link emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
 link pomo/config.json ~/.config/pomo/config.json
 link starship.toml ~/.config/starship.toml
 
