@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Quickly create a new issue
 
-repo="--repo mskelton/dotfiles"
+flags=(--repo mskelton/dotfiles)
 cmd="$1"
 shift
 
@@ -22,16 +22,31 @@ if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 fi
 
 if [[ "$cmd" == 'list' ]]; then
-	gh issue list "$repo"
+	gh issue list "${flags[@]}"
 elif [[ "$cmd" == 'add' ]]; then
-	gh issue create "$repo" -a "@me" -t "$*" -b ''
+	gh issue create "${flags[@]}" -a "@me" -t "$*" -b ''
 elif [[ "$cmd" == 'close' ]]; then
+	# Close all if 'all' is passed
+	if [[ "$1" == 'all' ]]; then
+		items=$(gh issue list "${flags[@]}" | awk '{print $1}')
+
+		# Exit if no issues are found
+		if [[ -z "$items" ]]; then
+			echo 'No issues to close'
+			exit 0
+		fi
+
+		# shellcheck disable=SC2086
+		gh issue close "${flags[@]}" $items
+		exit 0
+	fi
+
 	for num in "$@"; do
-		gh issue close "$repo" "$num"
+		gh issue close "${flags[@]}" "$num"
 	done
 elif [[ "$cmd" == 'view' ]]; then
 	for num in "$@"; do
-		gh issue view -w "$repo" "$num"
+		gh issue view -w "${flags[@]}" "$num"
 	done
 else
 	_print_help
