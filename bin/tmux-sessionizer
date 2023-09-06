@@ -6,7 +6,7 @@
 shopt -s nullglob
 
 function find_dirs() {
-	find -E "$HOME/dev" "$HOME/dev/*.git" -mindepth 1 -maxdepth 1 -type d \
+	find -E "$HOME/dev" "$HOME"/dev/*.git -mindepth 1 -maxdepth 1 -type d \
 		-regex ".*/(hooks|info|misc|objects|logs|worktrees|refs)" -prune \
 		-o -type d \
 		-print
