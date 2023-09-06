@@ -75,9 +75,6 @@ $brew install --cask "${casks[@]}"
 
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
-	$brew install \
-		teleport
-
 	$brew install --cask \
 		android-studio \
 		quicken
