@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2016
 
 # Enable dark theme
 defaults write -g AppleInterfaceStyle -string 'Dark'
 
 # Set screenshot location to ~/Downloads
-defaults write com.apple.screencapture location -string '~/Downloads'
+defaults write com.apple.screencapture location -string "$HOME/Downloads"
 
 # Disable screenshot thumbnail after capture
 defaults write com.apple.screencapture show-thumbnail -bool false
@@ -45,6 +46,9 @@ defaults write com.apple.dock tilesize -int 45
 # Remove downloads and recent apps from the dock
 defaults write com.apple.Dock show-recents -int 0
 defaults write com.apple.Dock static-others '()'
+
+# Increase the delay when showing/hiding the dock
+defaults write com.apple.dock "autohide-delay" -float 2
 
 ################################################################################
 ### TRACKPAD ###################################################################
