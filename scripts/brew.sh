@@ -70,8 +70,8 @@ casks=(
 )
 
 # Install formula and casks
-$brew install ${formula[@]}
-$brew install --cask ${casks[@]}
+$brew install "${formula[@]}"
+$brew install --cask "${casks[@]}"
 
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
