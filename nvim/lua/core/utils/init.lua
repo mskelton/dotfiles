@@ -1,7 +1,7 @@
 local M = {}
 
 --- Sets a keymap
---- @param mode string
+--- @param mode string|table
 --- @param key string
 --- @param cmd string|function
 --- @param opts_or_desc table|string|nil

@@ -7,12 +7,6 @@ augroup disable_continuation_comments
   au BufEnter * set formatoptions-=c | set formatoptions-=o
 augroup END
 
-" Automatically source core nvim config when saved.
-augroup auto_source_dotfiles
-  au!
-  au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
-augroup END
-
 " Enable search highlighting while searching
 augroup incsearch_hl
   au!
