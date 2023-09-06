@@ -198,3 +198,10 @@ map(
 	"<cmd>s/props/{ ...props }/<cr>",
 	"Replace props with spread props"
 )
+
+map(
+	"n",
+	"<leader>uc",
+	[[<cmd>0s/.*/"use client"\r\r&<cr>]],
+	'Add "use client" directive to file'
+)
