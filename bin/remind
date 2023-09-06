@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Simple wrapper around the reminders CLI
+
+list="Reminders"
+command="$1"
+shift
+
+# List is more intuitive than show
+if [ "$command" == 'list' ]; then
+	reminders show $list
+	exit 0
+fi
+
+# If the command accepts a list, pass it automatically
+if [[ "$command" =~ ^(add|complete|uncomplete|delete|show|edit)$ ]]; then
+	reminders "$command" $list "$@"
+else
+	reminders "$command" "$@"
+fi

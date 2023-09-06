@@ -28,6 +28,7 @@ formula=(
 	go
 	jesseduffield/lazygit/lazygit
 	jq
+	keith/formulae/reminders-cli
 	luarocks
 	neovim
 	ninja
