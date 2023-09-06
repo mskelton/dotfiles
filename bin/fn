@@ -5,4 +5,6 @@ branches=$(git for-each-ref --sort=-committerdate --format="%(refname:short)" re
 current_branch=$(git symbolic-ref --short HEAD)
 branch=$(echo "$branches" | grep -v "^$current_branch$" | fzf +m)
 
-git co "$branch"
+if [[ -n "$branch" ]]; then
+	git co "$branch"
+fi
