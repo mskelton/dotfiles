@@ -76,10 +76,10 @@ $brew install --cask "${casks[@]}"
 
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
+	brew install --cask \
+		slack
+else
 	$brew install --cask \
 		android-studio \
 		quicken
-else
-	brew install --cask \
-		slack
 fi
