@@ -26,22 +26,20 @@ if [[ "$cmd" == 'list' ]]; then
 elif [[ "$cmd" == 'add' ]]; then
 	gh issue create "${flags[@]}" -a "@me" -t "$*" -b ''
 elif [[ "$cmd" == 'close' ]]; then
+	items="$*"
+
 	# Close all if 'all' is passed
 	if [[ "$1" == 'all' ]]; then
 		items=$(gh issue list "${flags[@]}" | awk '{print $1}')
+	fi
 
-		# Exit if no issues are found
-		if [[ -z "$items" ]]; then
-			echo 'No issues to close'
-			exit 0
-		fi
-
-		# shellcheck disable=SC2086
-		gh issue close "${flags[@]}" $items
+	# Exit if no issues are found
+	if [[ -z "$items" ]]; then
+		echo 'No issues to close'
 		exit 0
 	fi
 
-	for num in "$@"; do
+	for num in $items; do
 		gh issue close "${flags[@]}" "$num"
 	done
 elif [[ "$cmd" == 'view' ]]; then
