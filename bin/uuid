@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Creates a new UUID and prints it
+
+uuidgen | tr 'A-F' 'a-f'
