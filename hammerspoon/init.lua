@@ -170,9 +170,9 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
+		{ "Arc", nil, screens.primary, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
 		-- Secondary
-		{ "Arc", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
