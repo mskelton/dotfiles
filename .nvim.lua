@@ -2,16 +2,17 @@
 
 vim.cmd([[
 
-" Automatically source core nvim config when saved.
-augroup auto_source
+augroup dotfiles
   au!
-  au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
-augroup END
 
-" Automatically make bin files executable when saved.
-augroup auto_chmod
-  au!
+  " Automatically source core nvim config when saved.
+  au BufWritePost */nvim/lua/core/*\(plugins\)\@<!.lua source <afile>
+
+  " Automatically make bin files executable when saved.
   au BufWritePost */bin/* silent !chmod +x <afile>
+
+  " Binary file template
+  au BufNewFile */bin/* 0r ./templates/bin
 augroup END
 
 ]])

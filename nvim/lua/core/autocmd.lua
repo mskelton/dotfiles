@@ -1,25 +1,23 @@
 vim.cmd([[
 
-" Disable continuation comments when using o/O. CR will still add the
-" comment leader.
-augroup disable_continuation_comments
+augroup mskelton
   au!
-  au BufEnter * set formatoptions-=c | set formatoptions-=o
-augroup END
 
-" Enable search highlighting while searching
-augroup incsearch_hl
-  au!
+  " Disable continuation comments when using o/O. CR will still add the
+  " comment leader.
+  au BufEnter * set formatoptions-=c | set formatoptions-=o
+
+  " Enable search highlighting while searching
   au CmdlineEnter /,\? :set hlsearch
   au CmdlineLeave /,\? :set nohlsearch
-augroup END
 
-" Automatically restart prettierd when .prettierc is saved. This helps
-" especially when creating new Prettier config files which usually fails to
-" be loaded by prettierd.
-augroup restart_prettierd
-  au!
+  " Automatically restart prettierd when .prettierc is saved. This helps
+  " especially when creating new Prettier config files which usually fails to
+  " be loaded by prettierd.
   au BufWritePost .prettierrc,.prettierignore,prettier.config.* silent !pkill prettierd
+
+  " Binary file template
+  au BufNewFile *.sh 0r ./templates/bin
 augroup END
 
 ]])
