@@ -73,6 +73,7 @@ return {
 					"lua",
 					"markdown",
 					"markdown_inline",
+					"ocaml",
 					"prisma",
 					"python",
 					"query",

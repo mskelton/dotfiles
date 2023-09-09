@@ -27,10 +27,11 @@ end
 
 local formatters = {
 	"clangd",
+	"dartls",
 	"eslint",
 	"gopls",
 	"null-ls",
-	"dartls",
+	"ocamllsp",
 	"prismals",
 }
 

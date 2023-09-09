@@ -94,6 +94,11 @@ M.setup_servers = function()
 		},
 	})
 
+	-- OCaml
+	M.server("ocamllsp", {
+		root_dir = util.root_pattern("*.opam", "dune-project", "dune-workspace"),
+	})
+
 	M.server("jsonls", {
 		settings = {
 			json = { schemas = require("lsp.json-schemas") },
