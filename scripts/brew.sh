@@ -32,6 +32,7 @@ formula=(
 	luarocks
 	neovim
 	ninja
+	opam
 	p7zip
 	pngpaste
 	rename

@@ -19,7 +19,5 @@ for f in custom personal work
     test -f $file; and source $file
 end
 
-# Setup pyenv
-# if test -d "$PYENV_ROOT"
-#   pyenv init - | source
-# end
+# Setup opam
+source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
