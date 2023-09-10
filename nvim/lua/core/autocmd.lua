@@ -17,7 +17,7 @@ augroup mskelton
   au BufWritePost .prettierrc,.prettierignore,prettier.config.* silent !pkill prettierd
 
   " Binary file template
-  au BufNewFile *.sh 0r ./templates/bin
+  au BufNewFile *.sh 0r ~/.skeletons/bin
 augroup END
 
 ]])

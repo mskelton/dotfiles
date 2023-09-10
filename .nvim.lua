@@ -12,7 +12,7 @@ augroup dotfiles
   au BufWritePost */bin/* silent !chmod +x <afile>
 
   " Binary file template
-  au BufNewFile */bin/* 0r ./templates/bin
+  au BufNewFile */bin/* 0r ~/.skeletons/bin
 augroup END
 
 ]])
