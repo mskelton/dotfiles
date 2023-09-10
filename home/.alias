@@ -29,10 +29,9 @@ alias tk="tmux-kill-switch"
 alias t="task"
 alias tw="clear && t"
 
-# Yarn
+# Package managers
+alias b="bun"
 alias y="yarn"
-
-# pnpm
 alias pn="pnpm"
 alias pout="pnpm outdated --format=list"
 alias pup="pnpm up --filter='*' --latest"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Alias for bun
+
+bun "$@"
