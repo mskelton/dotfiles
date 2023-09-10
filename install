@@ -4,6 +4,12 @@ source ./dottie/dottie.sh
 
 # Clean old files
 
+# ~/.config directory
+link .config/git ~/.config/git
+link .config/byte/config.yaml ~/.config/byte/config.yaml
+link .config/pomo/config.json ~/.config/pomo/config.json
+link .config/starship.toml ~/.config/starship.toml
+
 # Link files and directories
 link bin ~/.local/bin
 link kitty ~/.config/kitty
@@ -12,16 +18,13 @@ link tmux ~/.config/tmux
 link hammerspoon ~/.hammerspoon
 link skeletons ~/.skeletons
 
-link byte/config.yaml ~/.config/byte/config.yaml
 link emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
-link pomo/config.json ~/.config/pomo/config.json
-link starship.toml ~/.config/starship.toml
 
 # Some directories need to be partially copied
 link_dir home ~/
-link_dir fish ~/.config/fish/
+link_dir .config/fish ~/.config/fish/
 
 # Add custom fonts to the user fonts library
 copy_dir personal/fonts ~/Library/Fonts/
@@ -37,8 +40,8 @@ if [[ -f "$HOME/.work" ]]; then
 	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml
 	link_dir federato/fish ~/.config/fish/
 else
-	link gh/config.yml ~/.config/gh/config.yml
-	link gh-dash/config.yml ~/.config/gh-dash/config.yml
+	link .config/gh/config.yml ~/.config/gh/config.yml
+	link .config/gh-dash/config.yml ~/.config/gh-dash/config.yml
 	link_dir personal/fish ~/.config/fish/
 fi
 

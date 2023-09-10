@@ -49,6 +49,9 @@
   ui = true
 [diff]
   colorMoved = default
+[diff "lockb"]
+  textconv = bun
+  binary = true
 [branch]
   autosetuprebase = always
 [init]
