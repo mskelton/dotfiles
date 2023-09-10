@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Print a repo URL
+
+if [[ $# == 1 ]]; then
+	echo "https://github.com/mskelton/$1"
+elif [[ $# == 2 ]]; then
+	echo "https://github.com/$1/$2"
+else
+	echo "Usage: repo [org] <repo>"
+	exit 1
+fi

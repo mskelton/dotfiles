@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Open a repo URL
+
+open "$(repo "$@")"
