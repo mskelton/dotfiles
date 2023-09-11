@@ -10,6 +10,9 @@ discharging_symbol = '󰁺 '
 [buf]
 symbol = "톜 "
 
+[bun]
+disabled = true
+
 [c]
 symbol = "퀩 "
 
