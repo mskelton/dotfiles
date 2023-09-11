@@ -12,3 +12,7 @@
 
 # Vim quickfix lists
 *.err
+
+# Neovim local config files. I don't want to commit these, as they are specific
+# to me. If I want it committed, I'll do so manually.
+.nvim.lua
