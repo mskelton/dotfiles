@@ -1,34 +1,62 @@
 #!/usr/bin/env bash
-# Open Chrome bookmark
+# Open Arc bookmark
 
-filter=$(
-	cat <<EOF
-    .roots
-	  | to_entries[].value
-	  | recurse(.children[]?)
-	  | select(.type == "url")
-	  | {
-	      name,
-	      url,
-	      slug: .name
-	        | gsub("'"; "")
-	        | gsub("[^a-zA-Z0-9]"; "-")
-	        | gsub("-{2,}"; "-")
-	        | gsub("(^-|-\$)"; "")
-	        | ascii_downcase
-	    }
-EOF
-)
+path="$HOME/Library/Application Support/Arc/StorableSidebar.json"
 
-function list_bookmarks {
-	cat "$BOOKMARKS_PATH" | jq "$filter"
+get_spaces() {
+	jq '.sidebar.containers[].spaces
+    | select(. != null)[]
+    | select(type != "string")
+    | .containerIDs as $ids
+    | $ids[index("pinned")+1]
+  ' "$path"
 }
 
-function filter_bookmarks {
+get_folders() {
+	jq '.sidebar.containers[].items
+	  | select(. != null)[]
+	  | select(type != "string")
+    | select(.data | has("list"))
+    | .id
+  ' "$path"
+}
+
+list_items() {
+	parents=$(
+		cat <(get_spaces) <(get_folders) |
+			xargs |
+			sed 's/ /","/g' |
+			awk '{print "\"" $0 "\""}'
+	)
+
+	jq '.sidebar.containers[].items
+	  | select(. != null)[]
+	  | select(type != "string")
+    | select(.parentID as $parentID | ['"$parents"'] | index($parentID))
+    | .data.tab
+    | select(. != null)
+    | {
+        name: .savedTitle,
+        url: .savedURL,
+        slug: .savedTitle
+          | gsub("'\''"; "")
+          | gsub("[^a-zA-Z0-9]"; "-")
+          | gsub("-{2,}"; "-")
+          | gsub("(^-|-$)"; "")
+          | ascii_downcase
+      }
+  ' "$path"
+}
+
+list_bookmarks() {
+	list_items
+}
+
+filter_bookmarks() {
 	jq -c --arg key "$1" --arg value "$2" 'select(.[$key] | startswith($value))'
 }
 
-function find_bookmark {
+find_bookmark() {
 	jq -c --arg key "$1" --arg value "$2" 'select(.[$key] == $value)'
 }
 
@@ -42,7 +70,8 @@ slug=${1:-}
 
 # Print raw JSON when requested for completions
 if [[ "$slug" == '--json' ]]; then
-	list_bookmarks | jq -cM
+	list_bookmarks
+	# list_bookmarks | jq -cM
 	exit 0
 fi
 
