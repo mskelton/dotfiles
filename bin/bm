@@ -1,55 +1,8 @@
 #!/usr/bin/env bash
 # Open Arc bookmark
 
-path="$HOME/Library/Application Support/Arc/StorableSidebar.json"
-
-get_spaces() {
-	jq '.sidebar.containers[].spaces
-    | select(. != null)[]
-    | select(type != "string")
-    | .containerIDs as $ids
-    | $ids[index("pinned")+1]
-  ' "$path"
-}
-
-get_folders() {
-	jq '.sidebar.containers[].items
-	  | select(. != null)[]
-	  | select(type != "string")
-    | select(.data | has("list"))
-    | .id
-  ' "$path"
-}
-
-list_items() {
-	parents=$(
-		cat <(get_spaces) <(get_folders) |
-			xargs |
-			sed 's/ /","/g' |
-			awk '{print "\"" $0 "\""}'
-	)
-
-	jq '.sidebar.containers[].items
-	  | select(. != null)[]
-	  | select(type != "string")
-    | select(.parentID as $parentID | ['"$parents"'] | index($parentID))
-    | .data.tab
-    | select(. != null)
-    | {
-        name: .savedTitle,
-        url: .savedURL,
-        slug: .savedTitle
-          | gsub("'\''"; "")
-          | gsub("[^a-zA-Z0-9]"; "-")
-          | gsub("-{2,}"; "-")
-          | gsub("(^-|-$)"; "")
-          | ascii_downcase
-      }
-  ' "$path"
-}
-
 list_bookmarks() {
-	list_items
+	arc-bookmarks
 }
 
 filter_bookmarks() {
@@ -70,8 +23,7 @@ slug=${1:-}
 
 # Print raw JSON when requested for completions
 if [[ "$slug" == '--json' ]]; then
-	list_bookmarks
-	# list_bookmarks | jq -cM
+	list_bookmarks | jq -cM
 	exit 0
 fi
 
