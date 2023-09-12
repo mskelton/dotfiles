@@ -32,12 +32,15 @@ jq '.sidebar.containers[].items
 	  | select(. != null)[]
 	  | select(type != "string")
     | select(.parentID as $parentID | ['"$parents"'] | index($parentID))
-    | .data.tab
-    | select(. != null)
+    | select(.data | has("tab"))
     | {
-        name: .savedTitle,
-        url: .savedURL,
-        slug: .savedTitle
+        title: (.title // .data.tab.savedTitle),
+        url: .data.tab.savedURL
+      }
+    | {
+        name: .title,
+        url: .url,
+        slug: .title
           | gsub("'\''"; "")
           | gsub("[^a-zA-Z0-9]"; "-")
           | gsub("-{2,}"; "-")
