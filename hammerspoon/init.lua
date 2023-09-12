@@ -156,6 +156,22 @@ local function put_center(window)
 		:toUnitRect(screen)
 end
 
+--- Puts a window on the right side of the screen without resizing it
+--- @param window hs.window
+local function put_right(window)
+	local screen = window:screen():frame()
+	local frame = window:frame()
+
+	return hs.geometry
+		.rect(
+			screen.x + (screen.w / 2) + (frame.w / 2),
+			screen.y + (screen.h / 2) - (frame.h / 2),
+			frame.w,
+			frame.h
+		)
+		:toUnitRect(screen)
+end
+
 -- Main layout, browser on right most screen, Figma behind browser, kitty on
 -- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
@@ -176,6 +192,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
+		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -209,6 +226,7 @@ hs.hotkey.bind(layer_key, "i", function()
 			nil,
 			nil,
 		},
+		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -236,6 +254,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
