@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-git checkout $(git default)
+git checkout "$(git default)"
 git pull
 git fetch -p
 
