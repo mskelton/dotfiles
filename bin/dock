@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Run bash in a Docker container
+
+docker exec -it "$1" /bin/bash
