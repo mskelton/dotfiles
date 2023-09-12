@@ -158,6 +158,7 @@ end
 
 --- Puts a window on the right side of the screen without resizing it
 --- @param window hs.window
+---@diagnostic disable-next-line: unused-local, unused-function
 local function put_right(window)
 	local screen = window:screen():frame()
 	local frame = window:frame()
@@ -192,7 +193,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
-		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
+		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -226,7 +227,7 @@ hs.hotkey.bind(layer_key, "i", function()
 			nil,
 			nil,
 		},
-		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
+		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -254,7 +255,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Chatter", nil, screens.secondary, put_right, nil, nil },
+		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		-- Laptop
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
