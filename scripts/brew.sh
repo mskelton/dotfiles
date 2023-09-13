@@ -78,9 +78,16 @@ $brew install --cask "${casks[@]}"
 
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
-	brew install --cask \
+	$brew install \
+		google-cloud-sdk
+
+	$brew install --cask \
 		slack
 else
+	$brew install \
+		awscli \
+		pulumi/tap/pulumi
+
 	$brew install --cask \
 		android-studio \
 		quicken
