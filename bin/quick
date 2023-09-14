@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Quickly create a new issue
+# Quickly create a TaskWarrior task for home
 
-flags=(--repo mskelton/dotfiles)
+flags="rc.context=none"
 cmd="$1"
 shift
 
@@ -11,8 +11,7 @@ _print_help() {
 	echo 'Commands:'
 	echo '  list'
 	echo '  add [title]'
-	echo '  close [issue number]'
-	echo '  view [issue number]'
+	echo '  close [number]'
 }
 
 # Print help if no args are provided
@@ -22,30 +21,11 @@ if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 fi
 
 if [[ "$cmd" == 'list' ]]; then
-	gh issue list "${flags[@]}"
+	task "$flags" +quick
 elif [[ "$cmd" == 'add' ]]; then
-	gh issue create "${flags[@]}" -a "@me" -t "$*" -b ''
+	task "$flags" add +quick "$@"
 elif [[ "$cmd" == 'close' ]]; then
-	items="$*"
-
-	# Close all if 'all' is passed
-	if [[ "$1" == 'all' ]]; then
-		items=$(gh issue list "${flags[@]}" | awk '{print $1}')
-	fi
-
-	# Exit if no issues are found
-	if [[ -z "$items" ]]; then
-		echo 'No issues to close'
-		exit 0
-	fi
-
-	for num in $items; do
-		gh issue close "${flags[@]}" "$num"
-	done
-elif [[ "$cmd" == 'view' ]]; then
-	for num in "$@"; do
-		gh issue view -w "${flags[@]}" "$num"
-	done
+	task "$flags" "$@" 'done'
 else
 	_print_help
 	exit 1
