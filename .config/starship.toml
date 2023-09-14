@@ -2,6 +2,7 @@
 add_newline = false
 
 [aws]
+disabled = true
 symbol = "톛 "
 
 [battery]
