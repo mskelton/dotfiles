@@ -106,13 +106,18 @@ following commands.
 
 <details>
   <summary>
-    Setup TaskWarrior sync
+    Setup TaskWarrior
   </summary>
 
 ```fish
 set server (read -P "Server: ")
 set credentials (read -P "Credentials: ")
-echo -e "taskd.server=$server\ntaskd.credentials=$credentials" > ~/.task/taskdrc
+
+echo -e 'include ~/.taskrc-shared
+news.version=2.6.0
+taskd.server='$server'
+taskd.credentials='$credentials'
+context=home' > ~/.taskrc
 ```
 
 </details>
