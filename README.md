@@ -103,3 +103,17 @@ following commands.
 - Copy pictures and documents
 
 </details>
+
+<details>
+  <summary>
+    Setup TaskWarrior sync
+  </summary>
+
+Add the following to a `~/.task/taskdrc` file.
+
+```
+taskd.server=
+taskd.credentials=
+```
+
+</details>

@@ -21,3 +21,8 @@ context.home.read=project != Analyzer
 context.analyzer.read=project:Analyzer
 context.analyzer.write=project:Analyzer
 
+# Taskserver
+include ~/.task/taskdrc
+taskd.certificate=~/.task/client.cert.pem
+taskd.key=~/.task/client.key.pem
+taskd.ca=~/.task/ca.cert.pem
