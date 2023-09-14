@@ -6,5 +6,9 @@
   "sound": {
     "start": "Blow",
     "end": "Blow"
+  },
+  "working_hours": {
+    "start": "8:30am",
+    "end": "5:30pm"
   }
 }
