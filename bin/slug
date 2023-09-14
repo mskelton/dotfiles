@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Slugifies the input stream
+
+while IFS= read -r line; do
+	echo "$line" |
+		sed 's/\([a-z0-9]\)\([A-Z]\)/\1-\2/g' |
+		tr '[:upper:]' '[:lower:]'
+done
