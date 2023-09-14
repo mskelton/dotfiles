@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Outputs stdin if no arguments are given, otherwise outputs the arguments
+
+if [[ -z "$1" ]]; then
+	cat
+else
+	echo "$@"
+fi
