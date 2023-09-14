@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Alias for task with the context set to home
+
+task rc.context=home "$@"
