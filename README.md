@@ -109,11 +109,10 @@ following commands.
     Setup TaskWarrior sync
   </summary>
 
-Add the following to a `~/.task/taskdrc` file.
-
-```
-taskd.server=
-taskd.credentials=
+```fish
+set server (read -P "Server: ")
+set credentials (read -P "Credentials: ")
+echo -e "taskd.server=$server\ntaskd.credentials=$credentials" > ~/.task/taskdrc
 ```
 
 </details>
