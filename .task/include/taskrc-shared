@@ -1,4 +1,8 @@
-include ~/.task/tokyonight.theme
+# Shared TaskWarrior config
+# vim:ft=conf
+
+# Theme
+include ~/.task/include/tokyonight.theme
 
 # Files
 data.location=~/.task

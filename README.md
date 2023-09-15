@@ -113,7 +113,7 @@ following commands.
 set server (read -P "Server: ")
 set credentials (read -P "Credentials: ")
 
-echo -e 'include ~/.taskrc-shared
+echo -e 'include ~/.task/include/taskrc-shared
 news.version=2.6.0
 taskd.server='$server'
 taskd.credentials='$credentials'
