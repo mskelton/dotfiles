@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Quickly create a TaskWarrior task for home
 
-flags="rc.verbose= rc.context=none"
+flags=(rc.verbose= rc.context=none)
 cmd="$1"
 shift
 
@@ -21,11 +21,11 @@ if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 fi
 
 if [[ "$cmd" == 'list' ]]; then
-	task "$flags" +quick
+	task "${flags[@]}" +quick
 elif [[ "$cmd" == 'add' ]]; then
-	task "$flags" add +quick "$@"
+	task "${flags[@]}" add +quick "$@"
 elif [[ "$cmd" == 'close' ]]; then
-	task "$flags" "$@" 'done'
+	task "${flags[@]}" "$@" 'done'
 else
 	_print_help
 	exit 1
