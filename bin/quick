@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Quickly create a TaskWarrior task for home
 
-flags="rc.context=none"
+flags="rc.verbose= rc.context=none"
 cmd="$1"
 shift
 
