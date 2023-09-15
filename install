@@ -26,6 +26,7 @@ link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
 # Some directories need to be partially copied
 link_dir home ~/
 link_dir .config/fish ~/.config/fish/
+link_dir launchd ~/Library/LaunchAgents/
 
 # Add custom fonts to the user fonts library
 copy_dir personal/fonts ~/Library/Fonts/
