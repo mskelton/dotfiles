@@ -5,7 +5,7 @@ data.location=~/.task
 
 # Misc
 include dark-violets-256.theme
-verbose=affected,blank,context,edit,header,footnote,label,new-id,project,special,sync,override
+verbose=affected,blank,edit,header,footnote,label,new-id,project,special,override
 bulk=4
 
 # Disable case-sensitive search
