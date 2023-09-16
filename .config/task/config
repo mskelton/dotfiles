@@ -2,7 +2,7 @@
 # vim:ft=conf
 
 # Theme
-include ~/.task/include/tokyonight.theme
+include ~/.config/task/tokyonight.theme
 
 # Files
 data.location=~/.task
