@@ -1,5 +1,5 @@
 --- @diagnostic disable: undefined-global
---- vim: set colorcolumn=100:
+--- vim:set colorcolumn=100:
 
 hs.console.consoleFont("JetBrains Mono")
 
@@ -71,10 +71,12 @@ Install:andUse("AppLauncher", {
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
 		[";"] = "Mimestream",
+		n = "Finder",
 		m = "Figma",
 		[","] = "Chatter",
 		["."] = "Around",
 		["/"] = "zoom.us",
+		c = "XCode",
 	},
 })
 
