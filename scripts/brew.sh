@@ -42,6 +42,7 @@ formula=(
 	sponge
 	starship
 	stylua
+	swiftformat
 	task
 	tmux
 	trash

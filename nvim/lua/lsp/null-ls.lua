@@ -33,6 +33,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.fish_indent,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.dtsfmt,
+		null_ls.builtins.formatting.swiftformat,
 		null_ls.builtins.formatting.dprint.with({
 			condition = function(utils)
 				return utils.root_has_file({

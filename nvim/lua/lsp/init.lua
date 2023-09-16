@@ -38,6 +38,7 @@ M.setup_servers = function()
 	M.server("pyright")
 	M.server("prismals")
 	M.server("rust_analyzer")
+	M.server("sourcekit")
 
 	-- GraphQL
 	M.server("graphql", {
