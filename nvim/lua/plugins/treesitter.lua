@@ -24,8 +24,11 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			{
 				"nvim-treesitter/nvim-treesitter-context",
-				enabled = false,
-				config = true,
+				config = {
+					max_lines = 2,
+					-- trim_scope = "inner",
+					-- mode = "topline",
+				},
 			},
 		},
 		keys = {
