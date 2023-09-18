@@ -9,7 +9,7 @@ data.location=~/.task
 # hooks.location=~/.config/task/hooks
 
 # Misc
-verbose=affected,blank,edit,header,footnote,label,new-id,project,special,override
+verbose=affected,blank,edit,header,footnote,label,new-id,project,special
 bulk=4
 
 # Disable case-sensitive search
