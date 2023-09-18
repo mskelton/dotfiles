@@ -32,6 +32,7 @@ formula=(
 	keith/formulae/reminders-cli
 	luarocks
 	neovim
+	ngrok/ngrok/ngrok
 	ninja
 	opam
 	p7zip
