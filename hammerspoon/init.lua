@@ -196,9 +196,9 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		-- Laptop
-		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -230,9 +230,9 @@ hs.hotkey.bind(layer_key, "i", function()
 			nil,
 		},
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		-- Laptop
-		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -258,9 +258,9 @@ hs.hotkey.bind(layer_key, "o", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		-- Laptop
-		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
