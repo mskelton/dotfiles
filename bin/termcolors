@@ -1,0 +1,16 @@
+#!/bin/bash
+# Print the 8 ANSI colors
+
+color_names=("Black" "Red" "Green" "Yellow" "Blue" "Magenta" "Cyan" "White")
+
+_colorize() {
+	echo -ne "\033[0;$(($1 + i))m ${color_names[i]} \033[0m"
+}
+
+# Foreground
+for i in {0..7}; do _colorize 30; done
+echo ''
+
+# Background
+for i in {0..7}; do _colorize 40; done
+echo ''
