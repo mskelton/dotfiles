@@ -6,10 +6,25 @@
     <string>dev.mskelton.task-sync</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/homebrew/bin/task</string>
-        <string>sync</string>
+      <string>/opt/homebrew/bin/task</string>
+      <string>sync</string>
     </array>
     <key>StartInterval</key>
     <integer>600</integer>
+    <key>StartCalendarInterval</key>
+    <array>
+      <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>17</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+      </dict>
+    </array>
   </dict>
 </plist>
