@@ -88,6 +88,13 @@ local function apply_layout(...)
 	hs.layout.apply(layouts[count])
 end
 
+--- Returns true if the window is the Around lobby window. This is a guess based on size.
+--- @param window hs.window
+local function is_around_lobby(window)
+	local size = window:size()
+	return size.h < 800 or size.w < 1000
+end
+
 --- Places the Around window in the desired position. This is required since Around uses the same
 --- name for both the lobby and the meeting window, so we have to use a heuristic to determine
 --- if we are placing the lobby or the main meeting window.
@@ -95,10 +102,8 @@ local function place_around(lobby, meeting)
 	--- @param window hs.window
 	return function(window)
 		local placement = meeting
-		local size = window:size()
 
-		-- If the window is small, it's probably the lobby
-		if size.h < 800 or size.w < 1000 then
+		if is_around_lobby(window) then
 			placement = lobby
 		end
 
@@ -284,15 +289,31 @@ local function set_focus(state)
 	hs.execute("shortcuts run 'Focus' <<<'" .. state .. "'")
 end
 
--- Manage focus when in Zoom meetings
-local zoom = hs.window.filter.new(function(window)
-	return window:title() == "Zoom Meeting"
-end)
+--- Returns a function that sets the focus state
+--- @param state string
+local function focus(state)
+	return function()
+		set_focus(state)
+	end
+end
 
-zoom:subscribe(hs.window.filter.windowTitleChanged, function()
-	set_focus("on")
-end)
+--- Manage focus when in Zoom meetings
+hs.window.filter
+	.new(function(window)
+		return window:title() == "Zoom Meeting"
+	end)
+	:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
+	:subscribe(hs.window.filter.windowDestroyed, focus("off"))
 
-zoom:subscribe(hs.window.filter.windowDestroyed, function()
-	set_focus("off")
+--- Manage focus when in Around meetings. Around is a little odd. It has a single window title of
+--- "Around" shared by the lobby and the meeting window. The lobby window is maximizable, but the
+--- floating window is not, so we can use that as the initial test to determine if we are in a
+--- meeting. When in a meeting, if switching from floating to the maximized window, we don't want
+--- to touch the focus state.
+hs.window.filter.new("Around"):subscribe(hs.window.filter.windowCreated, function(window)
+	if window:isMaximizable() and is_around_lobby(window) then
+		set_focus("off")
+	else
+		set_focus("on")
+	end
 end)
