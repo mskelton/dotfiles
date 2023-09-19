@@ -302,6 +302,7 @@ hs.window.filter
 	.new(function(window)
 		return window:title() == "Zoom Meeting"
 	end)
+	:subscribe(hs.window.filter.windowCreated, focus("on"))
 	:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
 	:subscribe(hs.window.filter.windowDestroyed, focus("off"))
 
