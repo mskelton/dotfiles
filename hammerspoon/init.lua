@@ -277,3 +277,22 @@ end)
 hs.hotkey.bind({ "cmd", "ctrl" }, "f10", function()
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(60)
 end)
+
+--- Set the focus state
+--- @param state string
+local function set_focus(state)
+	hs.execute("shortcuts run 'Focus' <<<'" .. state .. "'")
+end
+
+-- Manage focus when in Zoom meetings
+local zoom = hs.window.filter.new(function(window)
+	return window:title() == "Zoom Meeting"
+end)
+
+zoom:subscribe(hs.window.filter.windowTitleChanged, function()
+	set_focus("on")
+end)
+
+zoom:subscribe(hs.window.filter.windowDestroyed, function()
+	set_focus("off")
+end)
