@@ -121,3 +121,12 @@ context=home' > ~/.taskrc
 ```
 
 </details>
+
+<details>
+  <summary>
+    Setup Focus shortcut
+  </summary>
+
+[View on iCloud](https://www.icloud.com/shortcuts/65840b635c7d4073b4319c1ddabcdce5)
+
+</details>

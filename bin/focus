@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Set focus mode. This depends on the "Focus" shortcut in Shortcuts.
+
+if [[ -z "$1" ]]; then
+	echo "Usage: focus <on|off|status>"
+	exit 1
+fi
+
+shortcuts run 'Focus' <<<"$1"
