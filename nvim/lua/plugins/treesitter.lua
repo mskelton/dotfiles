@@ -25,7 +25,7 @@ return {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				config = {
-					disabled = true,
+					enable = false,
 					max_lines = 2,
 					-- trim_scope = "inner",
 					-- mode = "topline",
