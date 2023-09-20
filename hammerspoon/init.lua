@@ -300,7 +300,7 @@ end
 --- Manage focus when in Zoom meetings
 hs.window.filter
 	.new(function(window)
-		return window:title() == "Zoom Meeting"
+		return window ~= nil and window:title() == "Zoom Meeting"
 	end)
 	:subscribe(hs.window.filter.windowCreated, focus("on"))
 	:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
