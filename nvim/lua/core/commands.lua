@@ -32,11 +32,9 @@ vim.api.nvim_create_user_command(
 
 -- Browse a URL in the default browser. Needed for vim-fugitive
 -- Search/replace type commands
-vim.api.nvim_create_user_command(
-	"Browse",
-	"silent !open <args>",
-	{ nargs = "*" }
-)
+vim.api.nvim_create_user_command("Browse", function(args)
+	require("core.utils").open_url(args.args)
+end, { nargs = "*" })
 
 -- Load Flashlight results into quickfix list
 vim.api.nvim_create_user_command(
