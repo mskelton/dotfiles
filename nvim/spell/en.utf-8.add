@@ -184,3 +184,6 @@ goroutine
 ctx
 FlagValue
 Raycast
+stdout
+stderr
+jq

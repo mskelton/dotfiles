@@ -53,6 +53,7 @@ return {
 				ensure_installed = {
 					"awk",
 					"bash",
+					"c",
 					"comment",
 					"cpp",
 					"css",
