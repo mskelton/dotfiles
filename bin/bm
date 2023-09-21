@@ -13,11 +13,6 @@ find_bookmark() {
 	jq -c --arg key "$1" --arg value "$2" 'select(.[$key] == $value)'
 }
 
-if [[ -z $BOOKMARKS_PATH ]]; then
-	echo 'No bookmarks found. Make sure you have BOOKMARKS_PATH set in your shell.'
-	exit 1
-fi
-
 # If bm is called without argument, show all bookmarks
 slug=${1:-}
 
