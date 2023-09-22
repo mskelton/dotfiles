@@ -22,6 +22,7 @@ formula=(
 	dict
 	fd
 	fish
+	flyctl
 	fzf
 	gh
 	git
