@@ -63,9 +63,4 @@ gh extension install mislav/gh-license
 npm install turbo --global
 
 # Setup launchd services
-for file in "$(pwd)"/launchd/*.plist; do
-	service="$HOME/Library/LaunchAgents/$(basename "$file")"
-
-	launchctl bootout "gui/$(id -u)" "$service"
-	launchctl bootstrap "gui/$(id -u)" "$service"
-done
+launchd-reload

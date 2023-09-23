@@ -4,6 +4,6 @@
 for file_path in "$HOME/dev/dotfiles/launchd/"*; do
 	path="$HOME/Library/LaunchAgents/$(basename "$file_path")"
 
-	launchctl unload "$path"
-	launchctl load "$path"
+	launchctl bootout "gui/$(id -u)" "$path"
+	launchctl bootstrap "gui/$(id -u)" "$path"
 done
