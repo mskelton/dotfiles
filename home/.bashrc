@@ -5,7 +5,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 eval "$(starship init bash)"
 
 # Custom aliases
-source $HOME/.alias
+source "$HOME/.alias"
 
 # Environment variables
 export EDITOR=nvim

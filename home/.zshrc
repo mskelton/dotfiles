@@ -9,5 +9,4 @@ fi
 # Make warp play nicely with the GitHub CLI
 PAGER=""
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

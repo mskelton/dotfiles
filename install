@@ -8,18 +8,17 @@ source ./dottie/dottie.sh
 link .config/byte/config.yaml ~/.config/byte/config.yaml
 link .config/git ~/.config/git
 link .config/kitty ~/.config/kitty
-link .config/pomo/config.json ~/.config/pomo/config.json
 link .config/starship.toml ~/.config/starship.toml
 link .config/task ~/.config/task
+link .config/tmux ~/.config/tmux
 
 # Link files and directories
 link bin ~/.local/bin
 link nvim ~/.config/nvim
-link tmux ~/.config/tmux
-link hammerspoon ~/.hammerspoon
-link skeletons ~/.skeletons
+link .hammerspoon ~/.hammerspoon
+link .skeletons ~/.skeletons
 
-link emacs.d/init.el ~/.emacs.d/init.el
+link .emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
 
@@ -37,14 +36,18 @@ curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -
 
 # Work config
 if [[ -f "$HOME/.work" ]]; then
+	link federato/.config/gh/config.yml ~/.config/gh/config.yml
+	link federato/.config/gh-dash/config.yml ~/.config/gh-dash/config.yml
+	link federato/.config/pomo/config.json ~/.config/pomo/config.json
 	link federato/bin ~/.local/bin-work
-	link federato/gh/config.yml ~/.config/gh/config.yml
-	link federato/gh-dash/config.yml ~/.config/gh-dash/config.yml
-	link_dir federato/fish ~/.config/fish/
+
+	link_dir federato/.config/fish ~/.config/fish/
 else
 	link .config/gh/config.yml ~/.config/gh/config.yml
 	link .config/gh-dash/config.yml ~/.config/gh-dash/config.yml
-	link_dir personal/fish ~/.config/fish/
+	link .config/pomo/config.json ~/.config/pomo/config.json
+
+	link_dir personal/.config/fish ~/.config/fish/
 fi
 
 # VS Code settings and keybindings
