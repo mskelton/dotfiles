@@ -19,6 +19,7 @@ return {
 					javascript = js_comments,
 					typescript = js_comments,
 					tsx = js_comments,
+					lua = { __default = "--- %s" },
 				},
 			},
 		})

@@ -3,12 +3,12 @@
 
 hs.console.consoleFont("JetBrains Mono")
 
--- Disable animations
+--- Disable animations
 hs.window.animationDuration = 0
 
--- Hotkeys
--- local hyper = { "cmd", "option", "ctrl", "shift" }
--- local meh = { "ctrl", "option", "shift" }
+--- Hotkeys
+--- local hyper = { "cmd", "option", "ctrl", "shift" }
+--- local meh = { "ctrl", "option", "shift" }
 local layer_key = { "cmd", "ctrl" }
 
 --- Check if a file exists at the given path
@@ -23,7 +23,7 @@ local function file_exists(filename)
 	return false
 end
 
--- Check if we are at work by looking for a ~/.work file
+--- Check if we are at work by looking for a ~/.work file
 local is_work = file_exists(os.getenv("HOME") .. "/.work")
 
 --- Returns the first argument if at work, otherwise the second
@@ -37,31 +37,31 @@ local function if_work(work, home)
 	return home
 end
 
--- Screens
+--- Screens
 local screens = {
 	laptop = "Built-in Retina Display",
 	primary = "LG HDR 4K",
 	secondary = "LG Ultra HD",
 }
 
--- Debugging
+--- Debugging
 function P(...)
 	print(hs.inspect.inspect(...))
 end
 
--- Load SpoonInstall to install Spoons
+--- Load SpoonInstall to install Spoons
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = false
 Install = spoon.SpoonInstall
 
--- Autocompletion for Hammerspoon config. This is disabled since it's slow to
--- load, so I only enable it when I need to regenerate types.
+--- Autocompletion for Hammerspoon config. This is disabled since it's slow to
+--- load, so I only enable it when I need to regenerate types.
 Install:andUse("EmmyLua", { disable = true })
 
--- Live reload config
+--- Live reload config
 Install:andUse("ReloadConfiguration", { start = true })
 
--- Launch common apps
+--- Launch common apps
 Install:andUse("AppLauncher", {
 	config = {
 		modifiers = layer_key,
@@ -165,7 +165,7 @@ end
 
 --- Puts a window on the right side of the screen without resizing it
 --- @param window hs.window
----@diagnostic disable-next-line: unused-local, unused-function
+--- @diagnostic disable-next-line: unused-local, unused-function
 local function put_right(window)
 	local screen = window:screen():frame()
 	local frame = window:frame()
@@ -180,8 +180,8 @@ local function put_right(window)
 		:toUnitRect(screen)
 end
 
--- Main layout, browser on right most screen, Figma behind browser, kitty on
--- main screen. Email/Slack on left most screen.
+--- Main layout, browser on right most screen, Figma behind browser, kitty on
+--- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -207,8 +207,8 @@ hs.hotkey.bind(layer_key, "u", function()
 	})
 end)
 
--- Split layout, browser on left of main screen, kitty on right of main screen.
--- Figma maximized on the right most screen, Email/Slack on left most screen.
+--- Split layout, browser on left of main screen, kitty on right of main screen.
+--- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
@@ -241,9 +241,9 @@ hs.hotkey.bind(layer_key, "i", function()
 	})
 end)
 
--- Zoom layout, browser and kitty on left of main screen, Zoom on the right of
--- main screen. Figma maximized on the right most screen, Email/Slack on left
--- most screen.
+--- Zoom layout, browser and kitty on left of main screen, Zoom on the right of
+--- main screen. Figma maximized on the right most screen, Email/Slack on left
+--- most screen.
 hs.hotkey.bind(layer_key, "o", function()
 	apply_layout({
 		{ "Arc", nil, screens.laptop, hs.layout.right50, nil, nil },
@@ -269,12 +269,12 @@ hs.hotkey.bind(layer_key, "o", function()
 	})
 end)
 
--- Escape paste-blocking
+--- Escape paste-blocking
 hs.hotkey.bind({ "cmd", "alt" }, "v", function()
 	hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
--- Audio presets
+--- Audio presets
 hs.hotkey.bind({ "cmd", "ctrl" }, "f9", function()
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(25)
 end)

@@ -1,6 +1,6 @@
--- This table contains a list of file patterns and their associated default
--- json schema URLs. This listed was inspired by:
--- https://github.com/microsoft/vscode/blob/main/extensions/typescript-language-features/package.json#L77
+--- This table contains a list of file patterns and their associated default
+--- json schema URLs. This listed was inspired by:
+--- https://github.com/microsoft/vscode/blob/main/extensions/typescript-language-features/package.json#L77
 return {
 	{
 		fileMatch = { "package.json" },

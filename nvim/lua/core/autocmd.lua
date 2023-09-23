@@ -22,8 +22,8 @@ augroup END
 
 ]])
 
--- Enable spell checking only when Treesitter is enabled in the current buffer.
--- I set up spell checking this way as I only want spell checking in comments.
+--- Enable spell checking only when Treesitter is enabled in the current buffer.
+--- I set up spell checking this way as I only want spell checking in comments.
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = vim.api.nvim_create_augroup("mskelton_treesitter_spell_check", {}),
 	callback = function()

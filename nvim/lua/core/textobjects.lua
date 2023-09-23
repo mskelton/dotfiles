@@ -1,24 +1,24 @@
 local map = require("core.utils").map
 
--- Entire text object
+--- Entire text object
 ---------------------
 map("v", "ae", ":<C-U>silent! normal! ggVG<cr>")
 map("o", "ae", ":normal Vae<cr>", { remap = true })
 
--- Remap "sentence" text object to capital S
--- since I use lowercase s for statement
+--- Remap "sentence" text object to capital S
+--- since I use lowercase s for statement
 --------------------------------------------
 map({ "v", "o" }, "aS", "as")
 map({ "v", "o" }, "iS", "is")
 
--- Line text object
+--- Line text object
 -------------------
 map("v", "al", ":<C-U>silent! normal! 0v$<cr>")
 map("o", "al", ":normal val<cr>", { remap = true })
 map("v", "il", ":<C-U>silent! normal! ^vg_<cr>")
 map("o", "il", ":normal vil<cr>", { remap = true })
 
--- Class name text object
+--- Class name text object
 -------------------------
 map("v", "an", ":<C-U>silent! lua ClassName()<cr>")
 map("o", "an", ":normal van<cr>", { remap = true })

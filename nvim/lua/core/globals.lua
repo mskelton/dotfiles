@@ -2,12 +2,12 @@ function P(...)
 	print(vim.inspect(...))
 end
 
--- Navigate to the line and reposition at the center of the window if
--- possible. This could be simplified by simply calling `<C-d>zz` or `<C-u>zz`
--- but that results in an intermediate redraw which causes flashing that bugs
--- me. Additionally, it produces inconsistent jump length based on your cursor
--- location. This behaves like `<C-d>` and `<C-u>` in that it does not modify
--- the jump list.
+--- Navigate to the line and reposition at the center of the window if
+--- possible. This could be simplified by simply calling `<C-d>zz` or `<C-u>zz`
+--- but that results in an intermediate redraw which causes flashing that bugs
+--- me. Additionally, it produces inconsistent jump length based on your cursor
+--- location. This behaves like `<C-d>` and `<C-u>` in that it does not modify
+--- the jump list.
 function MoveHalf(sign)
 	local line = vim.api.nvim_win_get_cursor(0)[1]
 	local win_height = vim.api.nvim_win_get_height(0)

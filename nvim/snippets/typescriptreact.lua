@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global
+--- @diagnostic disable: undefined-global
 local snip_utils = require("utils.snip_utils")
 
 return {

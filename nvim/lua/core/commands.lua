@@ -1,23 +1,23 @@
--- Run GitHub CLI (gh) command
+--- Run GitHub CLI (gh) command
 vim.api.nvim_create_user_command("H", "!gh <args>", { nargs = "*" })
 
--- Format JSON with jq
+--- Format JSON with jq
 vim.api.nvim_create_user_command("JsonFormat", ":%!jq .", {})
 
--- Minify JSON with jq
+--- Minify JSON with jq
 vim.api.nvim_create_user_command("JsonMinify", ":%!jq -c .", {})
 
--- Copy stringified JSON to clipboard
+--- Copy stringified JSON to clipboard
 vim.api.nvim_create_user_command(
 	"JsonCopy",
 	[[:silentw !jq -c . | sed "s/\"/\\\\\"/g" | tr -d "\n" | pbcopy]],
 	{}
 )
 
--- Create an ISC license in a project
+--- Create an ISC license in a project
 vim.api.nvim_create_user_command("License", "!gh license isc", {})
 
--- Search/replace type commands
+--- Search/replace type commands
 vim.api.nvim_create_user_command("RemoveEmptyLines", ":g/^$/d", { bar = true })
 vim.api.nvim_create_user_command(
 	"RemoveTrailingWhitespace",
@@ -30,13 +30,13 @@ vim.api.nvim_create_user_command(
 	{ bar = true }
 )
 
--- Browse a URL in the default browser. Needed for vim-fugitive
--- Search/replace type commands
+--- Browse a URL in the default browser. Needed for vim-fugitive
+--- Search/replace type commands
 vim.api.nvim_create_user_command("Browse", function(args)
 	require("core.utils").open_url(args.args)
 end, { nargs = "*" })
 
--- Load Flashlight results into quickfix list
+--- Load Flashlight results into quickfix list
 vim.api.nvim_create_user_command(
 	"Flashlight",
 	'cexpr system("flashlight --format=vi " . <q-args>)',
@@ -51,7 +51,7 @@ local function copy(expression)
 	end
 end
 
--- Copy file path to the clipboard
+--- Copy file path to the clipboard
 vim.api.nvim_create_user_command("CopyPath", copy("%"), { bar = true })
 vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), { bar = true })
 vim.api.nvim_create_user_command("CopyDir", copy("%:h"), { bar = true })

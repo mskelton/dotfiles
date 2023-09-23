@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global
+--- @diagnostic disable: undefined-global
 
 local stateless_widget = [[
 import 'package:flutter/material.dart';
