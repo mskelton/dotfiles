@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Show keyboard and mouse battery levels
+
+echo '
+For a real time update on battery level in each module, press and hold the Mod
+key. The indicator LEDs will temporarily display the charge level for each key
+module. Note: The left module will drain the battery faster because that is the
+primary module and uses more CPU power.
+
+• Green: More than 80%
+• Yellow: 51-79%
+• Orange: 21-50%
+• Red: Less than 20% (Charge soon)
+'
