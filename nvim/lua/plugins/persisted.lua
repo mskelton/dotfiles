@@ -27,5 +27,8 @@ return {
 			desc = "Stop session",
 		},
 	},
+	init = function()
+		vim.o.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
+	end,
 	config = true,
 }
