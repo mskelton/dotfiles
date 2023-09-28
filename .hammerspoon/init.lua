@@ -280,7 +280,7 @@ hs.hotkey.bind({ "cmd", "ctrl" }, "f9", function()
 end)
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "f10", function()
-	hs.audiodevice.defaultOutputDevice():setOutputVolume(60)
+	hs.audiodevice.defaultOutputDevice():setOutputVolume(50)
 end)
 
 --- Set the focus state
