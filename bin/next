@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Next track
+
+shortcuts run 'Media' <<<'next'

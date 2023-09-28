@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Pause music on YouTube Music
+# Pause music
 
-js --url music.youtube.com \
-	"document.querySelector('#play-pause-button[aria-label=Pause]').click()"
+shortcuts run 'Media' <<<'pause'

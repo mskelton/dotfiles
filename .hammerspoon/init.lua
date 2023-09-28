@@ -318,3 +318,14 @@ hs.window.filter.new("Around"):subscribe(hs.window.filter.windowCreated, functio
 		set_focus("on")
 	end
 end)
+
+--- Music management
+--- @param arg string
+local function media(arg)
+	return function()
+		hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
+	end
+end
+
+hs.hotkey.bind({ "option" }, "p", media("playpause"))
+hs.hotkey.bind({ "option" }, "n", media("next"))
