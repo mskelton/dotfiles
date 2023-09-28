@@ -21,7 +21,7 @@ if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 fi
 
 if [[ "$cmd" == 'list' ]]; then
-	task "${flags[@]}" +quick
+	task "${flags[@]}" +quick "$@"
 elif [[ "$cmd" == 'add' ]]; then
 	task "${flags[@]}" add +quick "$@"
 elif [[ "$cmd" == 'close' ]]; then
