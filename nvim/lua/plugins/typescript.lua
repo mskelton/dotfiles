@@ -1,12 +1,41 @@
 local utils = require("core.utils")
+local npm = require("utils.npm")
+
+-- Global plugins to be loaded when starting tsserver
+local plugins = {
+	{
+		name = "typescript-styled-plugin",
+		location = npm.mason_lib("typescript-styled-plugin"),
+		config = {
+			validate = false,
+			emmet = { showExpandedAbbreviation = "never" },
+		},
+	},
+}
 
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
 	config = {
 		server = {
+			on_attach = function(client)
+				for _, value in ipairs(plugins) do
+					local params = {
+						command = "_typescript.configurePlugin",
+						arguments = { value.name, value.config },
+					}
+
+					client.request("workspace/executeCommand", params)
+				end
+			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			init_options = {
+				plugins = vim.tbl_map(function(item)
+					return {
+						name = item.name,
+						location = item.location,
+					}
+				end, plugins),
 				preferences = {
 					autoImportFileExcludePatterns = {
 						"**/.next/*",
