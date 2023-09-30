@@ -8,7 +8,7 @@ return {
 	config = function()
 		local index = require("mason-registry.index")
 
-		-- Registry overrides
+		--- Registry overrides
 		index["emmet-ls"] = "mason-registry.emmet-ls"
 		index["typescript-styled-plugin"] = "mason-registry.ts-styled-plugin"
 
