@@ -114,6 +114,7 @@ M.setup_servers = function()
 	})
 
 	M.server("eslint")
+	M.server("cssls")
 
 	-- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
