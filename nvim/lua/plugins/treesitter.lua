@@ -1,4 +1,4 @@
----@diagnostic disable: missing-fields
+--- @diagnostic disable: missing-fields
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
