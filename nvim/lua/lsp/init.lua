@@ -39,6 +39,7 @@ M.setup_servers = function()
 	M.server("prismals")
 	M.server("rust_analyzer")
 	M.server("sourcekit")
+	M.server("emmet_ls")
 
 	-- GraphQL
 	M.server("graphql", {

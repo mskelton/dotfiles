@@ -1,3 +1,4 @@
+--- @diagnostic disable: missing-fields
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -47,6 +48,16 @@ return {
 			parser_config.dart.install_info.revision =
 				"8aa8ab977647da2d4dcfb8c4726341bee26fbce4"
 
+			parser_config.styled = {
+				install_info = {
+					url = "https://github.com/mskelton/tree-sitter-styled",
+					branch = "main",
+					files = { "src/parser.c", "src/scanner.c" },
+					generate_requires_npm = true,
+				},
+				maintainers = { "@mskelton" },
+			}
+
 			require("nvim-treesitter.configs").setup({
 				autotag = { enable = true },
 				endwise = { enable = true },
@@ -85,6 +96,7 @@ return {
 					"regex",
 					"rust",
 					"sql",
+					"styled",
 					"svelte",
 					"swift",
 					"terraform",
