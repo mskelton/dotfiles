@@ -1,4 +1,4 @@
---- @diagnostic disable: assign-type-mismatch, missing-fields
+--- @diagnostic disable: assign-type-mismatch
 
 return {
 	-- "hrsh7th/nvim-cmp",

@@ -1,5 +1,5 @@
 ---
-name: emmet-ls
+name: emmet
 description: Emmet support based on LSP.
 homepage: https://github.com/mskelton/emmet-ls
 licenses:

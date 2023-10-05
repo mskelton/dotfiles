@@ -10,6 +10,4 @@ languages:
 categories:
   - LSP
 source:
-  id: pkg:npm/typescript-styled-plugin@1.0.0
-bin:
-  typescript-styled-plugin: npm:typescript-styled-plugin
+  id: pkg:npm/typescript-styled-plugin@0.18.3
