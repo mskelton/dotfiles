@@ -1,0 +1,14 @@
+---
+name: emmet-ls
+description: Emmet support based on LSP.
+homepage: https://github.com/mskelton/emmet-ls
+licenses:
+  - MIT
+languages:
+  - Emmet
+categories:
+  - LSP
+source:
+  id: pkg:npm/@mskelton/emmet-ls@0.3.1
+bin:
+  emmet-ls: npm:emmet-ls

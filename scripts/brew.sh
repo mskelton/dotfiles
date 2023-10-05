@@ -51,6 +51,7 @@ formula=(
 	tree-sitter
 	watchman
 	wget
+	yq
 )
 
 casks=(

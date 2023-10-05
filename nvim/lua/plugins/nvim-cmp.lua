@@ -1,3 +1,5 @@
+--- @diagnostic disable: assign-type-mismatch, missing-fields
+
 return {
 	-- "hrsh7th/nvim-cmp",
 	"folke/nvim-cmp",
@@ -127,6 +129,7 @@ return {
 
 						-- Only return Emmet results in styled-component template strings
 						return client_name ~= "emmet_ls"
+							or entry.context.filetype == "css"
 							or context.in_treesitter_capture("styled")
 					end,
 				},

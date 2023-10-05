@@ -1,0 +1,15 @@
+---
+name: typescript-styled-plugin
+description: Intellisense to styled component css strings.
+homepage: https://github.com/Microsoft/typescript-styled-plugin
+licenses:
+  - MIT
+languages:
+  - TypeScript
+  - JavaScript
+categories:
+  - LSP
+source:
+  id: pkg:npm/typescript-styled-plugin@1.0.0
+bin:
+  typescript-styled-plugin: npm:typescript-styled-plugin
