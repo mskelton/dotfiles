@@ -11,6 +11,7 @@ source "$HOME/.alias"
 export EDITOR=nvim
 export GOPATH="$HOME/go"
 export BUN_INSTALL="$HOME/.bun"
+export CLOUDSDK_PYTHON="python3.9"
 
 # Path
 export PATH="$PATH:$HOME/.local/bin"
