@@ -6,4 +6,4 @@ if [[ "$1" == 'old' ]]; then
 	flags='+OVERDUE'
 fi
 
-task +learn +PENDING $flags 'done'
+task rc.bulk=999 +learn +PENDING $flags 'done'
