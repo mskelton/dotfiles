@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Convert a png to an ico file
+
+convert "$1" "${1%.*}.ico"
