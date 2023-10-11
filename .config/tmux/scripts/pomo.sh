@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-status=$(pomo)
+status=$(pomo --notify)
 
 # Prints the pomodoro status with a more obvious background when in tmux. If
 # there is no active session, this will not print anything.
