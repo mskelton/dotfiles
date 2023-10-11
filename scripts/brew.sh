@@ -28,6 +28,7 @@ formula=(
 	git
 	gnu-sed
 	go
+	imagemagick
 	jesseduffield/lazygit/lazygit
 	jq
 	keith/formulae/reminders-cli
