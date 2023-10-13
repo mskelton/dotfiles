@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # Update the Kitty terminal
 
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+if [[ "$1" == 'nightly' ]]; then
+	flags='installer=nightly'
+fi
+
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin "$flags"
