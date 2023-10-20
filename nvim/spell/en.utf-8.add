@@ -188,3 +188,5 @@ stdout
 stderr
 jq
 keyframe
+typedef
+codegen
