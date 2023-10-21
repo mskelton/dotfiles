@@ -110,6 +110,14 @@ return {
 			desc = "Find adjacent files",
 		},
 		{
+			"<leader>fj",
+			function()
+				require("telescope").extensions.jumper.list()
+			end,
+			mode = nv,
+			desc = "Find directories",
+		},
+		{
 			"<leader>/",
 			function()
 				require("telescope.builtin").current_buffer_fuzzy_find()
@@ -140,6 +148,8 @@ return {
 			build = "make",
 		},
 		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-node-modules.nvim",
+		"mskelton/telescope-jumper.nvim",
 	},
 	config = function()
 		local Path = require("plenary.path")
@@ -268,5 +278,7 @@ return {
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("ui-select")
+		require("telescope").load_extension("node_modules")
+		require("telescope").load_extension("jumper")
 	end,
 }

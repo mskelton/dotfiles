@@ -108,6 +108,7 @@ return {
 				{ "local-yokel", dir = "local-yokel.nvim" },
 				{ "oldies", dir = "oldies.nvim" },
 				{ "termicons", dir = "termicons.nvim" },
+				{ "telescope-jumper", dir = "telescope-jumper.nvim" },
 			},
 		},
 	},
