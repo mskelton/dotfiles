@@ -118,6 +118,14 @@ return {
 			desc = "Find directories",
 		},
 		{
+			"<leader>fm",
+			function()
+				require("telescope").extensions.node_modules.list()
+			end,
+			mode = nv,
+			desc = "Find node_modules",
+		},
+		{
 			"<leader>/",
 			function()
 				require("telescope.builtin").current_buffer_fuzzy_find()
