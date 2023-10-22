@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Upload an image from the clipboard to S3
+
+bucket_name="mskelton"
+folder=${1:-bytes}
+
+# Create temp file and store clipboard image
+temp_file=$(mktemp /tmp/clipboard-image.XXXXXX.png)
+pbpaste >"$temp_file"
+
+# Upload to S3
+id=$(date +%Y%m%d%H%M%S)
+aws s3 cp "$temp_file" "s3://$bucket_name/$folder/$id.png" >/dev/null
+
+# Remove temp file
+rm "$temp_file"
+
+# Output URL
+echo "https://cdn.mskelton.dev/$folder/$id.png"
