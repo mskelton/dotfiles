@@ -10,7 +10,7 @@ pngpaste "$temp_file"
 
 # Upload to S3
 id=$(date +%Y%m%d%H%M%S)
-aws s3 cp "$temp_file" "s3://$bucket_name/$folder/$id.png" >/dev/null
+aws s3 cp "$temp_file" "s3://$bucket_name/$folder/$id.png" --content-type "image/png" >/dev/null
 
 # Remove temp file
 rm "$temp_file"
