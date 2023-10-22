@@ -5,8 +5,8 @@ bucket_name="mskelton"
 folder=${1:-bytes}
 
 # Create temp file and store clipboard image
-temp_file=$(mktemp /tmp/clipboard-image.XXXXXX.png)
-pbpaste >"$temp_file"
+temp_file=$(mktemp)
+pngpaste "$temp_file"
 
 # Upload to S3
 id=$(date +%Y%m%d%H%M%S)
