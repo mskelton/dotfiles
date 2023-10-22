@@ -2,7 +2,26 @@
 # Upload an image from the clipboard to S3
 
 bucket_name="mskelton"
-folder=${1:-bytes}
+folder="bytes"
+format=url
+
+# Parse the command line args
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	--folder)
+		folder="$2"
+		shift 2
+		;;
+	-f | --format)
+		format="$2"
+		shift 2
+		;;
+	*)
+		echo "Unknown argument: $1"
+		exit 1
+		;;
+	esac
+done
 
 # Create temp file and store clipboard image
 temp_file=$(mktemp)
@@ -16,4 +35,9 @@ aws s3 cp "$temp_file" "s3://$bucket_name/$folder/$id.png" --content-type "image
 rm "$temp_file"
 
 # Output URL
-echo "https://cdn.mskelton.dev/$folder/$id.png"
+url="https://cdn.mskelton.dev/$folder/$id.png"
+if [[ "$format" == "markdown" || "$format" == "md" ]]; then
+	echo "![image]($url)"
+else
+	echo "$url"
+fi
