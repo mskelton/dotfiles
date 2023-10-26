@@ -37,6 +37,7 @@ return {
 
 				-- De-emphasize text completions
 				hl.CmpItemKindText = { fg = c.fg_dark }
+				hl.CmpItemKindVariable = { fg = c.magenta, bg = c.none }
 			end,
 		})
 
