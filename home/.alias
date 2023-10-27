@@ -21,6 +21,7 @@ alias unstash="git unstash"
 
 # GitHub CLI
 alias prw="gh prw"
+alias prc="gh prc"
 
 # Tmux
 alias ta="tmux attach"
