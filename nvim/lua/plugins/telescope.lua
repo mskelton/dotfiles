@@ -249,6 +249,12 @@ return {
 				},
 			},
 			extensions = {
+				jumper = {
+					patterns = {
+						"apps/*",
+						"packages/*",
+					},
+				},
 				["ui-select"] = { dropdown },
 			},
 			pickers = {
