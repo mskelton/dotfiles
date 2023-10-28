@@ -210,5 +210,9 @@
   "editor.selectionHighlight": false,
   "editor.matchBrackets": "never",
   "git.openRepositoryInParentFolders": "never",
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "workbench.editor.empty.hint": "hidden",
+  "tailwindCSS.experimental.classRegex": [
+    ["tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
 }
