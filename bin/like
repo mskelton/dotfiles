@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Like the current song
+
+js --url music.youtube.com \
+	"document.querySelector('#button-shape-like > button').click()"
