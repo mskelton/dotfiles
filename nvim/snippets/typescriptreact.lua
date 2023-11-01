@@ -34,7 +34,7 @@ return {
 						"",
 					}
 				end, { 1, 2 }),
-				c(1, { t("export default "), t("") }),
+				c(1, { t("export "), t("") }),
 				f(snip_utils.get_filename),
 				c(2, {
 					f(function(args, snip)
