@@ -33,40 +33,50 @@ return {
 		})
 	),
 	-- React
-	s("ed", fmt('export {{ default }} from "./{}"', { f(snip_utils.get_dir) })),
+	s(
+		"ed",
+		fmt('export {{ {} }} from "./{}"', {
+			f(snip_utils.get_dir),
+			f(snip_utils.get_dir),
+		})
+	),
 	s(
 		"rh",
 		fmt(
 			[[
-        {}function {}({}) {{
+        {}{}function {}({}) {{
           {}
         }}
-        {}
       ]],
 			{
-				c(1, { t("export "), t("") }),
-				f(get_hook_name),
-				c(2, {
-					f(function(args, snip)
-						return "options: " .. snip_utils.get_props_name(args, snip)
-					end),
-					t(""),
-				}),
-				i(0),
 				f(function(args, parent)
-					if args[2][1] == "" then
+					if not string.match(args[2][1], "{") then
 						return ""
 					end
 
 					local props = snip_utils.get_props_name(args, parent.snippet)
+					local export = ""
+					if string.match(args[1][1], "export") then
+						export = "export "
+					end
+
 					return {
-						"",
-						args[1][1] .. "interface " .. props .. " {",
+						export .. "interface " .. props .. " {",
 						"\t",
 						"}",
 						"",
+						"",
 					}
 				end, { 1, 2 }),
+				c(1, { t("export "), t("") }),
+				f(get_hook_name),
+				c(2, {
+					f(function(args, snip)
+						return "{ }: " .. snip_utils.get_props_name(args, snip)
+					end),
+					t(""),
+				}),
+				i(0),
 			}
 		)
 	),
