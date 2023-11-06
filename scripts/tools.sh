@@ -5,9 +5,11 @@ sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
 chsh -s /opt/homebrew/bin/fish
 
 # Install bun
+# https://bun.sh
 curl -fsSL https://bun.sh/install | bash
 
 # Install Starship
+# https://starship.rs
 curl -sS https://starship.rs/install.sh | sh
 
 # Install tpm
