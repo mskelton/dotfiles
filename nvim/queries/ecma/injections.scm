@@ -5,9 +5,17 @@
 ; {lang}`<{lang}>`
 (call_expression
  function: ((identifier) @injection.language
-  (#match? @injection.language "^(gql|hbs|html)"))
+  (#match? @injection.language "^(hbs|html)"))
  arguments: ((template_string) @injection.content
   (#offset! @injection.content 0 1 0 -1)))
+
+; gql`<{lang}>`
+(call_expression
+ function: ((identifier) @_name
+  (#match? @_name "gql"))
+ arguments: ((template_string) @graphql
+  (#offset! @graphql 0 1 0 -1)))
+
 
 ; css`<css>`, keyframes`<css>`
 (call_expression
