@@ -3,6 +3,11 @@ node_modules/
 # Neovim spell file
 nvim/spell/*.spl
 
+# While it is very helpful to have the Lazy.nvim lockfile in case an updates
+# doesn't work properly, having it committed doesn't work well due to different
+# local packages at home/work.
+nvim/lazy-lock.json
+
 # Tmux logs
 *.log
 
