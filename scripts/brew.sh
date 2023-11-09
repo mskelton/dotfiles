@@ -53,6 +53,7 @@ formula=(
 	watchman
 	wget
 	yq
+	fnm
 )
 
 casks=(
