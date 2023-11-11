@@ -141,6 +141,22 @@ return {
 			mode = nv,
 			desc = "Suggest spellings for current word",
 		},
+		{
+			"<leader>jr",
+			function()
+				require("jumper").jump_to_root()
+			end,
+			mode = nv,
+			desc = "Jump to project root",
+		},
+		{
+			"<leader>jc",
+			function()
+				require("jumper").jump_to_current_directory()
+			end,
+			mode = nv,
+			desc = "Jump to active buffer directory",
+		},
 	},
 	dependencies = {
 		{
@@ -157,7 +173,7 @@ return {
 		},
 		"nvim-tree/nvim-web-devicons",
 		"nvim-telescope/telescope-node-modules.nvim",
-		"mskelton/telescope-jumper.nvim",
+		"mskelton/jumper.nvim",
 	},
 	config = function()
 		local Path = require("plenary.path")
