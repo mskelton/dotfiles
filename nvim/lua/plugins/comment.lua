@@ -2,6 +2,9 @@ return {
 	"numToStr/Comment.nvim",
 	event = "BufReadPost",
 	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+	init = function()
+		vim.g.skip_ts_context_commentstring_module = true
+	end,
 	config = function()
 		local js_comments = {
 			__default = "// %s",
@@ -11,16 +14,13 @@ return {
 			comment = "// %s",
 		}
 
-		require("nvim-treesitter.configs").setup({
-			context_commentstring = {
-				enable = true,
-				enable_autocmd = false,
-				config = {
-					javascript = js_comments,
-					typescript = js_comments,
-					tsx = js_comments,
-					lua = { __default = "--- %s" },
-				},
+		require("ts_context_commentstring").setup({
+			enable_autocmd = false,
+			languages = {
+				javascript = js_comments,
+				typescript = js_comments,
+				tsx = js_comments,
+				lua = { __default = "--- %s" },
 			},
 		})
 
