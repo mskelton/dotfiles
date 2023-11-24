@@ -1,9 +1,15 @@
 local M = {}
 
+--- Modifies the config to require a root marker
+--- @param tbl table
+local function must(tbl)
+	return vim.tbl_extend("force", tbl, { requireMarker = true })
+end
+
 M.config = function()
-	local biome = require("efmls-configs.formatters.biome")
+	local biome = must(require("efmls-configs.formatters.biome"))
 	local fish_indent = require("efmls-configs.formatters.fish_indent")
-	local prettierd = require("efmls-configs.formatters.prettier_d")
+	local prettierd = must(require("efmls-configs.formatters.prettier_d"))
 	local rustfmt = require("efmls-configs.formatters.rustfmt")
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local stylua = require("efmls-configs.formatters.stylua")
@@ -39,7 +45,7 @@ M.config = function()
 		["svelte"] = { prettierd },
 		["svg"] = { prettierd },
 		["typescript"] = { prettierd, biome },
-		["typescriptreact"] = { prettierd, biome },
+		["typescriptreact"] = { prettierd },
 		["vue"] = { prettierd },
 		["yaml"] = { prettierd },
 		["swift"] = { swiftformat },
@@ -53,7 +59,6 @@ M.config = function()
 			documentRangeFormatting = true,
 		},
 		settings = {
-			rootMarkers = { ".git/" },
 			languages = languages,
 		},
 	}
