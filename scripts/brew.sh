@@ -21,8 +21,10 @@ formula=(
 	cocoapods
 	dict
 	fd
+	ffmpeg
 	fish
 	flyctl
+	fnm
 	fzf
 	gh
 	git
@@ -53,7 +55,6 @@ formula=(
 	watchman
 	wget
 	yq
-	fnm
 )
 
 casks=(

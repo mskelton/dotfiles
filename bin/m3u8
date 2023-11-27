@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Download and convert an m3u8 playlist to an mp4
+# Usage: m3u8 <url>
+
+set -eou pipefail
+
+base_url=$(dirname "$1")
+tmp_dir=$(mktemp -d)
+
+download_chunk() {
+	echo "Downloading chunk: $1"
+	url="$base_url/$1"
+	curl -s "$url" -o "$tmp_dir/$1"
+}
+
+curl -s "$1" | tee "$tmp_dir/$(basename "$1")" | grep -v '^#' | while read -r line; do
+	download_chunk "$line"
+done
+
+echo "Converting to mp4"
+ffmpeg -y -i "$tmp_dir/$(basename "$1")" -c copy "$(basename "$1" .m3u8).mp4"
+rm -rf "$tmp_dir"
