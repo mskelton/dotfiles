@@ -1,18 +1,28 @@
 local M = {}
 
---- Modifies the config to require a root marker
+--- Modifies the config
 --- @param tbl table
-local function must(tbl)
-	return vim.tbl_extend("force", tbl, { requireMarker = true })
+--- @param extend table
+local function with(tbl, extend)
+	return vim.tbl_extend("force", tbl, extend)
 end
 
 M.config = function()
-	local biome = must(require("efmls-configs.formatters.biome"))
 	local fish_indent = require("efmls-configs.formatters.fish_indent")
-	local prettierd = must(require("efmls-configs.formatters.prettier_d"))
 	local rustfmt = require("efmls-configs.formatters.rustfmt")
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local stylua = require("efmls-configs.formatters.stylua")
+
+	local prettierd = with(require("efmls-configs.formatters.prettier_d"), {
+		formatCommand = "prettierd '${INPUT}' ${--range-start=charStart} ${--range-end=charEnd}",
+		env = {
+			"PRETTIERD_LOCAL_PRETTIER_ONLY=true",
+		},
+	})
+
+	local biome = with(require("efmls-configs.formatters.biome"), {
+		requireMarker = true,
+	})
 
 	local dtsfmt = {
 		formatCommand = "dtsfmt --stdin '${INPUT}'",
