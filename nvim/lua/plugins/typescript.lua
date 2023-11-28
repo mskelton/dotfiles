@@ -16,7 +16,7 @@ local plugins = {
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
-	enabled = false,
+	--- enabled = false,
 	config = {
 		server = {
 			on_attach = function(client)
