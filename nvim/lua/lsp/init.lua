@@ -115,7 +115,7 @@ M.setup_servers = function()
 
 	M.server("eslint")
 	M.server("cssls")
-	M.server("efm", require("lsp.efm").config())
+	--- M.server("efm", require("lsp.efm").config())
 
 	-- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
@@ -162,6 +162,7 @@ M.setup = function()
 
 	require("lsp.handlers").register_handlers()
 	require("lsp.autocmd")
+	require("lsp.null-ls")
 	require("neodev").setup({})
 
 	M.setup_servers()

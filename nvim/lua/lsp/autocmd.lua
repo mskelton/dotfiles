@@ -30,7 +30,8 @@ local formatters = {
 	"dartls",
 	"eslint",
 	"gopls",
-	"efm",
+	--- "efm",
+	"null-ls",
 	"ocamllsp",
 	"prismals",
 }
