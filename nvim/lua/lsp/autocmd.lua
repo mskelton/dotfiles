@@ -5,9 +5,9 @@ local group = vim.api.nvim_create_augroup("lsp", {})
 --- @param client table
 --- @param bufnr number
 local function get_diagnostic_opts(client, bufnr)
-	-- rust-analyzer is a special case. It adds multiple diagnostics for the same
-	-- error to identify both the error and possible cause sites. As such,
-	-- including all diagnostics is important for proper navigation.
+	--- rust-analyzer is a special case. It adds multiple diagnostics for the same
+	--- error to identify both the error and possible cause sites. As such,
+	--- including all diagnostics is important for proper navigation.
 	if client.name == "rust_analyzer" then
 		return {}
 	end
@@ -48,11 +48,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<leader>ca", function()
+			vim.lsp.buf.code_action({
+				--- Filter unwanted code actions
+				filter = function(action)
+					return action.title ~= "Move to a new file"
+						and action.title ~= "Generate 'get' and 'set' accessors"
+				end,
+			})
+		end, opts)
 
-		-- Unimpaired style diagnostic navigation for warnings and errors. Info and
-		-- hints are ignored.
+		--- Unimpaired style diagnostic navigation for warnings and errors. Info and
+		--- hints are ignored.
 		vim.keymap.set("n", "[d", function()
 			vim.diagnostic.goto_prev(get_diagnostic_opts(client, bufnr))
 		end, opts)
@@ -61,23 +69,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.goto_next(get_diagnostic_opts(client, bufnr))
 		end, opts)
 
-		-- While I'll likely continuing using gd for go to definition, configuring
-		-- tagfunc is no big deal and makes that work as well.
+		--- While I'll likely continuing using gd for go to definition, configuring
+		--- tagfunc is no big deal and makes that work as well.
 		if client.server_capabilities.definitionProvider then
 			vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
 		end
 
-		-- Only enable formatting for specific LSP's. Many LSPs that have built-in
-		-- formatting don't have robust enough formatting (e.g. tsserver is not as
-		-- complete as Prettier).
+		--- Only enable formatting for specific LSP's. Many LSPs that have built-in
+		--- formatting don't have robust enough formatting (e.g. tsserver is not as
+		--- complete as Prettier).
 		local format = vim.tbl_contains(formatters, client.name)
 		client.server_capabilities.documentFormattingProvider = format
 		client.server_capabilities.documentRangeFormattingProvider = format
 
-		-- Disable semantic tokens for now. It's not quite ready for prime time.
+		--- Disable semantic tokens for now. It's not quite ready for prime time.
 		client.server_capabilities.semanticTokensProvider = nil
 
-		-- TODO: Remove once typescript-tools is more stable
+		--- TODO: Remove once typescript-tools is more stable
 		if client.name == "tsserver" then
 			vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
 			vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
@@ -85,13 +93,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		if client.name == "typescript-tools" then
-			-- Organize imports for TypeScript files. Unfortunate to have to do two
-			-- separate actions, but unfortunately it's the way the language server is
-			-- setup.
+			--- Organize imports for TypeScript files. Unfortunate to have to do two
+			--- separate actions, but unfortunately it's the way the language server is
+			--- setup.
 			vim.keymap.set("n", "go", "<cmd>TSToolsAddMissingImports<cr>", opts)
 			vim.keymap.set("n", "gO", "<cmd>TSToolsRemoveUnusedImports<cr>", opts)
 
-			-- Rename file keymap similar to rename variable
+			--- Rename file keymap similar to rename variable
 			vim.keymap.set("n", "<leader>rf", "<cmd>TSToolsRenameFile<cr>", opts)
 		end
 	end,
@@ -122,7 +130,7 @@ end
 on_write("*", function(opts)
 	local clients = vim.lsp.get_active_clients({ bufnr = opts.buf })
 
-	-- Only run formatting if there are connected LSP clients
+	--- Only run formatting if there are connected LSP clients
 	if vim.tbl_count(clients) ~= 0 then
 		vim.lsp.buf.format({ bufnr = opts.buf })
 	end
