@@ -16,6 +16,7 @@ local plugins = {
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
+	enabled = false,
 	config = {
 		server = {
 			on_attach = function(client)
@@ -29,6 +30,10 @@ return {
 				end
 			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			cmd = {
+				npm.global_bin("typescript-language-server"),
+				"--stdio",
+			},
 			init_options = {
 				plugins = vim.tbl_map(function(item)
 					return {

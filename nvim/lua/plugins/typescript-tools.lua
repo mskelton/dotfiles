@@ -1,8 +1,9 @@
 local utils = require("core.utils")
+--- local npm = require("utils.npm")
 
 return {
 	"pmizio/typescript-tools.nvim",
-	enabled = false,
+	--- enabled = false,
 	event = "BufReadPre",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	config = function()
@@ -38,48 +39,27 @@ return {
 			},
 			settings = {
 				publish_diagnostic_on = "change",
-				tsserver_plugins = {},
+				tsserver_plugins = {
+					--- {
+					--- 	name = "typescript-styled-plugin",
+					--- 	location = npm.mason_lib("typescript-styled-plugin"),
+					--- 	config = {
+					--- 		validate = false,
+					--- 		emmet = { showExpandedAbbreviation = "never" },
+					--- 	},
+					--- },
+				},
 				tsserver_file_preferences = {
 					autoImportFileExcludePatterns = {
+						"**/.next/*",
+						"**/@federato/deprecated-athena",
 						"**/@mobily/ts-belt",
 						"**/carbon-components-react",
+						"**/postcss",
 						"**/react-aria-components",
 					},
 				},
 			},
 		})
-
-		vim.api.nvim_create_user_command("TSToolsRenameFile", function()
-			local clients = vim.lsp.get_active_clients()
-			local client = vim.tbl_filter(function(client)
-				return client.name == "typescript-tools"
-			end, clients)[1]
-
-			if client == nil then
-				return
-			end
-
-			local source_file = vim.api.nvim_buf_get_name(0)
-			local source_dir = vim.fn.fnamemodify(source_file, ":p:h") .. "/"
-
-			vim.ui.input({
-				prompt = "Rename",
-				completion = "file",
-				default = source_dir,
-			}, function(target_file)
-				if target_file == nil then
-					return
-				end
-
-				vim.lsp.buf_request(0, "workspace/willRenameFiles", {
-					files = {
-						{
-							oldUri = vim.uri_from_fname(source_file),
-							newUri = vim.uri_from_fname(target_file),
-						},
-					},
-				})
-			end)
-		end, {})
 	end,
 }
