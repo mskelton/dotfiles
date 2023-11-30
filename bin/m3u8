@@ -7,16 +7,32 @@ set -eou pipefail
 base_url=$(dirname "$1")
 tmp_dir=$(mktemp -d)
 
+tick() {
+	progress=$(($2 * 100 / $1))
+	printf "\rDownloading: [%-50s] %d%%" "$(printf "%0.s#" $(seq 1 $((progress / 2))))" $progress
+}
+
 download_chunk() {
-	echo "Downloading chunk: $1"
 	url="$base_url/$1"
 	curl -s "$url" -o "$tmp_dir/$1"
 }
 
-curl -s "$1" | tee "$tmp_dir/$(basename "$1")" | grep -v '^#' | while read -r line; do
+# Download the master playlist
+master="$tmp_dir/$(basename "$1")"
+curl -s "$1" >"$master"
+
+# Gather progress information
+wc=$(grep -v '^#' -c "$master")
+i=0
+
+# Download each chunk
+grep -v '^#' "$master" | while read -r line; do
+	tick "$wc" $((++i))
 	download_chunk "$line"
 done
 
-echo "Converting to mp4"
+# Concatenate all the chunks
+printf "\n"
+echo "Converting to mp4..."
 ffmpeg -y -i "$tmp_dir/$(basename "$1")" -c copy "$(basename "$1" .m3u8).mp4"
 rm -rf "$tmp_dir"
