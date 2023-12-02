@@ -178,7 +178,9 @@ map("n", "<leader>wp", "<C-w>p", "Go to previous window")
 --------------------------------------------------------------------------------
 
 map("n", "<leader>od", function()
-	vim.cmd("Delete!")
+	if vim.fn.confirm("Delete file?", "&Yes\n&No") == 1 then
+		vim.cmd("Delete!")
+	end
 end, "Delete file")
 
 map("n", "<leader>of", function()
