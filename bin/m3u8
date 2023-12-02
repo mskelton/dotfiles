@@ -6,6 +6,7 @@ set -eou pipefail
 
 base_url=$(dirname "$1")
 tmp_dir=$(mktemp -d)
+name=${2:-$(basename "$1" .m3u8)}
 
 tick() {
 	progress=$(($2 * 100 / $1))
@@ -34,5 +35,5 @@ done
 # Concatenate all the chunks
 printf "\n"
 echo "Converting to mp4..."
-ffmpeg -y -i "$tmp_dir/$(basename "$1")" -c copy "$(basename "$1" .m3u8).mp4"
+ffmpeg -y -i "$tmp_dir/$(basename "$1")" -c copy "$name.mp4"
 rm -rf "$tmp_dir"
