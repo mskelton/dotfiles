@@ -115,6 +115,7 @@ M.setup_servers = function()
 
 	M.server("eslint")
 	M.server("cssls")
+	M.server("svelte")
 	--- M.server("efm", require("lsp.efm").config())
 
 	-- Only enable Tailwind if the project has a Tailwind config file
