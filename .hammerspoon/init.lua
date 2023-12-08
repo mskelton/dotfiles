@@ -203,7 +203,6 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
-		-- Laptop
 	})
 end)
 
@@ -237,7 +236,6 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
-		-- Laptop
 	})
 end)
 
@@ -265,7 +263,6 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
-		-- Laptop
 	})
 end)
 
