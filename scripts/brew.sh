@@ -40,7 +40,6 @@ formula=(
 	ninja
 	opam
 	p7zip
-	pngpaste
 	rename
 	ripgrep
 	shellcheck

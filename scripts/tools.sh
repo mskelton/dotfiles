@@ -46,6 +46,7 @@ sudo corepack enable
 # Install cargo binaries
 cargo install --git https://github.com/mskelton/pomo
 cargo install --git https://github.com/mskelton/flashlight
+cargo install --git https://github.com/mskelton/pngpaste
 
 # Install go binaries
 go install github.com/mskelton/byte@latest
