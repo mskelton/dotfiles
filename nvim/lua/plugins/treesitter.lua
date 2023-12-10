@@ -55,9 +55,8 @@ return {
 			parser_config.styled = {
 				install_info = {
 					url = "https://github.com/mskelton/tree-sitter-styled",
-					revision = "e51e673efc860373167680b4bcbf418a11e4ed26",
+					revision = "be43c38c57eb65e72ab6a970a4fb5d0be9a05907",
 					files = { "src/parser.c", "src/scanner.c" },
-					generate_requires_npm = true,
 				},
 				maintainers = { "@mskelton" },
 			}
