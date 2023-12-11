@@ -110,7 +110,7 @@ return {
 			desc = "Find adjacent files",
 		},
 		{
-			"<leader>fj",
+			"<leader>jo",
 			function()
 				require("telescope").extensions.jumper.list()
 			end,
