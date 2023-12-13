@@ -23,6 +23,7 @@ null_ls.setup({
 				"markdown.mdx",
 				"graphql",
 				"handlebars",
+				"sql",
 				"svg",
 				"svelte",
 			},

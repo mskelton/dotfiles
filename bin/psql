@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Open psql in a running postgres container
+
+docker exec -it postgres psql
