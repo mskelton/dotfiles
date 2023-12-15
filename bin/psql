@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Open psql in a running postgres container
 
-docker exec -it postgres psql
+user=${1:-postgres}
+docker exec -it postgres psql -U "$user"
