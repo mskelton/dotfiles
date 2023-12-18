@@ -35,6 +35,12 @@ return {
 					max = 50,
 				},
 			},
+			--- https://github.com/nvim-tree/nvim-tree.lua/issues/2438
+			filesystem_watchers = {
+				ignore_dirs = {
+					"node_modules",
+				},
+			},
 			filters = {
 				custom = {
 					".DS_Store",
