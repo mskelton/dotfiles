@@ -47,20 +47,6 @@ return {
 			parser_config.dart.install_info.revision =
 				"8aa8ab977647da2d4dcfb8c4726341bee26fbce4"
 
-			parser_config.devicetree.install_info.url =
-				"https://github.com/mskelton/tree-sitter-devicetree"
-			parser_config.devicetree.install_info.revision =
-				"71f7d12e6987bf23cba49372079d7a451fc92cf1"
-
-			parser_config.styled = {
-				install_info = {
-					url = "https://github.com/mskelton/tree-sitter-styled",
-					revision = "be43c38c57eb65e72ab6a970a4fb5d0be9a05907",
-					files = { "src/parser.c", "src/scanner.c" },
-				},
-				maintainers = { "@mskelton" },
-			}
-
 			require("nvim-treesitter.configs").setup({
 				autotag = { enable = true },
 				endwise = { enable = true },
@@ -83,6 +69,7 @@ return {
 					"gowork",
 					"graphql",
 					"html",
+					"http",
 					"java",
 					"javascript",
 					"jsdoc",

@@ -4,6 +4,7 @@ vim.filetype.add({
 		mq5 = "mql5",
 		mqh = "mql5",
 		keymap = "dts",
+		http = "http",
 	},
 	filename = {
 		[".clangd"] = "yaml",
