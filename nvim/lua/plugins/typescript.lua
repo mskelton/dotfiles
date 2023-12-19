@@ -1,3 +1,4 @@
+local env = require("utils.env")
 local utils = require("core.utils")
 local npm = require("utils.npm")
 
@@ -16,7 +17,7 @@ local plugins = {
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
-	enabled = os.getenv("WORK") ~= nil,
+	enabled = env.is_work(),
 	config = {
 		server = {
 			on_attach = function(client)

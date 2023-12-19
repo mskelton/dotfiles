@@ -1,9 +1,10 @@
+local env = require("utils.env")
 local utils = require("core.utils")
 --- local npm = require("utils.npm")
 
 return {
 	"pmizio/typescript-tools.nvim",
-	enabled = os.getenv("WORK") == nil,
+	enabled = not env.is_work(),
 	event = "BufReadPre",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	config = function()
