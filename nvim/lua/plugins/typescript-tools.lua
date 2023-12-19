@@ -3,7 +3,7 @@ local utils = require("core.utils")
 
 return {
 	"pmizio/typescript-tools.nvim",
-	enabled = false,
+	enabled = os.getenv("WORK") == nil,
 	event = "BufReadPre",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	config = function()
