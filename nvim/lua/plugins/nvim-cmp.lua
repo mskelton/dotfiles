@@ -93,13 +93,12 @@ return {
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete({}),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<C-j>"] = function(fallback)
+				["<C-j>"] = function()
 					if cmp.visible() then
 						cmp.select_next_item()
 					else
-						fallback()
+						cmp.complete()
 					end
 				end,
 				["<C-k>"] = function(fallback)
