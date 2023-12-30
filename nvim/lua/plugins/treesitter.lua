@@ -24,7 +24,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			{
 				"nvim-treesitter/nvim-treesitter-context",
-				config = {
+				opts = {
 					enable = false,
 					max_lines = 2,
 					-- trim_scope = "inner",
@@ -182,7 +182,7 @@ return {
 			"typescriptreact",
 			"svelte",
 		},
-		config = {
+		opts = {
 			enable_close_on_slash = false,
 		},
 	},

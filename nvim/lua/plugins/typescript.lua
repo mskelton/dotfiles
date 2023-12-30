@@ -18,7 +18,7 @@ return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
 	--- enabled = env.is_work(),
-	config = {
+	opts = {
 		server = {
 			on_attach = function(client)
 				for _, value in ipairs(plugins) do

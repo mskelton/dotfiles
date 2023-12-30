@@ -35,7 +35,7 @@ return {
 			desc = "Previous harpoon mark",
 		},
 	},
-	config = {
+	opts = {
 		mark_branch = true,
 	},
 }

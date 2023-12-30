@@ -149,7 +149,7 @@ return {
 				desc = "Go to previous sibling file",
 			},
 		},
-		config = {
+		opts = {
 			relatives = {
 				postfixes = { "_test" },
 			},
