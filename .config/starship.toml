@@ -116,6 +116,7 @@ symbol = "탿 "
 symbol = "턖 "
 
 [rust]
+disabled = true
 symbol = "턗 "
 
 [scala]
