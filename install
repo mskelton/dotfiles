@@ -6,6 +6,7 @@ source ./dottie/dottie.sh
 
 # ~/.config directory
 link .config/byte/config.yaml ~/.config/byte/config.yaml
+link .config/fd ~/.config/fd
 link .config/git ~/.config/git
 link .config/kitty ~/.config/kitty
 link .config/starship.toml ~/.config/starship.toml
