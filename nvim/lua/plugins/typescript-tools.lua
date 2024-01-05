@@ -58,7 +58,6 @@ return {
 						"**/@mobily/ts-belt",
 						"**/carbon-components-react",
 						"**/postcss",
-						"**/react-aria-components",
 					},
 				},
 			},
