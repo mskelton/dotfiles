@@ -67,7 +67,7 @@ Install:andUse("AppLauncher", {
 		modifiers = layer_key,
 	},
 	hotkeys = {
-		j = "Google Chrome",
+		j = "Arc",
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
 		[";"] = "Mimestream",
@@ -184,7 +184,7 @@ end
 --- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "u", function()
 	apply_layout({
-		{ "Google Chrome", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_center, nil, nil },
@@ -194,7 +194,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
-		{ "Google Chrome", nil, screens.primary, hs.layout.maximized, nil, nil },
+		{ "Arc", nil, screens.primary, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -210,7 +210,7 @@ end)
 --- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(layer_key, "i", function()
 	apply_layout({
-		{ "Google Chrome", nil, screens.laptop, hs.layout.left50, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_left, nil, nil },
@@ -219,7 +219,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
-		{ "Google Chrome", nil, screens.primary, hs.layout.left50, nil, nil },
+		{ "Arc", nil, screens.primary, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -244,7 +244,7 @@ end)
 --- most screen.
 hs.hotkey.bind(layer_key, "o", function()
 	apply_layout({
-		{ "Google Chrome", nil, screens.laptop, hs.layout.right50, nil, nil },
+		{ "Arc", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_left, nil, nil },
@@ -253,7 +253,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
-		{ "Google Chrome", nil, screens.primary, hs.layout.right50, nil, nil },
+		{ "Arc", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
