@@ -1,7 +1,4 @@
 {
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
   "[go][go.mod][go.sum]": {
     "editor.defaultFormatter": "golang.go"
   },
@@ -20,7 +17,7 @@
     "editor.tabSize": 4
   },
   "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer",
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.tabSize": 4
   },
   "debug.console.fontSize": 15,
