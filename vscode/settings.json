@@ -202,7 +202,7 @@
   ],
   "editor.guides.highlightActiveBracketPair": false,
   "editor.guides.bracketPairsHorizontal": false,
-  "editor.occurrencesHighlight": false,
+  "editor.occurrencesHighlight": "off",
   "editor.selectionHighlight": false,
   "editor.matchBrackets": "never",
   "git.openRepositoryInParentFolders": "never",
