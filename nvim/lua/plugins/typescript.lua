@@ -30,10 +30,10 @@ return {
 				end
 			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			cmd = {
-				npm.global_bin("typescript-language-server"),
-				"--stdio",
-			},
+			--- cmd = {
+			--- 	npm.global_bin("typescript-language-server"),
+			--- 	"--stdio",
+			--- },
 			init_options = {
 				plugins = vim.tbl_map(function(item)
 					return {
