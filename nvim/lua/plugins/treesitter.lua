@@ -100,6 +100,7 @@ return {
 					"vim",
 					"vimdoc",
 					"yaml",
+					"zig",
 				},
 				sync_install = false,
 				highlight = { enable = true },
@@ -108,6 +109,7 @@ return {
 					select = {
 						enable = true,
 						lookahead = true,
+						disable = { "zig" },
 						keymaps = {
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",
