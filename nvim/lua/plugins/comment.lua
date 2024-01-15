@@ -21,6 +21,7 @@ return {
 				typescript = js_comments,
 				tsx = js_comments,
 				lua = { __default = "--- %s" },
+				scm = { __default = "; %s" },
 			},
 		})
 
