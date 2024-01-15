@@ -43,10 +43,6 @@ return {
 			local parser_config =
 				require("nvim-treesitter.parsers").get_parser_configs()
 
-			-- BUG: Temporary until https://github.com/UserNobody14/tree-sitter-dart/issues/46 is fixed
-			parser_config.dart.install_info.revision =
-				"8aa8ab977647da2d4dcfb8c4726341bee26fbce4"
-
 			parser_config.devicetree.install_info.url =
 				"https://github.com/mskelton/tree-sitter-devicetree"
 			parser_config.devicetree.install_info.revision =
@@ -109,7 +105,7 @@ return {
 					select = {
 						enable = true,
 						lookahead = true,
-						disable = { "zig" },
+						disable = { "dart", "zig" },
 						keymaps = {
 							["af"] = "@function.outer",
 							["if"] = "@function.inner",
