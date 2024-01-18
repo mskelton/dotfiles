@@ -6,5 +6,7 @@ return {
 			dev = false,
 		},
 	},
-	config = true,
+	config = function()
+		require("termicons").setup()
+	end,
 }
