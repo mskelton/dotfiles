@@ -88,7 +88,7 @@
 ; Variables
 ;----------
 (namespace_import
-  (identifier) @namespace)
+  (identifier) @module)
 
 ; Literals
 ;---------
@@ -122,7 +122,7 @@
 ; (template_string) @string
 
 (escape_sequence) @string.escape
-(regex_pattern) @string.regex
+(regex_pattern) @string.regexp
 (regex "/" @punctuation.bracket) ; Regex delimiters
 
 (number) @number
