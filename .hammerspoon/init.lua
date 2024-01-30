@@ -195,6 +195,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.maximized, nil, nil },
@@ -206,6 +207,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -220,6 +222,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Around", nil, screens.laptop, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.left50, nil, nil },
@@ -239,6 +242,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -254,6 +258,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Around", nil, screens.laptop, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.right50, nil, nil },
@@ -266,6 +271,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Chatter", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
+		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
 end)
 
