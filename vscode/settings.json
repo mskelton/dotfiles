@@ -20,6 +20,9 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.tabSize": 4
   },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
   "debug.toolBarLocation": "docked",

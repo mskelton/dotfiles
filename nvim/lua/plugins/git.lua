@@ -1,3 +1,7 @@
+local function default_branch()
+	return vim.cmd("Git default")
+end
+
 return {
 	{
 		"tpope/vim-fugitive",
@@ -47,6 +51,32 @@ return {
 				"<cmd>Git pull<cr>",
 				mode = { "n", "v" },
 				desc = "Git pull",
+			},
+			{
+				"<leader>vo",
+				function()
+					vim.cmd(string.format("GBrowse %s:%%", default_branch()))
+				end,
+				mode = "n",
+				desc = "Open on GitHub",
+			},
+			{
+				"<leader>vo",
+				function()
+					-- TODO: This doesn't work
+					local start_pos = vim.fn.getpos("'<")
+					local end_pos = vim.fn.getpos("'>")
+					local cmd = string.format(
+						"%s,%sGBrowse %s:%%",
+						start_pos[2],
+						end_pos[2],
+						default_branch()
+					)
+
+					vim.cmd(cmd)
+				end,
+				mode = "v",
+				desc = "Open on GitHub",
 			},
 		},
 	},
