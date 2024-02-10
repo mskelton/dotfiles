@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Upload an image from the clipboard to S3
+# Usage: img [<filename>] [--folder <folder>] [--format <url|md>]
 
 bucket_name="mskelton"
 folder="bytes"
@@ -17,25 +18,40 @@ while [[ $# -gt 0 ]]; do
 		shift 2
 		;;
 	*)
-		echo "Unknown argument: $1"
-		exit 1
+		filename="$1"
+		shift
 		;;
 	esac
 done
 
-# Create temp file and store clipboard image
-temp_file=$(mktemp)
-pngpaste "$temp_file"
+content_type() {
+	if [[ $1 =~ ^(png|jpg|jpeg|gif)$ ]]; then
+		echo "image/${1/jpeg/jpg}"
+	else
+		echo "application/octet-stream"
+	fi
+}
 
-# Upload to S3
-id=$(date +%Y%m%d%H%M%S)
-aws s3 cp "$temp_file" "s3://$bucket_name/$folder/$id.png" --content-type "image/png" >/dev/null
+upload() {
+	id=$(date +%Y%m%d%H%M%S)
+	ext="${filename##*.}"
+	url="https://cdn.mskelton.dev/$folder/$id.$ext"
 
-# Remove temp file
-rm "$temp_file"
+	aws s3 cp "$filename" "s3://$bucket_name/$folder/$id.$ext" --content-type "$(content_type "$ext")" >/dev/null
+}
+
+# If no filename was provided, create a temp file and pase the clipboard image
+# as a PNG. Otherwise, upload the provided file.
+if [[ -z "$filename" ]]; then
+	filename="$(mktemp).png"
+	pngpaste "$filename"
+	upload "$filename"
+	rm "$filename"
+else
+	upload "$filename"
+fi
 
 # Output URL
-url="https://cdn.mskelton.dev/$folder/$id.png"
 if [[ "$format" == "markdown" || "$format" == "md" ]]; then
 	echo "![image]($url)"
 else

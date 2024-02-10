@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Manage images on the CDN
+# Usage: cdn [filename] [--delete]
+
+bucket_name="mskelton"
+folder="bytes"
+action=
+filename=
+
+# Parse the command line args
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	-d | --delete)
+		action="$1"
+		shift
+		;;
+	*)
+		filename="$(echo "$1" | sed 's/.*\///')"
+		shift
+		;;
+	esac
+done
+
+delete() {
+	aws s3 rm "s3://$bucket_name/$folder/$filename"
+}
+
+case "$action" in
+-d | --delete) delete ;;
+*) echo "Usage: cdn [filename] [--delete]" ;;
+esac
