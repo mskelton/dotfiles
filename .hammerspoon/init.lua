@@ -70,16 +70,18 @@ Install:andUse("AppLauncher", {
 		modifiers = layer_key,
 	},
 	hotkeys = {
+		--- Home row
+		h = "Finder",
 		j = browser,
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
 		[";"] = "Mimestream",
-		n = "Finder",
+		--- Bottom row
+		n = "Postman",
 		m = "Figma",
 		[","] = "Chatter",
 		["."] = "Around",
 		["/"] = "zoom.us",
-		c = "XCode",
 	},
 })
 
