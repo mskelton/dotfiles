@@ -23,10 +23,10 @@ return {
 		},
 		keys = {
 			{
-				"<leader>vb",
+				"<leader>vh",
 				"<cmd>Git blame<cr>",
 				mode = { "n", "v" },
-				desc = "Git blame",
+				desc = "Git history (blame)",
 			},
 			{
 				"<leader>vd",
