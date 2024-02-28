@@ -132,6 +132,11 @@ return {
 
 							return cwd
 						end,
+						fmt = utils.trunc(50, {
+							{ max = 80, width = 15 },
+							{ max = 120, width = 30 },
+							{ max = 140, width = 30 },
+						}),
 						color = { fg = colors.blue },
 						cond = utils.min_width(120),
 					},
