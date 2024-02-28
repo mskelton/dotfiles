@@ -1,5 +1,9 @@
 local function default_branch()
-	return vim.cmd("Git default")
+	return string.gsub(vim.fn.execute("Git default"), "\n", "")
+end
+
+local function filename()
+	return vim.fn.expand("%:p")
 end
 
 return {
@@ -55,7 +59,7 @@ return {
 			{
 				"<leader>vo",
 				function()
-					vim.cmd(string.format("GBrowse %s:%%", default_branch()))
+					vim.cmd(string.format("GBrowse %s:%s", default_branch(), filename()))
 				end,
 				mode = "n",
 				desc = "Open on GitHub",
@@ -67,10 +71,11 @@ return {
 					local start_pos = vim.fn.getpos("'<")
 					local end_pos = vim.fn.getpos("'>")
 					local cmd = string.format(
-						"%s,%sGBrowse %s:%%",
+						"%s,%sGBrowse %s:%s",
 						start_pos[2],
 						end_pos[2],
-						default_branch()
+						default_branch(),
+						filename()
 					)
 
 					vim.cmd(cmd)
