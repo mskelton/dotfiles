@@ -6,6 +6,20 @@ local function filename()
 	return vim.fn.expand("%:p")
 end
 
+function OpenOnGitHubFromSelection()
+	local start_pos = vim.fn.getpos("'<")
+	local end_pos = vim.fn.getpos("'>")
+	local cmd = string.format(
+		"%s,%sGBrowse %s:%s",
+		start_pos[2],
+		end_pos[2],
+		default_branch(),
+		filename()
+	)
+
+	vim.cmd(cmd)
+end
+
 return {
 	{
 		"tpope/vim-fugitive",
@@ -66,20 +80,7 @@ return {
 			},
 			{
 				"<leader>vo",
-				function()
-					-- TODO: This doesn't work
-					local start_pos = vim.fn.getpos("'<")
-					local end_pos = vim.fn.getpos("'>")
-					local cmd = string.format(
-						"%s,%sGBrowse %s:%s",
-						start_pos[2],
-						end_pos[2],
-						default_branch(),
-						filename()
-					)
-
-					vim.cmd(cmd)
-				end,
+				":lua OpenOnGitHubFromSelection()<cr>",
 				mode = "v",
 				desc = "Open on GitHub",
 			},
