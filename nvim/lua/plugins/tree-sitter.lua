@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "VimEnter",
+		event = "BufReadPost",
 		cmd = {
 			"TSBufDisable",
 			"TSBufEnable",
