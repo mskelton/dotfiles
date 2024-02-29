@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "BufReadPost",
+		event = "VimEnter",
 		cmd = {
 			"TSBufDisable",
 			"TSBufEnable",
@@ -22,15 +22,6 @@ return {
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			{
-				"nvim-treesitter/nvim-treesitter-context",
-				opts = {
-					enable = false,
-					max_lines = 2,
-					-- trim_scope = "inner",
-					-- mode = "topline",
-				},
-			},
 		},
 		keys = {
 			{
