@@ -212,6 +212,9 @@ return {
 				layout_strategy = "mskelton",
 				sorting_strategy = "ascending",
 				results_title = false,
+				preview = {
+					treesitter = false,
+				},
 				layout_config = {
 					preview_cutoff = 1,
 					prompt_position = "top",
