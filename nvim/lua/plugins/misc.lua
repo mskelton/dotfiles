@@ -198,8 +198,8 @@ return {
 		config = true,
 	},
 	{
-		"nvim-tree/nvim-web-devicons",
-		dependencies = { "folke/trouble.nvim" },
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = true,
 	},
 }
