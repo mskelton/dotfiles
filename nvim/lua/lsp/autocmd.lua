@@ -30,10 +30,10 @@ local formatters = {
 	"dartls",
 	"eslint",
 	"gopls",
-	--- "efm",
 	"null-ls",
 	"ocamllsp",
 	"prismals",
+	"taplo",
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {

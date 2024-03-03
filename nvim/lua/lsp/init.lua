@@ -41,6 +41,7 @@ M.setup_servers = function()
 	M.server("sourcekit")
 	M.server("emmet_ls")
 	M.server("zls")
+	M.server("taplo")
 
 	-- GraphQL
 	M.server("graphql", {
