@@ -26,3 +26,6 @@ source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 if type -q fnm
     fnm env | source
 end
+
+# Setup Zoxide
+zoxide init fish | source
