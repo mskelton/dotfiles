@@ -59,6 +59,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end, opts)
 
+		--- Enable inlay hints if the server (and Neovim) supports it
+		if
+			client.server_capabilities.inlayHintProvider and vim.lsp.buf.inlay_hint
+		then
+			vim.lsp.buf.inlay_hint(bufnr, true)
+		end
+
 		--- Unimpaired style diagnostic navigation for warnings and errors. Info and
 		--- hints are ignored.
 		vim.keymap.set("n", "[d", function()

@@ -73,10 +73,10 @@ o.grepprg = "rg --vimgrep"
 o.grepformat = "%f:%l:%c:%m"
 
 --- Netrw
-g.netrw_banner = 0
-g.netrw_keepdir = 0
-g.netrw_localcopydircmd = "cp -r"
-g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) -- use .gitignore
+--- g.netrw_banner = 0
+--- g.netrw_keepdir = 0
+--- g.netrw_localcopydircmd = "cp -r"
+--- g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) -- use .gitignore
 
 --- Trying out a taller cmdline to attempt to reduce "Press ENTER" prompts.
 o.cmdheight = 2
