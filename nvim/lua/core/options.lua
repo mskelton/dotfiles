@@ -72,13 +72,15 @@ o.splitkeep = "screen"
 o.grepprg = "rg --vimgrep"
 o.grepformat = "%f:%l:%c:%m"
 
---- Netrw
+--- Netrw settings here if I ever care to experiment with Netrw again. I'm still
+--- torn, I love it and hate it.
 --- g.netrw_banner = 0
 --- g.netrw_keepdir = 0
 --- g.netrw_localcopydircmd = "cp -r"
 --- g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) -- use .gitignore
 
---- Trying out a taller cmdline to attempt to reduce "Press ENTER" prompts.
+--- Using a 2-line command window reduces the number of "Press ENTER or type"
+--- prompts which is very helpful for staying focused.
 o.cmdheight = 2
 
 --- Allow project-local config files
@@ -86,14 +88,32 @@ o.exrc = true
 
 --- These don't need much explanation
 o.completeopt = "menu,menuone,noselect"
+
+--- Prompt for confirmation rather than simply failing the operation
 o.confirm = true
+
+--- Use spaces for tabs.
 o.expandtab = true
+
+--- The best combination of options when searching. Ignore case by default, but
+--- if there are any uppercase characters in the search, then search case sensitive.
 o.ignorecase = true
-o.showbreak = "    "
-o.signcolumn = "yes"
 o.smartcase = true
+
+--- Use a 4-space soft line-break
+o.showbreak = "    "
+
+--- Always show the sign column even if there are no errors to prevent layout
+--- shifts when errors appear.
+o.signcolumn = "yes"
+
+--- Enable full terminal colors
 o.termguicolors = true
+
+--- Auto save undo history
 o.undofile = true
+
+--- TODO: Not sure if this is actually necessary, I need to dig more into this.
 o.updatetime = 100
 
 --- Abbreviations
