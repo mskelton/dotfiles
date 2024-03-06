@@ -10,3 +10,6 @@ fi
 PAGER=""
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setup starship prompt
+eval "$(starship init zsh)"
