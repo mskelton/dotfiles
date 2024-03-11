@@ -6,11 +6,11 @@ local function filename()
 	return vim.fn.expand("%:p")
 end
 
-function OpenOnGitHubFromSelection()
+function CopyGitRemoteURLFromSelection()
 	local start_pos = vim.fn.getpos("'<")
 	local end_pos = vim.fn.getpos("'>")
 	local cmd = string.format(
-		"%s,%sGBrowse %s:%s",
+		"%s,%sGBrowse! %s:%s",
 		start_pos[2],
 		end_pos[2],
 		default_branch(),
@@ -73,16 +73,16 @@ return {
 			{
 				"<leader>vo",
 				function()
-					vim.cmd(string.format("GBrowse %s:%s", default_branch(), filename()))
+					vim.cmd(string.format("GBrowse! %s:%s", default_branch(), filename()))
 				end,
 				mode = "n",
-				desc = "Open on GitHub",
+				desc = "Copy remote URL",
 			},
 			{
 				"<leader>vo",
-				":lua OpenOnGitHubFromSelection()<cr>",
+				":lua CopyGitRemoteURLFromSelection()<cr>",
 				mode = "v",
-				desc = "Open on GitHub",
+				desc = "Copy remote URL for selection",
 			},
 		},
 	},
