@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run a timer
+
+# Check if the user has input a duration for the timer
+if [ -z "$1" ]; then
+	echo "Usage: $0 <minutes> [message]"
+	exit 1
+fi
+
+# Timer duration
+DURATION="$1"
+
+# Optional custom message
+MESSAGE=${2:-"Timer done!"}
+
+# Start the timer
+for i in $(seq 1 "$DURATION"); do
+	REMAINING=$((DURATION - i + 1))
+	echo -ne "\r${REMAINING}m "
+	sleep 60
+done
+echo -e "\rTime is up!"
+
+# Show the notification
+osascript -e "display notification \"$MESSAGE\" with title \"Time is Up!\" sound name \"Submarine\""
