@@ -56,3 +56,19 @@ vim.api.nvim_create_user_command("CopyPath", copy("%"), { bar = true })
 vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), { bar = true })
 vim.api.nvim_create_user_command("CopyDir", copy("%:h"), { bar = true })
 vim.api.nvim_create_user_command("CopyAbsDir", copy("%:p:h"), { bar = true })
+
+--- Create a file with the same base name and a different extension
+vim.api.nvim_create_user_command("Likewise", function()
+	local basename = string.gsub(vim.fn.expand("%:r"), "%..*$", "")
+
+	vim.ui.input({
+		prompt = "Likewise",
+		default = basename .. ".",
+	}, function(new_value)
+		if new_value == nil then
+			return
+		end
+
+		vim.cmd("E " .. new_value)
+	end)
+end, {})

@@ -162,6 +162,12 @@ map(nv, "<leader>k", "<cmd>Man<cr>", "Open man page")
 --- I don't use = for indenting lines, I use auto formatters for that.
 --- map(nv, "=", "", { desc = "", nowait = true })
 
+--- Likewise
+map("n", "<leader>lw", "<cmd>Likewise<cr>", {
+	silent = false,
+	desc = "Likewise",
+})
+
 --------------------------------------------------------------------------------
 --- WINDOW ---------------------------------------------------------------------
 --------------------------------------------------------------------------------
