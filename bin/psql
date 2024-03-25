@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 # Open psql in a running postgres container
+# Usage: psql --container <container> --database <database> --user <user>
 
-user=${1:-postgres}
-docker exec -it postgres psql -U "$user"
+user="postgres"
+database="postgres"
+
+# Parse the command line args
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	-c | --container)
+		container="$2"
+		shift 2
+		;;
+	-d | --database)
+		database="$2"
+		shift 2
+		;;
+	-u | --user)
+		user="$2"
+		shift 2
+		;;
+	esac
+done
+
+# If the container is not provided, use the first running postgres container
+if [[ -z "$container" ]]; then
+	container=$(docker ps -q --filter "ancestor=postgres")
+fi
+
+docker exec -it "$container" psql -U "$user" -d "$database"
