@@ -23,11 +23,10 @@ context.home.read=-work
 context.work.read=+work
 context.work.write=+work
 
-# Taskserver
-taskd.certificate=~/.task/client.cert.pem
-taskd.key=~/.task/client.key.pem
-taskd.ca=~/.task/ca.cert.pem
-
 # TUI
 uda.taskwarrior-tui.task-report.show-info=false
 uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING -BLOCKED
+
+# Sync
+sync.gcp.bucket=mskelton-task-server
+sync.gcp.credential_path=~/.task/credentials.json

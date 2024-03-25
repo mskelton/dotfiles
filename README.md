@@ -110,13 +110,11 @@ following commands.
   </summary>
 
 ```fish
-set server (read -P "Server: ")
-set credentials (read -P "Credentials: ")
+set secret (read -P "Encryption Secret: ")
 
-echo -e 'include ~/.task/include/taskrc-shared
+echo -e 'include ~/.config/task/config
 news.version=2.6.0
-taskd.server='$server'
-taskd.credentials='$credentials'
+sync.encryption_secret='$secret'
 context=home' > ~/.taskrc
 ```
 
