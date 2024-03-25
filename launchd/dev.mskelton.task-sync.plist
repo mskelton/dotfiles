@@ -6,7 +6,7 @@
     <string>dev.mskelton.task-sync</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/opt/homebrew/bin/task</string>
+      <string>/usr/local/bin/task</string>
       <string>sync</string>
     </array>
     <key>StartInterval</key>
