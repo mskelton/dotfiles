@@ -15,10 +15,14 @@ symbol = "톜 "
 disabled = true
 
 [c]
+disabled = true
 symbol = "퀩 "
 
+[cmake]
+disabled = true
+
 [character]
-vicmd_symbol = '[](bold green)'
+vimcmd_symbol = '[](bold green)'
 vimcmd_replace_one_symbol = '[r](bold red)'
 vimcmd_replace_symbol = '[R](bold red)'
 vimcmd_visual_symbol = '[V](bold purple)'
@@ -27,15 +31,18 @@ vimcmd_visual_symbol = '[V](bold purple)'
 disabled = true
 
 [conda]
+disabled = true
 symbol = "톝 "
 
 [dart]
+disabled = true
 symbol = "큎 "
 
 [directory]
 read_only = " 킷"
 
 [docker_context]
+disabled = true
 symbol = "큗 "
 
 [elixir]
