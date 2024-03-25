@@ -114,7 +114,8 @@ set secret (read -P "Encryption Secret: ")
 
 echo -e 'include ~/.config/task/config
 news.version=2.6.0
-sync.encryption_secret=$secret
+sync.encryption_secret='$secret'
+recurrence=on
 context=home' > ~/.taskrc
 ```
 
