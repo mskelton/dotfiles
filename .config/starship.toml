@@ -9,6 +9,7 @@ symbol = "톛 "
 discharging_symbol = '󰁺 '
 
 [buf]
+disabled = true
 symbol = "톜 "
 
 [bun]
@@ -46,9 +47,11 @@ disabled = true
 symbol = "큗 "
 
 [elixir]
+disabled = true
 symbol = "큠 "
 
 [elm]
+disabled = true
 symbol = "큡 "
 
 [gcloud]
@@ -61,18 +64,23 @@ stashed = ""
 symbol = "큸 "
 
 [golang]
+disabled = true
 symbol = '큽 '
 
 [guix_shell]
+disabled = true
 symbol = "톞 "
 
 [haskell]
+disabled = true
 symbol = "킌 "
 
 [haxe]
+disabled = true
 symbol = "킍 "
 
 [hg_branch]
+disabled = true
 symbol = "큸 "
 
 [java]
@@ -80,21 +88,27 @@ disabled = true
 symbol = "킞 "
 
 [lua]
+disabled = true
 symbol = '킺 '
 
 [julia]
+disabled = true
 symbol = "킦 "
 
 [memory_usage]
+disabled = true
 symbol = "톟 "
 
 [meson]
+disabled = true
 symbol = "탂 "
 
 [nim]
+disabled = true
 symbol = "탑 "
 
 [nix_shell]
+disabled = true
 symbol = "탒 "
 
 [nodejs]
@@ -114,12 +128,15 @@ Windows = "톢 "
 symbol = "톣 "
 
 [python]
+disabled = true
 symbol = "탼 "
 
 [rlang]
+disabled = true
 symbol = "탿 "
 
 [ruby]
+disabled = true
 symbol = "턖 "
 
 [rust]
@@ -127,6 +144,7 @@ disabled = true
 symbol = "턗 "
 
 [scala]
+disabled = true
 symbol = "턝 "
 
 [shell]
@@ -137,8 +155,9 @@ zsh_indicator = 'zsh '
 disabled = false
 
 [spack]
+disabled = true
 symbol = "토 "
 
 [swift]
-symbol = '텀 '
 disabled = true
+symbol = '텀 '
