@@ -111,12 +111,23 @@ following commands.
 
 ```fish
 set secret (read -P "Encryption Secret: ")
+set client_id (read -P "Client ID: ")
+set origin (read -P "Origin: ")
 
 echo -e 'include ~/.config/task/config
 news.version=2.6.0
 sync.encryption_secret='$secret'
-recurrence=on
+sync.server.client_id='$client_id'
+sync.server.origin='$origin'
 context=home' > ~/.taskrc
+```
+
+To prevent duplicate creation of recurring tasks, run the following command to
+set the `recurrence` setting to `on` for the home machine and `off` for the work
+machine.
+
+```bash
+task config recurrence on
 ```
 
 </details>

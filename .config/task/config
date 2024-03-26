@@ -26,7 +26,3 @@ context.work.write=+work
 # TUI
 uda.taskwarrior-tui.task-report.show-info=false
 uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING -BLOCKED
-
-# Sync
-sync.gcp.bucket=mskelton-task-server
-sync.gcp.credential_path=~/.task/credentials.json
