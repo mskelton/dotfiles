@@ -16,6 +16,7 @@ local plugins = {
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
+	enabled = false,
 	--- enabled = env.is_work(),
 	opts = {
 		server = {
