@@ -20,7 +20,7 @@ return {
 	--- enabled = env.is_work(),
 	opts = {
 		server = {
-			on_attach = function(client)
+			on_attach = function(client, bufnr)
 				for _, value in ipairs(plugins) do
 					local params = {
 						command = "_typescript.configurePlugin",
@@ -29,6 +29,11 @@ return {
 
 					client.request("workspace/executeCommand", params)
 				end
+
+				local opts = { buffer = bufnr, silent = true }
+				vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
+				vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
+				vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
 			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			--- cmd = {

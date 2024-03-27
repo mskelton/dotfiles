@@ -1,15 +1,26 @@
-local env = require("utils.env")
 local utils = require("core.utils")
 --- local npm = require("utils.npm")
 
 return {
 	"pmizio/typescript-tools.nvim",
 	--- enabled = not env.is_work(),
-	enabled = false,
+	--- enabled = false,
 	event = "BufReadPre",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	config = function()
 		require("typescript-tools").setup({
+			on_attach = function(_, bufnr)
+				local opts = { buffer = bufnr, silent = true }
+
+				--- Organize imports for TypeScript files. Unfortunate to have to do two
+				--- separate actions, but unfortunately it's the way the language server is
+				--- setup.
+				vim.keymap.set("n", "go", "<cmd>TSToolsAddMissingImports<cr>", opts)
+				vim.keymap.set("n", "gO", "<cmd>TSToolsRemoveUnusedImports<cr>", opts)
+
+				--- Rename file keymap similar to rename variable
+				vim.keymap.set("n", "<leader>rf", "<cmd>TSToolsRenameFile<cr>", opts)
+			end,
 			handlers = {
 				-- Filter out certain paths from the results that are 99% of the time
 				-- false positive results for my use case. If I explicitly jump to
