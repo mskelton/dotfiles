@@ -52,7 +52,7 @@ return {
 			desc = "Open oldfiles",
 		},
 		{
-			"<leader>fw",
+			"<leader>fb",
 			function()
 				require("telescope.builtin").buffers({
 					ignore_current_buffer = true,
@@ -108,6 +108,17 @@ return {
 			end,
 			mode = nv,
 			desc = "Find adjacent files",
+		},
+		{
+			"<leader>fw",
+			function()
+				require("telescope.builtin").live_grep({
+					prompt_title = "Find Exact String",
+					regex = false,
+				})
+			end,
+			mode = "n",
+			desc = "Find word under cursor",
 		},
 		{
 			"<leader>jo",
