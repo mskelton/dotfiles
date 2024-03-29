@@ -38,6 +38,11 @@ return {
 				-- De-emphasize text completions
 				hl.CmpItemKindText = { fg = c.fg_dark }
 				hl.CmpItemKindVariable = { fg = c.magenta, bg = c.none }
+
+				-- The default prompt color is orange, which doesn't work for my theme
+				-- since the prompt and results are connected.
+				hl.TelescopePromptBorder = { fg = c.border_highlight, bg = c.bg_float }
+				hl.TelescopePromptTitle = { fg = c.border_highlight, bg = c.bg_float }
 			end,
 		})
 
