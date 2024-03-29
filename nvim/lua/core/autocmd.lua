@@ -20,7 +20,7 @@ augroup mskelton
   au BufNewFile *.sh 0r ~/.skeletons/bin
 
   " Disable diagnostics for .env files
-   autocmd BufEnter .env* lua vim.diagnostic.disable(0)
+  au BufEnter .env* lua vim.diagnostic.disable(0)
 augroup END
 
 ]])
