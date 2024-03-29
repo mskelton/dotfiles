@@ -25,7 +25,7 @@ done
 
 # If the container is not provided, use the first running postgres container
 if [[ -z "$container" ]]; then
-	container=$(docker ps -q --filter "ancestor=postgres")
+	container=$(docker ps -q --filter "ancestor=postgres" | head -n 1)
 fi
 
 docker exec -it "$container" psql -U "$user" -d "$database"
