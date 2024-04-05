@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# Adds a short link to the Netlify _redirects file
+
+args=()
+status=""
+
+# Parse the command line args
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	--rewrite)
+		status="200"
+		shift
+		;;
+	*)
+		args+=("$1")
+		shift
+		;;
+	esac
+done
+
+url="${args[0]}"
+short_code="${args[1]}"
+
+# Generate a random short code if one is not provided
+if test -z "$short_code"; then
+	short_code="$(openssl rand -hex 5 | head -c 5)"
+fi
+
+# Require the URL to shorten
+if test -z "$url"; then
+	echo "Usage: short <url> [code] --rewrite"
+	exit 1
+fi
+
+# Ensure the URL is valid
+if [[ ! $url =~ ^https:// ]]; then
+	echo "Invalid URL"
+fi
+
+# Ensure the redirects file exists and the short code is not already in use
+if ! test -f _redirects; then
+	echo "No _redirects file found"
+	exit 1
+elif grep -q "/$short_code " _redirects; then
+	echo "Short code already exists"
+	exit 1
+fi
+
+# Add the redirect to the file
+if test -n "$status"; then
+	echo "/$short_code $url $status" >>_redirects
+else
+	echo "/$short_code $url" >>_redirects
+fi
+
+# Sort the file
+out="$(column -s ' ' -t -c 2 <_redirects | sort | uniq)"
+
+# Remove the old wildcard
+echo "$out" | grep -v "^/\*" >_redirects
+
+# Add a newline
+echo >>_redirects
+
+# Add the wildcard back
+echo "$out" | grep "^/\*" >>_redirects
+
+# Commit the changes
+git add _redirects
+git commit -m "Add short link for \`/$short_code\`"
+git push
