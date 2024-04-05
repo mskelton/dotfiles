@@ -69,6 +69,6 @@ vim.api.nvim_create_user_command("Likewise", function()
 			return
 		end
 
-		vim.cmd("E " .. new_value)
+		vim.cmd("e " .. new_value)
 	end)
 end, {})
