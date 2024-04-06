@@ -137,8 +137,36 @@ local function go_return_values(args)
 end
 
 return {
+	parse(":", "$1 := $0"),
 	parse("cl", 'fmt.Println("$1")$0'),
+	parse("sp", 'fmt.Sprintf("${1:%s}", ${2:args})$0'),
 	parse("fn", "func $1($2) {\n\t$0\n}"),
+	parse("anon", "${1:fn} := func() {\n\t$0\n}"),
+	parse("ap", "append(${1:slice}, ${2:value})$0"),
+	parse("ap=", "${1:slice} = append($1, ${2:value})$0"),
+	parse("iota", "const (\n\t$1 = iota\n\t$0\n)"),
+	parse("ife", "if err := ${1:condition}; err != nil {\n\t$0\n}"),
+	parse("ie", "if err != nil {\n\treturn ${1:err}\n}$0"),
+	parse("for", "for ${1:_}, ${2:v} := range ${3:iter} {\n\t$0\n}"),
+	parse("struct", "type ${1:Type} struct {\n\t$0\n}"),
+	parse("test", "func Test${1:Name}(t *testing.T) {\n\t$0\n}"),
+	s(
+		"meth",
+		fmta(
+			[[
+        func (<receiver> *<type>) <name>(<params>) {
+          <finish>
+        }
+      ]],
+			{
+				receiver = i(1, "t"),
+				type = i(2, "Type"),
+				name = i(3, "Name"),
+				params = i(4),
+				finish = i(0),
+			}
+		)
+	),
 	--- Borrowed from TJ's config, thanks!
 	--- https://github.com/tjdevries/config_manager/blob/eb8c846/xdg_config/nvim/lua/tj/snips/ft/go.lua
 	s(
@@ -162,5 +190,4 @@ return {
 			}
 		)
 	),
-	s("ie", fmta("if err != nil {\n\treturn <err>\n}", { err = i(1, "err") })),
 }
