@@ -1,5 +1,4 @@
 # Git merge
-alias dif="git diff"
 alias gmc="git merge --continue"
 alias gmd="git md"
 alias gmm="git md"
