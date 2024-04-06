@@ -21,6 +21,9 @@ done
 url="${args[0]}"
 short_code="${args[1]}"
 
+# Change to the project directory
+cd "$HOME/dev/go.mskelton.dev" || exit 1
+
 # Generate a random short code if one is not provided
 if test -z "$short_code"; then
 	short_code="$(openssl rand -hex 5 | head -c 5)"
@@ -35,6 +38,7 @@ fi
 # Ensure the URL is valid
 if [[ ! $url =~ ^https:// ]]; then
 	echo "Invalid URL"
+	exit 1
 fi
 
 # Ensure the redirects file exists and the short code is not already in use
@@ -57,13 +61,13 @@ fi
 out="$(column -s ' ' -t -c 2 <_redirects | sort | uniq)"
 
 # Remove the old wildcard
-echo "$out" | grep -v "^/\*" >_redirects
+echo "$out" | grep -v "^/[* ]" >_redirects
 
 # Add a newline
 echo >>_redirects
 
 # Add the wildcard back
-echo "$out" | grep "^/\*" >>_redirects
+echo "$out" | grep "^/[* ]" >>_redirects
 
 # Commit the changes
 git add _redirects
