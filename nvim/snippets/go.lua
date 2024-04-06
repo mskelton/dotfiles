@@ -15,9 +15,9 @@ local default_values = {
 	string = '""',
 	error = function(_, info)
 		if info then
-			return info.err_name
+			return t(info.err_name or "err")
 		else
-			return "err"
+			return t("err")
 		end
 	end,
 	--- Types with a '*' are pointers, so return nil
@@ -120,6 +120,9 @@ local function go_result_type(info)
 			return handlers[capture:type()](capture, info)
 		end
 	end
+
+	--- This shouldn't ever happen, but just in case
+	return t("")
 end
 
 local function go_return_values(args)
