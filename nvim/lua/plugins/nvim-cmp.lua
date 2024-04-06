@@ -62,6 +62,12 @@ return {
 		})
 
 		cmp.setup({
+			--- Remove `noselect` from the completion menu so it will auto select the first item
+			completion = {
+				completeopt = "menu,menuone",
+			},
+			--- Ignore LSP preselect items as it causes snippets to be skipped.
+			preselect = cmp.PreselectMode.None,
 			enabled = function()
 				-- Completion is always allowed in command mode
 				if vim.api.nvim_get_mode().mode == "c" then
