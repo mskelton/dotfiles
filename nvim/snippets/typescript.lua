@@ -27,7 +27,7 @@ return {
 	s(
 		"tin",
 		fmt("{}interface {} {{\n\t{}\n}}", {
-			c(1, { t("export "), t("") }),
+			c(1, { t(""), t("export ") }),
 			i(2),
 			i(0),
 		})
@@ -82,7 +82,7 @@ return {
 	),
 	-- Playwright
 	s(
-		"pw-collection",
+		"pcol",
 		fmt(
 			[[
         {}{}class {} extends Collection {{

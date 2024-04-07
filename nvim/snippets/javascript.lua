@@ -2,9 +2,10 @@
 local utils = require("core.utils")
 
 return {
+	parse("nd", "undefined"),
 	-- Const variables
-	parse("cmap", "const $1 = new Map([\n\t$0\n])"),
-	parse("cset", "const $1 = new Set([\n\t$0\n])"),
+	parse("map", "const $1 = new Map([\n\t$0\n])"),
+	parse("set", "const $1 = new Set([\n\t$0\n])"),
 	-- Comment
 	parse("bc", "/** $0 */"),
 	-- Functions
@@ -22,15 +23,15 @@ return {
 	-- Utility functions
 	parse("cl", "console.log($1)$0"),
 	parse("prom", "return new Promise((resolve, reject) => {\n\t$0\n})"),
-	parse("stout", "setTimeout(() => {$2}, ${1:1000}"),
-	parse("sint", "setInterval(() => {$2}, ${1:1000}"),
+	parse("timeout", "setTimeout(() => {$2}, ${1:1000}"),
+	parse("interval", "setInterval(() => {$2}, ${1:1000}"),
 	parse("sleep", "await new Promise((r) => setTimeout(r, ${1:1000}))"),
 	-- Imports
 	parse("imr", "import React from 'react'"),
 	parse("imt", "import { render, screen } from '@testing-library/react'"),
 	parse("imu", "import userEvent from '@testing-library/user-event'"),
 	parse("ime", "import * as ESTree from 'estree'"),
-	-- React hooks
+	-- React
 	s(
 		"rus",
 		fmt("const [{}, set{}] = useState({})", {
@@ -62,20 +63,14 @@ return {
 			}
 		)
 	),
-	-- i18next
-	parse("inu", "const [t] = useTranslation()"),
-	parse("int", "{t('$0')}"),
+	-- Test
+	parse("desc", "describe('$1', () => {\n\t$0\n})"),
+	parse("test", "test('$1', async () => {\n\t$0\n})"),
 	-- Playwright
-	parse("pw-describe", "test.describe('$1', () => {\n\t$3\n})\n\n$0"),
-	parse("pw-test", "test('$1', async ({ ${2:page} }) => {\n\t$3\n})\n\n$0"),
-	parse(
-		"pw-beforeEach",
-		"test.beforeEach(async ({ ${1:page} }) => {\n\t$2\n})\n\n$0"
-	),
-	parse("pw-beforeAll", "test.beforeAll(async ($1) => {\n\t$2\n})\n\n$0"),
-	parse("pw-afterEach", "test.afterEach(async ($1) => {\n\t$2\n})\n\n$0"),
-	parse("pw-afterAll", "test.afterAll(async ($1) => {\n\t$2\n})\n\n$0"),
-	-- Emotion
-	parse("ces", "const ${1:wrapper}Style = css`\n\t$0\n`"),
-	parse("cec", "const ${1:Component} = styled.${2:div}`\n\t$0\n`"),
+	parse("pdesc", "test.describe('$1', () => {\n\t$3\n})\n\n$0"),
+	parse("ptest", "test('$1', async ({ ${2:page} }) => {\n\t$3\n})\n\n$0"),
+	parse("pbe", "test.beforeEach(async ({ ${1:page} }) => {\n\t$2\n})\n\n$0"),
+	parse("pba", "test.beforeAll(async ($1) => {\n\t$2\n})\n\n$0"),
+	parse("pae", "test.afterEach(async ($1) => {\n\t$2\n})\n\n$0"),
+	parse("paa", "test.afterAll(async ($1) => {\n\t$2\n})\n\n$0"),
 }
