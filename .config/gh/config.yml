@@ -16,7 +16,7 @@ aliases:
   prw: pr view -w
   prc: pr create -w
   setup-repo:
-    '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -f
+    '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -F
     "has_projects=false" -f "allow_merge_commit=false" -f
     "allow_rebase_merge=false" -f "allow_auto_merge=true" -f
     "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo}
