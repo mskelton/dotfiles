@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Setup a sample `.prettierrc` file
+
+printf '{\n  "semi": false,\n  "proseWrap": "always"\n}\n' >.prettierrc
