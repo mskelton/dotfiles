@@ -32,7 +32,7 @@ link_dir launchd ~/Library/LaunchAgents/
 copy_dir personal/fonts ~/Library/Fonts/
 
 # Install remote fonts
-curl -sL https://mskelton.github.io/termicons/termicons.ttf -o ~/Library/Fonts/termicons.ttf
+curl -sL https://termicons.mskelton.dev/termicons.ttf -o ~/Library/Fonts/termicons.ttf
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o ~/Library/Fonts/codicon.ttf
 
 # Work config
