@@ -118,6 +118,7 @@ return {
 		cmd = { "Copilot" },
 		init = function()
 			vim.g.copilot_filetypes = {
+				markdown = false,
 				DressingInput = false,
 				TelescopePrompt = false,
 				TelescopeResults = false,
