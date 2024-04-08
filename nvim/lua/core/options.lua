@@ -87,7 +87,7 @@ o.cmdheight = 2
 o.exrc = true
 
 --- These don't need much explanation
-o.completeopt = "menu,menuone,noselect"
+o.completeopt = "menu,menuone"
 
 --- Prompt for confirmation rather than simply failing the operation
 o.confirm = true

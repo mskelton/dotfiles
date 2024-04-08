@@ -62,8 +62,9 @@ return {
 		})
 
 		cmp.setup({
-			--- Remove `noselect` from the completion menu so it will auto select the first item
 			completion = {
+				--- Remove `noselect` from the `completeopt` so that we can select the
+				--- first item automatically.
 				completeopt = "menu,menuone",
 			},
 			--- Ignore LSP preselect items as it causes snippets to be skipped.
@@ -194,6 +195,12 @@ return {
 
 		-- Use buffer source for '/'
 		cmp.setup.cmdline({ "/", "?" }, {
+			--- Don't auto-select the first item in search mode since enter is used
+			--- to execute the search and thus we can't distinguish between enter
+			--- to execute the search and enter to select the first item.
+			completion = {
+				completeopt = "menu,menuone,noselect",
+			},
 			mapping = cmdline_mapping,
 			formatting = no_format,
 			sources = {
@@ -203,6 +210,12 @@ return {
 
 		-- Use cmdline & path source for ':'
 		cmp.setup.cmdline(":", {
+			completion = {
+				--- Don't auto-select the first item in command mode since enter is used
+				--- to execute the command and thus we can't distinguish between enter
+				--- to execute the command and enter to select the first item.
+				completeopt = "menu,menuone,noselect",
+			},
 			mapping = cmdline_mapping,
 			formatting = no_format,
 			sources = cmp.config.sources({
