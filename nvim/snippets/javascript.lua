@@ -2,7 +2,6 @@
 local utils = require("core.utils")
 
 return {
-	parse("nd", "undefined"),
 	-- Const variables
 	parse("map", "const $1 = new Map([\n\t$0\n])"),
 	parse("set", "const $1 = new Set([\n\t$0\n])"),
