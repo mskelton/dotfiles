@@ -1,6 +1,9 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	--- Load on `CmdLineEnter` to support `:e ~/dir` to navigate to a directory
+	--- like netrw.
+	event = { "CmdLineEnter" },
 	cmd = { "NvimTreeFindFileToggle" },
 	keys = {
 		{
