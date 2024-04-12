@@ -43,6 +43,9 @@ return {
 				-- since the prompt and results are connected.
 				hl.TelescopePromptBorder = { fg = c.border_highlight, bg = c.bg_float }
 				hl.TelescopePromptTitle = { fg = c.border_highlight, bg = c.bg_float }
+
+				--- Improve readability of the whitespace characters
+				hl.Whitespace = { fg = c.comment }
 			end,
 		})
 
