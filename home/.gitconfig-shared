@@ -30,10 +30,10 @@
   pp = !git pull && git push
   # Merge
   md = !git merge origin $(git default)
+  fm = !git fetch origin $(git default) && git md
   ml = !git co - && git md
   mc = merge --continue
   import = merge --no-commit --no-ff
-  latest = !git fetch origin $(git default) && git md
   # Rebase
   rd = !git rebase $(git default)
   rl = !git co - && git rebase $(git default)
