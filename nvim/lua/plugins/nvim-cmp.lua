@@ -80,6 +80,11 @@ return {
 					return false
 				end
 
+				-- Disable completion in markdown files
+				if vim.api.nvim_buf_get_option(0, "filetype") == "markdown" then
+					return false
+				end
+
 				-- Disable completion when editing comments
 				return not (
 					context.in_treesitter_capture("comment")
