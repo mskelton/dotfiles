@@ -11,14 +11,6 @@ return {
 			desc = "Load session for current directory",
 		},
 		{
-			"<leader>sl",
-			function()
-				require("persisted").load({ last = true })
-			end,
-			mode = { "n", "v" },
-			desc = "Load last session",
-		},
-		{
 			"<leader>sq",
 			mode = { "n", "v" },
 			function()
