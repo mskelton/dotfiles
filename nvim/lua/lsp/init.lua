@@ -38,7 +38,7 @@ M.setup_servers = function()
 	-- Simple servers
 	M.server("vimls")
 	M.server("bashls")
-	M.server("pyright")
+	--- M.server("pyright")
 	M.server("prismals")
 	M.server("rust_analyzer")
 	M.server("sourcekit")
