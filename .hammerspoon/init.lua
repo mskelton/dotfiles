@@ -61,7 +61,7 @@ Install:andUse("EmmyLua", { disable = true })
 --- Live reload config
 Install:andUse("ReloadConfiguration", { start = true })
 
--- I use Chrome at work and Arc at home. Don't ask me why.
+--- I use Chrome at work and Arc at home. Don't ask me why.
 local browser = if_work("Arc", "Arc")
 
 --- Launch common apps

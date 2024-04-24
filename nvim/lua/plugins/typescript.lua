@@ -1,7 +1,7 @@
 local utils = require("core.utils")
 local npm = require("utils.npm")
 
--- Global plugins to be loaded when starting tsserver
+--- Global plugins to be loaded when starting tsserver
 local plugins = {
 	{
 		name = "typescript-styled-plugin",

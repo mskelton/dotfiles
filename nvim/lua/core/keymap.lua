@@ -1,12 +1,12 @@
 --- My approach to keymapping follows two important principles:
---
+---
 --- 1. Keybindings should be pneumonic
 --- 2. The same finger should not be used twice in heavily used keybindings
---
+---
 --- The first principle is important for learn-ability of keybindings, especially
 --- bindings that are less frequently used. For example, you can remember "fg"
 --- easily as it means "Find Git branches".
---
+---
 --- The second principle is important for quickly executing common commands, and
 --- sometimes this results in breaking the first principle. For example, "ff"
 --- would be most ideal for "find files", however that motion is slower due to
@@ -25,7 +25,7 @@ local nv = { "n", "v" }
 --- working between tools. That said, my goal is to use other tools as little as
 --- possible, and tools like IntelliJ have good enough Vim emulation where it
 --- allows replicating this functionality.
---
+---
 --- I've considered remapping colon to semicolon, but I often find myself
 --- pressing shift before colon for commands like :Duplicate or :G as it's easier
 --- do a chorded reach with the left hand then the alternative which would be
