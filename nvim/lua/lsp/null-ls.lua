@@ -67,8 +67,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.dtsfmt,
 		null_ls.builtins.formatting.swiftformat,
 		null_ls.builtins.formatting.mdformat.with({
-			condition = function(utils)
-				return utils.root_has_file({ ".mdformat.toml" })
+			condition = function(util)
+				return util.root_has_file({ ".mdformat.toml" })
 			end,
 		}),
 	},

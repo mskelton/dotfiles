@@ -26,6 +26,7 @@ local function get_diagnostic_opts(client, bufnr)
 end
 
 local formatters = {
+	"biome",
 	"clangd",
 	"dartls",
 	"eslint",

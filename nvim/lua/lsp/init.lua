@@ -118,6 +118,7 @@ M.setup_servers = function()
 		},
 	})
 
+	M.server("biome")
 	M.server("eslint")
 	M.server("cssls")
 	M.server("svelte")
