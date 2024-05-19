@@ -182,7 +182,6 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-		"nvim-tree/nvim-web-devicons",
 		"nvim-telescope/telescope-node-modules.nvim",
 		"mskelton/jumper.nvim",
 	},
