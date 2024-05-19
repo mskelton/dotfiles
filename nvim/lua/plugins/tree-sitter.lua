@@ -83,7 +83,6 @@ return {
 				},
 				sync_install = false,
 				highlight = { enable = true },
-				playground = { enable = true },
 				textobjects = {
 					select = {
 						enable = true,
@@ -144,20 +143,6 @@ return {
 				true
 			)
 		end,
-	},
-	{
-		"nvim-treesitter/playground",
-		cmd = {
-			"TSHighlightCapturesUnderCursor",
-			"TSPlaygroundToggle",
-		},
-		keys = {
-			{
-				"<leader>tp",
-				"<cmd>TSPlaygroundToggle<cr>",
-				desc = "Toggle treesitter playground",
-			},
-		},
 	},
 	{
 		"windwp/nvim-ts-autotag",
