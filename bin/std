@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Sync Tmux Dir (STD)
+# Syncs the current directory to the tmux session directory
+# https://stackoverflow.com/a/73735863/5641674
+
+TMUX='' tmux -C attach -c "$(pwd)" -t . </dev/null >/dev/null
