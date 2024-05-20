@@ -7,6 +7,7 @@ return {
 			on_highlights = function(hl, c)
 				hl["@constructor"] = { fg = c.red }
 				hl["@tag"] = { fg = c.red }
+				hl["@tag.builtin"] = { fg = c.red }
 				hl["@tag.attribute"] = { fg = c.magenta }
 
 				-- The defaults of darkening default types is just distracting
