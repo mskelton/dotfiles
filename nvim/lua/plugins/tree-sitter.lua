@@ -32,7 +32,6 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				autotag = { enable = true },
 				endwise = { enable = true },
 				ensure_installed = {
 					"awk",
@@ -156,6 +155,7 @@ return {
 		opts = {
 			enable_close_on_slash = false,
 		},
+		config = true,
 	},
 	{
 		"RRethy/nvim-treesitter-endwise",
