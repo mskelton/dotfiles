@@ -3,4 +3,8 @@
 # Syncs the current directory to the tmux session directory
 # https://stackoverflow.com/a/73735863/5641674
 
+# Weird hack to re-attach to the current session in a new directory
 TMUX='' tmux -C attach -c "$(pwd)" -t . </dev/null >/dev/null
+
+# Rename the session to the current directory
+tmux rename-session -t . "$(basename "$(pwd)")"
