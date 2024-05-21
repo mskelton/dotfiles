@@ -72,3 +72,15 @@ vim.api.nvim_create_user_command("Likewise", function()
 		vim.cmd("e " .. new_value)
 	end)
 end, {})
+
+--- Toggle show all list chars
+vim.api.nvim_create_user_command("ToggleListChars", function()
+	local listchars = vim.o.listchars
+	local trailer = require("core.utils.trailer")
+
+	if string.match(listchars, "eol") ~= nil then
+		vim.o.listchars = trailer.standard
+	else
+		vim.o.listchars = trailer.verbose
+	end
+end, {})
