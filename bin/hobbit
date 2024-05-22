@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# A shorter HOME
+
+while IFS= read -r line; do
+	echo "${line/$HOME/~}"
+done

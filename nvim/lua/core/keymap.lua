@@ -183,17 +183,26 @@ map("n", "<leader>wj", "<C-w>J", "Move current window to the very bottom")
 map("n", "<leader>wo", "<C-w>o", "Make current window the only window")
 map("n", "<leader>wp", "<C-w>p", "Go to previous window")
 
+--------------------------------------------------------------------------------
+--- Tmux ---------------------------------------------------------------------
+--------------------------------------------------------------------------------
 map(
 	"n",
-	"<leader>sp",
-	"<cmd>silent! !tmux resize-pane -y '80\\%' -t:.1<cr>",
-	"Show app logs"
+	"<leader>ts",
+	"<cmd>silent! !std<cr>",
+	"Tmux: Sync session working directory"
 )
 map(
 	"n",
-	"<leader>sl",
+	"<leader>tl",
+	"<cmd>silent! !tmux resize-pane -y '80\\%' -t:.1<cr>",
+	"Tmux: Show app logs"
+)
+map(
+	"n",
+	"<leader>tt",
 	"<cmd>silent! !tmux resize-pane -y '80\\%' -t:.2<cr>",
-	"Show terminal"
+	"Tmux: Show test terminal"
 )
 
 -------------------------------------------------------------------------------
