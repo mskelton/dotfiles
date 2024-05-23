@@ -53,6 +53,10 @@ alias oldbash="/bin/bash"
 # Kitty
 alias icat="kitty +kitten icat"
 
+# Docker
+alias dau="docker compose --profile app up"
+alias dad="docker compose --profile app down"
+
 # Misc
 alias def="dict -d '!'"
 alias gradle="./gradlew"
