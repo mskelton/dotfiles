@@ -79,7 +79,7 @@ Install:andUse("AppLauncher", {
 		--- Bottom row
 		n = "Postman",
 		m = "Figma",
-		[","] = "Chatter",
+		[","] = "ChatGPT",
 		["."] = "Around",
 		["/"] = "zoom.us",
 	},
