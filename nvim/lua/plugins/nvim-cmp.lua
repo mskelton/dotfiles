@@ -1,9 +1,8 @@
 --- @diagnostic disable: assign-type-mismatch
 
 return {
-	-- "hrsh7th/nvim-cmp",
-	"folke/nvim-cmp",
-	branch = "async",
+	"hrsh7th/nvim-cmp",
+	commit = "5260e5e8ecadaf13e6b82cf867a909f54e15fd07",
 	event = { "InsertEnter", "CmdLineEnter" },
 	dependencies = {
 		"hrsh7th/cmp-buffer",

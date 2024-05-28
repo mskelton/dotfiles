@@ -32,7 +32,6 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				autotag = { enable = true },
 				endwise = { enable = true },
 				ensure_installed = {
 					"awk",
@@ -83,7 +82,6 @@ return {
 				},
 				sync_install = false,
 				highlight = { enable = true },
-				playground = { enable = true },
 				textobjects = {
 					select = {
 						enable = true,
@@ -146,20 +144,6 @@ return {
 		end,
 	},
 	{
-		"nvim-treesitter/playground",
-		cmd = {
-			"TSHighlightCapturesUnderCursor",
-			"TSPlaygroundToggle",
-		},
-		keys = {
-			{
-				"<leader>tp",
-				"<cmd>TSPlaygroundToggle<cr>",
-				desc = "Toggle treesitter playground",
-			},
-		},
-	},
-	{
 		"windwp/nvim-ts-autotag",
 		ft = {
 			"html",
@@ -171,6 +155,7 @@ return {
 		opts = {
 			enable_close_on_slash = false,
 		},
+		config = true,
 	},
 	{
 		"RRethy/nvim-treesitter-endwise",

@@ -14,10 +14,7 @@ end
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"nvim-lua/plenary.nvim",
-	},
+	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local colors = require("tokyonight.colors").setup()
 		local utils = require("core.utils")
