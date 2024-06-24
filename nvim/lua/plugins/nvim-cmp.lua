@@ -75,12 +75,16 @@ return {
 				end
 
 				-- Disable completion in prompt buffers (e.g. Telescope)
-				if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+				if
+					vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt"
+				then
 					return false
 				end
 
 				-- Disable completion in markdown files
-				if vim.api.nvim_buf_get_option(0, "filetype") == "markdown" then
+				if
+					vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "markdown"
+				then
 					return false
 				end
 

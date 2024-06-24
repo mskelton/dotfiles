@@ -27,7 +27,7 @@ end
 
 local function get_clients_by_path(path)
 	local clients = {}
-	for _, client in pairs(vim.lsp.get_active_clients({ name = "vtsls" })) do
+	for _, client in pairs(vim.lsp.get_clients({ name = "vtsls" })) do
 		for _, folder in pairs(client.workspace_folders) do
 			if is_sub_path(path, vim.uri_to_fname(folder.uri)) then
 				table.insert(clients, client)
