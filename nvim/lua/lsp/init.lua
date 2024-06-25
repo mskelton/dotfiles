@@ -131,6 +131,9 @@ M.setup_servers = function()
 			"typescriptreact",
 		},
 		init_options = {
+			extensionsPath = {
+				vim.fn.stdpath("config") .. "/emmet",
+			},
 			includeLanguages = {
 				javascript = "css",
 				javascriptreact = "css",
