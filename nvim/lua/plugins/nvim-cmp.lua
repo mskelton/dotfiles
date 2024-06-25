@@ -133,7 +133,7 @@ return {
 						local client_name = entry.source.source.client.name
 
 						-- Only return Emmet results in styled-component template strings
-						return client_name ~= "emmet_ls"
+						return client_name ~= "emmet_language_server"
 							or entry.context.filetype == "css"
 							or context.in_treesitter_capture("styled")
 					end,

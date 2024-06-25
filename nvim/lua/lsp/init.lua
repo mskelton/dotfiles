@@ -42,7 +42,6 @@ M.setup_servers = function()
 	M.server("prismals")
 	M.server("rust_analyzer")
 	M.server("sourcekit")
-	M.server("emmet_ls")
 	M.server("zls")
 	M.server("taplo")
 
@@ -122,7 +121,23 @@ M.setup_servers = function()
 	M.server("eslint")
 	M.server("cssls")
 	M.server("svelte")
-	--- M.server("efm", require("lsp.efm").config())
+
+	M.server("emmet_language_server", {
+		filetypes = {
+			"css",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"typescriptreact",
+		},
+		init_options = {
+			includeLanguages = {
+				javascript = "css",
+				javascriptreact = "css",
+				typescriptreact = "css",
+			},
+		},
+	})
 
 	--- M.server("vtsls", {
 	--- 	settings = {
