@@ -4,6 +4,7 @@ return {
 		{
 			"mskelton/termicons.nvim",
 			dev = false,
+			build = false,
 		},
 	},
 	config = function()
