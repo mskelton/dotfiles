@@ -34,6 +34,14 @@ return {
 				vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
 				vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
 				vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
+				vim.keymap.set("n", "<leader>ob", function()
+					vim.lsp.buf.code_action({
+						apply = true,
+						filter = function(action)
+							return action.title == "Add braces to arrow function"
+						end,
+					})
+				end, opts)
 			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			--- cmd = {
