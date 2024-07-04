@@ -61,9 +61,6 @@ Install:andUse("EmmyLua", { disable = true })
 --- Live reload config
 Install:andUse("ReloadConfiguration", { start = true })
 
---- I use Chrome at work and Arc at home. Don't ask me why.
-local browser = if_work("Arc", "Arc")
-
 --- Launch common apps
 Install:andUse("AppLauncher", {
 	config = {
@@ -72,16 +69,15 @@ Install:andUse("AppLauncher", {
 	hotkeys = {
 		--- Home row
 		h = "Finder",
-		j = browser,
+		j = "Arc",
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
 		[";"] = "Mimestream",
 		--- Bottom row
-		n = "Postman",
-		m = "Figma",
+		n = "Todoist",
+		m = "zoom.us",
 		[","] = "ChatGPT",
-		["."] = "Around",
-		["/"] = "zoom.us",
+		["."] = "Figma",
 	},
 })
 
