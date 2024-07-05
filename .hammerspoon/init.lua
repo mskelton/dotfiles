@@ -11,6 +11,9 @@ hs.window.animationDuration = 0
 --- local meh = { "ctrl", "option", "shift" }
 local layer_key = { "cmd", "ctrl" }
 
+--- Browser selection
+local browser = "Arc"
+
 --- Check if a file exists at the given path
 --- @param filename string
 local function file_exists(filename)
@@ -69,7 +72,7 @@ Install:andUse("AppLauncher", {
 	hotkeys = {
 		--- Home row
 		h = "Finder",
-		j = "Arc",
+		j = browser,
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
 		[";"] = "Mimestream",

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Create a .prettierrc file with my default settings
+
+printf '{
+  "semi": false,
+  "proseWrap": "always"
+}\n' >.prettierrc
