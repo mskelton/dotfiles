@@ -4,6 +4,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("tokyonight").setup({
+			style = "moon",
 			on_highlights = function(hl, c)
 				hl["@constructor"] = { fg = c.red }
 				hl["@tag"] = { fg = c.red }
