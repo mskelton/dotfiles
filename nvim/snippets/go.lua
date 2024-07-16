@@ -112,8 +112,16 @@ local function go_result_type(info)
 		return t("")
 	end
 
-	local query =
-		assert(vim.treesitter.query.get("go", "return-snippet"), "No query")
+	local query = vim.treesitter.query.parse(
+		"language",
+		[[
+      [
+       (method_declaration result: (_) @type)
+       (function_declaration result: (_) @type)
+       (func_literal result: (_) @type)
+      ]
+    ]]
+	)
 
 	for _, capture in query:iter_captures(node, 0) do
 		if handlers[capture:type()] then
