@@ -239,3 +239,31 @@ map(
 	[[<cmd>0s/.*/"use client"\r\r&<cr>]],
 	'Add "use client" directive to file'
 )
+
+local test_query = [[
+  (call_expression
+    function: (identifier) @_name (#eq? @_name "test")) @test
+]]
+
+map("n", "<leader>wd", function()
+	require("core.utils.wrapper").wrap({
+		lang = "typescript",
+		query = test_query,
+		capture_name = "test",
+		before = "test.describe(() => {",
+		after = "})",
+		indent = true,
+	})
+end, "Wrap test in describe")
+
+--- TODO: Figure this one out
+--- map("n", "<leader>wu", function()
+--- 	require("core.utils.wrapper").wrap({
+--- 		lang = "typescript",
+--- 		query = test_query,
+--- 		capture_name = "test",
+--- 		before = "test.describe(() => {",
+--- 		after = "})",
+--- 		indent = true,
+--- 	})
+--- end, "Wrap test in describe/use")
