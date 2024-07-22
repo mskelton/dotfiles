@@ -43,6 +43,9 @@ npm config set ignore-workspace-root-check=true
 # Enable corepack
 sudo corepack enable
 
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Install cargo binaries
 cargo install --git https://github.com/mskelton/pomo
 cargo install --git https://github.com/mskelton/flashlight
