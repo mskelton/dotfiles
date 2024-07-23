@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Total number of days since I start at Ramp
+# Total number of days since I started my job
 
 company=Ramp
 start="2024-07-22"
