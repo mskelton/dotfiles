@@ -3,12 +3,17 @@
 
 company=Ramp
 start="2024-07-22"
+company_start="2019-03-18"
 
-today=$(date +%Y-%m-%d)
-today_seconds=$(date -j -f "%Y-%m-%d" "$today" "+%s")
-start_seconds=$(date -j -f "%Y-%m-%d" "$start" "+%s")
+diff() {
+	today=$(date +%Y-%m-%d)
+	today_seconds=$(date -j -f "%Y-%m-%d" "$today" "+%s")
+	start_seconds=$(date -j -f "%Y-%m-%d" "$1" "+%s")
 
-# Calculate the number of days
-diff=$(((start_seconds - today_seconds) / 86400 + 1))
+	# Calculate the number of days
+	diff=$(((today_seconds - start_seconds) / 86400))
 
-echo "Today is day $diff at $company"
+	echo $((diff))
+}
+
+echo "Today is day $(($(diff $start) + 1)) at $company (day $(diff $company_start))"
