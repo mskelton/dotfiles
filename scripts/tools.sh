@@ -19,7 +19,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
 # Install fzf keybindings
-/opt/homebrew/opt/fzf/install
+/opt/homebrew/opt/fzf/install \
+	--no-update-rc \
+	--completion \
+	--key-bindings \
+	--no-bash \
+	--no-zsh
 
 # Install Docker completion
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
