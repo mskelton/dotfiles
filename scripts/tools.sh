@@ -55,6 +55,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install --git https://github.com/mskelton/pomo
 cargo install --git https://github.com/mskelton/flashlight
 cargo install --git https://github.com/mskelton/pngpaste
+cargo install --git https://github.com/mskelton/dtsfmt
 
 # Install go binaries
 go install github.com/mskelton/byte@latest
