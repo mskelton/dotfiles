@@ -64,9 +64,6 @@ return {
 				tsserver_file_preferences = {
 					autoImportFileExcludePatterns = {
 						"**/.next/*",
-						"**/@federato/deprecated-athena",
-						"**/@mobily/ts-belt",
-						"**/carbon-components-react",
 						"**/postcss",
 						"**/react-aria-components",
 					},

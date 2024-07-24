@@ -4,6 +4,3 @@
 [submodule "personal"]
 	path = personal
 	url = git@github.com:mskelton/dotfiles-personal.git
-[submodule "federato"]
-	path = federato
-	url = git@github.com:mskelton/dotfiles-federato
