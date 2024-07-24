@@ -4,33 +4,17 @@ user=$(whoami)
 read -p 'What is your email? ' email
 
 # Create the ssh key
-mkdir -p $HOME/.ssh
-ssh-keygen -t ed25519 -C $email
-cat <<EOF >$HOME/.ssh/config
-Host *.github.com
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_ed25519
-EOF
+mkdir -p "$HOME/.ssh"
 
 # Create the default global gitconfig
-cat <<EOF >$HOME/.gitconfig
+cat <<EOF >"$HOME/.gitconfig"
 [user]
 	name = Mark Skelton
 	email = $email
-  signingKey = /Users/$user/.ssh/id_ed25519.pub
 [core]
 	excludesfile = /Users/$user/.gitignore-global
-[commit]
-  gpgsign = true
-[tag]
-  gpgsign = true
-[gpg]
-	format = ssh
 [include]
 	path = /Users/$user/.gitconfig-shared
+[includeIf "hasconfig:remote.*.url:work:ramp/**"]
+	path = /Users/$user/.gitconfig-work
 EOF
-
-echo "Run the following command to copy the ssh key to your clipboard."
-echo ""
-echo "cat ~/.ssh/id_ed25519.pub | pbcopy"
-echo ""
