@@ -74,4 +74,4 @@ gh extension install mislav/gh-license
 npm install turbo --global
 
 # Setup launchd services
-launchd-reload
+# launchd-reload
