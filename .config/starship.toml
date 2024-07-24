@@ -58,6 +58,7 @@ symbol = "큡 "
 disabled = true
 
 [git_status]
+disabled = true
 stashed = ""
 
 [git_branch]
