@@ -1,9 +1,10 @@
+git:
+  autoFetch: false
 gui:
   nerdFontsVersion: "3"
   scrollHeight: 20
   theme:
     selectedLineBgColor: ["#364A82"]
-    selectedRangeBgColor: ["#364A82"]
 keybinding:
   universal:
     pushFiles: "p"
