@@ -83,6 +83,5 @@
 [user]
 	name = Mark Skelton
   email = mdskelton99@gmail.com
-  signingkey = /Users/mskelton/.ssh/id_ed25519_personal.pub
 
 # vim:ft=gitconfig

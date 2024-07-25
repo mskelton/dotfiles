@@ -7,6 +7,8 @@ mkdir -p "$HOME/.ssh"
 
 # Create the default global gitconfig
 cat <<EOF >"$HOME/.gitconfig"
+[user]
+  signingkey = /Users/$user/.ssh/id_ed25519_personal.pub
 [core]
 	excludesfile = /Users/$user/.gitignore-global
 [include]
