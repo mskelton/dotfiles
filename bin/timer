@@ -18,7 +18,7 @@ start_time=$(date +%s)
 while true; do
 	current_time=$(date +%s)
 	elapsed_time=$((current_time - start_time))
-	remaining_time=$((duration * 1 - elapsed_time))
+	remaining_time=$((duration * 60 - elapsed_time))
 
 	# Show the notification when the time is done
 	if [ $remaining_time -le 0 ]; then
