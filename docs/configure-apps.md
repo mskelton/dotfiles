@@ -9,7 +9,7 @@ done when setting up new _accounts_ which only happens when changing jobs.
 - **General->Task complete tone** - Off
 - **Advanced->Show Todoist in menu bar** - Off
 - **Advanced->Launch at startup** - On
-- **Advanced->Quick Add Task** - `⌥T`
+- **Advanced->Quick Add Task** - <kbd>⌥T</kbd>
 - **Theme->Theme->Auto Dark Mode** - Off
 - **Productivity->Todoist Karma** - Off
 - **Productivity->Goals** - 0
