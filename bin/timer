@@ -32,7 +32,11 @@ while true; do
 		minutes=$((remaining_time / 60))
 		seconds=$((remaining_time % 60))
 
-		echo -ne "\r${minutes}m ${seconds}s "
+		if [ $seconds -eq 0 ]; then
+			echo -ne "\r${minutes}m "
+		else
+			echo -ne "\r${minutes}m ${seconds}s "
+		fi
 	else
 		echo -ne "\r${remaining_time}s "
 	fi
