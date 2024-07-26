@@ -29,6 +29,7 @@ return {
 			vim.cmd.Abolish("seperate", "separate")
 			vim.cmd.Abolish("teh", "the")
 			vim.cmd.Abolish("wierd", "weird")
+			vim.cmd.Abolish("ture", "true")
 		end,
 	},
 }
