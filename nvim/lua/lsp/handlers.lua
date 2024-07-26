@@ -22,7 +22,7 @@ M.register_handlers = function()
 	-- show the first one. This prevents many times where going to definition
 	-- opens a quickfix list when it really doesn't need to.
 	vim.lsp.handlers["textDocument/definition"] = function(_, result, ...)
-		if vim.tbl_islist(result) then
+		if vim.islist(result) then
 			local seen = {}
 
 			result = vim.tbl_filter(function(item)
@@ -48,7 +48,7 @@ M.register_handlers = function()
 	-- cursor is. This filters out the current line before sending the results to
 	-- the quickfix list.
 	vim.lsp.handlers["textDocument/references"] = function(_, result, ...)
-		if vim.tbl_islist(result) then
+		if vim.islist(result) then
 			local cursor_line = unpack(vim.api.nvim_win_get_cursor(0))
 
 			result = vim.tbl_filter(function(item)

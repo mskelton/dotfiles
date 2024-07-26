@@ -25,11 +25,12 @@ return {
 				-- false positive results for my use case. If I explicitly jump to
 				-- them, go there, otherwise ignore them.
 				["textDocument/definition"] = function(_, result, ...)
-					if vim.tbl_islist(result) then
+					if vim.islist(result) then
 						local ignored_paths = {
 							"react/index.d.ts",
 							"react/ts5.0/index.d.ts",
 							"tailwind-variants/dist/index.d.ts",
+							"styled-components/dist/types.d.ts",
 						}
 
 						for key, value in ipairs(result) do
