@@ -6,6 +6,9 @@ hs.console.consoleFont("JetBrains Mono")
 --- Disable animations
 hs.window.animationDuration = 0
 
+--- Disable notification about spotlight search
+hs.application.enableSpotlightForNameSearches(false)
+
 --- Hotkeys
 --- local hyper = { "cmd", "option", "ctrl", "shift" }
 --- local meh = { "ctrl", "option", "shift" }
@@ -84,12 +87,24 @@ Install:andUse("AppLauncher", {
 	},
 })
 
+local disabled_apps = if_work({ "Around", "Postman" }, {
+	"Around",
+	"Postman",
+	"Slack",
+	"Linear",
+})
+
 --- Apply a layout based on the number of screens
 local function apply_layout(...)
 	local layouts = { ... }
 	local count = #hs.screen.allScreens()
+	local layout = layouts[count]
 
-	hs.layout.apply(layouts[count])
+	layout = hs.fnutils.ifilter(layout, function(app)
+		return not hs.fnutils.contains(disabled_apps, app[1])
+	end)
+
+	hs.layout.apply(layout)
 end
 
 --- Returns true if the window is the Around lobby window. This is a guess based on size.
@@ -197,6 +212,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.maximized, nil, nil },
@@ -209,6 +225,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -224,6 +241,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.left50, nil, nil },
@@ -244,6 +262,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -260,6 +279,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
 		-- Primary
 		{ browser, nil, screens.primary, hs.layout.right50, nil, nil },
@@ -273,6 +293,7 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.right50, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.left50, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
 end)
 

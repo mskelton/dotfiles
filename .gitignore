@@ -12,4 +12,4 @@ nvim/lazy-lock.json
 *.log
 
 # EmmyLua annotations for hammerspoon
-hammerspoon/Spoons/EmmyLua.spoon/annotations/
+.hammerspoon/Spoons/EmmyLua.spoon/annotations/
