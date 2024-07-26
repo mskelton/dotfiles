@@ -44,11 +44,11 @@
 [commit]
   gpgsign = true
 [core]
-  autocrlf = input
-  trustctime = false
-  editor = nvim
   abbrev = 8
+  autocrlf = input
+  editor = nvim
   pager = less -x2
+  trustctime = false
 [color]
   ui = true
 [diff]
