@@ -36,6 +36,8 @@ alias tt="taskwarrior-tui"
 # Package managers
 alias b="bun"
 alias y="yarn"
+alias yd="yarn dev"
+alias ys="yarn start"
 alias pn="pnpm"
 alias pout="pnpm outdated --format=list"
 alias pup="pnpm up --filter='*' --latest"
