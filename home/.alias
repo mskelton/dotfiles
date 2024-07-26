@@ -27,11 +27,9 @@ alias prc="gh prc"
 alias ta="tmux attach"
 alias tk="tmux-kill-switch"
 
-# Task Warrior
-alias t="task"
-alias th="task rc.context=home"
-alias tw="clear && task"
-alias tt="taskwarrior-tui"
+# Todo
+alias t="todo today"
+alias tw="clear && todo today"
 
 # Package managers
 alias b="bun"
