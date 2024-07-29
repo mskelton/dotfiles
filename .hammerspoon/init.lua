@@ -84,6 +84,7 @@ Install:andUse("AppLauncher", {
 		m = "zoom.us",
 		[","] = "ChatGPT",
 		["."] = "Figma",
+		["/"] = "Linear",
 	},
 })
 
