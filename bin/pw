@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 # Playwright CLI
+# Usage: pw <command> [--help|-h]
 
-function one {
+dir='playwright/test-results/'
+
+print_help() {
+	echo "Usage: pw <command> [--help|-h]
+
+Commands:
+  results  View test results
+  trace    Open trace"
+}
+
+one() {
 	lines=$(</dev/stdin)
 
 	if [ -z "$lines" ]; then
@@ -13,33 +24,59 @@ function one {
 	fi
 }
 
-function view_test_results {
-	result=$(fd -Ipg '**/test-results/**/*.png' | one)
+view_test_results() {
+	found_files=0
 
-	if [ -n "$result" ]; then
-		open "$result"
-	else
-		echo "No test results found"
+	# Find and display all the test screenshots
+	for file in $(fd -I '.png' $dir); do
+		found_files=1
+		echo "$file"
+		kitty +kitten icat "$file"
+	done
+
+	# If no files were found, return an error
+	if [ $found_files -eq 0 ]; then
+		echo "[error]: No test results found"
 		return 1
 	fi
 }
 
-function open_trace {
-	result=$(fd -Ipg '**/test-results/**/*.zip' | one)
+open_trace() {
+	filename=$(fd -I '.zip' $dir | one)
 
-	if [ -n "$result" ]; then
-		yarn playwright show-trace "$result"
+	if [ -n "$filename" ]; then
+		yarn playwright show-trace "$filename"
 	else
-		echo "No traces found"
+		echo "[error]: No traces found"
 		return 1
 	fi
 }
 
-if [ "$1" == "results" ]; then
+# Parse the command line args
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	-h | --help)
+		print_help
+		exit 0
+		;;
+	*)
+		command="$1"
+		shift
+		;;
+	esac
+done
+
+# Test to ensure the directory is present
+if [ ! -d "playwright" ]; then
+	echo "[error]: Test directory does not exist"
+	exit 1
+fi
+
+# Run the command
+if [ "$command" == "results" ]; then
 	view_test_results
-elif [ "$1" == "trace" ]; then
+elif [ "$command" == "trace" ]; then
 	open_trace
 else
-	echo "Invalid command"
-	exit 1
+	print_help
 fi
