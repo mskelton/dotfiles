@@ -145,7 +145,7 @@
     "errorLens.warningBackground": "#0000",
     "errorLens.warningMessageBackground": "#ff942f19"
   },
-  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.colorTheme": "Tokyo Night Moon",
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -214,5 +214,6 @@
   "tailwindCSS.experimental.classRegex": [
     ["tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)", "\"(.*?)\""],
     ["clsx\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)", "\"(.*?)\""]
-  ]
+  ],
+  "security.promptForLocalFileProtocolHandling": false
 }
