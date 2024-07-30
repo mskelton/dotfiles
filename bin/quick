@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Quickly create a TaskWarrior task for home
 
-flags=(rc.context=none)
+token="$TODOIST_API_TOKEN"
+project_id="2337075244"
 cmd="$1"
 shift
 
@@ -11,7 +12,43 @@ _print_help() {
 	echo 'Commands:'
 	echo '  list'
 	echo '  add [title]'
-	echo '  close [number]'
+	echo '  close [id]'
+}
+
+_list_tasks() {
+	curl -fsSL -X GET \
+		https://api.todoist.com/rest/v2/tasks?project_id="$project_id" \
+		-H "Authorization: Bearer $token" | jq -r '.[] | "\(.id): \(.content)"'
+}
+
+_add_task() {
+	if [[ -z "$1" ]]; then
+		echo 'No task provided'
+		return 1
+	fi
+
+	# Join all arguments into a single string. This makes it easy to type the task
+	# title without needing to quote it.
+	title="${*}"
+
+	# Auto assign to the Quick project unless an explicit project is provided
+	if [[ "$title" != *"#"* ]]; then
+		title="$title #Quick"
+	fi
+
+	curl -fsSL https://api.todoist.com/sync/v9/quick/add \
+		-H "Authorization: Bearer $token" \
+		-d text="$title" | jq -r '.id'
+}
+
+_close_task() {
+	if [[ -z "$1" ]]; then
+		echo 'No task id provided'
+		return 1
+	fi
+
+	curl -fsSL -X POST "https://api.todoist.com/rest/v2/tasks/$1/close" \
+		-H "Authorization: Bearer $token"
 }
 
 # Print help if no args are provided
@@ -20,13 +57,20 @@ if [[ -z "$cmd" || "$cmd" == 'help' ]]; then
 	exit 0
 fi
 
+# Ensure the API token is set
+if [[ -z "$token" ]]; then
+	echo 'TODOIST_API_TOKEN is not set'
+	exit 1
+fi
+
 if [[ "$cmd" == 'list' ]]; then
-	task "${flags[@]}" +quick "$@"
+	_list_tasks
 elif [[ "$cmd" == 'add' ]]; then
-	task "${flags[@]}" add +quick "$@"
+	_add_task "$@"
 elif [[ "$cmd" == 'close' ]]; then
-	task "${flags[@]}" "$@" 'done'
+	_close_task "$@"
 else
+	printf "[error]: unknown command '%s'\n\n" "$cmd"
 	_print_help
 	exit 1
 fi
