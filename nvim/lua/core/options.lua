@@ -3,7 +3,7 @@ local o = vim.opt
 
 --- Space is a much better leader key.
 g.mapleader = " "
-g.localleader = " "
+g.maplocalleader = " "
 
 --- I've debated a lot about the clipboard. Accessing my system clipboard for
 --- pasting is something I do all the time, so it does feel right to
