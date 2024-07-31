@@ -12,6 +12,7 @@ $brew tap homebrew/cask-fonts
 # Install formulae
 formula=(
 	as-tree
+	ast-grep
 	bash
 	bat
 	blueutil
