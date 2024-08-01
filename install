@@ -3,6 +3,7 @@
 source ./dottie/dottie.sh
 
 # Clean old files
+clean ~/.ssh/config
 
 # ~/.config directory
 link .config/byte/config.yaml ~/.config/byte/config.yaml
@@ -19,6 +20,7 @@ link nvim ~/.config/nvim
 link .hammerspoon ~/.hammerspoon
 link .skeletons ~/.skeletons
 
+link .ssh/config ~/.ssh/config
 link .emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
