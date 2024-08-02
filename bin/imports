@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+# Find JS imports
+
+cwd="$(pwd)"
+format="rich"
+
+_print_help() {
+	if [ -n "$1" ]; then
+		printf "%s\n\n" "$1"
+	fi
+
+	echo "Usage: imports [options] <source> [specifier]
+
+Options:
+  -h, --help             Display this help message and exit
+  -c, --cwd <dir>        Set the current working directory to <dir>
+  -f, --format <format>  Set the output format (short|long)
+
+Arguments:
+  <source>               The import source to search for
+  [specifier]            Only return imports containing this specifier"
+}
+
+_parse_args() {
+	# Parse the command line args
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+		-h | --help)
+			_print_help "Find JavaScript imports"
+			exit 0
+			;;
+		-c | --cwd)
+			cwd="$2"
+			shift 2
+			;;
+		-f | --format)
+			if [[ "$2" == 'short' ]]; then
+				format="short"
+			elif [[ "$2" == 'long' ]]; then
+				format="rich"
+			else
+				_print_help "Invalid format: $2\n\n"
+				exit 1
+			fi
+
+			shift 2
+			;;
+		*)
+			if [ -z "$source" ]; then
+				source="$1"
+			elif [ -z "$specifier" ]; then
+				specifier="$1"
+			else
+				_print_help "Unexpected argument: $1\n\n"
+				exit 1
+			fi
+
+			shift
+			;;
+		esac
+	done
+}
+
+_get_rule() {
+	lang=TSX
+
+	# If a specifier is provided, we search for the specifier within the
+	# import given the specified source.
+	if [ -n "$2" ]; then
+		echo "
+id: imports
+language: $lang
+rule:
+  kind: import_specifier
+  regex: '^$2'
+  inside:
+    kind: named_imports
+    inside:
+      kind: import_clause
+      inside:
+        kind: import_statement
+        has:
+          kind: string
+          field: source
+          has:
+            kind: string_fragment
+            regex: '^$1$'
+"
+	else
+		echo "
+id: imports
+language: $lang
+rule:
+  kind: import_statement
+  all:
+    - has:
+        kind: string
+        field: source
+        has:
+          kind: string_fragment
+          regex: '^$1$'
+"
+	fi
+}
+
+_find_imports() {
+	if [ -z "$source" ]; then
+		_print_help "Missing source argument"
+		exit 1
+	fi
+
+	sg scan --inline-rules "$(_get_rule "$source" "$specifier")" \
+		--report-style="$format" \
+		"$cwd"
+}
+
+_parse_args "$@"
+_find_imports
