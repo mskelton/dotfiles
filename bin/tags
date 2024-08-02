@@ -1,4 +1,131 @@
 #!/usr/bin/env bash
 # Find JSX tags
+# vim:filetype=bash
+
+cwd="$(pwd)"
+format="rich"
+
+_print_help() {
+	if [ -n "$1" ]; then
+		printf "%s\n\n" "$1"
+	fi
+
+	echo "Usage: tags [options] <name> [attribute] [value]
+
+Options:
+  -h, --help             Display this help message and exit
+  -c, --cwd <dir>        Set the current working directory to <dir>
+  -f, --format <format>  Set the output format (short|long)
+
+Arguments:
+  <name>                 The tag name to search for
+  [attribute]            Filter by attribute
+  [value]                Filter by attribute value"
+
+}
+
+_parse_args() {
+	# Parse the command line args
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+		-h | --help)
+			_print_help "Find JSX tags"
+			exit 0
+			;;
+		-c | --cwd)
+			cwd="$2"
+			shift 2
+			;;
+		-f | --format)
+			if [[ "$2" == 'short' ]]; then
+				format="short"
+			elif [[ "$2" == 'long' ]]; then
+				format="rich"
+			else
+				_print_help "Invalid format: $2"
+				exit 1
+			fi
+
+			shift 2
+			;;
+		*)
+			if [ -z "$name" ]; then
+				name="$1"
+			elif [ -z "$attribute" ]; then
+				attribute="$1"
+			elif [ -z "$value" ]; then
+				value="$1"
+			else
+				_print_help "Unexpected argument: $1"
+				exit 1
+			fi
+
+			shift
+			;;
+		esac
+	done
+}
+
+_get_rule() {
+  head="
+id: tags
+language: TSX
+utils:
+  is-tag:
+    any:
+      - kind: jsx_opening_element
+      - kind: jsx_self_closing_element
+    has:
+      kind: identifier
+      field: name
+      regex: '^$name$'
+"
 
 
+	if [ -n "$attribute" ]; then
+		echo "
+$head
+rule:
+  kind: jsx_attribute
+  all:
+    - has:
+        kind: property_identifier
+        regex: '^$attribute$'
+$(if [ -n "$value" ]; then
+echo "
+    - has:
+        any:
+          - kind: string
+            has:
+              kind: string_fragment
+              regex: '^$value$'
+          - has:
+              kind: number
+              regex: '^$value$'
+"
+fi)
+  inside:
+    matches: is-tag
+"
+	else
+		echo "
+$head
+rule:
+  matches: is-tag
+"
+	fi
+}
+
+_find_tags() {
+	if [ -z "$name" ]; then
+		_print_help "Missing name argument"
+		exit 1
+	fi
+
+	sg scan --inline-rules "$(_get_rule)" \
+		--report-style="$format" \
+		"$cwd"
+}
+
+_parse_args "$@"
+_find_tags

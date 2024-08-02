@@ -39,7 +39,7 @@ _parse_args() {
 			elif [[ "$2" == 'long' ]]; then
 				format="rich"
 			else
-				_print_help "Invalid format: $2\n\n"
+				_print_help "Invalid format: $2"
 				exit 1
 			fi
 
@@ -51,7 +51,7 @@ _parse_args() {
 			elif [ -z "$specifier" ]; then
 				specifier="$1"
 			else
-				_print_help "Unexpected argument: $1\n\n"
+				_print_help "Unexpected argument: $1"
 				exit 1
 			fi
 
@@ -62,14 +62,25 @@ _parse_args() {
 }
 
 _get_rule() {
-	lang=TSX
+	head="
+id: imports
+language: TSX
+utils:
+  is-import:
+    kind: import_statement
+    has:
+      kind: string
+      field: source
+      has:
+        kind: string_fragment
+        regex: '^$1$'
+  "
 
 	# If a specifier is provided, we search for the specifier within the
 	# import given the specified source.
 	if [ -n "$2" ]; then
 		echo "
-id: imports
-language: $lang
+$head
 rule:
   kind: import_specifier
   regex: '^$2'
@@ -78,27 +89,13 @@ rule:
     inside:
       kind: import_clause
       inside:
-        kind: import_statement
-        has:
-          kind: string
-          field: source
-          has:
-            kind: string_fragment
-            regex: '^$1$'
+        matches: is-import
 "
 	else
 		echo "
-id: imports
-language: $lang
+$head
 rule:
-  kind: import_statement
-  all:
-    - has:
-        kind: string
-        field: source
-        has:
-          kind: string_fragment
-          regex: '^$1$'
+  matches: is-import
 "
 	fi
 }
