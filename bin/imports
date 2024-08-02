@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Find JS imports
+# Find JavaScript imports
 
 cwd="$(pwd)"
 format="rich"
@@ -21,8 +21,8 @@ Arguments:
   [specifier]            Only return imports containing this specifier"
 }
 
+# Parse the command line args
 _parse_args() {
-	# Parse the command line args
 	while [[ $# -gt 0 ]]; do
 		case "$1" in
 		-h | --help)
@@ -100,6 +100,7 @@ rule:
 	fi
 }
 
+# Find JavaScript imports
 _find_imports() {
 	if [ -z "$source" ]; then
 		_print_help "Missing source argument"

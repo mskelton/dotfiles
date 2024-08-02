@@ -24,8 +24,8 @@ Arguments:
 
 }
 
+# Parse the command line args
 _parse_args() {
-	# Parse the command line args
 	while [[ $# -gt 0 ]]; do
 		case "$1" in
 		-h | --help)
@@ -66,8 +66,19 @@ _parse_args() {
 	done
 }
 
+# Split a dot-separated string into parts.
+_split() {
+	echo "$1" | while IFS='.' read -ra parts; do
+		for part in "${parts[@]}"; do
+			echo "$part"
+		done
+	done
+}
+
+# Generate a rule for finding JSX tags
 _get_rule() {
-  head="
+	namespaced_tag=($(_split "$name"))
+	head="
 id: tags
 language: TSX
 utils:
@@ -76,11 +87,20 @@ utils:
       - kind: jsx_opening_element
       - kind: jsx_self_closing_element
     has:
-      kind: identifier
-      field: name
-      regex: '^$name$'
+      any:
+        - kind: identifier
+          regex: '^$name$'
+        - kind: member_expression
+          all:
+            - has:
+                kind: identifier
+                field: object
+                regex: '^${namespaced_tag[0]}$'
+            - has:
+                kind: property_identifier
+                field: property
+                regex: '^${namespaced_tag[1]}$'
 "
-
 
 	if [ -n "$attribute" ]; then
 		echo "
@@ -91,8 +111,9 @@ rule:
     - has:
         kind: property_identifier
         regex: '^$attribute$'
-$(if [ -n "$value" ]; then
-echo "
+    $(if [ -n "$value" ]; then
+      # TODO: Support boolean, boolean shorthand, null, undefined, and template literals
+      echo "
     - has:
         any:
           - kind: string
@@ -103,7 +124,7 @@ echo "
               kind: number
               regex: '^$value$'
 "
-fi)
+		fi)
   inside:
     matches: is-tag
 "
@@ -116,6 +137,7 @@ rule:
 	fi
 }
 
+# Find JSX tags
 _find_tags() {
 	if [ -z "$name" ]; then
 		_print_help "Missing name argument"
