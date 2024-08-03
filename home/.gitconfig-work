@@ -4,6 +4,6 @@
   manyFiles = true
 [user]
 	email = mskelton@ramp.com
-  signingkey = /Users/mskelton/.ssh/id_ed25519_work.pub
+  signingkey = /Users/mskelton/.ssh/id_ed25519_sk_work.pub
 
 # vim:ft=gitconfig

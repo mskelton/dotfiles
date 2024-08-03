@@ -67,8 +67,6 @@
   cmd = kitten diff $LOCAL $REMOTE
 [gpg]
 	format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [init]
   defaultBranch = main
 [log]
