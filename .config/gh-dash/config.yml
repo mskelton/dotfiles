@@ -15,11 +15,20 @@ issuesSections:
 defaults:
   prsLimit: 20
   issuesLimit: 20
-  preview:
-    open: true
-    width: 100
+  layout:
+    prs:
+      author:
+        hidden: true
+      lines:
+        hidden: true
+      updatedAt:
+        hidden: true
 repoPaths:
   mskelton/*: ~/dev/*
 keybindings:
 pager:
   diff: less
+theme:
+  ui:
+    table:
+      compact: true
