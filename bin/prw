@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# GitHub PR View
+
+gh prw

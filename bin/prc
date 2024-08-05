@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# GitHub PR Create
+
+default_branch=$(git default)
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ $branch == "$default_branch" ]]; then
+	echo "error: Cannot create a PR from the default branch"
+	exit 1
+fi
+
+# git push
+open "$(remote-url)/compare/$default_branch...$(echo "$branch" | url-encode)?body=&expand=1"

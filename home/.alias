@@ -19,10 +19,6 @@ alias st="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
 
-# GitHub CLI
-alias prw="gh prw"
-alias prc="gh prc"
-
 # Tmux
 alias ta="tmux attach"
 alias tk="tmux-kill-switch"
