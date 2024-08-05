@@ -7,7 +7,20 @@ commit=${1:-$(git rev-parse --short HEAD)}
 # Read the repo base URL from the git config
 url=$(git config --get remote.origin.url)
 
-# take the git@hostname.com:account/repo.git format and turn it into
+# If the URL does not follow the `git@` format, replace it with the correct one
+# from the SSH config.
+if [[ $url != "git@"* ]]; then
+	# Read the host alias from the git config
+	host=${url/:*/}
+
+	# Lookup the real hostname from the SSH config
+	hostname=$(ssh -G "$host" | grep '^hostname ' | awk '{ print $2 }')
+
+	# Replace the old host alias with the real hostname
+	url=${url/$host/git@$hostname}
+fi
+
+# Take the git@hostname.com:account/repo.git format and turn it into
 # https://hostname.com/account/repo/commit/...
 if [[ $url != "https://"* ]]; then
 	url=$(echo "$url" | sed 's/\.git$//' | sed 's/:/\//' | sed 's/^git@/https:\/\//')
