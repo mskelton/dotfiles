@@ -9,5 +9,5 @@ if [[ $branch == "$default_branch" ]]; then
 	exit 1
 fi
 
-# git push
+git push
 open "$(remote-url)/compare/$default_branch...$(echo "$branch" | url-encode)?body=&expand=1"
