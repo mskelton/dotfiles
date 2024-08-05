@@ -93,7 +93,8 @@ if [[ -f "$HOME/.work" ]]; then
 else
 	$brew install \
 		awscli \
-		pulumi/tap/pulumi
+		pulumi/tap/pulumi \
+		tursodatabase/tap/turso
 
 	$brew install --cask \
 		android-studio \
