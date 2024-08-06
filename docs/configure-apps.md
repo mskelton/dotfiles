@@ -3,6 +3,13 @@
 Below are configure steps for applications. This is typically only needed to be
 done when setting up new _accounts_ which only happens when changing jobs.
 
+## ChatGPT
+
+- **App->Show ChatGPT** - Only in Dock
+- **App->Correct Spelling Automatically** - Off
+- **App->Launch At Login** - Off
+- **Chat Bar->Keyboard Shortcut** - <kbd>⌥Space</kbd>
+
 ## Todoist
 
 - **General->Time zone** - US/Central
