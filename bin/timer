@@ -32,13 +32,16 @@ while true; do
 		minutes=$((remaining_time / 60))
 		seconds=$((remaining_time % 60))
 
+		# Escape sequence to clear the line
+		clr="\033[2K"
+
 		if [ $seconds -eq 0 ]; then
-			echo -ne "\r${minutes}m "
+			echo -ne "$clr\r${minutes}m "
 		else
-			echo -ne "\r${minutes}m ${seconds}s "
+			echo -ne "$clr\r${minutes}m ${seconds}s "
 		fi
 	else
-		echo -ne "\r${remaining_time}s "
+		echo -ne "$clr\r${remaining_time}s "
 	fi
 
 	# Tick the clock
