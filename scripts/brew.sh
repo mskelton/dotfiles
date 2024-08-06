@@ -55,6 +55,7 @@ formula=(
 	watchman
 	wget
 	yq
+	zoxide
 )
 
 casks=(
