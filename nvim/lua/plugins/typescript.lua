@@ -13,6 +13,18 @@ local plugins = {
 	},
 }
 
+--- @param title string
+local function run_code_action(title)
+	return function()
+		vim.lsp.buf.code_action({
+			apply = true,
+			filter = function(action)
+				return action.title == title
+			end,
+		})
+	end
+end
+
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
@@ -34,14 +46,18 @@ return {
 				vim.keymap.set("n", "go", "<cmd>TypescriptAddMissingImports<cr>", opts)
 				vim.keymap.set("n", "gO", "<cmd>TypescriptRemoveUnused<cr>", opts)
 				vim.keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<cr>", opts)
-				vim.keymap.set("n", "<leader>ob", function()
-					vim.lsp.buf.code_action({
-						apply = true,
-						filter = function(action)
-							return action.title == "Add braces to arrow function"
-						end,
-					})
-				end, opts)
+				vim.keymap.set(
+					"n",
+					"<leader>oab",
+					run_code_action("Add braces to arrow function"),
+					opts
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>onf",
+					run_code_action("Convert to named function"),
+					opts
+				)
 			end,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			--- cmd = {

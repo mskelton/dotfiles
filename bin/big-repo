@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Setup Git config for a big repo
+
+git config core.fsmonitor true
+git config feature.manyFiles true
