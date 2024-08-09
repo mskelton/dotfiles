@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Preview a zip file
+# Usage: vz <file> [file_in_zip]
+
+# Check if the file exists
+if [ ! -f "$1" ]; then
+	echo "error: file not found"
+	exit 1
+fi
+
+# Unzip into a temporary directory
+temp_dir=$(mktemp -d)
+unzip -q -d "$temp_dir" "$1"
+
+# Navigate to the temporary directory
+cd "$temp_dir" || exit 1
+vi "$2"
+
+# Clean up
+rm -rf "$temp_dir"

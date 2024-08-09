@@ -7,4 +7,6 @@
 TMUX='' tmux -C attach -c "$(pwd)" -t . </dev/null >/dev/null
 
 # Rename the session to the current directory
-tmux rename-session -t . "$(basename "$(pwd)")"
+if [[ "$1" == "--rename" ]]; then
+	tmux rename-session -t . "$(basename "$(pwd)")"
+fi
