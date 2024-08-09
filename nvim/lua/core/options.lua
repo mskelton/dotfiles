@@ -70,7 +70,7 @@ o.hlsearch = false
 o.splitkeep = "screen"
 
 --- Use ripgrep for grepping
-o.grepprg = "rg --vimgrep"
+o.grepprg = "rg --vimgrep --hidden"
 o.grepformat = "%f:%l:%c:%m"
 
 --- Netrw settings here if I ever care to experiment with Netrw again. I'm still
