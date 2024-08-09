@@ -87,9 +87,9 @@ Install:andUse("AppLauncher", {
 		[";"] = "Mimestream",
 		--- Bottom row
 		n = "Todoist",
-		m = "zoom.us",
+		m = "Figma",
+		["."] = "zoom.us",
 		[","] = "ChatGPT",
-		["."] = "Figma",
 		["/"] = "Linear",
 	},
 })
