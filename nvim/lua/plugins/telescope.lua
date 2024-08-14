@@ -188,17 +188,20 @@ return {
 	config = function()
 		local Path = require("plenary.path")
 		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+		local finders = require("telescope.finders")
+		local make_entry = require("telescope.make_entry")
 		local layout_strategies = require("telescope.pickers.layout_strategies")
 		local dropdown = require("telescope.themes").get_dropdown()
 
-		-- Customized flex layout with dropdown style prompt.
+		--- Customized flex layout with dropdown style prompt.
 		layout_strategies.mskelton = function(self, columns, lines, override_layout)
 			local layout =
 				layout_strategies.flex(self, columns, lines, override_layout)
 
-			-- Move the results up one line to mirror the aesthetic of the dropdown
-			-- theme. This way I can use the same border chars from the dropdown theme
-			-- for the vertical and horizontal layouts.
+			--- Move the results up one line to mirror the aesthetic of the dropdown
+			--- theme. This way I can use the same border chars from the dropdown theme
+			--- for the vertical and horizontal layouts.
 			layout.results.height = layout.results.height + 1
 			layout.results.line = layout.results.line - 1
 
@@ -236,33 +239,73 @@ return {
 						flip_columns = 120,
 					},
 				},
-				-- Use custom prompt prefix which is more compact than the default.
+				--- Use custom prompt prefix which is more compact than the default.
 				prompt_prefix = "❯ ",
 				selection_caret = "❯ ",
-				-- Truncate long paths in the middle rather than the start/end. This
-				-- ensures that you can see the filename which is arguably most
-				-- important as well as the top-level directory which is useful for
-				-- distinguishing components in a monorepo.
+				--- Truncate long paths in the middle rather than the start/end. This
+				--- ensures that you can see the filename which is arguably most
+				--- important as well as the top-level directory which is useful for
+				--- distinguishing components in a monorepo.
 				path_display = function(opts, path)
 					return truncate_path(opts, path)
 				end,
 				mappings = {
 					i = {
-						-- Close rather than going to normal mode
+						--- Close rather than going to normal mode
 						["<esc>"] = actions.close,
 
-						-- Clear prompt with C-u
+						--- Clear prompt with C-u
 						["<C-u>"] = false,
 
-						-- Easier up/down shortcuts
+						--- Easier up/down shortcuts
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-h>"] = actions.move_to_top,
 						["<C-l>"] = actions.move_to_bottom,
 
-						-- Ctrl/Alt + q is hard to type, so use `i` instead
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
 						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+						--- Paste ignoring leading/trailing whitespace and only keep the first line
+						["<C-p>"] = function(prompt_bufnr)
+							local picker = action_state.get_current_picker(prompt_bufnr)
+							local first_line =
+								vim.fn.getreg("+"):gsub("^%s*(.-)%s*$", "%1"):match("^[^\n]*")
+
+							picker:set_prompt(first_line)
+						end,
+
+						--- Use `i` to toggle ignore flag in live_grep
+						--- ["<C-i>"] = function(bufnr)
+						--- 	local opts = {}
+						--- 	opts.entry_maker = make_entry.gen_from_file(opts)
+						---
+						--- 	local cmd = { "fd", "--type", "f", "--hidden" }
+						--- 	local current_picker = action_state.get_current_picker(bufnr)
+						---
+						--- 	current_picker:refresh(finders.new_oneshot_job(cmd, opts), {})
+						---
+						--- 	--- local current_picker = action_state.get_current_picker(bufnr)
+						--- 	--- local opts = current_picker._opts
+						--- 	--- P(current_picker._opts)
+						--- 	---
+						--- 	--- if opts.vimgrep_arguments then
+						--- 	--- 	local args =
+						--- 	--- 		vim.tbl_deep_extend("force", {}, opts.vimgrep_arguments)
+						--- 	---
+						--- 	--- 	for i, v in ipairs(args) do
+						--- 	--- 		if v == "--no-ignore" then
+						--- 	--- 			args[i] = "--ignore"
+						--- 	--- 		elseif v == "--ignore" then
+						--- 	--- 			args[i] = "--no-ignore"
+						--- 	--- 		end
+						--- 	--- 	end
+						--- 	---
+						--- 	--- 	opts.vimgrep_arguments = args
+						--- 	--- end
+						--- 	---
+						--- 	--- current_picker:refresh(opts, { reset_prompt = true })
+						--- end,
 					},
 				},
 				vimgrep_arguments = {
@@ -273,7 +316,7 @@ return {
 					"--line-number",
 					"--column",
 					"--smart-case",
-					-- Trim leading whitespace in grep results
+					--- Trim leading whitespace in grep results
 					"--trim",
 				},
 			},
@@ -295,9 +338,9 @@ return {
 					additional_args = function(opts)
 						local args = { "--hidden" }
 
-						-- Disable regex searching when requested. This is useful since 99% of
-						-- the time, I'm doing exact string searching and don't want to use a
-						-- regex search.
+						--- Disable regex searching when requested. This is useful since 99% of
+						--- the time, I'm doing exact string searching and don't want to use a
+						--- regex search.
 						if opts.regex == false then
 							table.insert(args, "--fixed-strings")
 						end
