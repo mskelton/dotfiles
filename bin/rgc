@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Count results from ripgrep
+
+awk -F':' '{s+=$2} END {print s}'
