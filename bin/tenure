@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Total number of days since I started my job
+
+today=$(date +%Y-%m-%d)
+
+diff() {
+	today_seconds=$(date -j -f "%Y-%m-%d" "$today" "+%s")
+	start_seconds=$(date -j -f "%Y-%m-%d" "$2" "+%s")
+
+	# Calculate the number of days
+	diff=$(((today_seconds - start_seconds) / 86400))
+
+	echo "$1: $((diff + 1))"
+}
+
+diff 'Ramp' 2019-03-18
+diff 'MSYC' 2024-05-05
+diff 'Work' 2024-07-22
