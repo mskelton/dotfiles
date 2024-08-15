@@ -8,8 +8,8 @@ print_help() {
 	echo "Usage: pw <command> [--help|-h]
 
 Commands:
-  results  View test results
-  trace    Open trace"
+  screenshot  View test screenshots
+  trace       Open trace"
 }
 
 one() {
@@ -24,7 +24,7 @@ one() {
 	fi
 }
 
-view_test_results() {
+view_test_screenshots() {
 	found_files=0
 
 	# Find and display all the test screenshots
@@ -36,7 +36,7 @@ view_test_results() {
 
 	# If no files were found, return an error
 	if [ $found_files -eq 0 ]; then
-		echo "[error]: No test results found"
+		echo "[error]: No test screenshots found"
 		return 1
 	fi
 }
@@ -73,8 +73,8 @@ if [ ! -d "playwright" ]; then
 fi
 
 # Run the command
-if [ "$command" == "results" ]; then
-	view_test_results
+if [ "$command" == "screenshot" ]; then
+	view_test_screenshots
 elif [ "$command" == "trace" ]; then
 	open_trace
 else

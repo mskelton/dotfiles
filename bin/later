@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Determine which commit hash is later
+# Usage: later <base> [hash]
+
+# If two args are provided, compare them directly, otherwise allow typing
+# multiple hashes to compare against the base.
+if [[ -n "$2" ]]; then
+	git merge-base --is-ancestor "$1" "$2" && echo "$1 is older" || echo "$2 is older"
+else
+	while IFS= read -r hash; do
+		git merge-base --is-ancestor "$1" "$hash" && echo "$1 is older" || echo "$hash is older"
+	done
+fi
