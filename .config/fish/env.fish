@@ -15,3 +15,4 @@ set -x ANDROID_HOME "$HOME/Library/Android/sdk"
 set -x CLOUDSDK_PYTHON python3
 set -x TURBO_NO_UPDATE_NOTIFIER 1
 set -x PAGER less
+set -x COREPACK_ENABLE_DOWNLOAD_PROMPT 0
