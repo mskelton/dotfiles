@@ -25,6 +25,7 @@
   sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
   # Checkout
   co = checkout
+  n = !git new $(pbpaste)
   new = !git checkout $(git default) -b $2
   pd = !pd
   pp = !git pull && git push
