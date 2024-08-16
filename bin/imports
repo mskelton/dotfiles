@@ -61,6 +61,16 @@ _parse_args() {
 	done
 }
 
+# Convert a string to a regex
+_to_regex() {
+	# If already in regex format, return as is removing the leading and traililng /
+	if [[ "$1" == /* && "$1" == */ ]]; then
+		echo "${1:1:${#1}-2}"
+	else
+		echo "^$1$"
+	fi
+}
+
 _get_rule() {
 	head="
 id: imports
@@ -73,7 +83,7 @@ utils:
       field: source
       has:
         kind: string_fragment
-        regex: '^$1$'
+        regex: '$(_to_regex "$1")'
   "
 
 	# If a specifier is provided, we search for the specifier within the
@@ -83,7 +93,7 @@ utils:
 $head
 rule:
   kind: import_specifier
-  regex: '^$2'
+  regex: '$(_to_regex "$2")'
   inside:
     kind: named_imports
     inside:
