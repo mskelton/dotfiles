@@ -188,7 +188,8 @@ return {
 	config = function()
 		local Path = require("plenary.path")
 		local actions = require("telescope.actions")
-		local action_state = require("telescope.actions.state")
+		local state = require("telescope.actions.state")
+		local layout = require("telescope.actions.layout")
 		local finders = require("telescope.finders")
 		local make_entry = require("telescope.make_entry")
 		local layout_strategies = require("telescope.pickers.layout_strategies")
@@ -196,16 +197,15 @@ return {
 
 		--- Customized flex layout with dropdown style prompt.
 		layout_strategies.mskelton = function(self, columns, lines, override_layout)
-			local layout =
-				layout_strategies.flex(self, columns, lines, override_layout)
+			local flex = layout_strategies.flex(self, columns, lines, override_layout)
 
 			--- Move the results up one line to mirror the aesthetic of the dropdown
 			--- theme. This way I can use the same border chars from the dropdown theme
 			--- for the vertical and horizontal layouts.
-			layout.results.height = layout.results.height + 1
-			layout.results.line = layout.results.line - 1
+			flex.results.height = flex.results.height + 1
+			flex.results.line = flex.results.line - 1
 
-			return layout
+			return flex
 		end
 
 		local function truncate_path(opts, path)
@@ -266,9 +266,12 @@ return {
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
 						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
+						-- Toggle preview
+						["<C-y>"] = layout.toggle_preview,
+
 						--- Paste ignoring leading/trailing whitespace and only keep the first line
 						["<C-p>"] = function(prompt_bufnr)
-							local picker = action_state.get_current_picker(prompt_bufnr)
+							local picker = state.get_current_picker(prompt_bufnr)
 							local first_line =
 								vim.fn.getreg("+"):gsub("^%s*(.-)%s*$", "%1"):match("^[^\n]*")
 

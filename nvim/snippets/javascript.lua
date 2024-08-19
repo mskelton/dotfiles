@@ -31,6 +31,7 @@ return {
 	parse("imu", "import userEvent from '@testing-library/user-event'"),
 	parse("ime", "import * as ESTree from 'estree'"),
 	-- React
+	parse("sus", "throw new Promise(() => {})"),
 	s(
 		"rus",
 		fmt("const [{}, set{}] = useState({})", {
