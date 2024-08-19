@@ -10,6 +10,14 @@ done when setting up new _accounts_ which only happens when changing jobs.
 - **App->Launch At Login** - Off
 - **Chat Bar->Keyboard Shortcut** - <kbd>⌥Space</kbd>
 
+## Slack
+
+- **Notifications->Show a badge on Slack's icon to indicate new activity** - Off
+- **Home->Show profile photos next to DMs** - Off
+- **Messages & Media->Theme** - Compact
+- **Messages & Media->Names** - Just display names
+- **Accessibility->Keyboard** - Edit your last message
+
 ## Todoist
 
 - **General->Time zone** - US/Central
@@ -33,4 +41,5 @@ done when setting up new _accounts_ which only happens when changing jobs.
 ### Web settings
 
 - **Meeting->Screen sharing->Who can share?** - All Participants
-- **Meeting->Screen sharing->Who can start sharing when someone else is sharing?** - All Participants
+- **Meeting->Screen sharing->Who can start sharing when someone else is
+  sharing?** - All Participants
