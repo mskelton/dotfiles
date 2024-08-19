@@ -46,13 +46,13 @@
 
 ;; Due to a bug in Emacs, we have to set the default font to a non-bold version
 ;; of Operator, and then manually set the bold font when needed.
-(set-face-attribute 'default nil :family "Operator Mono SSm Reg" :height 150)
+(set-face-attribute 'default nil :family "JetBrains Mono" :height 150)
 (setq-default line-spacing 5)
 
 ;; Org mode emphasis markers
 ;; (setq org-hide-emphasis-markers t)
 (setq org-emphasis-alist
-  '(("*" (bold :family "Operator Mono Ssm Lig") org-bold)
+  '(("*" (bold :family "JetBrains Mono") org-bold)
     ("/" italic)
     ("_" underline)
     ("+" (:strike-through t))))
