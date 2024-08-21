@@ -54,6 +54,12 @@ return {
 				)
 				vim.keymap.set(
 					"n",
+					"<leader>orb",
+					run_code_action("Remove braces from arrow function"),
+					opts
+				)
+				vim.keymap.set(
+					"n",
 					"<leader>onf",
 					run_code_action("Convert to named function"),
 					opts
