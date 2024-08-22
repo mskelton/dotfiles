@@ -11,7 +11,6 @@ alias grl="git rl"
 
 # Git
 alias gd="git diff"
-alias gdm="git diff @{1}"
 alias pub="git pub"
 alias pull="git pull"
 alias push="git push"

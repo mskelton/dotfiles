@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Git diff main branch
+
+git diff "$(git merge-base HEAD "$(git default)")"..HEAD
