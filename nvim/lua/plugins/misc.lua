@@ -43,17 +43,6 @@ return {
 		ft = "kitty",
 	},
 	{
-		"kdheepak/lazygit.nvim",
-		keys = {
-			{
-				"<leader>lg",
-				"<cmd>LazyGit<cr>",
-				mode = { "n", "v" },
-				desc = "Open LazyGit",
-			},
-		},
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {
@@ -208,12 +197,5 @@ return {
 			"TroubleRefresh",
 		},
 		config = true,
-	},
-	{
-		"MagicDuck/grug-far.nvim",
-		cmd = { "GrugFar" },
-		config = function()
-			require("grug-far").setup({})
-		end,
 	},
 }
