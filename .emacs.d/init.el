@@ -28,7 +28,13 @@
   :init
   (setq evil-want-C-u-scroll t)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; Keymaps
+  (define-key evil-normal-state-map (kbd "SPC fp") 'find-file)
+  (define-key evil-normal-state-map (kbd "SPC or") 'reload-config)
+  (define-key evil-normal-state-map (kbd ", s") 'save-buffer)
+  (define-key evil-normal-state-map (kbd ", w") 'evil-delete-buffer)
+  (define-key evil-normal-state-map ";" 'evil-ex))
 
 (use-package which-key
   :init (which-key-mode)
@@ -55,13 +61,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; KEYBINDINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Make Escape quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-(define-key evil-normal-state-map (kbd "SPC p") 'find-file)
-(define-key evil-normal-state-map (kbd ", s") 'save-buffer)
-(define-key evil-normal-state-map (kbd ", w") 'evil-delete-buffer)
-(define-key evil-normal-state-map ";" 'evil-ex)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; INTERFACE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,6 +81,8 @@
 (set-fringe-mode 10) ;; Window padding
 (setq ring-bell-function 'ignore) ;; Disable audio bell
 (setq inhibit-startup-message t) ;; Disable startup message
+
+(setq default-directory "~/dev/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; DIRED ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
