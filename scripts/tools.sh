@@ -53,7 +53,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install cargo binaries
 cargo install --git https://github.com/mskelton/pomo
-cargo install --git https://github.com/mskelton/flashlight
 cargo install --git https://github.com/mskelton/pngpaste
 cargo install --git https://github.com/mskelton/dtsfmt
 
