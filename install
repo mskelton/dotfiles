@@ -21,6 +21,7 @@ link .hammerspoon ~/.hammerspoon
 link .skeletons ~/.skeletons
 
 link .ssh/config ~/.ssh/config
+link .emacs.d/early-init.el ~/.emacs.d/early-init.el
 link .emacs.d/init.el ~/.emacs.d/init.el
 link lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml

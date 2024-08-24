@@ -24,7 +24,6 @@
   (load-theme 'atom-one-dark t))
 
 (use-package evil
-  :ensure t
   :init
   (setq evil-want-C-u-scroll t)
   :config
