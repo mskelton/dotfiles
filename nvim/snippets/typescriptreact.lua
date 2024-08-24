@@ -28,7 +28,7 @@ return {
 					end
 
 					return {
-						export .. "interface " .. props .. " {",
+						export .. "type " .. props .. " = {",
 						"\t",
 						"}",
 						"",

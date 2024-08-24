@@ -10,10 +10,7 @@ end
 
 return {
 	parse("rec", "Record<string, unknown>$0"),
-	s(
-		"rp",
-		fmt(snip_utils.export_interface, { f(snip_utils.get_props_name), i(1) })
-	),
+	s("rp", fmt(snip_utils.export_type, { f(snip_utils.get_props_name), i(1) })),
 	s("rpn", f(snip_utils.get_props_name)),
 	-- TypeScript
 	s(
@@ -26,7 +23,7 @@ return {
 	),
 	s(
 		"tin",
-		fmt("{}interface {} {{\n\t{}\n}}", {
+		fmt("{}type {} = {{\n\t{}\n}}", {
 			c(1, { t(""), t("export ") }),
 			i(2),
 			i(0),
@@ -61,7 +58,7 @@ return {
 					end
 
 					return {
-						export .. "interface " .. props .. " {",
+						export .. "type " .. props .. " = {",
 						"\t",
 						"}",
 						"",

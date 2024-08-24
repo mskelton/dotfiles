@@ -10,8 +10,8 @@ function M.get_dir(_, snip)
 	return utils.camel_case(string.match(snip.env.TM_DIRECTORY, "[^/]+$"))
 end
 
-M.export_interface = [[
-  export interface {1} {{
+M.export_type = [[
+  export type {1} = {{
     {2}
   }}
 ]]
