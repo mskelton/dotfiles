@@ -41,4 +41,8 @@ return {
 		fileMatch = { "vercel.json" },
 		url = "https://openapi.vercel.sh/vercel.json",
 	},
+	{
+		fileMatch = { "manifest.json" },
+		url = "https://json.schemastore.org/chrome-manifest",
+	},
 }
