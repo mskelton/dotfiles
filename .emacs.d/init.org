@@ -1,5 +1,5 @@
-#+PROPERTY: Header-args :tangle init.el
 #+AUTHOR: Mark Skelton
+#+PROPERTY: Header-args :tangle init.el
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
@@ -32,6 +32,7 @@ all our packages.
 (straight-use-package 'use-package)
 (require 'use-package)
 (setq use-package-always-ensure t)
+(setq straight-use-package-by-default t)
 #+end_src
 
 * Packages
@@ -41,6 +42,9 @@ packages is that each package configuration should be self-contained with as lit
 dependency as possible.
 
 ** Evil Mode
+
+The only way to make Emacs usable. Without Vim keybindings, it's pretty rough.
+Most of these keybindings are direct relationships with my Neovim config.
 
 #+begin_src emacs-lisp
 (use-package evil
@@ -66,6 +70,9 @@ dependency as possible.
 
 ** Org Mode
 
+The package everyone talks about. A bunch of changes are needed to make org
+mode keybindings work well with evil mode, but other than that it's pretty great.
+
 #+begin_src emacs-lisp
 (use-package org
   :init
@@ -78,6 +85,8 @@ dependency as possible.
  
 ** Which Key
 
+Probably will get rid of this one soon.
+
 #+begin_src emacs-lisp
 (use-package which-key
   :init (which-key-mode)
@@ -87,6 +96,10 @@ dependency as possible.
 #+end_src
 
 ** Dired
+
+On macOS, the ~ls~ command does not support the ~--dired~ option, so instead
+we have to use the ~gls~ command from ~coreutils~. While I currently only use macOS
+I'm keeping the config platform agnostic.
 
 #+begin_src emacs-lisp
 (when (string= system-type "darwin")
@@ -99,6 +112,8 @@ dependency as possible.
 
 ** Reload Config
 
+Reloads the Emacs config in place.
+
 #+begin_src emacs-lisp
 (defun reload-config ()
   "Reload the Emacs config."
@@ -109,8 +124,7 @@ dependency as possible.
 * Keybindings
 
 #+begin_src emacs-lisp
-;; Make Escape quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make Escape quit prompts
 #+end_src
 
 * Interface
