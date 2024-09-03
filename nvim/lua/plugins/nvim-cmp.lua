@@ -170,17 +170,17 @@ return {
 			sorting = {
 				comparators = {
 					--- Sort snippets first
-					function(a, b)
-						local a_kind = a:get_kind()
-						local b_kind = b:get_kind()
-						local snip = cmp.lsp.CompletionItemKind.Snippet
-
-						if a_kind == snip and b_kind ~= snip then
-							return true
-						elseif b_kind == snip and a_kind ~= snip then
-							return false
-						end
-					end,
+					--- function(a, b)
+					--- 	local a_kind = a:get_kind()
+					--- 	local b_kind = b:get_kind()
+					--- 	local snip = cmp.lsp.CompletionItemKind.Snippet
+					---
+					--- 	if a_kind == snip and b_kind ~= snip then
+					--- 		return true
+					--- 	elseif b_kind == snip and a_kind ~= snip then
+					--- 		return false
+					--- 	end
+					--- end,
 					cmp.config.compare.offset,
 					cmp.config.compare.exact,
 					--- cmp.config.compare.scopes,
