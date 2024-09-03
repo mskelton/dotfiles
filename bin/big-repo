@@ -3,3 +3,6 @@
 
 git config core.fsmonitor true
 git config feature.manyFiles true
+
+# Run status once to prime the cache
+git status >/dev/null
