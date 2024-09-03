@@ -90,7 +90,7 @@ Install:andUse("AppLauncher", {
 		m = "Figma",
 		["."] = "zoom.us",
 		[","] = "ChatGPT",
-		["/"] = "Linear",
+		["/"] = if_work("Linear", "Google Chrome"),
 	},
 })
 
