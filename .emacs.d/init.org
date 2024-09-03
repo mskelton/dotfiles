@@ -159,3 +159,9 @@ Reloads the Emacs config in place.
 #+begin_src emacs-lisp
 (setq custom-file (concat user-emacs-directory "/custom.el"))
 #+end_src
+
+** Minibuffer
+
+#+begin_src emacs-lisp
+(minibuffer-electric-default-mode 1)
+#+end_src
