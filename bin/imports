@@ -117,7 +117,9 @@ _find_imports() {
 		exit 1
 	fi
 
-	sg scan --inline-rules "$(_get_rule "$source" "$specifier")" \
+	sg scan \
+		--config "$HOME/.sgconfig.yml" \
+		--inline-rules "$(_get_rule "$source" "$specifier")" \
 		--report-style="$format" \
 		"$cwd"
 }

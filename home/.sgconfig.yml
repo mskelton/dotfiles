@@ -1,0 +1,3 @@
+ruleDirs: []
+languageGlobs:
+  tsx: ['*.js', '*.jsx', '*.ts', '*.tsx']

@@ -144,7 +144,9 @@ _find_tags() {
 		exit 1
 	fi
 
-	sg scan --inline-rules "$(_get_rule)" \
+	sg scan \
+    --config "$HOME/.sgconfig.yml" \
+    --inline-rules "$(_get_rule)" \
 		--report-style="$format" \
 		"$cwd"
 }
