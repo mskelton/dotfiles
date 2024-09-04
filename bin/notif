@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Manage GitHub notifications
+
+_parse_args() {
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+		-h | --help)
+			_print_help
+			exit 0
+			;;
+		*)
+			command="$1"
+			shift
+			;;
+		esac
+	done
+}
+
+_print_help() {
+	echo "Usage: notif [command] [--help|-h]
+
+Commands:
+  list    List notifications
+  done    Mark notifications as done"
+}
+
+_list_notifications() {
+	gh api notifications |
+		jq -r '.[].subject | "\(.title) (\(.url | split("/") | .[4] + "/" + .[5]) #\(.url | split("/") | .[7]))"'
+}
+
+_mark_notifications_as_read() {
+	now=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+	gh api --method PUT /notifications -f "last_read_at=$now" -F "read=true"
+}
+
+_parse_args "$@"
+
+if [[ $command == "done" ]]; then
+	_mark_notifications_as_read
+else
+	_list_notifications
+fi
