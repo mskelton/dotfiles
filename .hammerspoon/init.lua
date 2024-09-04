@@ -84,11 +84,11 @@ Install:andUse("AppLauncher", {
 		j = browser,
 		k = "kitty",
 		l = if_work("Slack", "Telegram"),
-		[";"] = "Mimestream",
+		[";"] = if_work(nil, "Mimestream"),
 		--- Bottom row
 		n = "Todoist",
 		m = "Figma",
-		["."] = "zoom.us",
+		["."] = if_work("zoom.us", nil),
 		[","] = "ChatGPT",
 		["/"] = if_work("Linear", "Google Chrome"),
 	},
