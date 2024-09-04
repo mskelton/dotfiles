@@ -2,7 +2,7 @@
 # Quickly create a TaskWarrior task for home
 
 token="$TODOIST_API_TOKEN"
-project_id="2337075244"
+section_id="6W6gX9gHf2523W3q"
 cmd="$1"
 shift
 
@@ -17,7 +17,7 @@ _print_help() {
 
 _list_tasks() {
 	curl -fsSL -X GET \
-		https://api.todoist.com/rest/v2/tasks?project_id="$project_id" \
+		https://api.todoist.com/rest/v2/tasks?section_id="$section_id" \
 		-H "Authorization: Bearer $token" | jq -r '.[] | "\(.id): \(.content)"'
 }
 
@@ -31,9 +31,10 @@ _add_task() {
 	# title without needing to quote it.
 	title="${*}"
 
-	# Auto assign to the Quick project unless an explicit project is provided
+	# Auto assign to the "Tech" project and "Quick" section unless an explicit
+	# project/section is provided.
 	if [[ "$title" != *"#"* ]]; then
-		title="$title #Quick"
+		title="$title #Tech /Quick"
 	fi
 
 	curl -fsSL https://api.todoist.com/sync/v9/quick/add \
