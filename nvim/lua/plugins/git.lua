@@ -99,4 +99,15 @@ return {
 			},
 		},
 	},
+	{
+		"kdheepak/lazygit.nvim",
+		keys = {
+			{
+				"<leader>lg",
+				"<cmd>LazyGit<cr>",
+				mode = { "n", "v" },
+				desc = "Open LazyGit",
+			},
+		},
+	},
 }
