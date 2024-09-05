@@ -21,7 +21,6 @@ Arguments:
   <name>                 The tag name to search for
   [attribute]            Filter by attribute
   [value]                Filter by attribute value"
-
 }
 
 # Parse the command line args
