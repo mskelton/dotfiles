@@ -12,6 +12,7 @@ source $HOME/.config/fish/abbreviations.fish
 source $HOME/.config/fish/keybindings.fish
 source $HOME/.config/fish/path.fish
 source $HOME/.config/fish/env.fish
+source $HOME/.config/fish/functions.fish
 
 # Custom environment files that might not exist
 for f in custom personal work
