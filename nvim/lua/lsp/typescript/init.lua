@@ -55,6 +55,22 @@ local function gen_code_action(kind)
 	end
 end
 
+--- Generate a code action function. This function is used while I figure out
+--- how to make the request directly, but for some reason the kinds that I'm
+--- sending aren't accepted.
+--- @param kind string
+local function gen_ui_code_action(kind)
+	---@diagnostic disable-next-line: unused-local
+	return function(bufnr)
+		vim.lsp.buf.code_action({
+			apply = true,
+			filter = function(action)
+				return action.kind == kind
+			end,
+		})
+	end
+end
+
 --- Rename a file
 --- @param bufnr number
 --- @param res function|nil
@@ -81,10 +97,12 @@ M.reload_projects = gen_buf_command("typescript.reloadProjects")
 M.organize_imports = gen_code_action("source.organizeImports")
 M.remove_unused_imports = gen_code_action("source.removeUnusedImports")
 M.add_missing_imports = gen_code_action("source.addMissingImports.ts")
+
 M.add_braces_to_arrow_function =
-	gen_code_action("refactor.rewrite.arrow.braces.add")
+	gen_ui_code_action("refactor.rewrite.arrow.braces.add")
 M.remove_braces_from_arrow_function =
-	gen_code_action("refactor.rewrite.arrow.braces.remove")
-M.convert_to_named_function = gen_code_action("refactor.rewrite.function.named")
+	gen_ui_code_action("refactor.rewrite.arrow.braces.remove")
+M.convert_to_named_function =
+	gen_ui_code_action("refactor.rewrite.function.named")
 
 return M
