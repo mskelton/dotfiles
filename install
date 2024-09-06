@@ -2,9 +2,6 @@
 
 source ./dottie/dottie.sh
 
-# Clean old files
-clean ~/.ssh/config
-
 # ~/.config directory
 link .config/byte/config.yaml ~/.config/byte/config.yaml
 link .config/fd ~/.config/fd
