@@ -8,7 +8,7 @@ local M = {}
 --- Get the vtsls client for the current buffer
 --- @param bufnr number
 local function get_client(bufnr)
-	local clients = vim.lsp.get_active_clients({ bufnr = bufnr, name = "vtsls" })
+	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" })
 
 	if clients and clients[1] then
 		return clients[1]
@@ -81,5 +81,10 @@ M.reload_projects = gen_buf_command("typescript.reloadProjects")
 M.organize_imports = gen_code_action("source.organizeImports")
 M.remove_unused_imports = gen_code_action("source.removeUnusedImports")
 M.add_missing_imports = gen_code_action("source.addMissingImports.ts")
+M.add_braces_to_arrow_function =
+	gen_code_action("refactor.rewrite.arrow.braces.add")
+M.remove_braces_from_arrow_function =
+	gen_code_action("refactor.rewrite.arrow.braces.remove")
+M.convert_to_named_function = gen_code_action("refactor.rewrite.function.named")
 
 return M

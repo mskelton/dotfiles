@@ -28,8 +28,7 @@ end
 return {
 	"jose-elias-alvarez/typescript.nvim",
 	event = "BufReadPre",
-	--- enabled = false,
-	--- enabled = env.is_work(),
+	enabled = false,
 	opts = {
 		server = {
 			on_attach = function(client, bufnr)

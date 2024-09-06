@@ -142,89 +142,103 @@ M.setup_servers = function()
 		},
 	})
 
-	--- M.server("vtsls", {
-	--- 	settings = {
-	--- 		typescript = {
-	--- 			preferences = {
-	--- 				autoImportFileExcludePatterns = {
-	--- 					"**/.next/*",
-	--- 					"**/postcss",
-	--- 					"**/react-aria-components",
-	--- 				},
-	--- 			},
-	--- 		},
-	--- 		vtsls = {
-	--- 			autoUseWorkspaceTsdk = true,
-	--- 		},
-	--- 	},
-	--- 	on_attach = function(client, bufnr)
-	--- 		local plugins = {
-	--- 			{
-	--- 				name = "typescript-styled-plugin",
-	--- 				location = npm.mason_lib("typescript-styled-plugin"),
-	--- 				enabled = false,
-	--- 				config = {
-	--- 					validate = false,
-	--- 					emmet = { showExpandedAbbreviation = "never" },
-	--- 				},
-	--- 			},
-	--- 		}
-	---
-	--- 		for _, value in ipairs(plugins) do
-	--- 			if value.enabled then
-	--- 				local params = {
-	--- 					command = "_typescript.configurePlugin",
-	--- 					arguments = { value.name, value.config },
-	--- 				}
-	---
-	--- 				client.request("workspace/executeCommand", params)
-	--- 			end
-	--- 		end
-	---
-	--- 		local ts_utils = require("lsp.typescript")
-	--- 		local opts = { buffer = bufnr, silent = true }
-	---
-	--- 		vim.keymap.set("n", "go", function()
-	--- 			ts_utils.organize_imports(bufnr)
-	--- 		end, opts)
-	---
-	--- 		vim.keymap.set("n", "g)", function()
-	--- 			ts_utils.remove_unused_imports(bufnr)
-	--- 		end, opts)
-	---
-	--- 		vim.keymap.set("n", "<leader>rf", function()
-	--- 			ts_utils.rename_file(bufnr)
-	--- 		end, opts)
-	--- 	end,
-	--- 	handlers = {
-	--- 		-- Filter out certain paths from the results that are 99% of the time
-	--- 		-- false positive results for my use case. If I explicitly jump to
-	--- 		-- them, go there, otherwise ignore them.
-	--- 		["textDocument/definition"] = function(_, result, ...)
-	--- 			if vim.islist(result) then
-	--- 				local ignored_paths = {
-	--- 					"react/index.d.ts",
-	--- 					"react/ts5.0/index.d.ts",
-	--- 					"tailwind-variants/dist/index.d.ts",
-	---           "styled-components/dist/types.d.ts",
-	--- 				}
-	--- 				for key, value in ipairs(result) do
-	--- 					for _, ignored_path in pairs(ignored_paths) do
-	--- 						-- If an ignored path is the first result, keep it as it's
-	--- 						-- likely the intended path.
-	--- 						if
-	--- 							key ~= 1 and utils.ends_with(value.targetUri, ignored_path)
-	--- 						then
-	--- 							table.remove(result, key)
-	--- 						end
-	--- 					end
-	--- 				end
-	--- 			end
-	--- 			-- Defer to the built-in handler after filtering the results
-	--- 			vim.lsp.handlers["textDocument/definition"](_, result, ...)
-	--- 		end,
-	--- 	},
-	--- })
+	M.server("vtsls", {
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		settings = {
+			typescript = {
+				preferences = {
+					autoImportFileExcludePatterns = {
+						"**/.next/*",
+						"**/postcss",
+						"**/react-aria-components",
+					},
+				},
+			},
+			vtsls = {
+				autoUseWorkspaceTsdk = true,
+			},
+		},
+		on_attach = function(client, bufnr)
+			local plugins = {
+				{
+					name = "typescript-styled-plugin",
+					location = npm.mason_lib("typescript-styled-plugin"),
+					config = {
+						validate = false,
+						emmet = { showExpandedAbbreviation = "never" },
+					},
+				},
+			}
+
+			for _, value in ipairs(plugins) do
+				if value.enabled then
+					local params = {
+						command = "_typescript.configurePlugin",
+						arguments = { value.name, value.config },
+					}
+
+					client.request("workspace/executeCommand", params)
+				end
+			end
+
+			local ts_utils = require("lsp.typescript")
+			local opts = { buffer = bufnr, silent = true }
+
+			vim.keymap.set("n", "go", function()
+				ts_utils.organize_imports(bufnr)
+			end, opts)
+
+			vim.keymap.set("n", "gO", function()
+				ts_utils.remove_unused_imports(bufnr)
+			end, opts)
+
+			vim.keymap.set("n", "<leader>rf", function()
+				ts_utils.rename_file(bufnr)
+			end, opts)
+
+			vim.keymap.set("n", "<leader>oab", function()
+				ts_utils.add_braces_to_arrow_function(bufnr)
+			end, opts)
+
+			vim.keymap.set("n", "<leader>orb", function()
+				ts_utils.remove_braces_from_arrow_function(bufnr)
+			end, opts)
+
+			vim.keymap.set("n", "<leader>onf", function()
+				ts_utils.convert_to_named_function(bufnr)
+			end, opts)
+		end,
+		handlers = {
+			-- Filter out certain paths from the results that are 99% of the time
+			-- false positive results for my use case. If I explicitly jump to
+			-- them, go there, otherwise ignore them.
+			["textDocument/definition"] = function(_, result, ...)
+				if vim.islist(result) then
+					local ignored_paths = {
+						"react/index.d.ts",
+						"react/ts5.0/index.d.ts",
+						"tailwind-variants/dist/index.d.ts",
+						"styled-components/dist/types.d.ts",
+					}
+
+					for key, value in ipairs(result) do
+						for _, ignored_path in pairs(ignored_paths) do
+							-- If an ignored path is the first result, keep it as it's
+							-- likely the intended path.
+							if
+								key ~= 1 and utils.ends_with(value.targetUri, ignored_path)
+							then
+								table.remove(result, key)
+							end
+						end
+					end
+				end
+
+				-- Defer to the built-in handler after filtering the results
+				vim.lsp.handlers["textDocument/definition"](_, result, ...)
+			end,
+		},
+	})
 
 	-- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
