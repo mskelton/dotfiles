@@ -4,8 +4,10 @@ function M.apply_edits(result)
 	for _, r in pairs(result or {}) do
 		if r.edit then
 			vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-		else
+		elseif r.command then
 			vim.lsp.buf.execute_command(r.command)
+		else
+			vim.notify("No edits or commands to apply", vim.log.levels.WARN)
 		end
 	end
 end
