@@ -57,7 +57,6 @@ vim.api.nvim_create_user_command("CopyAbsPath", copy("%:p"), { bar = true })
 vim.api.nvim_create_user_command("CopyDir", copy("%:h"), { bar = true })
 vim.api.nvim_create_user_command("CopyAbsDir", copy("%:p:h"), { bar = true })
 
---- Create a file with the same base name and a different extension
 vim.api.nvim_create_user_command("Likewise", function()
 	local basename = string.gsub(vim.fn.expand("%:r"), "%..*$", "")
 
@@ -71,9 +70,10 @@ vim.api.nvim_create_user_command("Likewise", function()
 
 		vim.cmd("e " .. new_value)
 	end)
-end, {})
+end, {
+	desc = "Create a file with the same base name and a different extension",
+})
 
---- Toggle show all list chars
 vim.api.nvim_create_user_command("ToggleListChars", function()
 	local listchars = vim.o.listchars
 	local trailer = require("core.utils.trailer")
@@ -83,4 +83,15 @@ vim.api.nvim_create_user_command("ToggleListChars", function()
 	else
 		vim.o.listchars = trailer.verbose
 	end
-end, {})
+end, {
+	desc = "Toggle show all list chars",
+})
+
+vim.api.nvim_create_user_command("Exec", function(opts)
+	local output = vim.fn.system(opts.args)
+	vim.api.nvim_put(vim.fn.split(output, "\n"), "c", true, true)
+end, {
+	nargs = 1,
+	desc = "Execute a shell command and insert the output into the buffer",
+	complete = "shellcmd",
+})
