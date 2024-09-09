@@ -2,22 +2,19 @@
 # Switch or create Tmux sessions with ease
 # Inspired by ThePrimeagen
 
-# Allow empty globs
-shopt -s nullglob
-
 function find_dirs() {
-	find -E "$HOME/dev" "$HOME"/dev/*.git -mindepth 1 -maxdepth 1 -type d \
-		-regex ".*/(hooks|info|misc|objects|logs|worktrees|refs)" -prune \
-		-o -type d \
-		-print
+	fd --type d --max-depth 1 . "$HOME/dev"
 }
 
-if [[ $# -eq 1 ]]; then
+# Select the argument if provided otherwise use fzf
+if [[ -n "$1" ]]; then
 	selected=$1
 else
-	selected=$(find_dirs | sort -f | fzf)
+	dir=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | fzf)
+	selected="$HOME/dev/$dir"
 fi
 
+# If no selection was made, exit
 if [[ -z "$selected" ]]; then
 	exit 0
 fi
