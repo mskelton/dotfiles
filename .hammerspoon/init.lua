@@ -229,8 +229,8 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
-		{ "Mimestream", get_mimestream_window, screens.secondary, layout.right35, nil, nil },
-		{ "Slack", nil, screens.secondary, layout.left65, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
@@ -266,8 +266,8 @@ hs.hotkey.bind(layer_key, "i", function()
 			nil,
 		},
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
-		{ "Mimestream", get_mimestream_window, screens.secondary, layout.right35, nil, nil },
-		{ "Slack", nil, screens.secondary, layout.left65, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
@@ -297,8 +297,8 @@ hs.hotkey.bind(layer_key, "o", function()
 		-- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
-		{ "Mimestream", get_mimestream_window, screens.secondary, layout.right35, nil, nil },
-		{ "Slack", nil, screens.secondary, layout.left65, nil, nil },
+		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
+		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	})
