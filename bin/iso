@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Print an ISO date string
+
+date -u +"%Y-%m-%dT%H:%M:%SZ"
