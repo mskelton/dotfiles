@@ -118,7 +118,29 @@ M.setup_servers = function()
 	})
 
 	M.server("biome")
-	M.server("eslint")
+	M.server("eslint", {
+		on_attach = function(_, bufnr)
+			local opts = { buffer = bufnr, silent = true }
+
+			vim.keymap.set("n", "<leader>el", function()
+				vim.lsp.buf.code_action({
+					apply = true,
+					filter = function(action)
+						return action.command.command == "eslint.applyDisableLine"
+					end,
+				})
+			end, opts)
+
+			vim.keymap.set("n", "<leader>ef", function()
+				vim.lsp.buf.code_action({
+					apply = true,
+					filter = function(action)
+						return action.command.command == "eslint.applyDisableFile"
+					end,
+				})
+			end, opts)
+		end,
+	})
 	M.server("cssls")
 	M.server("svelte")
 

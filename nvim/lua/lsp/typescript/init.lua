@@ -15,6 +15,10 @@ local function get_client(bufnr)
 	end
 end
 
+--- @param bufnr number
+--- @param client vim.lsp.Client
+--- @param command string
+--- @param args table
 local function exec_command(bufnr, client, command, args)
 	return async.request(client, "workspace/executeCommand", {
 		command = command,
