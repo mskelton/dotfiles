@@ -6,8 +6,6 @@ function M.apply_edits(result)
 			vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
 		elseif r.command then
 			vim.lsp.buf.execute_command(r.command)
-		else
-			vim.notify("No edits or commands to apply", vim.log.levels.WARN)
 		end
 	end
 end
@@ -31,15 +29,31 @@ end
 --- on save.
 --- @param bufnr number
 --- @param code_action string
-function M.run_code_action(bufnr, code_action)
-	local result = vim.lsp.buf_request_sync(
-		bufnr,
-		"textDocument/codeAction",
-		M.make_params(bufnr, code_action)
-	)
+--- @param client vim.lsp.Client|nil
+function M.run_code_action(bufnr, code_action, client)
+	--- If a `client` was specified, then we need to use the client's
+	--- `request_sync` function instead of the default `buf_request_sync`.
+	if client then
+		local result = client.request_sync(
+			"textDocument/codeAction",
+			M.make_params(bufnr, code_action),
+			nil,
+			bufnr
+		)
 
-	for _, res in pairs(result or {}) do
-		M.apply_edits(res.result)
+		if result then
+			M.apply_edits(result.result)
+		end
+	else
+		local results = vim.lsp.buf_request_sync(
+			bufnr,
+			"textDocument/codeAction",
+			M.make_params(bufnr, code_action)
+		)
+
+		for _, result in pairs(results or {}) do
+			M.apply_edits(result.result)
+		end
 	end
 end
 

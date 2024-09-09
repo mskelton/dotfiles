@@ -185,11 +185,11 @@ M.setup_servers = function()
 			local opts = { buffer = bufnr, silent = true }
 
 			vim.keymap.set("n", "go", function()
-				ts_utils.organize_imports(bufnr)
+				ts_utils.add_missing_imports(bufnr, client)
 			end, opts)
 
 			vim.keymap.set("n", "gO", function()
-				ts_utils.remove_unused_imports(bufnr)
+				ts_utils.remove_unused_imports(bufnr, client)
 			end, opts)
 
 			vim.keymap.set("n", "<leader>rf", function()

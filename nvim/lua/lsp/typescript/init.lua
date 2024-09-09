@@ -29,6 +29,9 @@ end
 local function gen_buf_command(name, params, handler)
 	handler = handler or function() end
 
+	--- @param bufnr number
+	--- @param res function
+	--- @param rej function
 	return function(bufnr, res, rej)
 		bufnr = bufnr or vim.api.nvim_get_current_buf()
 		res = res or function() end
@@ -50,8 +53,10 @@ end
 --- Generate a code action function
 --- @param kind string
 local function gen_code_action(kind)
-	return function(bufnr)
-		utils.run_code_action(bufnr, kind)
+	--- @param bufnr number
+	--- @param client vim.lsp.Client|nil
+	return function(bufnr, client)
+		utils.run_code_action(bufnr, kind, client)
 	end
 end
 
@@ -60,7 +65,8 @@ end
 --- sending aren't accepted.
 --- @param kind string
 local function gen_ui_code_action(kind)
-	---@diagnostic disable-next-line: unused-local
+	--- @param bufnr number
+	--- @diagnostic disable-next-line: unused-local
 	return function(bufnr)
 		vim.lsp.buf.code_action({
 			apply = true,
@@ -94,8 +100,7 @@ M.restart_tsserver = gen_buf_command("typescript.restartTsServer")
 M.open_tsserver_log = gen_buf_command("typescript.openTsServerLog")
 M.reload_projects = gen_buf_command("typescript.reloadProjects")
 
-M.organize_imports = gen_code_action("source.organizeImports")
-M.remove_unused_imports = gen_code_action("source.removeUnusedImports")
+M.remove_unused_imports = gen_code_action("source.removeUnused.ts")
 M.add_missing_imports = gen_code_action("source.addMissingImports.ts")
 
 M.add_braces_to_arrow_function =
