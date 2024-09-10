@@ -15,7 +15,7 @@ _print_help() {
 Options:
   -h, --help             Display this help message and exit
   -c, --cwd <dir>        Set the current working directory to <dir>
-  -f, --format <format>  Set the output format (short|long)
+  -f, --format <format>  Set the output format (short|long|vi|quickfix)
 
 Arguments:
   <name>                 The tag name to search for
@@ -40,6 +40,8 @@ _parse_args() {
 				format="short"
 			elif [[ "$2" == 'long' ]]; then
 				format="rich"
+			elif [[ "$2" == 'vi' || "$2" == 'quickfix' ]]; then
+				format="quickfix"
 			else
 				_print_help "Invalid format: $2"
 				exit 1
@@ -136,6 +138,22 @@ rule:
 	fi
 }
 
+# Format each line of the JSON output using the quickfix notation
+_format_as_qfix_list() {
+	while IFS= read -r line; do
+		echo "$line" | jq -r '"\(.file):\(.range.start.line):\(.range.start.column): \(.lines)"'
+	done
+}
+
+# Run the scan in JSON or rich format
+_scan() {
+	if [[ "$format" == 'quickfix' ]]; then
+		sg scan --json=stream "$@" | _format_as_qfix_list
+	else
+		sg scan "$@" --report-style="$format"
+	fi
+}
+
 # Find JSX tags
 _find_tags() {
 	if [ -z "$name" ]; then
@@ -143,10 +161,9 @@ _find_tags() {
 		exit 1
 	fi
 
-	sg scan \
+	_scan \
     --config "$HOME/.sgconfig.yml" \
     --inline-rules "$(_get_rule)" \
-		--report-style="$format" \
 		"$cwd"
 }
 
