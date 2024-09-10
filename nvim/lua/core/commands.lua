@@ -37,18 +37,18 @@ vim.api.nvim_create_user_command("Browse", function(args)
 end, { nargs = "*" })
 
 --- Load `imports` command results into quickfix list
-vim.api.nvim_create_user_command(
-	"Imports",
-	'cexpr system("imports --format vi " . <q-args>)',
-	{ nargs = "*" }
-)
+vim.api.nvim_create_user_command("Imports", function(args)
+	require("core.utils").run_system_to_qfix(
+		vim.list_extend({ "imports", "--format", "vi" }, args.fargs)
+	)
+end, { nargs = "*" })
 
 --- Load `tags` command results into quickfix list
-vim.api.nvim_create_user_command(
-	"Tags",
-	'cexpr system("tags --format vi " . <q-args>)',
-	{ nargs = "*" }
-)
+vim.api.nvim_create_user_command("Tags", function(args)
+	require("core.utils").run_system_to_qfix(
+		vim.list_extend({ "tags", "--format", "vi" }, args.fargs)
+	)
+end, { nargs = "*" })
 
 --- Returns a function that copies the given expanded expression to the clipboard
 --- @param expression string

@@ -121,4 +121,11 @@ M.min_width = function(width)
 	end
 end
 
+--- Run a system command and load the results into a quickfix list
+--- @param cmd string[]
+M.run_system_to_qfix = function(cmd)
+	local args = vim.fn.shellescape(table.concat(cmd, " "))
+	vim.cmd(string.format("cexpr system(%s) | copen", args))
+end
+
 return M

@@ -115,7 +115,7 @@ rule:
 # Format each line of the JSON output using the quickfix notation
 _format_as_qfix_list() {
 	while IFS= read -r line; do
-		echo "$line" | jq -r '"\(.file):\(.range.start.line):\(.range.start.column): \(.lines)"'
+		echo "$line" | jq -r '"\(.file):\(.range.start.line + 1):\(.range.start.column + 1): \(.lines)"'
 	done
 }
 
