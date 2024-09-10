@@ -114,15 +114,13 @@ rule:
 
 # Format each line of the JSON output using the quickfix notation
 _format_as_qfix_list() {
-	while IFS= read -r line; do
-		echo "$line" | jq -r '"\(.file):\(.range.start.line + 1):\(.range.start.column + 1): \(.lines)"'
-	done
+	jq -r '.[] | "\(.file):\(.range.start.line + 1):\(.range.start.column + 1): \(.lines)"'
 }
 
 # Run the scan in JSON or rich format
 _scan() {
 	if [[ "$format" == 'quickfix' ]]; then
-		sg scan --json=stream "$@" | _format_as_qfix_list
+		sg scan --json=compact "$@" | _format_as_qfix_list
 	else
 		sg scan "$@" --report-style="$format"
 	fi
