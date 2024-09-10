@@ -36,10 +36,17 @@ vim.api.nvim_create_user_command("Browse", function(args)
 	require("core.utils").open_url(args.args)
 end, { nargs = "*" })
 
---- Load Flashlight results into quickfix list
+--- Load `imports` command results into quickfix list
 vim.api.nvim_create_user_command(
-	"Flashlight",
-	'cexpr system("flashlight --format=vi " . <q-args>)',
+	"Imports",
+	'cexpr system("imports --format vi " . <q-args>)',
+	{ nargs = "*" }
+)
+
+--- Load `tags` command results into quickfix list
+vim.api.nvim_create_user_command(
+	"Tags",
+	'cexpr system("tags --format vi " . <q-args>)',
 	{ nargs = "*" }
 )
 
