@@ -224,6 +224,7 @@ return {
 				borderchars = dropdown.borderchars,
 				layout_strategy = "mskelton",
 				sorting_strategy = "ascending",
+				scroll_strategy = "limit",
 				results_title = false,
 				preview = {
 					treesitter = false,
