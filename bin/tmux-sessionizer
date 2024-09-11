@@ -10,8 +10,7 @@ function find_dirs() {
 if [[ -n "$1" ]]; then
 	selected=$1
 else
-	dir=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | fzf)
-	selected="$HOME/dev/$dir"
+	selected=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | fzf)
 fi
 
 # If no selection was made, exit
@@ -22,7 +21,7 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-	tmux new-session -ds "$selected_name" -c "$selected"
+	tmux new-session -ds "$selected_name" -c "$HOME/dev/$selected"
 fi
 
 if [[ -z "$TMUX" ]]; then
