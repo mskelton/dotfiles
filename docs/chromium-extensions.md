@@ -29,6 +29,12 @@
 1. Click `Upload JSON`
 1. Upload `config/user-js-css.json`
 
-```bash
-ls $HOME/Downloads/user-js-css-*.json | xargs -I {} sh -c "cat {} | jq > $HOME/dev/dotfiles/config/user-js-css.json && rm {}"
-```
+To update the saved settings, run the following steps:
+
+1. Navigate to the extension options
+1. Click `Download JSON`
+1. Run the following command
+   ```bash
+   ls $HOME/Downloads/user-js-css-*.json | xargs -I {} sh -c "cat {} | jq > $HOME/dev/dotfiles/config/user-js-css.json && rm {}"
+   ```
+1. Commit and push changes
