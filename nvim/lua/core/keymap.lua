@@ -16,6 +16,7 @@
 --- allows for more keybindings to be set while still keeping the speed of
 --- executing each keybinding relatively stable and fast.
 local map = require("core.utils").map
+local map_fn = require("core.utils").map_fn
 
 --- Most of my key mappings are applicable to both normal and visual mode
 local nv = { "n", "v" }
@@ -31,6 +32,17 @@ local nv = { "n", "v" }
 --- do a chorded reach with the left hand then the alternative which would be
 --- non-shift click of semicolon, then right-shift the uppercase letter.
 map(nv, ";", ":", { silent = false, desc = "Enter command line" })
+
+--- This one is a bit of a hack. I use q; to open the command line window, but
+--- that would normally prevent `q` from immediately stopping macro recordings
+--- since it would be waiting for the next character. This mapping is conditional
+--- to only be active when not recording a macro.
+local command_line = map_fn(nv, "q;", "q:", "Open command line window"):set()
+
+require("core.utils").augroup("mskelton_command_line", function(autocmd)
+	autocmd("RecordingEnter", { callback = command_line.del })
+	autocmd("RecordingLeave", { callback = command_line.set })
+end)
 
 --- Map leader semicolon to the original semicolon motion to still allow using
 --- (next f/t match) since that motion is quite handy. I don't use it much, so

@@ -1,11 +1,8 @@
 local M = {}
 
---- Sets a keymap
---- @param mode string|table
---- @param key string
---- @param cmd string|function
+--- Normalizes the options for a keymap
 --- @param opts_or_desc table|string|nil
-M.map = function(mode, key, cmd, opts_or_desc)
+M.normalize_map_opts = function(opts_or_desc)
 	local opts
 
 	if type(opts_or_desc) == "string" then
@@ -14,7 +11,48 @@ M.map = function(mode, key, cmd, opts_or_desc)
 		opts = vim.tbl_extend("keep", opts_or_desc or {}, { silent = true })
 	end
 
-	vim.keymap.set(mode, key, cmd, opts)
+	return opts
+end
+
+--- Sets a keymap
+--- @param mode string|table
+--- @param key string
+--- @param cmd string|function
+--- @param opts_or_desc table|string|nil
+M.map = function(mode, key, cmd, opts_or_desc)
+	vim.keymap.set(mode, key, cmd, M.normalize_map_opts(opts_or_desc))
+end
+
+--- Creates a keymap function
+--- @param mode string|table
+--- @param key string
+--- @param cmd string|function
+--- @param opts_or_desc table|string|nil
+M.map_fn = function(mode, key, cmd, opts_or_desc)
+	local Map = {}
+	Map.__index = Map
+
+	function Map:new()
+		local instance = setmetatable({}, self)
+		return instance
+	end
+
+	function Map:set()
+		vim.keymap.set(mode, key, cmd, M.normalize_map_opts(opts_or_desc))
+		return self
+	end
+
+	function Map:del()
+		vim.keymap.del(mode, key)
+		return self
+	end
+
+	local map = Map:new()
+
+	--- Call set immediately to set up the keymapping
+	map:set()
+
+	return map
 end
 
 --- Capitalizes a string
@@ -126,6 +164,25 @@ end
 M.run_system_to_qfix = function(cmd)
 	local args = vim.fn.shellescape(table.concat(cmd, " "))
 	vim.cmd(string.format("cexpr system(%s) | copen", args))
+end
+
+--- Creates an autocmd group that will automatically group and clear the autocmds
+--- created within it.
+--- @param name string
+--- @param func fun(autocmd: fun(event: any, opts: vim.api.keyset.create_autocmd))
+M.augroup = function(name, func)
+	local group = vim.api.nvim_create_augroup(name, {})
+
+	--- @param event any
+	--- @param opts vim.api.keyset.create_autocmd
+	local function autocmd(event, opts)
+		vim.api.nvim_create_autocmd(
+			event,
+			vim.tbl_extend("force", opts, { group = group })
+		)
+	end
+
+	func(autocmd)
 end
 
 return M
