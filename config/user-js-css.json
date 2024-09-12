@@ -1,0 +1,158 @@
+{
+  "info": {
+    "lastEmitterId": "Ot09isHKYU_vR52vXBA0Z",
+    "updatedAt": 1726175881957,
+    "version": 11
+  },
+  "libs": [],
+  "r:8xgnXoFbYD6Cxig6WTI2s": {
+    "css": "blockquote > p {\n  margin: 5px 0 !important;\n}\n\ntable {\n  margin-bottom: 16px;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "blockquote > p {\n  margin: 5px 0 !important;\n}\n\ntable {\n  margin-bottom: 16px;\n}\n",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:DInOFQgDgd9SC1NaQCwmV": {
+    "css": "@media (prefers-color-scheme: dark) {\n  .notion-page-content [data-content-editable-leaf=true]:not(h1, h2, h3, h4, h5, h6) {\n    color: rgba(255, 255, 255, 0.65);\n  }\n  .notion-page-content :is(h1, h2, h3, h4, h5, h6) {\n    color: rgba(255, 255, 255, 0.81);\n  }\n  .notion-page-content [style*=\"font-weight:600\"] {\n    color: white;\n  }\n  .notion-page-content a {\n    color: #0072f5 !important;\n  }\n  .notion-page-content a > div > div {\n    background-image: none !important;\n  }\n  .notion-page-content a > span {\n    border: none !important;\n  }\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "@media (prefers-color-scheme: dark) {\n  .notion-page-content [data-content-editable-leaf=\"true\"]:not(h1, h2, h3, h4, h5, h6) {\n    color: rgba(255, 255, 255, 0.65);\n  }\n\n  .notion-page-content :is(h1, h2, h3, h4, h5, h6) {\n    color: rgba(255, 255, 255, 0.81);\n  }\n\n  .notion-page-content [style*=\"font-weight:600\"] {\n    color: white;\n  }\n\n  .notion-page-content a {\n    color: #0072f5 !important;\n  }\n\n  .notion-page-content a > div > div {\n    background-image: none !important;\n  }\n\n  .notion-page-content a > span {\n    border: none !important;\n  }\n}\n",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:Hl_xCMl1Wy6S4XIv_lApf": {
+    "css": ".top-banner {\n  display: none;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": ".top-banner {\n  display: none;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:SDHGy_bujtnJGV5qBHyiw": {
+    "css": "",
+    "cssError": "",
+    "js": "const queue = []\nconst transitionDuration = 300\n\nfunction createToastNode(toast) {\n  const node = document.createElement(\"div\")\n\n  node.classList.add(\"mds-notification\")\n  node.innerText = toast.text\n\n  Object.assign(node.style, {\n    alignItems: \"center\",\n    backgroundColor: \"#282e32\",\n    borderRadius: \"0.5rem\",\n    bottom: \"-2.5rem\",\n    boxShadow: \"0 0 0.5rem rgba(0 0, 0, 0.2)\",\n    boxSizing: \"border-box\",\n    color: \"#b6c2cf\",\n    display: \"flex\",\n    height: \"2.5rem\",\n    left: \"50%\",\n    margin: \"0 auto\",\n    padding: \"0.5rem 1.5rem\",\n    position: \"fixed\",\n    transform: \"translateX(-50%) scaleX(0)\",\n    transition: `all ${transitionDuration}ms ease-in-out`,\n    zIndex: 99999,\n  })\n\n  return node\n}\n\nlet drainId\nfunction showToast(toast) {\n  const node = createToastNode(toast)\n  document.body.appendChild(node)\n\n  // Wait for the next frame to animate in the notification\n  window.requestAnimationFrame(() => {\n    node.style.bottom = \"1rem\"\n    node.style.transform = \"translateX(-50%) scaleX(1)\"\n  })\n\n  // Wait 3 seconds before animating out the notification\n  clearTimeout(drainId)\n  drainId = window.setTimeout(drainQueue, toast.duration)\n}\n\nfunction runAfter(ms, callback) {\n  if (ms) window.setTimeout(callback, ms)\n  else callback()\n}\n\nfunction drainQueue() {\n  const notifications = document.querySelectorAll(\".mds-notification\")\n\n  // Animate out all notifications\n  notifications.forEach((node) => {\n    node.style.opacity = 0\n  })\n\n  // Wait for the animation to finish before removing the notification\n  runAfter(notifications.length ? transitionDuration : 0, () => {\n    notifications.forEach((node) => {\n      document.body.removeChild(node)\n    })\n\n    // Show the next notification in the queue if there is one\n    if (queue.length) {\n      showToast(queue.shift())\n    }\n  })\n}\n\n/**\n * Notify the user of an action.\n * @param {string} text - The text to display in the notification.\n * @param {number} duration - The duration of the notification in milliseconds.\n */\nfunction notify(text, duration = 3000) {\n  queue.push({ text, duration })\n  drainQueue()\n}\n\n/**\n * Convert a string to a slug.\n * @param {string} str - The string to convert.\n */\nfunction slugify(str) {\n  return str\n    .toLowerCase()\n    .replace(/['\"]/g, \"\")\n    .replace(/[^a-z0-9]+/g, \"-\")\n    .replace(/-{2,}/g, \"-\")\n    .trim()\n}\n\n/**\n * Get a selector for a test ID.\n * @param {string} id - The test ID to select.\n */\nconst testId = (id) => `[data-testid=\"${id}\"]`\n\nconst selectors = {\n  assignee: testId(\"issue.views.field.user.assignee\"),\n  issueNum: testId(\n    \"issue.views.issue-base.foundation.breadcrumbs.current-issue.item\",\n  ),\n  issueTitle: testId(\"issue.views.issue-base.foundation.summary.heading\"),\n  toolbar: testId(\"ak-editor-main-toolbar\"),\n}\n\nwindow.addEventListener(\"load\", () => {\n  function getIssueNumber() {\n    return document.querySelector(selectors.issueNum)?.textContent\n  }\n\n  function getBranchName() {\n    const num = getIssueNumber()\n    const title = document\n      .querySelector(selectors.issueTitle)\n      ?.textContent.replace(/^(fe|frontend|front end|front-end)/i, \"\")\n\n    const slug = slugify(title)\n      .split(\"-\")\n      .slice(0, 7) // Limit to the first 7 words\n      .join(\"-\")\n\n    return `${num.toLowerCase()}-${slug}`\n  }\n\n  // Quickly copy command to create a new branch when pressing cmd+shift+g\n  document.body.addEventListener(\"keydown\", async (e) => {\n    if (!(e.metaKey && e.shiftKey)) return\n\n    switch (e.key) {\n      // Copy new branch command\n      case \"g\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(`git new ${getBranchName()}`)\n        notify(\"Copied new branch command\")\n        break\n\n      // Copy rename branch command\n      case \"e\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(`git name ${getBranchName()}`)\n        notify(\"Copied rename branch command\")\n        break\n\n      // Copy worktree link\n      case \"p\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(\n          `git worktree add ../${getBranchName()}`,\n        )\n        notify(\"Copied add worktree command\")\n        break\n\n      // Assign to me\n      case \"d\": {\n        e.preventDefault()\n        const field = document.querySelector(selectors.assignee)\n        const button = field?.querySelector('[role=\"button\"]')\n\n        if (button?.innerText === \"Assign to me\") {\n          button.click()\n          notify(\"Issue assigned to you\")\n        }\n      }\n    }\n  })\n\n  function focusElement(nodes, getNextIdx) {\n    if (!document.activeElement) return\n\n    const index = nodes.indexOf(document.activeElement)\n    const next = nodes[getNextIdx(index)]\n\n    next.tabIndex = 0\n    next.focus()\n    nodes[index].tabIndex = -1\n  }\n\n  // Fix keyboard navigation for the RTE toolbar\n  document.body.addEventListener(\"keyup\", (e) => {\n    const toolbar = document.activeElement?.closest(selectors.toolbar)\n    const actions = [...(toolbar?.querySelectorAll(\"button\").values() ?? [])]\n\n    switch (e.key) {\n      case \"Tab\":\n        actions\n          .filter((node) => node !== document.activeElement)\n          .forEach((node) => node.setAttribute(\"tabindex\", -1))\n        break\n\n      case \"ArrowLeft\":\n        focusElement(actions, (i) => Math.max(i - 1, 0))\n        break\n\n      case \"ArrowRight\":\n        focusElement(actions, (i) => Math.min(i + 1, actions.length - 1))\n        break\n    }\n  })\n})\n",
+    "jsDraft": "",
+    "scss": "",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:YeVeTKSQMFk847msIMUN4": {
+    "css": "@font-face {\n  font-family: termicons;\n  src: local(\"termicons\");\n  unicode-range: U+D000-D200;\n}\n.blob-code-inner,\n.blob-num,\n.highlight pre {\n  font-family: termicons, \"JetBrains Mono\" !important;\n}\n\n.pl-c {\n  font-style: italic;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "@font-face {\n  font-family: termicons;\n  src: local(\"termicons\");\n  unicode-range: U+D000-D200;\n}\n\n.blob-code-inner,\n.blob-num,\n.highlight pre {\n  font-family: termicons, \"JetBrains Mono\" !important;\n}\n\n.pl-c {\n  font-style: italic;\n}\n",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:phGjQVcKf5SbQroe9eTpN": {
+    "css": "ytd-rich-section-renderer:has([href^=\"/shorts/\"]) {\n  display: none;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "ytd-rich-section-renderer:has([href^=\"/shorts/\"]) {\n\tdisplay: none;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:rvkJurZBY11UNW-FtzgZc": {
+    "css": "[id^=id-ad-] {\n  display: none;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "[id^=\"id-ad-\"] {\n  display: none;\n}\n",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "rules": [
+    {
+      "created": 1726170442659,
+      "flags": [],
+      "id": "r:YeVeTKSQMFk847msIMUN4",
+      "libs": [],
+      "name": "GitHub - Code Font",
+      "updated": 1726175328634,
+      "urls": "https://github.com/*"
+    },
+    {
+      "created": 1726170537733,
+      "flags": [],
+      "id": "r:DInOFQgDgd9SC1NaQCwmV",
+      "libs": [],
+      "name": "Notion",
+      "updated": 1726170537778,
+      "urls": "https://www.notion.so/*"
+    },
+    {
+      "created": 1726175005420,
+      "flags": [],
+      "id": "r:phGjQVcKf5SbQroe9eTpN",
+      "libs": [],
+      "name": "YouTube - Hide Shorts",
+      "updated": 1726175323500,
+      "urls": "https://www.youtube.com/*"
+    },
+    {
+      "created": 1726175304063,
+      "flags": [],
+      "id": "r:rvkJurZBY11UNW-FtzgZc",
+      "libs": [],
+      "name": "Samsung Food - Hide Ads",
+      "updated": 1726175317009,
+      "urls": "https://app.samsungfood.com/*"
+    },
+    {
+      "created": 1726175404504,
+      "flags": [],
+      "id": "r:8xgnXoFbYD6Cxig6WTI2s",
+      "libs": [],
+      "name": "npm - Improved Markdown",
+      "updated": 1726175515490,
+      "urls": "https://www.npmjs.com/*"
+    },
+    {
+      "created": 1726175546385,
+      "flags": [],
+      "id": "r:SDHGy_bujtnJGV5qBHyiw",
+      "libs": [],
+      "name": "Jira - Copy Shortcuts",
+      "updated": 1726175574052,
+      "urls": "https://*.atlassian.net/*"
+    },
+    {
+      "created": 1726175801212,
+      "flags": [],
+      "id": "r:Hl_xCMl1Wy6S4XIv_lApf",
+      "libs": [],
+      "name": "MDN - Hide Ads",
+      "updated": 1726175809129,
+      "urls": "https://developer.mozilla.org/*"
+    }
+  ],
+  "settings": {
+    "badgeCounter": false,
+    "editor": {
+      "fontSize": 15,
+      "keyboardHandler": null,
+      "showInvisibles": false,
+      "tabSize": 2,
+      "theme": "ace/theme/dracula",
+      "useSoftTabs": false,
+      "useWorker": true,
+      "wrap": "free"
+    },
+    "editorFontFamily": "",
+    "editorLigatures": true,
+    "removeDevModeNotify": false,
+    "rulesSortBy": "name",
+    "rulesSortDesc": true,
+    "strictUrl": false,
+    "themeBg": "231.42deg 14.89% 18.43%",
+    "themeDark": true,
+    "themeText": "60deg 29.99% 96.07%"
+  }
+}

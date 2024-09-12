@@ -27,10 +27,7 @@ git submodule update --remote
 
 - [Setup tools](https://github.com/mskelton/dotfiles/tree/main/docs/tools.md)
 - [Install shortcuts](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
-- [Install Arc boosts](https://github.com/mskelton/dotfiles/tree/main/docs/arc-boosts.md)
 - [Install Chromium extensions](https://github.com/mskelton/dotfiles/tree/main/docs/chromium-extensions.md)
 - [Install VS Code extensions](https://github.com/mskelton/dotfiles/tree/main/docs/vscode-extensions.md)
-- [Configure Refined GitHub](https://github.com/mskelton/dotfiles/tree/main/docs/refined-github.md)
-- [Configure uBlacklist](https://github.com/mskelton/dotfiles/tree/main/docs/ublacklist.md)
 - [Copy data from old machine](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
 - [Configure apps](https://github.com/mskelton/dotfiles/tree/main/docs/configure-apps.md)
