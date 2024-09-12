@@ -23,11 +23,16 @@ M.map = function(mode, key, cmd, opts_or_desc)
 	vim.keymap.set(mode, key, cmd, M.normalize_map_opts(opts_or_desc))
 end
 
+--- @class Map
+--- @field set fun(): Map
+--- @field del fun(): Map
+
 --- Creates a keymap function
 --- @param mode string|table
 --- @param key string
 --- @param cmd string|function
 --- @param opts_or_desc table|string|nil
+--- @return Map
 M.map_fn = function(mode, key, cmd, opts_or_desc)
 	local Map = {}
 	Map.__index = Map
@@ -47,12 +52,7 @@ M.map_fn = function(mode, key, cmd, opts_or_desc)
 		return self
 	end
 
-	local map = Map:new()
-
-	--- Call set immediately to set up the keymapping
-	map:set()
-
-	return map
+	return Map:new():set()
 end
 
 --- Capitalizes a string
