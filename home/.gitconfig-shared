@@ -30,7 +30,7 @@
   pd = !pd
   pp = !git pull && git push
   # Merge
-  md = !git merge origin $(git default)
+  md = !git merge origin $(git default) --no-edit
   fm = !git fetch origin $(git default) && git md
   ml = !git co - && git md
   mc = merge --continue
