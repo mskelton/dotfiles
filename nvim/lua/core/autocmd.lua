@@ -19,6 +19,9 @@ augroup mskelton
   " Binary file template
   au BufNewFile *.sh 0r ~/.skeletons/bin
 
+  " Don't wrap HAR files
+  au BufNewFile *.har setlocal nowrap
+
   " Disable diagnostics for .env files
   au BufEnter .env* lua vim.diagnostic.disable(0)
 augroup END
