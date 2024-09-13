@@ -67,40 +67,21 @@ _parse_args() {
 	done
 }
 
-# Split a dot-separated string into parts.
-_split() {
-	echo "$1" | while IFS='.' read -ra parts; do
-		for part in "${parts[@]}"; do
-			echo "$part"
-		done
-	done
-}
-
 # Generate a rule for finding JSX tags
 _get_rule() {
-	namespaced_tag=($(_split "$name"))
 	head="
 id: tags
 language: TSX
 utils:
   is-tag:
     any:
-      - kind: jsx_opening_element
-      - kind: jsx_self_closing_element
-    has:
+      - kind: member_expression
+      - kind: identifier
+    inside:
       any:
-        - kind: identifier
-          regex: '^$name$'
-        - kind: member_expression
-          all:
-            - has:
-                kind: identifier
-                field: object
-                regex: '^${namespaced_tag[0]}$'
-            - has:
-                kind: property_identifier
-                field: property
-                regex: '^${namespaced_tag[1]}$'
+        - kind: jsx_opening_element
+        - kind: jsx_self_closing_element
+    regex: '^$name$'
 "
 
 	if [ -n "$attribute" ]; then
