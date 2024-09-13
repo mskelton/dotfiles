@@ -85,9 +85,9 @@ return {
 				},
 			},
 			handlers = {
-				-- Filter out certain paths from the results that are 99% of the time
-				-- false positive results for my use case. If I explicitly jump to
-				-- them, go there, otherwise ignore them.
+				--- Filter out certain paths from the results that are 99% of the time
+				--- false positive results for my use case. If I explicitly jump to
+				--- them, go there, otherwise ignore them.
 				["textDocument/definition"] = function(_, result, ...)
 					if vim.islist(result) then
 						local ignored_paths = {
@@ -99,8 +99,8 @@ return {
 
 						for key, value in ipairs(result) do
 							for _, ignored_path in pairs(ignored_paths) do
-								-- If an ignored path is the first result, keep it as it's
-								-- likely the intended path.
+								--- If an ignored path is the first result, keep it as it's
+								--- likely the intended path.
 								if
 									key ~= 1 and utils.ends_with(value.targetUri, ignored_path)
 								then
@@ -110,7 +110,7 @@ return {
 						end
 					end
 
-					-- Defer to the built-in handler after filtering the results
+					--- Defer to the built-in handler after filtering the results
 					vim.lsp.handlers["textDocument/definition"](_, result, ...)
 				end,
 			},

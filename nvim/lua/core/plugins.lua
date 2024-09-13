@@ -15,7 +15,7 @@ require("lazy").setup("plugins", {
 		rtp = {
 			disabled_plugins = {
 				"gzip",
-				-- "netrwPlugin",
+				--- "netrwPlugin",
 				"rplugin",
 				"tarPlugin",
 				"tohtml",

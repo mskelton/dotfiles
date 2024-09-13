@@ -38,7 +38,7 @@ function ClassName()
 		return string.sub(line, col, col)
 	end
 
-	-- Search to end
+	--- Search to end
 	vim.fn.search(pattern, "cW")
 	if get_char() == " " then
 		found_separator = true
@@ -47,7 +47,7 @@ function ClassName()
 		vim.cmd.normal("hv")
 	end
 
-	-- Search to start
+	--- Search to start
 	vim.fn.search(pattern, "bW")
 	if get_char() == " " and not found_separator then
 		vim.cmd.normal("o")

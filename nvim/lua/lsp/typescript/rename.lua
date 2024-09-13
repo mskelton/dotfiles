@@ -39,14 +39,14 @@ end
 
 local function do_rename(client, old_path, new_path)
 	async.schedule()
-	-- try to create dir
+	--- try to create dir
 	local new_dir = vim.fn.fnamemodify(new_path, ":h")
 	if #new_dir > 0 then
 		vim.fn.mkdir(new_dir, "p")
 	end
 
 	local old_exists = not async.call(vim.loop.fs_stat, old_path)
-	-- only rename if the file exists
+	--- only rename if the file exists
 	if old_exists then
 		local err = async.call(vim.loop.fs_rename, old_path, new_path)
 		if err then
@@ -68,12 +68,12 @@ local function do_rename(client, old_path, new_path)
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf) then
 			local buf_name = vim.api.nvim_buf_get_name(buf)
-			-- old_path is file
+			--- old_path is file
 			if old_path == buf_name then
 				vim.api.nvim_buf_set_name(buf, new_path)
 				force_write(buf)
 			elseif is_sub_path(buf_name, old_path) then
-				-- new_path is dir
+				--- new_path is dir
 				vim.api.nvim_buf_set_name(
 					buf,
 					new_path_with_sep .. buf_name:sub(#old_path_with_sep + 1)
@@ -110,7 +110,7 @@ local function rename(old_name, new_name, res, rej)
 	end
 
 	async.exec(function()
-		-- new path exists
+		--- new path exists
 		local _, stat = async.call(vim.loop.fs_stat, new_path)
 		if stat then
 			async.schedule()

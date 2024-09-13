@@ -80,16 +80,16 @@ return {
 					)
 				end
 
-				-- When I open a file to edit, 90% of the time I no longer want the tree
-				-- open anymore. If I'm exploring, <Tab> works better to keep focus in
-				-- the tree while viewing files.
+				--- When I open a file to edit, 90% of the time I no longer want the tree
+				--- open anymore. If I'm exploring, <Tab> works better to keep focus in
+				--- the tree while viewing files.
 				local function edit_and_close_tree()
 					api.node.open.edit()
 					api.tree.close()
 				end
 
-				-- The preview command doesn't work when using `on_attach` for reasons
-				-- unknown to me.
+				--- The preview command doesn't work when using `on_attach` for reasons
+				--- unknown to me.
 				local function preview()
 					local node = api.tree.get_node_under_cursor()
 

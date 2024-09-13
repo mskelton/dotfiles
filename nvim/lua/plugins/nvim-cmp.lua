@@ -22,7 +22,7 @@ return {
 					delete_check_events = "TextChanged,InsertLeave",
 				})
 
-				-- Filetype mappings
+				--- Filetype mappings
 				ls.filetype_extend(
 					"typescriptreact",
 					{ "typescript", "javascriptreact", "javascript" }
@@ -30,12 +30,12 @@ return {
 				ls.filetype_extend("typescript", { "javascript" })
 				ls.filetype_extend("javascriptreact", { "javascript" })
 
-				-- Load snippets
+				--- Load snippets
 				require("luasnip.loaders.from_lua").lazy_load({
 					paths = "~/.config/nvim/snippets",
 				})
 
-				-- Keymaps
+				--- Keymaps
 				map({ "i", "s" }, "<c-n>", function()
 					if ls.jumpable(1) then
 						ls.jump(1)
@@ -69,26 +69,26 @@ return {
 			--- Ignore LSP preselect items as it causes snippets to be skipped.
 			preselect = cmp.PreselectMode.None,
 			enabled = function()
-				-- Completion is always allowed in command mode
+				--- Completion is always allowed in command mode
 				if vim.api.nvim_get_mode().mode == "c" then
 					return true
 				end
 
-				-- Disable completion in prompt buffers (e.g. Telescope)
+				--- Disable completion in prompt buffers (e.g. Telescope)
 				if
 					vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt"
 				then
 					return false
 				end
 
-				-- Disable completion in markdown files
+				--- Disable completion in markdown files
 				if
 					vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "markdown"
 				then
 					return false
 				end
 
-				-- Disable completion when editing comments
+				--- Disable completion when editing comments
 				return not (
 					context.in_treesitter_capture("comment")
 					or context.in_syntax_group("Comment")
@@ -136,7 +136,7 @@ return {
 					entry_filter = function(entry)
 						local client_name = entry.source.source.client.name
 
-						-- Only return Emmet results in styled-component template strings
+						--- Only return Emmet results in styled-component template strings
 						return client_name ~= "emmet_language_server"
 							or entry.context.filetype == "css"
 							or context.in_treesitter_capture("styled")
@@ -152,16 +152,16 @@ return {
 					local original_kind = vim_item.kind
 					local kind = format(entry, vim_item)
 
-					-- Split the kind from lspkind into two parts so we can place the icon
-					-- on the left and the text on the right. This allows for quick scanning
-					-- on the left near the text while still providing the full completion
-					-- information if needed.
+					--- Split the kind from lspkind into two parts so we can place the icon
+					--- on the left and the text on the right. This allows for quick scanning
+					--- on the left near the text while still providing the full completion
+					--- information if needed.
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 
 					kind.kind = strings[1] .. " "
 					kind.menu = "   " .. strings[2]
 
-					-- Highlight the menu text the same as the kind icon
+					--- Highlight the menu text the same as the kind icon
 					kind.menu_hl_group = "CmpItemKind" .. original_kind
 
 					return kind
@@ -227,7 +227,7 @@ return {
 			fields = { "abbr" },
 		}
 
-		-- Use buffer source for '/'
+		--- Use buffer source for '/'
 		cmp.setup.cmdline({ "/", "?" }, {
 			--- Don't auto-select the first item in search mode since enter is used
 			--- to execute the search and thus we can't distinguish between enter
@@ -242,7 +242,7 @@ return {
 			},
 		})
 
-		-- Use cmdline & path source for ':'
+		--- Use cmdline & path source for ':'
 		cmp.setup.cmdline(":", {
 			completion = {
 				--- Don't auto-select the first item in command mode since enter is used

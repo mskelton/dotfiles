@@ -105,8 +105,8 @@ return {
 				},
 			})
 
-			-- Custom predicate to improve highlighting of languages injected into JS
-			-- tagged template literals.
+			--- Custom predicate to improve highlighting of languages injected into JS
+			--- tagged template literals.
 			vim.treesitter.query.add_predicate(
 				"injected?",
 				function(match, _, bufnr, pred)

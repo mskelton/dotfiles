@@ -2,9 +2,9 @@
 local snip_utils = require("utils.snip_utils")
 
 local function get_hook_name(args, snip)
-	-- If the filename has `use` in the name, it will become `UseX` which is not
-	-- what we want. Also, if a file doesn't have `use` in the name, we need to
-	-- add it automatically.
+	--- If the filename has `use` in the name, it will become `UseX` which is not
+	--- what we want. Also, if a file doesn't have `use` in the name, we need to
+	--- add it automatically.
 	return "use" .. string.gsub(snip_utils.get_filename(args, snip), "^Use", "")
 end
 
@@ -12,7 +12,7 @@ return {
 	parse("rec", "Record<string, unknown>$0"),
 	s("rp", fmt(snip_utils.export_type, { f(snip_utils.get_props_name), i(1) })),
 	s("rpn", f(snip_utils.get_props_name)),
-	-- TypeScript
+	--- TypeScript
 	s(
 		"tt",
 		fmt("{}type {} = {}", {
@@ -29,7 +29,7 @@ return {
 			i(0),
 		})
 	),
-	-- React
+	--- React
 	s(
 		"ed",
 		fmt('export {{ {} }} from "./{}"', {
@@ -77,7 +77,7 @@ return {
 			}
 		)
 	),
-	-- Playwright
+	--- Playwright
 	s(
 		"pcol",
 		fmt(

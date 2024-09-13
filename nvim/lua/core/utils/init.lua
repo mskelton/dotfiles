@@ -92,7 +92,7 @@ M.safe_require = function(module, callback)
 		end)
 	end
 
-	-- If a callback was provided, then call it with the result
+	--- If a callback was provided, then call it with the result
 	if ok and callback then
 		callback(result)
 	end

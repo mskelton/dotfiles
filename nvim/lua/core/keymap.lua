@@ -67,12 +67,12 @@ map(nv, ",c", "<cmd>clo<cr>", "Close buffer")
 
 --- Close window or buffer
 map(nv, ",w", function()
-	-- Auto-close the quickfix list if it's open
+	--- Auto-close the quickfix list if it's open
 	if #vim.fn.getqflist() > 0 and vim.o.buftype ~= "quickfix" then
 		vim.cmd("cclose")
 	end
 
-	-- Close the window if there are multiple windows open
+	--- Close the window if there are multiple windows open
 	if vim.api.nvim_win_get_number(0) > 1 then
 		vim.cmd("close")
 	else
@@ -137,7 +137,7 @@ map("n", "<leader>on", function()
 		end
 	end
 
-	-- Bufferline doesn't refresh automatically, so we have to manually refresh it
+	--- Bufferline doesn't refresh automatically, so we have to manually refresh it
 	require("core.utils").safe_require("bufferline.ui", function(ui)
 		ui.refresh()
 	end)

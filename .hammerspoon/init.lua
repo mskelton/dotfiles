@@ -221,10 +221,10 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
-		-- Primary
+		--- Primary
 		{ browser, nil, screens.primary, hs.layout.maximized, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
-		-- Secondary
+		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
@@ -250,10 +250,10 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
-		-- Primary
+		--- Primary
 		{ browser, nil, screens.primary, hs.layout.left50, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
-		-- Secondary
+		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.secondary, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom", screens.secondary, put_center, nil, nil },
@@ -288,13 +288,13 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
 	}, {}, {
-		-- Primary
+		--- Primary
 		{ browser, nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
 		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
-		-- Secondary
+		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },

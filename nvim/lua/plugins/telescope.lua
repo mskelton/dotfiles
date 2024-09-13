@@ -267,7 +267,7 @@ return {
 						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
 						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-						-- Toggle preview
+						--- Toggle preview
 						["<C-y>"] = layout.toggle_preview,
 
 						--- Paste ignoring leading/trailing whitespace and only keep the first line

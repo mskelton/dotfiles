@@ -4,7 +4,7 @@ local snip_utils = require("utils.snip_utils")
 return {
 	parse("chil", "{ children }: { children: React.ReactNode }"),
 	parse("rrp", "{({ $1 }) => (\n\t<>\n\t\t$0\n\t</>\n)}"),
-	-- React components
+	--- React components
 	s(
 		"rd",
 		fmt(

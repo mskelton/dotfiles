@@ -39,7 +39,7 @@ end
 M.setup_servers = function()
 	local util = require("lspconfig.util")
 
-	-- Simple servers
+	--- Simple servers
 	M.server("vimls")
 	M.server("bashls")
 	--- M.server("pyright")
@@ -49,7 +49,7 @@ M.setup_servers = function()
 	M.server("zls")
 	M.server("taplo")
 
-	-- GraphQL
+	--- GraphQL
 	M.server("graphql", {
 		filetypes = { "graphql" },
 		root_dir = util.root_pattern(
@@ -60,8 +60,8 @@ M.setup_servers = function()
 	})
 
 	M.server("clangd", {
-		-- clangd requires a custom offset encoding, so we have to patch the default
-		-- capabilities to make that work.
+		--- clangd requires a custom offset encoding, so we have to patch the default
+		--- capabilities to make that work.
 		capabilities = M.make_capabilities(function(capabilities)
 			capabilities.offsetEncoding = { "utf-16" }
 			return capabilities
@@ -78,7 +78,7 @@ M.setup_servers = function()
 		},
 	})
 
-	-- Lua
+	--- Lua
 	M.server("lua_ls", {
 		settings = {
 			Lua = {
@@ -92,19 +92,19 @@ M.setup_servers = function()
 		},
 	})
 
-	-- Go
+	--- Go
 	M.server("gopls", {
 		settings = {
 			gopls = {
-				-- Go uses the `tools` convention to separate build-time dependencies from
-				-- runtime dependencies. This is a common convention in the Go community, so
-				-- I support it out of the box.
+				--- Go uses the `tools` convention to separate build-time dependencies from
+				--- runtime dependencies. This is a common convention in the Go community, so
+				--- I support it out of the box.
 				buildFlags = { "-tags=tools" },
 			},
 		},
 	})
 
-	-- OCaml
+	--- OCaml
 	M.server("ocamllsp", {
 		root_dir = util.root_pattern("*.opam", "dune-project", "dune-workspace"),
 	})
@@ -236,9 +236,9 @@ M.setup_servers = function()
 			end, opts)
 		end,
 		handlers = {
-			-- Filter out certain paths from the results that are 99% of the time
-			-- false positive results for my use case. If I explicitly jump to
-			-- them, go there, otherwise ignore them.
+			--- Filter out certain paths from the results that are 99% of the time
+			--- false positive results for my use case. If I explicitly jump to
+			--- them, go there, otherwise ignore them.
 			["textDocument/definition"] = function(_, result, ...)
 				if vim.islist(result) then
 					local ignored_paths = {
@@ -250,8 +250,8 @@ M.setup_servers = function()
 
 					for key, value in ipairs(result) do
 						for _, ignored_path in pairs(ignored_paths) do
-							-- If an ignored path is the first result, keep it as it's
-							-- likely the intended path.
+							--- If an ignored path is the first result, keep it as it's
+							--- likely the intended path.
 							if
 								key ~= 1 and utils.ends_with(value.targetUri, ignored_path)
 							then
@@ -261,13 +261,13 @@ M.setup_servers = function()
 					end
 				end
 
-				-- Defer to the built-in handler after filtering the results
+				--- Defer to the built-in handler after filtering the results
 				vim.lsp.handlers["textDocument/definition"](_, result, ...)
 			end,
 		},
 	})
 
-	-- Only enable Tailwind if the project has a Tailwind config file
+	--- Only enable Tailwind if the project has a Tailwind config file
 	M.server("tailwindcss", {
 		root_dir = util.root_pattern(
 			"tailwind.config.js",
@@ -279,22 +279,22 @@ M.setup_servers = function()
 			tailwindCSS = {
 				experimental = {
 					classRegex = {
-						-- Custom class name attributes (e.g. buttonClassName)
+						--- Custom class name attributes (e.g. buttonClassName)
 						{ [==[[a-zA-Z]*ClassName=["'`]([^"'`]+)["'`]]==] },
-						-- cls, clsx
-						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
+						--- cls, clsx
+						--- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
 						{
 							[[clsx\(([^)(]*(?:\([^)(]*(?:\([^)(]*(?:\([^)(]*\)[^)(]*)*\)[^)(]*)*\)[^)(]*)*)\)]],
 							'"(.*?)"',
 						},
-						-- Tailwind Variants
-						-- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
+						--- Tailwind Variants
+						--- https://www.tailwind-variants.org/docs/getting-started#intellisense-setup-optional
 						{
 							[[tv\(([^)(]*(?:\([^)(]*(?:\([^)(]*(?:\([^)(]*\)[^)(]*)*\)[^)(]*)*\)[^)(]*)*)\)]],
 							'"(.*?)"',
 						},
-						-- `styles` objects
-						-- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
+						--- `styles` objects
+						--- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/682#issuecomment-1364585313
 						{ [[styles =([^}]*)\}]], [==[["'`]([^"'`]*).*?["'`]]==] },
 					},
 				},
@@ -304,7 +304,7 @@ M.setup_servers = function()
 end
 
 M.setup = function()
-	-- Set the log level for the LSP client if an environment variable was provided
+	--- Set the log level for the LSP client if an environment variable was provided
 	local log_level = os.getenv("LOG_LEVEL")
 	if log_level ~= nil then
 		vim.lsp.set_log_level(log_level)
