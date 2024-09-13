@@ -1,7 +1,7 @@
 {
   "info": {
-    "lastEmitterId": "Ot09isHKYU_vR52vXBA0Z",
-    "updatedAt": 1726175881957,
+    "lastEmitterId": "5OgUrFYW7k6eJrAdy3Gp6",
+    "updatedAt": 1726234460124,
     "version": 11
   },
   "libs": [],
@@ -23,6 +23,15 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:EQ2SCArx4_M5yWTArOpGe": {
+    "css": "button > [value=\"Take the Tour\"] {\n  display: none !important;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "button > [value=\"Take the Tour\"] {\n\tdisplay: none !important;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "r:Hl_xCMl1Wy6S4XIv_lApf": {
     "css": ".top-banner {\n  display: none;\n}",
     "cssError": "",
@@ -32,12 +41,30 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:QdBNG4ZrGEq3qBtm6iV58": {
+    "css": "",
+    "cssError": "",
+    "js": "document.addEventListener('keydown', (event) => {\n\tif (!event.metaKey || !event.shiftKey) {\n\t\treturn;\n\t}\n\n\tconst isFiles = /pull\\/\\d+\\/files/.test(window.location.pathname);\n\n\tswitch (true) {\n\t\tcase isFiles && event.key === 'h':\n\t\t\treturn toggleHARFilters();\n\n\t\tcase isFiles && event.key === 'v':\n\t\t\treturn viewZipFiles();\n\t}\n});\n\nfunction toggleHARFilters() {\n\tconst params = new URLSearchParams(window.location.search);\n\tconst harExtensions = new Set(['.har', '.zip']);\n\n\tif (params.has('file-filters[]')) {\n\t\tparams.delete('file-filters[]');\n\t\tparams.delete('show-deleted-files');\n\t\tparams.delete('show-viewed-files');\n\t} else {\n\t\t[...document.querySelectorAll('.js-diff-file-type-option')]\n\t\t\t.map((input) => input.value)\n\t\t\t.filter((ext) => !harExtensions.has(ext))\n\t\t\t.forEach((ext) => params.append('file-filters[]', ext));\n\n\t\tparams.append('show-deleted-files', true);\n\t\tparams.append('show-viewed-files', true);\n\t}\n\n\tconst search = params.toString();\n\tif (search) {\n\t\twindow.location.search = search;\n\t} else {\n\t\twindow.location.href = window.location.pathname;\n\t}\n}\n\nfunction viewZipFiles() {\n\t[...document.querySelectorAll('.file-header[data-file-type=\".zip\"]')]\n\t\t.map((header) =>\n\t\t\theader.querySelector(\n\t\t\t\t'input[type=\"checkbox\"][name=\"viewed\"]:not(:checked)'\n\t\t\t)\n\t\t)\n\t\t.forEach((checkbox) => checkbox.click());\n}\n",
+    "jsDraft": "",
+    "scss": "",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "r:SDHGy_bujtnJGV5qBHyiw": {
     "css": "",
     "cssError": "",
     "js": "const queue = []\nconst transitionDuration = 300\n\nfunction createToastNode(toast) {\n  const node = document.createElement(\"div\")\n\n  node.classList.add(\"mds-notification\")\n  node.innerText = toast.text\n\n  Object.assign(node.style, {\n    alignItems: \"center\",\n    backgroundColor: \"#282e32\",\n    borderRadius: \"0.5rem\",\n    bottom: \"-2.5rem\",\n    boxShadow: \"0 0 0.5rem rgba(0 0, 0, 0.2)\",\n    boxSizing: \"border-box\",\n    color: \"#b6c2cf\",\n    display: \"flex\",\n    height: \"2.5rem\",\n    left: \"50%\",\n    margin: \"0 auto\",\n    padding: \"0.5rem 1.5rem\",\n    position: \"fixed\",\n    transform: \"translateX(-50%) scaleX(0)\",\n    transition: `all ${transitionDuration}ms ease-in-out`,\n    zIndex: 99999,\n  })\n\n  return node\n}\n\nlet drainId\nfunction showToast(toast) {\n  const node = createToastNode(toast)\n  document.body.appendChild(node)\n\n  // Wait for the next frame to animate in the notification\n  window.requestAnimationFrame(() => {\n    node.style.bottom = \"1rem\"\n    node.style.transform = \"translateX(-50%) scaleX(1)\"\n  })\n\n  // Wait 3 seconds before animating out the notification\n  clearTimeout(drainId)\n  drainId = window.setTimeout(drainQueue, toast.duration)\n}\n\nfunction runAfter(ms, callback) {\n  if (ms) window.setTimeout(callback, ms)\n  else callback()\n}\n\nfunction drainQueue() {\n  const notifications = document.querySelectorAll(\".mds-notification\")\n\n  // Animate out all notifications\n  notifications.forEach((node) => {\n    node.style.opacity = 0\n  })\n\n  // Wait for the animation to finish before removing the notification\n  runAfter(notifications.length ? transitionDuration : 0, () => {\n    notifications.forEach((node) => {\n      document.body.removeChild(node)\n    })\n\n    // Show the next notification in the queue if there is one\n    if (queue.length) {\n      showToast(queue.shift())\n    }\n  })\n}\n\n/**\n * Notify the user of an action.\n * @param {string} text - The text to display in the notification.\n * @param {number} duration - The duration of the notification in milliseconds.\n */\nfunction notify(text, duration = 3000) {\n  queue.push({ text, duration })\n  drainQueue()\n}\n\n/**\n * Convert a string to a slug.\n * @param {string} str - The string to convert.\n */\nfunction slugify(str) {\n  return str\n    .toLowerCase()\n    .replace(/['\"]/g, \"\")\n    .replace(/[^a-z0-9]+/g, \"-\")\n    .replace(/-{2,}/g, \"-\")\n    .trim()\n}\n\n/**\n * Get a selector for a test ID.\n * @param {string} id - The test ID to select.\n */\nconst testId = (id) => `[data-testid=\"${id}\"]`\n\nconst selectors = {\n  assignee: testId(\"issue.views.field.user.assignee\"),\n  issueNum: testId(\n    \"issue.views.issue-base.foundation.breadcrumbs.current-issue.item\",\n  ),\n  issueTitle: testId(\"issue.views.issue-base.foundation.summary.heading\"),\n  toolbar: testId(\"ak-editor-main-toolbar\"),\n}\n\nwindow.addEventListener(\"load\", () => {\n  function getIssueNumber() {\n    return document.querySelector(selectors.issueNum)?.textContent\n  }\n\n  function getBranchName() {\n    const num = getIssueNumber()\n    const title = document\n      .querySelector(selectors.issueTitle)\n      ?.textContent.replace(/^(fe|frontend|front end|front-end)/i, \"\")\n\n    const slug = slugify(title)\n      .split(\"-\")\n      .slice(0, 7) // Limit to the first 7 words\n      .join(\"-\")\n\n    return `${num.toLowerCase()}-${slug}`\n  }\n\n  // Quickly copy command to create a new branch when pressing cmd+shift+g\n  document.body.addEventListener(\"keydown\", async (e) => {\n    if (!(e.metaKey && e.shiftKey)) return\n\n    switch (e.key) {\n      // Copy new branch command\n      case \"g\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(`git new ${getBranchName()}`)\n        notify(\"Copied new branch command\")\n        break\n\n      // Copy rename branch command\n      case \"e\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(`git name ${getBranchName()}`)\n        notify(\"Copied rename branch command\")\n        break\n\n      // Copy worktree link\n      case \"p\":\n        e.preventDefault()\n        await navigator.clipboard.writeText(\n          `git worktree add ../${getBranchName()}`,\n        )\n        notify(\"Copied add worktree command\")\n        break\n\n      // Assign to me\n      case \"d\": {\n        e.preventDefault()\n        const field = document.querySelector(selectors.assignee)\n        const button = field?.querySelector('[role=\"button\"]')\n\n        if (button?.innerText === \"Assign to me\") {\n          button.click()\n          notify(\"Issue assigned to you\")\n        }\n      }\n    }\n  })\n\n  function focusElement(nodes, getNextIdx) {\n    if (!document.activeElement) return\n\n    const index = nodes.indexOf(document.activeElement)\n    const next = nodes[getNextIdx(index)]\n\n    next.tabIndex = 0\n    next.focus()\n    nodes[index].tabIndex = -1\n  }\n\n  // Fix keyboard navigation for the RTE toolbar\n  document.body.addEventListener(\"keyup\", (e) => {\n    const toolbar = document.activeElement?.closest(selectors.toolbar)\n    const actions = [...(toolbar?.querySelectorAll(\"button\").values() ?? [])]\n\n    switch (e.key) {\n      case \"Tab\":\n        actions\n          .filter((node) => node !== document.activeElement)\n          .forEach((node) => node.setAttribute(\"tabindex\", -1))\n        break\n\n      case \"ArrowLeft\":\n        focusElement(actions, (i) => Math.max(i - 1, 0))\n        break\n\n      case \"ArrowRight\":\n        focusElement(actions, (i) => Math.min(i + 1, actions.length - 1))\n        break\n    }\n  })\n})\n",
     "jsDraft": "",
     "scss": "",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:U8038-DSDNI2m4mRVEvk9": {
+    "css": "header > .color-border-muted.lh-condensed.color-fg-muted {\n  display: none !important;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "header > .color-border-muted.lh-condensed.color-fg-muted {\n\tdisplay: none !important;\t\n}",
     "scssDraft": "",
     "styleImportant": false
   },
@@ -131,13 +158,40 @@
       "name": "MDN - Hide Ads",
       "updated": 1726175809129,
       "urls": "https://developer.mozilla.org/*"
+    },
+    {
+      "created": 1726234201616,
+      "flags": [],
+      "id": "r:EQ2SCArx4_M5yWTArOpGe",
+      "libs": [],
+      "name": "Paylocity - Hide Tour Button",
+      "updated": 1726234225110,
+      "urls": "https://login.paylocity.com/*"
+    },
+    {
+      "created": 1726234286836,
+      "flags": [],
+      "id": "r:QdBNG4ZrGEq3qBtm6iV58",
+      "libs": [],
+      "name": "GitHub - HAR Toggle",
+      "updated": 1726234313406,
+      "urls": "https://github.com/*"
+    },
+    {
+      "created": 1726234341722,
+      "flags": [],
+      "id": "r:U8038-DSDNI2m4mRVEvk9",
+      "libs": [],
+      "name": "GitHub - Hide Enterprise Banner",
+      "updated": 1726234459623,
+      "urls": "https://github.com/*"
     }
   ],
   "settings": {
     "badgeCounter": false,
     "editor": {
       "fontSize": 15,
-      "keyboardHandler": null,
+      "keyboardHandler": "ace/keyboard/vscode",
       "showInvisibles": false,
       "tabSize": 2,
       "theme": "ace/theme/dracula",
