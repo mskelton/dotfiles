@@ -114,7 +114,7 @@ rule:
 
 # Format each line of the JSON output using the quickfix notation
 _format_as_qfix_list() {
-	jq -r '.[] | "\(.file):\(.range.start.line + 1):\(.range.start.column + 1): \(.lines)"'
+	jq -r '.[] | "\(.file):\(.range.start.line):\(.range.start.column):\(.lines | gsub("^\\s+"; ""))"'
 }
 
 # Run the scan in JSON or rich format
