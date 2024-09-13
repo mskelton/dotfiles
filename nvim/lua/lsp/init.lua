@@ -22,9 +22,13 @@ end
 M.server = function(server, config)
 	config = config or {}
 
-	-- Unless the server explicitly specifies capabilities, use the default
-	-- capabilities from nvim-cmp. This ensures completions and snippets work
-	-- properly.
+	if config.enabled == false then
+		return
+	end
+
+	--- Unless the server explicitly specifies capabilities, use the default
+	--- capabilities from nvim-cmp. This ensures completions and snippets work
+	--- properly.
 	if config.capabilities == nil then
 		config.capabilities = M.default_capabilities()
 	end
@@ -145,6 +149,7 @@ M.setup_servers = function()
 	M.server("svelte")
 
 	M.server("emmet_language_server", {
+		enabled = false,
 		filetypes = {
 			"css",
 			"html",
