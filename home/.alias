@@ -1,11 +1,11 @@
 # Git merge
-alias gmc="git merge --continue"
+alias gmc="git mc"
 alias gmd="git md"
 alias gmm="git md"
 alias gml="git ml"
 
 # Git rebase
-alias grc="git rebase --continue"
+alias grc="git rc"
 alias grd="git rd"
 alias grl="git rl"
 
