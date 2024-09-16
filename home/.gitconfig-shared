@@ -31,9 +31,9 @@
   pp = !git pull && git push
   # Merge
   md = !git merge origin $(git default) --no-edit
-  fm = !git fetch origin $(git default) && git md
+  fm = !git fetch origin $(git default) --no-edit && git md
   ml = !git co - && git md
-  mc = merge --continue
+  mc = merge --continue --no-edit
   import = merge --no-commit --no-ff
   # Rebase
   rd = !git rebase $(git default)
