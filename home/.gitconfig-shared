@@ -33,7 +33,7 @@
   md = !git merge origin $(git default) --no-edit
   fm = !git fetch origin $(git default) --no-edit && git md
   ml = !git co - && git md
-  mc = merge --continue --no-edit
+  mc = merge --continue
   import = merge --no-commit --no-ff
   # Rebase
   rd = !git rebase $(git default)
