@@ -186,6 +186,7 @@ return {
 		"mskelton/jumper.nvim",
 	},
 	config = function()
+		local utils = require("core.utils")
 		local Path = require("plenary.path")
 		local actions = require("telescope.actions")
 		local actions_state = require("telescope.actions.state")
@@ -238,6 +239,10 @@ return {
 					vim.list_extend(args, {
 						"--no-ignore",
 						"--ignore-file=.gitignore",
+						string.format(
+							"--ignore-file=%s/.gitignore-global",
+							utils.home_dir()
+						),
 					})
 				end
 

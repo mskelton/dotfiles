@@ -1,5 +1,9 @@
 # vim:ft=gitignore
 
+# Why ignore `.git`, isn't it already ignored? Yes it is, but when I run rg or fd
+# with a custom ignore setup, I need to make sure `.git` remains excluded.
+.git/
+
 # Why mac, just why
 .DS_Store
 
