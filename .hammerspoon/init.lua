@@ -332,27 +332,29 @@ local function focus(state)
 	end
 end
 
---- Manage focus when in Zoom meetings
-hs.window.filter
-	.new(function(window)
-		return window ~= nil and window:title() == "Zoom Meeting"
-	end)
-	:subscribe(hs.window.filter.windowCreated, focus("on"))
-	:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
-	:subscribe(hs.window.filter.windowDestroyed, focus("off"))
+if is_work then
+	--- Manage focus when in Zoom meetings
+	hs.window.filter
+		.new(function(window)
+			return window ~= nil and window:title() == "Zoom Meeting"
+		end)
+		:subscribe(hs.window.filter.windowCreated, focus("on"))
+		:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
+		:subscribe(hs.window.filter.windowDestroyed, focus("off"))
 
---- Manage focus when in Around meetings. Around is a little odd. It has a single window title of
---- "Around" shared by the lobby and the meeting window. The lobby window is maximizable, but the
---- floating window is not, so we can use that as the initial test to determine if we are in a
---- meeting. When in a meeting, if switching from floating to the maximized window, we don't want
---- to touch the focus state.
-hs.window.filter.new("Around"):subscribe(hs.window.filter.windowCreated, function(window)
-	if window:isMaximizable() and is_around_lobby(window) then
-		set_focus("off")
-	else
-		set_focus("on")
-	end
-end)
+	--- Manage focus when in Around meetings. Around is a little odd. It has a single window title of
+	--- "Around" shared by the lobby and the meeting window. The lobby window is maximizable, but the
+	--- floating window is not, so we can use that as the initial test to determine if we are in a
+	--- meeting. When in a meeting, if switching from floating to the maximized window, we don't want
+	--- to touch the focus state.
+	hs.window.filter.new("Around"):subscribe(hs.window.filter.windowCreated, function(window)
+		if window:isMaximizable() and is_around_lobby(window) then
+			set_focus("off")
+		else
+			set_focus("on")
+		end
+	end)
+end
 
 --- Music management
 --- @param arg string
