@@ -232,7 +232,7 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -269,7 +269,7 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
 end)
 
@@ -300,8 +300,49 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized, nil, nil },
+		{ "Linear", nil, screens.secondary, hs.layout.maximized, nil, nil },
 	})
+end)
+
+--- Get the focused window and it's max dimensions
+local function get_screen_rect()
+	local win = hs.window.focusedWindow()
+	local screen = win:screen()
+	local max = screen:frame()
+
+	return win, max
+end
+
+--- Left half
+hs.hotkey.bind({ "cmd", "alt" }, "Left", function()
+	local win, max = get_screen_rect()
+	win:setFrame(hs.geometry.rect(max.x, max.y, max.w / 2, max.h))
+end)
+
+--- Right half
+hs.hotkey.bind({ "cmd", "alt" }, "Right", function()
+	local win, max = get_screen_rect()
+	win:setFrame(hs.geometry.rect(max.x + (max.w / 2), max.y, max.w / 2, max.h))
+end)
+
+--- Maximize
+hs.hotkey.bind({ "cmd", "alt" }, "f", function()
+	local win, max = get_screen_rect()
+	win:setFrame(hs.geometry.rect(max.x, max.y, max.w, max.h))
+end)
+
+-- Move window to the previous display
+hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Left", function()
+	local win = hs.window.focusedWindow()
+	local prevScreen = win:screen():toWest()
+	win:moveToScreen(prevScreen)
+end)
+
+-- Move window to the next display
+hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Right", function()
+	local win = hs.window.focusedWindow()
+	local nextScreen = win:screen():toEast()
+	win:moveToScreen(nextScreen)
 end)
 
 --- Escape paste-blocking
