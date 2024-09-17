@@ -1,7 +1,7 @@
 {
   "info": {
-    "lastEmitterId": "5OgUrFYW7k6eJrAdy3Gp6",
-    "updatedAt": 1726234460124,
+    "lastEmitterId": "N4AZUdaMsN_Bx-u8i-Kh0",
+    "updatedAt": 1726576862342,
     "version": 11
   },
   "libs": [],
@@ -44,7 +44,7 @@
   "r:QdBNG4ZrGEq3qBtm6iV58": {
     "css": "",
     "cssError": "",
-    "js": "document.addEventListener('keydown', (event) => {\n\tif (!event.metaKey || !event.shiftKey) {\n\t\treturn;\n\t}\n\n\tconst isFiles = /pull\\/\\d+\\/files/.test(window.location.pathname);\n\n\tswitch (true) {\n\t\tcase isFiles && event.key === 'h':\n\t\t\treturn toggleHARFilters();\n\n\t\tcase isFiles && event.key === 'v':\n\t\t\treturn viewZipFiles();\n\t}\n});\n\nfunction toggleHARFilters() {\n\tconst params = new URLSearchParams(window.location.search);\n\tconst harExtensions = new Set(['.har', '.zip']);\n\n\tif (params.has('file-filters[]')) {\n\t\tparams.delete('file-filters[]');\n\t\tparams.delete('show-deleted-files');\n\t\tparams.delete('show-viewed-files');\n\t} else {\n\t\t[...document.querySelectorAll('.js-diff-file-type-option')]\n\t\t\t.map((input) => input.value)\n\t\t\t.filter((ext) => !harExtensions.has(ext))\n\t\t\t.forEach((ext) => params.append('file-filters[]', ext));\n\n\t\tparams.append('show-deleted-files', true);\n\t\tparams.append('show-viewed-files', true);\n\t}\n\n\tconst search = params.toString();\n\tif (search) {\n\t\twindow.location.search = search;\n\t} else {\n\t\twindow.location.href = window.location.pathname;\n\t}\n}\n\nfunction viewZipFiles() {\n\t[...document.querySelectorAll('.file-header[data-file-type=\".zip\"]')]\n\t\t.map((header) =>\n\t\t\theader.querySelector(\n\t\t\t\t'input[type=\"checkbox\"][name=\"viewed\"]:not(:checked)'\n\t\t\t)\n\t\t)\n\t\t.forEach((checkbox) => checkbox.click());\n}\n",
+    "js": "document.addEventListener('keydown', (event) => {\n\tif (event.metaKey && event.shiftKey && event.key === 'h') {\n\t\ttoggleZipFiles();\n\t\tviewZipFiles();\n\t}\n});\n\nfunction toggleZipFiles() {\n\tconst checkbox = document\n\t\t.querySelector('file-filter input[type=\"checkbox\"][value=\".zip\"]')\n\t\t?.click();\n}\n\nfunction viewZipFiles() {\n\t[...document.querySelectorAll('.file-header[data-file-type=\".zip\"]')]\n\t\t.map((header) =>\n\t\t\theader.querySelector(\n\t\t\t\t'input[type=\"checkbox\"][name=\"viewed\"]:not(:checked)'\n\t\t\t)\n\t\t)\n\t\t.forEach((checkbox) => checkbox.click());\n}\n",
     "jsDraft": "",
     "scss": "",
     "scssDraft": "",
@@ -174,7 +174,7 @@
       "id": "r:QdBNG4ZrGEq3qBtm6iV58",
       "libs": [],
       "name": "GitHub - HAR Toggle",
-      "updated": 1726234313406,
+      "updated": 1726576862241,
       "urls": "https://github.com/*"
     },
     {
