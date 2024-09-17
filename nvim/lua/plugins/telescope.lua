@@ -188,12 +188,11 @@ return {
 	config = function()
 		local Path = require("plenary.path")
 		local actions = require("telescope.actions")
-		local state = require("telescope.actions.state")
+		local actions_state = require("telescope.actions.state")
 		local layout = require("telescope.actions.layout")
-		local finders = require("telescope.finders")
-		local make_entry = require("telescope.make_entry")
 		local layout_strategies = require("telescope.pickers.layout_strategies")
 		local dropdown = require("telescope.themes").get_dropdown()
+		local state = { opts = {} }
 
 		--- Customized flex layout with dropdown style prompt.
 		layout_strategies.mskelton = function(self, columns, lines, override_layout)
@@ -217,6 +216,33 @@ return {
 				- padding
 
 			return require("plenary.strings").truncate(path, len, nil, 0)
+		end
+
+		--- Add the `--no-ignore` flag to the finder arguments when requested. This
+		--- manages the hack to get around the fact that the `opts` object is not
+		--- persisted by Telescope.
+		---
+		--- @param picker_type string
+		--- @param fn fun(opts: table): table
+		--- @return fun(opts: table): table
+		local function with_ignore(picker_type, fn)
+			return function(opts)
+				local args = fn(opts)
+
+				--- Updated the saved state so we can restore state later
+				state.opts = opts or {}
+				state.picker_type = picker_type
+
+				--- Add the `--no-ignore` flag when requested
+				if state.opts.no_ignore then
+					vim.list_extend(args, {
+						"--no-ignore",
+						"--ignore-file=.gitignore",
+					})
+				end
+
+				return args
+			end
 		end
 
 		require("telescope").setup({
@@ -264,52 +290,46 @@ return {
 						["<C-h>"] = actions.move_to_top,
 						["<C-l>"] = actions.move_to_bottom,
 
-						["<C-i>"] = actions.send_to_qflist + actions.open_qflist,
-						["<M-i>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						["<C-o>"] = actions.send_to_qflist + actions.open_qflist,
+						["<M-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
 						--- Toggle preview
 						["<C-y>"] = layout.toggle_preview,
 
 						--- Paste ignoring leading/trailing whitespace and only keep the first line
-						["<C-p>"] = function(prompt_bufnr)
-							local picker = state.get_current_picker(prompt_bufnr)
+						["<C-p>"] = function(bufnr)
+							local picker = actions_state.get_current_picker(bufnr)
 							local first_line =
 								vim.fn.getreg("+"):gsub("^%s*(.-)%s*$", "%1"):match("^[^\n]*")
 
 							picker:set_prompt(first_line)
 						end,
 
-						--- Use `i` to toggle ignore flag in live_grep
-						--- ["<C-i>"] = function(bufnr)
-						--- 	local opts = {}
-						--- 	opts.entry_maker = make_entry.gen_from_file(opts)
-						---
-						--- 	local cmd = { "fd", "--type", "f", "--hidden" }
-						--- 	local current_picker = action_state.get_current_picker(bufnr)
-						---
-						--- 	current_picker:refresh(finders.new_oneshot_job(cmd, opts), {})
-						---
-						--- 	--- local current_picker = action_state.get_current_picker(bufnr)
-						--- 	--- local opts = current_picker._opts
-						--- 	--- P(current_picker._opts)
-						--- 	---
-						--- 	--- if opts.vimgrep_arguments then
-						--- 	--- 	local args =
-						--- 	--- 		vim.tbl_deep_extend("force", {}, opts.vimgrep_arguments)
-						--- 	---
-						--- 	--- 	for i, v in ipairs(args) do
-						--- 	--- 		if v == "--no-ignore" then
-						--- 	--- 			args[i] = "--ignore"
-						--- 	--- 		elseif v == "--ignore" then
-						--- 	--- 			args[i] = "--no-ignore"
-						--- 	--- 		end
-						--- 	--- 	end
-						--- 	---
-						--- 	--- 	opts.vimgrep_arguments = args
-						--- 	--- end
-						--- 	---
-						--- 	--- current_picker:refresh(opts, { reset_prompt = true })
-						--- end,
+						--- Use `i` to toggle the `--no-ignore` flag
+						["<C-i>"] = function(bufnr)
+							local picker = actions_state.get_current_picker(bufnr)
+
+							if
+								state.picker_type ~= "find_files"
+								and state.picker_type ~= "live_grep"
+							then
+								return vim.notify(
+									string.format(
+										"Cannot toggle `--no-ignore` flag for picker: %s",
+										state.picker_type
+									),
+									vim.log.levels.WARN
+								)
+							end
+
+							require("telescope.builtin")[state.picker_type]({
+								prompt_title = picker.prompt_title,
+								default_text = picker:_get_prompt(),
+								cwd = picker.cwd,
+								no_ignore = not state.opts.no_ignore,
+								regex = state.opts.regex,
+							})
+						end,
 					},
 				},
 				vimgrep_arguments = {
@@ -336,10 +356,12 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
-					find_command = { "fd", "--type", "f" },
+					find_command = with_ignore("find_files", function()
+						return { "fd", "--type", "f" }
+					end),
 				},
 				live_grep = {
-					additional_args = function(opts)
+					additional_args = with_ignore("live_grep", function(opts)
 						local args = { "--hidden" }
 
 						--- Disable regex searching when requested. This is useful since 99% of
@@ -350,7 +372,7 @@ return {
 						end
 
 						return args
-					end,
+					end),
 					only_cwd = true,
 				},
 				oldfiles = {
