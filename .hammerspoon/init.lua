@@ -42,6 +42,12 @@ local function if_work(work, home)
 	return home
 end
 
+--- Get the user home directory
+--- @return string
+local function home_dir()
+	return os.getenv("HOME") or ""
+end
+
 --- Screens
 local screens = {
 	laptop = "Built-in Retina Display",
@@ -346,3 +352,31 @@ end
 
 hs.hotkey.bind({ "option" }, "p", media("playpause"))
 hs.hotkey.bind({ "option" }, "n", media("next"))
+
+--- Execute a shell command asynchronously
+--- @param command string
+--- @param args string[]
+--- @param callback fun()|nil
+local function execute_async(command, args, callback)
+	hs.task.new(command, callback, args):start()
+end
+
+--- Restart Bluetooth
+local function restart_bluetooth()
+	--- TODO: Document permission requirements for hammerspoon bluetooth
+	local bin = "/opt/homebrew/bin/blueutil"
+
+	execute_async(bin, { "--power", "0" }, function()
+		execute_async(bin, { "--power", "1" })
+	end)
+end
+
+hs.hotkey.bind({ "cmd", "ctrl" }, "b", restart_bluetooth)
+hs.menubar
+	.new()
+	:setIcon(
+		hs.image
+			.imageFromPath(home_dir() .. "/.hammerspoon/assets/keyboard.png")
+			:setSize({ w = 16, h = 16 })
+	)
+	:setClickCallback(restart_bluetooth)
