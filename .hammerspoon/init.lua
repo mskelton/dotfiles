@@ -1,4 +1,3 @@
---- @diagnostic disable: undefined-global
 --- vim:set colorcolumn=100:
 
 hs.console.consoleFont("JetBrains Mono")
@@ -16,12 +15,6 @@ local layer_key = { "cmd", "ctrl" }
 
 --- Browser selection
 local browser = "Arc"
-
---- Custom layouts
-local layout = {
-	left65 = hs.geometry.rect(0, 0, 0.65, 1),
-	right35 = hs.geometry.rect(0.65, 0, 0.35, 1),
-}
 
 --- Check if a file exists at the given path
 --- @param filename string
@@ -354,10 +347,12 @@ end)
 
 --- Audio presets
 hs.hotkey.bind({ "cmd", "ctrl" }, "f9", function()
+	--- @diagnostic disable-next-line: undefined-field
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(30)
 end)
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "f10", function()
+	--- @diagnostic disable-next-line: undefined-field
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(50)
 end)
 
