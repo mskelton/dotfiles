@@ -264,6 +264,25 @@ M.setup_servers = function()
 				--- Defer to the built-in handler after filtering the results
 				vim.lsp.handlers["textDocument/definition"](_, result, ...)
 			end,
+			--- Disable specific diagnostics that I don't care about. TypeScript has
+			--- some super opinionated diagnostics that don't always make sense.
+			["textDocument/publishDiagnostics"] = function(_, result, ...)
+				local ignored_codes = {
+					--- File is a CommonJS module; it may be converted to an ES module
+					80001,
+				}
+
+				--- Filter out diagnostics that are ignored
+				for key, value in ipairs(result.diagnostics) do
+					for _, ignored_code in ipairs(ignored_codes) do
+						if value.code == ignored_code then
+							table.remove(result.diagnostics, key)
+						end
+					end
+				end
+
+				vim.lsp.handlers["textDocument/publishDiagnostics"](_, result, ...)
+			end,
 		},
 	})
 
