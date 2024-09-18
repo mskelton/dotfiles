@@ -1,7 +1,5 @@
 --- vim:set colorcolumn=100:
 
-hs.console.consoleFont("JetBrains Mono")
-
 --- Disable animations
 hs.window.animationDuration = 0
 
@@ -370,13 +368,22 @@ local function restart_bluetooth()
 	end)
 end
 
-hs.hotkey.bind({ "cmd", "ctrl" }, "b", restart_bluetooth)
+--- Get a menu icon from a PNG file
+--- @param filename string
+--- @return hs.image|nil
+local function get_menu_icon(filename)
+	--- @type hs.image|nil
+	local image = hs.image.imageFromPath(home_dir() .. "/.hammerspoon/assets/" .. filename)
+	if image == nil then
+		return nil
+	end
 
-BluetoothMenu = hs.menubar
-	.new(true, "bluetooth_restart")
-	:setIcon(
-		hs.image
-			.imageFromPath(home_dir() .. "/.hammerspoon/assets/keyboard.png")
-			:setSize({ w = 16, h = 16 })
-	)
-	:setClickCallback(restart_bluetooth)
+	return image:setSize({ w = 20, h = 20 })
+end
+
+if is_work then
+	--- @type hs.menubar|nil
+	BluetoothMenu = hs.menubar.new(true, "bluetooth_restart")
+	BluetoothMenu:setIcon(get_menu_icon("bluetooth.png"))
+	BluetoothMenu:setClickCallback(restart_bluetooth)
+end
