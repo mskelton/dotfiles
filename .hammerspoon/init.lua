@@ -87,12 +87,7 @@ Install:andUse("AppLauncher", {
 	},
 })
 
-local disabled_apps = if_work({ "Around", "Postman" }, {
-	"Around",
-	"Postman",
-	"Slack",
-	"Linear",
-})
+local disabled_apps = if_work({ "Postman" }, { "Postman", "Slack", "Linear" })
 
 --- Apply a layout based on the number of screens
 local function apply_layout(...)
@@ -105,33 +100,6 @@ local function apply_layout(...)
 	end)
 
 	hs.layout.apply(layout)
-end
-
---- Returns true if the window is the Around lobby window. This is a guess based on size.
---- @param window hs.window
-local function is_around_lobby(window)
-	local size = window:size()
-	return size.h < 800 or size.w < 1000
-end
-
---- Places the Around window in the desired position. This is required since Around uses the same
---- name for both the lobby and the meeting window, so we have to use a heuristic to determine
---- if we are placing the lobby or the main meeting window.
-local function place_around(lobby, meeting)
-	--- @param window hs.window
-	return function(window)
-		local placement = meeting
-
-		if is_around_lobby(window) then
-			placement = lobby
-		end
-
-		if type(placement) == "function" then
-			return placement(window)
-		end
-
-		return placement
-	end
 end
 
 --- Get's the Mimestream inbox window. We don't want to maximize draft emails
@@ -207,7 +175,6 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "kitty", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_center, nil, nil },
-		{ "Around", nil, screens.laptop, place_around(put_center, hs.layout.maximized), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized, nil, nil },
@@ -221,7 +188,6 @@ hs.hotkey.bind(layer_key, "u", function()
 		{ "kitty", nil, screens.primary, hs.layout.maximized, nil, nil },
 		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{ "Around", nil, screens.secondary, place_around(put_center, hs.layout.maximized), nil, nil },
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -238,7 +204,6 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_left, nil, nil },
-		{ "Around", nil, screens.laptop, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -252,14 +217,6 @@ hs.hotkey.bind(layer_key, "i", function()
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
-		{
-			"Around",
-			nil,
-			screens.secondary,
-			place_around(put_center, hs.layout.maximized),
-			nil,
-			nil,
-		},
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized, nil, nil },
@@ -277,7 +234,6 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "kitty", nil, screens.laptop, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.laptop, put_left, nil, nil },
-		{ "Around", nil, screens.laptop, place_around(put_left, hs.layout.left50), nil, nil },
 		{ "Mimestream", get_mimestream_window, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized, nil, nil },
 		{ "Postman", nil, screens.laptop, hs.layout.maximized, nil, nil },
@@ -288,7 +244,6 @@ hs.hotkey.bind(layer_key, "o", function()
 		{ "kitty", nil, screens.primary, hs.layout.right50, nil, nil },
 		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50, nil, nil },
 		{ "Zoom", "Zoom", screens.primary, put_left, nil, nil },
-		{ "Around", nil, screens.primary, place_around(put_left, hs.layout.left50), nil, nil },
 		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized, nil, nil },
 		{ "ChatGPT", nil, screens.secondary, put_left, nil, nil },
@@ -379,19 +334,6 @@ if is_work then
 		:subscribe(hs.window.filter.windowCreated, focus("on"))
 		:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
 		:subscribe(hs.window.filter.windowDestroyed, focus("off"))
-
-	--- Manage focus when in Around meetings. Around is a little odd. It has a single window title of
-	--- "Around" shared by the lobby and the meeting window. The lobby window is maximizable, but the
-	--- floating window is not, so we can use that as the initial test to determine if we are in a
-	--- meeting. When in a meeting, if switching from floating to the maximized window, we don't want
-	--- to touch the focus state.
-	hs.window.filter.new("Around"):subscribe(hs.window.filter.windowCreated, function(window)
-		if window:isMaximizable() and is_around_lobby(window) then
-			set_focus("off")
-		else
-			set_focus("on")
-		end
-	end)
 end
 
 --- Music management
