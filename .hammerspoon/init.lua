@@ -371,8 +371,9 @@ local function restart_bluetooth()
 end
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "b", restart_bluetooth)
-hs.menubar
-	.new()
+
+BluetoothMenu = hs.menubar
+	.new(true, "bluetooth_restart")
 	:setIcon(
 		hs.image
 			.imageFromPath(home_dir() .. "/.hammerspoon/assets/keyboard.png")
