@@ -28,8 +28,14 @@ local function file_exists(filename)
 	return false
 end
 
+--- Get the user home directory
+--- @return string
+local function home_dir()
+	return os.getenv("HOME") or ""
+end
+
 --- Check if we are at work by looking for a ~/.work file
-local is_work = file_exists(os.getenv("HOME") .. "/.work")
+local is_work = file_exists(home_dir() .. "/.work")
 
 --- Returns the first argument if at work, otherwise the second
 --- @param work any
@@ -40,12 +46,6 @@ local function if_work(work, home)
 	end
 
 	return home
-end
-
---- Get the user home directory
---- @return string
-local function home_dir()
-	return os.getenv("HOME") or ""
 end
 
 --- Screens
@@ -331,16 +331,15 @@ local function focus(state)
 	end
 end
 
-if is_work then
-	--- Manage focus when in Zoom meetings
-	hs.window.filter
-		.new(function(window)
-			return window ~= nil and window:title() == "Zoom Meeting"
-		end)
-		:subscribe(hs.window.filter.windowCreated, focus("on"))
-		:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
-		:subscribe(hs.window.filter.windowDestroyed, focus("off"))
-end
+--- TODO: Re-enable this, but it's horrifically slow to start
+--- Manage focus when in Zoom meetings
+--- if is_work then
+--- 	hs.window.filter.default
+--- 		:setAppFilter("zoom.us")
+--- 		:subscribe(hs.window.filter.windowCreated, focus("on"))
+--- 		:subscribe(hs.window.filter.windowTitleChanged, focus("on"))
+--- 		:subscribe(hs.window.filter.windowDestroyed, focus("off"))
+--- end
 
 --- Music management
 --- @param arg string
