@@ -18,14 +18,8 @@ M.file_exists = function(filename)
 	return false
 end
 
---- Get the user home directory
---- @return string
-M.home_dir = function()
-	return os.getenv("HOME") or ""
-end
-
 --- Check if we are at work by looking for a ~/.work file
-M.is_work = M.file_exists(M.home_dir() .. "/.work")
+M.is_work = M.file_exists(os.getenv("HOME") .. "/.work")
 
 --- Returns the first argument if at work, otherwise the second
 --- @param work any
@@ -58,27 +52,6 @@ M.media = function(arg)
 	return function()
 		hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
 	end
-end
-
---- Execute a shell command asynchronously
---- @param command string
---- @param args string[]
---- @param callback fun()|nil
-M.execute_async = function(command, args, callback)
-	hs.task.new(command, callback, args):start()
-end
-
---- Get a menu icon from a PNG file
---- @param filename string
---- @return hs.image|nil
-M.get_menu_icon = function(filename)
-	--- @type hs.image|nil
-	local image = hs.image.imageFromPath(M.home_dir() .. "/.hammerspoon/assets/" .. filename)
-	if image == nil then
-		return nil
-	end
-
-	return image:setSize({ w = 20, h = 20 })
 end
 
 return M

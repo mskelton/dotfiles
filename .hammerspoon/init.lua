@@ -15,14 +15,25 @@ hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = false
 Install = spoon.SpoonInstall
 
---- Auto-completion for Hammerspoon config. This is disabled since it's slow to
---- load, so I only enable it when I need to regenerate types.
-Install:andUse("EmmyLua", { disable = true })
+Install:andUse("EmmyLua", {
+	--- Re-generating autocomplete is slow, enabled manually when it needs to be regenerated
+	disable = true,
+})
 
---- Live reload config
-Install:andUse("ReloadConfiguration", { start = true })
+Install:andUse("ReloadConfiguration", {
+	start = true,
+})
 
---- Launch common apps
+Install:andUse("RestartBluetooth", {
+	disable = not utils.is_work,
+	start = true,
+})
+
+Install:andUse("GitHubNotifications", {
+	disable = not utils.is_work,
+	start = true,
+})
+
 Install:andUse("AppLauncher", {
 	config = {
 		modifiers = constants.keys.layer_key,
@@ -193,17 +204,3 @@ end
 --- Media management
 hs.hotkey.bind({ "option" }, "p", utils.media("playpause"))
 hs.hotkey.bind({ "option" }, "n", utils.media("next"))
-
---- Bluetooth restart
-if utils.is_work then
-	--- @type hs.menubar|nil
-	BluetoothMenu = hs.menubar.new(true, "bluetooth_restart")
-	BluetoothMenu:setIcon(utils.get_menu_icon("bluetooth.png"))
-	BluetoothMenu:setClickCallback(function()
-		local bin = "/opt/homebrew/bin/blueutil"
-
-		utils.execute_async(bin, { "--power", "0" }, function()
-			utils.execute_async(bin, { "--power", "1" })
-		end)
-	end)
-end
