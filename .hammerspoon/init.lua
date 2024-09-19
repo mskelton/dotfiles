@@ -204,3 +204,19 @@ end
 --- Media management
 hs.hotkey.bind({ "option" }, "p", utils.media("playpause"))
 hs.hotkey.bind({ "option" }, "n", utils.media("next"))
+
+-- Sleep
+hs.hotkey.bind({ "cmd" }, "f6", function()
+	hs.caffeinate.systemSleep()
+end)
+
+-- Toggle system appearance
+hs.hotkey.bind(nil, "f6", function()
+	hs.osascript.applescript([[
+    tell application "System Events"
+      tell appearance preferences
+        set dark mode to not dark mode
+      end tell
+    end tell
+  ]])
+end)
