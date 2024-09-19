@@ -17,7 +17,7 @@ end
 
 --- Get's the Mimestream inbox window. We don't want to maximize draft emails
 --- since they are not full size.
-M.get_mimestream_window = function()
+M.mimestream_inbox = function()
 	local app = hs.application.get("Mimestream")
 	if app == nil then
 		return {}
