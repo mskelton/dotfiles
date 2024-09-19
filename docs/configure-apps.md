@@ -10,6 +10,11 @@ done when setting up new _accounts_ which only happens when changing jobs.
 - **App->Launch At Login** - Off
 - **Chat Bar->Keyboard Shortcut** - <kbd>⌥Space</kbd>
 
+## Hammerspoon
+
+Enable permission to Bluetooth in macOS system settings for Hammerspoon. This is
+required to make the Bluetooth restart menu item work properly.
+
 ## Slack
 
 - **Notifications->Show a badge on Slack's icon to indicate new activity** - Off
