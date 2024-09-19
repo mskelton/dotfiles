@@ -16,6 +16,14 @@ M.screens = {
 	secondary = "LG Ultra HD",
 }
 
-M.disabled_apps = utils.if_work({ "Postman" }, { "Postman", "Slack", "Linear" })
+M.disabled_apps = utils.if_work({
+	"Postman",
+}, {
+	"Postman",
+	"Slack",
+	"Linear",
+	"Zoom",
+	"zoom.us",
+})
 
 return M
