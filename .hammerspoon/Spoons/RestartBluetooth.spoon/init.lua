@@ -44,7 +44,6 @@ function M:start()
 	else
 		--- @type hs.menubar|nil
 		self.menu = hs.menubar.new(true, "RestartBluetooth")
-		self.menu:setTooltip("Restart Bluetooth")
 		self.menu:setIcon(get_icon())
 		self.menu:setClickCallback(function()
 			local bin = "/opt/homebrew/bin/blueutil"
