@@ -30,7 +30,6 @@ local function get_icon()
 end
 
 function M:start()
-	--- Create or restore menu
 	if self.menu then
 		self.menu:returnToMenuBar()
 	else
