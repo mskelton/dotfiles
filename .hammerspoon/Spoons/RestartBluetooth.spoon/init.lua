@@ -29,6 +29,15 @@ local function get_icon()
 	return icon:setSize({ w = 20, h = 20 })
 end
 
+--- Hides or shows the menu bar icon based on the number of screens
+function M:hide_or_show()
+	if #hs.screen.allScreens() > 1 then
+		self.menu:returnToMenuBar()
+	else
+		self.menu:removeFromMenuBar()
+	end
+end
+
 function M:start()
 	if self.menu then
 		self.menu:returnToMenuBar()
@@ -46,12 +55,26 @@ function M:start()
 		end)
 	end
 
+	--- Hide or show the menu bar icon based on the number of screens
+	self:hide_or_show()
+
+	--- Watch for screen changes and re-evaluate if the icon should be shown
+	self.screen_watcher = hs.screen.watcher
+		.new(function()
+			self:hide_or_show()
+		end)
+		:start()
+
 	return self
 end
 
 function M:stop()
 	if self.menu then
 		self.menu:removeFromMenuBar()
+	end
+
+	if self.screen_watcher then
+		self.screen_watcher:stop()
 	end
 
 	return self
