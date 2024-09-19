@@ -53,7 +53,7 @@ end
 
 --- Callback fired when the timer triggers
 function M:on_timer()
-	hs.http.asyncGet("https://api.github.com/notifications", {
+	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
 		["Content-Type"] = "application/json",
@@ -86,7 +86,7 @@ function M:on_timer()
 		end)
 
 		self:update_count(#notifications)
-	end)
+	end, "ignoreLocalAndRemoteCache")
 end
 
 --- Get a setting value
