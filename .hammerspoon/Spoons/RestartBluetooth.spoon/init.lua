@@ -19,9 +19,8 @@ end
 --- @return hs.image|nil
 local function get_icon()
 	--- @type hs.image|nil
-	local icon = hs.image.imageFromPath(
-		os.getenv("HOME") .. "/.hammerspoon/Spoons/RestartBluetooth.spoon/bluetooth.png"
-	)
+	local icon =
+		hs.image.imageFromPath(hs.configdir .. "/Spoons/RestartBluetooth.spoon/bluetooth.png")
 
 	if icon == nil then
 		return nil

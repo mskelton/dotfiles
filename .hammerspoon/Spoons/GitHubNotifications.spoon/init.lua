@@ -12,9 +12,8 @@ M.license = "ISC - https://opensource.org/licenses/ISC"
 --- @return hs.image|nil
 local function get_icon(filename)
 	--- @type hs.image|nil
-	local icon = hs.image.imageFromPath(
-		os.getenv("HOME") .. "/.hammerspoon/Spoons/GitHubNotifications.spoon/" .. filename
-	)
+	local icon =
+		hs.image.imageFromPath(hs.configdir .. "/Spoons/GitHubNotifications.spoon/" .. filename)
 
 	if icon == nil then
 		return nil
