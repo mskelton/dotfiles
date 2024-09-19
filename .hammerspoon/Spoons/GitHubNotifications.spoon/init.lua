@@ -89,7 +89,40 @@ function M:on_timer()
 	end)
 end
 
+--- Get a setting value
+--- @param key string
+--- @param func fun(): any
+local function get_setting(key, func)
+	local value = hs.settings.get(key)
+	if value ~= nil then
+		return value
+	end
+
+	value = func()
+	if value ~= nil then
+		hs.settings.set(key, value)
+	end
+
+	return value
+end
+
+--- Get the GitHub token from the settings
+--- @return string|nil
+local function get_token()
+	return get_setting("github_token", function()
+		local button, token = hs.dialog.textPrompt("Enter GitHub Token", "", "", "Save", "Cancel")
+
+		if button == "Save" and token ~= "" then
+			return token
+		end
+
+		return nil
+	end)
+end
+
 function M:start()
+	self.token = get_token()
+
 	if self.menu then
 		self.menu:returnToMenuBar()
 	else

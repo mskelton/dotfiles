@@ -30,12 +30,8 @@ Install:andUse("RestartBluetooth", {
 })
 
 Install:andUse("GitHubNotifications", {
-	--- disable = not utils.is_work,
-	disable = true,
+	disable = not utils.is_work,
 	start = true,
-	config = {
-		token = constants.github_token,
-	},
 })
 
 Install:andUse("AppLauncher", {

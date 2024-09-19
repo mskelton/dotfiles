@@ -26,6 +26,4 @@ M.disabled_apps = utils.if_work({
 	"zoom.us",
 })
 
-M.github_token = "TODO"
-
 return M
