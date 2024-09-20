@@ -120,6 +120,14 @@ local function get_token()
 	end)
 end
 
+--- Delete the menu bar icon
+function M:delete_menu()
+	if self.menu then
+		self.menu:delete()
+		self.menu = nil
+	end
+end
+
 function M:start()
 	self.token = get_token()
 
@@ -149,7 +157,7 @@ end
 
 function M:stop()
 	if self.menu then
-		self.menu:removeFromMenuBar()
+		self:delete_menu()
 	end
 
 	if self.timer then
