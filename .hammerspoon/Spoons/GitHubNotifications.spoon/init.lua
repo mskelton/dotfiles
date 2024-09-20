@@ -138,10 +138,13 @@ function M:start()
 		self.menu = hs.menubar.new(true, "GitHubNotifications")
 		self.menu:setTooltip("GitHub Notifications")
 		self.menu:setIcon(readIcon)
-		self.menu:setClickCallback(function()
+		self.menu:setClickCallback(function(modifiers)
 			self.last_checked = os.date("!%Y-%m-%dT%H:%M:%SZ")
 			self:update_count(0)
-			hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
+
+			if not modifiers.ctrl then
+				hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
+			end
 		end)
 	end
 
