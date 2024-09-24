@@ -223,15 +223,15 @@ M.setup_servers = function()
 				ts_utils.rename_file(bufnr)
 			end, opts)
 
-			vim.keymap.set("n", "<leader>oab", function()
+			vim.keymap.set("n", "<leader>uab", function()
 				ts_utils.add_braces_to_arrow_function(bufnr)
 			end, opts)
 
-			vim.keymap.set("n", "<leader>orb", function()
+			vim.keymap.set("n", "<leader>urb", function()
 				ts_utils.remove_braces_from_arrow_function(bufnr)
 			end, opts)
 
-			vim.keymap.set("n", "<leader>onf", function()
+			vim.keymap.set("n", "<leader>unf", function()
 				ts_utils.convert_to_named_function(bufnr)
 			end, opts)
 		end,
