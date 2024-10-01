@@ -11,6 +11,7 @@ set -g fish_user_paths $fish_user_paths "$fzf_base/bin"
 set -g fish_user_paths $fish_user_paths "$PYENV_ROOT/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/flutter/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/Library/Application Support/fnm"
+set -g fish_user_paths $fish_user_paths "$HOME/.slack/bin"
 
 # Android studio
 set -g fish_user_paths $fish_user_paths "$ANDROID_HOME/tools"
