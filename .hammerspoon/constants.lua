@@ -12,7 +12,7 @@ M.browser = "Arc"
 
 M.screens = {
 	laptop = "Built-in Retina Display",
-	primary = "LG HDR 4K",
+	primary = "LG ULTRAFINE",
 	secondary = "LG Ultra HD",
 }
 
