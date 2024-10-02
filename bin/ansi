@@ -1,0 +1,33 @@
+#!/opt/homebrew/bin/bash
+# Print an ANSI color code
+
+if [ -t 1 ] || [ "$FORCE_COLOR" == 1 ]; then
+	declare -A mappings=(
+		[clear]='\033[0m'
+		# Colors
+		[black]="\033[30m"
+		[red]="\033[31m"
+		[green]="\033[32m"
+		[yellow]="\033[33m"
+		[blue]="\033[34m"
+		[purple]="\033[35m"
+		[cyan]="\033[36m"
+		[white]="\033[37m"
+		[normal]="\033[39m"
+		# Style
+		[bold]="\033[1m"
+		[dim]="\033[2m"
+		[italic]="\033[3m"
+		[underline]="\033[4m"
+		[negative]="\033[7m"
+		[crossed]="\033[9m"
+	)
+
+	code=""
+
+	for arg in "$@"; do
+		code+="${mappings[$arg]}"
+	done
+
+	printf '%s' "$code"
+fi
