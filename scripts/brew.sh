@@ -87,14 +87,12 @@ $brew install --cask "${casks[@]}"
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
 	$brew install \
-		google-cloud-sdk
+		withgraphite/tap/graphite
 
 	$brew install --cask \
 		slack
 else
 	$brew install \
-		awscli \
-		pulumi/tap/pulumi \
 		tursodatabase/tap/turso
 
 	$brew install --cask \
