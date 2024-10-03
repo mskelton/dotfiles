@@ -354,9 +354,12 @@ return {
 					patterns = {
 						"apps/*",
 						"packages/*",
+						"src/routes/*",
 					},
 				},
-				["ui-select"] = { dropdown },
+				["ui-select"] = {
+					dropdown,
+				},
 			},
 			pickers = {
 				find_files = {
