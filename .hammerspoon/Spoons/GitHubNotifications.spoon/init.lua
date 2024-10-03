@@ -151,7 +151,7 @@ function M:start()
 			--- Only open the submenu if the user is holding the control key
 			if not modifiers.ctrl then
 				self:open_notifications()
-				return nil
+				return {}
 			end
 
 			return {
