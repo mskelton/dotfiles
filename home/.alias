@@ -16,6 +16,7 @@ alias pull="git pull"
 alias push="git push"
 alias psh="git push"
 alias st="git status"
+alias gs="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
 
