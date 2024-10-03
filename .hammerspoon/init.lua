@@ -32,6 +32,9 @@ Install:andUse("RestartBluetooth", {
 Install:andUse("GitHubNotifications", {
 	disable = not utils.is_work,
 	start = true,
+	hotkeys = {
+		open = { constants.keys.layer_key, "p" },
+	},
 })
 
 Install:andUse("AppLauncher", {

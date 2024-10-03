@@ -92,9 +92,10 @@ end
 --- Get a setting value
 --- @param key string
 --- @param func fun(): any
-local function get_setting(key, func)
+--- @param ignore_cache boolean|nil
+local function get_setting(key, func, ignore_cache)
 	local value = hs.settings.get(key)
-	if value ~= nil then
+	if value ~= nil and not ignore_cache then
 		return value
 	end
 
@@ -107,9 +108,10 @@ local function get_setting(key, func)
 end
 
 --- Get the GitHub token from the settings
+--- @param ignore_cache boolean|nil
 --- @return string|nil
-local function get_token()
-	return get_setting("github_token", function()
+function M:get_token(ignore_cache)
+	self.token = get_setting("github_token", function()
 		local button, token = hs.dialog.textPrompt("Enter GitHub Token", "", "", "Save", "Cancel")
 
 		if button == "Save" and token ~= "" then
@@ -117,7 +119,14 @@ local function get_token()
 		end
 
 		return nil
-	end)
+	end, ignore_cache)
+end
+
+--- Open the GitHub notifications page and clear the count
+function M:open_notifications()
+	self.last_checked = os.date("!%Y-%m-%dT%H:%M:%SZ")
+	self:update_count(0)
+	hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
 end
 
 --- Delete the menu bar icon
@@ -129,7 +138,7 @@ function M:delete_menu()
 end
 
 function M:start()
-	self.token = get_token()
+	self:get_token()
 
 	if self.menu then
 		self.menu:returnToMenuBar()
@@ -138,20 +147,27 @@ function M:start()
 		self.menu = hs.menubar.new(true, "GitHubNotifications")
 		self.menu:setTooltip("GitHub Notifications")
 		self.menu:setIcon(readIcon)
-		self.menu:setClickCallback(function(modifiers)
-			self.last_checked = os.date("!%Y-%m-%dT%H:%M:%SZ")
-			self:update_count(0)
-
+		self.menu:setMenu(function(modifiers)
+			--- Only open the submenu if the user is holding the control key
 			if not modifiers.ctrl then
-				hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
+				self:open_notifications()
+				return nil
 			end
+
+			return {
+				{
+					title = "Open Notifications",
+					fn = hs.fnutils.partial(self.open_notifications, self),
+				},
+				{
+					title = "Set GitHub Token",
+					fn = hs.fnutils.partial(self.get_token, self, true),
+				},
+			}
 		end)
 	end
 
-	self.timer = hs.timer.new(self.interval or 60, function()
-		self:on_timer()
-	end)
-
+	self.timer = hs.timer.new(self.interval or 60, hs.fnutils.partial(self.on_timer, self))
 	self.timer:start()
 	self.timer:fire()
 
@@ -167,6 +183,17 @@ function M:stop()
 		self.timer:stop()
 	end
 
+	return self
+end
+
+--- Binds hotkeys for the spoon
+--- @param mapping table
+function M:bindHotkeys(mapping)
+	local spec = {
+		open = hs.fnutils.partial(self.open_notifications, self),
+	}
+
+	hs.spoons.bindHotkeysToSpec(spec, mapping)
 	return self
 end
 

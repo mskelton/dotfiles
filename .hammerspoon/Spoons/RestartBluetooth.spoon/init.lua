@@ -69,11 +69,7 @@ function M:start()
 	self:hide_or_show()
 
 	--- Watch for screen changes and re-evaluate if the icon should be shown
-	self.screen_watcher = hs.screen.watcher
-		.new(function()
-			self:hide_or_show()
-		end)
-		:start()
+	self.screen_watcher = hs.screen.watcher.new(hs.fnutils.partial(self.hide_or_show, self)):start()
 
 	return self
 end
