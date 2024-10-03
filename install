@@ -10,6 +10,7 @@ link .config/kitty ~/.config/kitty
 link .config/starship.toml ~/.config/starship.toml
 link .config/task ~/.config/task
 link .config/tmux ~/.config/tmux
+link .config/graphite/aliases ~/.config/graphite/aliases
 
 # Link files and directories
 link bin ~/.local/bin
