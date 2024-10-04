@@ -1,3 +1,4 @@
 ls log short
 ll log long
 ss submit --stack
+add modify --all

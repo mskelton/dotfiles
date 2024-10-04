@@ -1,6 +1,5 @@
 [alias]
   # Misc
-  changeset = !git add .changeset && git commit -m 'Add changeset'
   cl = clone
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   diffd = !git diff $(git default)..HEAD
