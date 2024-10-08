@@ -2,6 +2,7 @@ local M = {}
 
 --- Normalizes the options for a keymap
 --- @param opts_or_desc table|string|nil
+--- @return table
 M.normalize_map_opts = function(opts_or_desc)
 	local opts
 
