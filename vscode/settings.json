@@ -85,7 +85,6 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git.autofetch": true,
   "git.branchProtection": ["main", "master"],
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
