@@ -42,6 +42,7 @@ required to make the Bluetooth restart menu item work properly.
 - **General->Appearance** - Dark mode
 - **Video->HD** - On
 - **Video->Mirror my video** - Off
+- **Video->Stop my video when joining** - On
 
 ### Web settings
 
