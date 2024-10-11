@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Wrapper around Graphite to fix some paper cuts
+
+read_aliases() {
+	# Read the aliases from the config file
+	if [ -f ~/.gt_aliases ]; then
+		cat ~/.gt_aliases
+	fi
+}
+
+# Proxy through to the Graphite CLI
+/opt/homebrew/bin/gt "$@"
