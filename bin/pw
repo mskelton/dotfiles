@@ -2,8 +2,6 @@
 # Playwright CLI
 # Usage: pw <command> [--help|-h]
 
-dir='playwright/test-results/'
-
 print_help() {
 	echo "Usage: pw <command> [--help|-h]
 
@@ -28,7 +26,7 @@ view_test_screenshots() {
 	found_files=0
 
 	# Find and display all the test screenshots
-	for file in $(fd -I '.png' $dir); do
+	for file in $(fd -I '.png' "$1"); do
 		found_files=1
 		echo "$file"
 		kitty +kitten icat "$file"
@@ -42,7 +40,7 @@ view_test_screenshots() {
 }
 
 open_trace() {
-	filename=$(fd -I '.zip' $dir | one)
+	filename=$(fd -I '.zip' "$1" | one)
 
 	if [ -n "$filename" ]; then
 		yarn playwright show-trace "$filename"
@@ -66,17 +64,19 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+dir=$(fd -I -E node_modules -t d test-results | one)
+
 # Test to ensure the directory is present
-if [ ! -d "playwright" ]; then
+if [ -z "$dir" ]; then
 	echo "[error]: Test directory does not exist"
 	exit 1
 fi
 
 # Run the command
 if [ "$command" == "screenshot" ]; then
-	view_test_screenshots
+	view_test_screenshots "$dir"
 elif [ "$command" == "trace" ]; then
-	open_trace
+	open_trace "$dir"
 else
 	print_help
 fi
