@@ -2,4 +2,4 @@ ls log short
 ll log long
 ss submit --stack
 su submit --stack --update-only
-add modify --all
+ma modify --all

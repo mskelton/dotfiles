@@ -4,12 +4,11 @@
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   diffd = !git diff $(git default)..HEAD
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
-  trash = !git reset --hard && git clean -fd
+  trash = "!f() { if [ -n \"$(git status --porcelain)\" ]; then git commit -am 'trashing' && git reset --hard HEAD~1; else echo 'No changes to discard'; exit 1; fi; }; f"
   undo = reset --soft HEAD~
   unstash = stash pop
   # Branch
   br = branch
-  clean-releases = !git branch --list 'release/*' | xargs -r git branch -D
   del = branch -D
   dump = "!f() { current=$(git branch --show-current) && git checkout $(git default) && git branch -D $current; }; f"
   name = branch -m
@@ -24,7 +23,7 @@
   sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
   # Checkout
   co = checkout
-  n = !git new $(pbpaste)
+  m = !git checkout $(git default)
   new = !git checkout $(git default) -b $2
   layer = checkout -b
   pd = !pd
