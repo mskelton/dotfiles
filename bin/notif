@@ -26,12 +26,11 @@ Commands:
 
 _list_notifications() {
 	gh api notifications |
-		jq -r '.[].subject | "\(.title) (\(.url | split("/") | .[4] + "/" + .[5]) #\(.url | split("/") | .[7]))"'
+		jq -r '.[] | "\(.subject.title) (\(.subject.url | gsub("api.github.com/repos/"; "github.com/") | gsub("/pulls/"; "/pull/")))"'
 }
 
 _mark_notifications_as_read() {
-	now=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-	gh api --method PUT /notifications -f "last_read_at=$now" -F "read=true"
+	gh api -X PUT /notifications
 }
 
 _parse_args "$@"
