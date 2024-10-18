@@ -3,3 +3,5 @@ ll log long
 ss submit --stack
 su submit --stack --update-only
 ma modify --all
+pr submit --stack --publish --cli
+prd submit --stack --draft --cli
