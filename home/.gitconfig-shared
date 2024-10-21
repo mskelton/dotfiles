@@ -4,7 +4,7 @@
   default = !basename $(git symbolic-ref --short refs/remotes/origin/HEAD)
   diffd = !git diff $(git default)..HEAD
   fix-ref = symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
-  trash = "!f() { if [ -n \"$(git status --porcelain)\" ]; then git commit -am 'trashing' && git reset --hard HEAD~1; else echo 'No changes to discard'; exit 1; fi; }; f"
+  trash = "!f() { if [ -n \"$(git status --porcelain)\" ]; then git add -A && git commit -qm 'trashing' && git reset -q --hard HEAD~1; else echo 'No changes to discard'; exit 1; fi; }; f"
   undo = reset --soft HEAD~
   unstash = stash pop
   # Branch
