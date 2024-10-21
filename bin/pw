@@ -29,7 +29,7 @@ view_test_screenshots() {
 	for file in $(fd -I '.png' "$1"); do
 		found_files=1
 		echo "$file"
-		kitty +kitten icat "$file"
+		kitty +kitten icat --align left "$file"
 	done
 
 	# If no files were found, return an error
