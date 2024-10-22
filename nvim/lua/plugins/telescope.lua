@@ -216,7 +216,7 @@ return {
 				- status.picker.selection_caret:len()
 				- padding
 
-			return require("plenary.strings").truncate(path, len, nil, 0)
+			return require("plenary.strings").truncate(path, len, nil, -1)
 		end
 
 		--- Add the `--no-ignore` flag to the finder arguments when requested. This
