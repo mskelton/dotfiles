@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Rename Graphite branch to include linear ticket
+
+ticket=$(pbpaste)
+ticket=${ticket,,}
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+branch=${branch#mskelton/}
+branch=mskelton/$ticket-$branch
+
+gt rename "$branch"
