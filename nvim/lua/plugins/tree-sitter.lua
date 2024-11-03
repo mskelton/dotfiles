@@ -22,6 +22,7 @@ return {
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nushell/tree-sitter-nu",
 		},
 		keys = {
 			{
@@ -62,6 +63,7 @@ return {
 					"lua",
 					"markdown",
 					"markdown_inline",
+					"nu",
 					"ocaml",
 					"prisma",
 					"python",

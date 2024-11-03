@@ -11,6 +11,8 @@ curl -fsSL https://bun.sh/install | bash
 # Install Starship
 # https://starship.rs
 curl -sS https://starship.rs/install.sh | sh
+mkdir ~/.cache/starship
+starship init nu >~/.cache/starship/init.nu
 
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
