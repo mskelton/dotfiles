@@ -1,17 +1,16 @@
 aliases:
+    approve: pr review --approve
+    assign: '!gh pr edit --add-reviewer "$1" && gh copy'
     aus: pr merge --squash --auto
+    auto: pr merge --auto
     clone: '!gh repo clone "mskelton/$1" -- "${@:2}"'
     copy: "!gh url | pbcopy"
-    dbot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
+    dependabot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
     draft: pr create --draft
-    needs-review: "!gh pr edit $REVIEWERS"
     mkrelease: workflow run release.yml
-    merge-icons: "pr merge --squash --repo=mskelton/termicons.nvim chore/update-icons"
-    quick: issue create -b '' -t "$1"
-    upcoming: "!gh pr view changeset-release/$(git default)"
     pb: "!gh url | pbcopy"
-    prw: pr view -w
     prc: pr create -w
+    prw: pr view -w
     setup-repo: '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -F "has_projects=false" -f "allow_merge_commit=false" -f "allow_rebase_merge=false" -f "allow_auto_merge=true" -f "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo} --silent'
     squash: pr merge --squash
     st: status -o mskelton
