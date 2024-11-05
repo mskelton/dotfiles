@@ -49,11 +49,10 @@ Install:andUse("AppLauncher", {
 		l = utils.if_work("Slack", "Telegram"),
 		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
-		n = "Todoist",
+		n = utils.if_work("Linear", "Todoist"),
 		m = "Figma",
 		["."] = utils.if_work("zoom.us", nil),
 		[","] = "ChatGPT",
-		["/"] = utils.if_work("Linear", "Google Chrome"),
 	},
 })
 

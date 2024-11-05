@@ -47,8 +47,11 @@ defaults write com.apple.dock tilesize -int 45
 defaults write com.apple.Dock show-recents -int 0
 defaults write com.apple.Dock static-others '()'
 
-# Increase the delay when showing/hiding the dock
-defaults write com.apple.dock "autohide-delay" -float 2
+# Faster auto-hide
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.25
+
+killall Dock
 
 ################################################################################
 ### TRACKPAD ###################################################################
