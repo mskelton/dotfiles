@@ -49,6 +49,7 @@ formula=(
 	stylua
 	swiftformat
 	task
+	timg
 	tmux
 	trash
 	tree-sitter
@@ -76,6 +77,7 @@ casks=(
 	shottr
 	telegram
 	visual-studio-code
+	withgraphite/tap/graphite
 	zoom
 )
 
@@ -85,9 +87,6 @@ $brew install --cask "${casks[@]}"
 
 # Personal/work casks
 if [[ -f "$HOME/.work" ]]; then
-	$brew install \
-		withgraphite/tap/graphite
-
 	$brew install --cask \
 		slack
 else

@@ -1,2 +1,3 @@
-complete -c pw -f -n __fish_use_subcommand -a screenshot -d 'Open test screenshots in the system image viewer'
-complete -c pw -f -n __fish_use_subcommand -a trace -d 'Open traces in the Playwright trace viewer'
+complete -c pw -f -n __fish_use_subcommand -a screenshots -d 'View test screenshots'
+complete -c pw -f -n __fish_use_subcommand -a video -d 'View test video'
+complete -c pw -f -n __fish_use_subcommand -a trace -d 'Open test trace'

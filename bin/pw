@@ -6,8 +6,9 @@ print_help() {
 	echo "Usage: pw <command> [--help|-h]
 
 Commands:
-  screenshot  View test screenshots
-  trace       Open trace"
+  screenshots  View test screenshots
+  video        View test video
+  trace        Open test trace"
 }
 
 one() {
@@ -35,6 +36,17 @@ view_test_screenshots() {
 	# If no files were found, return an error
 	if [ $found_files -eq 0 ]; then
 		echo "[error]: No test screenshots found"
+		return 1
+	fi
+}
+
+view_video() {
+	filename=$(fd -I '.webm' "$1" | one)
+
+	if [ -n "$filename" ]; then
+		timg -pk "$filename"
+	else
+		echo "[error]: No videos found"
 		return 1
 	fi
 }
@@ -73,8 +85,10 @@ if [ -z "$dir" ]; then
 fi
 
 # Run the command
-if [ "$command" == "screenshot" ]; then
+if [ "$command" == "screenshots" ]; then
 	view_test_screenshots "$dir"
+elif [ "$command" == "video" ]; then
+	view_video "$dir"
 elif [ "$command" == "trace" ]; then
 	open_trace "$dir"
 else
