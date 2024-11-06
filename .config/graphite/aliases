@@ -8,3 +8,4 @@ prd submit --stack --draft --cli
 sync sync -f
 linear !linear
 new !gt create -am "$2"
+up !gt modify --all && gt submit
