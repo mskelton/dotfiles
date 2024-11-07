@@ -78,5 +78,6 @@ alias gradle="./gradlew"
 alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
+alias xit="exit"
 
 # vim:ft=bash
