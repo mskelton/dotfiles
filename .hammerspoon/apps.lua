@@ -14,8 +14,10 @@ local M = {
 }
 
 M.categories = {
-	email = utils.if_work(nil, "Mimestream"),
+	browser = M.arc,
+	terminal = M.kitty,
 	messaging = utils.if_work(M.slack, M.telegram),
+	email = utils.if_work(nil, "Mimestream"),
 	tasks = utils.if_work("Linear", "Todoist"),
 }
 
