@@ -1,5 +1,6 @@
 --- vim:set colorcolumn=100:
 
+local apps = require("apps")
 local constants = require("constants")
 local utils = require("utils")
 local layout = require("layout")
@@ -43,16 +44,16 @@ Install:andUse("AppLauncher", {
 	},
 	hotkeys = {
 		--- Home row
-		h = "Finder",
-		j = constants.browser,
-		k = constants.terminal,
-		l = utils.if_work("Slack", "Telegram"),
-		[";"] = utils.if_work(nil, "Mimestream"),
+		h = apps.finder,
+		j = apps.categories.browser,
+		k = apps.categories.terminal,
+		l = apps.categories.messaging,
+		[";"] = apps.categories.email,
 		--- Bottom row
-		n = utils.if_work("Linear", "Todoist"),
-		m = "Figma",
-		["."] = utils.if_work("zoom.us", nil),
-		[","] = "ChatGPT",
+		n = apps.categories.tasks,
+		m = apps.figma,
+		["."] = utils.if_work(apps.zoom, nil),
+		[","] = apps.chat_gpt,
 	},
 })
 
@@ -62,35 +63,35 @@ local screens = constants.screens
 --- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
-		{ constants.browser, nil, screens.laptop, hs.layout.maximized },
-		{ constants.terminal, nil, screens.laptop, hs.layout.maximized },
-		{ "Mimestream", layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized },
-		{ "Figma", nil, screens.laptop, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.laptop, layout.put_left },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.categories.browser, nil, screens.laptop, hs.layout.maximized },
+		{ apps.categories.terminal, nil, screens.laptop, hs.layout.maximized },
+		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
+		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
+		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
+		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.laptop, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	}, {
-		{ constants.browser, nil, screens.primary, hs.layout.maximized },
-		{ constants.terminal, nil, screens.primary, hs.layout.maximized },
-		{ "Mimestream", layout.mimestream_inbox, screens.primary, hs.layout.maximized },
-		{ "Slack", nil, screens.primary, hs.layout.maximized },
-		{ "Linear", nil, screens.primary, hs.layout.maximized },
-		{ "Figma", nil, screens.primary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.primary, layout.put_left },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.categories.browser, nil, screens.primary, hs.layout.maximized },
+		{ apps.categories.terminal, nil, screens.primary, hs.layout.maximized },
+		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
+		{ apps.slack, nil, screens.primary, hs.layout.maximized },
+		{ apps.linear, nil, screens.primary, hs.layout.maximized },
+		{ apps.figma, nil, screens.primary, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	}, {
-		{ constants.browser, nil, screens.primary, hs.layout.maximized },
-		{ constants.terminal, nil, screens.primary, hs.layout.maximized },
-		{ "Mimestream", layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
-		{ "Slack", nil, screens.secondary, hs.layout.maximized },
-		{ "Figma", nil, screens.secondary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.secondary, layout.put_left },
-		{ "Linear", nil, screens.secondary, hs.layout.maximized },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.categories.browser, nil, screens.primary, hs.layout.maximized },
+		{ apps.categories.terminal, nil, screens.primary, hs.layout.maximized },
+		{ apps.mimestream, layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
+		{ apps.slack, nil, screens.secondary, hs.layout.maximized },
+		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
+		{ apps.figma, nil, screens.secondary, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.secondary, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	})
 end)
 
@@ -98,35 +99,35 @@ end)
 --- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
-		{ constants.browser, nil, screens.laptop, hs.layout.left50 },
-		{ constants.terminal, nil, screens.laptop, hs.layout.right50 },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50 },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_left },
-		{ "Mimestream", layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized },
-		{ "Figma", nil, screens.laptop, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.laptop, layout.put_left },
+		{ apps.categories.browser, nil, screens.laptop, hs.layout.left50 },
+		{ apps.categories.terminal, nil, screens.laptop, hs.layout.right50 },
+		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
+		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
+		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
+		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.laptop, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.left50 },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_left },
 	}, {
-		{ constants.browser, nil, screens.primary, hs.layout.left50 },
-		{ constants.terminal, nil, screens.primary, hs.layout.right50 },
-		{ "Mimestream", layout.mimestream_inbox, screens.primary, hs.layout.maximized },
-		{ "Slack", nil, screens.primary, hs.layout.maximized },
-		{ "Linear", nil, screens.primary, hs.layout.maximized },
-		{ "Figma", nil, screens.primary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.primary, layout.put_left },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.categories.browser, nil, screens.primary, hs.layout.left50 },
+		{ apps.categories.terminal, nil, screens.primary, hs.layout.right50 },
+		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
+		{ apps.slack, nil, screens.primary, hs.layout.maximized },
+		{ apps.linear, nil, screens.primary, hs.layout.maximized },
+		{ apps.figma, nil, screens.primary, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	}, {
-		{ constants.browser, nil, screens.primary, hs.layout.left50 },
-		{ constants.terminal, nil, screens.primary, hs.layout.right50 },
-		{ "Mimestream", layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
-		{ "Slack", nil, screens.secondary, hs.layout.maximized },
-		{ "Figma", nil, screens.secondary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.secondary, layout.put_left },
-		{ "Linear", nil, screens.secondary, hs.layout.maximized },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.categories.browser, nil, screens.primary, hs.layout.left50 },
+		{ apps.categories.terminal, nil, screens.primary, hs.layout.right50 },
+		{ apps.mimestream, layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
+		{ apps.slack, nil, screens.secondary, hs.layout.maximized },
+		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
+		{ apps.figma, nil, screens.secondary, hs.layout.maximized },
+		{ apps.chat_gpt, nil, screens.secondary, layout.put_left },
+		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	})
 end)
 
@@ -182,7 +183,7 @@ end)
 --- TODO: Re-enable this, but it's horrifically slow to start
 if false then
 	hs.window.filter.default
-		:setAppFilter("zoom.us")
+		:setAppFilter(apps.zoom)
 		:subscribe(hs.window.filter.windowCreated, utils.focus("on"))
 		:subscribe(hs.window.filter.windowTitleChanged, utils.focus("on"))
 		:subscribe(hs.window.filter.windowDestroyed, utils.focus("off"))

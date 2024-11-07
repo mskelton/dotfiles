@@ -8,9 +8,6 @@ M.keys = {
 	layer_key = { "cmd", "ctrl" },
 }
 
-M.browser = "Arc"
-M.terminal = "kitty"
-
 M.screens = {
 	laptop = "Built-in Retina Display",
 	primary = "LG ULTRAFINE",
