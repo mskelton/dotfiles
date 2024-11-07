@@ -32,6 +32,15 @@ return {
 			},
 		},
 		config = function()
+			require("nvim-treesitter.parsers").get_parser_configs().sed = {
+				install_info = {
+					url = "https://github.com/mskelton/tree-sitter-sed",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "sed",
+			}
+
 			require("nvim-treesitter.configs").setup({
 				endwise = { enable = true },
 				ensure_installed = {
@@ -70,6 +79,7 @@ return {
 					"query",
 					"regex",
 					"rust",
+					"sed",
 					"sql",
 					"styled",
 					"svelte",

@@ -1,10 +1,9 @@
 ; extends
 
-; Awk strings
+; awk, sed
 (command
-  name: ((command_name) @_name
-    (#eq? @_name "awk"))
+  name: ((command_name) @injection.language
+    (#any-of? @injection.language "awk" "sed"))
   argument: ([(raw_string) (string)] @injection.content)
     (#set! injection.include-children)
-    (#set! injection.language "awk")
     (#offset! @injection.content 0 1 0 -1))
