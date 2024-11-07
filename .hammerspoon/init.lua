@@ -80,8 +80,8 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.linear, nil, screens.primary, hs.layout.maximized },
 		{ apps.figma, nil, screens.primary, hs.layout.maximized },
 		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	}, {
 		{ apps.categories.browser, nil, screens.primary, hs.layout.maximized },
 		{ apps.categories.terminal, nil, screens.primary, hs.layout.maximized },
@@ -90,8 +90,8 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
 		{ apps.figma, nil, screens.secondary, hs.layout.maximized },
 		{ apps.chat_gpt, nil, screens.secondary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	})
 end)
 
@@ -116,8 +116,8 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.linear, nil, screens.primary, hs.layout.maximized },
 		{ apps.figma, nil, screens.primary, hs.layout.maximized },
 		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	}, {
 		{ apps.categories.browser, nil, screens.primary, hs.layout.left50 },
 		{ apps.categories.terminal, nil, screens.primary, hs.layout.right50 },
@@ -126,8 +126,8 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
 		{ apps.figma, nil, screens.secondary, hs.layout.maximized },
 		{ apps.chat_gpt, nil, screens.secondary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
+		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	})
 end)
 
