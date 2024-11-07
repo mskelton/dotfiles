@@ -44,7 +44,7 @@ view_video() {
 	filename=$(fd -I '.webm' "$1" | one)
 
 	if [ -n "$filename" ]; then
-		timg -pk "$filename"
+		open "$filename"
 	else
 		echo "[error]: No videos found"
 		return 1
