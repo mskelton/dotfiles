@@ -45,7 +45,7 @@ Install:andUse("AppLauncher", {
 		--- Home row
 		h = "Finder",
 		j = constants.browser,
-		k = "kitty",
+		k = constants.terminal,
 		l = utils.if_work("Slack", "Telegram"),
 		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
@@ -63,27 +63,34 @@ local screens = constants.screens
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
 		{ constants.browser, nil, screens.laptop, hs.layout.maximized },
-		{ "kitty", nil, screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "Zoom", "Zoom", screens.laptop, layout.put_center },
+		{ constants.terminal, nil, screens.laptop, hs.layout.maximized },
 		{ "Mimestream", layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "Postman", nil, screens.laptop, hs.layout.maximized },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized },
-	}, {}, {
-		--- Laptop
+		{ "Figma", nil, screens.laptop, hs.layout.maximized },
+		{ "ChatGPT", nil, screens.laptop, layout.put_left },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		--- Primary
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+	}, {
 		{ constants.browser, nil, screens.primary, hs.layout.maximized },
-		{ "kitty", nil, screens.primary, hs.layout.maximized },
-		--- Secondary
-		{ "Figma", nil, screens.secondary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.secondary, layout.put_left },
+		{ constants.terminal, nil, screens.primary, hs.layout.maximized },
+		{ "Mimestream", layout.mimestream_inbox, screens.primary, hs.layout.maximized },
+		{ "Slack", nil, screens.primary, hs.layout.maximized },
+		{ "Linear", nil, screens.primary, hs.layout.maximized },
+		{ "Figma", nil, screens.primary, hs.layout.maximized },
+		{ "ChatGPT", nil, screens.primary, layout.put_left },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+	}, {
+		{ constants.browser, nil, screens.primary, hs.layout.maximized },
+		{ constants.terminal, nil, screens.primary, hs.layout.maximized },
 		{ "Mimestream", layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized },
-		{ "Postman", nil, screens.secondary, hs.layout.maximized },
+		{ "Figma", nil, screens.secondary, hs.layout.maximized },
+		{ "ChatGPT", nil, screens.secondary, layout.put_left },
 		{ "Linear", nil, screens.secondary, hs.layout.maximized },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
 	})
 end)
 
@@ -92,56 +99,34 @@ end)
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
 		{ constants.browser, nil, screens.laptop, hs.layout.left50 },
-		{ "kitty", nil, screens.laptop, hs.layout.right50 },
+		{ constants.terminal, nil, screens.laptop, hs.layout.right50 },
 		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50 },
-		{ "Zoom", "Zoom", screens.laptop, layout.put_left },
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_left },
 		{ "Mimestream", layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ "Slack", nil, screens.laptop, hs.layout.maximized },
-		{ "Postman", nil, screens.laptop, hs.layout.maximized },
 		{ "Linear", nil, screens.laptop, hs.layout.maximized },
-	}, {}, {
-		--- Laptop
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ "zoom.us", "Zoom", screens.laptop, layout.put_center },
-		--- Primary
+		{ "Figma", nil, screens.laptop, hs.layout.maximized },
+		{ "ChatGPT", nil, screens.laptop, layout.put_left },
+	}, {
 		{ constants.browser, nil, screens.primary, hs.layout.left50 },
-		{ "kitty", nil, screens.primary, hs.layout.right50 },
-		--- Secondary
-		{ "Figma", nil, screens.secondary, hs.layout.maximized },
-		{ "ChatGPT", nil, screens.secondary, layout.put_left },
+		{ constants.terminal, nil, screens.primary, hs.layout.right50 },
+		{ "Mimestream", layout.mimestream_inbox, screens.primary, hs.layout.maximized },
+		{ "Slack", nil, screens.primary, hs.layout.maximized },
+		{ "Linear", nil, screens.primary, hs.layout.maximized },
+		{ "Figma", nil, screens.primary, hs.layout.maximized },
+		{ "ChatGPT", nil, screens.primary, layout.put_left },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
+	}, {
+		{ constants.browser, nil, screens.primary, hs.layout.left50 },
+		{ constants.terminal, nil, screens.primary, hs.layout.right50 },
 		{ "Mimestream", layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
 		{ "Slack", nil, screens.secondary, hs.layout.maximized },
-		{ "Postman", nil, screens.secondary, hs.layout.maximized },
-		{ "Linear", nil, screens.secondary, hs.layout.maximized },
-	})
-end)
-
---- Zoom layout, browser and kitty on left of main screen, Zoom on the right of
---- main screen. Figma maximized on the right most screen, Email/Slack on left
---- most screen.
-hs.hotkey.bind(constants.keys.layer_key, "o", function()
-	layout.apply_layout({
-		{ constants.browser, nil, screens.laptop, hs.layout.right50 },
-		{ "kitty", nil, screens.laptop, hs.layout.right50 },
-		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.left50 },
-		{ "Zoom", "Zoom", screens.laptop, layout.put_left },
-		{ "Mimestream", layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ "Slack", nil, screens.laptop, hs.layout.maximized },
-		{ "Postman", nil, screens.laptop, hs.layout.maximized },
-		{ "Linear", nil, screens.laptop, hs.layout.maximized },
-	}, {}, {
-		--- Primary
-		{ constants.browser, nil, screens.primary, hs.layout.right50 },
-		{ "kitty", nil, screens.primary, hs.layout.right50 },
-		{ "zoom.us", "Zoom Meeting", screens.primary, hs.layout.left50 },
-		{ "Zoom", "Zoom", screens.primary, layout.put_left },
-		--- Secondary
 		{ "Figma", nil, screens.secondary, hs.layout.maximized },
 		{ "ChatGPT", nil, screens.secondary, layout.put_left },
-		{ "Mimestream", layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
-		{ "Slack", nil, screens.secondary, hs.layout.maximized },
-		{ "Postman", nil, screens.secondary, hs.layout.maximized },
 		{ "Linear", nil, screens.secondary, hs.layout.maximized },
+		{ "zoom.us", "Zoom Meeting", screens.laptop, hs.layout.maximized },
+		{ "zoom.us", "Zoom Workplace", screens.laptop, layout.put_center },
 	})
 end)
 

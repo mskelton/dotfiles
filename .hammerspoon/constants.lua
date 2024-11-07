@@ -9,6 +9,7 @@ M.keys = {
 }
 
 M.browser = "Arc"
+M.terminal = "kitty"
 
 M.screens = {
 	laptop = "Built-in Retina Display",
@@ -16,13 +17,9 @@ M.screens = {
 	secondary = "LG Ultra HD",
 }
 
-M.disabled_apps = utils.if_work({
-	"Postman",
-}, {
-	"Postman",
+M.disabled_apps = utils.if_work({ "Mimestream" }, {
 	"Slack",
 	"Linear",
-	"Zoom",
 	"zoom.us",
 })
 
