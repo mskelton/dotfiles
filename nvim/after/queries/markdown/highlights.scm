@@ -1,5 +1,7 @@
 ; extends
 
 ; MDX
-((paragraph) @javascript @nospell (#match? @javascript "^(import|export).+$"))
-((paragraph) @javascript @nospell (#match? @javascript "^[<][A-z]+.*$"))
+((paragraph) @_javascript @nospell
+  (#match? @_javascript "^(import|export).+$"))
+((paragraph) @_javascript @nospell
+  (#match? @_javascript "^[<][A-z]+.*$"))

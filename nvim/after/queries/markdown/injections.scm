@@ -1,6 +1,7 @@
 ; extends
 
-; MDX
-((paragraph) @javascript (#match? @javascript "^(import|export).+$"))
-((paragraph) @javascript (#match? @javascript "^[<][A-z]+.*$"))
-
+; MDX imports
+((paragraph) @injection.content
+  (#match? @injection.content "^(import|export).+$")
+  (#set! injection.include-children)
+  (#set! injection.language "javascript"))
