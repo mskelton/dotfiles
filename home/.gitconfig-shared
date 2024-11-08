@@ -20,13 +20,13 @@
   cm = commit --edit
   edit = commit --amend
   msg = commit --amend -m
-  sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
+  go = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
   # Checkout
   co = checkout
   m = !git checkout $(git default)
   new = !git checkout $(git default) -b $2
   layer = checkout -b
-  pd = !pd
+  sync = !gsync
   pp = !git pull && git push
   # Merge
   md = !git merge origin $(git default) --no-edit

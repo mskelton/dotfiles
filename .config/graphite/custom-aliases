@@ -5,7 +5,7 @@ su submit --stack --update-only
 ma modify --all
 pr submit --stack --publish --cli
 prd submit --stack --draft --cli
-pd sync -f
+sync sync -f
 linear !linear
 new !gt create -am "$2"
-sync !gt modify --all && gt submit
+go !gt modify --all && gt submit
