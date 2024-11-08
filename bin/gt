@@ -2,7 +2,7 @@
 # Wrapper around Graphite to fix some paper cuts
 
 get_alias() {
-	filename=$HOME/.config/graphite/aliases
+	filename=$HOME/.config/graphite/custom-aliases
 
 	# Read the aliases from the config file
 	if [ ! -f "$filename" ]; then
