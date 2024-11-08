@@ -11,6 +11,7 @@ link .config/starship.toml ~/.config/starship.toml
 link .config/task ~/.config/task
 link .config/tmux ~/.config/tmux
 link .config/graphite/aliases ~/.config/graphite/aliases
+link .config/graphite/custom-aliases ~/.config/graphite/custom-aliases
 
 # Link files and directories
 link bin ~/.local/bin
