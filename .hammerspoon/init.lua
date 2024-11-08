@@ -50,10 +50,10 @@ Install:andUse("AppLauncher", {
 		l = apps.categories.messaging,
 		[";"] = apps.categories.email,
 		--- Bottom row
-		n = apps.categories.tasks,
-		m = apps.figma,
-		["."] = utils.if_work(apps.zoom, nil),
+		m = apps.categories.tasks,
 		[","] = apps.chat_gpt,
+		["."] = utils.if_work(apps.figma, nil),
+		["/"] = utils.if_work(apps.zoom, nil),
 	},
 })
 
