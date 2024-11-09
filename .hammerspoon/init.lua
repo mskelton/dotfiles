@@ -46,7 +46,7 @@ Install:andUse("AppLauncher", {
 		--- Home row
 		h = apps.finder,
 		j = apps.arc,
-		k = utils.if_work("Linear", nil),
+		k = apps.kitty,
 		l = utils.if_work(apps.slack, apps.telegram),
 		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
