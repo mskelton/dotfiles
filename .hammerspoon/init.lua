@@ -4,6 +4,7 @@ local apps = require("apps")
 local constants = require("constants")
 local utils = require("utils")
 local layout = require("layout")
+local screens = constants.screens
 
 --- Disable animations
 hs.window.animationDuration = 0
@@ -45,8 +46,6 @@ Install:andUse("AppLauncher", {
 	hotkeys = {
 		--- Home row
 		h = apps.finder,
-		j = apps.arc,
-		k = apps.kitty,
 		l = utils.if_work(apps.slack, apps.telegram),
 		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
@@ -57,7 +56,13 @@ Install:andUse("AppLauncher", {
 	},
 })
 
-local screens = constants.screens
+hs.hotkey.bind(constants.keys.layer_key, "j", function()
+	layout.pull_forward({ apps.kitty, apps.arc })
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "k", function()
+	layout.pull_forward({ apps.arc, apps.kitty })
+end)
 
 --- Main layout, browser on right most screen, Figma behind browser, kitty on
 --- main screen. Email/Slack on left most screen.

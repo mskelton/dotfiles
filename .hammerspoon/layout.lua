@@ -90,4 +90,69 @@ M.get_screen_rect = function()
 	return win, max
 end
 
+--- Pulls the specified app windows forward, focusing the last one in the list
+--- @param apps string[]
+M.pull_forward = function(apps)
+	local are_apps_foremost = M.are_apps_foremost(apps)
+
+	for i, app_name in ipairs(apps) do
+		--- For each app other than the last app, conditionally launch/focus them
+		--- if they are not already foremost
+		if i < #apps and not are_apps_foremost then
+			hs.application.launchOrFocus(app_name)
+		end
+
+		--- Always launch/focus the last app in the list
+		if i == #apps then
+			hs.application.launchOrFocus(app_name)
+		end
+	end
+end
+
+--- Determine if there are any other windows that are above the specified apps
+--- If there are, we want to focus each application in order to raise them up.
+--- @param apps string[]
+M.are_apps_foremost = function(apps)
+	local ordered_windows = hs.window.orderedWindows()
+
+	--- @type table<string, boolean>
+	local seen_apps = {}
+
+	for _, window in ipairs(ordered_windows) do
+		--- @type hs.application|nil
+		local app = window:application()
+		if app == nil then
+			goto continue
+		end
+
+		if hs.fnutils.contains(apps, app:title()) then
+			seen_apps[app:title()] = true
+		elseif #apps == M.tbl_count(seen_apps) then
+			--- I've we've seen all the apps specified by the time we find a
+			--- non-specified app, the specified apps are foremost.
+			return true
+		else
+			--- If we find a non-specified app before we've seen all the specified
+			--- apps, then the specified apps are not foremost.
+			return false
+		end
+
+		::continue::
+	end
+
+	return true
+end
+
+--- Count the number of keys in a table
+--- @param tbl table
+M.tbl_count = function(tbl)
+	local count = 0
+
+	for _ in pairs(tbl) do
+		count = count + 1
+	end
+
+	return count
+end
+
 return M
