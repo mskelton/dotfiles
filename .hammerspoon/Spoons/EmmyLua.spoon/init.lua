@@ -53,7 +53,10 @@ M.spoonPath = hs.spoons.scriptPath()
 
 function M.comment(str, commentStr)
 	commentStr = commentStr or "--"
-	return commentStr .. " " .. str:gsub("[\n]", "\n" .. commentStr .. " "):gsub("%s+\n", "\n") .. "\n"
+	return commentStr
+		.. " "
+		.. str:gsub("[\n]", "\n" .. commentStr .. " "):gsub("%s+\n", "\n")
+		.. "\n"
 end
 
 function M.parseType(module, str)

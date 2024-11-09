@@ -35,7 +35,7 @@ obj.license = "ISC - https://opensource.org/licenses/ISC"
 --- Modifier keys used when launching apps
 ---
 --- Default value: `{"ctrl", "alt"}`
-obj.modifiers = {"ctrl", "alt"}
+obj.modifiers = { "ctrl", "alt" }
 
 --- AppLauncher:bindHotkeys(mapping)
 --- Method
@@ -44,11 +44,11 @@ obj.modifiers = {"ctrl", "alt"}
 --- Parameters:
 ---  * mapping - A table containing single characters with their associated app
 function obj:bindHotkeys(mapping)
-  for key, app in pairs(mapping) do
-    hs.hotkey.bind(obj.modifiers, key, function()
-      hs.application.launchOrFocus(app)
-    end)
-  end
+	for key, app in pairs(mapping) do
+		hs.hotkey.bind(obj.modifiers, key, function()
+			hs.application.launchOrFocus(app)
+		end)
+	end
 end
 
 return obj
