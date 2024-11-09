@@ -45,12 +45,12 @@ Install:andUse("AppLauncher", {
 	hotkeys = {
 		--- Home row
 		h = apps.finder,
-		j = apps.categories.browser,
-		k = apps.categories.terminal,
-		l = apps.categories.messaging,
-		[";"] = apps.categories.email,
+		j = apps.arc,
+		k = utils.if_work("Linear", nil),
+		l = utils.if_work(apps.slack, apps.telegram),
+		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
-		m = apps.categories.tasks,
+		n = utils.if_work("Linear", nil),
 		[","] = apps.chat_gpt,
 		["."] = utils.if_work(apps.figma, nil),
 		["/"] = utils.if_work(apps.zoom, nil),
@@ -63,8 +63,8 @@ local screens = constants.screens
 --- main screen. Email/Slack on left most screen.
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
-		{ apps.categories.browser, nil, screens.laptop, hs.layout.maximized },
-		{ apps.categories.terminal, nil, screens.laptop, hs.layout.maximized },
+		{ apps.arc, nil, screens.laptop, hs.layout.maximized },
+		{ apps.kitty, nil, screens.laptop, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
 		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
@@ -73,8 +73,8 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
 		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
 	}, {
-		{ apps.categories.browser, nil, screens.primary, hs.layout.maximized },
-		{ apps.categories.terminal, nil, screens.primary, hs.layout.maximized },
+		{ apps.arc, nil, screens.primary, hs.layout.maximized },
+		{ apps.kitty, nil, screens.primary, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack, nil, screens.primary, hs.layout.maximized },
 		{ apps.linear, nil, screens.primary, hs.layout.maximized },
@@ -83,8 +83,8 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
 		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	}, {
-		{ apps.categories.browser, nil, screens.primary, hs.layout.maximized },
-		{ apps.categories.terminal, nil, screens.primary, hs.layout.maximized },
+		{ apps.arc, nil, screens.primary, hs.layout.maximized },
+		{ apps.kitty, nil, screens.primary, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
 		{ apps.slack, nil, screens.secondary, hs.layout.maximized },
 		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
@@ -99,8 +99,8 @@ end)
 --- Figma maximized on the right most screen, Email/Slack on left most screen.
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
-		{ apps.categories.browser, nil, screens.laptop, hs.layout.left50 },
-		{ apps.categories.terminal, nil, screens.laptop, hs.layout.right50 },
+		{ apps.arc, nil, screens.laptop, hs.layout.left50 },
+		{ apps.kitty, nil, screens.laptop, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
 		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
@@ -109,8 +109,8 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.left50 },
 		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_left },
 	}, {
-		{ apps.categories.browser, nil, screens.primary, hs.layout.left50 },
-		{ apps.categories.terminal, nil, screens.primary, hs.layout.right50 },
+		{ apps.arc, nil, screens.primary, hs.layout.left50 },
+		{ apps.kitty, nil, screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack, nil, screens.primary, hs.layout.maximized },
 		{ apps.linear, nil, screens.primary, hs.layout.maximized },
@@ -119,8 +119,8 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
 		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
 	}, {
-		{ apps.categories.browser, nil, screens.primary, hs.layout.left50 },
-		{ apps.categories.terminal, nil, screens.primary, hs.layout.right50 },
+		{ apps.arc, nil, screens.primary, hs.layout.left50 },
+		{ apps.kitty, nil, screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.secondary, hs.layout.maximized },
 		{ apps.slack, nil, screens.secondary, hs.layout.maximized },
 		{ apps.linear, nil, screens.secondary, hs.layout.maximized },
