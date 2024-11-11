@@ -99,7 +99,9 @@ M.pull_forward = function(apps)
 		--- For each app other than the last app, conditionally launch/focus them
 		--- if they are not already foremost
 		if i < #apps and not are_apps_foremost then
-			hs.application.launchOrFocus(app_name)
+			hs.timer.doAfter(0.1 * i, function()
+				hs.application.get(app_name):mainWindow():raise()
+			end)
 		end
 
 		--- Always launch/focus the last app in the list
