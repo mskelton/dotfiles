@@ -213,9 +213,3 @@ hs.hotkey.bind(nil, "f6", function()
     end tell
   ]])
 end)
-
---- Slack shortcut to jump to next unread/thread
-hs.hotkey.bind(constants.keys.hyper, "k", function()
-	hs.eventtap.keyStroke({ "cmd" }, "k")
-	hs.eventtap.keyStroke({}, "return")
-end)

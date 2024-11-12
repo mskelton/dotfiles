@@ -3,8 +3,8 @@ local M = {}
 local utils = require("utils")
 
 M.keys = {
-	hyper = { "cmd", "option", "ctrl", "shift" },
-	meh = { "ctrl", "option", "shift" },
+	hyper = { "cmd", "alt", "ctrl", "shift" },
+	meh = { "ctrl", "alt", "shift" },
 	layer_key = { "cmd", "ctrl" },
 }
 
