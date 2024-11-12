@@ -7,7 +7,7 @@
 local obj = {}
 obj.__index = obj
 
--- Metadata
+--- Metadata
 obj.name = "SpoonInstall"
 obj.version = "0.1"
 obj.author = "Diego Zamboni <diego@zzamboni.org>"
@@ -55,7 +55,7 @@ obj.repos = {
 --- will happen at a more "human readable" rate.
 obj.use_syncinstall = false
 
--- Execute a command and return its output with trailing EOLs trimmed. If the command fails, an error message is logged.
+--- Execute a command and return its output with trailing EOLs trimmed. If the command fails, an error message is logged.
 local function _x(cmd, errfmt, ...)
 	local output, status = hs.execute(cmd)
 	if status then
@@ -67,11 +67,11 @@ local function _x(cmd, errfmt, ...)
 	end
 end
 
--- --------------------------------------------------------------------
--- Spoon repository management
+--- --------------------------------------------------------------------
+--- Spoon repository management
 
--- Internal callback to process and store the data from docs.json about a repository
--- callback is called with repo as arguments, only if the call is successful
+--- Internal callback to process and store the data from docs.json about a repository
+--- callback is called with repo as arguments, only if the call is successful
 function obj:_storeRepoJSON(repo, callback, status, body, hdrs)
 	local success = nil
 	if (status < 100) or (status >= 400) then
@@ -101,7 +101,7 @@ function obj:_storeRepoJSON(repo, callback, status, body, hdrs)
 	return success
 end
 
--- Internal function to return the URL of the docs.json file based on the URL of a GitHub repo
+--- Internal function to return the URL of the docs.json file based on the URL of a GitHub repo
 function obj:_build_repo_json_url(repo)
 	if self.repos[repo] and self.repos[repo].url then
 		local branch = self.repos[repo].branch or "master"
@@ -264,11 +264,11 @@ function obj:search(pat)
 	return res
 end
 
--- --------------------------------------------------------------------
--- Spoon installation
+--- --------------------------------------------------------------------
+--- Spoon installation
 
--- Internal callback function to finalize the installation of a spoon after the zip file has been downloaded.
--- callback, if given, is called with (urlparts, success) as arguments
+--- Internal callback function to finalize the installation of a spoon after the zip file has been downloaded.
+--- callback, if given, is called with (urlparts, success) as arguments
 function obj:_installSpoonFromZipURLgetCallback(urlparts, callback, status, body, headers)
 	local success = nil
 	if (status < 100) or (status >= 400) then
@@ -377,7 +377,7 @@ function obj:installSpoonFromZipURL(url)
 	end
 end
 
--- Internal function to check if a Spoon/Repo combination is valid
+--- Internal function to check if a Spoon/Repo combination is valid
 function obj:_is_valid_spoon(name, repo)
 	if self.repos[repo] then
 		if self.repos[repo].data then

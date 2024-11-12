@@ -23,7 +23,7 @@
 local obj = {}
 obj.__index = obj
 
--- Metadata
+--- Metadata
 obj.name = "AppLauncher"
 obj.version = "1.0.0"
 obj.author = "Mathias Jean Johansen <mathias@mjj.io>"

@@ -154,14 +154,14 @@ hs.hotkey.bind({ "cmd", "alt" }, "f", function()
 	win:setFrame(hs.geometry.rect(max.x, max.y, max.w, max.h))
 end)
 
--- Move window to the previous display
+--- Move window to the previous display
 hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Left", function()
 	local win = hs.window.focusedWindow()
 	local prevScreen = win:screen():toWest()
 	win:moveToScreen(prevScreen)
 end)
 
--- Move window to the next display
+--- Move window to the next display
 hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Right", function()
 	local win = hs.window.focusedWindow()
 	local nextScreen = win:screen():toEast()
@@ -198,12 +198,12 @@ end
 hs.hotkey.bind({ "option" }, "p", utils.media("playpause"))
 hs.hotkey.bind({ "option" }, "n", utils.media("next"))
 
--- Sleep
+--- Sleep
 hs.hotkey.bind({ "cmd" }, "f6", function()
 	hs.caffeinate.systemSleep()
 end)
 
--- Toggle system appearance
+--- Toggle system appearance
 hs.hotkey.bind(nil, "f6", function()
 	hs.osascript.applescript([[
     tell application "System Events"
@@ -212,4 +212,10 @@ hs.hotkey.bind(nil, "f6", function()
       end tell
     end tell
   ]])
+end)
+
+--- Slack shortcut to jump to next unread/thread
+hs.hotkey.bind(constants.keys.hyper, "k", function()
+	hs.eventtap.keyStroke({ "cmd" }, "k")
+	hs.eventtap.keyStroke({}, "return")
 end)
