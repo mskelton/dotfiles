@@ -63,6 +63,7 @@ go install github.com/mskelton/byte@latest
 go install github.com/mskelton/jira@latest
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pr@latest
+go install github.com/mskelton/prs@latest
 go install github.com/mskelton/url@latest
 go install github.com/spf13/cobra-cli@latest
 
