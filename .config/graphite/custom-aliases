@@ -1,11 +1,11 @@
-ls log short
+linear !linear
 ll log long
-ss submit --stack
-su submit --stack --update-only
+ls log short
 ma modify --all
+main !gt sync -f && gt checkout $(git default)
+new !gt create -am "$2"
 pr submit --stack --publish --cli
 prd submit --stack --draft --cli
-main sync -f
-linear !linear
-new !gt create -am "$2"
-sync !gt modify --all && gt submit
+ss submit --stack
+su submit --stack --update-only
+sync sync -f
