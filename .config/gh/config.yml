@@ -4,9 +4,11 @@ aliases:
     aus: pr merge --squash --auto
     auto: pr merge --auto
     clone: '!gh repo clone "mskelton/$1" -- "${@:2}"'
+    co: pr checkout
     copy: "!gh url | pbcopy"
     dependabot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
     draft: pr create --draft
+    ls-dependabot: '!prs --app dependabot'
     mkrelease: workflow run release.yml
     pb: "!gh url | pbcopy"
     prc: pr create -w
