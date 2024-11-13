@@ -3,7 +3,7 @@ local M = {}
 function M.apply_edits(result)
 	for _, r in pairs(result or {}) do
 		if r.edit then
-			vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+			vim.lsp.util.apply_workspace_edit(r.edit, "utf-8")
 		elseif r.command then
 			vim.lsp.buf.execute_command(r.command)
 		end
