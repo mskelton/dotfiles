@@ -1,13 +1,16 @@
 aliases:
+    aa: '!gh pr review --approve "$1" && gh pr merge --auto "$1"'
     approve: pr review --approve
     assign: '!gh pr edit --add-reviewer "$1" && gh copy'
     aus: pr merge --squash --auto
     auto: pr merge --auto
-    clone: '!gh repo clone "mskelton/$1" -- "${@:2}"'
+    clone: repo clone
     co: pr checkout
+    codegen: workflow run codegen.yml
     copy: "!gh url | pbcopy"
     dependabot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
     draft: pr create --draft
+    ls-codegen: '!prs --search "head:ci/run-codegen"'
     ls-dependabot: '!prs --app dependabot'
     mkrelease: workflow run release.yml
     pb: "!gh url | pbcopy"
@@ -16,7 +19,6 @@ aliases:
     ready: pr ready
     setup-repo: '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -F "has_projects=false" -f "allow_merge_commit=false" -f "allow_rebase_merge=false" -f "allow_auto_merge=true" -f "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo} --silent'
     squash: pr merge --squash
-    st: status -o mskelton
     undo: pr ready --undo
     url: pr view --json url -q .url
     w: repo view -w
