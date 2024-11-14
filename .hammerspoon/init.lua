@@ -49,7 +49,7 @@ Install:andUse("AppLauncher", {
 		l = utils.if_work(apps.slack, apps.telegram),
 		[";"] = utils.if_work(nil, "Mimestream"),
 		--- Bottom row
-		n = utils.if_work("Linear", nil),
+		n = utils.if_work("Linear", "Todoist"),
 		[","] = apps.chat_gpt,
 		["."] = utils.if_work(apps.figma, nil),
 		["/"] = utils.if_work(apps.zoom, nil),
