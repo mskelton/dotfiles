@@ -119,8 +119,14 @@ end
 --- Opens any URLs in the provided text string
 --- @param text string
 M.open_url = function(text)
-	local url = string.gsub(text, "'", "\\'")
-	os.execute("echo '" .. url .. "' | url | xargs open")
+	local handle = io.popen("url | xargs open", "w")
+	if handle == nil then
+		vim.notify("failed to open process", vim.log.levels.ERROR)
+		return
+	end
+
+	handle:write(text .. "\n")
+	handle:close()
 end
 
 --- Get's the truncation width for the current window size.

@@ -101,7 +101,7 @@ map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 --- Rename the word under the cursor
 map("n", "<leader>rw", function()
-	local value = vim.fn.expand("<cword>")
+	local value = vim.fn.expand("<cWORD>")
 
 	vim.ui.input({
 		prompt = "Rename word",
