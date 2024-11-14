@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# AST Grep results to Vim quickfix list
+
+cat | jq -r '.[] | "\(.file):\(.range.start.line + 1):\(.range.start.column + 1): \(.text | split("\n")[0])"' | vim -q -
