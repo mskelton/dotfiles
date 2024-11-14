@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # Strip Notion checkbox formatting form text
 
-while IFS= read -r line; do
-	echo "${line//- \[ \]  /}"
-done
+cat | sed "s/- \[ \]  //"

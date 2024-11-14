@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # URL-encode a string
 
-while IFS= read -r line; do
-	echo "$line" | jq -Rr @uri
-done
+cat | jq -Rr @uri
