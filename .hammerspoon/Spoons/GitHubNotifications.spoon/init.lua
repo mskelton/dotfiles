@@ -58,6 +58,11 @@ function M:on_timer()
 		["Authorization"] = "token " .. self.token,
 		["Content-Type"] = "application/json",
 	}, function(status, body)
+		--- Ignore error if offline
+		if status == -1 then
+			return nil
+		end
+
 		if status ~= 200 then
 			show_error("Failed to fetch GitHub notifications")
 			return nil
