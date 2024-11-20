@@ -71,7 +71,7 @@ return {
 				desc = "Git pull",
 			},
 			{
-				"<leader>vo",
+				"<leader>vw",
 				function()
 					vim.cmd(string.format("GBrowse! %s:%s", default_branch(), filename()))
 				end,
@@ -79,7 +79,7 @@ return {
 				desc = "Copy remote URL",
 			},
 			{
-				"<leader>vo",
+				"<leader>vw",
 				":lua CopyGitRemoteURLFromSelection()<cr>",
 				mode = "v",
 				desc = "Copy remote URL for selection",
