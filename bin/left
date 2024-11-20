@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Days left until the wedding
+
+_days_left() {
+	# Calculate the difference in days
+	current_date=$(date +%s)
+	target_date_epoch=$(date -j -f "%Y-%m-%d" "$1" +%s)
+	days_left=$(((target_date_epoch - current_date) / 86400))
+
+	echo $days_left
+}
+
+echo "$(_days_left '2025-02-08') days left until February 8th"
+echo "$(_days_left '2025-03-01') days left until March 1st"
