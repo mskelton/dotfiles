@@ -84,6 +84,12 @@ return {
 				mode = "v",
 				desc = "Copy remote URL for selection",
 			},
+			{
+				"<leader>vL",
+				"<cmd>Git checkout -<cr>",
+				mode = { "n", "v" },
+				desc = "Checkout last branch",
+			},
 		},
 	},
 	{
