@@ -178,6 +178,7 @@ M.setup_servers = function()
 						"**/.next/*",
 						"**/postcss",
 						"**/react-aria-components",
+						"**/react-router",
 					},
 				},
 			},
