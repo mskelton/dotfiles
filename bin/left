@@ -10,5 +10,4 @@ _days_left() {
 	echo $days_left
 }
 
-echo "$(_days_left '2025-02-08') days left until February 8th"
-echo "$(_days_left '2025-03-01') days left until March 1st"
+echo "$(_days_left '2025-03-01') days until our wedding!"
