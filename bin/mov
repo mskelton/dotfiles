@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Convert mp4 to mov
+
+ffmpeg -i "$1" -f mov "${1%.mp4}.mov"
