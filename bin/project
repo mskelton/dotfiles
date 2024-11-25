@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for file in ~/Downloads/*.mp4; do
+	mov "$file"
+	rm "$file"
+done
+
+osascript -e 'display notification "Videos are ready to be imported into iMovie" with title "Videos converted" sound name "Glass"'
