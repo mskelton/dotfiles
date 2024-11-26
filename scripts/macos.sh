@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2016
 
+# Disable spotlight indexing
+sudo mdutil -a -i off
+
 # Enable dark theme
 defaults write -g AppleInterfaceStyle -string 'Dark'
 
