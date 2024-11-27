@@ -11,6 +11,7 @@ aliases:
     dependabot: '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {} gh pr comment {} -b "@dependabot merge"'
     draft: pr create --draft
     ls-codegen: '!prs --search "head:ci/run-codegen"'
+    ls-ryu: '!prs --search "head:ci/bump-ryu"'
     ls-dependabot: '!prs --app dependabot'
     mkrelease: workflow run release.yml
     pb: "!gh url | pbcopy"
