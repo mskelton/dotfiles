@@ -26,7 +26,11 @@ Commands:
 
 _list_notifications() {
 	gh api notifications |
-		jq -r 'map({title: .subject.title, url: .subject.url, updated_at: .updated_at})' |
+		jq -r 'map({
+      title: .subject.title,
+      url: .subject.url | gsub("api.github.com/repos/"; "github.com/") | gsub("/pulls/"; "/pull/"),
+      updated_at: .updated_at,
+    })' |
 		tsv --column Title key=title \
 			--column URL key=url color=blue \
 			--column 'Updated At' key=updated_at color=dim type=date format=relative
