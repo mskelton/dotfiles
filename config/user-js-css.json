@@ -1,7 +1,7 @@
 {
   "info": {
-    "lastEmitterId": "N4AZUdaMsN_Bx-u8i-Kh0",
-    "updatedAt": 1726576862342,
+    "lastEmitterId": "GnvblcQhUrmmXkFQqcs37",
+    "updatedAt": 1733333787869,
     "version": 11
   },
   "libs": [],
@@ -23,6 +23,15 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:DtjJt55kqkw3_isZqr80y": {
+    "css": "footer {\n  display: none !important;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "footer {\n\tdisplay: none !important;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "r:EQ2SCArx4_M5yWTArOpGe": {
     "css": "button > [value=\"Take the Tour\"] {\n  display: none !important;\n}",
     "cssError": "",
@@ -41,12 +50,30 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:OEVcVBj-y7WVcfk9APagK": {
+    "css": "",
+    "cssError": "",
+    "js": "document.addEventListener('keydown', (e) => {\n\tif (e.target.nodeName === 'INPUT' || e.target.nodeName === 'TEXTAREA') {\n\t\treturn;\n\t}\n\n\tswitch (e.key) {\n\t\tcase 't':\n\t\t\treact('+1');\n\t\t\tbreak;\n\n\t\tcase 'e':\n\t\t\treact('eyes');\n\t\t\tbreak;\n\t}\n});\n\nfunction react(emoji) {\n\tconst item = document.querySelector(\n\t\t`.TimelineItem:hover .timeline-comment:not(.is-comment-editing) form.js-pick-reaction button[data-reaction-content=\"${emoji}\"]`\n\t);\n\n\titem?.click();\n}\n",
+    "jsDraft": "",
+    "scss": "",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "r:QdBNG4ZrGEq3qBtm6iV58": {
     "css": "",
     "cssError": "",
-    "js": "document.addEventListener('keydown', (event) => {\n\tif (event.metaKey && event.shiftKey && event.key === 'h') {\n\t\ttoggleZipFiles();\n\t\tviewZipFiles();\n\t}\n});\n\nfunction toggleZipFiles() {\n\tconst checkbox = document\n\t\t.querySelector('file-filter input[type=\"checkbox\"][value=\".zip\"]')\n\t\t?.click();\n}\n\nfunction viewZipFiles() {\n\t[...document.querySelectorAll('.file-header[data-file-type=\".zip\"]')]\n\t\t.map((header) =>\n\t\t\theader.querySelector(\n\t\t\t\t'input[type=\"checkbox\"][name=\"viewed\"]:not(:checked)'\n\t\t\t)\n\t\t)\n\t\t.forEach((checkbox) => checkbox.click());\n}\n",
+    "js": "document.addEventListener('keydown', (event) => {\n\tif (event.metaKey && event.shiftKey && event.key === 'h') {\n\t\ttoggleFiles();\n\t\tviewFiles();\n\t}\n});\n\nfunction toggleFiles() {\n\tconst checkbox = document\n\t\t.querySelector('file-filter input[type=\"checkbox\"][value=\".zip\"]')\n\t\t?.click();\n}\n\nconst paths = [\n\t'/_generated/',\n\t'tooling/codegen/openapi-auth.json',\n\t'tooling/codegen/openapi-fixtures.json',\n\t'tooling/codegen/openapi-public.json',\n\t'tooling/codegen/schema-commit.lock',\n\t'playwright/hars/',\n];\n\nfunction viewFiles() {\n\tconst selectors = paths.map((path) => `[title*=\"${path}\"]`).join(',');\n\tconst selector = `.file-header:has(:is(${selectors}))`;\n\tconst files = [...document.querySelectorAll(selector)];\n\n\tfiles\n\t\t.map((header) =>\n\t\t\theader.querySelector(\n\t\t\t\t'input[type=\"checkbox\"][name=\"viewed\"]:not(:checked)'\n\t\t\t)\n\t\t)\n\t\t.filter(Boolean)\n\t\t.forEach((checkbox) => checkbox.click());\n}\n",
     "jsDraft": "",
     "scss": "",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:Qgnvh0neQg4VIccumczpz": {
+    "css": ".msgb,\n[role=contentinfo],\n[aria-label=Support],\n[src*=\"help_outline_white_24dp.png\"] {\n  display: none !important;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": ".msgb,\n[role='contentinfo'],\n[aria-label='Support'],\n[src*=\"help_outline_white_24dp.png\"] {\n\tdisplay: none !important;\n}\n",
     "scssDraft": "",
     "styleImportant": false
   },
@@ -95,6 +122,24 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:wGm_y68EGU2WdNKdxLMJ6": {
+    "css": "#docs-feature-level-banner {\n  display: none;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "#docs-feature-level-banner {\n\tdisplay: none;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:x2w5Vuw3P7vsD9-UqciHS": {
+    "css": "div[class^=info_]:has(a[href=\"https://v3.yarnpkg.com/\"]) {\n  display: none;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "div[class^='info_']:has(a[href=\"https://v3.yarnpkg.com/\"]) {\n\tdisplay: none;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "rules": [
     {
       "created": 1726170442659,
@@ -110,8 +155,8 @@
       "flags": [],
       "id": "r:DInOFQgDgd9SC1NaQCwmV",
       "libs": [],
-      "name": "Notion",
-      "updated": 1726170537778,
+      "name": "Notion - Text Readability",
+      "updated": 1733332733609,
       "urls": "https://www.notion.so/*"
     },
     {
@@ -174,7 +219,7 @@
       "id": "r:QdBNG4ZrGEq3qBtm6iV58",
       "libs": [],
       "name": "GitHub - HAR Toggle",
-      "updated": 1726576862241,
+      "updated": 1731594170807,
       "urls": "https://github.com/*"
     },
     {
@@ -184,6 +229,51 @@
       "libs": [],
       "name": "GitHub - Hide Enterprise Banner",
       "updated": 1726234459623,
+      "urls": "https://github.com/*"
+    },
+    {
+      "created": 1726582852618,
+      "flags": [],
+      "id": "r:Qgnvh0neQg4VIccumczpz",
+      "libs": [],
+      "name": "Gmail - Clean",
+      "updated": 1726583146859,
+      "urls": "https://mail.google.com/*"
+    },
+    {
+      "created": 1728572825429,
+      "flags": [],
+      "id": "r:x2w5Vuw3P7vsD9-UqciHS",
+      "libs": [],
+      "name": "Yarn - Hide Docs Notice",
+      "updated": 1728572975657,
+      "urls": "https://yarnpkg.com/*"
+    },
+    {
+      "created": 1728922460442,
+      "flags": [],
+      "id": "r:DtjJt55kqkw3_isZqr80y",
+      "libs": [],
+      "name": "Graphite - Hide Footer",
+      "updated": 1728922476153,
+      "urls": "https://app.graphite.dev/github/pr/*"
+    },
+    {
+      "created": 1729254961799,
+      "flags": [],
+      "id": "r:wGm_y68EGU2WdNKdxLMJ6",
+      "libs": [],
+      "name": "Docs - Hide banner",
+      "updated": 1729254986389,
+      "urls": "https://docs.google.com/*"
+    },
+    {
+      "created": 1733332714432,
+      "flags": [],
+      "id": "r:OEVcVBj-y7WVcfk9APagK",
+      "libs": [],
+      "name": "GitHub - Quick Reactions",
+      "updated": 1733333787767,
       "urls": "https://github.com/*"
     }
   ],
