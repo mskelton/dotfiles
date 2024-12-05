@@ -35,10 +35,12 @@ _list_notifications() {
 	echo "$notifications" |
 		jq -r 'map({
         title: .subject.title,
+        reason: .reason,
         url: .subject.url | gsub("api.github.com/repos/"; "github.com/") | gsub("/pulls/"; "/pull/"),
         updated_at: .updated_at,
       })' |
 		tsv --column Title key=title \
+			--column Reason key=reason color=green \
 			--column URL key=url color=blue \
 			--column 'Updated At' key=updated_at color=dim type=date format=relative
 }
