@@ -102,3 +102,22 @@ end, {
 	desc = "Execute a shell command and insert the output into the buffer",
 	complete = "shellcmd",
 })
+
+vim.api.nvim_create_user_command("Quote", function(opts)
+	local start_line = opts.line1
+	local end_line = opts.line2
+
+	local function quote_line(line)
+		local leading_spaces = line:match("^%s*")
+		local content = line:match("^%s*(.*)")
+		return leading_spaces .. string.format('"%s",', content)
+	end
+
+	for line = start_line, end_line do
+		local content = vim.fn.getline(line)
+		vim.fn.setline(line, quote_line(content))
+	end
+end, {
+	desc = "Quote lines",
+	range = true,
+})
