@@ -2,8 +2,6 @@ local M = {}
 
 local utils = require("utils")
 
-M.window_padding = 12
-
 M.keys = {
 	hyper = { "cmd", "alt", "ctrl", "shift" },
 	meh = { "ctrl", "alt", "shift" },
