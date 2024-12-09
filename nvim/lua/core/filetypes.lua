@@ -6,6 +6,7 @@ vim.filetype.add({
 		keymap = "dts",
 		http = "http",
 		har = "json",
+		grit = "gritql",
 	},
 	filename = {
 		[".clangd"] = "yaml",

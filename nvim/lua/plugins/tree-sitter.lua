@@ -32,6 +32,15 @@ return {
 			},
 		},
 		config = function()
+			require("nvim-treesitter.parsers").get_parser_configs().gritql = {
+				install_info = {
+					url = "https://github.com/getgrit/tree-sitter-gritql",
+					files = { "src/parser.c", "src/scanner.c" },
+					branch = "main",
+				},
+				filetype = "gritql",
+			}
+
 			require("nvim-treesitter.parsers").get_parser_configs().sed = {
 				install_info = {
 					url = "https://github.com/mskelton/tree-sitter-sed",
@@ -61,6 +70,7 @@ return {
 					"gomod",
 					"gowork",
 					"graphql",
+					"gritql",
 					"html",
 					"http",
 					"java",

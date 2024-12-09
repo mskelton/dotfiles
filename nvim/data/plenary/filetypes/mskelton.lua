@@ -5,6 +5,7 @@ return {
 		keymap = "dts",
 		mts = "typescript",
 		cts = "typescript",
+		grit = "gritql",
 	},
 	file_name = {
 		[".clangd"] = "yaml",
