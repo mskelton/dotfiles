@@ -15,6 +15,72 @@ M.apply_layout = function(...)
 	hs.layout.apply(layout)
 end
 
+--- Get a rect for the given screen that represents a maximized window
+--- @param screen hs.geometry
+--- @return hs.geometry
+M.get_maximized_rect = function(screen)
+	return hs.geometry.rect(
+		screen.x + constants.window_padding,
+		screen.y + constants.window_padding,
+		screen.w - constants.window_padding * 2,
+		screen.h - constants.window_padding * 2
+	)
+end
+
+--- Get a unit rect for the given screen that represents a maximized window
+--- @param window hs.window
+M.maximized = function(window)
+	local screen = window:screen():frame()
+	return M.get_maximized_rect(screen):toUnitRect(screen)
+end
+
+--- Get a rect for the given screen that represents the left 50% of the screen
+--- @param screen hs.geometry
+--- @return hs.geometry
+M.get_left50_rect = function(screen)
+	return hs.geometry.rect(
+		screen.x + constants.window_padding,
+		screen.y + constants.window_padding,
+		(screen.w / 2) - constants.window_padding * 1.5,
+		screen.h - constants.window_padding * 2
+	)
+end
+
+--- Get a unit rect for the given screen that represents the left 50% of the screen
+--- @param window hs.window
+M.left50 = function(window)
+	local screen = window:screen():frame()
+	return M.get_left50_rect(screen):toUnitRect(screen)
+end
+
+--- Get a rect for the given screen that represents the right 50% of the screen
+--- @param screen hs.geometry
+--- @return hs.geometry
+M.get_right50_rect = function(screen)
+	return hs.geometry.rect(
+		screen.x + (screen.w / 2) + constants.window_padding / 2,
+		screen.y + constants.window_padding,
+		(screen.w / 2) - constants.window_padding * 1.5,
+		screen.h - constants.window_padding * 2
+	)
+end
+
+--- Get a unit rect for the given screen that represents the right 50% of the screen
+--- @param window hs.window
+M.right50 = function(window)
+	local screen = window:screen():frame()
+	return M.get_right50_rect(screen):toUnitRect(screen)
+end
+
+--- Get the focused window and it's max dimensions
+--- @return hs.window, hs.geometry
+M.get_screen_rect = function()
+	local win = hs.window.focusedWindow()
+	local screen = win:screen():frame()
+
+	return win, screen
+end
+
 --- Get's the Mimestream inbox window. We don't want to maximize draft emails
 --- since they are not full size.
 M.mimestream_inbox = function()
@@ -78,16 +144,6 @@ M.put_right = function(window)
 			frame.h
 		)
 		:toUnitRect(screen)
-end
-
---- Get the focused window and it's max dimensions
---- @return hs.window, hs.geometry
-M.get_screen_rect = function()
-	local win = hs.window.focusedWindow()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	return win, max
 end
 
 --- Pulls the specified app windows forward, focusing the last one in the list
