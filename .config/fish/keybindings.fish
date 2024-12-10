@@ -3,10 +3,13 @@ function fish_hybrid_key_bindings
     fish_default_key_bindings -M insert
     fish_vi_key_bindings --no-erase
 
-    # Use Ctrl+x since it's something we can map cmd+k to for clearing the screen
+    # Clear the screen with ctrl+x (cmd+k in Kitty)
     bind -M insert \cx 'echo -n (clear | string replace \e\[3J ""); commandline -f repaint'
 
-    # Open tmux-sessionizer with Ctrl+f
+    # Re-run last command with ctrl+z (cmd+l in Kitty)
+    bind -M insert \cz 'echo mark; commandline -f repaint'
+
+    # Open tmux-sessionizer with ctrl+f
     bind -M insert \cf "tmux-sessionizer; commandline -f repaint"
 
     # Use _ to go to the beginning of the line as I use this a lot in Vim
