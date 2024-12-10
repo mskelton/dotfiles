@@ -10,3 +10,4 @@ ss submit --stack
 su submit --stack --update-only
 sync sync -f
 go !gt modify --all && gt submit
+fix !git add . && gt continue
