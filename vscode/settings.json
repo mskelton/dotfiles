@@ -210,9 +210,6 @@
   "git.openRepositoryInParentFolders": "never",
   "prettier.requireConfig": true,
   "workbench.editor.empty.hint": "hidden",
-  "tailwindCSS.experimental.classRegex": [
-    ["tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)", "\"(.*?)\""],
-    ["clsx\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)", "\"(.*?)\""]
-  ],
-  "security.promptForLocalFileProtocolHandling": false
+  "security.promptForLocalFileProtocolHandling": false,
+  "githubPullRequests.pullBranch": "never"
 }
