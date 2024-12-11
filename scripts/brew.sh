@@ -11,6 +11,7 @@ $brew tap homebrew/cask-fonts
 
 # Install formulae
 formula=(
+	1password-cli
 	as-tree
 	ast-grep
 	bash
@@ -34,6 +35,7 @@ formula=(
 	imagemagick
 	jesseduffield/lazygit/lazygit
 	jq
+	just
 	keith/formulae/reminders-cli
 	luarocks
 	neovim
