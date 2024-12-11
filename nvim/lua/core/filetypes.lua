@@ -18,5 +18,6 @@ vim.filetype.add({
 	pattern = {
 		[".env.*"] = "sh",
 		["tsconfig.*.json"] = "jsonc",
+		[".*/.vscode/settings.json"] = "jsonc",
 	},
 })
