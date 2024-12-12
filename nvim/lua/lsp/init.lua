@@ -44,7 +44,25 @@ M.setup_servers = function()
 	M.server("bashls")
 	--- M.server("pyright")
 	M.server("prismals")
-	M.server("rust_analyzer")
+	M.server("rust_analyzer", {
+		handlers = {
+			--- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
+			["textDocument/diagnostic"] = function(err, result, ...)
+				if err ~= nil and err.code == -32802 then
+					return
+				end
+
+				vim.lsp.handlers["textDocument/diagnostic"](err, result, ...)
+			end,
+			["workspace/diagnostic"] = function(err, result, ...)
+				if err ~= nil and err.code == -32802 then
+					return
+				end
+
+				vim.lsp.handlers["textDocument/diagnostic"](err, result, ...)
+			end,
+		},
+	})
 	M.server("sourcekit")
 	M.server("zls")
 	M.server("taplo")
