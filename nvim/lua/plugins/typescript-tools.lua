@@ -87,6 +87,7 @@ return {
 						"**/react-router",
 					},
 				},
+				tsserver_max_memory = 8192,
 			},
 		})
 	end,
