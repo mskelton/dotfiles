@@ -15,6 +15,9 @@ set relativenumber
 :map gd <Action>(GotoImplementation)
 :map gr <Action>(GotoDeclaration)
 
+:map [d <Action>(GotoPreviousError)
+:map ]d <Action>(GotoNextError)
+
 :map ; :
 
 :map [b <Action>(PreviousTab)
