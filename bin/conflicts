@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Open conflicting files in Neovim
+
+git diff --name-only --diff-filter=U | xargs -r nvim
