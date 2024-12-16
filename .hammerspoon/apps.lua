@@ -8,5 +8,6 @@ return {
 	mimestream = "Mimestream",
 	slack = "Slack",
 	telegram = "Telegram",
+	todoist = "Todoist",
 	zoom = "zoom.us",
 }

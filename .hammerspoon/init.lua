@@ -39,22 +39,9 @@ Install:andUse("GitHubNotifications", {
 	},
 })
 
-Install:andUse("AppLauncher", {
-	config = {
-		modifiers = constants.keys.layer_key,
-	},
-	hotkeys = {
-		--- Home row
-		h = apps.finder,
-		l = utils.if_work(apps.slack, apps.telegram),
-		[";"] = utils.if_work(nil, "Mimestream"),
-		--- Bottom row
-		n = utils.if_work("Linear", "Todoist"),
-		[","] = apps.chat_gpt,
-		["."] = utils.if_work(apps.figma, nil),
-		["/"] = utils.if_work(apps.zoom, nil),
-	},
-})
+hs.hotkey.bind(constants.keys.layer_key, "h", function()
+	layout.maybe_focus(apps.finder)
+end)
 
 hs.hotkey.bind(constants.keys.layer_key, "j", function()
 	layout.pull_forward({ apps.kitty, apps.arc })
@@ -62,6 +49,34 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
 	layout.pull_forward({ apps.arc, apps.kitty })
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "l", function()
+	hs.application.launchOrFocus(utils.if_work(apps.slack, apps.telegram))
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, ";", function()
+	if not utils.is_work then
+		hs.application.launchOrFocus(apps.mimestream)
+	end
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "n", function()
+	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, ",", function()
+	hs.application.launchOrFocus(apps.chat_gpt)
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, ".", function()
+	hs.application.launchOrFocus(apps.figma)
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "/", function()
+	if utils.is_work then
+		layout.maybe_focus(apps.zoom)
+	end
 end)
 
 --- Main layout, browser on right most screen, Figma behind browser, kitty on

@@ -157,4 +157,15 @@ M.tbl_count = function(tbl)
 	return count
 end
 
+--- Focuses the specified app if it's running, otherwise noop
+--- @param hint string
+M.maybe_focus = function(hint)
+	local app = hs.application.get(hint)
+	if app == nil then
+		return
+	end
+
+	app:activate()
+end
+
 return M
