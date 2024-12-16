@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # List my PRs that were merged last week
 
-prs --search "author:@me merged:>$(date -v -sunday -v -monday +%Y-%m-%d) merged:<$(date -v sunday -v -saturday +%Y-%m-%d)"
+prs --columns=id,title,url,closedAt --search "author:@me closed:$(date -v -sunday -v -monday +%Y-%m-%d)..$(date -v sunday -v -saturday +%Y-%m-%d)"
