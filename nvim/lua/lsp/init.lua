@@ -1,6 +1,13 @@
 local utils = require("core.utils")
 local npm = require("utils.npm")
 
+--- Check if a code action matches a specific command
+--- @param action lsp.CodeAction|lsp.Command
+--- @param command string
+local function is_command(action, command)
+	return action.command ~= nil and action.command.command == command
+end
+
 local M = {}
 
 M.default_capabilities = function()
@@ -148,7 +155,7 @@ M.setup_servers = function()
 				vim.lsp.buf.code_action({
 					apply = true,
 					filter = function(action)
-						return action.command.command == "eslint.applyDisableLine"
+						return is_command(action, "eslint.applyDisableLine")
 					end,
 				})
 			end, opts)
@@ -157,7 +164,7 @@ M.setup_servers = function()
 				vim.lsp.buf.code_action({
 					apply = true,
 					filter = function(action)
-						return action.command.command == "eslint.applyDisableFile"
+						return is_command(action, "eslint.applyDisableFile")
 					end,
 				})
 			end, opts)
