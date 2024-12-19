@@ -195,7 +195,7 @@ M.setup_servers = function()
 	})
 
 	M.server("vtsls", {
-		enabled = false,
+		enabled = true,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		settings = {
 			typescript = {

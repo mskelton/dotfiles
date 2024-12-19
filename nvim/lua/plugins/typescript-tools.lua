@@ -1,6 +1,6 @@
 return {
 	"pmizio/typescript-tools.nvim",
-	enabled = true,
+	enabled = false,
 	event = "BufReadPre",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
