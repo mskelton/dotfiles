@@ -54,6 +54,7 @@ formula=(
 	timg
 	tmux
 	trash
+	tree
 	tree-sitter
 	watchman
 	wget
