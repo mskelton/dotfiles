@@ -13,3 +13,4 @@ go !gt modify --all && gt submit
 fix !git add . && gt continue
 name rename
 con continue
+diff !git diff "$(gt parent)"..HEAD

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Checkout main branch
+
+git checkout "$(git default)"
