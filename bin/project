@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-for file in ~/Downloads/*.mp4; do
+mkdir -p ~/Downloads/tmp/
+unzip -o ~/Downloads/*.zip -d ~/Downloads/tmp/
+
+for file in ~/Downloads/tmp/*.mp4; do
 	mov "$file"
 	rm "$file"
 done
