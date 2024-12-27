@@ -27,7 +27,6 @@ Install:andUse("ReloadConfiguration", {
 })
 
 Install:andUse("RestartBluetooth", {
-	disable = not utils.is_work,
 	start = true,
 })
 
