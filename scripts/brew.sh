@@ -69,6 +69,7 @@ casks=(
 	firefox
 	font-jetbrains-mono
 	font-symbols-only-nerd-font
+	ghostty
 	hammerspoon
 	kitty
 	logi-options-plus

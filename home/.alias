@@ -50,7 +50,7 @@ alias bash="/usr/bin/env bash"
 alias oldbash="/bin/bash"
 
 # Kitty
-alias icat="kitty +kitten icat"
+alias icat="/Applications/kitty.app/Contents/MacOS/kitty +kitten icat --align=left"
 
 # Docker
 alias dau="docker compose --profile app up"
