@@ -1,3 +1,4 @@
+set -g fish_user_paths $fish_user_paths /run/current-system/sw/bin
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin"
 set -g fish_user_paths $fish_user_paths "$HOME/.local/bin-work"
 set -g fish_user_paths $fish_user_paths "$HOME/.cargo/bin"
