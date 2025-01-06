@@ -5,7 +5,7 @@ return {
 		"sindrets/diffview.nvim",
 	},
 	cmd = { "Neogit" },
-	config = {
+	opts = {
 		signs = {
 			hunk = { "", "" },
 			item = { "", "" },
