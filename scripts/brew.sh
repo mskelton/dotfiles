@@ -59,6 +59,7 @@ formula=(
 	watchman
 	wget
 	yq
+	zellij
 	zoxide
 )
 

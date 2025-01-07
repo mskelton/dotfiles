@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Kill current Zellij session and swtich to the last session
+
+CURRENT_SESSION=$ZELLIJ_SESSION_NAME
+LAST_SESSION=$(zellij list-sessions | tail -n 2 | head -n 1 | awk '{print $1}')
+
+if [ -n "$LAST_SESSION" ]; then
+	zellij attach "$LAST_SESSION"
+fi
+
+zellij delete-session "$CURRENT_SESSION"

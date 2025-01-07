@@ -5,6 +5,7 @@ function fish_hybrid_key_bindings
 
     # Use Ctrl+x since it's something we can map cmd+k to for clearing the screen
     bind -M insert \cx 'echo -n (clear | string replace \e\[3J ""); commandline -f repaint'
+    bind -M insert \ek 'echo -n (clear | string replace \e\[3J ""); commandline -f repaint'
 
     # Open tmux-sessionizer with Ctrl+f
     bind -M insert \cf "tmux-sessionizer; commandline -f repaint"

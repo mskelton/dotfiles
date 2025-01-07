@@ -21,8 +21,12 @@ alias stash="git stash push -u"
 alias unstash="git unstash"
 
 # Tmux
-alias ta="tmux attach"
-alias tk="tmux-kill-switch"
+# alias ta="tmux attach"
+# alias tk="tmux-kill-switch"
+
+# ZelliJ
+alias ta="zellij attach --index 0"
+alias tk="zellij-kill-switch"
 
 # Todo
 alias t="todo today"
