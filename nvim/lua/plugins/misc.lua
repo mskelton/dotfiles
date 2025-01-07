@@ -53,6 +53,7 @@ return {
 	},
 	{
 		"christoomey/vim-tmux-navigator",
+		enabled = false,
 		keys = {
 			{
 				"<C-h>",
@@ -77,6 +78,39 @@ return {
 				"<cmd>TmuxNavigateRight<cr>",
 				mode = { "n", "v" },
 				desc = "Navigate right one split or Tmux window",
+			},
+		},
+		init = function()
+			vim.g.tmux_navigator_no_mappings = 1
+		end,
+	},
+	{
+		"knubie/vim-kitty-navigator",
+		build = "cp ./*.py ~/.config/kitty/",
+		keys = {
+			{
+				"<C-h>",
+				"<cmd>KittyNavigateLeft<cr>",
+				mode = { "n", "v" },
+				desc = "Navigate left split or Kitty window",
+			},
+			{
+				"<C-j>",
+				"<cmd>KittyNavigateDown<cr>",
+				mode = { "n", "v" },
+				desc = "Navigate down one split or Kitty window",
+			},
+			{
+				"<C-k>",
+				"<cmd>KittyNavigateUp<cr>",
+				mode = { "n", "v" },
+				desc = "Navigate up one split or Kitty window",
+			},
+			{
+				"<C-l>",
+				"<cmd>KittyNavigateRight<cr>",
+				mode = { "n", "v" },
+				desc = "Navigate right one split or Kitty window",
 			},
 		},
 		init = function()
