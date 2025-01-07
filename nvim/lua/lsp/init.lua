@@ -208,6 +208,9 @@ M.setup_servers = function()
 						"**/react-router",
 					},
 				},
+				tsserver = {
+					maxTsServerMemory = 8192,
+				},
 			},
 			vtsls = {
 				autoUseWorkspaceTsdk = true,
