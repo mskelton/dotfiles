@@ -7,6 +7,7 @@ link .config/byte/config.yaml ~/.config/byte/config.yaml
 link .config/fd ~/.config/fd
 link .config/gh-dash/config.yml ~/.config/gh-dash/config.yml
 link .config/gh/config.yml ~/.config/gh/config.yml
+link .config/ghostty ~/.config/ghostty
 link .config/git ~/.config/git
 link .config/graphite/aliases ~/.config/graphite/aliases
 link .config/graphite/custom-aliases ~/.config/graphite/custom-aliases

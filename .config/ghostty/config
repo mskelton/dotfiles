@@ -1,0 +1,6 @@
+cursor-style-blink = false
+shell-integration-features = no-cursor
+font-size = 15
+
+# Keybindings
+keybind = f11=reload_config
