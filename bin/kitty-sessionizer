@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Switch or create Kitty tabs with ease
+# Inspired by ThePrimeagen
+
+function find_dirs() {
+	fd --type d --max-depth 1 . "$HOME/dev"
+}
+
+# Select the argument if provided otherwise use fzf
+if [[ -n "$1" ]]; then
+	selected=$1
+else
+	selected=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | fzf)
+fi
+
+# If no selection was made, exit
+if [[ -z "$selected" ]]; then
+	exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+if [[ -z "$tab_exists" ]]; then
+	kitty @ launch --type=tab --tab-title "$selected_name" --cwd "$HOME/dev/$selected"
+else
+	kitty @ focus-tab --match title:"$selected_name"
+fi
