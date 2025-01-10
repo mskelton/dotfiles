@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# Updates Neovim packages
-
-nvim --headless +"autocmd User LazyUpdate q" +'lua require("lazy").update()'
-git add nvim/lazy-lock.json
-git commit -m "Update Neovim packages"
