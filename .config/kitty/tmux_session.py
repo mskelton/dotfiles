@@ -7,23 +7,29 @@ def main(args: list[str]) -> str:
 
 @result_handler(no_ui=True)
 def handle_result(args: list[str], answer: str, target_window_id: int, boss: Boss) -> None:
-    index = int(args[1])
-    tmux = "/opt/homebrew/bin/tmux"
+    inc = int(args[1])
 
     # Get all Tmux sessions
-    sessions = subprocess.check_output(
-        [tmux, "list-sessions", "-F", "#{session_created} #{session_name}"],
-        text=True
-    ).strip().split("\n")
+    sessions = tmux(["list-sessions", "-F", "#{session_created} #{session_name}"])
+    sessions = sorted(sessions, key=lambda x: int(x.split(' ')[0]))
+    sessions = [x.split(' ')[1] for x in sessions]
 
-    # Sort the sessions by creation time
-    sorted_sessions = sorted(sessions, key=lambda x: int(x.split(" ")[0]))
-    session_names = [session.split(" ", 1)[1] for session in sorted_sessions]
+    # Get current session
+    current_session = tmux(["display-message", "-p", "#{session_name}"])[0]
 
-    # If the requested session does not exist, do nothing
-    if index >= len(session_names):
-        return
+    # Get the total number of sessions
+    total_sessions=len(sessions)
+
+    # Get the current session index
+    current_index = sessions.index(current_session)
+
+    # Get the next session index based on the direction, loop around if necessary
+    next_index = (current_index + inc) % total_sessions
 
     # Switch to the requested session
-    subprocess.run([tmux, "switch-client", "-t", session_names[index]])
+    tmux(["switch-client", "-t", sessions[next_index]])
+
+def tmux(args: list[str]) -> list[str]:
+    cmd = ["/opt/homebrew/bin/tmux"] + args
+    return subprocess.check_output(cmd, text=True).strip().split("\n")
 
