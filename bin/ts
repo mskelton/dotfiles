@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Start Tmux session
+
+for dir in dotfiles web ryu; do
+	tmux new-session -ds "$dir" -c "$HOME/dev/$dir"
+done
+
+tmux attach -t web

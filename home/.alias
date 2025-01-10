@@ -1,3 +1,5 @@
+# vim:ft=bash
+
 # Git merge
 alias gmc="git mc"
 alias gmd="git md"
@@ -23,6 +25,7 @@ alias unstash="git unstash"
 # Tmux
 alias ta="tmux attach"
 alias tk="tmux-kill-switch"
+alias tko="tmux kill-server"
 
 # Todo
 alias t="todo today"
@@ -79,5 +82,3 @@ alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
 alias xit="exit"
-
-# vim:ft=bash
