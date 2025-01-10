@@ -3,6 +3,7 @@
 
 for dir in dotfiles web ryu; do
 	tmux new-session -ds "$dir" -c "$HOME/dev/$dir"
+	sleep 1
 done
 
 tmux attach -t web
