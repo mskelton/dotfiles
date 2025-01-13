@@ -23,8 +23,12 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
     # Get the current session index
     current_index = sessions.index(current_session)
 
-    # Get the next session index based on the direction, loop around if necessary
-    next_index = (current_index + inc) % len(sessions)
+    # Get the next session index based on the direction
+    next_index = current_index + inc
+
+   # If the next index is out of bounds, bail
+    if next_index < 0 or next_index >= len(sessions):
+        return
 
     # Switch to the requested session
     tmux(["switch-client", "-t", sessions[next_index]])
