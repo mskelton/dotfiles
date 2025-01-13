@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Get's the index of the specified Tmux session
+
+tmux list-sessions -F "#{session_created} #{session_name}" |
+	sort -n |
+	awk '{print $2}' |
+	grep -n "^$1$" |
+	cut -d: -f1 |
+	awk '{print $1 - 1}'
