@@ -55,7 +55,9 @@ hs.hotkey.bind(constants.keys.layer_key, "l", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ";", function()
-	if not utils.is_work then
+	if utils.is_work then
+		hs.eventtap.keyStroke({ "alt", "shift" }, "down")
+	else
 		hs.application.launchOrFocus(apps.mimestream)
 	end
 end)
