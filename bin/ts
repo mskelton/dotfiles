@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Start Tmux session
 
-for dir in dotfiles web ryu; do
+for dir in dotfiles web; do
 	tmux new-session -ds "$dir" -c "$HOME/dev/$dir"
 	sleep 1
 done
