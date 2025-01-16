@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Print the npm token
+
+grep _authToken ~/.npmrc | awk -F= '{print $2}'
