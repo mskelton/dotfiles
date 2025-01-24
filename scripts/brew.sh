@@ -58,6 +58,7 @@ formula=(
 	tree-sitter
 	watchman
 	wget
+	withgraphite/tap/graphite
 	yq
 	zoxide
 )
