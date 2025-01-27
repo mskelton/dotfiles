@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Graphite new branch
+
+gt c -am "$*"
