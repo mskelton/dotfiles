@@ -21,6 +21,7 @@ alias st="git status"
 alias gs="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
+alias prd="pr -d"
 
 # Tmux
 alias ta="tmux attach"
