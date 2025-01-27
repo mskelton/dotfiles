@@ -85,6 +85,11 @@ function M:on_timer()
 				return true
 			end
 
+			--- Turns out this is a nullable field
+			if not notification.last_read_at then
+				return true
+			end
+
 			--- Compare the last time notifications were checked to when the
 			--- notifications where last viewed on GitHub.
 			return notification.last_read_at > self.last_checked
@@ -176,6 +181,13 @@ function M:start()
 	self.timer:start()
 	self.timer:fire()
 
+	--- @type hs.ipc|nil
+	self.ipc = hs.ipc.localPort("github-notifications", function(_, _, data)
+		if data == "xclear" then
+			self:update_count(0)
+		end
+	end)
+
 	return self
 end
 
@@ -186,6 +198,10 @@ function M:stop()
 
 	if self.timer then
 		self.timer:stop()
+	end
+
+	if self.ipc then
+		self.ipc:delete()
 	end
 
 	return self

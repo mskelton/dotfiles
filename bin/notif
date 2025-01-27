@@ -47,6 +47,11 @@ _list_notifications() {
 
 _mark_notifications_as_read() {
 	gh api -X PUT /notifications
+
+	# Clear the notification badge
+	if command -v hs &>/dev/null; then
+		hs -m github-notifications -c clear &>/dev/null
+	fi
 }
 
 _parse_args "$@"

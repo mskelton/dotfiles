@@ -12,6 +12,9 @@ hs.window.animationDuration = 0
 --- Disable notification about spotlight search
 hs.application.enableSpotlightForNameSearches(false)
 
+--- Install the CLI
+hs.ipc.cliInstall()
+
 --- Load SpoonInstall to install Spoons
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.use_syncinstall = false
