@@ -2,6 +2,15 @@ function !!
     eval $history[1]
 end
 
+
+function run-last-command
+    set -l lastline $history[1]
+
+    commandline -r $lastline
+    commandline -f execute
+end
+
+
 function yarn-test-record-switch
     set -l line (commandline)
 

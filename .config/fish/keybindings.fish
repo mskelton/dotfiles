@@ -21,6 +21,9 @@ function fish_hybrid_key_bindings
 
     # Test replay/record switcher
     bind -M insert \cy yarn-test-record-switch
+
+    # Re-run last command
+    bind -M insert \cu run-last-command
 end
 
 # Use my custom keybindings
