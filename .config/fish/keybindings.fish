@@ -18,6 +18,9 @@ function fish_hybrid_key_bindings
     # backwards one character.
     bind -s --preset -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f repaint-mode; end"
     bind -s --preset \e "set fish_bind_mode insert; commandline -f repaint-mode"
+
+    # Test replay/record switcher
+    bind -M insert \cy yarn-test-record-switch
 end
 
 # Use my custom keybindings
