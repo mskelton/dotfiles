@@ -52,7 +52,7 @@ local function show_error(message)
 end
 
 --- Callback fired when the timer triggers
-function M:on_timer()
+function M:sync()
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
@@ -177,7 +177,7 @@ function M:start()
 		end)
 	end
 
-	self.timer = hs.timer.new(self.interval or 60, hs.fnutils.partial(self.on_timer, self))
+	self.timer = hs.timer.new(self.interval or 60, hs.fnutils.partial(self.sync, self))
 	self.timer:start()
 	self.timer:fire()
 
@@ -185,6 +185,8 @@ function M:start()
 	self.ipc = hs.ipc.localPort("github-notifications", function(_, _, data)
 		if data == "xclear" then
 			self:update_count(0)
+		elseif data == "xsync" then
+			self:sync()
 		end
 	end)
 

@@ -24,7 +24,15 @@ Commands:
   done    Mark notifications as done"
 }
 
+# Emit an event to Hammerspoon
+_emit() {
+	if command -v hs &>/dev/null; then
+		hs -m github-notifications -c "$1" &>/dev/null
+	fi
+}
+
 _list_notifications() {
+	_emit sync
 	notifications=$(gh api notifications)
 
 	if [[ "$notifications" == "[]" ]]; then
@@ -43,15 +51,12 @@ _list_notifications() {
 			--column Reason key=reason color=green \
 			--column URL key=url color=blue \
 			--column 'Updated At' key=updated_at color=dim type=date format=relative
+
 }
 
 _mark_notifications_as_read() {
+	_emit clear
 	gh api -X PUT /notifications
-
-	# Clear the notification badge
-	if command -v hs &>/dev/null; then
-		hs -m github-notifications -c clear &>/dev/null
-	fi
 }
 
 _parse_args "$@"
