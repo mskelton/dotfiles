@@ -5,7 +5,7 @@ ticket=$(pbpaste)
 ticket=${ticket,,}
 
 branch=$(git rev-parse --abbrev-ref HEAD)
-branch=${branch#mskelton/}
-branch=mskelton/$ticket-$branch
+branch=${branch#ms/}
+branch=ms/$ticket-$branch
 
 gt rename "$branch"
