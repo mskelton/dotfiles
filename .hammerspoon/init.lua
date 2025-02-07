@@ -174,14 +174,14 @@ hs.hotkey.bind({ "cmd", "alt" }, "f", function()
 end)
 
 --- Move window to the previous display
-hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Left", function()
+hs.hotkey.bind(constants.keys.meh, "Left", function()
 	local win = hs.window.focusedWindow()
 	local prevScreen = win:screen():toWest()
 	win:moveToScreen(prevScreen)
 end)
 
 --- Move window to the next display
-hs.hotkey.bind({ "ctrl", "alt", "shift" }, "Right", function()
+hs.hotkey.bind(constants.keys.meh, "Right", function()
 	local win = hs.window.focusedWindow()
 	local nextScreen = win:screen():toEast()
 	win:moveToScreen(nextScreen)
@@ -193,12 +193,12 @@ hs.hotkey.bind({ "cmd", "alt" }, "v", function()
 end)
 
 --- Audio presets
-hs.hotkey.bind({ "cmd", "ctrl" }, "f9", function()
+hs.hotkey.bind(constants.keys.layer_key, "f9", function()
 	--- @diagnostic disable-next-line: undefined-field
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(30)
 end)
 
-hs.hotkey.bind({ "cmd", "ctrl" }, "f10", function()
+hs.hotkey.bind(constants.keys.layer_key, "f10", function()
 	--- @diagnostic disable-next-line: undefined-field
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(50)
 end)
@@ -231,4 +231,25 @@ hs.hotkey.bind(nil, "f6", function()
       end tell
     end tell
   ]])
+end)
+
+--- Toggle input source
+hs.hotkey.bind(constants.keys.layer_key, "t", function()
+	local layouts = hs.keycodes.layouts()
+	local currentLayout = hs.keycodes.currentLayout()
+
+	if not layouts then
+		return
+	end
+
+	--- Find the next layout in order, cycling around to the start
+	local nextLayout = layouts[1]
+	for i, l in ipairs(layouts) do
+		if l == currentLayout then
+			nextLayout = layouts[i + 1] or layouts[1]
+			break
+		end
+	end
+
+	hs.keycodes.setLayout(nextLayout)
 end)
