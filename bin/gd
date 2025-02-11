@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Git diff
+
+if [ -z "$1" ]; then
+	git diff HEAD
+else
+	git diff "$@"
+fi
