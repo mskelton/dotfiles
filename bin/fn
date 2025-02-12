@@ -2,8 +2,9 @@
 # Switch Git branches
 
 branches=$(git for-each-ref --sort=-committerdate --format="%(refname:short)" refs/heads/)
+default_branch=$(git default)
 current_branch=$(git symbolic-ref --short HEAD)
-branch=$(echo "$branches" | grep -v "^$current_branch$" | fzf +m)
+branch=$(echo "$branches" | grep -vE "^($default_branch|$current_branch)$" | fzf +m)
 
 if [[ -n "$branch" ]]; then
 	git co "$branch"
