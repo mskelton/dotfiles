@@ -217,6 +217,11 @@ end
 hs.hotkey.bind({ "option" }, "p", utils.media("playpause"))
 hs.hotkey.bind({ "option" }, "n", utils.media("next"))
 
+--- Focus
+hs.hotkey.bind({ "option" }, "f", function()
+	hs.urlevent.openURL("raycast://focus/toggle?duration=1800")
+end)
+
 --- Sleep
 hs.hotkey.bind({ "cmd" }, "f6", function()
 	hs.caffeinate.systemSleep()
