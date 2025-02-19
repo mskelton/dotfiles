@@ -1,5 +1,12 @@
 local nv = { "n", "v" }
 
+--- Scoped search directories. This is used to store the current setting, which
+--- pulls from `_G.scoped_search_dirs` if it is set. This is toggled with the
+--- `<leader>ts` mapping.
+---
+--- @type table<string, string>|nil
+local search_dirs
+
 return {
 	"nvim-telescope/telescope.nvim",
 	cmd = "Telescope",
@@ -7,7 +14,9 @@ return {
 		{
 			"<leader>fp",
 			function()
-				require("telescope.builtin").find_files()
+				require("telescope.builtin").find_files({
+					search_dirs = search_dirs,
+				})
 			end,
 			mode = nv,
 			desc = "Find files",
@@ -26,6 +35,7 @@ return {
 			"<leader>fs",
 			function()
 				require("telescope.builtin").live_grep({
+					search_dirs = search_dirs,
 					prompt_title = "Find Exact String",
 					regex = false,
 				})
@@ -37,6 +47,7 @@ return {
 			"<leader>fS",
 			function()
 				require("telescope.builtin").live_grep({
+					search_dirs = search_dirs,
 					prompt_title = "Find Pattern",
 				})
 			end,
@@ -113,6 +124,7 @@ return {
 			"<leader>fw",
 			function()
 				require("telescope.builtin").live_grep({
+					search_dirs = search_dirs,
 					prompt_title = "Find Exact String",
 					regex = false,
 				})
@@ -167,6 +179,22 @@ return {
 			end,
 			mode = nv,
 			desc = "Jump to active buffer directory",
+		},
+
+		{
+			"<leader>ts",
+			function()
+				if not search_dirs then
+					vim.notify("Scoped search enabled")
+					--- @diagnostic disable-next-line: undefined-field
+					search_dirs = _G.scoped_search_dirs
+				else
+					vim.notify("Scoped search disabled")
+					search_dirs = nil
+				end
+			end,
+			mode = nv,
+			desc = "Toggle scoped search",
 		},
 	},
 	dependencies = {
