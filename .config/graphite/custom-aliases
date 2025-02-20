@@ -2,6 +2,7 @@ linear !linear
 ll log long
 ls log short
 ma modify --all
+sa !gt modify --all && gt squash -n
 main !gt sync -f && gt checkout $(git default)
 new !gt create -am "$2"
 pr submit --stack --publish --cli
