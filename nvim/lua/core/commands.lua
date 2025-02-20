@@ -1,6 +1,3 @@
---- Run GitHub CLI (gh) command
-vim.api.nvim_create_user_command("H", "!gh <args>", { nargs = "*" })
-
 --- Format JSON with jq
 vim.api.nvim_create_user_command("JsonFormat", ":%!jq .", {})
 
