@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# List Git branches that are not tracked by Graphite
+
+# Get list of branches tracked by Graphite
+tracked_branches=$(gt state | jq -r 'keys[]')
+
+# Get list of local Git branches
+git_branches=$(git branch --format "%(refname:short)")
+
+# Find branches that exist in Git but are not tracked by Graphite
+comm -23 <(echo "$git_branches" | sort) <(echo "$tracked_branches" | sort)

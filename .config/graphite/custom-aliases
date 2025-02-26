@@ -15,3 +15,4 @@ fix !git add . && gt continue
 name rename
 con continue
 diff !git diff "$(gt parent)"..HEAD
+untracked !untracked
