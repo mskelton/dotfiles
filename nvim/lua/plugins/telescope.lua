@@ -1,6 +1,6 @@
 local nv = { "n", "v" }
 
-local scoped_search = true
+local scoped_search = false
 
 local function get_search_dirs()
 	if scoped_search then
