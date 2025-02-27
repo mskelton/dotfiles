@@ -39,6 +39,7 @@
   rl = !git co - && git rebase $(git default)
   rc = rebase --continue
   ri = !git rebase -i $(git default)
+  fix = !git add . && git rebase --continue
 [branch]
   autosetuprebase = always
 [commit]
