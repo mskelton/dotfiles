@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Open Downloads folder
+
+open "$HOME/Downloads"
