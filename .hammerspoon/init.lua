@@ -249,7 +249,7 @@ hs.hotkey.bind({ "option" }, "n", utils.media("next"))
 
 --- Focus
 hs.hotkey.bind({ "option" }, "f", function()
-	hs.urlevent.openURL("raycast://focus/toggle?duration=1800&categories=messaging")
+	hs.urlevent.openURL("raycast://focus/toggle?duration=1800")
 end)
 
 --- Sleep

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Toggle a focus session
 
-open 'raycast://focus/toggle?duration=1800&categories=messaging'
+open 'raycast://focus/toggle?duration=1800'
