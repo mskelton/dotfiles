@@ -1,5 +1,6 @@
 return {
 	extension = {
+		mdc = "markdown",
 		mq5 = "mql5",
 		mqh = "mql5",
 		keymap = "dts",

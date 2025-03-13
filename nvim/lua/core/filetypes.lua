@@ -1,6 +1,7 @@
 vim.filetype.add({
 	extension = {
 		mdx = "markdown",
+		mdc = "markdown",
 		mq5 = "mql5",
 		mqh = "mql5",
 		keymap = "dts",
