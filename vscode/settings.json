@@ -44,7 +44,7 @@
   "editor.linkedEditing": true,
   "editor.rename.enablePreview": false,
   "editor.renderControlCharacters": true,
-  "editor.renderWhitespace": "none",
+  "editor.renderWhitespace": "trailing",
   "editor.rulers": [100, 80],
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
@@ -67,6 +67,12 @@
     "*.mqh": "cpp",
     "*.pro": "prolog",
     "*.ftl": "html",
+    "*.keymap": "dts",
+    "*.har": "json",
+    "*.grit": "gritql",
+    ".swcrc": "json",
+    ".clangd": "yaml",
+    ".clang-format": "yaml",
     ".stylelintrc": "json",
     ".releaserc": "json"
   },
@@ -134,7 +140,6 @@
     "<C-r>": false,
     "<C-v>": true
   },
-  "vim.useSystemClipboard": true,
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "maximized",
   "window.title": "${activeEditorMedium}${separator}${rootName}",
@@ -154,6 +159,7 @@
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
   "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
   "vim.normalModeKeyBindings": [
     {
       "before": [";"],
