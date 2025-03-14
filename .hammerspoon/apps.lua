@@ -1,11 +1,13 @@
 return {
 	arc = "Arc",
 	chat_gpt = "ChatGPT",
+	cursor = "Cursor",
 	figma = "Figma",
 	finder = "Finder",
 	kitty = "kitty",
 	linear = "Linear",
 	mimestream = "Mimestream",
+	notion = "Notion",
 	slack = "Slack",
 	telegram = "Telegram",
 	todoist = "Todoist",

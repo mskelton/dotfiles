@@ -15,8 +15,9 @@ M.screens = {
 }
 
 M.disabled_apps = utils.if_work({ "Mimestream" }, {
-	"Slack",
 	"Linear",
+	"Notion",
+	"Slack",
 	"zoom.us",
 })
 
