@@ -1,3 +1,6 @@
+--- Run Graphite CLI (gt) command
+vim.api.nvim_create_user_command("Gt", "!gt <args>", { nargs = "*" })
+
 --- Format JSON with jq
 vim.api.nvim_create_user_command("JsonFormat", ":%!jq .", {})
 
