@@ -49,9 +49,7 @@ end
 --- Music management
 --- @param arg string
 M.media = function(arg)
-	return function()
-		hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
-	end
+	hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
 end
 
 return M

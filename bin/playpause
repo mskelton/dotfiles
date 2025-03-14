@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Play/pause music
-
-shortcuts run 'Media' <<<'playpause'

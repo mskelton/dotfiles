@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Play music
-
-shortcuts run 'Media' <<<'play'

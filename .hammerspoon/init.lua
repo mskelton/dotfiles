@@ -224,13 +224,26 @@ if false then
 		:subscribe(hs.window.filter.windowDestroyed, utils.focus("off"))
 end
 
---- Media management
-hs.hotkey.bind({ "option" }, "p", utils.media("playpause"))
-hs.hotkey.bind({ "option" }, "n", utils.media("next"))
+--- Play/pause media
+hs.hotkey.bind({ "option" }, "p", function()
+	utils.media("toggle")
+end)
+
+--- Go to next track
+hs.hotkey.bind({ "option" }, "n", function()
+	utils.media("next")
+end)
 
 --- Focus
 hs.hotkey.bind({ "option" }, "f", function()
 	hs.urlevent.openURL("raycast://focus/toggle?duration=1800")
+end)
+
+--- Take a break
+hs.hotkey.bind({ "option" }, "b", function()
+	hs.urlevent.openURL("raycast://focus/complete")
+	utils.media("pause")
+	hs.caffeinate.systemSleep()
 end)
 
 --- Sleep
