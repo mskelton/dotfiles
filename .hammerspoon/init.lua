@@ -69,6 +69,10 @@ hs.hotkey.bind(constants.keys.layer_key, "n", function()
 	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
 end)
 
+hs.hotkey.bind(constants.keys.layer_key, "m", function()
+	hs.application.launchOrFocus(apps.notion)
+end)
+
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
 	hs.application.launchOrFocus(apps.chat_gpt)
 end)
