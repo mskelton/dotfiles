@@ -53,13 +53,11 @@ hs.hotkey.bind(constants.keys.layer_key, "l", function()
 	hs.application.launchOrFocus(utils.if_work(apps.slack, apps.telegram))
 end)
 
-hs.hotkey.bind(constants.keys.layer_key, ";", function()
-	if utils.is_work then
+if utils.is_work then
+	hs.hotkey.bind(constants.keys.layer_key, ";", function()
 		hs.eventtap.keyStroke({ "alt", "shift" }, "down")
-	else
-		hs.application.launchOrFocus(apps.mimestream)
-	end
-end)
+	end)
+end
 
 hs.hotkey.bind(constants.keys.layer_key, "n", function()
 	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
