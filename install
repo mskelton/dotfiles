@@ -55,5 +55,9 @@ fi
 link vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 link vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
+# Cursor settings and keybindings
+link vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
+link vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+
 # Finalize and print any errors
 finalize
