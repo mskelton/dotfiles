@@ -41,10 +41,6 @@ Install:andUse("GitHubNotifications", {
 	},
 })
 
-hs.hotkey.bind(constants.keys.layer_key, "h", function()
-	hs.application.launchOrFocus(apps.cursor)
-end)
-
 hs.hotkey.bind(constants.keys.layer_key, "j", function()
 	layout.pull_forward({ apps.kitty, apps.arc })
 end)
@@ -74,7 +70,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.chat_gpt)
+	hs.application.launchOrFocus(apps.cursor)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
