@@ -1,6 +1,5 @@
 cursor-style-blink=false
 shell-integration-features=no-cursor
-working-directory=~/dev
 
 # Font styling
 font-size=15
