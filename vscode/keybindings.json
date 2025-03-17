@@ -213,15 +213,32 @@
   },
   // ctrl+k and ctrl+j to navigate up/down in lists
   {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-editor.action.joinLines",
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-extension.vim_ctrl+j"
+  },
+  {
     "key": "ctrl+k",
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
   {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
+    "key": "ctrl+k",
+    "command": "-deleteAllRight",
   },
+  {
+    "key": "ctrl+k",
+    "command": "-extension.vim_ctrl+k"
+  },
+  // Open
   {
     "key": "ctrl+r",
     "command": "-workbench.action.openRecent"
@@ -239,5 +256,5 @@
     "key": "shift+cmd+k",
     "command": "aipopup.action.modal.generate",
     "when": "editorFocus && !composerBarIsVisible"
-  }
+  },
 ]

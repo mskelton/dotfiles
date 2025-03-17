@@ -87,13 +87,13 @@ o.cmdheight = 2
 --- Allow project-local config files
 o.exrc = true
 
---- These don't need much explanation
+--- Completion menu options
 o.completeopt = "menu,menuone"
 
 --- Prompt for confirmation rather than simply failing the operation
 o.confirm = true
 
---- Use spaces for tabs.
+--- Use spaces for tabs
 o.expandtab = true
 
 --- The best combination of options when searching. Ignore case by default, but
