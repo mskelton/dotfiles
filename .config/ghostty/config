@@ -1,6 +1,47 @@
-cursor-style-blink = false
-shell-integration-features = no-cursor
-font-size = 15
+cursor-style-blink=false
+shell-integration-features=no-cursor
+working-directory=~/dev
+
+# Font styling
+font-size=15
+adjust-cell-height=6
+
+font-style="JetBrains Mono"
+font-style-italic="JetBrains Mono Italic"
+font-style-bold="JetBrains Mono Bold"
+font-style-bold-italic="JetBrains Mono Bold Italic"
+
+# Nerd fonts
+# https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
+font-codepoint-map=U+23FB-U+23FE="Symbols Nerd Font"
+font-codepoint-map=U+2665="Symbols Nerd Font"
+font-codepoint-map=U+26A1="Symbols Nerd Font"
+font-codepoint-map=U+2B58="Symbols Nerd Font"
+font-codepoint-map=U+E000-U+E00A="Symbols Nerd Font"
+font-codepoint-map=U+E0A0-U+E0A2="Symbols Nerd Font"
+font-codepoint-map=U+E0A3="Symbols Nerd Font"
+font-codepoint-map=U+E0B0-U+E0B3="Symbols Nerd Font"
+font-codepoint-map=U+E0B4-U+E0C8="Symbols Nerd Font"
+font-codepoint-map=U+E0CA="Symbols Nerd Font"
+font-codepoint-map=U+E0CC-U+E0D4="Symbols Nerd Font"
+font-codepoint-map=U+E200-U+E2A9="Symbols Nerd Font"
+font-codepoint-map=U+E300-U+E3E3="Symbols Nerd Font"
+font-codepoint-map=U+E5FA-U+E6A6="Symbols Nerd Font"
+font-codepoint-map=U+E700-U+E7C5="Symbols Nerd Font"
+font-codepoint-map=U+EA60-U+EBEB="Symbols Nerd Font"
+font-codepoint-map=U+F000-U+F2E0="Symbols Nerd Font"
+font-codepoint-map=U+F300-U+F32F="Symbols Nerd Font"
+font-codepoint-map=U+F400-U+F532="Symbols Nerd Font"
+font-codepoint-map=U+F500-U+FD46="Symbols Nerd Font"
+font-codepoint-map=U+F0001-U+F1AF0="Symbols Nerd Font"
+
+# Codicons
+# https://github.com/mskelton/vscode-codicons
+font-codepoint-map=U+EA60-U+EBD0=codicon
+
+# termicons
+# https://github.com/mskelton/termicons
+font-codepoint-map=U+D000-U+D200=termicons
 
 # Keybindings
-keybind = f11=reload_config
+keybind=f11=reload_config
