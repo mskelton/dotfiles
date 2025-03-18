@@ -234,6 +234,7 @@ end)
 
 --- Focus
 hs.hotkey.bind({ "option" }, "f", function()
+	hs.urlevent.openURL("raycast://focus/complete")
 	hs.urlevent.openURL("raycast://focus/start?duration=1800")
 end)
 
