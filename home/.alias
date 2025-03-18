@@ -46,6 +46,7 @@ alias pup="pnpm up --filter='*' --latest"
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"
+# shellcheck disable=SC2139
 alias vis="VIMRUNTIME=$HOME/dev/neovim/runtime $HOME/dev/neovim/build/bin/nvim --luamod-dev"
 alias ovim="/usr/bin/vim"
 
@@ -59,22 +60,6 @@ alias icat="/Applications/kitty.app/Contents/MacOS/kitty +kitten icat --align=le
 # Docker
 alias dau="docker compose --profile app up"
 alias dad="docker compose --profile app down"
-
-# Pomo
-alias p5="pomo start 5m"
-alias p10="pomo start 10m"
-alias p15="pomo start 15m"
-alias p20="pomo start 20m"
-alias p25="pomo start 25m"
-alias p30="pomo start 30m"
-
-# Timer
-alias t5="timer 5"
-alias t10="timer 10"
-alias t15="timer 15"
-alias t20="timer 20"
-alias t25="timer 25"
-alias t30="timer 30"
 
 # Misc
 alias def="dict -d '!'"

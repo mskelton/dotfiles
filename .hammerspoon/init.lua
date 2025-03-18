@@ -234,7 +234,19 @@ end)
 
 --- Focus
 hs.hotkey.bind({ "option" }, "f", function()
-	hs.urlevent.openURL("raycast://focus/toggle?duration=1800")
+	local button, duration = hs.dialog.textPrompt(
+		"Start focus session",
+		"How many minutes should the focus session last?",
+		"30",
+		"Start",
+		"Cancel"
+	)
+
+	if button == "Start" then
+		local sec = tonumber(duration) * 60
+		hs.urlevent.openURL("raycast://focus/complete")
+		hs.urlevent.openURL("raycast://focus/start?duration=" .. sec)
+	end
 end)
 
 --- Take a break

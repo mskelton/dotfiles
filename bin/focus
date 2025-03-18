@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # Toggle a focus session
+# Usage: focus [duration]
 
-open 'raycast://focus/toggle?duration=1800'
+duration=${1:-30}
+
+open "raycast://focus/complete"
+open "raycast://focus/start?duration=$((duration * 60))"
