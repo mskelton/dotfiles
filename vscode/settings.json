@@ -291,5 +291,12 @@
     "“": true,
     "”": true,
     "’": true
-  }
+  },
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning"
+  ],
+  "cSpell.userWords": [
+    "codeowners"
+  ]
 }
