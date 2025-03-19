@@ -8,6 +8,7 @@ vim.filetype.add({
 		http = "http",
 		har = "json",
 		grit = "gritql",
+		["code-snippets"] = "jsonc",
 	},
 	filename = {
 		[".clangd"] = "yaml",

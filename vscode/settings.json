@@ -31,9 +31,7 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
-  "editor.codeActionsOnSave": [
-    "source.fixAll"
-  ],
+  "editor.codeActionsOnSave": ["source.fixAll"],
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "JetBrains Mono, Symbols Nerd Font, codicon, termicons, Monaco, 'Courier New', monospace",
@@ -47,10 +45,7 @@
   "editor.rename.enablePreview": false,
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "trailing",
-  "editor.rulers": [
-    100,
-    80
-  ],
+  "editor.rulers": [80],
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
   "editor.suggestSelection": "first",
@@ -90,13 +85,8 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git.branchProtection": [
-    "main",
-    "master"
-  ],
-  "git.checkoutType": [
-    "local"
-  ],
+  "git.branchProtection": ["main", "master"],
+  "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "github.copilot.enable": {
@@ -125,9 +115,7 @@
   "search.quickOpen.history.filterSortOrder": "recency",
   "security.workspace.trust.startupPrompt": "never",
   "terminal.external.osxExec": "Iterm.app",
-  "terminal.integrated.commandsToSkipShell": [
-    "workbench.action.openRecent"
-  ],
+  "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.env.osx": {
     "NODE_ENV": null
@@ -167,104 +155,50 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        ";"
-      ],
-      "commands": [
-        "vim.showQuickpickCmdLine"
-      ]
+      "before": [";"],
+      "commands": ["vim.showQuickpickCmdLine"]
     },
     {
-      "before": [
-        ",",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ],
+      "before": [",", "s"],
+      "commands": ["workbench.action.files.save"],
       "silent": true
     },
     {
-      "before": [
-        ",",
-        "w"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ],
+      "before": [",", "w"],
+      "commands": ["workbench.action.closeActiveEditor"],
       "silent": true
     },
     {
-      "before": [
-        "u"
-      ],
-      "commands": [
-        "undo"
-      ]
+      "before": ["u"],
+      "commands": ["undo"]
     },
     {
-      "before": [
-        "<C-r>"
-      ],
-      "commands": [
-        "redo"
-      ]
+      "before": ["<C-r>"],
+      "commands": ["redo"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "commands": [
-        "editor.action.showDefinitionPreviewHover"
-      ]
+      "before": ["K"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
-      "before": [
-        "<leader>",
-        "f",
-        "p"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
+      "before": ["<leader>", "f", "p"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": [
-        "<leader>",
-        "f",
-        "d"
-      ],
-      "commands": [
-        "workbench.files.action.showActiveFileInExplorer"
-      ]
+      "before": ["<leader>", "f", "d"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
     },
     {
-      "before": [
-        "<leader>",
-        "f",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.findInFiles"
-      ]
+      "before": ["<leader>", "f", "s"],
+      "commands": ["workbench.action.findInFiles"]
     },
     {
-      "before": [
-        "[",
-        "b"
-      ],
-      "commands": [
-        "workbench.action.previousEditor"
-      ]
+      "before": ["[", "b"],
+      "commands": ["workbench.action.previousEditor"]
     },
     {
-      "before": [
-        "]",
-        "b"
-      ],
-      "commands": [
-        "workbench.action.nextEditor"
-      ]
+      "before": ["]", "b"],
+      "commands": ["workbench.action.nextEditor"]
     }
   ],
   "editor.guides.highlightActiveBracketPair": false,
@@ -277,10 +211,7 @@
   "workbench.editor.empty.hint": "hidden",
   "security.promptForLocalFileProtocolHandling": false,
   "githubPullRequests.pullBranch": "never",
-  "cursor.cpp.disabledLanguages": [
-    "plaintext",
-    "markdown"
-  ],
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
   "explorer.confirmDelete": false,
   "chat.editor.fontSize": 15,
   "markdown.preview.fontSize": 15,
@@ -292,11 +223,7 @@
     "”": true,
     "’": true
   },
-  "errorLens.enabledDiagnosticLevels": [
-    "error",
-    "warning"
-  ],
-  "cSpell.userWords": [
-    "codeowners"
-  ]
+  "cSpell.userWords": ["codeowners"],
+  "git.blame.statusBarItem.enabled": true,
+  "cSpell.diagnosticLevel": "Hint"
 }

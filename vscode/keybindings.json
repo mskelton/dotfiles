@@ -219,7 +219,7 @@
   },
   {
     "key": "ctrl+j",
-    "command": "-editor.action.joinLines",
+    "command": "-editor.action.joinLines"
   },
   {
     "key": "ctrl+j",
@@ -232,7 +232,7 @@
   },
   {
     "key": "ctrl+k",
-    "command": "-deleteAllRight",
+    "command": "-deleteAllRight"
   },
   {
     "key": "ctrl+k",
@@ -256,5 +256,5 @@
     "key": "shift+cmd+k",
     "command": "aipopup.action.modal.generate",
     "when": "editorFocus && !composerBarIsVisible"
-  },
+  }
 ]

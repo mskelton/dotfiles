@@ -54,10 +54,12 @@ fi
 # VS Code settings and keybindings
 link vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 link vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+link vscode/snippets ~/Library/Application\ Support/Code/User/snippets
 
 # Cursor settings and keybindings
 link vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 link vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+link vscode/snippets ~/Library/Application\ Support/Cursor/User/snippets
 
 # Finalize and print any errors
 finalize
