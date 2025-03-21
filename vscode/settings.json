@@ -8,6 +8,9 @@
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.autoClosingBrackets": "languageDefined"
   },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[markdown]": {
     "editor.tabSize": 3,
     "editor.wordWrap": "on"
@@ -20,9 +23,11 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.tabSize": 4
   },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
+  "breadcrumbs.enabled": false,
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.userWords": ["codeowners"],
+  "chat.editor.fontSize": 15,
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
   "debug.toolBarLocation": "docked",
@@ -38,19 +43,30 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.guides.highlightActiveBracketPair": false,
   "editor.inlayHints.enabled": "off",
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
+  "editor.matchBrackets": "never",
+  "editor.occurrencesHighlight": "off",
   "editor.rename.enablePreview": false,
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [80],
+  "editor.selectionHighlight": false,
+  "editor.stickyScroll.enabled": false,
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "onlySnippets",
   "editor.tabSize": 2,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "’": true,
+    "“": true,
+    "”": true
+  },
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
   "emmet.triggerExpansionOnTab": true,
@@ -61,14 +77,15 @@
     "typescriptreact"
   ],
   "explorer.autoReveal": false,
+  "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
+    "*.ftl": "html",
     "*.mq5": "cpp",
     "*.mqh": "cpp",
     "*.pro": "prolog",
-    "*.ftl": "html",
-    ".stylelintrc": "json",
-    ".releaserc": "json"
+    ".releaserc": "json",
+    ".stylelintrc": "json"
   },
   "files.exclude": {
     "**/*.iml": true,
@@ -85,16 +102,19 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "git.blame.statusBarItem.enabled": true,
   "git.branchProtection": ["main", "master"],
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
   "github.copilot.enable": {
     "*": true,
-    "yaml": true,
+    "markdown": false,
     "plaintext": false,
-    "markdown": false
+    "yaml": true
   },
+  "githubPullRequests.pullBranch": "never",
   "html.format.wrapLineLength": 80,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "literals",
@@ -102,9 +122,11 @@
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "markdown.preview.fontSize": 15,
   "material-icon-theme.activeIconPack": "react",
   "notebook.markup.fontSize": 15,
   "playwright.reuseBrowser": true,
+  "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
   },
@@ -113,6 +135,7 @@
     "**/tsconfig.tsbuildinfo": true
   },
   "search.quickOpen.history.filterSortOrder": "recency",
+  "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.startupPrompt": "never",
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
@@ -133,25 +156,6 @@
     "<C-r>": false,
     "<C-v>": true
   },
-  "vim.useSystemClipboard": true,
-  "window.dialogStyle": "custom",
-  "window.newWindowDimensions": "maximized",
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "workbench.colorCustomizations": {
-    "errorLens.errorBackground": "#0000",
-    "errorLens.errorMessageBackground": "#e4545419",
-    "errorLens.warningBackground": "#0000",
-    "errorLens.warningMessageBackground": "#ff942f19"
-  },
-  "workbench.colorTheme": "Tokyo Night Moon",
-  "workbench.editor.decorations.badges": true,
-  "workbench.editor.decorations.colors": true,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.navigationScope": "editorGroup",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none",
-  "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
     {
@@ -205,29 +209,25 @@
       "commands": ["workbench.action.closeOtherEditors"]
     }
   ],
-  "editor.guides.highlightActiveBracketPair": false,
-  "editor.guides.bracketPairsHorizontal": false,
-  "editor.occurrencesHighlight": "off",
-  "editor.selectionHighlight": false,
-  "editor.matchBrackets": "never",
-  "git.openRepositoryInParentFolders": "never",
-  "prettier.requireConfig": true,
-  "workbench.editor.empty.hint": "hidden",
-  "security.promptForLocalFileProtocolHandling": false,
-  "githubPullRequests.pullBranch": "never",
-  "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
-  "explorer.confirmDelete": false,
-  "chat.editor.fontSize": 15,
-  "markdown.preview.fontSize": 15,
+  "vim.useSystemClipboard": true,
   "window.commandCenter": true,
-  "breadcrumbs.enabled": false,
-  "editor.stickyScroll.enabled": false,
-  "editor.unicodeHighlight.allowedCharacters": {
-    "“": true,
-    "”": true,
-    "’": true
+  "window.dialogStyle": "custom",
+  "window.newWindowDimensions": "maximized",
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "workbench.colorCustomizations": {
+    "errorLens.errorBackground": "#0000",
+    "errorLens.errorMessageBackground": "#e4545419",
+    "errorLens.warningBackground": "#0000",
+    "errorLens.warningMessageBackground": "#ff942f19"
   },
-  "cSpell.userWords": ["codeowners"],
-  "git.blame.statusBarItem.enabled": true,
-  "cSpell.diagnosticLevel": "Hint"
+  "workbench.colorTheme": "Tokyo Night Moon",
+  "workbench.editor.decorations.badges": true,
+  "workbench.editor.decorations.colors": true,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.navigationScope": "editorGroup",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.tree.renderIndentGuides": "none"
 }

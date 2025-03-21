@@ -1,4 +1,13 @@
 {
   "semi": false,
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": ["vscode/**"],
+      "options": {
+        "jsonRecursiveSort": true,
+        "plugins": ["prettier-plugin-sort-json"]
+      }
+    }
+  ]
 }
