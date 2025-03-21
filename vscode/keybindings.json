@@ -1,23 +1,9 @@
 [
-  // Use cmd+r for replace
-  {
-    "key": "cmd+r",
-    "command": "editor.action.startFindReplaceAction"
-  },
-  {
-    "key": "alt+cmd+f",
-    "command": "-editor.action.startFindReplaceAction"
-  },
   // Use cmd+n to create new files in the explorer
   {
     "key": "cmd+n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus && explorerViewletVisible"
-  },
-  // Use shift+alt+n to create new folders in the explorer
-  {
-    "key": "shift+alt+n",
-    "command": "explorer.newFolder"
   },
   // use cmd+shift+g to open the Git panel
   {
@@ -28,88 +14,25 @@
     "key": "ctrl+shift+g",
     "command": "-workbench.view.scm"
   },
-  // Use meh+g to open the Git graph
-  {
-    "key": "alt+ctrl+shift+g",
-    "command": "git-graph.view"
-  },
-  // Use hyper+p to push changes. Might remove eventually now that I
-  // use the `push` shell alias most of the time.
-  {
-    "key": "ctrl+alt+cmd+shift+p",
-    "command": "git.push"
-  },
-  // Use meh+a or cmd+shift+a to focus the current file in the explorer
-  {
-    "key": "alt+ctrl+shift+a",
-    "command": "workbench.files.action.showActiveFileInExplorer"
-  },
+  // Use cmd+shift+a to focus the current file in the explorer
   {
     "key": "cmd+shift+a",
     "command": "workbench.files.action.showActiveFileInExplorer"
   },
-  // Use alt+enter for triggering suggestions. It's a lot easier than ctrl+space
-  // which requires a pinky reach.
+  // Use cmd+shift+d to toggle the terminal
   {
-    "key": "alt+enter",
-    "command": "editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    "key": "cmd+shift+d",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   },
   {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   },
-  // Use cmd+y for redo. For no reason other than I'm a fan of less keystrokes.
-  {
-    "key": "cmd+y",
-    "command": "redo"
-  },
-  // I don't use save as, so use the shortcut it uses for save all
-  {
-    "key": "shift+cmd+s",
-    "command": "-workbench.action.files.saveAs"
-  },
-  {
-    "key": "alt+cmd+s",
-    "command": "-workbench.action.files.saveAll"
-  },
-  {
-    "key": "shift+cmd+s",
-    "command": "workbench.action.files.saveAll"
-  },
-  // Use ctrl+g to go to the line number rather than using Vim's ctrl+g
-  {
-    "key": "ctrl+g",
-    "command": "-extension.vim_ctrl+g",
-    "when": "editorTextFocus && vim.active && vim.use<C-g> && !inDebugRepl"
-  },
-  // Use alt+cmd+t to open the task run panel
-  {
-    "key": "alt+cmd+t",
-    "command": "workbench.action.tasks.runTask"
-  },
-  // Use cmd+j to focus the panel or editor depending on which is currently
-  // in focus.
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.focusPanel",
-    "when": "!panelFocus"
-  },
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "panelFocus"
-  },
-  // Remap the toggle panel shortcut to cmd+shift+j. This shortcut is not as
-  // useful as changing focus, so we make it the harder shortcut.
   {
     "key": "cmd+j",
     "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "cmd+shift+j",
-    "command": "workbench.action.togglePanel"
   },
   // Use cmd+shift+r to open the workspace find replace in the sidebar.
   {
@@ -201,22 +124,12 @@
     "key": "cmd+k cmd+f",
     "command": "git.openChange"
   },
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-  {
-    "key": "ctrl+`",
-    "command": "-workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
   // ctrl+k and ctrl+j to navigate up/down in lists
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
+  // {
+  //   "key": "ctrl+j",
+  //   "command": "workbench.action.quickOpenSelectNext",
+  //   "when": "inQuickOpen"
+  // },
   {
     "key": "ctrl+j",
     "command": "-editor.action.joinLines"
@@ -225,11 +138,11 @@
     "key": "ctrl+j",
     "command": "-extension.vim_ctrl+j"
   },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
+  // {
+  //   "key": "ctrl+k",
+  //   "command": "workbench.action.quickOpenSelectPrevious",
+  //   "when": "inQuickOpen"
+  // },
   {
     "key": "ctrl+k",
     "command": "-deleteAllRight"
@@ -256,5 +169,27 @@
     "key": "shift+cmd+k",
     "command": "aipopup.action.modal.generate",
     "when": "editorFocus && !composerBarIsVisible"
+  },
+  // Use ctrl+j and ctrl+k to navigate the suggestion list
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  // Use ctrl+l to trigger suggestions
+  {
+    "key": "ctrl+l",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   }
 ]

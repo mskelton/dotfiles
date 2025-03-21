@@ -199,6 +199,10 @@
     {
       "before": ["]", "b"],
       "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "o", "n"],
+      "commands": ["workbench.action.closeOtherEditors"]
     }
   ],
   "editor.guides.highlightActiveBracketPair": false,
