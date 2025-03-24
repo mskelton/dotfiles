@@ -16,13 +16,68 @@
     "editor.wordWrap": "on"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
     "editor.tabSize": 4
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.tabSize": 4
   },
+  "auto-correct.dictionary": [
+    {
+      "languages": ["*"],
+      "useLargeList": false,
+      "words": {
+        "MS": "Mark Skelton",
+        "accomodate": "accommodate",
+        "accross": "across",
+        "appologize": "apologize",
+        "calender": "calendar",
+        "committment": "commitment",
+        "concious": "conscious",
+        "deductable": "deductible",
+        "definately": "definitely",
+        "embarass{,ment}": "embarrass{,ment}",
+        "enviroment": "environment",
+        "existance": "existence",
+        "grammer": "grammar",
+        "independant": "independent",
+        "neccessary": "necessary",
+        "occassion": "occasion",
+        "occured": "occurred",
+        "occurence": "occurrence",
+        "posession": "possession",
+        "priviledge": "privilege",
+        "reciept": "receipt",
+        "recieve": "receive",
+        "relevent": "relevant",
+        "seperate": "separate",
+        "teh": "the",
+        "ture": "true",
+        "wierd": "weird"
+      }
+    },
+    {
+      "languages": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
+      "words": {
+        "Null": "null",
+        "RN": "ReactNode",
+        "cosnt": "const",
+        "functoin": "function",
+        "und": "undefined"
+      }
+    },
+    {
+      "languages": ["typescript", "typescriptreact"],
+      "words": {
+        "unknown": "unknown"
+      }
+    }
+  ],
   "breadcrumbs.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.userWords": ["codeowners"],
@@ -65,7 +120,8 @@
   "editor.unicodeHighlight.allowedCharacters": {
     "’": true,
     "“": true,
-    "”": true
+    "”": true,
+    "–": true
   },
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
@@ -227,7 +283,6 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.navigationScope": "editorGroup",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none"
 }

@@ -35,8 +35,8 @@
   mc = "!f() { if [ -f .git/MERGE_HEAD ]; then git commit --no-edit; else echo 'fatal: There is no merge in progress (MERGE_HEAD missing).' >&2; exit 1; fi; }; f"
   import = merge --no-commit --no-ff
   # Rebase
-  rd = !git rebase $(git default)
-  rl = !git co - && git rebase $(git default)
+  rd = !git fetch origin $(git default) && git rebase origin/$(git default)
+  rl = !git co - && git rebase origin/$(git default)
   rc = rebase --continue
   ri = !git rebase -i $(git default)
   fix = !git add . && git rebase --continue
