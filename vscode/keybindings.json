@@ -19,16 +19,25 @@
     "command": "workbench.files.action.showActiveFileInExplorer",
     "key": "cmd+shift+a"
   },
-  // Use cmd+shift+d to toggle the terminal
+  // Use cmd+shift+d or cmd+j to toggle the terminal
   {
     "command": "workbench.action.terminal.toggleTerminal",
     "key": "cmd+shift+d",
     "when": "terminal.active"
   },
   {
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "cmd+j",
+    "when": "terminal.active"
+  },
+  {
     "command": "-workbench.action.terminal.toggleTerminal",
     "key": "ctrl+`",
     "when": "terminal.active"
+  },
+  {
+    "command": "-workbench.action.togglePanel",
+    "key": "cmd+j"
   },
   // Use cmd+shift+r to open the workspace find replace in the sidebar.
   {
