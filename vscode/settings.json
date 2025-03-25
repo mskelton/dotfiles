@@ -80,7 +80,7 @@
   ],
   "breadcrumbs.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
-  "cSpell.userWords": ["codeowners"],
+  "cSpell.userWords": ["Akuma", "codeowners"],
   "chat.editor.fontSize": 15,
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
   "debug.console.fontSize": 15,
@@ -118,10 +118,10 @@
   "editor.tabCompletion": "onlySnippets",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.allowedCharacters": {
+    "–": true,
     "’": true,
     "“": true,
-    "”": true,
-    "–": true
+    "”": true
   },
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",

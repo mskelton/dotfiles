@@ -1,195 +1,190 @@
 [
   // Use cmd+n to create new files in the explorer
   {
-    "key": "cmd+n",
     "command": "explorer.newFile",
+    "key": "cmd+n",
     "when": "explorerViewletFocus && explorerViewletVisible"
   },
   // use cmd+shift+g to open the Git panel
   {
-    "key": "shift+cmd+g",
-    "command": "workbench.view.scm"
+    "command": "workbench.view.scm",
+    "key": "shift+cmd+g"
   },
   {
-    "key": "ctrl+shift+g",
-    "command": "-workbench.view.scm"
+    "command": "-workbench.view.scm",
+    "key": "ctrl+shift+g"
   },
   // Use cmd+shift+a to focus the current file in the explorer
   {
-    "key": "cmd+shift+a",
-    "command": "workbench.files.action.showActiveFileInExplorer"
+    "command": "workbench.files.action.showActiveFileInExplorer",
+    "key": "cmd+shift+a"
   },
   // Use cmd+shift+d to toggle the terminal
   {
-    "key": "cmd+shift+d",
     "command": "workbench.action.terminal.toggleTerminal",
+    "key": "cmd+shift+d",
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
+    "key": "ctrl+`",
     "when": "terminal.active"
-  },
-  {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
   },
   // Use cmd+shift+r to open the workspace find replace in the sidebar.
   {
-    "key": "shift+cmd+r",
-    "command": "workbench.action.replaceInFiles"
+    "command": "workbench.action.replaceInFiles",
+    "key": "shift+cmd+r"
   },
   {
-    "key": "shift+cmd+h",
-    "command": "-workbench.action.replaceInFiles"
+    "command": "-workbench.action.replaceInFiles",
+    "key": "shift+cmd+h"
   },
   // Use cmd+n to create a new terminal when the terminal is focused.
   {
-    "key": "cmd+n",
     "command": "workbench.action.terminal.new",
+    "key": "cmd+n",
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+shift+`",
     "command": "-workbench.action.terminal.new",
+    "key": "ctrl+shift+`",
     "when": "terminalProcessSupported"
   },
   // Use cmd+w to close a terminal when the terminal is focused.
   {
-    "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
+    "key": "cmd+w",
     "when": "terminalFocus && terminalProcessSupported"
   },
   // Open JSON settings with the same type of chord as keyboard shortcuts
   {
-    "key": "cmd+k cmd+,",
-    "command": "workbench.action.openSettingsJson"
+    "command": "workbench.action.openSettingsJson",
+    "key": "cmd+k cmd+,"
   },
   // Don't close the workspace using cmd+w. It's annoying.
   {
-    "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
+    "key": "cmd+w",
     "when": "!editorIsOpen && !multipleEditorGroups"
   },
   // Insert console.log snippet when pressing cmd+option+l
   {
-    "key": "cmd+alt+shift+ctrl+l",
+    "args": { "snippet": "console.log($0)" },
     "command": "editor.action.insertSnippet",
-    "args": { "snippet": "console.log($0)" }
+    "key": "cmd+alt+shift+ctrl+l"
   },
   // Use meh+b for running the build task
   {
-    "key": "ctrl+shift+alt+b",
-    "command": "workbench.action.tasks.build"
+    "command": "workbench.action.tasks.build",
+    "key": "ctrl+shift+alt+b"
   },
   {
-    "key": "shift+cmd+b",
-    "command": "-workbench.action.tasks.build"
+    "command": "-workbench.action.tasks.build",
+    "key": "shift+cmd+b"
   },
   // Use hyper+. for inserting an arrow function
   {
-    "key": "cmd+ctrl+shift+alt+=",
+    "args": { "snippet": "() => ${1:{ $0 \\}}" },
     "command": "editor.action.insertSnippet",
-    "args": { "snippet": "() => ${1:{ $0 \\}}" }
+    "key": "cmd+ctrl+shift+alt+="
   },
   // Use meh+t for inserting a translation interpolation
   {
-    "key": "alt+ctrl+shift+t",
+    "args": { "snippet": "{t('$0')}" },
     "command": "editor.action.insertSnippet",
-    "args": { "snippet": "{t('$0')}" }
+    "key": "alt+ctrl+shift+t"
   },
   // Use cmd+o to jump to symbols in the current file
   {
-    "key": "cmd+o",
-    "command": "workbench.action.gotoSymbol"
+    "command": "workbench.action.gotoSymbol",
+    "key": "cmd+o"
   },
   {
-    "key": "shift+cmd+o",
-    "command": "-workbench.action.gotoSymbol"
+    "command": "-workbench.action.gotoSymbol",
+    "key": "shift+cmd+o"
   },
   {
-    "key": "cmd+o",
     "command": "-workbench.action.files.openFile",
+    "key": "cmd+o",
     "when": "false"
   },
   {
-    "key": "ctrl+shift+alt+x",
-    "command": "extension.cssrem.rem-switch-px"
+    "command": "extension.cssrem.rem-switch-px",
+    "key": "ctrl+shift+alt+x"
   },
   {
-    "key": "alt+z",
-    "command": "-extension.cssrem.rem-switch-px"
+    "command": "-extension.cssrem.rem-switch-px",
+    "key": "alt+z"
   },
   {
-    "key": "cmd+k cmd+f",
-    "command": "git.openChange"
-  },
-  // ctrl+k and ctrl+j to navigate up/down in lists
-  // {
-  //   "key": "ctrl+j",
-  //   "command": "workbench.action.quickOpenSelectNext",
-  //   "when": "inQuickOpen"
-  // },
-  {
-    "key": "ctrl+j",
-    "command": "-editor.action.joinLines"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "-extension.vim_ctrl+j"
-  },
-  // {
-  //   "key": "ctrl+k",
-  //   "command": "workbench.action.quickOpenSelectPrevious",
-  //   "when": "inQuickOpen"
-  // },
-  {
-    "key": "ctrl+k",
-    "command": "-deleteAllRight"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "-extension.vim_ctrl+k"
+    "command": "git.openChange",
+    "key": "cmd+k cmd+f"
   },
   // Open
   {
-    "key": "ctrl+r",
-    "command": "-workbench.action.openRecent"
+    "command": "-workbench.action.openRecent",
+    "key": "ctrl+r"
   },
   {
-    "key": "shift+cmd+o",
-    "command": "workbench.action.openRecent"
+    "command": "workbench.action.openRecent",
+    "key": "shift+cmd+o"
   },
   {
-    "key": "shift+cmd+k",
     "command": "-editor.action.deleteLines",
+    "key": "shift+cmd+k",
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "shift+cmd+k",
     "command": "aipopup.action.modal.generate",
+    "key": "shift+cmd+k",
     "when": "editorFocus && !composerBarIsVisible"
   },
-  // Use ctrl+j and ctrl+k to navigate the suggestion list
+  // Use ctrl+j and ctrl+k to navigate lists
   {
+    "command": "-editor.action.joinLines",
+    "key": "ctrl+j"
+  },
+  {
+    "command": "-extension.vim_ctrl+j",
+    "key": "ctrl+j"
+  },
+  {
+    "command": "workbench.action.quickOpenSelectNext",
     "key": "ctrl+j",
+    "when": "inQuickOpen"
+  },
+  {
     "command": "selectNextSuggestion",
+    "key": "ctrl+j",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   {
+    "command": "-deleteAllRight",
+    "key": "ctrl+k"
+  },
+  {
+    "command": "-extension.vim_ctrl+k",
+    "key": "ctrl+k"
+  },
+  {
+    "command": "workbench.action.quickOpenSelectPrevious",
     "key": "ctrl+k",
+    "when": "inQuickOpen"
+  },
+  {
     "command": "selectPrevSuggestion",
+    "key": "ctrl+k",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   // Use ctrl+l to trigger suggestions
   {
-    "key": "ctrl+l",
     "command": "editor.action.triggerSuggest",
+    "key": "ctrl+l",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+space",
     "command": "-editor.action.triggerSuggest",
+    "key": "ctrl+space",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   }
 ]
