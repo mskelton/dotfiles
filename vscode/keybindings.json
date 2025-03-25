@@ -186,5 +186,14 @@
     "command": "-editor.action.triggerSuggest",
     "key": "ctrl+space",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  // Open keybindings with cmd+shift+, similar to opening settings
+  {
+    "command": "workbench.action.openGlobalKeybindings",
+    "key": "shift+cmd+,"
+  },
+  {
+    "command": "-workbench.action.openGlobalKeybindings",
+    "key": "cmd+r cmd+s"
   }
 ]
