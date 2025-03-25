@@ -1,18 +1,19 @@
+con continue
+diff !git diff "$(gt parent)"..HEAD
+fix !git add . && gt continue
+go !gt modify --all && gt submit
 linear !linear
 ll log long
 ls log short
 ma modify --all
-sa !gt modify --all && gt squash -n 2>/dev/null
 main !gt sync -f && gt checkout $(git default)
+name rename
 new !gt create -am "$2"
 pr submit --stack --publish --cli
 prd submit --stack --draft --cli
+sa !gt modify --all && gt squash -n 2>/dev/null
+squash squash --no-edit
 ss submit --stack
 su submit --stack --update-only
 sync sync -f
-go !gt modify --all && gt submit
-fix !git add . && gt continue
-name rename
-con continue
-diff !git diff "$(gt parent)"..HEAD
 untracked !untracked
