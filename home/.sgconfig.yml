@@ -1,3 +1,3 @@
 ruleDirs: []
 languageGlobs:
-  tsx: ['*.js', '*.jsx', '*.ts', '*.tsx']
+  tsx: ["*.js", "*.jsx", "*.ts", "*.tsx"]
