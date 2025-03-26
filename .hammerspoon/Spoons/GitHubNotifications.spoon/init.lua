@@ -7,6 +7,8 @@ M.author = "Mark Skelton <mark@mskelton.dev>"
 M.homepage = "https://github.com/mskelton/dotfiles"
 M.license = "ISC - https://opensource.org/licenses/ISC"
 
+M.log = hs.logger.new("gh_notif", "debug")
+
 --- Get the icon for the menu bar
 --- @param filename string
 --- @return hs.image|nil
@@ -52,7 +54,10 @@ local function show_error(message)
 end
 
 --- Callback fired when the timer triggers
-function M:sync()
+--- @param source string
+function M:sync(source)
+	self.log.d("Syncing GitHub notifications. Triggerd by " .. source)
+
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
@@ -177,7 +182,9 @@ function M:start()
 		end)
 	end
 
-	self.timer = hs.timer.new(self.interval or 60, hs.fnutils.partial(self.sync, self))
+	self.timer = hs.timer.new(self.interval or 60, function()
+		self:sync("timer")
+	end)
 	self.timer:start()
 	self.timer:fire()
 
@@ -186,7 +193,7 @@ function M:start()
 		if data == "xclear" then
 			self:update_count(0)
 		elseif data == "xsync" then
-			self:sync()
+			self:sync("ipc")
 		end
 	end)
 
