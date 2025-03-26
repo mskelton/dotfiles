@@ -21,6 +21,7 @@ _print_help() {
 
 Commands:
   list    List notifications
+  open    Open GitHub notifications dashboard
   done    Mark notifications as done"
 }
 
@@ -63,6 +64,8 @@ _parse_args "$@"
 
 if [[ $command == "done" ]]; then
 	_mark_notifications_as_read
+elif [[ $command == "open" ]]; then
+	open "https://github.com/notifications"
 else
 	_list_notifications
 fi
