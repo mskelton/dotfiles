@@ -134,6 +134,7 @@
   ],
   "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     "*.ftl": "html",
@@ -263,6 +264,10 @@
     {
       "before": ["<leader>", "o", "n"],
       "commands": ["workbench.action.closeOtherEditors"]
+    },
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"]
     }
   ],
   "vim.useSystemClipboard": true,
