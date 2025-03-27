@@ -94,6 +94,7 @@
   "editor.codeActionsOnSave": ["source.fixAll"],
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.foldingStrategy": "indentation",
   "editor.fontFamily": "JetBrains Mono, Symbols Nerd Font, codicon, termicons, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
