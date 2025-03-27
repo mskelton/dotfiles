@@ -1,6 +1,7 @@
 {
   "name": "dotfiles",
   "description": "My personal settings and dotfiles.",
+  "packageManager": "yarn@4.7.0",
   "scripts": {
     "fmt": "prettier --write ."
   },
