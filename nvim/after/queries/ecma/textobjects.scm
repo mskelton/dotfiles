@@ -19,16 +19,15 @@
     arguments: (arguments
                  (arrow_function
                    body: (statement_block . "{" . (_) @_start @_end (_)? @_end . "}")))
-    (#match? @_type "^(x?it|test)$")
+    (#match? @_type "^(x?it|test|.*Test)$")
     (#make-range! "test.inner" @_start @_end))) @test.outer
-
 
 (expression_statement
   (call_expression
     function: (member_expression
-                object: (identifier) @test.type)
+                object: (identifier) @_type)
     arguments: (arguments
                  (arrow_function
                    body: (statement_block . "{" . (_) @_start @_end (_)? @_end . "}")))
-    (#match? @_type "^(x?it|test)$")
+    (#match? @_type "^(x?it|test|.*Test)$")
     (#make-range! "test.inner" @_start @_end))) @test.outer
