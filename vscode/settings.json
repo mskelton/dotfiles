@@ -74,7 +74,7 @@
     {
       "languages": ["typescript", "typescriptreact"],
       "words": {
-        "unknown": "unknown"
+        "kn": "unknown"
       }
     }
   ],
@@ -216,6 +216,24 @@
   },
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
+    // Git
+    {
+      "before": ["<leader>", "v", "s"],
+      "commands": ["git.stageChange"]
+    },
+    {
+      "before": ["<leader>", "v", "u"],
+      "commands": ["git.revertChange"]
+    },
+    {
+      "before": ["[", "v"],
+      "commands": ["workbench.action.editor.previousChange"]
+    },
+    {
+      "before": ["]", "v"],
+      "commands": ["workbench.action.editor.nextChange"]
+    },
+    // Other
     {
       "before": [";"],
       "commands": ["vim.showQuickpickCmdLine"]
@@ -282,11 +300,14 @@
     "errorLens.warningMessageBackground": "#ff942f19"
   },
   "workbench.colorTheme": "Tokyo Night Moon",
+  "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.navigationScope": "editorGroup",
+  "workbench.editor.pinnedTabSizing": "shrink",
+  "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none"

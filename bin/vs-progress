@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Track progress of syncing Neovim config to VS Code
+
+total=0
+reviewed=0
+
+while IFS= read -r file; do
+	((total++))
+
+	if grep -q "@vs-reviewed" "$file"; then
+		((reviewed++))
+	fi
+done < <(find nvim -type f -name "*.lua")
+
+percent=0
+if ((total > 0)); then
+	percent=$((100 * reviewed / total))
+fi
+
+echo "$percent% ($reviewed of $total)"

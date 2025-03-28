@@ -133,7 +133,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack, nil, screens.primary, hs.layout.maximized },
 		{ apps.linear, nil, screens.primary, hs.layout.maximized },
-		{ apps.figma, nil, screens.primary, hs.layout.maximized },
+		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
 		{ apps.notion, nil, screens.primary, hs.layout.maximized },
 		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
 		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },

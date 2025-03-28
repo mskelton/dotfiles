@@ -1,3 +1,4 @@
+--- @vs-reviewed
 local g = vim.g
 local o = vim.opt
 
