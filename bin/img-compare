@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Compare two images
+
+w=$(magick "$1" -format "%[fx:w]" info:)
+font_size=$((w / 15))
+
+magick \
+	\( "$1" -gravity north -pointsize "$font_size" -fill red -annotate +0+10 "Before" \) \
+	\( -size 2x -gravity center xc:white \) \
+	\( "$2" -gravity north -pointsize "$font_size" -fill red -annotate +0+10 "After" \) \
+	+append "$3"
