@@ -210,6 +210,7 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.foldfix": true,
   "vim.handleKeys": {
     "<C-r>": false,
     "<C-v>": true
@@ -232,6 +233,15 @@
     {
       "before": ["]", "v"],
       "commands": ["workbench.action.editor.nextChange"]
+    },
+    // LSP
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
     },
     // Other
     {

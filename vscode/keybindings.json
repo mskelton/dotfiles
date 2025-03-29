@@ -204,5 +204,9 @@
   {
     "command": "-workbench.action.openGlobalKeybindings",
     "key": "cmd+r cmd+s"
+  },
+  {
+    "command": "editor.cpp.toggle",
+    "key": "cmd+m"
   }
 ]
