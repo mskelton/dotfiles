@@ -1,4 +1,10 @@
 {
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+  },
   "[go][go.mod][go.sum]": {
     "editor.defaultFormatter": "golang.go"
   },
@@ -320,5 +326,5 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
 }
