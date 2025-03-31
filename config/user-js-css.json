@@ -1,7 +1,7 @@
 {
   "info": {
-    "lastEmitterId": "C5hj2IONjaKstfhz-NZJ1",
-    "updatedAt": 1742318308507,
+    "lastEmitterId": "3zefSZYfOK9XygNcVN-49",
+    "updatedAt": 1743424209895,
     "version": 11
   },
   "libs": [],
@@ -104,6 +104,15 @@
     "scssDraft": "",
     "styleImportant": false
   },
+  "r:WI8sZG10Olz5xvgtu3wy7": {
+    "css": "body {\n  overflow: scroll;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": "body {\n\toverflow: scroll;\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
   "r:YeVeTKSQMFk847msIMUN4": {
     "css": "@font-face {\n  font-family: termicons;\n  src: local(\"termicons\");\n  unicode-range: U+D000-D200;\n}\n.blob-code-inner,\n.blob-num,\n.highlight pre {\n  font-family: termicons, \"JetBrains Mono\" !important;\n}\n\n.pl-c {\n  font-style: italic;\n}",
     "cssError": "",
@@ -119,6 +128,15 @@
     "js": "",
     "jsDraft": "",
     "scss": "div[aria-label=\"Trending\"] {\n\tdisplay: none;\n}\n\nnav[aria-label=\"Footer\"],\ndiv[data-testid=\"GrokDrawer\"],\nbutton[aria-label=\"Grok actions\"] {\n\tdisplay: none;\n}\n\nnav[aria-label=\"Primary\"] {\n\ta[aria-label=\"Grok\"],\n\ta[aria-label=\"Premium\"],\n\ta[aria-label=\"Verified Orgs\"] {\n\t\tdisplay: none;\n\t}\n}",
+    "scssDraft": "",
+    "styleImportant": false
+  },
+  "r:bKkj6ulPQDPPVTP-iq5Uf": {
+    "css": ".AppHeader .AppHeader-button--hasIndicator::before {\n  display: none !important;\n}",
+    "cssError": "",
+    "js": "",
+    "jsDraft": "",
+    "scss": ".AppHeader .AppHeader-button--hasIndicator::before {\n\tdisplay: none !important;\n}",
     "scssDraft": "",
     "styleImportant": false
   },
@@ -311,6 +329,24 @@
       "name": "X - Clean",
       "updated": 1742318308405,
       "urls": "https://x.com/*"
+    },
+    {
+      "created": 1742830862329,
+      "flags": [],
+      "id": "r:bKkj6ulPQDPPVTP-iq5Uf",
+      "libs": [],
+      "name": "GitHub - Hide notification dot",
+      "updated": 1742830862477,
+      "urls": "https://github.com/*"
+    },
+    {
+      "created": 1743424192027,
+      "flags": [],
+      "id": "r:WI8sZG10Olz5xvgtu3wy7",
+      "libs": [],
+      "name": "Lingvano - Scroll Fix",
+      "updated": 1743424209792,
+      "urls": "https://app.lingvano.com/*"
     }
   ],
   "settings": {
