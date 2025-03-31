@@ -204,5 +204,9 @@
     "command": "-aipopup.action.modal.generate",
     "key": "cmd+k",
     "when": "editorFocus && !composerBarIsVisible"
+  },
+  {
+    "command": "-aichat.newchataction",
+    "key": "cmd+l"
   }
 ]
