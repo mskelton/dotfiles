@@ -1,5 +1,4 @@
 aliases:
-  aa: '!gh pr review --approve "$1" && gh pr merge --auto "$1"'
   approve: pr review --approve
   assign: '!gh pr edit --add-reviewer "$1" && gh copy'
   aus: pr merge --squash --auto
