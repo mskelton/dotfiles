@@ -77,77 +77,13 @@
     "command": "editor.action.insertSnippet",
     "key": "cmd+alt+shift+ctrl+l"
   },
-  // Use meh+b for running the build task
-  {
-    "command": "workbench.action.tasks.build",
-    "key": "ctrl+shift+alt+b"
-  },
-  {
-    "command": "-workbench.action.tasks.build",
-    "key": "shift+cmd+b"
-  },
   // Use hyper+. for inserting an arrow function
   {
     "args": { "snippet": "() => ${1:{ $0 \\}}" },
     "command": "editor.action.insertSnippet",
     "key": "cmd+ctrl+shift+alt+="
   },
-  // Use meh+t for inserting a translation interpolation
-  {
-    "args": { "snippet": "{t('$0')}" },
-    "command": "editor.action.insertSnippet",
-    "key": "alt+ctrl+shift+t"
-  },
-  // Use cmd+o to jump to symbols in the current file
-  {
-    "command": "workbench.action.gotoSymbol",
-    "key": "cmd+o"
-  },
-  {
-    "command": "-workbench.action.gotoSymbol",
-    "key": "shift+cmd+o"
-  },
-  {
-    "command": "-workbench.action.files.openFile",
-    "key": "cmd+o",
-    "when": "false"
-  },
-  {
-    "command": "extension.cssrem.rem-switch-px",
-    "key": "ctrl+shift+alt+x"
-  },
-  {
-    "command": "-extension.cssrem.rem-switch-px",
-    "key": "alt+z"
-  },
-  // Open
-  {
-    "command": "-workbench.action.openRecent",
-    "key": "ctrl+r"
-  },
-  {
-    "command": "workbench.action.openRecent",
-    "key": "shift+cmd+o"
-  },
-  {
-    "command": "-editor.action.deleteLines",
-    "key": "shift+cmd+k",
-    "when": "textInputFocus && !editorReadonly"
-  },
-  {
-    "command": "aipopup.action.modal.generate",
-    "key": "shift+cmd+k",
-    "when": "editorFocus && !composerBarIsVisible"
-  },
   // Use ctrl+j and ctrl+k to navigate lists
-  {
-    "command": "-editor.action.joinLines",
-    "key": "ctrl+j"
-  },
-  {
-    "command": "-extension.vim_ctrl+j",
-    "key": "ctrl+j"
-  },
   {
     "command": "workbench.action.quickOpenSelectNext",
     "key": "ctrl+j",
@@ -159,12 +95,12 @@
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   {
-    "command": "-deleteAllRight",
-    "key": "ctrl+k"
+    "command": "-editor.action.joinLines",
+    "key": "ctrl+j"
   },
   {
-    "command": "-extension.vim_ctrl+k",
-    "key": "ctrl+k"
+    "command": "-extension.vim_ctrl+j",
+    "key": "ctrl+j"
   },
   {
     "command": "workbench.action.quickOpenSelectPrevious",
@@ -175,6 +111,14 @@
     "command": "selectPrevSuggestion",
     "key": "ctrl+k",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "-deleteAllRight",
+    "key": "ctrl+k"
+  },
+  {
+    "command": "-extension.vim_ctrl+k",
+    "key": "ctrl+k"
   },
   // Use ctrl+l to trigger suggestions
   {
@@ -196,9 +140,21 @@
     "command": "-workbench.action.openGlobalKeybindings",
     "key": "cmd+r cmd+s"
   },
+  // Toggle Cursor tab with cmd+m
   {
     "command": "editor.cpp.toggle",
     "key": "cmd+m"
+  },
+  // Remove AI chat as much as possible
+  {
+    "command": "-aichat.newchataction",
+    "key": "cmd+l"
+  },
+  // Use cmd+shift+k for Cursor AI popup
+  {
+    "command": "aipopup.action.modal.generate",
+    "key": "shift+cmd+k",
+    "when": "editorFocus && !composerBarIsVisible"
   },
   {
     "command": "-aipopup.action.modal.generate",
@@ -206,7 +162,13 @@
     "when": "editorFocus && !composerBarIsVisible"
   },
   {
-    "command": "-aichat.newchataction",
-    "key": "cmd+l"
+    "command": "-editor.action.deleteLines",
+    "key": "shift+cmd+k",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  // Don't let Cursor take over cmd+k in the terminal
+  {
+    "command": "-cursorai.action.generateInTerminal",
+    "key": "cmd+k"
   }
 ]

@@ -3,7 +3,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit"
-    },
+    }
   },
   "[go][go.mod][go.sum]": {
     "editor.defaultFormatter": "golang.go"
@@ -223,6 +223,50 @@
   },
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
+    // Find
+    {
+      "before": ["<leader>", "f", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "d"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    },
+    {
+      "before": ["<leader>", "f", "s"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "o"],
+      "commands": ["workbench.action.openRecent"]
+    },
+    {
+      "before": ["<leader>", "f", "n"],
+      "commands": ["git.checkout"]
+    },
+    {
+      "before": ["<leader>", "f", "y"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    // {
+    //   "before": ["<leader>", "f", "a"],
+    //   "commands": ["workbench.action.quickOpen"],
+    //   "args": {
+    //     "folder": "${fileDirname}"
+    //   }
+    // },
+    // {
+    //   "before": ["<leader>", "j", "r"],
+    //   "commands": ["workbench.action.gotoSymbol"]
+    // },
+    // {
+    //   "before": ["<leader>", "j", "c"],
+    //   "commands": ["workbench.action.gotoSymbol"]
+    // },
+    // {
+    //   "before": ["<leader>", "t", "s"],
+    //   "commands": ["workbench.action.gotoSymbol"]
+    // },
     // Git
     {
       "before": ["<leader>", "v", "s"],
@@ -277,18 +321,6 @@
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
-      "before": ["<leader>", "f", "p"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "f", "d"],
-      "commands": ["workbench.files.action.showActiveFileInExplorer"]
-    },
-    {
-      "before": ["<leader>", "f", "s"],
-      "commands": ["workbench.action.findInFiles"]
-    },
-    {
       "before": ["[", "b"],
       "commands": ["workbench.action.previousEditor"]
     },
@@ -326,5 +358,5 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
+  "workbench.tree.renderIndentGuides": "none"
 }

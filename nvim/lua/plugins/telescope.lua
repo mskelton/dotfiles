@@ -156,7 +156,7 @@ return {
 				require("telescope.builtin").current_buffer_fuzzy_find()
 			end,
 			mode = nv,
-			desc = "Fuzzy find cin current buffer",
+			desc = "Fuzzy find in current buffer",
 		},
 		{
 			"z=",
