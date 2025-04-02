@@ -1,4 +1,5 @@
 # Setup shortcuts
 
-- [Focus](https://www.icloud.com/shortcuts/65840b635c7d4073b4319c1ddabcdce5)
-- [Media](https://www.icloud.com/shortcuts/fbf624065fd8456b98a1d3ac6dad77d6)
+- [Bluetooth](https://www.icloud.com/shortcuts/a5577a3bde5241439069fc56142ac6b4)
+- [Focus](https://www.icloud.com/shortcuts/43ac801a51dd49f2a3b6c8d4cce6999b)
+- [Media](https://www.icloud.com/shortcuts/88972195f8774f9c9e84f12b0cbb3712)

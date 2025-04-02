@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# Re-connect bluetooth so keyboard will re-connect
-
-blueutil --power 0
-blueutil --power 1
