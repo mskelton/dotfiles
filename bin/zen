@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# Zen mode
-
-open "raycast://focus/complete"
-open "raycast://focus/start?duration=1800&categories=messaging"

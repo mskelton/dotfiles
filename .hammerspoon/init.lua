@@ -33,6 +33,10 @@ Install:andUse("RestartBluetooth", {
 	start = true,
 })
 
+Install:andUse("FocusManager", {
+	start = true,
+})
+
 Install:andUse("GitHubNotifications", {
 	disable = not utils.is_work,
 	start = true,

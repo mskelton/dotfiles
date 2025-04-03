@@ -1,8 +1,35 @@
 #!/usr/bin/env bash
 # Toggle a focus session
-# Usage: focus [duration]
+# Usage: focus [--zen] [duration]
 
-duration=${1:-30}
+duration=30
+zen=false
 
+while [[ $# -gt 0 ]]; do
+	case $1 in
+	--zen | -z)
+		zen=true
+		shift
+		;;
+	*)
+		duration="$1"
+		shift
+		;;
+	esac
+done
+
+url="raycast://focus/start?duration=$((duration * 60))"
+
+# If zen mode is enabled, block messaging apps
+if $zen; then
+	url+="&categories=messaging"
+fi
+
+# Create a focus session (clearing any previous session if necessary)
 open "raycast://focus/complete"
-open "raycast://focus/start?duration=$((duration * 60))"
+open "$url"
+
+# Tell Hammerspoon to refocus Kitty since Raycast steals focus
+if command -v hs &>/dev/null; then
+	hs -m focus -c kitty &>/dev/null
+fi
