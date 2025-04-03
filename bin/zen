@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Zen mode
+
+open "raycast://focus/toggle?duration=1800&categories=messaging"

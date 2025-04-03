@@ -38,6 +38,8 @@
   ri = !git rebase -i $(git default)
   rc = rebase --continue
   fix = !git add . && git rebase --continue
+  # Work
+  reset-hars = !git checkout $(git default) playwright/hars/
 [branch]
   autosetuprebase = always
 [commit]
