@@ -170,5 +170,10 @@
   {
     "command": "-cursorai.action.generateInTerminal",
     "key": "cmd+k"
+  },
+  // Open recent folders
+  {
+    "command": "workbench.action.openRecent",
+    "key": "cmd+shift+o"
   }
 ]
