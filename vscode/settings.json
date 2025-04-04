@@ -191,6 +191,7 @@
   "markdown.preview.fontSize": 15,
   "material-icon-theme.activeIconPack": "react",
   "notebook.markup.fontSize": 15,
+  "outline.collapseItems": "alwaysCollapse",
   "playwright.reuseBrowser": true,
   "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {

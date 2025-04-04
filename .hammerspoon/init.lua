@@ -43,6 +43,9 @@ Install:andUse("GitHubNotifications", {
 	hotkeys = {
 		open = { constants.keys.layer_key, "p" },
 	},
+	config = {
+		interval = 60,
+	},
 })
 
 hs.hotkey.bind(constants.keys.layer_key, "h", function()
