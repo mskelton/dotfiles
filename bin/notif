@@ -66,6 +66,14 @@ if [[ $command == "done" ]]; then
 	_mark_notifications_as_read
 elif [[ $command == "open" ]]; then
 	open "https://github.com/notifications"
+elif [[ $command == "list" ]]; then
+	_list_notifications
 else
 	_list_notifications
+
+	echo ''
+	read -rp "Mark all as read? (y/n): " answer
+	if [[ "$answer" =~ ^[Yy] ]]; then
+		_mark_notifications_as_read
+	fi
 fi
