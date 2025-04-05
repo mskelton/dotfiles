@@ -8,6 +8,8 @@ M.file_exists = function(filename)
 		file:close()
 		return true
 	end
+
+	return false
 end
 
 --- Check if we are at work by looking for a ~/.work file

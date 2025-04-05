@@ -1,3 +1,5 @@
+local env = require("utils.env")
+
 return {
 	{
 		"tpope/vim-eunuch",
@@ -103,6 +105,7 @@ return {
 	},
 	{
 		"github/copilot.vim",
+		enabled = env.is_work(),
 		event = "InsertEnter",
 		cmd = { "Copilot" },
 		init = function()
