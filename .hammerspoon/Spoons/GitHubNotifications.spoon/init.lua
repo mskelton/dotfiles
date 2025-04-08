@@ -100,6 +100,7 @@ function M:sync(source)
 			return notification.last_read_at > self.last_checked
 		end)
 
+		self.log.d("Found " .. #notifications .. " unread notifications")
 		self:update_count(#notifications)
 	end, "ignoreLocalAndRemoteCache")
 end
