@@ -61,7 +61,6 @@ return {
 					"css",
 					"dart",
 					"devicetree",
-					"dockerfile",
 					"fish",
 					"gitattributes",
 					"gitignore",
