@@ -10,9 +10,10 @@ return {
 	},
 	file_name = {
 		[".clangd"] = "yaml",
+		[".dockerignore"] = "gitignore",
 		[".releaserc"] = "json",
 		[".swcrc"] = "json",
-		["tsconfig.json"] = "jsonc",
 		["tsconfig.base.json"] = "jsonc",
+		["tsconfig.json"] = "jsonc",
 	},
 }

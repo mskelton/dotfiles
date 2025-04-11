@@ -12,8 +12,9 @@ vim.filetype.add({
 		["code-snippets"] = "jsonc",
 	},
 	filename = {
-		[".clangd"] = "yaml",
 		[".clang-format"] = "yaml",
+		[".clangd"] = "yaml",
+		[".dockerignore"] = "gitignore",
 		[".releaserc"] = "json",
 		[".swcrc"] = "json",
 		["tsconfig.json"] = "jsonc",
