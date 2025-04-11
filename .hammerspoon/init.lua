@@ -234,23 +234,23 @@ if false then
 end
 
 --- Play/pause media
-hs.hotkey.bind({ "option" }, "p", function()
+hs.hotkey.bind({ "alt" }, ";", function()
 	utils.media("toggle")
 end)
 
 --- Go to next track
-hs.hotkey.bind({ "option" }, "n", function()
+hs.hotkey.bind({ "alt" }, "n", function()
 	utils.media("next")
 end)
 
 --- Focus
-hs.hotkey.bind({ "option" }, "f", function()
+hs.hotkey.bind({ "alt" }, "f", function()
 	hs.urlevent.openURL("raycast://focus/complete")
 	hs.urlevent.openURL("raycast://focus/start?duration=1800")
 end)
 
 --- Take a break
-hs.hotkey.bind({ "option" }, "b", function()
+hs.hotkey.bind({ "alt" }, "b", function()
 	hs.urlevent.openURL("raycast://focus/complete")
 	utils.media("pause")
 	hs.caffeinate.systemSleep()
