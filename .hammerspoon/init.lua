@@ -73,7 +73,7 @@ end)
 
 if utils.is_work then
 	hs.hotkey.bind(constants.keys.layer_key, ";", function()
-		hs.eventtap.keyStroke({ "alt", "shift" }, "down")
+		hs.eventtap.keyStroke({ "option", "shift" }, "down")
 	end)
 end
 
@@ -183,19 +183,19 @@ hs.hotkey.bind(constants.keys.layer_key, "o", function()
 end)
 
 --- Left half
-hs.hotkey.bind({ "cmd", "alt" }, "Left", function()
+hs.hotkey.bind({ "cmd", "option" }, "Left", function()
 	local win, max = layout.get_screen_rect()
 	win:setFrame(hs.geometry.rect(max.x, max.y, max.w / 2, max.h))
 end)
 
 --- Right half
-hs.hotkey.bind({ "cmd", "alt" }, "Right", function()
+hs.hotkey.bind({ "cmd", "option" }, "Right", function()
 	local win, max = layout.get_screen_rect()
 	win:setFrame(hs.geometry.rect(max.x + (max.w / 2), max.y, max.w / 2, max.h))
 end)
 
 --- Maximize
-hs.hotkey.bind({ "cmd", "alt" }, "f", function()
+hs.hotkey.bind({ "cmd", "option" }, "f", function()
 	local win, max = layout.get_screen_rect()
 	win:setFrame(hs.geometry.rect(max.x, max.y, max.w, max.h))
 end)
@@ -215,7 +215,7 @@ hs.hotkey.bind(constants.keys.meh, "Right", function()
 end)
 
 --- Escape paste-blocking
-hs.hotkey.bind({ "cmd", "alt" }, "v", function()
+hs.hotkey.bind({ "cmd", "option" }, "v", function()
 	hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
@@ -241,26 +241,49 @@ if false then
 end
 
 --- Play/pause media
-hs.hotkey.bind({ "alt" }, ";", function()
+hs.hotkey.bind({ "option" }, ";", function()
 	utils.media("toggle")
 end)
 
 --- Go to next track
-hs.hotkey.bind({ "alt" }, "n", function()
+hs.hotkey.bind({ "option" }, "n", function()
 	utils.media("next")
 end)
 
 --- Focus
-hs.hotkey.bind({ "alt" }, "f", function()
+hs.hotkey.bind({ "option" }, "f", function()
 	hs.urlevent.openURL("raycast://focus/complete")
 	hs.urlevent.openURL("raycast://focus/start?duration=1800")
 end)
 
 --- Take a break
-hs.hotkey.bind({ "alt" }, "b", function()
+hs.hotkey.bind({ "option" }, "b", function()
 	hs.urlevent.openURL("raycast://focus/complete")
 	utils.media("pause")
 	hs.caffeinate.systemSleep()
+end)
+
+--- Open dev server
+hs.hotkey.bind({ "control", "option", "shift" }, "d", function()
+	if utils.is_work then
+		hs.urlevent.openURL("http://localhost:3000/treasury")
+	else
+		hs.urlevent.openURL("http://localhost:3000")
+	end
+end)
+
+--- Open Ryu
+hs.hotkey.bind({ "control", "option", "shift" }, "r", function()
+	if utils.is_work then
+		hs.urlevent.openURL("http://localhost:5555")
+	end
+end)
+
+--- Open QA
+hs.hotkey.bind({ "control", "option", "shift" }, "q", function()
+	if utils.is_work then
+		hs.urlevent.openURL("https://qa.ramp.com/treasury")
+	end
 end)
 
 --- Sleep
