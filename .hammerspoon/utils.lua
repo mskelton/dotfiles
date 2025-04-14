@@ -52,4 +52,23 @@ M.media = function(arg)
 	hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
 end
 
+--- Volume management
+--- @param inc number
+M.volume = function(inc)
+	--- @type hs.audiodevice|nil
+	local device = hs.audiodevice.defaultOutputDevice()
+	if not device then
+		return
+	end
+
+	--- @diagnostic disable-next-line: undefined-field
+	--- @type number|nil
+	local volume = device:outputVolume()
+	if volume == nil then
+		return
+	end
+
+	device:setOutputVolume(volume + inc)
+end
+
 return M

@@ -37,6 +37,13 @@ Install:andUse("FocusManager", {
 	start = true,
 })
 
+Install:andUse("Remote", {
+	start = true,
+	config = {
+		port = 27381,
+	},
+})
+
 Install:andUse("GitHubNotifications", {
 	disable = not utils.is_work,
 	start = true,
