@@ -175,5 +175,9 @@
   {
     "command": "workbench.action.openRecent",
     "key": "cmd+shift+o"
+  },
+  {
+    "command": "-workbench.action.openRecent",
+    "key": "ctrl+r"
   }
 ]
