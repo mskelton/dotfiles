@@ -38,6 +38,7 @@ Install:andUse("FocusManager", {
 })
 
 Install:andUse("Remote", {
+	disable = utils.is_work,
 	start = true,
 	config = {
 		port = 27381,
