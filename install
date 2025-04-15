@@ -4,6 +4,7 @@ source ./dottie/dottie.sh
 
 # ~/.config directory
 link .config/byte/config.yaml ~/.config/byte/config.yaml
+link .config/direnv ~/.config/direnv
 link .config/fd ~/.config/fd
 link .config/gh-dash/config.yml ~/.config/gh-dash/config.yml
 link .config/gh/config.yml ~/.config/gh/config.yml
