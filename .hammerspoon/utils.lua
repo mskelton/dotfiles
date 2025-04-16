@@ -52,23 +52,12 @@ M.media = function(arg)
 	hs.execute("shortcuts run 'Media' <<<'" .. arg .. "'")
 end
 
---- Volume management
---- @param inc number
-M.volume = function(inc)
-	--- @type hs.audiodevice|nil
-	local device = hs.audiodevice.defaultOutputDevice()
-	if not device then
-		return
-	end
-
-	--- @diagnostic disable-next-line: undefined-field
-	--- @type number|nil
-	local volume = device:outputVolume()
-	if volume == nil then
-		return
-	end
-
-	device:setOutputVolume(volume + inc)
+--- Returns true if a string starts with a given prefix
+--- @param str string
+--- @param prefix string
+--- @returns boolean
+M.starts_with = function(str, prefix)
+	return string.sub(str, 1, string.len(prefix)) == prefix
 end
 
 return M

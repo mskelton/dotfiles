@@ -13,37 +13,58 @@ function M:start()
 	--- @type hs.httpserver|nil
 	self.server = hs.httpserver.new()
 	self.server:setPort(self.port)
-	self.server:setCallback(function(method, path)
-		if method ~= "GET" then
-			return "Only GET is supported", 400, {}
+	self.server:setCallback(function(method, path, _, body)
+		if method ~= "POST" then
+			return "Only POST is supported\n", 400, {}
 		end
 
-		--- Play, pause, toggle
-		if path == "/play" then
-			utils.media("play")
-		elseif path == "/pause" then
-			utils.media("pause")
-		elseif path == "/toggle" then
-			utils.media("toggle")
-		end
+		local handlers = {
+			["/play"] = hs.fnutils.partial(utils.media, "play"),
+			["/pause"] = hs.fnutils.partial(utils.media, "pause"),
+			["/toggle"] = hs.fnutils.partial(utils.media, "toggle"),
+			["/previous"] = hs.fnutils.partial(utils.media, "previous"),
+			["/next"] = hs.fnutils.partial(utils.media, "next"),
+			["/volume"] = function(req)
+				--- @type hs.audiodevice|nil
+				local device = hs.audiodevice.defaultOutputDevice()
+				if not device then
+					return
+				end
 
-		--- Next, previous
-		if path == "/next" then
-			utils.media("next")
-		elseif path == "/previous" then
-			utils.media("previous")
-		end
+				if req.action == "SET" then
+					device:setOutputVolume(req.value)
+				elseif req.action == "INCREMENT" then
+					--- @diagnostic disable-next-line: undefined-field
+					--- @type number|nil
+					local volume = device:outputVolume()
+					if volume == nil then
+						return
+					end
 
-		--- Volume up, down
-		if path == "/volumeup" then
-			utils.volume(5)
-		elseif path == "/volumedown" then
-			utils.volume(-5)
-		end
+					device:setOutputVolume(math.max(0, math.min(100, volume + req.value)))
+				else
+					return "Bad request\n", 400, {}
+				end
+			end,
+			["/mute"] = function()
+				--- @type hs.audiodevice|nil
+				local device = hs.audiodevice.defaultOutputDevice()
+				if not device then
+					return
+				end
 
-		return "OK", 200, {
-			["Cache-Control"] = "no-cache",
+				device:setOutputMuted(not device:outputMuted())
+			end,
 		}
+
+		for key, handler in pairs(handlers) do
+			if path == key then
+				handler(hs.json.decode(body))
+				return "{}", 200, {}
+			end
+		end
+
+		return "Not found\n", 404, {}
 	end)
 
 	self.server:start()
