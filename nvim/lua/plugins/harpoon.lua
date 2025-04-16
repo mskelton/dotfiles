@@ -14,6 +14,16 @@ return {
 			"<leader>ha",
 			function()
 				require("harpoon.mark").add_file()
+				vim.notify("File added to Harpoon")
+			end,
+			mode = { "n", "v" },
+			desc = "Add file to Harpoon",
+		},
+		{
+			"<leader>hc",
+			function()
+				require("harpoon.mark").clear_all()
+				vim.notify("Harpoon cleared")
 			end,
 			mode = { "n", "v" },
 			desc = "Add file to Harpoon",
