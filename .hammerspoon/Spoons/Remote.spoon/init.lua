@@ -13,7 +13,7 @@ function M:start()
 	--- @type hs.httpserver|nil
 	self.server = hs.httpserver.new()
 	self.server:setPort(self.port)
-	self.server:setCallback(function(method, path, _, body)
+	self.server:setCallback(function(method, path, _, requestBody)
 		if method ~= "POST" then
 			return "Only POST is supported\n", 400, {}
 		end
@@ -59,8 +59,14 @@ function M:start()
 
 		for key, handler in pairs(handlers) do
 			if path == key then
-				handler(hs.json.decode(body))
-				return "{}", 200, {}
+				local postData = hs.json.decode(requestBody)
+				local responseBody, status, responseHeaders = handler(postData)
+
+				if responseBody ~= nil then
+					return responseBody, status, responseHeaders
+				else
+					return hs.json.encode(self:get_state()), 200, {}
+				end
 			end
 		end
 
@@ -78,6 +84,21 @@ function M:stop()
 	end
 
 	return self
+end
+
+function M:get_state()
+	--- @type hs.audiodevice|nil
+	local device = hs.audiodevice.defaultOutputDevice()
+	if not device then
+		return
+	end
+
+	return {
+		-- TODO:
+		is_playing = false,
+		is_muted = device:outputMuted(),
+		volume = device:outputVolume(),
+	}
 end
 
 return M
