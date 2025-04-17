@@ -204,8 +204,6 @@ M.setup_servers = function()
 					autoImportFileExcludePatterns = {
 						"**/.next/*",
 						"**/postcss",
-						"**/react-aria-components",
-						"**/react-router",
 					},
 				},
 				tsserver = {

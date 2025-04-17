@@ -83,8 +83,6 @@ return {
 					autoImportFileExcludePatterns = {
 						"**/.next/*",
 						"**/postcss",
-						"**/react-aria-components",
-						"**/react-router",
 					},
 				},
 				tsserver_max_memory = 8192,
