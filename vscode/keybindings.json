@@ -179,5 +179,32 @@
   {
     "command": "-workbench.action.openRecent",
     "key": "ctrl+r"
+  },
+  // Some Vim keybindings I want to run when there are no active editors. This is not exhaustive,
+  // but represents the most common keybindings I use in these type of scenarios.
+  {
+    "command": "vim.showQuickpickCmdLine",
+    "key": ";",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "command": "workbench.action.quickOpen",
+    "key": "space f p",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "command": "workbench.action.findInFiles",
+    "key": "space f s",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "command": "workbench.action.openRecent",
+    "key": "space f o",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "command": "git.checkout",
+    "key": "space f n",
+    "when": "!editorFocus && !inputFocus"
   }
 ]
