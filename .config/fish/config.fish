@@ -10,7 +10,6 @@ source $HOME/.alias
 source $HOME/.config/fish/colors.fish
 source $HOME/.config/fish/abbreviations.fish
 source $HOME/.config/fish/keybindings.fish
-source $HOME/.config/fish/path.fish
 source $HOME/.config/fish/env.fish
 source $HOME/.config/fish/functions.fish
 
@@ -35,3 +34,5 @@ zoxide init fish | source
 if type -q direnv
     direnv hook fish | source
 end
+
+source $HOME/.config/fish/path.fish
