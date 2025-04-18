@@ -41,4 +41,14 @@ return {
 		fileMatch = { "vercel.json" },
 		url = "https://openapi.vercel.sh/vercel.json",
 	},
+	{
+		fileMatch = {
+			"settings.json",
+			"keybindings.json",
+			"*.code-snippets",
+		},
+		schema = {
+			allowTrailingCommas = true,
+		},
+	},
 }

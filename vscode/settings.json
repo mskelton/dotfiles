@@ -2,31 +2,31 @@
   "[go]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   "[go][go.mod][go.sum]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
   },
   "[html]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "[javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.autoClosingBrackets": "languageDefined"
+    "editor.autoClosingBrackets": "languageDefined",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "[markdown]": {
     "editor.tabSize": 3,
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
   },
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "auto-correct.dictionary": [
     {
@@ -59,30 +59,30 @@
         "seperate": "separate",
         "teh": "the",
         "ture": "true",
-        "wierd": "weird"
-      }
+        "wierd": "weird",
+      },
     },
     {
       "languages": [
         "javascript",
         "javascriptreact",
         "typescript",
-        "typescriptreact"
+        "typescriptreact",
       ],
       "words": {
         "Null": "null",
         "RN": "ReactNode",
         "cosnt": "const",
         "functoin": "function",
-        "und": "undefined"
-      }
+        "und": "undefined",
+      },
     },
     {
       "languages": ["typescript", "typescriptreact"],
       "words": {
-        "kn": "unknown"
-      }
-    }
+        "kn": "unknown",
+      },
+    },
   ],
   "breadcrumbs.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
@@ -143,7 +143,7 @@
     "–": true,
     "’": true,
     "“": true,
-    "”": true
+    "”": true,
   },
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
@@ -152,7 +152,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   ],
   "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
@@ -164,7 +164,7 @@
     "*.mqh": "cpp",
     "*.pro": "prolog",
     ".releaserc": "json",
-    ".stylelintrc": "json"
+    ".stylelintrc": "json",
   },
   "files.exclude": {
     "**/*.iml": true,
@@ -176,7 +176,7 @@
     "**/.project": true,
     "**/.settings": true,
     "**/node_modules": true,
-    "**/out": true
+    "**/out": true,
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -191,7 +191,7 @@
     "*": true,
     "markdown": false,
     "plaintext": false,
-    "yaml": true
+    "yaml": true,
   },
   "githubPullRequests.pullBranch": "never",
   "html.format.wrapLineLength": 80,
@@ -208,11 +208,11 @@
   "playwright.reuseBrowser": true,
   "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {
-    "modified": false
+    "modified": false,
   },
   "search.exclude": {
     "**/.yarn": true,
-    "**/tsconfig.tsbuildinfo": true
+    "**/tsconfig.tsbuildinfo": true,
   },
   "search.quickOpen.history.filterSortOrder": "recency",
   "security.promptForLocalFileProtocolHandling": false,
@@ -221,7 +221,7 @@
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.env.osx": {
-    "NODE_ENV": null
+    "NODE_ENV": null,
   },
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.showExitAlert": false,
@@ -235,40 +235,40 @@
   "vim.foldfix": true,
   "vim.handleKeys": {
     "<C-r>": true,
-    "<C-v>": true
+    "<C-v>": true,
   },
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
     // Find
     {
       "before": ["<leader>", "f", "p"],
-      "commands": ["workbench.action.quickOpen"]
+      "commands": ["workbench.action.quickOpen"],
     },
     {
       "before": ["<leader>", "f", "d"],
-      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+      "commands": ["workbench.files.action.showActiveFileInExplorer"],
     },
     {
       "before": ["<leader>", "f", "s"],
-      "commands": ["workbench.action.findInFiles"]
+      "commands": ["workbench.action.findInFiles"],
     },
     {
       "before": ["<leader>", "f", "o"],
-      "commands": ["workbench.action.openRecent"]
+      "commands": ["workbench.action.openRecent"],
     },
     {
       "before": ["<leader>", "f", "n"],
-      "commands": ["git.checkout"]
+      "commands": ["git.checkout"],
     },
     {
       "before": ["<leader>", "f", "y"],
-      "commands": ["workbench.action.gotoSymbol"]
+      "commands": ["workbench.action.gotoSymbol"],
     },
     // {
     //   "before": ["<leader>", "f", "a"],
     //   "commands": ["workbench.action.quickOpen"],
     //   "args": {
-    //     "folder": "${fileDirname}"
+    //     "folder": "${fileDirname}",
     //   }
     // },
     // {
@@ -286,72 +286,72 @@
     // Git
     {
       "before": ["<leader>", "v", "s"],
-      "commands": ["git.stageChange"]
+      "commands": ["git.stageChange"],
     },
     {
       "before": ["<leader>", "v", "u"],
-      "commands": ["git.revertChange"]
+      "commands": ["git.revertChange"],
     },
     {
       "before": ["[", "v"],
-      "commands": ["workbench.action.editor.previousChange"]
+      "commands": ["workbench.action.editor.previousChange"],
     },
     {
       "before": ["]", "v"],
-      "commands": ["workbench.action.editor.nextChange"]
+      "commands": ["workbench.action.editor.nextChange"],
     },
     // LSP
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
+      "commands": ["editor.action.marker.prev"],
     },
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
+      "commands": ["editor.action.marker.next"],
     },
     // Other
     {
       "before": [";"],
-      "commands": ["vim.showQuickpickCmdLine"]
+      "commands": ["vim.showQuickpickCmdLine"],
     },
     {
       "before": [",", "s"],
       "commands": ["workbench.action.files.save"],
-      "silent": true
+      "silent": true,
     },
     {
       "before": [",", "w"],
       "commands": ["workbench.action.closeActiveEditor"],
-      "silent": true
+      "silent": true,
     },
     {
       "before": ["u"],
-      "commands": ["undo"]
+      "commands": ["undo"],
     },
     {
       "before": ["<C-r>"],
-      "commands": ["redo"]
+      "commands": ["redo"],
     },
     {
       "before": ["K"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
+      "commands": ["editor.action.showDefinitionPreviewHover"],
     },
     {
       "before": ["[", "b"],
-      "commands": ["workbench.action.previousEditor"]
+      "commands": ["workbench.action.previousEditor"],
     },
     {
       "before": ["]", "b"],
-      "commands": ["workbench.action.nextEditor"]
+      "commands": ["workbench.action.nextEditor"],
     },
     {
       "before": ["<leader>", "o", "n"],
-      "commands": ["workbench.action.closeOtherEditors"]
+      "commands": ["workbench.action.closeOtherEditors"],
     },
     {
       "before": ["<leader>", "r", "n"],
-      "commands": ["editor.action.rename"]
-    }
+      "commands": ["editor.action.rename"],
+    },
   ],
   "vim.useSystemClipboard": true,
   "window.dialogStyle": "custom",
@@ -362,7 +362,7 @@
     "errorLens.errorBackground": "#0000",
     "errorLens.errorMessageBackground": "#e4545419",
     "errorLens.warningBackground": "#0000",
-    "errorLens.warningMessageBackground": "#ff942f19"
+    "errorLens.warningMessageBackground": "#ff942f19",
   },
   "workbench.colorTheme": "Tokyo Night Moon",
   "workbench.editor.closeOnFileDelete": true,
@@ -376,5 +376,20 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "githubPullRequests.experimental.notificationsView": true,
+  "githubPullRequests.notifications": "pullRequests",
+  "githubIssues.issueCompletions.enabled": false,
+  "githubIssues.userCompletions.enabled": false,
+  "githubPullRequests.queries": [
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}",
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}",
+    },
+  ],
+  "githubPullRequests.pullRequestDescription": "none",
 }
