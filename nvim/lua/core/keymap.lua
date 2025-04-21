@@ -245,6 +245,8 @@ map(
 	"Replace props with spread props"
 )
 
+map("n", "<leader>of", "<cmd>set foldlevel=20<cr>", "Turn off folding")
+
 map(
 	"n",
 	"<leader>uc",
@@ -255,7 +257,7 @@ map(
 local wrapper = require("core.utils.wrapper")
 local test_query = [[
   (call_expression
-    function: (identifier) @_name (#eq? @_name "test")) @test
+    function: (identifier) @_name (#match? @_name "^(x?it|test|.*Test)$")) @test
 ]]
 
 map("n", "<leader>wd", function()
