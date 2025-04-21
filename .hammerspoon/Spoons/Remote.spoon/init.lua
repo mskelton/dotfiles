@@ -13,7 +13,7 @@ function M:start()
 	--- @type hs.httpserver|nil
 	self.server = hs.httpserver.new()
 	self.server:setPort(self.port)
-	self.server:setCallback(function(method, path, _, requestBody)
+	self.server:setCallback(function(method, path, _, request_body)
 		if method ~= "POST" then
 			return "Only POST is supported\n", 400, {}
 		end
@@ -24,6 +24,8 @@ function M:start()
 			["/toggle"] = hs.fnutils.partial(utils.media, "toggle"),
 			["/previous"] = hs.fnutils.partial(utils.media, "previous"),
 			["/next"] = hs.fnutils.partial(utils.media, "next"),
+			["/back"] = hs.fnutils.partial(utils.media, "back"),
+			["/forward"] = hs.fnutils.partial(utils.media, "forward"),
 			["/volume"] = function(req)
 				--- @type hs.audiodevice|nil
 				local device = hs.audiodevice.defaultOutputDevice()
@@ -59,11 +61,16 @@ function M:start()
 
 		for key, handler in pairs(handlers) do
 			if path == key then
-				local postData = hs.json.decode(requestBody)
-				local responseBody, status, responseHeaders = handler(postData)
+				--- Decode the request data
+				local post_data = nil
+				if request_body ~= "" then
+					post_data = hs.json.decode(request_body)
+				end
 
-				if responseBody ~= nil then
-					return responseBody, status, responseHeaders
+				--- Run the handler
+				local response_body, status, response_headers = handler(post_data)
+				if response_body ~= nil then
+					return response_body, status, response_headers
 				else
 					return hs.json.encode(self:get_state()), 200, {}
 				end
@@ -94,11 +101,22 @@ function M:get_state()
 	end
 
 	return {
-		-- TODO:
-		is_playing = false,
+		is_playing = M:is_playing(),
 		is_muted = device:outputMuted(),
 		volume = device:outputVolume(),
 	}
+end
+
+function M:is_playing()
+	local handle = io.popen("pmset -g")
+	if handle == nil then
+		return false
+	end
+
+	local result = handle:read("*a")
+	handle:close()
+
+	return result:find("display sleep prevented by") ~= nil
 end
 
 return M
