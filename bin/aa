@@ -18,10 +18,5 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
-# If no branch is provided, use the clipboard
-if [ -z "$branch" ]; then
-	branch=$(pbpaste)
-fi
-
 gh pr review --approve -R "$repo" "$branch"
 gh pr merge --auto -R "$repo" "$branch"
