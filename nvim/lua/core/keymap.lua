@@ -245,7 +245,7 @@ map(
 	"Replace props with spread props"
 )
 
-map("n", "<leader>of", "<cmd>set foldlevel=20<cr>", "Turn off folding")
+map("n", "<leader>df", "<cmd>set foldlevel=20<cr>", "Disable folding")
 
 map(
 	"n",
