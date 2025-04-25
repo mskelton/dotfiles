@@ -61,11 +61,11 @@ hs.hotkey.bind(constants.keys.layer_key, "h", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "j", function()
-	layout.pull_forward({ apps.kitty, apps.arc })
+	hs.application.launchOrFocus(apps.arc)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	layout.pull_forward({ apps.arc, apps.kitty })
+	hs.application.launchOrFocus(apps.kitty)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
