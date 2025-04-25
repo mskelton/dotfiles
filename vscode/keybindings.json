@@ -207,8 +207,14 @@
     "key": "space f n",
     "when": "!editorFocus && !inputFocus",
   },
+  // Open GitHub pull requests
   {
     "command": "workbench.view.extension.github-pull-requests",
     "key": "shift+cmd+g",
+  },
+  // Mark active file as viewed
+  {
+    "key": "shift+cmd+v",
+    "command": "pr.markFileAsViewed",
   },
 ]
