@@ -83,17 +83,7 @@
     "command": "editor.action.insertSnippet",
     "key": "cmd+ctrl+shift+alt+=",
   },
-  // Use ctrl+j and ctrl+k to navigate lists
-  {
-    "command": "workbench.action.quickOpenSelectNext",
-    "key": "ctrl+j",
-    "when": "inQuickOpen",
-  },
-  {
-    "command": "selectNextSuggestion",
-    "key": "ctrl+j",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly",
-  },
+  // Clear existing ctrl+j and ctrl+k shortcuts
   {
     "command": "-editor.action.joinLines",
     "key": "ctrl+j",
@@ -103,16 +93,6 @@
     "key": "ctrl+j",
   },
   {
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "key": "ctrl+k",
-    "when": "inQuickOpen",
-  },
-  {
-    "command": "selectPrevSuggestion",
-    "key": "ctrl+k",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly",
-  },
-  {
     "command": "-deleteAllRight",
     "key": "ctrl+k",
   },
@@ -120,16 +100,38 @@
     "command": "-extension.vim_ctrl+k",
     "key": "ctrl+k",
   },
-  // Use ctrl+l to trigger suggestions
+  // Use ctrl+j and ctrl+k to navigate lists
+  {
+    "command": "workbench.action.quickOpenSelectNext",
+    "key": "ctrl+j",
+    "when": "inQuickOpen",
+  },
+  {
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "key": "ctrl+k",
+    "when": "inQuickOpen",
+  },
+  // Use ctrl+l to trigger suggestions to match my Neovim setup
   {
     "command": "editor.action.triggerSuggest",
     "key": "ctrl+l",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible",
   },
+  // Use ctrl+j and ctrl+k to navigate suggestions
   {
-    "command": "-editor.action.triggerSuggest",
-    "key": "ctrl+space",
+    "key": "ctrl+j",
+    "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible",
+  },
+  {
+    "command": "selectNextSuggestion",
+    "key": "ctrl+j",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && suggestWidgetVisible",
+  },
+  {
+    "command": "selectPrevSuggestion",
+    "key": "ctrl+k",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && suggestWidgetVisible",
   },
   // Open keybindings with cmd+shift+, similar to opening settings
   {
