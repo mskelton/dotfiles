@@ -1,4 +1,5 @@
 {
+  "editor.colorDecorators": false,
   "[go]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
@@ -101,7 +102,6 @@
   "editor.autoClosingOvertype": "always",
   "editor.bracketPairColorization.enabled": false,
   "editor.codeActionsOnSave": ["source.fixAll"],
-  "editor.colorDecorators": false,
   "editor.comments.ignoreEmptyLines": false,
   "editor.cursorBlinking": "phase",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -395,6 +395,7 @@
     "errorLens.errorMessageBackground": "#e4545419",
     "errorLens.warningBackground": "#0000",
     "errorLens.warningMessageBackground": "#ff942f19",
+    "editorSuggestWidget.selectedBackground": "#2f334d",
   },
   "workbench.colorTheme": "Tokyo Night Moon",
   "workbench.editor.closeOnFileDelete": true,
@@ -416,11 +417,11 @@
   "githubPullRequests.queries": [
     {
       "label": "Created By Me",
-      "query": "is:open author:${user}",
+      "query": "repo:${owner}/${repository} is:open author:${user}",
     },
     {
       "label": "Assigned To Me",
-      "query": "is:open assignee:${user}",
+      "query": "repo:${owner}/${repository} is:open assignee:${user}",
     },
   ],
   "githubPullRequests.pullRequestDescription": "none",
