@@ -305,21 +305,11 @@
       "before": ["]", "d"],
       "commands": ["editor.action.marker.next"],
     },
-    // Other
     {
-      "before": [";"],
-      "commands": ["vim.showQuickpickCmdLine"],
+      "before": ["K"],
+      "commands": ["editor.action.showDefinitionPreviewHover"],
     },
-    {
-      "before": [",", "s"],
-      "commands": ["workbench.action.files.save"],
-      "silent": true,
-    },
-    {
-      "before": [",", "w"],
-      "commands": ["workbench.action.closeActiveEditor"],
-      "silent": true,
-    },
+    // Undo/redo
     {
       "before": ["u"],
       "commands": ["undo"],
@@ -328,10 +318,30 @@
       "before": ["<C-r>"],
       "commands": ["redo"],
     },
+    // Open command line in popup with `:` or `;`
     {
-      "before": ["K"],
-      "commands": ["editor.action.showDefinitionPreviewHover"],
+      "before": [":"],
+      "commands": ["vim.showQuickpickCmdLine"],
+      "silent": true,
     },
+    {
+      "before": [";"],
+      "commands": ["vim.showQuickpickCmdLine"],
+      "silent": true,
+    },
+    // Save file
+    {
+      "before": [",", "s"],
+      "commands": ["workbench.action.files.save"],
+      "silent": true,
+    },
+    // Close window
+    {
+      "before": [",", "w"],
+      "commands": ["workbench.action.closeActiveEditor"],
+      "silent": true,
+    },
+    // Navigate to next/previous editor
     {
       "before": ["[", "b"],
       "commands": ["workbench.action.previousEditor"],
@@ -340,13 +350,39 @@
       "before": ["]", "b"],
       "commands": ["workbench.action.nextEditor"],
     },
+    // Close other editors (like Vim's :only)
     {
       "before": ["<leader>", "o", "n"],
       "commands": ["workbench.action.closeOtherEditors"],
     },
+    // Rename symbol
     {
       "before": ["<leader>", "r", "n"],
       "commands": ["editor.action.rename"],
+    },
+    // Rename file
+    {
+      "before": ["<leader>", "r", "f"],
+      "commands": ["fileutils.renameFile"],
+      "silent": true,
+    },
+    // I frequently roll zv for visually selection which doesn't work great on my
+    // keyboard since I use a multi-function key for z/ctrl. This mapping sets
+    // zv to the same as C-v.
+    {
+      "before": ["z", "v"],
+      "commands": ["extension.vim_ctrl+v"],
+    },
+  ],
+  "vim.visualModeKeyBindings": [
+    // Move lines up and down
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"],
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"],
     },
   ],
   "vim.useSystemClipboard": true,

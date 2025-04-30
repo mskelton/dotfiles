@@ -5,15 +5,6 @@
     "key": "cmd+n",
     "when": "explorerViewletFocus && explorerViewletVisible",
   },
-  // use cmd+shift+g to open the Git panel
-  {
-    "command": "workbench.view.scm",
-    "key": "shift+cmd+g",
-  },
-  {
-    "command": "-workbench.view.scm",
-    "key": "ctrl+shift+g",
-  },
   // Use cmd+shift+a to focus the current file in the explorer
   {
     "command": "workbench.files.action.showActiveFileInExplorer",

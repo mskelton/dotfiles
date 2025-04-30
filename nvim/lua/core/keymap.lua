@@ -49,11 +49,6 @@ end)
 --- the extra keypress is fine.
 map("n", "<leader>;", ";", "Next f/t match")
 
---- I use the command line window a fair bit, but it requires pressing q, then
---- shifting the left pinky to shift to press colon. This mapping makes it much
---- easier to enter the command line window.
-map(nv, "<leader>q", "q:", "Open command line window")
-
 --- I never can find where my cursor is after jumping by half. This makes it a
 --- bit easier.
 map(nv, "<C-d>", "<cmd>lua MoveHalf(1)<cr>", "Scroll down half screen")
