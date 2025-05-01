@@ -10,7 +10,8 @@ M.license = "ISC - https://opensource.org/licenses/ISC"
 M.log = hs.logger.new("gh_notif", "debug")
 
 --- The current count of notifications
-M.count = 0
+--- @type number|nil
+M.count = nil
 
 --- Get the icon for the menu bar
 --- @param filename string
@@ -34,9 +35,15 @@ local unreadIcon = get_icon("github-unread.png")
 --- the current count.
 --- @param count number
 function M:maybe_notify(count)
+	if self.count == nil then
+		return
+	end
+
 	if count > self.count then
 		--- @type hs.notify|nil
-		local notification = hs.notify.new({
+		local notification = hs.notify.new(function()
+			hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
+		end, {
 			title = "GitHub",
 			informativeText = "You have " .. count .. " unread notifications",
 			soundName = "submarine",
