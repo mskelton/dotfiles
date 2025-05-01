@@ -239,26 +239,32 @@
     {
       "before": ["<leader>", "f", "p"],
       "commands": ["workbench.action.quickOpen"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "f", "d"],
       "commands": ["workbench.files.action.showActiveFileInExplorer"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "f", "s"],
       "commands": ["workbench.action.findInFiles"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "f", "o"],
       "commands": ["workbench.action.openRecent"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "f", "n"],
       "commands": ["git.checkout"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "f", "y"],
       "commands": ["workbench.action.gotoSymbol"],
+      "silent": true,
     },
     // {
     //   "before": ["<leader>", "f", "a"],
@@ -283,40 +289,54 @@
     {
       "before": ["<leader>", "v", "s"],
       "commands": ["git.stageChange"],
+      "silent": true,
     },
     {
       "before": ["<leader>", "v", "u"],
       "commands": ["git.revertChange"],
+      "silent": true,
     },
+    // {
+    //   "before": ["<leader>", "v", "d"],
+    //   "commands": ["compareSelected"],
+    //   "silent": true,
+    // },
     {
       "before": ["[", "v"],
       "commands": ["workbench.action.editor.previousChange"],
+      "silent": true,
     },
     {
       "before": ["]", "v"],
       "commands": ["workbench.action.editor.nextChange"],
+      "silent": true,
     },
     // LSP
     {
       "before": ["[", "d"],
       "commands": ["editor.action.marker.prev"],
+      "silent": true,
     },
     {
       "before": ["]", "d"],
       "commands": ["editor.action.marker.next"],
+      "silent": true,
     },
     {
       "before": ["K"],
       "commands": ["editor.action.showDefinitionPreviewHover"],
+      "silent": true,
     },
     // Undo/redo
     {
       "before": ["u"],
       "commands": ["undo"],
+      "silent": true,
     },
     {
       "before": ["<C-r>"],
       "commands": ["redo"],
+      "silent": true,
     },
     // Open command line in popup with `:` or `;`
     {
@@ -345,20 +365,24 @@
     {
       "before": ["[", "b"],
       "commands": ["workbench.action.previousEditor"],
+      "silent": true,
     },
     {
       "before": ["]", "b"],
       "commands": ["workbench.action.nextEditor"],
+      "silent": true,
     },
     // Close other editors (like Vim's :only)
     {
       "before": ["<leader>", "o", "n"],
       "commands": ["workbench.action.closeOtherEditors"],
+      "silent": true,
     },
     // Rename symbol
     {
       "before": ["<leader>", "r", "n"],
       "commands": ["editor.action.rename"],
+      "silent": true,
     },
     // Rename file
     {
@@ -372,6 +396,18 @@
     {
       "before": ["z", "v"],
       "commands": ["extension.vim_ctrl+v"],
+      "silent": true,
+    },
+    // Delete file
+    {
+      "before": ["<leader>", "o", "d", "f"],
+      "commands": ["fileutils.removeFile"],
+      "silent": true,
+    },
+    {
+      "before": ["<leader>", "o", "f"],
+      "commands": ["fileutils.removeFile"],
+      "silent": true,
     },
   ],
   "vim.visualModeKeyBindings": [
@@ -379,10 +415,12 @@
     {
       "before": ["J"],
       "commands": ["editor.action.moveLinesDownAction"],
+      "silent": true,
     },
     {
       "before": ["K"],
       "commands": ["editor.action.moveLinesUpAction"],
+      "silent": true,
     },
   ],
   "vim.useSystemClipboard": true,
@@ -410,7 +448,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
-  "githubPullRequests.experimental.notificationsView": true,
   "githubPullRequests.notifications": "pullRequests",
   "githubIssues.issueCompletions.enabled": false,
   "githubIssues.userCompletions.enabled": false,
@@ -430,4 +467,11 @@
   "search.decorations.colors": false,
   "workbench.layoutControl.enabled": false,
   "breadcrumbs.enabled": false,
+  "errorLens.statusBarIconsTargetProblems": "activeEditor",
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.statusBarIconsUseBackground": false,
+  "errorLens.statusBarIconsAtZero": "hide",
+  "githubPullRequests.experimental.notificationsView": true,
+  "githubPullRequests.commentExpandState": "collapseAll",
 }
