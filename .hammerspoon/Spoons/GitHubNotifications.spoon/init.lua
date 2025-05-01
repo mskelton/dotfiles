@@ -9,6 +9,9 @@ M.license = "ISC - https://opensource.org/licenses/ISC"
 
 M.log = hs.logger.new("gh_notif", "debug")
 
+--- The current count of notifications
+M.count = 0
+
 --- Get the icon for the menu bar
 --- @param filename string
 --- @return hs.image|nil
@@ -27,16 +30,37 @@ end
 local readIcon = get_icon("github-read.png")
 local unreadIcon = get_icon("github-unread.png")
 
+--- Sends a notification if the count of unread notifications is greater than
+--- the current count.
+--- @param count number
+function M:maybe_notify(count)
+	if count > self.count then
+		--- @type hs.notify|nil
+		local notification = hs.notify.new({
+			title = "GitHub",
+			informativeText = "You have " .. count .. " unread notifications",
+			soundName = "submarine",
+		})
+
+		if notification then
+			notification:send()
+		end
+	end
+end
+
 --- Updates the count of unread notifications
 --- @param count number
 function M:update_count(count)
 	if count > 0 then
+		self:maybe_notify(count)
 		self.menu:setIcon(unreadIcon)
 		self.menu:setTitle(tostring(count))
 	else
 		self.menu:setIcon(readIcon)
 		self.menu:setTitle(nil)
 	end
+
+	self.count = count
 end
 
 --- Shows an error notification
@@ -100,7 +124,6 @@ function M:sync(source)
 			return notification.last_read_at > self.last_checked
 		end)
 
-		self.log.d("Found " .. #notifications .. " unread notifications")
 		self:update_count(#notifications)
 	end, "ignoreLocalAndRemoteCache")
 end
