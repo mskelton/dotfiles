@@ -87,7 +87,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.cursor)
+	hs.application.launchOrFocus(utils.if_work(apps.cursor, apps.android_studio))
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()

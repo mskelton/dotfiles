@@ -1,4 +1,5 @@
 return {
+	android_studio = "Android Studio",
 	arc = "Arc",
 	chat_gpt = "ChatGPT",
 	cursor = "Cursor",
