@@ -3,6 +3,7 @@ set clipboard+=unnamed
 set ignorecase
 set number
 set relativenumber
+set functiontextobj
 
 :map ,s <Action>(SaveDocument)
 :map ,w <Action>(CloseEditor)
@@ -29,3 +30,4 @@ set relativenumber
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-entire'
+Plug 'michaeljsmith/vim-indent-object'
