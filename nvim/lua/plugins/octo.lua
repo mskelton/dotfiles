@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"pwntester/octo.nvim",
 	dependencies = {

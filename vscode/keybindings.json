@@ -210,4 +210,10 @@
     "key": "shift+cmd+v",
     "command": "pr.markFileAsViewed",
   },
+  // Close sidebar
+  {
+    "key": "space f d",
+    "command": "workbench.action.closeSidebar",
+    "when": "!editorFocus && !inputFocus && explorerViewletFocus && explorerViewletVisible",
+  },
 ]

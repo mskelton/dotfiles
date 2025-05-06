@@ -1,3 +1,4 @@
+--- @vs-reviewed
 local function default_branch()
 	return string.gsub(vim.fn.execute("Git default"), "\n", "")
 end
@@ -51,12 +52,6 @@ return {
 				"<cmd>Gvdiffsplit<cr>",
 				mode = { "n", "v" },
 				desc = "Git diff",
-			},
-			{
-				"<leader>vl",
-				"<cmd>vertical Git log<cr>",
-				mode = { "n", "v" },
-				desc = "Git log",
 			},
 			{
 				"<leader>vp",

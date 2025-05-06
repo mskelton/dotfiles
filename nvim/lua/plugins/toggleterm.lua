@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"akinsho/toggleterm.nvim",
 	keys = {

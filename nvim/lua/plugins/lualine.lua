@@ -1,3 +1,4 @@
+--- @vs-reviewed
 local function diff_source()
 	--- @diagnostic disable-next-line: undefined-field
 	local gitsigns = vim.b.gitsigns_status_dict

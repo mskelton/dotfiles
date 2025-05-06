@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"mskelton/flutter.nvim",
 	dependencies = { "neovim/nvim-lspconfig" },

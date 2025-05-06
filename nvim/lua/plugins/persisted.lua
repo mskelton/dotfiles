@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"olimorris/persisted.nvim",
 	event = "BufReadPre",

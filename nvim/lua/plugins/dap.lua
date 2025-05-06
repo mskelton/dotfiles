@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {

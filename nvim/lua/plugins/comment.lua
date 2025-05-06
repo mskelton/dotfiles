@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"numToStr/Comment.nvim",
 	event = "BufReadPost",

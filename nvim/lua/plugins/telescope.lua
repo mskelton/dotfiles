@@ -1,3 +1,4 @@
+--- @vs-reviewed
 local nv = { "n", "v" }
 
 local scoped_search = false

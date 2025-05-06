@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"nvim-tree/nvim-web-devicons",
 	dependencies = {

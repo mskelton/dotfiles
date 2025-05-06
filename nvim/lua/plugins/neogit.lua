@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"NeogitOrg/neogit",
 	dependencies = {

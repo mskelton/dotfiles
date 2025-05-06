@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"williamboman/mason.nvim",
 	lazy = false,

@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"olrtg/nvim-emmet",
 	config = function() end,

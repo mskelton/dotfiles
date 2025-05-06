@@ -305,12 +305,18 @@
       "silent": true,
     },
     // {
+    //   "before": ["<leader>", "t", "s"],
+    //   "commands": ["workbench.action.gotoSymbol"],
+    //   "silent": true,
+    // }
+    // {
     //   "before": ["<leader>", "f", "a"],
     //   "commands": ["workbench.action.quickOpen"],
     //   "args": {
     //     "folder": "${fileDirname}",
     //   }
     // },
+    // Jumper
     // {
     //   "before": ["<leader>", "j", "r"],
     //   "commands": ["workbench.action.gotoSymbol"]
@@ -325,6 +331,27 @@
     // },
     // Git
     {
+      "before": ["<leader>", "v", "h"],
+      "commands": ["gitlens.toggleFileBlame"],
+      "silent": true,
+    },
+    {
+      "before": ["<leader>", "v", "d"],
+      "commands": ["gitlens.diffWithPrevious"],
+      "silent": true,
+    },
+    {
+      "before": ["<leader>", "v", "p"],
+      "commands": ["git.push"],
+      "silent": true,
+    },
+    {
+      "before": ["<leader>", "v", "w"],
+      // TODO
+      "commands": ["gitlens.copyRemoteFileUrlToClipboard"],
+      "silent": true,
+    },
+    {
       "before": ["<leader>", "v", "s"],
       "commands": ["git.stageChange"],
       "silent": true,
@@ -335,16 +362,6 @@
       "silent": true,
     },
     {
-      "before": ["<leader>", "v", "d"],
-      "commands": ["gitlens.diffWithPrevious"],
-      "silent": true,
-    },
-    {
-      "before": ["<leader>", "v", "h"],
-      "commands": ["gitlens.toggleFileBlame"],
-      "silent": true,
-    },
-    {
       "before": ["[", "v"],
       "commands": ["workbench.action.editor.previousChange"],
       "silent": true,
@@ -352,6 +369,17 @@
     {
       "before": ["]", "v"],
       "commands": ["workbench.action.editor.nextChange"],
+      "silent": true,
+    },
+    {
+      "before": ["<leader>", "l", "g"],
+      "commands": ["workbench.view.scm"],
+      "silent": true,
+    },
+    // Emmet
+    {
+      "before": ["<leader>", "e", "m"],
+      "commands": ["editor.emmet.action.wrapWithAbbreviation"],
       "silent": true,
     },
     // LSP
@@ -462,6 +490,12 @@
   ],
   "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindings": [
+    // Git
+    {
+      "before": ["<leader>", "v", "w"],
+      "commands": ["gitlens.copyRemoteFileUrlToClipboard"],
+      "silent": true,
+    },
     // Move lines up and down
     {
       "before": ["J"],
@@ -499,4 +533,6 @@
   "workbench.layoutControl.enabled": false,
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
+  "gitlens.launchpad.indicator.enabled": false,
+  "gitlens.graph.statusBar.enabled": false,
 }

@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPre",

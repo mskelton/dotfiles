@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	{
 		"folke/noice.nvim",

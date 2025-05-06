@@ -1,3 +1,4 @@
+--- @vs-reviewed
 local utils = require("core.utils")
 
 local M = {}

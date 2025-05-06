@@ -1,3 +1,4 @@
+--- @vs-reviewed
 return {
 	"nvim-tree/nvim-tree.lua",
 	--- Load on `CmdLineEnter` to support `:e ~/dir` to navigate to a directory
