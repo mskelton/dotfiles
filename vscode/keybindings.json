@@ -108,6 +108,11 @@
     "key": "ctrl+l",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible",
   },
+  {
+    "key": "ctrl+l",
+    "command": "insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode",
+  },
   // Use ctrl+j and ctrl+k to navigate suggestions
   {
     "key": "ctrl+j",
