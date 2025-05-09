@@ -3,12 +3,19 @@
 
 set -euo pipefail
 
-git checkout "$(git default)"
+# Checkout the default branch
+if [ "$(git branch --show-current)" != "$(git default)" ]; then
+	git checkout "$(git default)"
+fi
+
+# Pull the default branch
 git pull
+
+# Prune deleted branches on remote
 git fetch -p
 
 # Delete local branches that have been deleted on remote
-branches=$(git branch -vv | grep 'origin/.*: gone]' | grep -v '^+' | awk '{print $1}')
+branches=$(git branch -vv | grep 'origin/.*: gone]' | grep -v '^+' | awk '{print $1}' || true)
 if [ -n "$branches" ]; then
 	echo "$branches" | xargs git branch -D
 fi
