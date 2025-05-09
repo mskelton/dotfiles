@@ -221,4 +221,26 @@
     "command": "workbench.action.closeSidebar",
     "when": "!editorFocus && !inputFocus && explorerViewletFocus && explorerViewletVisible",
   },
+  // Close all the panes
+  {
+    "key": "cmd+shift+i",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusActiveEditorGroup",
+        "composer.closeComposerTab",
+        "workbench.action.closeSidebar",
+        "workbench.action.closePanel",
+      ],
+    },
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-composer.newAgentChat",
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-workbench.action.chat.openEditSession",
+    "when": "chatEditingParticipantRegistered && chatIsEnabled && view != 'workbench.panel.chat.view.edits'",
+  },
 ]
