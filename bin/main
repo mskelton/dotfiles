@@ -8,8 +8,7 @@ git pull
 git fetch -p
 
 # Delete local branches that have been deleted on remote
-git branch -vv |
-	grep 'origin/.*: gone]' |
-	grep -v '^+' |
-	awk '{print $1}' |
-	xargs git branch -D
+branches=$(git branch -vv | grep 'origin/.*: gone]' | grep -v '^+' | awk '{print $1}')
+if [ -n "$branches" ]; then
+	echo "$branches" | xargs git branch -D
+fi
