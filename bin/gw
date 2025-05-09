@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Create a new worktree and open it in a Tmux session and Cursor
+# Usage: gw <branch_name>
+
+# Check if a branch name is provided
+if [ -z "$1" ]; then
+	echo "Usage: gw <branch_name>"
+	exit 1
+fi
+
+branch=ms/$1
+dir=../web-$1
+
+# Create a new worktree
+git worktree add -b "$branch" "$dir"
+
+# Open the worktree in a Tmux session
+tmux new-session -ds "$1" -c "$dir"
+tmux send-keys -t "$1" "direnv allow && cursor $dir" Enter
+tmux switch-client -t "$1"
