@@ -535,4 +535,5 @@
   "workbench.tree.renderIndentGuides": "none",
   "gitlens.launchpad.indicator.enabled": false,
   "gitlens.graph.statusBar.enabled": false,
+  "window.openFoldersInNewWindow": "on",
 }
