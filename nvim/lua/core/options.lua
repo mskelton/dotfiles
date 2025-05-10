@@ -117,3 +117,6 @@ o.undofile = true
 
 --- TODO: Not sure if this is actually necessary, I need to dig more into this.
 o.updatetime = 100
+
+--- Default to replace all
+o.gdefault = true

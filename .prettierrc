@@ -5,9 +5,8 @@
     {
       "files": ["vscode/**"],
       "options": {
-        "jsonRecursiveSort": true,
         "plugins": ["prettier-plugin-sort-json"],
-        "parser": "jsonc"
+        "parser": "json"
       }
     }
   ]
