@@ -87,11 +87,11 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(utils.if_work(apps.cursor, apps.android_studio))
+	hs.application.launchOrFocus(apps.cursor)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
-	hs.application.launchOrFocus(apps.figma)
+	hs.application.launchOrFocus(utils.if_work(apps.figma, apps.android_studio))
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "/", function()
