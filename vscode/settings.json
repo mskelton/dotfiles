@@ -222,6 +222,12 @@
   "gitlens.graph.statusBar.enabled": false,
   "gitlens.integrations.enabled": false,
   "gitlens.launchpad.indicator.enabled": false,
+  "gitlens.menus": {
+    "editorGroup": {
+      "blame": false,
+      "compare": false
+    }
+  },
   // TODO
   "gitlens.remotes": [
     {
@@ -243,6 +249,10 @@
   "markdown.preview.fontSize": 15,
   "material-icon-theme.activeIconPack": "react",
   "notebook.markup.fontSize": 15,
+  "outline.showFields": false,
+  "outline.showKeys": false,
+  "outline.showProperties": false,
+  "outline.showVariables": false,
   "playwright.reuseBrowser": true,
   "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {
@@ -514,10 +524,10 @@
       "commands": ["editor.emmet.action.wrapWithAbbreviation"],
       "silent": true
     },
-    // TODO: Open URLs under the cursor
+    // Open URL under cursor
     {
       "before": ["g", "x"],
-      "commands": [],
+      "commands": ["open-url.openUrlUnderCursor"],
       "silent": true
     },
     // TODO: Sort inner indent
@@ -583,7 +593,6 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.navigationScope": "editorGroup",
   "workbench.editor.pinnedTabSizing": "shrink",
-  "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
   "workbench.tips.enabled": false,
