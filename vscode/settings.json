@@ -469,12 +469,9 @@
       "commands": ["extension.vim_ctrl+v"],
       "silent": true
     },
-    // This one is a bit of a hack. I use q; to open the command line window, but
-    // that would normally prevent `q` from immediately stopping macro recordings
-    // since it would be waiting for the next character. This mapping is conditional
-    // to only be active when not recording a macro.
+    // q: is an odd key sequence, so <leader>q is easier to type
     {
-      "before": ["q", ";"],
+      "before": ["<leader>", "q"],
       "after": ["q", ":"],
       "silent": true
     },
@@ -512,10 +509,15 @@
       "commands": ["revealFileInOS"],
       "silent": true
     },
-    // TODO
+    // Make file executable
     {
       "before": ["<leader>", "o", "x"],
-      "commands": [],
+      "commands": [
+        {
+          "command": "unix-chmod.chmod",
+          "args": ["+x"]
+        }
+      ],
       "silent": true
     },
     // Emmet
