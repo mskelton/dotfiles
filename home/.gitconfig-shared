@@ -35,7 +35,7 @@
   # Rebase
   rd = !git fetch origin $(git default) && git rebase origin/$(git default)
   rl = !git co - && git rebase origin/$(git default)
-  ri = !git rebase -i $(git default)
+  ri = !git rebase $(git default)
   rc = rebase --continue
   fix = !git add . && git rebase --continue
   # Work
