@@ -475,6 +475,14 @@
       "after": ["q", ":"],
       "silent": true
     },
+    // Update the Y mapping to match the Neovim behavior of "yank to end of line".
+    // Yank entire line is easy with `yy` and yank to end of line is most often
+    // what I want and also is consistent with my Neovim setup.
+    {
+      "before": ["Y"],
+      "after": ["y", "$"],
+      "silent": true
+    },
     // Save file
     {
       "before": [",", "s"],
