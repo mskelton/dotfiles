@@ -265,6 +265,7 @@
     "**/tsconfig.tsbuildinfo": true
   },
   "search.quickOpen.history.filterSortOrder": "recency",
+  "search.seedWithNearestWord": true,
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.startupPrompt": "never",
@@ -337,6 +338,15 @@
         }
       ],
       "silent": true
+    },
+    // Treat the search editor like the quick fix list
+    {
+      "before": ["]", "q"],
+      "commands": ["search.action.focusNextSearchResult"]
+    },
+    {
+      "before": ["[", "q"],
+      "commands": ["search.action.focusPreviousSearchResult"]
     },
     // Git
     {
@@ -498,6 +508,7 @@
       "commands": ["fileutils.renameFile"],
       "silent": true
     },
+    // TODO: Confirm delete
     {
       "before": ["<leader>", "o", "d", "f"],
       "commands": ["fileutils.removeFile"],
