@@ -605,6 +605,7 @@
   "workbench.editor.pinnedTabSizing": "shrink",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
+  "workbench.settings.editor": "json",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none"
 }
