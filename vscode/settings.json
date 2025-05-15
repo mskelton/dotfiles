@@ -190,6 +190,7 @@
   "files.trimTrailingWhitespace": true,
   "git.blame.statusBarItem.enabled": true,
   "git.branchProtection": ["main", "master"],
+  "git.branchProtectionPrompt": "alwaysCommit",
   "git.checkoutType": ["local"],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -321,32 +322,22 @@
       "commands": ["workbench.action.gotoSymbol"],
       "silent": true
     },
-    // TODO
-    // {
-    //   "before": ["<leader>", "t", "s"],
-    //   "commands": ["workbench.action.gotoSymbol"],
-    //   "silent": true,
-    // }
-    // {
-    //   "before": ["<leader>", "f", "a"],
-    //   "commands": ["workbench.action.quickOpen"],
-    //   "args": {
-    //     "folder": "${fileDirname}",
-    //   }
-    // },
-    // Jumper
-    // {
-    //   "before": ["<leader>", "j", "r"],
-    //   "commands": ["workbench.action.gotoSymbol"]
-    // },
-    // {
-    //   "before": ["<leader>", "j", "c"],
-    //   "commands": ["workbench.action.gotoSymbol"]
-    // },
-    // {
-    //   "before": ["<leader>", "t", "s"],
-    //   "commands": ["workbench.action.gotoSymbol"]
-    // },
+    {
+      "before": ["<leader>", "f", "a"],
+      "commands": ["adjacent.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "t", "s"],
+      "commands": [
+        {
+          "command": "workbench.action.findInFiles",
+          "args": {
+            "filesToInclude": "src/routes/Treasury/**,src/modules/financialProducts/**,playwright/tests/treasury/**"
+          }
+        }
+      ],
+      "silent": true
+    },
     // Git
     {
       "before": ["<leader>", "v", "h"],
