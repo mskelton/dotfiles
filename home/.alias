@@ -68,4 +68,3 @@ alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
 alias xit="exit"
-alias claude="$HOME/.claude/local/claude"
