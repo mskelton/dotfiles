@@ -195,12 +195,6 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": false,
-    "plaintext": false,
-    "yaml": true
-  },
   "githubIssues.issueCompletions.enabled": false,
   "githubIssues.userCompletions.enabled": false,
   "githubPullRequests.commentExpandState": "collapseAll",
@@ -443,15 +437,10 @@
       "commands": ["redo"],
       "silent": true
     },
-    // Open command line in popup with `:` or `;`
-    {
-      "before": [":"],
-      "commands": ["vim.showQuickpickCmdLine"],
-      "silent": true
-    },
+    // Open command line with ;
     {
       "before": [";"],
-      "commands": ["vim.showQuickpickCmdLine"],
+      "after": [":"],
       "silent": true
     },
     // Map leader semicolon to the original semicolon motion to still allow using
