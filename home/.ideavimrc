@@ -1,3 +1,12 @@
+let mapleader=" "
+
+" Plugins
+set surround
+set commentary
+set textobj-entire
+set indent-object
+
+" Settings
 set visualbell
 set clipboard+=unnamed
 set ignorecase
@@ -27,29 +36,96 @@ sethandler <C-T> a:vim
 sethandler <C-V> a:vim
 sethandler <C-W> a:vim
 
-:map ,s <Action>(SaveDocument)
-:map ,w <Action>(CloseEditor)
-:map go <Action>(OptimizeImports)
-:map gO <Action>(OptimizeImports)
-:map <space>fp <Action>(GotoFile)
-:map <space>fs <Action>(FindInPath)
-:map <space>fp <Action>(GotoFile)
-:map <space>rn <Action>(RenameElement)
-:map gd <Action>(GotoImplementation)
-:map gr <Action>(GotoDeclaration)
+" Find
+map <leader>fp <Action>(GotoFile)
+" map <leader>fd <Action>(SaveDocument)
+map <leader>fs <Action>(FindInPath)
+map <leader>fo <Action>(Recent Files)
+map <leader>fn <Action>(Git.Branches)
+map <leader>fy <Action>(GotoSymbol)
+" map <leader>fa <Action>(SaveDocument)
+" map <leader>ts <Action>(SaveDocument)
 
-:map [d <Action>(GotoPreviousError)
-:map ]d <Action>(GotoNextError)
+" Treat the search editor like the quick fix list
+" map ]q <Action>(SaveDocument)
+" map [q <Action>(SaveDocument)
 
-:map ; :
+" Git
+" map <leader>vh <Action>(SaveDocument)
+" map <leader>vd <Action>(SaveDocument)
+" map <leader>vp <Action>(SaveDocument)
+" map <leader>vw <Action>(SaveDocument)
 
+" TODO
+" map <leader>vs <Action>(SaveDocument)
+" map <leader>vu <Action>(SaveDocument)
+" map [v <Action>(SaveDocument)
+" map ]v <Action>(SaveDocument)
+" map <leader>lg <Action>(SaveDocument)
+
+" LSP
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map K <Action>(QuickJavaDoc)
+map gd <Action>(GotoImplementation)
+map gr <Action>(GotoDeclaration)
+map go <Action>(OptimizeImports)
+map gO <Action>(OptimizeImports)
+map <leader>rn <Action>(RenameElement)
+
+" Navigate to next/previous editor
 :map [b <Action>(PreviousTab)
 :map ]b <Action>(NextTab)
 
-:map <space>opc :source ~/.ideavimrc<CR>
+" Open command line with `:` or `;`
+map ; :
 
-" Plugins
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'kana/vim-textobj-entire'
-Plug 'michaeljsmith/vim-indent-object'
+" Map leader semicolon to the original semicolon motion to still allow using
+" (next f/t match) since that motion is quite handy. I don't use it much, so
+" the extra keypress is fine.
+" map <leader>; <Action>(SaveDocument)
+
+" I frequently roll zv for visually selection which doesn't work great on my
+" keyboard since I use a multi-function key for z/ctrl. This mapping sets
+" zv to the same as C-v.
+" map zv <Action>(SaveDocument)
+
+" q: is an odd key sequence, so <leader>q is easier to type
+" map <leader>q <Action>(SaveDocument)
+
+" Update the Y mapping to match the Neovim behavior of "yank to end of line".
+" Yank entire line is easy with `yy` and yank to end of line is most often
+" what I want and also is consistent with my Neovim setup.
+map Y y$
+
+" Save file
+map ,s <Action>(SaveDocument)
+
+" Close window
+map ,w <Action>(CloseEditor)
+
+" Close other editors (like Vim's :only)
+map <leader>on <Action>(CloseAllEditorsButActive)
+
+" File utils
+map <leader>rf <Action>(RenameFile)
+
+" TODO: Confirm delete
+" map <leader>odf <Action>(SaveDocument)
+map <leader>of <Action>(RevealIn)
+" Make file executable
+" map <leader>ox <Action>(SaveDocument)
+"command": "unix-chmod.chmod",
+"args": ["+x"]
+
+" Emmet
+" map <leader>em <Action>(SaveDocument)
+
+" Open URL under cursor
+" map gx <Action>(SaveDocument)
+
+" TODO: Sort inner indent
+" map <leader>si <Action>(SaveDocument)
+
+" Reload ~/.ideavimrc file
+map <leader>ocr :source ~/.ideavimrc<CR>
