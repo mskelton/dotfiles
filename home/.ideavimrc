@@ -1,10 +1,11 @@
 let mapleader=" "
 
 " Plugins
-set surround
-set commentary
-set textobj-entire
-set indent-object
+Plug 'kana/vim-textobj-entire'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+set functiontextobj
 
 " Settings
 set visualbell
@@ -12,7 +13,6 @@ set clipboard+=unnamed
 set ignorecase
 set number
 set relativenumber
-set functiontextobj
 
 sethandler <C-A> a:vim
 sethandler <C-B> a:vim
@@ -66,7 +66,7 @@ map <leader>fy <Action>(GotoSymbol)
 " LSP
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
-map K <Action>(QuickJavaDoc)
+map K <Action>(ShowHoverInfo)
 map gd <Action>(GotoImplementation)
 map gr <Action>(GotoDeclaration)
 map go <Action>(OptimizeImports)
