@@ -206,6 +206,14 @@
     "when": "!editorFocus && !inputFocus"
   },
   {
+    "command": "workbench.action.findInFiles",
+    "key": "space t s",
+    "args": {
+      "filesToInclude": "src/routes/Treasury/**,src/modules/financialProducts/**,playwright/tests/treasury/**"
+    },
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
     "command": "workbench.view.scm",
     "key": "space l g",
     "when": "!editorFocus && !inputFocus"

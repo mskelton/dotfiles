@@ -8,9 +8,9 @@ aliases:
   co: pr checkout
   codegen: workflow run codegen.yml
   copy: "!gh url | pbcopy"
-  dependabot:
-    '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {}
-    gh pr comment {} -b "@dependabot merge"'
+  # dependabot:
+  #   '!gh pr list --app dependabot --json number --jq ".[].number" | xargs -I {}
+  #   gh pr comment {} -b "@dependabot merge"'
   draft: pr create --draft
   ls-codegen: '!prs --search "head:ci/run-codegen"'
   ls-ryu: '!prs --search "head:ci/bump-ryu"'
