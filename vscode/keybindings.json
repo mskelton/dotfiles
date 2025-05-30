@@ -1,111 +1,111 @@
 [
   // Use cmd+n to create new files in the explorer
   {
-    "command": "explorer.newFile",
     "key": "cmd+n",
+    "command": "explorer.newFile",
     "when": "explorerViewletFocus && explorerViewletVisible"
   },
   // Use cmd+shift+a to focus the current file in the explorer
   {
-    "command": "workbench.files.action.showActiveFileInExplorer",
-    "key": "cmd+shift+a"
+    "key": "cmd+shift+a",
+    "command": "workbench.files.action.showActiveFileInExplorer"
   },
   // Use cmd+shift+d or cmd+j to toggle the terminal
   {
-    "command": "workbench.action.terminal.toggleTerminal",
     "key": "cmd+shift+d",
-    "when": "terminal.active"
-  },
-  {
     "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
     "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
   {
-    "command": "-workbench.action.terminal.toggleTerminal",
     "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
   {
-    "command": "-workbench.action.togglePanel",
-    "key": "cmd+j"
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
   },
   // Use cmd+shift+r to open the workspace find replace in the sidebar.
   {
-    "command": "workbench.action.replaceInFiles",
-    "key": "shift+cmd+r"
+    "key": "shift+cmd+r",
+    "command": "workbench.action.replaceInFiles"
   },
   {
-    "command": "-workbench.action.replaceInFiles",
-    "key": "shift+cmd+h"
+    "key": "shift+cmd+h",
+    "command": "-workbench.action.replaceInFiles"
   },
   // Use cmd+n to create a new terminal when the terminal is focused.
   {
-    "command": "workbench.action.terminal.new",
     "key": "cmd+n",
+    "command": "workbench.action.terminal.new",
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "command": "-workbench.action.terminal.new",
     "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
     "when": "terminalProcessSupported"
   },
   // Use cmd+w to close a terminal when the terminal is focused.
   {
-    "command": "workbench.action.terminal.kill",
     "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
     "when": "terminalFocus && terminalProcessSupported"
   },
   // Don't close the workspace using cmd+w. It's annoying.
   {
-    "command": "-workbench.action.closeWindow",
     "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
   },
   // Insert console.log snippet when pressing cmd+option+l
   {
-    "args": { "snippet": "console.log($0)" },
+    "key": "cmd+alt+shift+ctrl+l",
     "command": "editor.action.insertSnippet",
-    "key": "cmd+alt+shift+ctrl+l"
+    "args": { "snippet": "console.log($0)" }
   },
   // Use hyper+. for inserting an arrow function
   {
-    "args": { "snippet": "() => ${1:{ $0 \\}}" },
+    "key": "cmd+ctrl+shift+alt+=",
     "command": "editor.action.insertSnippet",
-    "key": "cmd+ctrl+shift+alt+="
+    "args": { "snippet": "() => ${1:{ $0 \\}}" }
   },
   // Clear existing ctrl+j and ctrl+k shortcuts
   {
-    "command": "-editor.action.joinLines",
-    "key": "ctrl+j"
+    "key": "ctrl+j",
+    "command": "-editor.action.joinLines"
   },
   {
-    "command": "-extension.vim_ctrl+j",
-    "key": "ctrl+j"
+    "key": "ctrl+j",
+    "command": "-extension.vim_ctrl+j"
   },
   {
-    "command": "-deleteAllRight",
-    "key": "ctrl+k"
+    "key": "ctrl+k",
+    "command": "-deleteAllRight"
   },
   {
-    "command": "-extension.vim_ctrl+k",
-    "key": "ctrl+k"
+    "key": "ctrl+k",
+    "command": "-extension.vim_ctrl+k"
   },
   // Use ctrl+j and ctrl+k to navigate lists
   {
-    "command": "workbench.action.quickOpenSelectNext",
     "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
     "when": "inQuickOpen"
   },
   {
-    "command": "workbench.action.quickOpenSelectPrevious",
     "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
   // Use ctrl+l to trigger suggestions to match my Neovim setup
   {
-    "command": "editor.action.triggerSuggest",
     "key": "ctrl+l",
+    "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
@@ -115,113 +115,118 @@
   },
   // Use ctrl+j and ctrl+k to navigate suggestions
   {
-    "key": "ctrl+j",
     "command": "editor.action.triggerSuggest",
+    "key": "ctrl+j",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "command": "selectNextSuggestion",
     "key": "ctrl+j",
+    "command": "selectNextSuggestion",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && suggestWidgetVisible"
   },
   {
-    "command": "selectPrevSuggestion",
     "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && suggestWidgetVisible"
   },
   // Open keybindings.json with cmd+shift+, similar to opening settings
   {
-    "command": "workbench.action.openGlobalKeybindingsFile",
-    "key": "shift+cmd+,"
+    "key": "shift+cmd+,",
+    "command": "workbench.action.openGlobalKeybindingsFile"
   },
   {
-    "command": "-workbench.action.openGlobalKeybindings",
-    "key": "cmd+r cmd+s"
+    "key": "cmd+r cmd+s",
+    "command": "-workbench.action.openGlobalKeybindings"
   },
   // Toggle Cursor tab with cmd+m
   {
-    "command": "editor.cpp.toggle",
-    "key": "cmd+m"
+    "key": "cmd+m",
+    "command": "editor.cpp.toggle"
   },
   // Remove AI chat as much as possible
   {
-    "command": "-aichat.newchataction",
-    "key": "cmd+l"
+    "key": "cmd+l",
+    "command": "-aichat.newchataction"
   },
   // Use cmd+shift+k for Cursor AI popup
   {
+    "key": "shift+cmd+k",
     "command": "aipopup.action.modal.generate",
-    "key": "shift+cmd+k",
     "when": "editorFocus && !composerBarIsVisible"
   },
   {
-    "command": "-aipopup.action.modal.generate",
     "key": "cmd+k",
+    "command": "-aipopup.action.modal.generate",
     "when": "editorFocus && !composerBarIsVisible"
   },
   {
-    "command": "-editor.action.deleteLines",
     "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
     "when": "textInputFocus && !editorReadonly"
   },
   // Don't let Cursor take over cmd+k in the terminal
   {
-    "command": "-cursorai.action.generateInTerminal",
-    "key": "cmd+k"
+    "key": "cmd+k",
+    "command": "-cursorai.action.generateInTerminal"
   },
   // Open recent folders
   {
-    "command": "workbench.action.openRecent",
-    "key": "cmd+shift+o"
+    "key": "cmd+shift+o",
+    "command": "workbench.action.openRecent"
   },
   {
-    "command": "-workbench.action.openRecent",
-    "key": "ctrl+r"
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+  },
+  // Switch windows
+  {
+    "key": "cmd+alt+o",
+    "command": "workbench.action.switchWindow"
   },
   // Some Vim keybindings I want to run when there are no active editors. This is not exhaustive,
   // but represents the most common keybindings I use in these type of scenarios.
   {
-    "command": "vim.showQuickpickCmdLine",
     "key": ";",
+    "command": "vim.showQuickpickCmdLine",
     "when": "!editorFocus && !inputFocus"
   },
   {
-    "command": "workbench.action.quickOpen",
     "key": "space f p",
+    "command": "workbench.action.quickOpen",
     "when": "!editorFocus && !inputFocus"
   },
   {
-    "command": "workbench.action.findInFiles",
     "key": "space f s",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "command": "workbench.action.openRecent",
-    "key": "space f o",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "command": "git.checkout",
-    "key": "space f n",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
     "command": "workbench.action.findInFiles",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "key": "space f o",
+    "command": "workbench.action.openRecent",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
+    "key": "space f n",
+    "command": "git.checkout",
+    "when": "!editorFocus && !inputFocus"
+  },
+  {
     "key": "space t s",
+    "command": "workbench.action.findInFiles",
     "args": {
       "filesToInclude": "src/routes/Treasury/**,src/modules/financialProducts/**,playwright/tests/treasury/**"
     },
     "when": "!editorFocus && !inputFocus"
   },
   {
-    "command": "workbench.view.scm",
     "key": "space l g",
+    "command": "workbench.view.scm",
     "when": "!editorFocus && !inputFocus"
   },
   // Open GitHub pull requests
   {
-    "command": "workbench.view.extension.github-pull-requests",
-    "key": "shift+cmd+g"
+    "key": "shift+cmd+g",
+    "command": "workbench.view.extension.github-pull-requests"
   },
   // Mark active file as viewed
   {
