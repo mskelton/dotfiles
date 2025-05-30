@@ -16,11 +16,17 @@ export CLOUDSDK_PYTHON="python3.9"
 # Path
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin-work"
-export PATH="$PATH:$HOME/.local/npm/bin"
-export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.bun/bun"
-export PATH="$PATH:$fzf_base/bin"
+export PATH="$PATH:$HOME/.local/share/npm/bin"
+export PATH="$PATH:$HOME/.claude/local/bin"
+export PATH="$PATH:$HOME/.bun/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH:$HOME/Library/Application Support/fnm"
+export PATH="$PATH:$HOME/.slack/bin"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:/opt/homebrew/bin
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv)"
