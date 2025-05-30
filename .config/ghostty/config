@@ -44,3 +44,6 @@ font-codepoint-map=U+D000-U+D200=termicons
 
 # Keybindings
 keybind=f11=reload_config
+
+# Claude code
+keybind = shift+enter=text:\n
