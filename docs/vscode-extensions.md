@@ -5,6 +5,7 @@ Before installing extensions, you first need to run the
 command.
 
 ```bash
+cursor --install-extension biomejs.biome
 cursor --install-extension charliermarsh.ruff
 cursor --install-extension dbaeumer.vscode-eslint
 cursor --install-extension eamodio.gitlens
@@ -21,13 +22,15 @@ cursor --install-extension mskelton.open-url-under-cursor
 cursor --install-extension mskelton.unix-chmod
 cursor --install-extension patricknasralla.tokyo-night-moon
 cursor --install-extension pkief.material-icon-theme
+cursor --install-extension rodrigoscola.vscode-textobjects
 cursor --install-extension rust-lang.rust-analyzer
 cursor --install-extension sleistner.vscode-fileutils
 cursor --install-extension sygene.auto-correct
+cursor --install-extension tamasfe.even-better-toml
 cursor --install-extension usernamehw.errorlens
 cursor --install-extension vitest.explorer
 cursor --install-extension vscodevim.vim
-
+cursor --install-extension wycliffeassociates.usfmvscode
 ```
 
 You can regenerate the above script using this command:
