@@ -223,10 +223,10 @@
     "command": "workbench.view.scm",
     "when": "!editorFocus && !inputFocus"
   },
-  // Open GitHub pull requests
+  // Open Git
   {
     "key": "shift+cmd+g",
-    "command": "workbench.view.extension.github-pull-requests"
+    "command": "workbench.view.scm"
   },
   // Mark active file as viewed
   {

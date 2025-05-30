@@ -248,7 +248,7 @@
   "outline.showKeys": false,
   "outline.showProperties": false,
   "outline.showVariables": false,
-  "playwright.reuseBrowser": true,
+  "playwright.reuseBrowser": false,
   "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
