@@ -3,9 +3,6 @@ function fish_hybrid_key_bindings
     fish_default_key_bindings -M insert
     fish_vi_key_bindings --no-erase
 
-    # Open kitty-sessionizer with Ctrl+f
-    bind -M insert \cf "kitty-sessionizer; commandline -f repaint"
-
     # Use _ to go to the beginning of the line as I use this a lot in Vim
     bind -s --preset _ beginning-of-line
     bind -s --preset -M visual _ beginning-of-line
