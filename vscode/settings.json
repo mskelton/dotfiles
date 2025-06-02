@@ -216,7 +216,7 @@
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.graph.statusBar.enabled": false,
-  "gitlens.integrations.enabled": false,
+  "gitlens.integrations.enabled": true,
   "gitlens.launchpad.indicator.enabled": false,
   "gitlens.menus": {
     "editorGroup": {
@@ -224,11 +224,21 @@
       "compare": false
     }
   },
-  // TODO
   "gitlens.remotes": [
     {
-      "domain": "github.com",
-      "type": "GitHub"
+      "regex": "([^:]+):(.+)",
+      "type": "Custom",
+      "urls": {
+        "repository": "https://github.com/${repo}",
+        "branches": "https://github.com/${repo}/branches",
+        "branch": "https://github.com/${repo}/commits/${branch}",
+        "commit": "https://github.com/${repo}/commit/${id}",
+        "file": "https://github.com/${repo}?path=${file}${line}",
+        "fileInBranch": "https://github.com/${repo}/blob/${branch}/${file}${line}",
+        "fileInCommit": "https://github.com/${repo}/blob/${id}/${file}${line}",
+        "fileLine": "#L${line}",
+        "fileRange": "#L${start}-L${end}"
+      }
     }
   ],
   "gitlens.statusBar.enabled": false,
@@ -250,6 +260,7 @@
   "outline.showProperties": false,
   "outline.showVariables": false,
   "playwright.reuseBrowser": false,
+  "playwright.showTrace": false,
   "prettier.requireConfig": true,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
@@ -361,7 +372,6 @@
     },
     {
       "before": ["<leader>", "v", "w"],
-      // TODO
       "commands": ["gitlens.copyRemoteFileUrlToClipboard"],
       "silent": true
     },
