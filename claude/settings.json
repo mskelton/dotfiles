@@ -1,6 +1,12 @@
 {
   "permissions": {
-    "allow": ["Bash(ls:*)", "Bash(rg:*)", "Bash(grep:*)", "Bash(yarn add:*)"],
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(yarn add:*)"
+    ],
     "deny": []
   }
 }
