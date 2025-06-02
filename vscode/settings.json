@@ -226,6 +226,10 @@
   },
   "gitlens.remotes": [
     {
+      "domain": "github.com",
+      "type": "GitHub"
+    },
+    {
       "regex": "([^:]+):(.+)",
       "type": "Custom",
       "urls": {
@@ -278,6 +282,7 @@
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.env.osx": {
     "NODE_ENV": null
   },
@@ -372,7 +377,16 @@
     },
     {
       "before": ["<leader>", "v", "w"],
-      "commands": ["gitlens.copyRemoteFileUrlToClipboard"],
+      "commands": [
+        "gitlens.copyRemoteFileUrlToClipboard",
+        {
+          "command": "vscode-notify.sendNotification",
+          "args": {
+            "message": "Remote URL copied to clipboard",
+            "type": "info"
+          }
+        }
+      ],
       "silent": true
     },
     {
@@ -558,96 +572,16 @@
       "commands": ["vscode-textobjects.select.next.inner.function.start"]
     },
     {
-      "before": ["v", "a", "l"],
-      "commands": ["vscode-textobjects.select.next.outer.loop.start"]
-    },
-    {
-      "before": ["v", "i", "l"],
-      "commands": ["vscode-textobjects.select.next.inner.loop.start"]
-    },
-    {
-      "before": ["v", "a", "i"],
-      "commands": ["vscode-textobjects.select.next.outer.conditional.start"]
-    },
-    {
-      "before": ["v", "i", "i"],
-      "commands": ["vscode-textobjects.select.next.inner.conditional.start"]
-    },
-    {
-      "before": ["v", "a", "r"],
-      "commands": ["vscode-textobjects.select.next.outer.rhs.start"]
-    },
-    {
-      "before": ["v", "i", "r"],
-      "commands": ["vscode-textobjects.select.next.inner.rhs.start"]
-    },
-    {
-      "before": ["v", "a", "h"],
-      "commands": ["vscode-textobjects.select.next.outer.lhs.start"]
-    },
-    {
-      "before": ["v", "i", "h"],
-      "commands": ["vscode-textobjects.select.next.inner.lhs.start"]
-    },
-    {
-      "before": ["v", "a", "v"],
+      "before": ["v", "a", "d"],
       "commands": ["vscode-textobjects.select.next.outer.variable.start"]
     },
     {
-      "before": ["v", "a", "q"],
-      "commands": ["vscode-textobjects.select.next.outer.string.start"]
-    },
-    {
-      "before": ["v", "i", "q"],
-      "commands": ["vscode-textobjects.select.next.inner.string.start"]
-    },
-    {
-      "before": ["v", "a", "k"],
-      "commands": ["vscode-textobjects.select.next.outer.class.start"]
-    },
-    {
-      "before": ["v", "i", "k"],
-      "commands": ["vscode-textobjects.select.next.inner.class.start"]
-    },
-    {
       "before": ["v", "a", "a"],
-      "commands": ["vscode-textobjects.select.next.outer.array.start"]
-    },
-    {
-      "before": ["v", "i", "a"],
-      "commands": ["vscode-textobjects.select.next.inner.array.start"]
-    },
-    {
-      "before": ["v", "a", "o"],
-      "commands": ["vscode-textobjects.select.next.outer.object.start"]
-    },
-    {
-      "before": ["v", "i", "o"],
-      "commands": ["vscode-textobjects.select.next.inner.object.start"]
-    },
-    {
-      "before": ["v", "a", "e"],
       "commands": ["vscode-textobjects.select.next.outer.parameters.start"]
     },
     {
-      "before": ["v", "i", "e"],
+      "before": ["v", "i", "a"],
       "commands": ["vscode-textobjects.select.next.inner.parameters.start"]
-    },
-    {
-      "before": ["v", "a", "m"],
-      "commands": ["vscode-textobjects.select.next.outer.call.start"]
-    },
-    {
-      "before": ["v", "i", "m"],
-      "commands": ["vscode-textobjects.select.next.inner.call.start"]
-    },
-    {
-      "before": ["v", "a", "t"],
-      "commands": ["vscode-textobjects.select.next.outer.type.start"]
-    },
-    {
-      "before": ["v", "i", "t"],
-      "commands": ["vscode-textobjects.select.next.inner.type.start"]
     },
     {
       "before": ["v", "a", "c"],
@@ -658,467 +592,115 @@
       "commands": ["vscode-textobjects.select.next.inner.comment.start"]
     },
     {
-      "before": ["v", "a", "n"],
-      "commands": ["vscode-textobjects.select.next.outer.node.start"]
-    },
-    {
-      "before": ["v", "i", "n"],
-      "commands": ["vscode-textobjects.select.next.inner.node.start"]
-    },
-    {
-      "before": ["[", "f"],
+      "before": ["]", "f"],
       "commands": ["vscode-textobjects.goTo.next.outer.function.start"]
     },
     {
-      "before": ["[", "F"],
+      "before": ["]", "F"],
       "commands": ["vscode-textobjects.goTo.next.inner.function.start"]
     },
     {
-      "before": ["[", "l"],
-      "commands": ["vscode-textobjects.goTo.next.outer.loop.start"]
-    },
-    {
-      "before": ["[", "L"],
-      "commands": ["vscode-textobjects.goTo.next.inner.loop.start"]
-    },
-    {
-      "before": ["[", "i"],
-      "commands": ["vscode-textobjects.goTo.next.outer.conditional.start"]
-    },
-    {
-      "before": ["[", "I"],
-      "commands": ["vscode-textobjects.goTo.next.inner.conditional.start"]
-    },
-    {
-      "before": ["[", "r"],
-      "commands": ["vscode-textobjects.goTo.next.outer.rhs.start"]
-    },
-    {
-      "before": ["[", "R"],
-      "commands": ["vscode-textobjects.goTo.next.inner.rhs.start"]
-    },
-    {
-      "before": ["[", "h"],
-      "commands": ["vscode-textobjects.goTo.next.outer.lhs.start"]
-    },
-    {
-      "before": ["[", "H"],
-      "commands": ["vscode-textobjects.goTo.next.inner.lhs.start"]
-    },
-    {
-      "before": ["[", "v"],
+      "before": ["]", "d"],
       "commands": ["vscode-textobjects.goTo.next.outer.variable.start"]
     },
     {
-      "before": ["[", "q"],
-      "commands": ["vscode-textobjects.goTo.next.outer.string.start"]
-    },
-    {
-      "before": ["[", "Q"],
-      "commands": ["vscode-textobjects.goTo.next.inner.string.start"]
-    },
-    {
-      "before": ["[", "k"],
-      "commands": ["vscode-textobjects.goTo.next.outer.class.start"]
-    },
-    {
-      "before": ["[", "K"],
-      "commands": ["vscode-textobjects.goTo.next.inner.class.start"]
-    },
-    {
-      "before": ["[", "a"],
-      "commands": ["vscode-textobjects.goTo.next.outer.array.start"]
-    },
-    {
-      "before": ["[", "A"],
-      "commands": ["vscode-textobjects.goTo.next.inner.array.start"]
-    },
-    {
-      "before": ["[", "o"],
-      "commands": ["vscode-textobjects.goTo.next.outer.object.start"]
-    },
-    {
-      "before": ["[", "O"],
-      "commands": ["vscode-textobjects.goTo.next.inner.object.start"]
-    },
-    {
-      "before": ["[", "e"],
+      "before": ["]", "a"],
       "commands": ["vscode-textobjects.goTo.next.outer.parameters.start"]
     },
     {
-      "before": ["[", "E"],
+      "before": ["]", "A"],
       "commands": ["vscode-textobjects.goTo.next.inner.parameters.start"]
     },
     {
-      "before": ["[", "m"],
-      "commands": ["vscode-textobjects.goTo.next.outer.call.start"]
-    },
-    {
-      "before": ["[", "M"],
-      "commands": ["vscode-textobjects.goTo.next.inner.call.start"]
-    },
-    {
-      "before": ["[", "t"],
-      "commands": ["vscode-textobjects.goTo.next.outer.type.start"]
-    },
-    {
-      "before": ["[", "T"],
-      "commands": ["vscode-textobjects.goTo.next.inner.type.start"]
-    },
-    {
-      "before": ["[", "c"],
+      "before": ["]", "c"],
       "commands": ["vscode-textobjects.goTo.next.outer.comment.start"]
     },
     {
-      "before": ["[", "C"],
+      "before": ["]", "C"],
       "commands": ["vscode-textobjects.goTo.next.inner.comment.start"]
     },
     {
-      "before": ["[", "n"],
-      "commands": ["vscode-textobjects.goTo.next.outer.node.start"]
-    },
-    {
-      "before": ["[", "N"],
-      "commands": ["vscode-textobjects.goTo.next.inner.node.start"]
-    },
-    {
-      "before": ["[", "[", "f"],
+      "before": ["]", "]", "f"],
       "commands": ["vscode-textobjects.goTo.next.outer.function.end"]
     },
     {
-      "before": ["[", "[", "F"],
+      "before": ["]", "]", "F"],
       "commands": ["vscode-textobjects.goTo.next.inner.function.end"]
     },
     {
-      "before": ["[", "[", "l"],
-      "commands": ["vscode-textobjects.goTo.next.outer.loop.end"]
-    },
-    {
-      "before": ["[", "[", "L"],
-      "commands": ["vscode-textobjects.goTo.next.inner.loop.end"]
-    },
-    {
-      "before": ["[", "[", "i"],
-      "commands": ["vscode-textobjects.goTo.next.outer.conditional.end"]
-    },
-    {
-      "before": ["[", "[", "I"],
-      "commands": ["vscode-textobjects.goTo.next.inner.conditional.end"]
-    },
-    {
-      "before": ["[", "[", "r"],
-      "commands": ["vscode-textobjects.goTo.next.outer.rhs.end"]
-    },
-    {
-      "before": ["[", "[", "R"],
-      "commands": ["vscode-textobjects.goTo.next.inner.rhs.end"]
-    },
-    {
-      "before": ["[", "[", "h"],
-      "commands": ["vscode-textobjects.goTo.next.outer.lhs.end"]
-    },
-    {
-      "before": ["[", "[", "H"],
-      "commands": ["vscode-textobjects.goTo.next.inner.lhs.end"]
-    },
-    {
-      "before": ["[", "[", "v"],
+      "before": ["]", "]", "d"],
       "commands": ["vscode-textobjects.goTo.next.outer.variable.end"]
     },
     {
-      "before": ["[", "[", "q"],
-      "commands": ["vscode-textobjects.goTo.next.outer.string.end"]
-    },
-    {
-      "before": ["[", "[", "Q"],
-      "commands": ["vscode-textobjects.goTo.next.inner.string.end"]
-    },
-    {
-      "before": ["[", "[", "k"],
-      "commands": ["vscode-textobjects.goTo.next.outer.class.end"]
-    },
-    {
-      "before": ["[", "[", "K"],
-      "commands": ["vscode-textobjects.goTo.next.inner.class.end"]
-    },
-    {
-      "before": ["[", "[", "a"],
-      "commands": ["vscode-textobjects.goTo.next.outer.array.end"]
-    },
-    {
-      "before": ["[", "[", "A"],
-      "commands": ["vscode-textobjects.goTo.next.inner.array.end"]
-    },
-    {
-      "before": ["[", "[", "o"],
-      "commands": ["vscode-textobjects.goTo.next.outer.object.end"]
-    },
-    {
-      "before": ["[", "[", "O"],
-      "commands": ["vscode-textobjects.goTo.next.inner.object.end"]
-    },
-    {
-      "before": ["[", "[", "e"],
+      "before": ["]", "]", "a"],
       "commands": ["vscode-textobjects.goTo.next.outer.parameters.end"]
     },
     {
-      "before": ["[", "[", "E"],
+      "before": ["]", "]", "A"],
       "commands": ["vscode-textobjects.goTo.next.inner.parameters.end"]
     },
     {
-      "before": ["[", "[", "m"],
-      "commands": ["vscode-textobjects.goTo.next.outer.call.end"]
-    },
-    {
-      "before": ["[", "[", "M"],
-      "commands": ["vscode-textobjects.goTo.next.inner.call.end"]
-    },
-    {
-      "before": ["[", "[", "t"],
-      "commands": ["vscode-textobjects.goTo.next.outer.type.end"]
-    },
-    {
-      "before": ["[", "[", "T"],
-      "commands": ["vscode-textobjects.goTo.next.inner.type.end"]
-    },
-    {
-      "before": ["[", "[", "c"],
+      "before": ["]", "]", "c"],
       "commands": ["vscode-textobjects.goTo.next.outer.comment.end"]
     },
     {
-      "before": ["[", "[", "C"],
+      "before": ["]", "]", "C"],
       "commands": ["vscode-textobjects.goTo.next.inner.comment.end"]
     },
     {
-      "before": ["[", "[", "N"],
-      "commands": ["vscode-textobjects.goTo.next.inner.node.end"]
-    },
-    {
-      "before": ["[", "[", "n"],
-      "commands": ["vscode-textobjects.goTo.next.outer.node.end"]
-    },
-    {
-      "before": ["]", "f"],
+      "before": ["[", "f"],
       "commands": ["vscode-textobjects.goTo.previous.outer.function.start"]
     },
     {
-      "before": ["]", "F"],
+      "before": ["[", "F"],
       "commands": ["vscode-textobjects.goTo.previous.inner.function.start"]
     },
     {
-      "before": ["]", "l"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.loop.start"]
-    },
-    {
-      "before": ["]", "L"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.loop.start"]
-    },
-    {
-      "before": ["]", "i"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.conditional.start"]
-    },
-    {
-      "before": ["]", "I"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.conditional.start"]
-    },
-    {
-      "before": ["]", "r"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.rhs.start"]
-    },
-    {
-      "before": ["]", "R"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.rhs.start"]
-    },
-    {
-      "before": ["]", "h"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.lhs.start"]
-    },
-    {
-      "before": ["]", "H"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.lhs.start"]
-    },
-    {
-      "before": ["]", "v"],
+      "before": ["[", "d"],
       "commands": ["vscode-textobjects.goTo.previous.outer.variable.start"]
     },
     {
-      "before": ["]", "q"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.string.start"]
-    },
-    {
-      "before": ["]", "Q"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.string.start"]
-    },
-    {
-      "before": ["]", "k"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.class.start"]
-    },
-    {
-      "before": ["]", "K"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.class.start"]
-    },
-    {
-      "before": ["]", "a"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.array.start"]
-    },
-    {
-      "before": ["]", "A"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.array.start"]
-    },
-    {
-      "before": ["]", "o"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.object.start"]
-    },
-    {
-      "before": ["]", "O"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.object.start"]
-    },
-    {
-      "before": ["]", "E"],
+      "before": ["[", "A"],
       "commands": ["vscode-textobjects.goTo.previous.inner.parameters.start"]
     },
     {
-      "before": ["]", "e"],
+      "before": ["[", "a"],
       "commands": ["vscode-textobjects.goTo.previous.outer.parameters.start"]
     },
     {
-      "before": ["]", "m"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.call.start"]
-    },
-    {
-      "before": ["]", "M"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.call.start"]
-    },
-    {
-      "before": ["]", "t"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.type.start"]
-    },
-    {
-      "before": ["]", "T"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.type.start"]
-    },
-    {
-      "before": ["]", "c"],
+      "before": ["[", "c"],
       "commands": ["vscode-textobjects.goTo.previous.outer.comment.start"]
     },
     {
-      "before": ["]", "C"],
+      "before": ["[", "C"],
       "commands": ["vscode-textobjects.goTo.previous.inner.comment.start"]
     },
     {
-      "before": ["]", "n"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.node.start"]
-    },
-    {
-      "before": ["]", "N"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.node.start"]
-    },
-    {
-      "before": ["]", "]", "f"],
+      "before": ["[", "[", "f"],
       "commands": ["vscode-textobjects.goTo.previous.outer.function.end"]
     },
     {
-      "before": ["]", "]", "F"],
+      "before": ["[", "[", "F"],
       "commands": ["vscode-textobjects.goTo.previous.inner.function.end"]
     },
     {
-      "before": ["]", "]", "l"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.loop.end"]
-    },
-    {
-      "before": ["]", "]", "L"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.loop.end"]
-    },
-    {
-      "before": ["]", "]", "i"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.conditional.end"]
-    },
-    {
-      "before": ["]", "]", "I"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.conditional.end"]
-    },
-    {
-      "before": ["]", "]", "r"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.rhs.end"]
-    },
-    {
-      "before": ["]", "]", "R"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.rhs.end"]
-    },
-    {
-      "before": ["]", "]", "h"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.lhs.end"]
-    },
-    {
-      "before": ["]", "]", "H"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.lhs.end"]
-    },
-    {
-      "before": ["]", "]", "v"],
+      "before": ["[", "[", "d"],
       "commands": ["vscode-textobjects.goTo.previous.outer.variable.end"]
     },
     {
-      "before": ["]", "]", "q"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.string.end"]
-    },
-    {
-      "before": ["]", "]", "Q"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.string.end"]
-    },
-    {
-      "before": ["]", "]", "k"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.class.end"]
-    },
-    {
-      "before": ["]", "]", "K"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.class.end"]
-    },
-    {
-      "before": ["]", "]", "a"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.array.end"]
-    },
-    {
-      "before": ["]", "]", "A"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.array.end"]
-    },
-    {
-      "before": ["]", "]", "o"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.object.end"]
-    },
-    {
-      "before": ["]", "]", "O"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.object.end"]
-    },
-    {
-      "before": ["]", "]", "E"],
+      "before": ["[", "[", "A"],
       "commands": ["vscode-textobjects.goTo.previous.inner.parameters.end"]
     },
     {
-      "before": ["]", "]", "e"],
+      "before": ["[", "[", "a"],
       "commands": ["vscode-textobjects.goTo.previous.outer.parameters.end"]
     },
     {
-      "before": ["]", "]", "m"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.call.end"]
-    },
-    {
-      "before": ["]", "]", "M"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.call.end"]
-    },
-    {
-      "before": ["]", "]", "t"],
-      "commands": ["vscode-textobjects.goTo.previous.outer.type.end"]
-    },
-    {
-      "before": ["]", "]", "T"],
-      "commands": ["vscode-textobjects.goTo.previous.inner.type.end"]
-    },
-    {
-      "before": ["]", "]", "c"],
+      "before": ["[", "[", "c"],
       "commands": ["vscode-textobjects.goTo.previous.outer.comment.end"]
     },
     {
-      "before": ["]", "]", "C"],
+      "before": ["[", "[", "C"],
       "commands": ["vscode-textobjects.goTo.previous.inner.comment.end"]
     },
     {
@@ -1130,96 +712,16 @@
       "commands": ["vscode-textobjects.select.previous.inner.function.start"]
     },
     {
-      "before": ["v", "a", "L"],
-      "commands": ["vscode-textobjects.select.previous.outer.loop.start"]
-    },
-    {
-      "before": ["v", "i", "L"],
-      "commands": ["vscode-textobjects.select.previous.inner.loop.start"]
-    },
-    {
-      "before": ["v", "a", "I"],
-      "commands": ["vscode-textobjects.select.previous.outer.conditional.start"]
-    },
-    {
-      "before": ["v", "i", "I"],
-      "commands": ["vscode-textobjects.select.previous.inner.conditional.start"]
-    },
-    {
-      "before": ["v", "a", "R"],
-      "commands": ["vscode-textobjects.select.previous.outer.rhs.start"]
-    },
-    {
-      "before": ["v", "i", "R"],
-      "commands": ["vscode-textobjects.select.previous.inner.rhs.start"]
-    },
-    {
-      "before": ["v", "a", "H"],
-      "commands": ["vscode-textobjects.select.previous.outer.lhs.start"]
-    },
-    {
-      "before": ["v", "i", "H"],
-      "commands": ["vscode-textobjects.select.previous.inner.lhs.start"]
-    },
-    {
-      "before": ["v", "a", "V"],
+      "before": ["v", "a", "D"],
       "commands": ["vscode-textobjects.select.previous.outer.variable.start"]
     },
     {
-      "before": ["v", "a", "Q"],
-      "commands": ["vscode-textobjects.select.previous.outer.string.start"]
-    },
-    {
-      "before": ["v", "i", "Q"],
-      "commands": ["vscode-textobjects.select.previous.inner.string.start"]
-    },
-    {
-      "before": ["v", "a", "K"],
-      "commands": ["vscode-textobjects.select.previous.outer.class.start"]
-    },
-    {
-      "before": ["v", "i", "K"],
-      "commands": ["vscode-textobjects.select.previous.inner.class.start"]
-    },
-    {
-      "before": ["v", "a", "A"],
-      "commands": ["vscode-textobjects.select.previous.outer.array.start"]
-    },
-    {
       "before": ["v", "i", "A"],
-      "commands": ["vscode-textobjects.select.previous.inner.array.start"]
-    },
-    {
-      "before": ["v", "a", "O"],
-      "commands": ["vscode-textobjects.select.previous.outer.object.start"]
-    },
-    {
-      "before": ["v", "i", "O"],
-      "commands": ["vscode-textobjects.select.previous.inner.object.start"]
-    },
-    {
-      "before": ["v", "i", "E"],
       "commands": ["vscode-textobjects.select.previous.inner.parameters.start"]
     },
     {
-      "before": ["v", "a", "E"],
+      "before": ["v", "a", "A"],
       "commands": ["vscode-textobjects.select.previous.outer.parameters.start"]
-    },
-    {
-      "before": ["v", "a", "M"],
-      "commands": ["vscode-textobjects.select.previous.outer.call.start"]
-    },
-    {
-      "before": ["v", "i", "M"],
-      "commands": ["vscode-textobjects.select.previous.inner.call.start"]
-    },
-    {
-      "before": ["v", "a", "T"],
-      "commands": ["vscode-textobjects.select.previous.outer.type.start"]
-    },
-    {
-      "before": ["v", "i", "T"],
-      "commands": ["vscode-textobjects.select.previous.inner.type.start"]
     },
     {
       "before": ["v", "a", "C"],
@@ -1230,14 +732,6 @@
       "commands": ["vscode-textobjects.select.previous.inner.comment.start"]
     },
     {
-      "before": ["v", "a", "N"],
-      "commands": ["vscode-textobjects.select.previous.outer.node.start"]
-    },
-    {
-      "before": ["v", "i", "N"],
-      "commands": ["vscode-textobjects.select.previous.inner.node.start"]
-    },
-    {
       "before": ["d", "a", "f"],
       "commands": ["vscode-textobjects.delete.next.outer.function.start"]
     },
@@ -1246,96 +740,16 @@
       "commands": ["vscode-textobjects.delete.next.inner.function.start"]
     },
     {
-      "before": ["d", "a", "l"],
-      "commands": ["vscode-textobjects.delete.next.outer.loop.start"]
-    },
-    {
-      "before": ["d", "i", "l"],
-      "commands": ["vscode-textobjects.delete.next.inner.loop.start"]
-    },
-    {
-      "before": ["d", "a", "i"],
-      "commands": ["vscode-textobjects.delete.next.outer.conditional.start"]
-    },
-    {
-      "before": ["d", "i", "i"],
-      "commands": ["vscode-textobjects.delete.next.inner.conditional.start"]
-    },
-    {
-      "before": ["d", "a", "r"],
-      "commands": ["vscode-textobjects.delete.next.outer.rhs.start"]
-    },
-    {
-      "before": ["d", "i", "r"],
-      "commands": ["vscode-textobjects.delete.next.inner.rhs.start"]
-    },
-    {
-      "before": ["d", "a", "h"],
-      "commands": ["vscode-textobjects.delete.next.outer.lhs.start"]
-    },
-    {
-      "before": ["d", "i", "h"],
-      "commands": ["vscode-textobjects.delete.next.inner.lhs.start"]
-    },
-    {
-      "before": ["d", "a", "v"],
+      "before": ["d", "a", "d"],
       "commands": ["vscode-textobjects.delete.next.outer.variable.start"]
     },
     {
-      "before": ["d", "a", "q"],
-      "commands": ["vscode-textobjects.delete.next.outer.string.start"]
-    },
-    {
-      "before": ["d", "i", "q"],
-      "commands": ["vscode-textobjects.delete.next.inner.string.start"]
-    },
-    {
-      "before": ["d", "a", "k"],
-      "commands": ["vscode-textobjects.delete.next.outer.class.start"]
-    },
-    {
-      "before": ["d", "i", "k"],
-      "commands": ["vscode-textobjects.delete.next.inner.class.start"]
-    },
-    {
       "before": ["d", "a", "a"],
-      "commands": ["vscode-textobjects.delete.next.outer.array.start"]
-    },
-    {
-      "before": ["d", "i", "a"],
-      "commands": ["vscode-textobjects.delete.next.inner.array.start"]
-    },
-    {
-      "before": ["d", "a", "o"],
-      "commands": ["vscode-textobjects.delete.next.outer.object.start"]
-    },
-    {
-      "before": ["d", "i", "o"],
-      "commands": ["vscode-textobjects.delete.next.inner.object.start"]
-    },
-    {
-      "before": ["d", "a", "e"],
       "commands": ["vscode-textobjects.delete.next.outer.parameters.start"]
     },
     {
-      "before": ["d", "i", "e"],
+      "before": ["d", "i", "a"],
       "commands": ["vscode-textobjects.delete.next.inner.parameters.start"]
-    },
-    {
-      "before": ["d", "a", "m"],
-      "commands": ["vscode-textobjects.delete.next.outer.call.start"]
-    },
-    {
-      "before": ["d", "i", "m"],
-      "commands": ["vscode-textobjects.delete.next.inner.call.start"]
-    },
-    {
-      "before": ["d", "a", "t"],
-      "commands": ["vscode-textobjects.delete.next.outer.type.start"]
-    },
-    {
-      "before": ["d", "i", "t"],
-      "commands": ["vscode-textobjects.delete.next.inner.type.start"]
     },
     {
       "before": ["d", "a", "c"],
@@ -1346,14 +760,6 @@
       "commands": ["vscode-textobjects.delete.next.inner.comment.start"]
     },
     {
-      "before": ["d", "a", "n"],
-      "commands": ["vscode-textobjects.delete.next.outer.node.start"]
-    },
-    {
-      "before": ["d", "i", "N"],
-      "commands": ["vscode-textobjects.delete.previous.inner.node.start"]
-    },
-    {
       "before": ["d", "a", "F"],
       "commands": ["vscode-textobjects.delete.previous.outer.function.start"]
     },
@@ -1362,96 +768,16 @@
       "commands": ["vscode-textobjects.delete.previous.inner.function.start"]
     },
     {
-      "before": ["d", "a", "L"],
-      "commands": ["vscode-textobjects.delete.previous.outer.loop.start"]
-    },
-    {
-      "before": ["d", "i", "L"],
-      "commands": ["vscode-textobjects.delete.previous.inner.loop.start"]
-    },
-    {
-      "before": ["d", "a", "I"],
-      "commands": ["vscode-textobjects.delete.previous.outer.conditional.start"]
-    },
-    {
-      "before": ["d", "i", "I"],
-      "commands": ["vscode-textobjects.delete.previous.inner.conditional.start"]
-    },
-    {
-      "before": ["d", "a", "R"],
-      "commands": ["vscode-textobjects.delete.previous.outer.rhs.start"]
-    },
-    {
-      "before": ["d", "i", "R"],
-      "commands": ["vscode-textobjects.delete.previous.inner.rhs.start"]
-    },
-    {
-      "before": ["d", "a", "H"],
-      "commands": ["vscode-textobjects.delete.previous.outer.lhs.start"]
-    },
-    {
-      "before": ["d", "i", "H"],
-      "commands": ["vscode-textobjects.delete.previous.inner.lhs.start"]
-    },
-    {
-      "before": ["d", "a", "V"],
+      "before": ["d", "a", "D"],
       "commands": ["vscode-textobjects.delete.previous.outer.variable.start"]
     },
     {
-      "before": ["d", "a", "Q"],
-      "commands": ["vscode-textobjects.delete.previous.outer.string.start"]
-    },
-    {
-      "before": ["d", "i", "Q"],
-      "commands": ["vscode-textobjects.delete.previous.inner.string.start"]
-    },
-    {
-      "before": ["d", "a", "K"],
-      "commands": ["vscode-textobjects.delete.previous.outer.class.start"]
-    },
-    {
-      "before": ["d", "i", "K"],
-      "commands": ["vscode-textobjects.delete.previous.inner.class.start"]
-    },
-    {
       "before": ["d", "a", "A"],
-      "commands": ["vscode-textobjects.delete.previous.outer.array.start"]
-    },
-    {
-      "before": ["d", "i", "A"],
-      "commands": ["vscode-textobjects.delete.previous.inner.array.start"]
-    },
-    {
-      "before": ["d", "a", "O"],
-      "commands": ["vscode-textobjects.delete.previous.outer.object.start"]
-    },
-    {
-      "before": ["d", "i", "O"],
-      "commands": ["vscode-textobjects.delete.previous.inner.object.start"]
-    },
-    {
-      "before": ["d", "a", "E"],
       "commands": ["vscode-textobjects.delete.previous.outer.parameters.start"]
     },
     {
-      "before": ["d", "i", "E"],
+      "before": ["d", "i", "A"],
       "commands": ["vscode-textobjects.delete.previous.inner.parameters.start"]
-    },
-    {
-      "before": ["d", "a", "M"],
-      "commands": ["vscode-textobjects.delete.previous.outer.call.start"]
-    },
-    {
-      "before": ["d", "i", "M"],
-      "commands": ["vscode-textobjects.delete.previous.inner.call.start"]
-    },
-    {
-      "before": ["d", "a", "T"],
-      "commands": ["vscode-textobjects.delete.previous.outer.type.start"]
-    },
-    {
-      "before": ["d", "i", "T"],
-      "commands": ["vscode-textobjects.delete.previous.inner.type.start"]
     },
     {
       "before": ["d", "a", "C"],
@@ -1470,96 +796,16 @@
       "commands": ["vscode-textobjects.yank.next.inner.function.start"]
     },
     {
-      "before": ["y", "a", "l"],
-      "commands": ["vscode-textobjects.yank.next.outer.loop.start"]
-    },
-    {
-      "before": ["y", "i", "l"],
-      "commands": ["vscode-textobjects.yank.next.inner.loop.start"]
-    },
-    {
-      "before": ["y", "a", "i"],
-      "commands": ["vscode-textobjects.yank.next.outer.conditional.start"]
-    },
-    {
-      "before": ["y", "i", "i"],
-      "commands": ["vscode-textobjects.yank.next.inner.conditional.start"]
-    },
-    {
-      "before": ["y", "a", "r"],
-      "commands": ["vscode-textobjects.yank.next.outer.rhs.start"]
-    },
-    {
-      "before": ["y", "i", "r"],
-      "commands": ["vscode-textobjects.yank.next.inner.rhs.start"]
-    },
-    {
-      "before": ["y", "a", "h"],
-      "commands": ["vscode-textobjects.yank.next.outer.lhs.start"]
-    },
-    {
-      "before": ["y", "i", "h"],
-      "commands": ["vscode-textobjects.yank.next.inner.lhs.start"]
-    },
-    {
-      "before": ["y", "a", "v"],
+      "before": ["y", "a", "d"],
       "commands": ["vscode-textobjects.yank.next.outer.variable.start"]
     },
     {
-      "before": ["y", "a", "q"],
-      "commands": ["vscode-textobjects.yank.next.outer.string.start"]
-    },
-    {
-      "before": ["y", "i", "q"],
-      "commands": ["vscode-textobjects.yank.next.inner.string.start"]
-    },
-    {
-      "before": ["y", "a", "k"],
-      "commands": ["vscode-textobjects.yank.next.outer.class.start"]
-    },
-    {
-      "before": ["y", "i", "k"],
-      "commands": ["vscode-textobjects.yank.next.inner.class.start"]
-    },
-    {
       "before": ["y", "a", "a"],
-      "commands": ["vscode-textobjects.yank.next.outer.array.start"]
-    },
-    {
-      "before": ["y", "i", "a"],
-      "commands": ["vscode-textobjects.yank.next.inner.array.start"]
-    },
-    {
-      "before": ["y", "a", "o"],
-      "commands": ["vscode-textobjects.yank.next.outer.object.start"]
-    },
-    {
-      "before": ["y", "i", "o"],
-      "commands": ["vscode-textobjects.yank.next.inner.object.start"]
-    },
-    {
-      "before": ["y", "a", "e"],
       "commands": ["vscode-textobjects.yank.next.outer.parameters.start"]
     },
     {
-      "before": ["y", "i", "e"],
+      "before": ["y", "i", "a"],
       "commands": ["vscode-textobjects.yank.next.inner.parameters.start"]
-    },
-    {
-      "before": ["y", "a", "m"],
-      "commands": ["vscode-textobjects.yank.next.outer.call.start"]
-    },
-    {
-      "before": ["y", "i", "m"],
-      "commands": ["vscode-textobjects.yank.next.inner.call.start"]
-    },
-    {
-      "before": ["y", "a", "t"],
-      "commands": ["vscode-textobjects.yank.next.outer.type.start"]
-    },
-    {
-      "before": ["y", "i", "t"],
-      "commands": ["vscode-textobjects.yank.next.inner.type.start"]
     },
     {
       "before": ["y", "a", "c"],
@@ -1570,14 +816,6 @@
       "commands": ["vscode-textobjects.yank.next.inner.comment.start"]
     },
     {
-      "before": ["y", "a", "n"],
-      "commands": ["vscode-textobjects.yank.next.outer.node.start"]
-    },
-    {
-      "before": ["y", "i", "n"],
-      "commands": ["vscode-textobjects.yank.next.inner.node.start"]
-    },
-    {
       "before": ["y", "a", "F"],
       "commands": ["vscode-textobjects.yank.previous.outer.function.start"]
     },
@@ -1586,96 +824,16 @@
       "commands": ["vscode-textobjects.yank.previous.inner.function.start"]
     },
     {
-      "before": ["y", "a", "L"],
-      "commands": ["vscode-textobjects.yank.previous.outer.loop.start"]
-    },
-    {
-      "before": ["y", "i", "L"],
-      "commands": ["vscode-textobjects.yank.previous.inner.loop.start"]
-    },
-    {
-      "before": ["y", "a", "I"],
-      "commands": ["vscode-textobjects.yank.previous.outer.conditional.start"]
-    },
-    {
-      "before": ["y", "i", "I"],
-      "commands": ["vscode-textobjects.yank.previous.inner.conditional.start"]
-    },
-    {
-      "before": ["y", "a", "R"],
-      "commands": ["vscode-textobjects.yank.previous.outer.rhs.start"]
-    },
-    {
-      "before": ["y", "i", "R"],
-      "commands": ["vscode-textobjects.yank.previous.inner.rhs.start"]
-    },
-    {
-      "before": ["y", "a", "H"],
-      "commands": ["vscode-textobjects.yank.previous.outer.lhs.start"]
-    },
-    {
-      "before": ["y", "i", "H"],
-      "commands": ["vscode-textobjects.yank.previous.inner.lhs.start"]
-    },
-    {
-      "before": ["y", "a", "V"],
+      "before": ["y", "a", "D"],
       "commands": ["vscode-textobjects.yank.previous.outer.variable.start"]
     },
     {
-      "before": ["y", "a", "Q"],
-      "commands": ["vscode-textobjects.yank.previous.outer.string.start"]
-    },
-    {
-      "before": ["y", "i", "Q"],
-      "commands": ["vscode-textobjects.yank.previous.inner.string.start"]
-    },
-    {
-      "before": ["y", "a", "K"],
-      "commands": ["vscode-textobjects.yank.previous.outer.class.start"]
-    },
-    {
-      "before": ["y", "i", "K"],
-      "commands": ["vscode-textobjects.yank.previous.inner.class.start"]
-    },
-    {
       "before": ["y", "a", "A"],
-      "commands": ["vscode-textobjects.yank.previous.outer.array.start"]
-    },
-    {
-      "before": ["y", "i", "A"],
-      "commands": ["vscode-textobjects.yank.previous.inner.array.start"]
-    },
-    {
-      "before": ["y", "a", "O"],
-      "commands": ["vscode-textobjects.yank.previous.outer.object.start"]
-    },
-    {
-      "before": ["y", "i", "O"],
-      "commands": ["vscode-textobjects.yank.previous.inner.object.start"]
-    },
-    {
-      "before": ["y", "a", "E"],
       "commands": ["vscode-textobjects.yank.previous.outer.parameters.start"]
     },
     {
-      "before": ["y", "i", "E"],
+      "before": ["y", "i", "A"],
       "commands": ["vscode-textobjects.yank.previous.inner.parameters.start"]
-    },
-    {
-      "before": ["y", "a", "M"],
-      "commands": ["vscode-textobjects.yank.previous.outer.call.start"]
-    },
-    {
-      "before": ["y", "i", "M"],
-      "commands": ["vscode-textobjects.yank.previous.inner.call.start"]
-    },
-    {
-      "before": ["y", "a", "T"],
-      "commands": ["vscode-textobjects.yank.previous.outer.type.start"]
-    },
-    {
-      "before": ["y", "i", "T"],
-      "commands": ["vscode-textobjects.yank.previous.inner.type.start"]
     },
     {
       "before": ["y", "a", "C"],
@@ -1694,96 +852,16 @@
       "commands": ["vscode-textobjects.change.next.inner.function.start"]
     },
     {
-      "before": ["c", "a", "l"],
-      "commands": ["vscode-textobjects.change.next.outer.loop.start"]
-    },
-    {
-      "before": ["c", "i", "l"],
-      "commands": ["vscode-textobjects.change.next.inner.loop.start"]
-    },
-    {
-      "before": ["c", "a", "i"],
-      "commands": ["vscode-textobjects.change.next.outer.conditional.start"]
-    },
-    {
-      "before": ["c", "i", "i"],
-      "commands": ["vscode-textobjects.change.next.inner.conditional.start"]
-    },
-    {
-      "before": ["c", "a", "r"],
-      "commands": ["vscode-textobjects.change.next.outer.rhs.start"]
-    },
-    {
-      "before": ["c", "i", "r"],
-      "commands": ["vscode-textobjects.change.next.inner.rhs.start"]
-    },
-    {
-      "before": ["c", "a", "h"],
-      "commands": ["vscode-textobjects.change.next.outer.lhs.start"]
-    },
-    {
-      "before": ["c", "i", "h"],
-      "commands": ["vscode-textobjects.change.next.inner.lhs.start"]
-    },
-    {
-      "before": ["c", "a", "v"],
+      "before": ["c", "a", "d"],
       "commands": ["vscode-textobjects.change.next.outer.variable.start"]
     },
     {
-      "before": ["c", "a", "q"],
-      "commands": ["vscode-textobjects.change.next.outer.string.start"]
-    },
-    {
-      "before": ["c", "i", "q"],
-      "commands": ["vscode-textobjects.change.next.inner.string.start"]
-    },
-    {
-      "before": ["c", "a", "k"],
-      "commands": ["vscode-textobjects.change.next.outer.class.start"]
-    },
-    {
-      "before": ["c", "i", "k"],
-      "commands": ["vscode-textobjects.change.next.inner.class.start"]
-    },
-    {
       "before": ["c", "a", "a"],
-      "commands": ["vscode-textobjects.change.next.outer.array.start"]
-    },
-    {
-      "before": ["c", "i", "a"],
-      "commands": ["vscode-textobjects.change.next.inner.array.start"]
-    },
-    {
-      "before": ["c", "a", "o"],
-      "commands": ["vscode-textobjects.change.next.outer.object.start"]
-    },
-    {
-      "before": ["c", "i", "o"],
-      "commands": ["vscode-textobjects.change.next.inner.object.start"]
-    },
-    {
-      "before": ["c", "a", "e"],
       "commands": ["vscode-textobjects.change.next.outer.parameters.start"]
     },
     {
-      "before": ["c", "i", "e"],
+      "before": ["c", "i", "a"],
       "commands": ["vscode-textobjects.change.next.inner.parameters.start"]
-    },
-    {
-      "before": ["c", "a", "m"],
-      "commands": ["vscode-textobjects.change.next.outer.call.start"]
-    },
-    {
-      "before": ["c", "i", "m"],
-      "commands": ["vscode-textobjects.change.next.inner.call.start"]
-    },
-    {
-      "before": ["c", "a", "t"],
-      "commands": ["vscode-textobjects.change.next.outer.type.start"]
-    },
-    {
-      "before": ["c", "i", "t"],
-      "commands": ["vscode-textobjects.change.next.inner.type.start"]
     },
     {
       "before": ["c", "a", "c"],
@@ -1794,14 +872,6 @@
       "commands": ["vscode-textobjects.change.next.inner.comment.start"]
     },
     {
-      "before": ["c", "a", "n"],
-      "commands": ["vscode-textobjects.change.next.outer.node.start"]
-    },
-    {
-      "before": ["c", "i", "N"],
-      "commands": ["vscode-textobjects.change.previous.inner.node.start"]
-    },
-    {
       "before": ["c", "a", "F"],
       "commands": ["vscode-textobjects.change.previous.outer.function.start"]
     },
@@ -1810,96 +880,16 @@
       "commands": ["vscode-textobjects.change.previous.inner.function.start"]
     },
     {
-      "before": ["c", "a", "L"],
-      "commands": ["vscode-textobjects.change.previous.outer.loop.start"]
-    },
-    {
-      "before": ["c", "i", "L"],
-      "commands": ["vscode-textobjects.change.previous.inner.loop.start"]
-    },
-    {
-      "before": ["c", "a", "I"],
-      "commands": ["vscode-textobjects.change.previous.outer.conditional.start"]
-    },
-    {
-      "before": ["c", "i", "I"],
-      "commands": ["vscode-textobjects.change.previous.inner.conditional.start"]
-    },
-    {
-      "before": ["c", "a", "R"],
-      "commands": ["vscode-textobjects.change.previous.outer.rhs.start"]
-    },
-    {
-      "before": ["c", "i", "R"],
-      "commands": ["vscode-textobjects.change.previous.inner.rhs.start"]
-    },
-    {
-      "before": ["c", "a", "H"],
-      "commands": ["vscode-textobjects.change.previous.outer.lhs.start"]
-    },
-    {
-      "before": ["c", "i", "H"],
-      "commands": ["vscode-textobjects.change.previous.inner.lhs.start"]
-    },
-    {
-      "before": ["c", "a", "V"],
+      "before": ["c", "a", "D"],
       "commands": ["vscode-textobjects.change.previous.outer.variable.start"]
     },
     {
-      "before": ["c", "a", "Q"],
-      "commands": ["vscode-textobjects.change.previous.outer.string.start"]
-    },
-    {
-      "before": ["c", "i", "Q"],
-      "commands": ["vscode-textobjects.change.previous.inner.string.start"]
-    },
-    {
-      "before": ["c", "a", "K"],
-      "commands": ["vscode-textobjects.change.previous.outer.class.start"]
-    },
-    {
-      "before": ["c", "i", "K"],
-      "commands": ["vscode-textobjects.change.previous.inner.class.start"]
-    },
-    {
       "before": ["c", "a", "A"],
-      "commands": ["vscode-textobjects.change.previous.outer.array.start"]
-    },
-    {
-      "before": ["c", "i", "A"],
-      "commands": ["vscode-textobjects.change.previous.inner.array.start"]
-    },
-    {
-      "before": ["c", "a", "O"],
-      "commands": ["vscode-textobjects.change.previous.outer.object.start"]
-    },
-    {
-      "before": ["c", "i", "O"],
-      "commands": ["vscode-textobjects.change.previous.inner.object.start"]
-    },
-    {
-      "before": ["c", "a", "E"],
       "commands": ["vscode-textobjects.change.previous.outer.parameters.start"]
     },
     {
-      "before": ["c", "i", "E"],
+      "before": ["c", "i", "A"],
       "commands": ["vscode-textobjects.change.previous.inner.parameters.start"]
-    },
-    {
-      "before": ["c", "a", "M"],
-      "commands": ["vscode-textobjects.change.previous.outer.call.start"]
-    },
-    {
-      "before": ["c", "i", "M"],
-      "commands": ["vscode-textobjects.change.previous.inner.call.start"]
-    },
-    {
-      "before": ["c", "a", "T"],
-      "commands": ["vscode-textobjects.change.previous.outer.type.start"]
-    },
-    {
-      "before": ["c", "i", "T"],
-      "commands": ["vscode-textobjects.change.previous.inner.type.start"]
     },
     {
       "before": ["c", "a", "C"],
@@ -1930,7 +920,16 @@
     // Git
     {
       "before": ["<leader>", "v", "w"],
-      "commands": ["gitlens.copyRemoteFileUrlToClipboard"],
+      "commands": [
+        "gitlens.copyRemoteFileUrlToClipboard",
+        {
+          "command": "vscode-notify.sendNotification",
+          "args": {
+            "message": "Remote URL copied to clipboard",
+            "type": "info"
+          }
+        }
+      ],
       "silent": true
     },
     // Move lines up and down
@@ -1946,6 +945,22 @@
     }
   ],
   "vscode-textobjects.vimEnabled": true,
+  "vscode-textobjects.vimKeybindings": {
+    "select": "v",
+    "change": "c",
+    "delete": "d",
+    "yank": "y",
+    "go to next start": "]",
+    "go to next end": "] ]",
+    "go to previous start": "[",
+    "go to previous end": "[ [",
+    "inner": "i",
+    "outer": "a",
+    "comment": "c",
+    "function": "f",
+    "parameters": "a",
+    "variable": "d"
+  },
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "maximized",
   "window.openFoldersInNewWindow": "on",
