@@ -1,0 +1,6 @@
+{
+  "permissions": {
+    "allow": ["Bash(ls:*)", "Bash(rg:*)", "Bash(grep:*)", "Bash(yarn add:*)"],
+    "deny": []
+  }
+}
