@@ -1,11 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)",
+      "Bash(chmod:*)",
+      "Bash(cp:*)",
+      "Bash(diff:*)",
       "Bash(find:*)",
+      "Bash(git:*)",
       "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
       "Bash(rg:*)",
-      "Bash(yarn add:*)"
+      "Bash(touch:*)",
+      "Bash(yarn install:*)",
+      "Bash(yarn add:*)",
+      "Bash(yarn remove:*)",
+      "Bash(yarn up:*)",
+      "WebFetch",
+      "WebSearch"
     ],
     "deny": []
   }
