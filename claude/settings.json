@@ -31,5 +31,6 @@
       "WebSearch"
     ],
     "deny": []
-  }
+  },
+  "model": "opus"
 }
