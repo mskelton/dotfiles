@@ -24,21 +24,20 @@ one() {
 }
 
 view_test_screenshots() {
-	found_files=0
+	files=$(fd -I '.png' "$1")
 
 	# Find and display all the test screenshots
 	if test "$TERM" = "xterm-kitty"; then
-		for file in $(fd -I '.png' "$1"); do
-			found_files=1
+		for file in $files; do
 			echo "$file"
 			kitty +kitten icat --align left "$file"
 		done
 	else
-		cursor $(fd -I '.png' "$1")
+		cursor $files
 	fi
 
 	# If no files were found, return an error
-	if [ $found_files -eq 0 ]; then
+	if [ -z "$files" ]; then
 		echo "[error]: No test screenshots found"
 		return 1
 	fi

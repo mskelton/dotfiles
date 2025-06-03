@@ -231,6 +231,7 @@
       "compare": false
     }
   },
+  "gitlens.plusFeatures.enabled": false,
   "gitlens.remotes": [
     {
       "domain": "github.com",
