@@ -1,4 +1,7 @@
 {
+  "[dts]": {
+    "editor.defaultFormatter": "mskelton.dtsfmt"
+  },
   "[go]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
@@ -88,6 +91,7 @@
       }
     }
   ],
+  "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.userWords": ["Akuma", "codeowners"],
@@ -407,7 +411,7 @@
       "commands": [
         "gitlens.copyRemoteFileUrlToClipboard",
         {
-          "command": "vscode-notify.sendNotification",
+          "command": "notify.sendNotification",
           "args": {
             "message": "Remote URL copied to clipboard",
             "type": "info"
@@ -824,7 +828,7 @@
       "commands": [
         "gitlens.copyRemoteFileUrlToClipboard",
         {
-          "command": "vscode-notify.sendNotification",
+          "command": "notify.sendNotification",
           "args": {
             "message": "Remote URL copied to clipboard",
             "type": "info"
