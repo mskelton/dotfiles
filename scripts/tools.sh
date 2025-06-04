@@ -78,7 +78,3 @@ npm install turbo --global
 
 # Setup launchd services
 # launchd-reload
-
-# Claude code
-mkdir -p ~/.claude/local/bin
-ln -s ~/.claude/local/bin/claude ~/.claude/local/claude
