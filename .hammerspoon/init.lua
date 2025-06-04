@@ -293,7 +293,7 @@ hs.hotkey.bind({ "cmd", "option" }, "0", function()
 end)
 
 --- Toggle system appearance
-hs.hotkey.bind({ "cmd", "option" }, "9", function()
+hs.hotkey.bind(nil, "f6", function()
 	hs.osascript.applescript([[
     tell application "System Events"
       tell appearance preferences
