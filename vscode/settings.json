@@ -176,8 +176,10 @@
     "*.mqh": "cpp",
     "*.pro": "prolog",
     ".releaserc": "json",
-    ".stylelintrc": "json"
+    ".stylelintrc": "json",
+    "*.keymap": "dts"
   },
+  "files.dialog.defaultPath": "/Users/mskelton/dev",
   "files.exclude": {
     "**/*.iml": true,
     "**/.classpath": true,
@@ -845,9 +847,10 @@
   ],
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
-  "window.newWindowDimensions": "maximized",
+  "window.newWindowDimensions": "inherit",
   "window.openFoldersInNewWindow": "off",
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "window.systemColorTheme": "dark",
+  "window.title": "${rootName}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
     "editorSuggestWidget.selectedBackground": "#2f334d",
