@@ -288,12 +288,12 @@ hs.hotkey.bind({ "control", "option", "shift" }, "q", function()
 end)
 
 --- Sleep
-hs.hotkey.bind({ "cmd" }, "f6", function()
+hs.hotkey.bind({ "cmd", "option" }, "0", function()
 	hs.caffeinate.systemSleep()
 end)
 
 --- Toggle system appearance
-hs.hotkey.bind(nil, "f6", function()
+hs.hotkey.bind({ "cmd", "option" }, "9", function()
 	hs.osascript.applescript([[
     tell application "System Events"
       tell appearance preferences
