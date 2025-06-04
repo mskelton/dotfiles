@@ -1,4 +1,13 @@
 [
+  // Open new windows as OS windows
+  {
+    "key": "shift+cmd+n",
+    "command": "-workbench.action.newWindow"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "workbench.action.newWindowTab"
+  },
   // Use cmd+n to create new files in the explorer
   {
     "key": "cmd+n",

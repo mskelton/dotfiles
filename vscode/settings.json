@@ -861,8 +861,9 @@
     "variable": "d"
   },
   "window.dialogStyle": "custom",
+  "window.nativeTabs": true,
   "window.newWindowDimensions": "maximized",
-  "window.openFoldersInNewWindow": "on",
+  "window.openFoldersInNewWindow": "off",
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
