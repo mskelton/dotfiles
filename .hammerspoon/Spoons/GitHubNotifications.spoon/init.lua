@@ -96,6 +96,7 @@ function M:sync(source)
 	}, function(status, body)
 		--- Ignore error if offline
 		if status == -1 then
+			self.log.d("Failed to fetch GitHub notifications: Offline")
 			return nil
 		end
 
