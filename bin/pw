@@ -33,7 +33,7 @@ view_test_screenshots() {
 			kitty +kitten icat --align left "$file"
 		done
 	else
-		cursor $files
+		code $files
 	fi
 
 	# If no files were found, return an error

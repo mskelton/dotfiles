@@ -16,5 +16,5 @@ git worktree add -b "$branch" "$dir"
 
 # Open the worktree in a Tmux session
 tmux new-session -ds "$1" -c "$dir"
-tmux send-keys -t "$1" "direnv allow && cursor $dir" Enter
+tmux send-keys -t "$1" "direnv allow && code $dir" Enter
 tmux switch-client -t "$1"
