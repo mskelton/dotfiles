@@ -307,7 +307,7 @@
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "fish",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.env.osx": {
     "NODE_ENV": null
   },
@@ -843,23 +843,6 @@
       "silent": true
     }
   ],
-  "vscode-textobjects.vimEnabled": true,
-  "vscode-textobjects.vimKeybindings": {
-    "select": "v",
-    "change": "c",
-    "delete": "d",
-    "yank": "y",
-    "go to next start": "]",
-    "go to next end": "] ]",
-    "go to previous start": "[",
-    "go to previous end": "[ [",
-    "inner": "i",
-    "outer": "a",
-    "comment": "c",
-    "function": "f",
-    "parameters": "a",
-    "variable": "d"
-  },
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
   "window.newWindowDimensions": "maximized",

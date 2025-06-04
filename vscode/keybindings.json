@@ -8,6 +8,15 @@
     "key": "shift+cmd+n",
     "command": "workbench.action.newWindowTab"
   },
+  // Navigate between OS windows
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.showNextWindowTab"
+  },
+  {
+    "key": "cmd+shift+e",
+    "command": "workbench.action.showPreviousWindowTab"
+  },
   // Use cmd+n to create new files in the explorer
   {
     "key": "cmd+n",
@@ -269,5 +278,9 @@
     "key": "shift+cmd+i",
     "command": "-workbench.action.chat.openEditSession",
     "when": "chatEditingParticipantRegistered && chatIsEnabled && view != 'workbench.panel.chat.view.edits'"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "-workbench.action.previousEditor"
   }
 ]
