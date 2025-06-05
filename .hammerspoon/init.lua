@@ -102,84 +102,84 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
-		{ apps.arc, nil, screens.laptop, hs.layout.maximized },
-		{ apps.kitty, nil, screens.laptop, hs.layout.maximized },
-		{ apps.cursor, nil, screens.laptop, hs.layout.maximized },
+		{ apps.arc,        nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.kitty,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.cursor,     nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
-		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
-		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
-		{ apps.notion, nil, screens.laptop, layout.maximized },
-		{ apps.chat_gpt, nil, screens.laptop, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_center },
+		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.laptop, layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.laptop, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.laptop, hs.layout.maximized },
+		{ apps.zoom,       "Zoom Workplace",        screens.laptop, layout.put_center },
 	}, {
-		{ apps.arc, nil, screens.primary, hs.layout.maximized },
-		{ apps.kitty, nil, screens.primary, hs.layout.maximized },
-		{ apps.cursor, nil, screens.primary, hs.layout.maximized },
+		{ apps.arc,        nil,                     screens.primary, hs.layout.maximized },
+		{ apps.kitty,      nil,                     screens.primary, hs.layout.maximized },
+		{ apps.cursor,     nil,                     screens.primary, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
-		{ apps.slack, nil, screens.primary, hs.layout.maximized },
-		{ apps.linear, nil, screens.primary, hs.layout.maximized },
-		{ apps.figma, nil, screens.primary, hs.layout.maximized },
-		{ apps.notion, nil, screens.primary, hs.layout.maximized },
-		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
+		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.primary, hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.primary, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.laptop,  hs.layout.maximized },
+		{ apps.zoom,       "Zoom Workplace",        screens.primary, layout.put_center },
 	})
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
-		{ apps.arc, nil, screens.laptop, hs.layout.left50 },
-		{ apps.kitty, nil, screens.laptop, hs.layout.right50 },
-		{ apps.cursor, nil, screens.laptop, hs.layout.right50 },
+		{ apps.arc,        nil,                     screens.laptop, hs.layout.left50 },
+		{ apps.kitty,      nil,                     screens.laptop, hs.layout.right50 },
+		{ apps.cursor,     nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
-		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
-		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
-		{ apps.notion, nil, screens.laptop, hs.layout.maximized },
-		{ apps.chat_gpt, nil, screens.laptop, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.left50 },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_left },
+		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.laptop, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.laptop, hs.layout.left50 },
+		{ apps.zoom,       "Zoom Workplace",        screens.laptop, layout.put_left },
 	}, {
-		{ apps.arc, nil, screens.primary, hs.layout.left50 },
-		{ apps.kitty, nil, screens.primary, hs.layout.right50 },
-		{ apps.cursor, nil, screens.primary, hs.layout.right50 },
+		{ apps.arc,        nil,                     screens.primary, hs.layout.left50 },
+		{ apps.kitty,      nil,                     screens.primary, hs.layout.right50 },
+		{ apps.cursor,     nil,                     screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
-		{ apps.slack, nil, screens.primary, hs.layout.maximized },
-		{ apps.linear, nil, screens.primary, hs.layout.maximized },
-		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
-		{ apps.notion, nil, screens.primary, hs.layout.maximized },
-		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
+		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.laptop,  hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.primary, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.laptop,  hs.layout.maximized },
+		{ apps.zoom,       "Zoom Workplace",        screens.primary, layout.put_center },
 	})
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "o", function()
 	layout.apply_layout({
-		{ apps.arc, nil, screens.laptop, hs.layout.left50 },
-		{ apps.kitty, nil, screens.laptop, hs.layout.right50 },
-		{ apps.cursor, nil, screens.laptop, hs.layout.right50 },
+		{ apps.arc,        nil,                     screens.laptop, hs.layout.left50 },
+		{ apps.kitty,      nil,                     screens.laptop, hs.layout.right50 },
+		{ apps.cursor,     nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
-		{ apps.slack, nil, screens.laptop, hs.layout.maximized },
-		{ apps.linear, nil, screens.laptop, hs.layout.maximized },
-		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
-		{ apps.notion, nil, screens.laptop, hs.layout.maximized },
-		{ apps.chat_gpt, nil, screens.laptop, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.laptop, hs.layout.left50 },
-		{ apps.zoom, "Zoom Workplace", screens.laptop, layout.put_left },
+		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.laptop, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.laptop, hs.layout.left50 },
+		{ apps.zoom,       "Zoom Workplace",        screens.laptop, layout.put_left },
 	}, {
-		{ apps.arc, nil, screens.primary, hs.layout.left50 },
-		{ apps.cursor, nil, screens.primary, hs.layout.right50 },
+		{ apps.arc,        nil,                     screens.primary, hs.layout.left50 },
+		{ apps.cursor,     nil,                     screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
-		{ apps.slack, nil, screens.primary, hs.layout.maximized },
-		{ apps.linear, nil, screens.primary, hs.layout.maximized },
-		{ apps.figma, nil, screens.laptop, hs.layout.maximized },
-		{ apps.notion, nil, screens.laptop, hs.layout.maximized },
-		{ apps.chat_gpt, nil, screens.primary, layout.put_left },
-		{ apps.zoom, "Zoom Meeting", screens.primary, hs.layout.maximized },
-		{ apps.zoom, "Zoom Workplace", screens.primary, layout.put_center },
+		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
+		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.figma,      nil,                     screens.laptop,  hs.layout.maximized },
+		{ apps.notion,     nil,                     screens.laptop,  hs.layout.maximized },
+		{ apps.chat_gpt,   nil,                     screens.primary, layout.put_left },
+		{ apps.zoom,       "Zoom Meeting",          screens.primary, hs.layout.maximized },
+		{ apps.zoom,       "Zoom Workplace",        screens.primary, layout.put_center },
 	})
 end)
 
@@ -235,10 +235,10 @@ end)
 --- TODO: Re-enable this, but it's horrifically slow to start
 if false then
 	hs.window.filter.default
-		:setAppFilter(apps.zoom)
-		:subscribe(hs.window.filter.windowCreated, utils.focus("on"))
-		:subscribe(hs.window.filter.windowTitleChanged, utils.focus("on"))
-		:subscribe(hs.window.filter.windowDestroyed, utils.focus("off"))
+			:setAppFilter(apps.zoom)
+			:subscribe(hs.window.filter.windowCreated, utils.focus("on"))
+			:subscribe(hs.window.filter.windowTitleChanged, utils.focus("on"))
+			:subscribe(hs.window.filter.windowDestroyed, utils.focus("off"))
 end
 
 --- Play/pause media
@@ -293,7 +293,7 @@ hs.hotkey.bind({ "cmd", "option" }, "0", function()
 end)
 
 --- Toggle system appearance
-hs.hotkey.bind(nil, "f6", function()
+hs.hotkey.bind({ "cmd" }, "6", function()
 	hs.osascript.applescript([[
     tell application "System Events"
       tell appearance preferences

@@ -60,4 +60,24 @@ M.starts_with = function(str, prefix)
 	return string.sub(str, 1, string.len(prefix)) == prefix
 end
 
+--- Bind a hotkey
+--- @param modifiers table|nil
+--- @param key string
+--- @param fn function
+--- @param options table|nil
+function M.bind(modifiers, key, fn, options)
+	if options and options.rep then
+		hs.hotkey.bind(modifiers, key, fn, nil, fn)
+	else
+		hs.hotkey.bind(modifiers, key, fn)
+	end
+end
+
+--- Returns the default output device
+--- @return hs.audiodevice
+M.output_device = function()
+	--- @diagnostic disable-next-line: undefined-field, return-type-mismatch
+	return hs.audiodevice.defaultOutputDevice()
+end
+
 return M

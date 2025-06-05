@@ -1,4 +1,5 @@
 {
+  "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "[dts]": {
     "editor.defaultFormatter": "mskelton.dtsfmt"
   },
@@ -19,6 +20,9 @@
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
   },
   "[markdown]": {
     "editor.tabSize": 3,
@@ -91,6 +95,7 @@
       }
     }
   ],
+  "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
   "cSpell.diagnosticLevel": "Hint",
