@@ -60,7 +60,7 @@ cargo install --git https://github.com/mskelton/dtsfmt
 
 # Install go binaries
 go install github.com/mskelton/byte@latest
-go install github.com/mskelton/jira@latest
+# go install github.com/mskelton/jira@latest
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pr@latest
 go install github.com/mskelton/prs@latest
@@ -74,7 +74,8 @@ gh extension install mislav/gh-branch
 gh extension install mislav/gh-license
 
 # Install npm binaries
-npm install turbo --global
+npm install -g turbo
+npm install -g @anthropic-ai/claude-code
 
 # Setup launchd services
 # launchd-reload

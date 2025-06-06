@@ -10,8 +10,20 @@ git_dir=$(git rev-parse --git-dir)
 if [ "$git_common_dir" != "$git_dir" ]; then
 	worktree_base=$(basename "$(git rev-parse --show-toplevel)")
 
+	# Fetch latest from origin
 	git fetch origin "$default_branch"
-	git rebase "origin/$default_branch"
+
+	# Checkout the default branch in the worktree
+	git checkout -B "$default_branch" "origin/$default_branch"
+
+	# Clean up any dead branches in this worktree
+	branches=$(git branch -vv | grep 'origin/.*: gone]' | grep -v '^+' | awk '{print $1}' || true)
+	if [ -n "$branches" ]; then
+		echo "$branches" | xargs git branch -D
+	fi
+
+	# Create a new branch matching the worktree folder name
+	git checkout -b "$worktree_base"
 else
 	if [ "$(git branch --show-current)" != "$default_branch" ]; then
 		git checkout "$default_branch"
