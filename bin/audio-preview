@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SECONDS="60"
 INPUT_FILE="$1"
 TMP_DIR=$(mktemp -d)
 
@@ -7,7 +8,9 @@ TMP_DIR=$(mktemp -d)
 EXTENSION="${INPUT_FILE##*.}"
 TRIMMED_FILE="$TMP_DIR/trimmed.$EXTENSION"
 
+# shellcheck disable=2064
 trap "rm -rf '$TMP_DIR'" EXIT
 
+echo "Transcribing $INPUT_FILE..."
 ffmpeg -y -t 60 -i "$INPUT_FILE" -acodec copy "$TRIMMED_FILE" -loglevel quiet
 PYTORCH_JIT=0 PYTHONWARNINGS="ignore" whisper "$TRIMMED_FILE" --model base --language English --output_format txt --output_dir "$TMP_DIR"
