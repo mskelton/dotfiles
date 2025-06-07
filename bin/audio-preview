@@ -2,7 +2,10 @@
 
 INPUT_FILE="$1"
 TMP_DIR=$(mktemp -d)
-TRIMMED_FILE="$TMP_DIR/trimmed.wav"
+
+# Extract the file extension from the input file
+EXTENSION="${INPUT_FILE##*.}"
+TRIMMED_FILE="$TMP_DIR/trimmed.$EXTENSION"
 
 trap "rm -rf '$TMP_DIR'" EXIT
 
