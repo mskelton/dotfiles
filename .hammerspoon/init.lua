@@ -65,7 +65,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	hs.application.launchOrFocus(apps.kitty)
+	hs.application.launchOrFocus(apps.cursor)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -87,7 +87,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.cursor)
+	hs.application.launchOrFocus(apps.kitty)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
