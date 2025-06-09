@@ -282,5 +282,12 @@
   {
     "key": "shift+cmd+[",
     "command": "-workbench.action.previousEditor"
+  },
+  // Claude Code add newline
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": " \n" },
+    "when": "terminalFocus && terminalProcessSupported"
   }
 ]
