@@ -140,25 +140,6 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 $disa
 # Disable Switch to Desktop 1, it conflicts with Arc shortcuts
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 $disable_shortcut
 
-# Add Option+D for toggling do not disturb
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 175 "
-  <dict>
-    <key>enabled</key>
-    <true/>
-    <key>value</key>
-    <dict>
-      <key>type</key>
-      <string>standard</string>
-      <key>parameters</key>
-      <array>
-        <integer>100</integer>
-        <integer>2</integer>
-        <integer>524288</integer>
-      </array>
-    </dict>
-  </dict>
-"
-
 ################################################################################
 ### APP SHORTCUTS ##############################################################
 ################################################################################
