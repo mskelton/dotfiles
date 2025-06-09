@@ -27,6 +27,10 @@
       "Bash(bun add:*)",
       "Bash(bun update:*)",
       "Bash(bun remove:*)",
+      "Bash(go mod tody:*)",
+      "Bash(go build:*)",
+      "Bash(go test:*)",
+      "Bash(go get:*)",
       "WebFetch",
       "WebSearch"
     ],

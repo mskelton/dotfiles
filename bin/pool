@@ -46,6 +46,172 @@ confirm() {
     [[ $REPLY =~ ^[Yy]$ ]]
 }
 
+# Pool status management
+POOL_STATUS_FILE="$REPO_ROOT/.worktree-pool/pool-status"
+
+is_pool_available() {
+    local pool_name=$1
+    if [ -f "$POOL_STATUS_FILE" ]; then
+        grep -q "^$pool_name:available$" "$POOL_STATUS_FILE"
+    else
+        return 1
+    fi
+}
+
+mark_pool_available() {
+    local pool_name=$1
+    if [ -f "$POOL_STATUS_FILE" ]; then
+        # Remove any existing entry and add as available
+        grep -v "^$pool_name:" "$POOL_STATUS_FILE" > "${POOL_STATUS_FILE}.tmp" || true
+        echo "$pool_name:available" >> "${POOL_STATUS_FILE}.tmp"
+        mv "${POOL_STATUS_FILE}.tmp" "$POOL_STATUS_FILE"
+    else
+        echo "$pool_name:available" > "$POOL_STATUS_FILE"
+    fi
+}
+
+mark_pool_in_use() {
+    local pool_name=$1
+    if [ -f "$POOL_STATUS_FILE" ]; then
+        # Remove any existing entry and add as in-use
+        grep -v "^$pool_name:" "$POOL_STATUS_FILE" > "${POOL_STATUS_FILE}.tmp" || true
+        echo "$pool_name:in-use" >> "${POOL_STATUS_FILE}.tmp"
+        mv "${POOL_STATUS_FILE}.tmp" "$POOL_STATUS_FILE"
+    else
+        echo "$pool_name:in-use" > "$POOL_STATUS_FILE"
+    fi
+}
+
+# Worktree path helpers
+get_pool_worktree_path() {
+    local pool_name=$1
+    echo "$REPO_ROOT/.worktree-pool/$pool_name"
+}
+
+get_branch_worktree_path() {
+    local branch_name=$1
+    # Replace slashes with dashes for filesystem safety
+    echo "$REPO_ROOT/${branch_name//\//-}"
+}
+
+# Git branch helpers
+branch_exists_locally() {
+    local branch=$1
+    git show-ref --verify --quiet "refs/heads/$branch"
+}
+
+branch_exists_remotely() {
+    local branch=$1
+    git ls-remote --heads origin "$branch" | grep -q "$branch"
+}
+
+get_current_branch() {
+    git branch --show-current
+}
+
+get_merged_branches() {
+    git branch -r --merged "origin/$DEFAULT_BRANCH" | grep -v "$DEFAULT_BRANCH" | sed 's/origin\///'
+}
+
+# Worktree helpers
+worktree_exists() {
+    local path=$1
+    git worktree list | grep -q "$path"
+}
+
+has_uncommitted_changes() {
+    ! git diff-index --quiet HEAD -- 2>/dev/null
+}
+
+get_worktree_branch() {
+    local worktree_path=$1
+    local branch_line=$(git worktree list --porcelain | grep -A2 "^worktree $worktree_path" | grep "^branch")
+    if [[ $branch_line =~ ^branch[[:space:]]refs/heads/(.+) ]]; then
+        echo "${BASH_REMATCH[1]}"
+    fi
+}
+
+is_pool_worktree() {
+    local path=$1
+    [[ "$path" =~ \.worktree-pool ]]
+}
+
+is_bare_repo() {
+    git rev-parse --is-bare-repository 2>/dev/null | grep -q true
+}
+
+is_in_worktree() {
+    [ "$GIT_COMMON_DIR" != "$GIT_DIR" ]
+}
+
+# Pool management helpers
+find_available_pool_worktree() {
+    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
+        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
+            if [ -d "$pool_dir" ]; then
+                local pool_name=$(basename "$pool_dir")
+                if is_pool_available "$pool_name"; then
+                    echo "$pool_dir"
+                    return 0
+                fi
+            fi
+        done
+    fi
+    return 1
+}
+
+create_pool_worktree() {
+    local pool_name=$1
+    local pool_path=$(get_pool_worktree_path "$pool_name")
+    
+    if [ ! -d "$pool_path" ]; then
+        git worktree add -q "$pool_path" -b "$pool_name" "$DEFAULT_BRANCH"
+        mark_pool_available "$pool_name"
+        return 0
+    fi
+    return 1
+}
+
+open_in_editor() {
+    local path=$1
+    cd "$path"
+    code .
+}
+
+# Utility helpers
+copy_pool_script() {
+    local source=$1
+    local dest=$2
+    
+    if [ -f "$source" ]; then
+        cp "$source" "$dest/pool"
+        chmod +x "$dest/pool"
+    fi
+}
+
+count_pool_worktrees() {
+    local count=0
+    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
+        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
+            [ -d "$pool_dir" ] && count=$((count + 1))
+        done
+    fi
+    echo $count
+}
+
+count_available_worktrees() {
+    local count=0
+    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
+        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
+            if [ -d "$pool_dir" ]; then
+                local pool_name=$(basename "$pool_dir")
+                is_pool_available "$pool_name" && count=$((count + 1))
+            fi
+        done
+    fi
+    echo $count
+}
+
 show_help() {
     cat <<'EOF'
 pool - Fast worktree management with pre-seeded pool
@@ -129,6 +295,7 @@ get_repo_info() {
     GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
     REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || dirname "$GIT_COMMON_DIR")
     DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main")
+    POOL_STATUS_FILE="$REPO_ROOT/.worktree-pool/pool-status"
 }
 
 # Initialize worktree pool
@@ -139,54 +306,60 @@ init_pool() {
 
     # Create pool directory
     mkdir -p "$REPO_ROOT/.worktree-pool"
+    
+    # Initialize pool status file
+    POOL_STATUS_FILE="$REPO_ROOT/.worktree-pool/pool-status"
+    : > "$POOL_STATUS_FILE"
 
     # Initialize pool
     for i in $(seq 1 "$pool_size"); do
         pool_name="${POOL_PREFIX}${i}"
-        pool_path="$REPO_ROOT/.worktree-pool/$pool_name"
-
-        if [ ! -d "$pool_path" ]; then
-            log_info "Creating pool worktree $i/$pool_size..."
-            git worktree add -q "$pool_path" -b "$pool_name" "$DEFAULT_BRANCH"
-            echo "available" >"$pool_path/.pool-status"
+        if create_pool_worktree "$pool_name"; then
+            log_info "Created pool worktree $i/$pool_size"
         fi
     done
 
     log_success "Worktree pool initialized with $pool_size worktrees"
 }
 
-# Convert existing repo to bare
-convert_to_bare() {
+# Validation helpers
+validate_for_conversion() {
     if ! check_git_repo; then
         log_error "Not in a git repository"
         return 1
     fi
 
-    get_repo_info
-
-    # Check if already bare
-    if git rev-parse --is-bare-repository 2>/dev/null | grep -q true; then
+    if is_bare_repo; then
         log_error "Repository is already bare"
         return 1
     fi
 
-    # Check if in a worktree
-    if [ "$GIT_COMMON_DIR" != "$GIT_DIR" ]; then
+    if is_in_worktree; then
         log_error "Cannot convert from within a worktree. Please run from the main repository."
         return 1
     fi
 
-    REPO_NAME=$(basename "$REPO_ROOT")
-    PARENT_DIR=$(dirname "$REPO_ROOT")
-    CURRENT_BRANCH=$(git branch --show-current)
-
-    log_info "Converting $REPO_NAME to bare repository with worktrees..."
-
-    # Check for uncommitted changes
-    if ! git diff-index --quiet HEAD -- 2>/dev/null; then
+    if has_uncommitted_changes; then
         log_error "You have uncommitted changes. Please commit or stash them first."
         return 1
     fi
+
+    return 0
+}
+
+# Convert existing repo to bare
+convert_to_bare() {
+    if ! validate_for_conversion; then
+        return 1
+    fi
+
+    get_repo_info
+
+    REPO_NAME=$(basename "$REPO_ROOT")
+    PARENT_DIR=$(dirname "$REPO_ROOT")
+    CURRENT_BRANCH=$(get_current_branch)
+
+    log_info "Converting $REPO_NAME to bare repository with worktrees..."
 
     # Create temporary bare clone
     cd "$PARENT_DIR"
@@ -213,10 +386,7 @@ convert_to_bare() {
     init_pool
 
     # Copy pool script if available
-    if [ -f "$REPO_ROOT/bin/pool" ]; then
-        cp "$REPO_ROOT/bin/pool" pool
-        chmod +x pool
-    fi
+    copy_pool_script "$REPO_ROOT/bin/pool" "."
 
     log_success "Conversion complete!"
     echo ""
@@ -258,14 +428,32 @@ clone_bare() {
     init_pool "$pool_size"
 
     # Copy pool script if available
-    if [ -f "$HOME/dev/dotfiles/bin/pool" ]; then
-        cp "$HOME/dev/dotfiles/bin/pool" pool
-        chmod +x pool
-    fi
+    copy_pool_script "$HOME/dev/dotfiles/bin/pool" "."
 
     log_success "Setup complete!"
     echo ""
     log_info "Usage: cd $REPO_NAME && ./pool <branch-name>"
+}
+
+# Display pool worktree status
+display_pool_status() {
+    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
+        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
+            if [ -d "$pool_dir" ]; then
+                local pool_name=$(basename "$pool_dir")
+                if is_pool_available "$pool_name"; then
+                    echo -e "  ${GREEN}●${NC} $pool_name - available"
+                else
+                    echo -e "  ${RED}●${NC} $pool_name - in use"
+                fi
+            fi
+        done
+    fi
+}
+
+# Display active worktrees
+display_active_worktrees() {
+    git worktree list | grep -v "\.worktree-pool" | grep -v "(bare)" || true
 }
 
 # Show pool status
@@ -273,34 +461,16 @@ show_status() {
     log_info "Worktree pool status:"
     echo ""
 
-    # Check pool worktrees
-    pool_count=0
-    available_count=0
-
-    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
-        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
-            if [ -d "$pool_dir" ]; then
-                pool_count=$((pool_count + 1))
-                pool_name=$(basename "$pool_dir")
-
-                if [ -f "$pool_dir/.pool-status" ] && [ "$(cat "$pool_dir/.pool-status")" = "available" ]; then
-                    echo -e "  ${GREEN}●${NC} $pool_name - available"
-                    available_count=$((available_count + 1))
-                else
-                    echo -e "  ${RED}●${NC} $pool_name - in use"
-                fi
-            fi
-        done
-    fi
+    display_pool_status
 
     echo ""
-    echo "Pool size: $pool_count"
-    echo "Available: $available_count"
+    echo "Pool size: $(count_pool_worktrees)"
+    echo "Available: $(count_available_worktrees)"
     echo ""
 
     # Show active worktrees
     log_info "Active worktrees:"
-    git worktree list | grep -v "\.worktree-pool" | grep -v "(bare)" || true
+    display_active_worktrees
 }
 
 # Refill pool
@@ -310,12 +480,8 @@ refill_pool() {
     # Create missing pool worktrees
     for i in $(seq 1 "$POOL_SIZE"); do
         pool_name="${POOL_PREFIX}${i}"
-        pool_path="$REPO_ROOT/.worktree-pool/$pool_name"
-
-        if [ ! -d "$pool_path" ]; then
-            log_info "Creating pool worktree $pool_name..."
-            git worktree add -q "$pool_path" -b "$pool_name" "$DEFAULT_BRANCH"
-            echo "available" >"$pool_path/.pool-status"
+        if create_pool_worktree "$pool_name"; then
+            log_info "Created pool worktree $pool_name"
         fi
     done
 
@@ -334,6 +500,19 @@ clean_orphaned() {
     fi
 }
 
+# Process a single stale worktree
+process_stale_worktree() {
+    local worktree_path=$1
+    local branch=$2
+    
+    log_warning "Branch '$branch' not found on remote (worktree: $worktree_path)"
+    
+    if [ "${DRY_RUN:-false}" = false ] && confirm "Remove worktree for deleted branch '$branch'?"; then
+        git worktree remove "$worktree_path"
+        log_success "Removed worktree: $worktree_path"
+    fi
+}
+
 # Clean stale branches
 clean_stale() {
     log_info "Finding stale branches in worktrees..."
@@ -343,27 +522,41 @@ clean_stale() {
             worktree_path="${BASH_REMATCH[1]}"
 
             # Skip pool worktrees
-            if [[ "$worktree_path" =~ \.worktree-pool ]]; then
+            if is_pool_worktree "$worktree_path"; then
                 continue
             fi
 
             # Get branch info
-            branch_line=$(git worktree list --porcelain | grep -A2 "^worktree $worktree_path" | grep "^branch")
-            if [[ $branch_line =~ ^branch[[:space:]]refs/heads/(.+) ]]; then
-                branch="${BASH_REMATCH[1]}"
-
+            local branch=$(get_worktree_branch "$worktree_path")
+            if [ -n "$branch" ]; then
                 # Check if branch exists on remote
-                if ! git ls-remote --heads origin "$branch" | grep -q "$branch"; then
-                    log_warning "Branch '$branch' not found on remote (worktree: $worktree_path)"
-
-                    if [ "${DRY_RUN:-false}" = false ] && confirm "Remove worktree for deleted branch '$branch'?"; then
-                        git worktree remove "$worktree_path"
-                        log_success "Removed worktree: $worktree_path"
-                    fi
+                if ! branch_exists_remotely "$branch"; then
+                    process_stale_worktree "$worktree_path" "$branch"
                 fi
             fi
         fi
     done < <(git worktree list --porcelain)
+}
+
+# Reset a single pool worktree
+reset_pool_worktree() {
+    local pool_dir=$1
+    local pool_name=$2
+    
+    cd "$pool_dir"
+    
+    if has_uncommitted_changes; then
+        log_warning "Pool worktree $pool_name has uncommitted changes"
+        
+        if [ "${DRY_RUN:-false}" = false ] && confirm "Reset pool worktree $pool_name?"; then
+            git reset --hard
+            git clean -fd
+            git checkout "$pool_name"
+            log_success "Reset pool worktree: $pool_name"
+        fi
+    fi
+    
+    cd "$REPO_ROOT"
 }
 
 # Reset pool worktrees
@@ -377,28 +570,35 @@ clean_pool() {
 
     for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
         if [ -d "$pool_dir" ]; then
-            pool_name=$(basename "$pool_dir")
+            local pool_name=$(basename "$pool_dir")
 
             # Check if marked as available but has changes
-            if [ -f "$pool_dir/.pool-status" ] && [ "$(cat "$pool_dir/.pool-status")" = "available" ]; then
-                cd "$pool_dir"
-
-                # Check for uncommitted changes
-                if ! git diff-index --quiet HEAD -- 2>/dev/null; then
-                    log_warning "Pool worktree $pool_name has uncommitted changes"
-
-                    if [ "${DRY_RUN:-false}" = false ] && confirm "Reset pool worktree $pool_name?"; then
-                        git reset --hard
-                        git clean -fd
-                        git checkout "$pool_name"
-                        log_success "Reset pool worktree: $pool_name"
-                    fi
-                fi
-
-                cd "$REPO_ROOT"
+            if is_pool_available "$pool_name"; then
+                reset_pool_worktree "$pool_dir" "$pool_name"
             fi
         fi
     done
+}
+
+# Process a single merged worktree
+process_merged_worktree() {
+    local worktree_path=$1
+    local branch=$2
+    
+    log_warning "Branch '$branch' has been merged (worktree: $worktree_path)"
+    
+    if [ "${DRY_RUN:-false}" = false ] && confirm "Remove worktree for merged branch '$branch'?"; then
+        git worktree remove "$worktree_path"
+        git branch -d "$branch" 2>/dev/null || true
+        log_success "Removed worktree and branch: $branch"
+    fi
+}
+
+# Check if branch is merged
+is_branch_merged() {
+    local branch=$1
+    local merged_branches=$2
+    echo "$merged_branches" | grep -q "^$branch$"
 }
 
 # Remove worktrees for merged branches
@@ -409,130 +609,123 @@ clean_merged() {
     git fetch origin --prune
 
     # Get merged branches
-    merged_branches=$(git branch -r --merged "origin/$DEFAULT_BRANCH" | grep -v "$DEFAULT_BRANCH" | sed 's/origin\///')
+    local merged_branches=$(get_merged_branches)
 
     while IFS= read -r line; do
         if [[ $line =~ ^worktree[[:space:]](.+) ]]; then
             worktree_path="${BASH_REMATCH[1]}"
 
             # Skip pool worktrees and bare repo
-            if [[ "$worktree_path" =~ \.worktree-pool ]] || [[ "$worktree_path" =~ \(bare\) ]]; then
+            if is_pool_worktree "$worktree_path" || [[ "$worktree_path" =~ \(bare\) ]]; then
                 continue
             fi
 
             # Get branch info
-            branch_line=$(git worktree list --porcelain | grep -A2 "^worktree $worktree_path" | grep "^branch")
-            if [[ $branch_line =~ ^branch[[:space:]]refs/heads/(.+) ]]; then
-                branch="${BASH_REMATCH[1]}"
-
-                # Check if branch is merged
-                if echo "$merged_branches" | grep -q "^$branch$"; then
-                    log_warning "Branch '$branch' has been merged (worktree: $worktree_path)"
-
-                    if [ "${DRY_RUN:-false}" = false ] && confirm "Remove worktree for merged branch '$branch'?"; then
-                        git worktree remove "$worktree_path"
-                        git branch -d "$branch" 2>/dev/null || true
-                        log_success "Removed worktree and branch: $branch"
-                    fi
-                fi
+            local branch=$(get_worktree_branch "$worktree_path")
+            if [ -n "$branch" ] && is_branch_merged "$branch" "$merged_branches"; then
+                process_merged_worktree "$worktree_path" "$branch"
             fi
         fi
     done < <(git worktree list --porcelain)
 }
 
+# Create worktree without pool
+create_worktree_direct() {
+    local branch_name=$1
+    local worktree_path=$2
+    
+    if branch_exists_remotely "$branch_name"; then
+        log_info "Branch exists remotely, checking out..."
+        git worktree add "$worktree_path" -b "$branch_name" "origin/$branch_name"
+    else
+        log_info "Creating new branch..."
+        git worktree add "$worktree_path" -b "$branch_name" "$DEFAULT_BRANCH"
+    fi
+}
+
+# Setup branch in pool worktree
+setup_branch_in_pool() {
+    local pool_worktree=$1
+    local branch_name=$2
+    
+    cd "$pool_worktree"
+    git fetch origin
+    
+    if branch_exists_remotely "$branch_name"; then
+        log_info "Checking out existing branch..."
+        git checkout -B "$branch_name" "origin/$branch_name"
+    else
+        log_info "Creating new branch..."
+        git checkout -B "$branch_name" "$DEFAULT_BRANCH"
+    fi
+    
+    cd "$REPO_ROOT"
+}
+
+# Refill pool in background
+refill_pool_async() {
+    local pool_name=$1
+    
+    (
+        sleep 2
+        local new_pool_path=$(get_pool_worktree_path "$pool_name")
+        if [ ! -d "$new_pool_path" ]; then
+            git worktree add -q "$new_pool_path" -b "$pool_name" "$DEFAULT_BRANCH" 2>/dev/null
+            mark_pool_available "$pool_name"
+        fi
+    ) &
+}
+
 # Create or switch to worktree
 create_worktree() {
     local branch_name=$1
-    local worktree_path="$REPO_ROOT/${branch_name//\//-}"
+    local worktree_path=$(get_branch_worktree_path "$branch_name")
 
     log_info "Setting up worktree for branch: $branch_name"
 
-    # Find an available worktree from the pool
-    POOL_WORKTREE=""
-    if [ -d "$REPO_ROOT/.worktree-pool" ]; then
-        for pool_dir in "$REPO_ROOT/.worktree-pool"/${POOL_PREFIX}*; do
-            if [ -d "$pool_dir" ] && [ -f "$pool_dir/.pool-status" ]; then
-                if [ "$(cat "$pool_dir/.pool-status")" = "available" ]; then
-                    POOL_WORKTREE="$pool_dir"
-                    break
-                fi
-            fi
-        done
+    # Check if worktree already exists
+    if worktree_exists "$worktree_path"; then
+        log_warning "Worktree already exists at $worktree_path"
+        open_in_editor "$worktree_path"
+        return
     fi
 
-    if [ -z "$POOL_WORKTREE" ]; then
+    # Find an available worktree from the pool
+    local pool_worktree=$(find_available_pool_worktree)
+    
+    if [ -z "$pool_worktree" ]; then
         log_warning "No available worktrees in pool. Creating new worktree..."
-
-        # Check if worktree already exists
-        if git worktree list | grep -q "$worktree_path"; then
-            log_warning "Worktree already exists at $worktree_path"
-            cd "$worktree_path"
-            code .
-            return
-        fi
-
-        # Check if branch exists remotely
-        if git ls-remote --heads origin "$branch_name" | grep -q "$branch_name"; then
-            log_info "Branch exists remotely, checking out..."
-            git worktree add "$worktree_path" -b "$branch_name" "origin/$branch_name"
-        else
-            log_info "Creating new branch..."
-            git worktree add "$worktree_path" -b "$branch_name" "$DEFAULT_BRANCH"
-        fi
+        create_worktree_direct "$branch_name" "$worktree_path"
     else
         # Use pool worktree
-        log_info "Using pool worktree: $(basename "$POOL_WORKTREE")"
+        local pool_name=$(basename "$pool_worktree")
+        log_info "Using pool worktree: $pool_name"
 
         # Mark as in use
-        echo "in-use" >"$POOL_WORKTREE/.pool-status"
+        mark_pool_in_use "$pool_name"
 
         # Check if target already exists
         if [ -d "$worktree_path" ]; then
             log_warning "Directory already exists at $worktree_path"
-            echo "available" >"$POOL_WORKTREE/.pool-status"
-            cd "$worktree_path"
-            code .
+            mark_pool_available "$pool_name"
+            open_in_editor "$worktree_path"
             return
         fi
 
-        # Update git worktree path
-        cd "$POOL_WORKTREE"
-
-        # Fetch latest changes
-        git fetch origin
-
-        # Check if branch exists
-        if git ls-remote --heads origin "$branch_name" | grep -q "$branch_name"; then
-            log_info "Checking out existing branch..."
-            git checkout -B "$branch_name" "origin/$branch_name"
-        else
-            log_info "Creating new branch..."
-            git checkout -B "$branch_name" "$DEFAULT_BRANCH"
-        fi
+        # Setup branch in pool worktree
+        setup_branch_in_pool "$pool_worktree" "$branch_name"
 
         # Move the worktree directory
-        cd "$REPO_ROOT"
-        git worktree move "$POOL_WORKTREE" "$worktree_path"
-
-        # Update git's worktree registry
+        git worktree move "$pool_worktree" "$worktree_path"
         git worktree repair
 
         # Refill pool in background
-        (
-            sleep 2
-            pool_name=$(basename "$POOL_WORKTREE")
-            new_pool_path="$REPO_ROOT/.worktree-pool/$pool_name"
-            if [ ! -d "$new_pool_path" ]; then
-                git worktree add -q "$new_pool_path" -b "$pool_name" "$DEFAULT_BRANCH" 2>/dev/null
-                echo "available" >"$new_pool_path/.pool-status"
-            fi
-        ) &
+        refill_pool_async "$pool_name"
     fi
 
     # Open in VS Code
     log_success "Opening $worktree_path in VS Code..."
-    cd "$worktree_path"
-    code .
+    open_in_editor "$worktree_path"
 
     # Show status
     echo ""
