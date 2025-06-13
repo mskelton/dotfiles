@@ -19,7 +19,7 @@ M.count = nil
 local function get_icon(filename)
 	--- @type hs.image|nil
 	local icon =
-		hs.image.imageFromPath(hs.configdir .. "/Spoons/GitHubNotifications.spoon/" .. filename)
+			hs.image.imageFromPath(hs.configdir .. "/Spoons/GitHubNotifications.spoon/" .. filename)
 
 	if icon == nil then
 		return nil
@@ -74,14 +74,14 @@ end
 --- @param message string
 local function show_error(message)
 	hs
-		.notify
-		.new({
-			title = "GitHub Notifications",
-			informativeText = message,
-			soundName = "Submarine",
-		})
-		--- @diagnostic disable-next-line: undefined-field
-		:send()
+			.notify
+			.new({
+				title = "GitHub Notifications",
+				informativeText = message,
+				soundName = "Submarine",
+			})
+	--- @diagnostic disable-next-line: undefined-field
+			:send()
 end
 
 --- Callback fired when the timer triggers
