@@ -95,6 +95,7 @@
       }
     }
   ],
+  "betterGitLineBlame.showStatusBarItem": true,
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
