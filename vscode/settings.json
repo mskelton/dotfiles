@@ -886,5 +886,6 @@
   "workbench.settings.editor": "json",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
-  "cursor.chat.terminalShowHoverHint": false
+  "cursor.chat.terminalShowHoverHint": false,
+  "workbench.startupEditor": "none"
 }
