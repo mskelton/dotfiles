@@ -1,6 +1,5 @@
 {
   "extensions": [
-    "anthropic.claude-code",
     "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
     "charliermarsh.ruff",
