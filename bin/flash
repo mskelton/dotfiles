@@ -29,7 +29,7 @@ function wait_for_disconnect {
 }
 
 function copy_to_board {
-	sudo rsync "$firmware_path$1" "$(get_board)"
+	sudo rsync "$firmware_path$1" "$(get_board)" 2>/dev/null
 }
 
 # Pre-authenticate so that we can type the sudo password before the boards are
