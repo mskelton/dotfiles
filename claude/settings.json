@@ -43,6 +43,6 @@
       "WebFetch",
       "WebSearch"
     ],
-    "deny": []
+    "deny": ["Bash(rmdir:*)", "Bash(rm -rf:*)"]
   }
 }
