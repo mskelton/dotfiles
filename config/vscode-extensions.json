@@ -10,6 +10,7 @@
     "formulahendry.auto-rename-tag",
     "github.vscode-pull-request-github",
     "golang.go",
+    "jnoortheen.nix-ide",
     "mkhl.shfmt",
     "ms-playwright.playwright",
     "ms-python.debugpy",

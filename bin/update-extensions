@@ -3,11 +3,13 @@
 
 set -e
 
-extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
+ignored_extensions=(
+    anthropic.claude-code
+    anysphere.cursorpyright
+)
 
 echo "🔄 Updating VS Code extensions list..."
 
-# Use cursor to get the list of extensions
 if command -v cursor >/dev/null 2>&1; then
     editor_cmd="cursor"
 elif command -v code >/dev/null 2>&1; then
@@ -18,6 +20,11 @@ else
 fi
 
 if [ "$editor_cmd" == "cursor" ]; then
-    $editor_cmd --list-extensions | jq -R -s 'split("\n") | map(select(length > 0)) | {extensions: .}' >"$extensions_file"
+    extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
+
+    $editor_cmd --list-extensions |
+        grep -v -E "$(IFS=\| echo "${ignored_extensions[*]}")" |
+        jq -R -s 'split("\n") | map(select(length > 0)) | {extensions: .}' >"$extensions_file"
+
     echo "✅ Updated $extensions_file"
 fi
