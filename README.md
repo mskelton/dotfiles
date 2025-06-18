@@ -12,6 +12,7 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/brew.sh)"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/chrome.sh)"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/macos.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/vscode-extensions.sh)"
 ```
 
 After installing pre-requisites, run the following to setup the dotfiles.
@@ -29,6 +30,5 @@ git submodule update --remote
 - [Setup tools](https://github.com/mskelton/dotfiles/tree/main/docs/tools.md)
 - [Install shortcuts](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
 - [Install Chromium extensions](https://github.com/mskelton/dotfiles/tree/main/docs/chromium-extensions.md)
-- [Install VS Code extensions](https://github.com/mskelton/dotfiles/tree/main/docs/vscode-extensions.md)
 - [Copy data from old machine](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
 - [Configure apps](https://github.com/mskelton/dotfiles/tree/main/docs/configure-apps.md)

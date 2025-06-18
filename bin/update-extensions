@@ -1,0 +1,23 @@
+#!/bin/bash
+# Update VS Code extensions JSON file
+
+set -e
+
+extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
+
+echo "🔄 Updating VS Code extensions list..."
+
+# Use cursor to get the list of extensions
+if command -v cursor >/dev/null 2>&1; then
+    editor_cmd="cursor"
+elif command -v code >/dev/null 2>&1; then
+    editor_cmd="code"
+else
+    echo "❌ Neither cursor nor code found in PATH"
+    exit 1
+fi
+
+if [ "$editor_cmd" == "cursor" ]; then
+    $editor_cmd --list-extensions | jq -R -s 'split("\n") | map(select(length > 0)) | {extensions: .}' >"$extensions_file"
+    echo "✅ Updated $extensions_file"
+fi

@@ -103,6 +103,8 @@
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.userWords": ["Akuma", "codeowners"],
   "chat.editor.fontSize": 15,
+  "cursor.chat.terminalShowHoverHint": false,
+  "cursor.composer.shouldAllowCustomModes": true,
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
@@ -884,8 +886,7 @@
   "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
+  "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "cursor.chat.terminalShowHoverHint": false,
-  "workbench.startupEditor": "none"
+  "workbench.tree.renderIndentGuides": "none"
 }
