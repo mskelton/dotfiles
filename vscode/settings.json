@@ -1,4 +1,5 @@
 {
+  "Lua.window.statusBar": false,
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "[dts]": {
     "editor.defaultFormatter": "mskelton.dtsfmt"
@@ -243,6 +244,7 @@
       "compare": false
     }
   },
+  "gitlens.mode.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
   "gitlens.remotes": [
     {
@@ -266,6 +268,7 @@
     }
   ],
   "gitlens.statusBar.enabled": false,
+  "gitlens.statusBar.pullRequests.enabled": false,
   "gitlens.telemetry.enabled": false,
   "gitlens.terminalLinks.enabled": false,
   "gitlens.views.branches.avatars": false,
@@ -286,6 +289,7 @@
   "gitlens.views.workspaces.avatars": false,
   "gitlens.views.worktrees.avatars": false,
   "gitlens.virtualRepositories.enabled": false,
+  "go.toolsManagement.autoUpdate": true,
   "html.format.wrapLineLength": 80,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "literals",
