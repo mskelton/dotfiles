@@ -19,3 +19,6 @@ set -x COREPACK_ENABLE_DOWNLOAD_PROMPT 0
 
 # Hide Claude intro message
 set -x IS_DEMO 1
+
+# Make Claude think
+set -x MAX_THINKING_TOKENS 16000
