@@ -4,7 +4,7 @@
 
 set -e
 
-echo "📦 Installing VS Code extensions..."
+echo "📦 Managing VS Code extensions..."
 
 # Download extensions list
 extensions_url="https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/config/vscode-extensions.json"
@@ -15,12 +15,17 @@ install_extensions() {
     local editor_cmd="$2"
 
     if command -v "$editor_cmd" >/dev/null 2>&1; then
-        echo "🔧 Installing extensions for $editor_name..."
+        echo "🔧 Checking extensions for $editor_name..."
+
+        # Get currently installed extensions
+        installed_exts=$("$editor_cmd" --list-extensions)
 
         while IFS= read -r extension; do
             if [[ -n "$extension" ]]; then
-                echo "  Installing $extension..."
-                "$editor_cmd" --install-extension "$extension" --force
+                if ! echo "$installed_exts" | grep -q "^$extension$"; then
+                    echo "  ➕ Installing $extension..."
+                    "$editor_cmd" --install-extension "$extension"
+                fi
             fi
         done <<<"$extensions"
     else
@@ -31,4 +36,4 @@ install_extensions() {
 install_extensions "VS Code" "code"
 install_extensions "Cursor" "cursor"
 
-echo "✅ Extension installation complete!"
+echo "✅ Extension management complete!"
