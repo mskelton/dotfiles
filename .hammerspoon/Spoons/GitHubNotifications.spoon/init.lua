@@ -111,6 +111,9 @@ function M:sync(source)
 			return nil
 		end
 
+		self.log.d("Received " .. #notifications .. " notifications")
+		self.log.d(hs.inspect(notifications))
+
 		notifications = hs.fnutils.filter(notifications, function(notification)
 			--- Ignore read notifications
 			if notification.unread == false then
