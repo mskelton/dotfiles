@@ -6,9 +6,15 @@ set -e
 
 echo "📦 Managing VS Code extensions..."
 
-# Download extensions list
+extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
 extensions_url="https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/config/vscode-extensions.json"
-extensions=$(curl -fsSL "$extensions_url" | jq -r '.extensions[]')
+
+# Download extensions list or get from local file
+if [ -f "$extensions_file" ]; then
+    extensions=$(jq -r '.extensions[]' "$extensions_file")
+else
+    extensions=$(curl -fsSL "$extensions_url" | jq -r '.extensions[]')
+fi
 
 install_extensions() {
     local editor_name="$1"
