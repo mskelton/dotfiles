@@ -103,7 +103,6 @@
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.userWords": ["Akuma", "codeowners"],
   "chat.editor.fontSize": 15,
-  "cursor.chat.terminalShowHoverHint": false,
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
@@ -873,7 +872,7 @@
     "errorLens.warningBackground": "#0000",
     "errorLens.warningMessageBackground": "#ff942f19"
   },
-  "workbench.colorTheme": "Tokyo Night Moon",
+  "workbench.colorTheme": "Catppuccin Macchiato",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": false,
@@ -882,9 +881,10 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.navigationScope": "editorGroup",
   "workbench.editor.pinnedTabSizing": "shrink",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "cursor.chat.terminalShowHoverHint": false
 }
