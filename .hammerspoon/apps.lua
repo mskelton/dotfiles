@@ -12,5 +12,6 @@ return {
 	slack = "Slack",
 	telegram = "Telegram",
 	todoist = "Todoist",
+	vscode = "Visual Studio Code",
 	zoom = "zoom.us",
 }

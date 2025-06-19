@@ -72,11 +72,13 @@ hs.hotkey.bind(constants.keys.layer_key, "l", function()
 	hs.application.launchOrFocus(utils.if_work(apps.slack, apps.telegram))
 end)
 
-if utils.is_work then
-	hs.hotkey.bind(constants.keys.layer_key, ";", function()
+hs.hotkey.bind(constants.keys.layer_key, ";", function()
+	if utils.is_work then
 		hs.eventtap.keyStroke({ "option", "shift" }, "down")
-	end)
-end
+	else
+		hs.application.launchOrFocus(apps.vscode)
+	end
+end)
 
 hs.hotkey.bind(constants.keys.layer_key, "n", function()
 	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
@@ -105,6 +107,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.arc,        nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.kitty,      nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.cursor,     nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.vscode,     nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
@@ -117,6 +120,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.arc,        nil,                     screens.primary, hs.layout.maximized },
 		{ apps.kitty,      nil,                     screens.primary, hs.layout.maximized },
 		{ apps.cursor,     nil,                     screens.primary, hs.layout.maximized },
+		{ apps.vscode,     nil,                     screens.primary, hs.layout.maximized },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
@@ -133,6 +137,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.arc,        nil,                     screens.laptop, hs.layout.left50 },
 		{ apps.kitty,      nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.cursor,     nil,                     screens.laptop, hs.layout.right50 },
+		{ apps.vscode,     nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
@@ -145,6 +150,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.arc,        nil,                     screens.primary, hs.layout.left50 },
 		{ apps.kitty,      nil,                     screens.primary, hs.layout.right50 },
 		{ apps.cursor,     nil,                     screens.primary, hs.layout.right50 },
+		{ apps.vscode,     nil,                     screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
@@ -161,6 +167,7 @@ hs.hotkey.bind(constants.keys.layer_key, "o", function()
 		{ apps.arc,        nil,                     screens.laptop, hs.layout.left50 },
 		{ apps.kitty,      nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.cursor,     nil,                     screens.laptop, hs.layout.right50 },
+		{ apps.vscode,     nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.laptop, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.laptop, hs.layout.maximized },
@@ -172,6 +179,7 @@ hs.hotkey.bind(constants.keys.layer_key, "o", function()
 	}, {
 		{ apps.arc,        nil,                     screens.primary, hs.layout.left50 },
 		{ apps.cursor,     nil,                     screens.primary, hs.layout.right50 },
+		{ apps.vscode,     nil,                     screens.primary, hs.layout.right50 },
 		{ apps.mimestream, layout.mimestream_inbox, screens.primary, hs.layout.maximized },
 		{ apps.slack,      nil,                     screens.primary, hs.layout.maximized },
 		{ apps.linear,     nil,                     screens.primary, hs.layout.maximized },
