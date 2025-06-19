@@ -1,6 +1,4 @@
 {
-  "Lua.window.statusBar": false,
-  "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "[dts]": {
     "editor.defaultFormatter": "mskelton.dtsfmt"
   },
@@ -20,7 +18,7 @@
     "editor.autoClosingBrackets": "languageDefined"
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
@@ -100,9 +98,10 @@
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
+  "chat.editor.fontSize": 15,
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.userWords": ["Akuma", "codeowners"],
-  "chat.editor.fontSize": 15,
+  "cursor.chat.terminalShowHoverHint": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
@@ -214,6 +213,12 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
   "githubIssues.issueCompletions.enabled": false,
   "githubIssues.userCompletions.enabled": false,
   "githubPullRequests.commentExpandState": "collapseAll",
@@ -298,6 +303,8 @@
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "Lua.window.statusBar": false,
+  "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
   "material-icon-theme.activeIconPack": "react",
   "notebook.markup.fontSize": 15,

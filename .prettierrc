@@ -6,7 +6,8 @@
       "files": ["vscode/**"],
       "options": {
         "plugins": ["prettier-plugin-sort-json"],
-        "parser": "json"
+        "parser": "json",
+        "jsonSortOrder": "{\"/.*/\": \"caseInsensitiveLexical\"}"
       }
     }
   ]
