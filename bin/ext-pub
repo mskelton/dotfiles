@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Publish a VS Code extension
+
+vsce publish
+ovsx publish
