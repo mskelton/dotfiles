@@ -45,7 +45,6 @@ formula=(
 	p7zip
 	rename
 	ripgrep
-	shellcheck
 	sponge
 	starship
 	stylua

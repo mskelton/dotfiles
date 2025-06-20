@@ -38,7 +38,6 @@ function copy_to_board {
 sudo echo '' >/dev/null
 
 # Get the most recent firmware filenames
-# shellcheck disable=SC2012
 right=$(ls -t1 "$firmware_path" | head -n 1)
 left=${right/right/left}
 

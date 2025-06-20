@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2016
 
 # Disable spotlight indexing
 sudo mdutil -a -i off

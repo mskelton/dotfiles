@@ -27,6 +27,5 @@ if [ -z "$alias" ]; then
 elif [[ "$alias" == "!"* ]]; then
 	eval "${alias:1}"
 else
-	# shellcheck disable=SC2086
 	$gt $alias "${@:2}"
 fi

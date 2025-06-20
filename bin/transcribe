@@ -35,7 +35,6 @@ ALL_MODE=false
 _parse_args "$@"
 
 TMP_DIR=$(mktemp -d)
-# shellcheck disable=2064
 trap "rm -rf '$TMP_DIR'" EXIT
 
 # Extract the file extension from the input file
@@ -44,9 +43,9 @@ TRIMMED_FILE="$TMP_DIR/trimmed.$EXTENSION"
 
 echo "Transcribing $INPUT_FILE..."
 if [ "$ALL_MODE" = true ]; then
-  cp "$INPUT_FILE" "$TRIMMED_FILE"
+	cp "$INPUT_FILE" "$TRIMMED_FILE"
 else
-  ffmpeg -y -t 60 -i "$INPUT_FILE" -acodec copy "$TRIMMED_FILE" -loglevel quiet
+	ffmpeg -y -t 60 -i "$INPUT_FILE" -acodec copy "$TRIMMED_FILE" -loglevel quiet
 fi
 
 PYTORCH_JIT=0 PYTHONWARNINGS="ignore" whisper "$TRIMMED_FILE" --model base --language English --output_format txt --output_dir "$TMP_DIR"

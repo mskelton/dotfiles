@@ -51,7 +51,6 @@
         # System tools
         htop
         tree-sitter
-        shellcheck
         stylua
       ];
 

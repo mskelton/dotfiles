@@ -46,7 +46,6 @@ alias pup="pnpm up --filter='*' --latest"
 # Remap vim to nvim
 alias vim="nvim"
 alias vi="nvim"
-# shellcheck disable=SC2139
 alias vis="VIMRUNTIME=$HOME/dev/neovim/runtime $HOME/dev/neovim/build/bin/nvim --luamod-dev"
 alias ovim="/usr/bin/vim"
 

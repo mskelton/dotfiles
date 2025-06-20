@@ -94,6 +94,7 @@
       }
     }
   ],
+  "bashIde.shellcheckPath": "",
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
@@ -890,6 +891,5 @@
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "bashIde.shellcheckPath": ""
+  "workbench.tree.renderIndentGuides": "none"
 }
