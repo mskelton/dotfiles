@@ -35,6 +35,7 @@
       "Bash(touch:*)",
       "Bash(wc:*)",
       "Bash(which:*)",
+      "Bash(xargs:*)",
       "Bash(yarn add:*)",
       "Bash(yarn dedupe:*)",
       "Bash(yarn install:*)",
