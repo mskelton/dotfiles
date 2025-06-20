@@ -11,7 +11,7 @@
     "github.vscode-pull-request-github",
     "golang.go",
     "jnoortheen.nix-ide",
-    "mkhl.shfmt",
+    "mads-hartmann.bash-ide-vscode",
     "ms-playwright.playwright",
     "ms-python.debugpy",
     "ms-python.mypy-type-checker",

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Update VS Code extensions JSON file
 
 set -e
@@ -22,8 +22,11 @@ fi
 if [ "$editor_cmd" == "cursor" ]; then
     extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
 
+    ignore_pattern=$(printf "%s|" "${ignored_extensions[@]}")
+    ignore_pattern=${ignore_pattern%|}
+
     $editor_cmd --list-extensions |
-        grep -v -E "$(IFS=\| echo "${ignored_extensions[*]}")" |
+        grep -v -E "$ignore_pattern" |
         jq -R -s 'split("\n") | map(select(length > 0)) | {extensions: .}' >"$extensions_file"
 
     echo "✅ Updated $extensions_file"
