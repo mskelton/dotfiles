@@ -36,7 +36,7 @@
     "editor.tabSize": 4
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "mkhl.shfmt"
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
   },
   "auto-correct.dictionary": [
     {
@@ -94,13 +94,10 @@
       }
     }
   ],
-  "betterGitLineBlame.showStatusBarItem": true,
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
   "chat.editor.fontSize": 15,
-  "cSpell.diagnosticLevel": "Hint",
-  "cSpell.userWords": ["Akuma", "codeowners"],
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.cpp.disabledLanguages": ["plaintext", "markdown"],
@@ -305,7 +302,6 @@
   "Lua.window.statusBar": false,
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
-  "material-icon-theme.activeIconPack": "react",
   "notebook.markup.fontSize": 15,
   "outline.showFields": false,
   "outline.showKeys": false,
@@ -329,7 +325,7 @@
   "security.workspace.trust.startupPrompt": "never",
   "terminal.external.osxExec": "Iterm.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
-  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.env.osx": {
     "NODE_ENV": null
@@ -894,5 +890,6 @@
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "bashIde.shellcheckPath": ""
 }

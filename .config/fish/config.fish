@@ -19,16 +19,10 @@ for f in custom personal work
     test -f $file; and source $file
 end
 
-# Setup opam
-source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-
 # Setup fnm
 if type -q fnm
     fnm env --use-on-cd --corepack-enabled --log-level error --shell fish | source
 end
-
-# Setup Zoxide
-zoxide init fish | source
 
 # Setup direnv
 if type -q direnv

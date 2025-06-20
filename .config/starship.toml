@@ -58,6 +58,7 @@ symbol = "큡 "
 disabled = true
 
 [git_status]
+disabled = true
 stashed = ""
 
 [git_branch]
@@ -149,9 +150,9 @@ symbol = "턝 "
 
 [shell]
 format = '[$indicator]($style)'
-fish_indicator = ''
+fish_indicator = 'fsh '
 bash_indicator = 'bsh '
-zsh_indicator = 'zsh '
+zsh_indicator = ''
 disabled = false
 
 [spack]

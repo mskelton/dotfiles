@@ -48,9 +48,11 @@ if [[ -f "$HOME/.work" ]]; then
 	link work/.config/pomo/config.json ~/.config/pomo/config.json
 	link work/bin ~/.local/bin-work
 	link_dir work/.config/fish ~/.config/fish/
+	link work/home/.zshwork ~/.zshwork
 else
 	link .config/pomo/config.json ~/.config/pomo/config.json
 	link_dir personal/.config/fish ~/.config/fish/
+	link personal/home/.zshpersonal ~/.zshpersonal
 fi
 
 # VS Code settings and keybindings
