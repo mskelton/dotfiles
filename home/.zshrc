@@ -1,3 +1,6 @@
+# Disable Vim mode
+set -o emacs
+
 # Setup starship prompt
 eval "$(starship init zsh)"
 
