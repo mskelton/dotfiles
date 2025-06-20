@@ -9,5 +9,13 @@ if [[ $branch == "$default_branch" ]]; then
 	exit 1
 fi
 
+get_title() {
+	merge_base=$(git merge-base HEAD "$default_branch")
+
+	if [[ -n "$merge_base" ]]; then
+		echo "&title=$(git log --reverse --format=%s "$merge_base..HEAD" | head -n1 | url-encode)"
+	fi
+}
+
 git push
-open "$(remote-url)/compare/$default_branch...$(echo "$branch" | url-encode)?body=&expand=1"
+open "$(remote-url)/compare/$default_branch...$(echo "$branch" | url-encode)?body=&expand=1$(get_title)"
