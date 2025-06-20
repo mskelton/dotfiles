@@ -112,6 +112,7 @@ function M:sync(source)
 		end
 
 		self.log.d("Received " .. #notifications .. " notifications")
+		self.log.d("Last checked: " .. (self.last_checked or "nil"))
 		self.log.d(hs.inspect(notifications))
 
 		notifications = hs.fnutils.filter(notifications, function(notification)
@@ -135,6 +136,7 @@ function M:sync(source)
 			return notification.last_read_at > self.last_checked
 		end)
 
+		self.log.d("Unread notifications: " .. #notifications)
 		self:update_count(#notifications)
 	end, "ignoreLocalAndRemoteCache")
 end
