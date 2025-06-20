@@ -5,7 +5,7 @@ set -o emacs
 eval "$(starship init zsh)"
 
 # Setup Homebrew env
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 # Setup fzf
 source <(fzf --zsh)
@@ -28,15 +28,16 @@ source $HOME/.alias
 [ -f $HOME/.zshwork ] && source $HOME/.zshwork
 
 # Path for custom binaries and tools
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin-work:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.local/share/npm/bin:$PATH"
-export PATH="$HOME/.bun/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/flutter/bin:$PATH"
-export PATH="$HOME/Library/Application Support/fnm:$PATH"
-export PATH="$HOME/.slack/bin:$PATH"
-export PATH="$ANDROID_HOME/emulator:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin""\
+:$HOME/.local/bin-work""\
+:$HOME/.cargo/bin""\
+:$HOME/.local/share/npm/bin""\
+:$HOME/.bun/bin""\
+:$HOME/go/bin""\
+:$HOME/flutter/bin""\
+:$HOME/Library/Application Support/fnm""\
+:$HOME/.slack/bin""\
+:$ANDROID_HOME/emulator""\
+:$ANDROID_HOME/platform-tools""\
+:/opt/homebrew/bin""\
+:$PATH"
