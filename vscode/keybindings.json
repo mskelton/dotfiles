@@ -74,6 +74,12 @@
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus && terminalProcessSupported"
   },
+  // Use cmd+d to split the terminal when the terminal is focused.
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
   // Don't close the workspace using cmd+w. It's annoying.
   {
     "key": "cmd+w",
