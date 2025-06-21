@@ -324,7 +324,7 @@
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.startupPrompt": "never",
-  "terminal.external.osxExec": "Iterm.app",
+  "terminal.external.osxExec": "kitty.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
