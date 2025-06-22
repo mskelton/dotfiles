@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Run Claude Code in Yolo mode
 
-claude --dangerously-skip-permissions --model opus "$@"
+claude --dangerously-skip-permissions "$@"
