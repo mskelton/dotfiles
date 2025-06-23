@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# Update investment balances in Lunch Money
+# Usage: update-investment-balances [brokerage] [yanna_401k] [mark_ira] [yanna_ira]
+
+set -e
+
+# Check if positional args are provided
+if [ $# -eq 4 ]; then
+    BROKERAGE="$1"
+    YANNA_401K="$2"
+    MARK_IRA="$3"
+    YANNA_IRA="$4"
+else
+    # Prompt for balances
+    echo "Enter investment balances:"
+    echo
+
+    read -p "Brokerage: $" BROKERAGE
+    read -p "Yanna's 401k: $" YANNA_401K
+    read -p "Mark's Roth IRA: $" MARK_IRA
+    read -p "Yanna's Roth IRA: $" YANNA_IRA
+fi
+
+# Check for required environment variables
+if [ -z "$LUNCH_MONEY_TOKEN" ]; then
+    echo "Error: LUNCH_MONEY_TOKEN environment variable is required"
+    exit 1
+fi
+
+# Get current date for balance_as_of
+BALANCE_AS_OF=$(date +%Y-%m-%d)
+
+# API endpoint base
+API_BASE="https://dev.lunchmoney.app/v1/assets"
+
+# Headers
+HEADERS=(
+    -H "Authorization: Bearer $LUNCH_MONEY_TOKEN"
+    -H "Content-Type: application/json"
+)
+
+# Function to update asset balance
+update_asset() {
+    local asset_id="$1"
+    local balance="$2"
+    local asset_name="$3"
+
+    echo "Updating $asset_name (ID: $asset_id) with balance: \$$balance"
+
+    # Strip commas from balance
+    balance=${balance//,/}
+
+    curl -s -X PUT "${API_BASE}/${asset_id}" \
+        "${HEADERS[@]}" \
+        -d "{\"balance\":\"$balance\",\"balance_as_of\":\"$BALANCE_AS_OF\"}" |
+        jq -r '.status // "unknown"' >/dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "✓ Successfully updated $asset_name"
+    else
+        echo "✗ Failed to update $asset_name"
+        exit 1
+    fi
+}
+
+echo "Updating investment balances for $BALANCE_AS_OF..."
+echo
+
+# Update each asset
+update_asset "158172" "$BROKERAGE" "Brokerage"
+update_asset "158168" "$YANNA_401K" "Yanna's 401k"
+update_asset "165634" "$MARK_IRA" "Mark's Roth IRA"
+update_asset "158171" "$YANNA_IRA" "Yanna's Roth IRA"
+
+echo
+echo "All investment balances updated successfully!"
