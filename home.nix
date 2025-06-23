@@ -99,12 +99,14 @@
 
   # VS Code configuration via Home Manager
   home.file."Library/Application Support/Code/User/settings.json".source = ./vscode/settings.json;
-  home.file."Library/Application Support/Code/User/keybindings.json".source = ./vscode/keybindings.json;
+  home.file."Library/Application Support/Code/User/keybindings.json".source =
+    ./vscode/keybindings.json;
   home.file."Library/Application Support/Code/User/snippets".source = ./vscode/snippets;
 
   # Cursor configuration (same as VS Code)
   home.file."Library/Application Support/Cursor/User/settings.json".source = ./vscode/settings.json;
-  home.file."Library/Application Support/Cursor/User/keybindings.json".source = ./vscode/keybindings.json;
+  home.file."Library/Application Support/Cursor/User/keybindings.json".source =
+    ./vscode/keybindings.json;
   home.file."Library/Application Support/Cursor/User/snippets".source = ./vscode/snippets;
 
   # Let Home Manager install and manage itself.

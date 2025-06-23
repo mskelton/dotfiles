@@ -27,6 +27,9 @@
     "editor.tabSize": 3,
     "editor.wordWrap": "on"
   },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.tabSize": 4
@@ -303,6 +306,15 @@
   "Lua.window.statusBar": false,
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "nixpkgs": {
+        "flake": true
+      }
+    }
+  },
   "notebook.markup.fontSize": 15,
   "outline.showFields": false,
   "outline.showKeys": false,
@@ -311,6 +323,7 @@
   "playwright.reuseBrowser": false,
   "playwright.showTrace": false,
   "prettier.requireConfig": true,
+  "redhat.telemetry.enabled": false,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
   },
