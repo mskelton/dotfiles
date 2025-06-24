@@ -39,6 +39,7 @@
       "Bash(yarn add:*)",
       "Bash(yarn dedupe:*)",
       "Bash(yarn install:*)",
+      "Bash(yarn lint:*)",
       "Bash(yarn remove:*)",
       "Bash(yarn up:*)",
       "WebFetch",
