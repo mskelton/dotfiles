@@ -20,17 +20,17 @@
       configuration =
         { pkgs, ... }:
         {
-          # Necessary for using flakes on this system.
+          # Necessary for using flakes on this system
           nix.settings.experimental-features = "nix-command flakes";
 
           # Allow unfree software
           nixpkgs.config.allowUnfree = true;
 
-          # Enable alternative shell support in nix-darwin.
+          # Enable alternative shell support in nix-darwin
           programs.zsh.enable = true;
           programs.fish.enable = true;
 
-          # Set Git commit hash for darwin-version.
+          # Set Git commit hash for darwin-version
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
           # Used for backwards compatibility, please read the changelog before changing.
@@ -80,10 +80,10 @@
           # Enable touch ID for sudo
           security.pam.enableSudoTouchIdAuth = true;
 
-          # The platform the configuration will be used on.
+          # The platform the configuration will be used on
           nixpkgs.hostPlatform = "aarch64-darwin";
 
-          # Declare the user that will be running `nix-darwin`.
+          # Declare the user that will be running `nix-darwin`
           users.users.mark = {
             name = "mark";
             home = "/Users/mark";
@@ -95,69 +95,46 @@
             fish
           ];
 
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
           environment.systemPackages = with pkgs; [
-            # vscode
-            vim
-            nixfmt-rfc-style
-            nixd
+            ast-grep
+            bash
+            bat
+            blueutil
             direnv
+            fd
+            ffmpeg
+            fish
+            flyctl
+            fnm
+            fzf
+            gh
+            git
+            go
+            graphite-cli
+            imagemagick
+            jq
+            just
+            lazygit
+            neovim
+            nixd
+            nixfmt-rfc-style
+            ripgrep
+            starship
+            stylua
+            tmux
+            trash-cli
+            tree
+            tree-sitter
+            vim
+            wget
+            yq
+            zoxide
           ];
 
-          # Homebrew
           homebrew = {
             enable = false;
-            brews = [
-              # "1password-cli"
-              # "ast-grep"
-              # "bash"
-              # "bat"
-              # "blueutil"
-              # "ccache"
-              # "clang-format"
-              # "cmake"
-              # "cocoapods"
-              # "dict"
-              # "fd"
-              # "ffmpeg"
-              # "fish"
-              # "flyctl"
-              # "fnm"
-              # "fzf"
-              # "gh"
-              # "git"
-              # "gnu-sed"
-              # "go"
-              # "imagemagick"
-              # "jesseduffield/lazygit/lazygit"
-              # "jq"
-              # "just"
-              # "keith/formulae/reminders-cli"
-              # "luarocks"
-              # "neovim"
-              # "ngrok/ngrok/ngrok"
-              # "ninja"
-              # "opam"
-              # "p7zip"
-              # "rename"
-              # "ripgrep"
-              # "sponge"
-              # "starship"
-              # "stylua"
-              # "swiftformat"
-              # "task"
-              # "timg"
-              # "tmux"
-              # "trash"
-              # "tree"
-              # "tree-sitter"
-              # "watchman"
-              # "wget"
-              # "withgraphite/tap/graphite"
-              # "yq"
-              # "zoxide"
-            ];
+            # "gnu-sed"
+            brews = [ ];
 
             casks = [
               # "android-studio"
