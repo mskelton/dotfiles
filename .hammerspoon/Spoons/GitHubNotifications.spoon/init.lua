@@ -84,6 +84,133 @@ local function show_error(message)
 			:send()
 end
 
+--- Fetch all comments for a pull request (issue comments, reviews, and review comments)
+--- @param url string
+--- @param callback fun(all_users: table|nil)
+function M:fetch_pr_comments(url, callback)
+	local all_users = {}
+	local requests_pending = 3
+	local has_error = false
+
+	local function process_response(status, body, comment_type)
+		requests_pending = requests_pending - 1
+
+		if has_error then
+			return
+		end
+
+		if status ~= 200 then
+			self.log.d("Failed to fetch " .. comment_type .. ": " .. status)
+			has_error = true
+			callback(nil)
+			return
+		end
+
+		local data = hs.json.decode(body)
+		if data then
+			for _, item in ipairs(data) do
+				if item.user and item.user.login then
+					table.insert(all_users, item.user)
+				end
+			end
+		end
+
+		if requests_pending == 0 then
+			callback(all_users)
+		end
+	end
+
+	-- Convert PR API URL to proper endpoints
+	local pr_url = url:gsub("/repos/([^/]+)/([^/]+)/pulls/(%d+)$", "/repos/%1/%2")
+	local pr_number = url:match("/pulls/(%d+)$")
+
+	if not pr_number then
+		self.log.d("Could not extract PR number from URL: " .. url)
+		callback(nil)
+		return
+	end
+
+	-- Fetch issue comments
+	hs.http.doAsyncRequest(pr_url .. "/issues/" .. pr_number .. "/comments", "GET", nil, {
+		["Accept"] = "application/vnd.github.v3+json",
+		["Authorization"] = "token " .. self.token,
+		["Content-Type"] = "application/json",
+	}, function(status, body)
+		process_response(status, body, "issue comments")
+	end, "ignoreLocalAndRemoteCache")
+
+	-- Fetch PR reviews
+	hs.http.doAsyncRequest(pr_url .. "/pulls/" .. pr_number .. "/reviews", "GET", nil, {
+		["Accept"] = "application/vnd.github.v3+json",
+		["Authorization"] = "token " .. self.token,
+		["Content-Type"] = "application/json",
+	}, function(status, body)
+		process_response(status, body, "PR reviews")
+	end, "ignoreLocalAndRemoteCache")
+
+	-- Fetch PR review comments
+	hs.http.doAsyncRequest(pr_url .. "/pulls/" .. pr_number .. "/comments", "GET", nil, {
+		["Accept"] = "application/vnd.github.v3+json",
+		["Authorization"] = "token " .. self.token,
+		["Content-Type"] = "application/json",
+	}, function(status, body)
+		process_response(status, body, "PR review comments")
+	end, "ignoreLocalAndRemoteCache")
+end
+
+--- Check if all users are bots
+--- @param users table
+--- @return boolean
+function M:all_comments_from_bots(users)
+	if not users or #users == 0 then
+		return false
+	end
+
+	local bot_patterns = {
+		"github%-actions",
+		"%[bot%]$",
+	}
+
+	for _, user in ipairs(users) do
+		local is_bot = false
+		local username = user.login:lower()
+
+		for _, pattern in ipairs(bot_patterns) do
+			if username:match(pattern) then
+				is_bot = true
+				break
+			end
+		end
+
+		if not is_bot then
+			return false
+		end
+	end
+
+	return true
+end
+
+--- Mark a notification as read
+--- @param notification_id string
+--- @param callback fun(success: boolean)
+function M:mark_as_read(notification_id, callback)
+	local url = "https://api.github.com/notifications/threads/" .. notification_id
+
+	hs.http.doAsyncRequest(url, "PATCH", nil, {
+		["Accept"] = "application/vnd.github.v3+json",
+		["Authorization"] = "token " .. self.token,
+		["Content-Type"] = "application/json",
+	}, function(status)
+		if status == 205 or status == 200 then
+			self.log.d("Marked notification " .. notification_id .. " as read")
+			callback(true)
+		else
+			self.log.d("Failed to mark notification as read: " .. status)
+			callback(false)
+		end
+	end, "ignoreLocalAndRemoteCache")
+end
+
 --- Callback fired when the timer triggers
 --- @param source string
 function M:sync(source)
@@ -113,7 +240,7 @@ function M:sync(source)
 
 		self.log.d("Received " .. #notifications .. " notifications")
 		self.log.d("Last checked: " .. (self.last_checked or "nil"))
-		self.log.d(hs.inspect(notifications))
+		-- self.log.d(hs.inspect(notifications))
 
 		notifications = hs.fnutils.filter(notifications, function(notification)
 			--- Ignore read notifications
@@ -136,8 +263,44 @@ function M:sync(source)
 			return notification.last_read_at > self.last_checked
 		end)
 
-		self.log.d("Unread notifications: " .. #notifications)
-		self:update_count(#notifications)
+		--- Process pull request notifications with only bot comments
+		local processed_count = 0
+		local pending_notifications = {}
+
+		for _, notification in ipairs(notifications or {}) do
+			if notification.subject.type == "PullRequest" and notification.subject.url then
+				processed_count = processed_count + 1
+
+				self:fetch_pr_comments(notification.subject.url, function(users)
+					processed_count = processed_count - 1
+
+					if users and self:all_comments_from_bots(users) then
+						self.log.d("PR " .. notification.id .. " has only bot activity, marking as read")
+						self:mark_as_read(notification.id, function(success)
+							if not success then
+								table.insert(pending_notifications, notification)
+							end
+						end)
+					else
+						table.insert(pending_notifications, notification)
+					end
+
+					--- If all notifications have been processed, update the count
+					if processed_count == 0 then
+						self.log.d("Unread notifications after filtering: " .. #pending_notifications)
+						self:update_count(#pending_notifications)
+					end
+				end)
+			else
+				table.insert(pending_notifications, notification)
+			end
+		end
+
+		--- If no PR notifications to process, update count immediately
+		if processed_count == 0 then
+			self.log.d("Unread notifications: " .. #pending_notifications)
+			self:update_count(#pending_notifications)
+		end
 	end, "ignoreLocalAndRemoteCache")
 end
 
