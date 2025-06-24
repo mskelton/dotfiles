@@ -1,213 +1,3 @@
-# {
-#   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
-#   let
-#     configuration = { pkgs, ... }: {
-#       # List packages installed in system profile. To search by name, run:
-#       # $ nix-env -qaP | grep wget
-#       environment.systemPackages = with pkgs; [
-#         # Development tools
-#         git
-#         neovim
-#         fish
-#         starship
-#         tmux
-#         fzf
-#         ripgrep
-#         fd
-#         bat
-#         tree
-#         jq
-#         yq
-#         wget
-#         curl
-#
-#         # Languages and tools
-#         go
-#         nodejs
-#         python3
-#
-#         # CLI utilities
-#         gh
-#         lazygit
-#         zoxide
-#         just
-#         task
-#         trash-cli
-#
-#         # Media tools
-#         ffmpeg
-#         imagemagick
-#
-#         # System tools
-#         htop
-#         tree-sitter
-#         stylua
-#       ];
-#
-#       # Homebrew
-#       homebrew = {
-#         enable = false;
-#         brews = [
-#           "1password-cli"
-#           "as-tree"
-#           "ast-grep"
-#           "bash"
-#           "blueutil"
-#           "ccache"
-#           "clang-format"
-#           "cmake"
-#           "cocoapods"
-#           "dict"
-#           "flyctl"
-#           "fnm"
-#           "gnu-sed"
-#           "jesseduffield/lazygit/lazygit"
-#           "keith/formulae/reminders-cli"
-#           "luarocks"
-#           "ngrok/ngrok/ngrok"
-#           "ninja"
-#           "opam"
-#           "p7zip"
-#           "rename"
-#           "sponge"
-#           "swiftformat"
-#           "timg"
-#           "watchman"
-#           "withgraphite/tap/graphite"
-#         ];
-#
-#         casks = [
-#           "arc"
-#           "docker"
-#           "figma"
-#           "firefox"
-#           "font-jetbrains-mono"
-#           "font-symbols-only-nerd-font"
-#           "ghostty"
-#           "hammerspoon"
-#           "kitty"
-#           "logi-options-plus"
-#           "logitune"
-#           "mic-drop"
-#           "microsoft-edge"
-#           "mimestream"
-#           "raycast"
-#           "shottr"
-#           "telegram"
-#           "visual-studio-code"
-#           "zoom"
-#         ];
-#
-#         taps = [
-#           "homebrew/cask-drivers"
-#           "homebrew/cask-fonts"
-#           "ngrok/ngrok"
-#           "withgraphite/tap"
-#         ];
-#
-#         onActivation.cleanup = "zap";
-#         onActivation.autoUpdate = true;
-#         onActivation.upgrade = true;
-#       };
-#
-#       # macOS system configuration
-#       system.defaults = {
-#         dock = {
-#           autohide = true;
-#           autohide-delay = 0.0;
-#           autohide-time-modifier = 0.25;
-#           tilesize = 45;
-#           show-recents = false;
-#         };
-#
-#         finder = {
-#           ShowPathbar = true;
-#           FXPreferredViewStyle = "clmv";
-#           _FXSortFoldersFirst = true;
-#           FXDefaultSearchScope = "SCcf";
-#           FXRemoveOldTrashItems = true;
-#         };
-#
-#         NSGlobalDomain = {
-#           AppleInterfaceStyle = "Dark";
-#           ApplePressAndHoldEnabled = false;
-#           KeyRepeat = 2;
-#           InitialKeyRepeat = 15;
-#           "com.apple.keyboard.fnState" = true;
-#           NSAutomaticQuoteSubstitutionEnabled = false;
-#           NSAutomaticDashSubstitutionEnabled = false;
-#           NSAutomaticPeriodSubstitutionEnabled = false;
-#           NSToolbarTitleViewRolloverDelay = 0.0;
-#           "com.apple.swipescrolldirection" = false;
-#           NSScrollViewRubberbanding = false;
-#           AppleShowScrollBars = "WhenScrolling";
-#           "com.apple.trackpad.scaling" = 0.875;
-#         };
-#
-#         screencapture = {
-#           location = "~/Downloads";
-#           show-thumbnail = false;
-#         };
-#       };
-#
-#       # Auto upgrade nix package and the daemon service.
-#       services.nix-daemon.enable = true;
-#       # nix.package = pkgs.nix;
-#
-#       # Necessary for using flakes on this system.
-#       nix.settings.experimental-features = "nix-command flakes";
-#
-#       # # Create /etc/zshrc that loads the nix-darwin environment.
-#       # programs.fish.enable = true;
-#
-#       # Set Git commit hash for darwin-version.
-#       system.configurationRevision = self.rev or self.dirtyRev or null;
-#
-#       # Used for backwards compatibility, please read the changelog before changing.
-#       # $ darwin-rebuild changelog
-#       system.stateVersion = 4;
-#
-#       # The platform the configuration will be used on.
-#       nixpkgs.hostPlatform = "aarch64-darwin";
-#
-#       # Users configuration
-#       users.users.mark = {
-#         name = "mark";
-#         home = "/Users/mark";
-#       };
-#     };
-#   in
-#   {
-#     # Build darwin flake using:
-#     # $ darwin-rebuild build --flake .#personal
-#     darwinConfigurations."personal" = nix-darwin.lib.darwinSystem {
-#       modules = [
-#         configuration
-#         home-manager.darwinModules.home-manager
-#         {
-#           home-manager.useGlobalPkgs = true;
-#           home-manager.useUserPackages = true;
-#           home-manager.users.mark = import ./home.nix;
-#         }
-#       ];
-#     };
-#
-#     darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
-#       modules = [
-#         configuration
-#         home-manager.darwinModules.home-manager
-#         {
-#           home-manager.useGlobalPkgs = true;
-#           home-manager.useUserPackages = true;
-#           home-manager.users.mark = import ./work.nix;
-#         }
-#       ];
-#     };
-#
-#     # Expose the package set, including overlays, for convenience.
-#     darwinPackages = self.darwinConfigurations."personal".pkgs;
-#   };
-# }
 {
   description = "Mark's system flake";
 
@@ -230,90 +20,14 @@
       configuration =
         { pkgs, ... }:
         {
-          environment.shells = with pkgs; [
-            bashInteractive
-            zsh
-            fish
-          ];
-
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
-          environment.systemPackages = with pkgs; [
-            vim
-            nixfmt-rfc-style
-            nixd
-          ];
-
-          # Homebrew
-          homebrew = {
-            enable = false;
-            brews = [
-              "1password-cli"
-              "as-tree"
-              "ast-grep"
-              "bash"
-              "blueutil"
-              "ccache"
-              "clang-format"
-              "cmake"
-              "cocoapods"
-              "dict"
-              "flyctl"
-              "fnm"
-              "gnu-sed"
-              "jesseduffield/lazygit/lazygit"
-              "keith/formulae/reminders-cli"
-              "luarocks"
-              "ngrok/ngrok/ngrok"
-              "ninja"
-              "opam"
-              "p7zip"
-              "rename"
-              "sponge"
-              "swiftformat"
-              "timg"
-              "watchman"
-              "withgraphite/tap/graphite"
-            ];
-
-            casks = [
-              "arc"
-              "docker"
-              "figma"
-              "firefox"
-              "font-jetbrains-mono"
-              "font-symbols-only-nerd-font"
-              "ghostty"
-              "hammerspoon"
-              "kitty"
-              "logi-options-plus"
-              "logitune"
-              "mic-drop"
-              "microsoft-edge"
-              "mimestream"
-              "raycast"
-              "shottr"
-              "telegram"
-              "visual-studio-code"
-              "zoom"
-            ];
-
-            taps = [
-              "homebrew/cask-drivers"
-              "homebrew/cask-fonts"
-              "ngrok/ngrok"
-              "withgraphite/tap"
-            ];
-
-            onActivation.cleanup = "zap";
-            onActivation.autoUpdate = true;
-            onActivation.upgrade = true;
-          };
-
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
 
+          # Allow unfree software
+          nixpkgs.config.allowUnfree = true;
+
           # Enable alternative shell support in nix-darwin.
+          programs.zsh.enable = true;
           programs.fish.enable = true;
 
           # Set Git commit hash for darwin-version.
@@ -323,15 +37,174 @@
           # $ darwin-rebuild changelog
           system.stateVersion = 5;
 
+          # macOS system configuration
+          system.defaults = {
+            dock = {
+              autohide = true;
+              autohide-delay = 0.0;
+              autohide-time-modifier = 0.25;
+              tilesize = 45;
+              show-recents = false;
+            };
+
+            #             finder = {
+            #               ShowPathbar = true;
+            #               FXPreferredViewStyle = "clmv";
+            #               _FXSortFoldersFirst = true;
+            #               FXDefaultSearchScope = "SCcf";
+            #               FXRemoveOldTrashItems = true;
+            #             };
+            #
+            #             NSGlobalDomain = {
+            #               AppleInterfaceStyle = "Dark";
+            #               ApplePressAndHoldEnabled = false;
+            #               KeyRepeat = 2;
+            #               InitialKeyRepeat = 15;
+            #               "com.apple.keyboard.fnState" = true;
+            #               NSAutomaticQuoteSubstitutionEnabled = false;
+            #               NSAutomaticDashSubstitutionEnabled = false;
+            #               NSAutomaticPeriodSubstitutionEnabled = false;
+            #               NSToolbarTitleViewRolloverDelay = 0.0;
+            #               "com.apple.swipescrolldirection" = false;
+            #               NSScrollViewRubberbanding = false;
+            #               AppleShowScrollBars = "WhenScrolling";
+            #               "com.apple.trackpad.scaling" = 0.875;
+            #             };
+
+            screencapture = {
+              location = "~/Downloads";
+              show-thumbnail = false;
+            };
+          };
+
+          # Enable touch ID for sudo
+          security.pam.enableSudoTouchIdAuth = true;
+
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
+
+          # Declare the user that will be running `nix-darwin`.
+          users.users.mark = {
+            name = "mark";
+            home = "/Users/mark";
+          };
+
+          environment.shells = with pkgs; [
+            bashInteractive
+            zsh
+            fish
+          ];
+
+          # List packages installed in system profile. To search by name, run:
+          # $ nix-env -qaP | grep wget
+          environment.systemPackages = with pkgs; [
+            # vscode
+            vim
+            nixfmt-rfc-style
+            nixd
+            direnv
+          ];
+
+          # Homebrew
+          homebrew = {
+            enable = false;
+            brews = [
+              # "1password-cli"
+              # "ast-grep"
+              # "bash"
+              # "bat"
+              # "blueutil"
+              # "ccache"
+              # "clang-format"
+              # "cmake"
+              # "cocoapods"
+              # "dict"
+              # "fd"
+              # "ffmpeg"
+              # "fish"
+              # "flyctl"
+              # "fnm"
+              # "fzf"
+              # "gh"
+              # "git"
+              # "gnu-sed"
+              # "go"
+              # "imagemagick"
+              # "jesseduffield/lazygit/lazygit"
+              # "jq"
+              # "just"
+              # "keith/formulae/reminders-cli"
+              # "luarocks"
+              # "neovim"
+              # "ngrok/ngrok/ngrok"
+              # "ninja"
+              # "opam"
+              # "p7zip"
+              # "rename"
+              # "ripgrep"
+              # "sponge"
+              # "starship"
+              # "stylua"
+              # "swiftformat"
+              # "task"
+              # "timg"
+              # "tmux"
+              # "trash"
+              # "tree"
+              # "tree-sitter"
+              # "watchman"
+              # "wget"
+              # "withgraphite/tap/graphite"
+              # "yq"
+              # "zoxide"
+            ];
+
+            casks = [
+              # "android-studio"
+              # "arc"
+              # "cursor"
+              # "docker"
+              # "figma"
+              # "firefox"
+              # "font-jetbrains-mono"
+              # "font-symbols-only-nerd-font"
+              # "hammerspoon"
+              # "kitty"
+              # "logi-options-plus" # if work
+              # "logitune" # if work
+              # "mic-drop" # if work
+              # "raycast"
+              # "shottr"
+              # "slack" # if work
+              # "telegram" # if home
+              # "visual-studio-code"
+              # "zoom"
+            ];
+
+            taps = [
+              "homebrew/cask-drivers"
+              "homebrew/cask-fonts"
+              "withgraphite/tap"
+            ];
+
+            onActivation.cleanup = "zap";
+            onActivation.autoUpdate = true;
+            onActivation.upgrade = true;
+          };
         };
     in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#home
       darwinConfigurations."home" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+        ];
       };
     };
 }

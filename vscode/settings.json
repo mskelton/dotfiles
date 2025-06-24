@@ -307,14 +307,7 @@
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
   "nix.enableLanguageServer": true,
-  "nix.serverPath": "nixd",
-  "nix.serverSettings": {
-    "nixd": {
-      "nixpkgs": {
-        "flake": true
-      }
-    }
-  },
+  "nix.serverPath": "/run/current-system/sw/bin/nixd",
   "notebook.markup.fontSize": 15,
   "outline.showFields": false,
   "outline.showKeys": false,
