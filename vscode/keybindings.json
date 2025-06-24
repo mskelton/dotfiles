@@ -295,5 +295,27 @@
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": " \n" },
     "when": "terminalFocus && terminalProcessSupported"
+  },
+  // Claude Code
+  {
+    "key": "cmd+escape",
+    "command": "-claude-code.runClaude.keyboard",
+    "when": "claude-code.hasClaudeInPath"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.createTerminalEditorSide",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": {
+            "text": "clear && cc\n"
+          }
+        }
+      ]
+    },
+    "when": "terminalProcessSupported"
   }
 ]
