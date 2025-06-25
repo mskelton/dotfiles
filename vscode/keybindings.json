@@ -30,8 +30,15 @@
   },
   {
     "key": "cmd+n",
-    "command": "workbench.action.createTerminalEditor",
-    "when": "terminalEditorFocus && terminalProcessSupported"
+    "command": "runCommands",
+    "when": "terminalEditorFocus && terminalProcessSupported",
+    "args": {
+      "commands": [
+        "workbench.action.unlockEditorGroup",
+        "workbench.action.createTerminalEditor",
+        "workbench.action.lockEditorGroup"
+      ]
+    }
   },
   {
     "key": "ctrl+shift+`",
@@ -315,7 +322,6 @@
     "args": {
       "commands": [
         "workbench.action.createTerminalEditorSide",
-        "workbench.action.unlockEditorGroup",
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": {
