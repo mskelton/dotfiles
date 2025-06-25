@@ -17,23 +17,53 @@
     "key": "cmd+shift+e",
     "command": "workbench.action.showPreviousWindowTab"
   },
-  // Use cmd+n to create new files in the explorer
+  // Create new editors, files, and terminals
   {
     "key": "cmd+n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus && explorerViewletVisible"
+  },
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.createTerminalEditor",
+    "when": "terminalEditorFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported"
+  },
+  // Close terminals and editors
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.killEditor",
+    "when": "terminalFocus && terminalEditorFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  // Save all
+  {
+    "key": "cmd+shift+s",
+    "command": "saveAll"
   },
   // Use cmd+shift+a to focus the current file in the explorer
   {
     "key": "cmd+shift+a",
     "command": "workbench.files.action.showActiveFileInExplorer"
   },
-  // Use cmd+shift+d or cmd+j to toggle the terminal
-  {
-    "key": "cmd+shift+d",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
+  // Toggle terminal
   {
     "key": "cmd+j",
     "command": "workbench.action.terminal.toggleTerminal",
@@ -48,7 +78,7 @@
     "key": "cmd+j",
     "command": "-workbench.action.togglePanel"
   },
-  // Use cmd+shift+r to open the workspace find replace in the sidebar.
+  // Open the workspace find replace in the sidebar
   {
     "key": "shift+cmd+r",
     "command": "workbench.action.replaceInFiles"
@@ -57,34 +87,11 @@
     "key": "shift+cmd+h",
     "command": "-workbench.action.replaceInFiles"
   },
-  // Use cmd+n to create a new terminal when the terminal is focused.
-  {
-    "key": "cmd+n",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "ctrl+shift+`",
-    "command": "-workbench.action.terminal.new",
-    "when": "terminalProcessSupported"
-  },
-  // Use cmd+w to close a terminal when the terminal is focused.
-  {
-    "key": "cmd+w",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
   // Use cmd+d to split the terminal when the terminal is focused.
   {
     "key": "cmd+d",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported"
-  },
-  // Don't close the workspace using cmd+w. It's annoying.
-  {
-    "key": "cmd+w",
-    "command": "-workbench.action.closeWindow",
-    "when": "!editorIsOpen && !multipleEditorGroups"
   },
   // Insert console.log snippet when pressing cmd+option+l
   {
@@ -308,6 +315,7 @@
     "args": {
       "commands": [
         "workbench.action.createTerminalEditorSide",
+        "workbench.action.unlockEditorGroup",
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": {
