@@ -1,9 +1,13 @@
 {
   description = "Mark's system flake";
 
+  nixConfig = {
+    commit-lockfile-summary = "chore(flake.lock): update inputs";
+  };
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +31,6 @@
           nixpkgs.config.allowUnfree = true;
 
           # Enable alternative shell support in nix-darwin
-          programs.zsh.enable = true;
           programs.fish.enable = true;
 
           # Set Git commit hash for darwin-version
@@ -36,6 +39,9 @@
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 5;
+
+          # Required for nix-darwin
+          system.primaryUser = "mark";
 
           # macOS system configuration
           system.defaults = {
@@ -78,7 +84,7 @@
           };
 
           # Enable touch ID for sudo
-          security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
 
           # The platform the configuration will be used on
           nixpkgs.hostPlatform = "aarch64-darwin";
@@ -88,6 +94,9 @@
             name = "mark";
             home = "/Users/mark";
           };
+
+          # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.enableCompletion
+          environment.pathsToLink = [ "/share/zsh" ];
 
           environment.shells = with pkgs; [
             bashInteractive
@@ -168,7 +177,53 @@
             onActivation.autoUpdate = true;
             onActivation.upgrade = true;
           };
+
+          programs.zsh = {
+            enable = true;
+            # defaultKeymap = "emacs";
+            # dotDir = ".config/zsh";
+            # envExtra = "";
+            enableAutosuggestions = true;
+            enableCompletion = true;
+            enableFastSyntaxHighlighting = true;
+            enableFzfCompletion = true;
+            variables = {
+              FZF_DEFAULT_OPTS = "--reverse --info=inline";
+              STARSHIP_LOG = "error";
+              EDITOR = "nvim";
+              GOPATH = "$HOME/go";
+              # It's better to set home-specific environment variables in .zshenv or via home-manager's home.sessionVariables.
+              # If you want to set BUN_INSTALL for the user, use home-manager's home.sessionVariables instead of programs.zsh.variables.
+              # For example, in your home-manager configuration:
+              # home.sessionVariables.BUN_INSTALL = "$HOME/.bun";
+              # Or, if you want to keep it here for now:
+              BUN_INSTALL = "$HOME/.bun";
+              HOMEBREW_NO_ENV_HINTS = "true";
+              GH_NO_UPDATE_NOTIFIER = "true";
+              PYENV_ROOT = "$HOME/.pyenv";
+              ANDROID_HOME = "$HOME/Library/Android/sdk";
+              CLOUDSDK_PYTHON = "python3";
+              TURBO_NO_UPDATE_NOTIFIER = "1";
+              PAGER = "less";
+              COREPACK_ENABLE_DOWNLOAD_PROMPT = "0";
+
+              # Claude
+              IS_DEMO = "1";
+              MAX_THINKING_TOKENS = "16000";
+            };
+            # syntaxHighlighting.enable = true;
+            # history.size = 10000;
+            # shellAliases = {
+            #   ll = "ls -l";
+            #   update = "sudo nixos-rebuild switch";
+            # };
+
+            home.sessionVariables = {
+
+            };
+          };
         };
+
     in
     {
       # Build darwin flake using:
