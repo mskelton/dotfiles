@@ -44,35 +44,9 @@
   "auto-correct.dictionary": [
     {
       "languages": ["*"],
-      "useLargeList": false,
+      "useLargeList": true,
       "words": {
-        "MS": "Mark Skelton",
-        "accomodate": "accommodate",
-        "accross": "across",
-        "appologize": "apologize",
-        "calender": "calendar",
-        "committment": "commitment",
-        "concious": "conscious",
-        "deductable": "deductible",
-        "definately": "definitely",
-        "embarass{,ment}": "embarrass{,ment}",
-        "enviroment": "environment",
-        "existance": "existence",
-        "grammer": "grammar",
-        "independant": "independent",
-        "neccessary": "necessary",
-        "occassion": "occasion",
-        "occured": "occurred",
-        "occurence": "occurrence",
-        "posession": "possession",
-        "priviledge": "privilege",
-        "reciept": "receipt",
-        "recieve": "receive",
-        "relevent": "relevant",
-        "seperate": "separate",
-        "teh": "the",
-        "ture": "true",
-        "wierd": "weird"
+        "MS": "Mark Skelton"
       }
     },
     {
