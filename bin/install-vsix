@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Install the latest *.visx file
 
-code --install-extension "$(ls -1v *.vsix | tail -n 1)"
+cursor --install-extension "$(ls -1v *.vsix | tail -n 1)"
