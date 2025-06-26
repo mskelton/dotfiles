@@ -67,3 +67,7 @@ alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
 alias xit="exit"
+
+# Claude
+alias claude="$HOME/.claude/local/claude"
+alias c="$HOME/.claude/local/claude --dangerously-skip-permissions"

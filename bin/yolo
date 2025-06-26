@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Run Claude Code in Yolo mode
-
-claude --dangerously-skip-permissions "$@"
