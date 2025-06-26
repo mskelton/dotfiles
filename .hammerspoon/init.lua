@@ -230,19 +230,6 @@ hs.hotkey.bind({ "option" }, "n", function()
 	utils.media("next")
 end)
 
---- Focus
-hs.hotkey.bind({ "option" }, "f", function()
-	hs.urlevent.openURL("raycast://focus/complete")
-	hs.urlevent.openURL("raycast://focus/start?duration=1800")
-end)
-
---- Take a break
-hs.hotkey.bind({ "option" }, "b", function()
-	hs.urlevent.openURL("raycast://focus/complete")
-	utils.media("pause")
-	hs.caffeinate.systemSleep()
-end)
-
 --- Open dev server
 hs.hotkey.bind({ "control", "option", "shift" }, "d", function()
 	if utils.is_work then

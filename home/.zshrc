@@ -7,8 +7,12 @@ setopt HIST_NO_STORE          # Do not save history commands
 setopt HIST_REDUCE_BLANKS     # Strip superfluous blanks
 setopt INC_APPEND_HISTORY     # Don’t wait for shell to exit to save history lines
 
-# Disable Vim mode
+# Use Emacs keybindings
 set -o emacs
+
+# Word navigation keybindings
+bindkey '^B' backward-word
+bindkey '^F' forward-word
 
 # Setup starship prompt
 eval "$(starship init zsh)"

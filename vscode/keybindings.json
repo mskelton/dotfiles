@@ -70,21 +70,6 @@
     "key": "cmd+shift+a",
     "command": "workbench.files.action.showActiveFileInExplorer"
   },
-  // Toggle terminal
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-  {
-    "key": "ctrl+`",
-    "command": "-workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
-  },
-  {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
-  },
   // Open the workspace find replace in the sidebar
   {
     "key": "shift+cmd+r",
