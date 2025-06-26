@@ -1,3 +1,12 @@
+# History settings
+setopt EXTENDED_HISTORY       # Include timestamp
+setopt HIST_EXPIRE_DUPS_FIRST # Trim dupes first if history is full
+setopt HIST_FIND_NO_DUPS      # Do not display previously found command
+setopt HIST_IGNORE_SPACE      # Do not save if line starts with space
+setopt HIST_NO_STORE          # Do not save history commands
+setopt HIST_REDUCE_BLANKS     # Strip superfluous blanks
+setopt INC_APPEND_HISTORY     # Don’t wait for shell to exit to save history lines
+
 # Disable Vim mode
 set -o emacs
 
