@@ -41,36 +41,13 @@
   "[shellscript]": {
     "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
   },
-  "auto-correct.dictionary": [
-    {
-      "languages": ["*"],
-      "useLargeList": true,
-      "words": {
-        "MS": "Mark Skelton"
-      }
-    },
-    {
-      "languages": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-      ],
-      "words": {
-        "Null": "null",
-        "RN": "ReactNode",
-        "cosnt": "const",
-        "functoin": "function",
-        "und": "undefined"
-      }
-    },
-    {
-      "languages": ["typescript", "typescriptreact"],
-      "words": {
-        "kn": "unknown"
-      }
-    }
-  ],
+  "abolish.dictionary": {
+    "MS": "Mark Skelton",
+    "Null": "null",
+    "RN": "ReactNode",
+    "kn": "unknown",
+    "und": "undefined"
+  },
   "bashIde.shellcheckPath": "",
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
@@ -858,6 +835,7 @@
     "errorLens.warningMessageBackground": "#ff942f19"
   },
   "workbench.colorTheme": "Catppuccin Macchiato",
+  "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": false,
