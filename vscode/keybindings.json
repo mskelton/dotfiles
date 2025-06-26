@@ -325,7 +325,7 @@
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": {
-            "text": "clear && cc\n"
+            "text": "clear && yolo\n"
           }
         }
       ]
