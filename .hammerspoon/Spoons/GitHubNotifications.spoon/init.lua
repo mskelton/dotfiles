@@ -84,6 +84,30 @@ local function show_error(message)
 			:send()
 end
 
+--- Check if a pull request is merged
+--- @param url string
+--- @param callback fun(is_merged: boolean|nil)
+function M:check_pr_merged(url, callback)
+	hs.http.doAsyncRequest(url, "GET", nil, {
+		["Accept"] = "application/vnd.github.v3+json",
+		["Authorization"] = "token " .. self.token,
+		["Content-Type"] = "application/json",
+	}, function(status, body)
+		if status ~= 200 then
+			self.log.d("Failed to fetch PR details: " .. status)
+			callback(nil)
+			return
+		end
+
+		local data = hs.json.decode(body)
+		if data and data.merged ~= nil then
+			callback(data.merged)
+		else
+			callback(nil)
+		end
+	end, "ignoreLocalAndRemoteCache")
+end
+
 --- Fetch all comments for a pull request (issue comments, reviews, and review comments)
 --- @param url string
 --- @param callback fun(all_users: table|nil)
@@ -271,24 +295,43 @@ function M:sync(source)
 			if notification.subject.type == "PullRequest" and notification.subject.url then
 				processed_count = processed_count + 1
 
-				self:fetch_pr_comments(notification.subject.url, function(users)
-					processed_count = processed_count - 1
-
-					if users and self:all_comments_from_bots(users) then
-						self.log.d("PR " .. notification.id .. " has only bot activity, marking as read")
+				--- First check if the PR is merged
+				self:check_pr_merged(notification.subject.url, function(is_merged)
+					if is_merged == true then
+						self.log.d("PR " .. notification.id .. " is merged, marking as read")
 						self:mark_as_read(notification.id, function(success)
 							if not success then
 								table.insert(pending_notifications, notification)
 							end
 						end)
-					else
-						table.insert(pending_notifications, notification)
-					end
 
-					--- If all notifications have been processed, update the count
-					if processed_count == 0 then
-						self.log.d("Unread notifications after filtering: " .. #pending_notifications)
-						self:update_count(#pending_notifications)
+						processed_count = processed_count - 1
+						if processed_count == 0 then
+							self.log.d("Unread notifications after filtering: " .. #pending_notifications)
+							self:update_count(#pending_notifications)
+						end
+					else
+						--- If not merged, check for bot comments
+						self:fetch_pr_comments(notification.subject.url, function(users)
+							processed_count = processed_count - 1
+
+							if users and self:all_comments_from_bots(users) then
+								self.log.d("PR " .. notification.id .. " has only bot activity, marking as read")
+								self:mark_as_read(notification.id, function(success)
+									if not success then
+										table.insert(pending_notifications, notification)
+									end
+								end)
+							else
+								table.insert(pending_notifications, notification)
+							end
+
+							--- If all notifications have been processed, update the count
+							if processed_count == 0 then
+								self.log.d("Unread notifications after filtering: " .. #pending_notifications)
+								self:update_count(#pending_notifications)
+							end
+						end)
 					end
 				end)
 			else
