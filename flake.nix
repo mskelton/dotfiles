@@ -21,7 +21,10 @@
       home-manager,
     }:
     let
-      configuration =
+      homeUser = "mark";
+      workUser = "mskelton";
+      mkConfiguration =
+        homeDirectory:
         { pkgs, ... }:
         {
           # Necessary for using flakes on this system
@@ -88,12 +91,6 @@
 
           # The platform the configuration will be used on
           nixpkgs.hostPlatform = "aarch64-darwin";
-
-          # Declare the user that will be running `nix-darwin`
-          users.users.mark = {
-            name = "mark";
-            home = "/Users/mark";
-          };
 
           # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.enableCompletion
           environment.pathsToLink = [ "/share/zsh" ];
@@ -191,17 +188,12 @@
               FZF_DEFAULT_OPTS = "--reverse --info=inline";
               STARSHIP_LOG = "error";
               EDITOR = "nvim";
-              GOPATH = "$HOME/go";
-              # It's better to set home-specific environment variables in .zshenv or via home-manager's home.sessionVariables.
-              # If you want to set BUN_INSTALL for the user, use home-manager's home.sessionVariables instead of programs.zsh.variables.
-              # For example, in your home-manager configuration:
-              # home.sessionVariables.BUN_INSTALL = "$HOME/.bun";
-              # Or, if you want to keep it here for now:
-              BUN_INSTALL = "$HOME/.bun";
+              GOPATH = "${homeDirectory}/go";
+              BUN_INSTALL = "${homeDirectory}/.bun";
               HOMEBREW_NO_ENV_HINTS = "true";
               GH_NO_UPDATE_NOTIFIER = "true";
-              PYENV_ROOT = "$HOME/.pyenv";
-              ANDROID_HOME = "$HOME/Library/Android/sdk";
+              PYENV_ROOT = "${homeDirectory}/.pyenv";
+              ANDROID_HOME = "${homeDirectory}/Library/Android/sdk";
               CLOUDSDK_PYTHON = "python3";
               TURBO_NO_UPDATE_NOTIFIER = "1";
               PAGER = "less";
@@ -217,10 +209,6 @@
             #   ll = "ls -l";
             #   update = "sudo nixos-rebuild switch";
             # };
-
-            home.sessionVariables = {
-
-            };
           };
         };
 
@@ -228,13 +216,41 @@
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#home
+      # $ darwin-rebuild build --flake .#work
       darwinConfigurations."home" = nix-darwin.lib.darwinSystem {
         modules = [
-          configuration
+          (mkConfiguration {
+            homeDirectory = "/Users/${homeUser}";
+          })
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+          }
+          {
+            users.users.mark = {
+              name = homeUser;
+              home = "/Users/${homeUser}";
+            };
+          }
+        ];
+      };
+
+      darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
+        modules = [
+          (mkConfiguration {
+            homeDirectory = "/Users/${workUser}";
+          })
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
+          {
+            users.users.mskelton = {
+              name = workUser;
+              home = "/Users/${workUser}";
+            };
           }
         ];
       };
