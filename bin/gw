@@ -20,5 +20,8 @@ git worktree add -b "$branch" "$dir"
 cd "$dir"
 direnv reload
 
+# Configure Graphite
+gt track
+
 # Open in Cursor
 cursor "$dir"

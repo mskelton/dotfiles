@@ -7,10 +7,9 @@ IMPORTANT RULES:
 2. Search extensively to understand existing patterns and components before implementing
 3. Use Playwright MCP to explore the application UI as you make changes
 4. Follow existing code conventions and patterns meticulously
-5. Commit changes incrementally with clear, descriptive messages
-6. Run linting commands before finalizing
-7. Never add comments to code unless explicitly requested
-8. Mark todos as in_progress when starting and completed when done
+5. Run linting commands before finalizing
+6. Never add comments to code unless explicitly requested
+7. Mark todos as in_progress when starting and completed when done
 </instructions>
 
 <questions>
