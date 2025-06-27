@@ -316,5 +316,25 @@
       ]
     },
     "when": "terminalProcessSupported"
+  },
+  // Navigate between editors/terminals, in the current group
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "!terminalFocus || terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "!terminalFocus || terminalEditorFocus"
+  },
+  {
+    "key": "alt+cmd+left",
+    "command": "-workbench.action.previousEditor"
+  },
+  // Switch between editor groups
+  {
+    "key": "cmd+shift+'",
+    "command": "workbench.action.focusNextGroup"
   }
 ]

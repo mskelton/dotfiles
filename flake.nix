@@ -21,10 +21,15 @@
       home-manager,
     }:
     let
-      homeUser = "mark";
-      workUser = "mskelton";
+      homeManagerModule = [
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
+      ];
       mkConfiguration =
-        homeDirectory:
+        { username }:
         { pkgs, ... }:
         {
           # Necessary for using flakes on this system
@@ -45,6 +50,12 @@
 
           # Required for nix-darwin
           system.primaryUser = "mark";
+
+          # Setup user
+          users.users.${username} = {
+            name = username;
+            home = "/Users/${username}";
+          };
 
           # macOS system configuration
           system.defaults = {
@@ -184,25 +195,25 @@
             enableCompletion = true;
             enableFastSyntaxHighlighting = true;
             enableFzfCompletion = true;
-            variables = {
-              FZF_DEFAULT_OPTS = "--reverse --info=inline";
-              STARSHIP_LOG = "error";
-              EDITOR = "nvim";
-              GOPATH = "${homeDirectory}/go";
-              BUN_INSTALL = "${homeDirectory}/.bun";
-              HOMEBREW_NO_ENV_HINTS = "true";
-              GH_NO_UPDATE_NOTIFIER = "true";
-              PYENV_ROOT = "${homeDirectory}/.pyenv";
-              ANDROID_HOME = "${homeDirectory}/Library/Android/sdk";
-              CLOUDSDK_PYTHON = "python3";
-              TURBO_NO_UPDATE_NOTIFIER = "1";
-              PAGER = "less";
-              COREPACK_ENABLE_DOWNLOAD_PROMPT = "0";
-
-              # Claude
-              IS_DEMO = "1";
-              MAX_THINKING_TOKENS = "16000";
-            };
+            #             variables = {
+            #               FZF_DEFAULT_OPTS = "--reverse --info=inline";
+            #               STARSHIP_LOG = "error";
+            #               EDITOR = "nvim";
+            #               GOPATH = "${homeDirectory}/go";
+            #               BUN_INSTALL = "${homeDirectory}/.bun";
+            #               HOMEBREW_NO_ENV_HINTS = "true";
+            #               GH_NO_UPDATE_NOTIFIER = "true";
+            #               PYENV_ROOT = "${homeDirectory}/.pyenv";
+            #               ANDROID_HOME = "${homeDirectory}/Library/Android/sdk";
+            #               CLOUDSDK_PYTHON = "python3";
+            #               TURBO_NO_UPDATE_NOTIFIER = "1";
+            #               PAGER = "less";
+            #               COREPACK_ENABLE_DOWNLOAD_PROMPT = "0";
+            #
+            #               # Claude
+            #               IS_DEMO = "1";
+            #               MAX_THINKING_TOKENS = "16000";
+            #             };
             # syntaxHighlighting.enable = true;
             # history.size = 10000;
             # shellAliases = {
@@ -220,38 +231,18 @@
       darwinConfigurations."home" = nix-darwin.lib.darwinSystem {
         modules = [
           (mkConfiguration {
-            homeDirectory = "/Users/${homeUser}";
+            username = "mark";
           })
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          {
-            users.users.mark = {
-              name = homeUser;
-              home = "/Users/${homeUser}";
-            };
-          }
+          homeManagerModule
         ];
       };
 
       darwinConfigurations."work" = nix-darwin.lib.darwinSystem {
         modules = [
           (mkConfiguration {
-            homeDirectory = "/Users/${workUser}";
+            username = "mskelton";
           })
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          {
-            users.users.mskelton = {
-              name = workUser;
-              home = "/Users/${workUser}";
-            };
-          }
+          homeManagerModule
         ];
       };
     };
