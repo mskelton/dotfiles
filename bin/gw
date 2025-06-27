@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create a new worktree and open it in a Tmux session and Cursor
+# Create a new worktree and open it in Cursor
 # Usage: gw <branch_name>
 
 # Check if a branch name is provided
@@ -8,13 +8,17 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+cd "$HOME/dev/web"
+
 branch=ms/$1
-dir=../web-$1
+dir="$HOME/dev/web-$1"
 
 # Create a new worktree
 git worktree add -b "$branch" "$dir"
 
-# Open the worktree in a Tmux session
-tmux new-session -ds "$1" -c "$dir"
-tmux send-keys -t "$1" "direnv allow && code $dir" Enter
-tmux switch-client -t "$1"
+# Reload direnv to install deps
+cd "$dir"
+direnv reload
+
+# Open in Cursor
+cursor "$dir"
