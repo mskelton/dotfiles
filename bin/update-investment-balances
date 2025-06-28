@@ -45,7 +45,7 @@ update_asset() {
     local balance="$2"
     local asset_name="$3"
 
-    echo "Updating $asset_name (ID: $asset_id) with balance: \$$balance"
+    echo "🔄 Updating $asset_name (ID: $asset_id) with balance: \$$balance"
 
     # Strip commas from balance
     balance=${balance//,/}
@@ -56,9 +56,9 @@ update_asset() {
         jq -r '.status // "unknown"' >/dev/null
 
     if [ $? -eq 0 ]; then
-        echo "✓ Successfully updated $asset_name"
+        echo "✅ Successfully updated $asset_name"
     else
-        echo "✗ Failed to update $asset_name"
+        echo "❌ Failed to update $asset_name"
         exit 1
     fi
 }
