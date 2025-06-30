@@ -336,5 +336,21 @@
   {
     "key": "cmd+shift+'",
     "command": "workbench.action.focusNextGroup"
+  },
+  // Toggle pane/terminal
+  {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-aiSettings.action.open",
+    "when": "!isSettingsPaneOpen"
   }
 ]
