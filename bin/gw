@@ -18,7 +18,7 @@ git worktree add -b "$branch" "$dir"
 
 # Reload direnv to install deps
 cd "$dir"
-direnv reload
+direnv allow .
 
 # Configure Graphite
 gt track
