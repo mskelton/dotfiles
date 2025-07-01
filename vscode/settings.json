@@ -110,6 +110,7 @@
     "“": true,
     "”": true
   },
+  "editor.wordWrap": "on",
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
   "emmet.triggerExpansionOnTab": true,
@@ -255,6 +256,8 @@
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "kotlin.debugAdapter.enabled": false,
+  "kotlin.languageServer.enabled": false,
   "Lua.window.statusBar": false,
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
