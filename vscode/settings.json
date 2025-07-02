@@ -49,6 +49,7 @@
     "und": "undefined"
   },
   "bashIde.shellcheckPath": "",
+  "biome.enabled": false,
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
