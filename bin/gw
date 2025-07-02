@@ -10,17 +10,14 @@ fi
 
 cd "$HOME/dev/web"
 
-branch=ms/$1
-dir="$HOME/dev/web-$1"
+# Clean mskelton/ prefix that linear adds
+branch=${1/mskelton\//}
 
-# Create a new worktree using --no-checkout for speed
-git worktree add --no-checkout -b "$branch" "$dir"
+dir="$HOME/dev/web-$branch"
+branch=ms/$branch
 
-# Reload Cursor to the new directory
-cursor "$dir"
-
-# Checkout the code (slow, but at this point Cursor won't get messed up)
-git checkout "$branch"
+# Create a new worktree
+git worktree add -b "$branch" "$dir"
 
 # Reload direnv to install deps
 cd "$dir"
@@ -29,3 +26,7 @@ eval "$(direnv export bash)"
 
 # Configure Graphite
 gt track
+
+# Reload Cursor to the new directory
+read -n 1 -s -r -p "Press any key to continue: "
+cursor "$dir"
