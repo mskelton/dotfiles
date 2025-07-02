@@ -13,15 +13,19 @@ cd "$HOME/dev/web"
 branch=ms/$1
 dir="$HOME/dev/web-$1"
 
-# Create a new worktree
-git worktree add -b "$branch" "$dir"
+# Create a new worktree using --no-checkout for speed
+git worktree add --no-checkout -b "$branch" "$dir"
+
+# Reload Cursor to the new directory
+cursor "$dir"
+
+# Checkout the code (slow, but at this point Cursor won't get messed up)
+git checkout "$branch"
 
 # Reload direnv to install deps
 cd "$dir"
 direnv allow .
+eval "$(direnv export bash)"
 
 # Configure Graphite
 gt track
-
-# Open in Cursor
-cursor "$dir"
