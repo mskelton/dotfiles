@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Start/stop a terminal spinner
+
+# Colors
+GREEN='\033[32m'
+YELLOW='\033[33m'
+RED='\033[31m'
+NC='\033[0m' # No Color
+CLR="\033[2K"
+
+SPINNER_CHARS="⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
+SPINNER_PID=""
+
+if [ "$1" = "start" ]; then
+  (
+    i=0
+    while true; do
+      printf "$CLR\r${YELLOW}${SPINNER_CHARS:i++%${#SPINNER_CHARS}:1}${NC} %s" "$2"
+      sleep 0.1
+    done
+  ) &
+
+  SPINNER_PID=$!
+elif [ "$1" = "stop" ]; then
+  if [ -n "$SPINNER_PID" ]; then
+    kill "$SPINNER_PID" 2>/dev/null
+    wait "$SPINNER_PID" 2>/dev/null
+    SPINNER_PID=""
+  fi
+
+  if [ "$2" = "success" ]; then
+    printf "$CLR\r${GREEN}✔${NC} %s\n" "$3"
+  elif [ "$2" = "error" ]; then
+    printf "$CLR\r${RED}✖${NC} %s\n" "$3"
+  else
+    printf "$CLR\r%s\n" "$3"
+  fi
+elif [ "$1" = "clear" ]; then
+  if [ -n "$SPINNER_PID" ]; then
+    kill "$SPINNER_PID" 2>/dev/null
+  fi
+else
+  echo "Usage: spin start|stop [status] [message]"
+  exit 1
+fi
