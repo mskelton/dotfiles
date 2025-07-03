@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Open a HAR file
+
+base_dir=$HOME/dev/web/playwright/hars
+filename=index.har.zip
+
+last_dir_filename=$HOME/.cache/har/last_dir
+
+# Show a user the list of HAR file and select one result
+if [[ "$1" == "last" ]]; then
+	if [[ ! -f $last_dir_filename ]]; then
+		echo "ERROR: No last directory found"
+		exit 1
+	fi
+
+	dirname=$(cat "$last_dir_filename")
+else
+	dirname=$(fd '.*\.zip' --base-directory="$base_dir" | sed "s/\/$filename//" | fzf)
+
+	# If no directory was selected, exit without saving
+	if [[ -z "$dirname" ]]; then
+		exit 1
+	fi
+
+	# Save the last directory
+	mkdir -p "$(dirname "$last_dir_filename")"
+	echo "$dirname" >"$last_dir_filename"
+fi
+
+vz "$base_dir/$dirname/$filename" har.har

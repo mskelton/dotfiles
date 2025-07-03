@@ -1,6 +1,3 @@
 [submodule "dottie"]
 	path = dottie
 	url = git@github.com:mskelton/dottie.git
-[submodule "work"]
-	path = work
-	url = git@github.com:mskelton/dotfiles-work

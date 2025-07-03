@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Open Buildkite pipeline
+
+pipeline=${1/./$(basename "$(pwd)")}
+
+open "https://buildkite.com/ramp/$pipeline"

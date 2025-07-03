@@ -1,0 +1,25 @@
+# Environment variables
+export PW_WORKERS=6
+export ANTHROPIC_MODEL="opus"
+export ANTHROPIC_SMALL_FAST_MODEL="haiku"
+
+# Path
+export PATH="$HOME/.local/share/uv/tools/devtool/bin:$PATH"
+
+# Switch between yarn test:e2e and yarn test:e2e:record
+function _yarn-test-mode-switch {
+  local line=${BUFFER}
+
+  if [[ "$line" =~ ^(yr|yarn\ test:e2e:record) ]]; then
+    BUFFER="${line/#yr/yt}"
+    BUFFER="${BUFFER/#yarn test:e2e:record/yt}"
+  elif [[ "$line" =~ ^(yt|yarn\ test:e2e) ]]; then
+    BUFFER="${line/#yt/yr}"
+    BUFFER="${BUFFER/#yarn test:e2e/yr}"
+  fi
+
+  CURSOR=${#BUFFER}
+}
+
+zle -N _yarn-test-mode-switch
+bindkey '^Y' _yarn-test-mode-switch
