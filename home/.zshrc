@@ -37,7 +37,7 @@ source $HOME/.alias
 
 # Extra configs
 [ -f $HOME/.zshcustom ] && source $HOME/.zshcustom
-[ -f $HOME/.zshpersonal ] && source $HOME/.zshpersonal
+[ -f $HOME/.zshhome ] && source $HOME/.zshhome
 [ -f $HOME/.zshwork ] && source $HOME/.zshwork
 
 # Path for custom binaries and tools

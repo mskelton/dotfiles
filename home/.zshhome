@@ -1,0 +1,3 @@
+# Environment variables
+export ANTHROPIC_MODEL="opus"
+export ANTHROPIC_SMALL_FAST_MODEL="haiku"

@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal settings and dotfiles.
+My dotfiles
 
 ## Installation
 
