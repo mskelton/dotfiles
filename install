@@ -33,7 +33,6 @@ link ngrok/ngrok.yml ~/Library/Application\ Support/ngrok/ngrok.yml
 link_dir home ~/
 link_dir .config/fish ~/.config/fish/
 # link_dir launchd ~/Library/LaunchAgents/
-link_dir nushell ~/Library/Application\ Support/nushell/
 
 # Claude
 link claude/CLAUDE.md ~/.claude/CLAUDE.md

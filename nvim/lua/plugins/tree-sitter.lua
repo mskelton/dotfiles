@@ -22,7 +22,6 @@ return {
 		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"nushell/tree-sitter-nu",
 		},
 		keys = {
 			{
@@ -152,10 +151,10 @@ return {
 						end
 
 						return name_node ~= nil
-							and vim.tbl_contains(
-								ancestor_types,
-								vim.treesitter.get_node_text(name_node, bufnr)
-							)
+								and vim.tbl_contains(
+									ancestor_types,
+									vim.treesitter.get_node_text(name_node, bufnr)
+								)
 					end
 
 					return false
