@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# Make fish the default shell
+# Allow fish to be used as a shell
 sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
-chsh -s /opt/homebrew/bin/fish
+
+# Install kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # Install bun
 # https://bun.sh
@@ -12,13 +14,6 @@ curl -fsSL https://bun.sh/install | bash
 # https://starship.rs
 curl -sS https://starship.rs/install.sh | sh
 mkdir ~/.cache/starship
-starship init nu >~/.cache/starship/init.nu
-
-# Install tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Install tpm plugins
-~/.tmux/plugins/tpm/bin/install_plugins
 
 # Install fzf keybindings
 /opt/homebrew/opt/fzf/install \
@@ -27,9 +22,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	--key-bindings \
 	--no-bash \
 	--no-zsh
-
-# Install Docker completion
-curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish -o ~/.config/fish/completions/docker.fish
 
 # Install lazy.nvim
 git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
@@ -54,13 +46,11 @@ sudo corepack enable
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install cargo binaries
-cargo install --git https://github.com/mskelton/pomo
 cargo install --git https://github.com/mskelton/pngpaste
 cargo install --git https://github.com/mskelton/dtsfmt
 
 # Install go binaries
 go install github.com/mskelton/byte@latest
-# go install github.com/mskelton/jira@latest
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pr@latest
 go install github.com/mskelton/prs@latest
@@ -68,14 +58,13 @@ go install github.com/mskelton/url@latest
 go install github.com/spf13/cobra-cli@latest
 
 # Install gh extensions
-gh extension install dlvhdr/gh-dash
-gh extension install gennaro-tedesco/gh-f
-gh extension install mislav/gh-branch
 gh extension install mislav/gh-license
 
 # Install npm binaries
 npm install -g turbo
 npm install -g @anthropic-ai/claude-code
+npm install -g @vscode/vsce
+npm install -g ovsx
 
 # Setup launchd services
 # launchd-reload

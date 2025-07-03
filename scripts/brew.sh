@@ -3,25 +3,20 @@
 brew=/opt/homebrew/bin/brew
 
 # Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Tap additional repositories
-$brew tap homebrew/cask-drivers
-$brew tap homebrew/cask-fonts
+if ! command -v brew &>/dev/null; then
+	echo "Installing Homebrew..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # Install formulae
 formula=(
-	1password-cli
-	as-tree
 	ast-grep
 	bash
-	bat
 	blueutil
 	ccache
 	clang-format
 	cmake
 	cocoapods
-	dict
 	fd
 	ffmpeg
 	fish
@@ -36,68 +31,52 @@ formula=(
 	jesseduffield/lazygit/lazygit
 	jq
 	just
-	keith/formulae/reminders-cli
-	luarocks
 	neovim
-	ngrok/ngrok/ngrok
 	ninja
-	opam
-	p7zip
-	rename
 	ripgrep
-	sponge
 	starship
-	stylua
-	swiftformat
+	stow
 	task
-	timg
 	tmux
 	trash
-	tree
 	tree-sitter
 	watchman
 	wget
 	withgraphite/tap/graphite
 	yq
-	zoxide
 )
 
 casks=(
 	arc
-	docker
 	figma
 	firefox
 	font-jetbrains-mono
 	font-symbols-only-nerd-font
-	ghostty
 	hammerspoon
-	kitty
 	logi-options-plus
 	logitune
-	mic-drop
 	microsoft-edge
-	mimestream
 	raycast
 	shottr
-	telegram
 	visual-studio-code
-	withgraphite/tap/graphite
 	zoom
 )
+
+# Personal/work casks
+if [[ -f "$HOME/.work" ]]; then
+	casks+=(
+		android-studio
+		mic-drop
+		slack
+	)
+else
+	casks+=(
+		android-studio
+		docker
+		telegram
+	)
+fi
 
 # Install formula and casks
 $brew install "${formula[@]}"
 $brew install --cask "${casks[@]}"
-
-# Personal/work casks
-if [[ -f "$HOME/.work" ]]; then
-	$brew install --cask \
-		slack
-else
-	$brew install \
-		tursodatabase/tap/turso
-
-	$brew install --cask \
-		android-studio \
-		quicken
-fi
