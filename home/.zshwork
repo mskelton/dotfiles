@@ -1,5 +1,4 @@
 # Environment variables
-export PW_WORKERS=6
 export ANTHROPIC_MODEL="opus"
 export ANTHROPIC_SMALL_FAST_MODEL="haiku"
 
