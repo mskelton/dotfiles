@@ -13,11 +13,8 @@ source $HOME/.config/fish/keybindings.fish
 source $HOME/.config/fish/env.fish
 source $HOME/.config/fish/functions.fish
 
-# Custom environment files that might not exist
-for f in custom personal work
-    set file $HOME/.config/fish/$f.fish
-    test -f $file; and source $file
-end
+# Source context-specific configuration (managed by Nix)
+test -f $HOME/.config/fish/context.fish; and source $HOME/.config/fish/context.fish
 
 # Setup fnm
 if type -q fnm

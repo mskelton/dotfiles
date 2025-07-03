@@ -21,13 +21,51 @@
       home-manager,
     }:
     let
-      homeManagerModule = [
-        home-manager.darwinModules.home-manager
+      mkHomeManagerModule =
+        { username, contextPath }:
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-        }
-      ];
+          home-manager.users.${username} =
+            { ... }:
+            {
+              home.stateVersion = "25.11";
+
+              home.file.".config/byte/config.yaml" = {
+                source = ./.config/byte/config.yaml;
+                force = true;
+              };
+              #               home.file.".config/gh-dash/config.yml".source = ./.config/gh-dash/config.yml;
+              #               home.file.".config/gh/config.yml".source = ./.config/gh/config.yml;
+              #               home.file.".config/graphite/aliases".source = ./.config/graphite/aliases;
+              #               home.file.".config/graphite/custom-aliases".source = ./.config/graphite/custom-aliases;
+              #               home.file.".config/starship.toml".source = ./.config/starship.toml;
+              #
+              #               home.file.".config/direnv".source = ./.config/direnv;
+              #               home.file.".config/fd".source = ./.config/fd;
+              #               home.file.".config/ghostty".source = ./.config/ghostty;
+              #               home.file.".config/git".source = ./.config/git;
+              #               home.file.".config/kitty".source = ./.config/kitty;
+              #               home.file.".config/task".source = ./.config/task;
+              #               home.file.".config/tmux".source = ./.config/tmux;
+
+              # home.file.".config/fish/context.fish" = {
+              #   source = contextPath;
+              #               # Symlink Fish configuration
+              #               home.file = {
+              #                 # Main Fish config directory
+              #                 ".config/fish" = {
+              #                   source = ./.config/fish;
+              #                   recursive = true;
+              #                 };
+              #
+              #                 # Context-specific Fish config
+              #                 ".config/fish/context.fish" = {
+              #                   source = contextPath;
+              #                 };
+              #               };
+            };
+        };
       mkConfiguration =
         { username }:
         { pkgs, ... }:
@@ -214,7 +252,6 @@
             #               IS_DEMO = "1";
             #               MAX_THINKING_TOKENS = "16000";
             #             };
-            # syntaxHighlighting.enable = true;
             # history.size = 10000;
             # shellAliases = {
             #   ll = "ls -l";
@@ -233,7 +270,11 @@
           (mkConfiguration {
             username = "mark";
           })
-          homeManagerModule
+          home-manager.darwinModules.home-manager
+          (mkHomeManagerModule {
+            username = "mark";
+            contextPath = ./personal/.config/fish/context.fish;
+          })
         ];
       };
 
@@ -242,7 +283,11 @@
           (mkConfiguration {
             username = "mskelton";
           })
-          homeManagerModule
+          home-manager.darwinModules.home-manager
+          (mkHomeManagerModule {
+            username = "mskelton";
+            contextPath = ./work/.config/fish/context.fish;
+          })
         ];
       };
     };

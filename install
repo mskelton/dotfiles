@@ -2,6 +2,11 @@
 
 source ./dottie/dottie.sh
 
+if [[ "$1" != "work" && "$1" != "home" ]]; then
+	echo "Usage: $0 [work|home]"
+	exit 1
+fi
+
 # ~/.config directory
 link .config/byte/config.yaml ~/.config/byte/config.yaml
 link .config/direnv ~/.config/direnv
@@ -48,26 +53,22 @@ curl -sL https://termicons.mskelton.dev/termicons.ttf -o ~/Library/Fonts/termico
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o ~/Library/Fonts/codicon.ttf
 
 # Work config
-if [[ -f "$HOME/.work" ]]; then
-	link work/.config/pomo/config.json ~/.config/pomo/config.json
-	link work/bin ~/.local/bin-work
-	link_dir work/.config/fish ~/.config/fish/
-	link work/home/.zshwork ~/.zshwork
+if [[ "$1" == "work" ]]; then
+	link work/bin ~/.local/bin-context
+	link work/home/.zshcontext ~/.zshcontext
+	link work/.config/fish/context.fish ~/.config/fish/context.fish
 else
-	link .config/pomo/config.json ~/.config/pomo/config.json
-	link_dir personal/.config/fish ~/.config/fish/
-	link personal/home/.zshpersonal ~/.zshpersonal
+	link personal/bin ~/.local/bin-context
+	link personal/home/.zshcontext ~/.zshcontext
+	link personal/.config/fish/context.fish ~/.config/fish/context.fish
 fi
 
 # VS Code settings and keybindings
-link vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-link vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-link vscode/snippets ~/Library/Application\ Support/Code/User/snippets
-
-# Cursor settings and keybindings
-link vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
-link vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
-link vscode/snippets ~/Library/Application\ Support/Cursor/User/snippets
+for app in "Code" "Cursor"; do
+	link vscode/settings.json ~/Library/Application\ Support/$app/User/settings.json
+	link vscode/keybindings.json ~/Library/Application\ Support/$app/User/keybindings.json
+	link vscode/snippets ~/Library/Application\ Support/$app/User/snippets
+done
 
 # Finalize and print any errors
 finalize
