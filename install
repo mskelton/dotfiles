@@ -45,9 +45,6 @@ link claude/CLAUDE.md ~/.claude/CLAUDE.md
 link claude/settings.json ~/.claude/settings.json
 link claude/commands ~/.claude/commands
 
-# Add custom fonts to the user fonts library
-copy_dir personal/fonts ~/Library/Fonts/
-
 # Install remote fonts
 curl -sL https://termicons.mskelton.dev/termicons.ttf -o ~/Library/Fonts/termicons.ttf
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o ~/Library/Fonts/codicon.ttf
@@ -57,10 +54,6 @@ if [[ "$1" == "work" ]]; then
 	link work/bin ~/.local/bin-context
 	link work/home/.zshcontext ~/.zshcontext
 	link work/.config/fish/context.fish ~/.config/fish/context.fish
-else
-	link personal/bin ~/.local/bin-context
-	link personal/home/.zshcontext ~/.zshcontext
-	link personal/.config/fish/context.fish ~/.config/fish/context.fish
 fi
 
 # VS Code settings and keybindings
