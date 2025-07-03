@@ -37,8 +37,13 @@ source $HOME/.alias
 
 # Extra configs
 [ -f $HOME/.zshcustom ] && source $HOME/.zshcustom
-[ -f $HOME/.zshhome ] && source $HOME/.zshhome
-[ -f $HOME/.zshwork ] && source $HOME/.zshwork
+
+# Work or home config
+if [[ -f $HOME/.work ]]; then
+  source $HOME/.zshwork
+else
+  source $HOME/.zshhome
+fi
 
 # Path for custom binaries and tools
 export PATH="$HOME/.local/bin""\

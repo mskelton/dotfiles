@@ -13,8 +13,12 @@ source $HOME/.config/fish/keybindings.fish
 source $HOME/.config/fish/env.fish
 source $HOME/.config/fish/functions.fish
 
-# Source context-specific configuration (managed by Nix)
-test -f $HOME/.config/fish/context.fish; and source $HOME/.config/fish/context.fish
+# # Work or home config
+# if test -f $HOME/.work; then
+#   source $HOME/.config/fish/work.fish
+# else
+#   source $HOME/.config/fish/home.fish
+# fi
 
 # Setup fnm
 if type -q fnm
