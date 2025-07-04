@@ -256,6 +256,7 @@
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.enable": true,
   "kotlin.debugAdapter.enabled": false,
   "kotlin.languageServer.enabled": false,
   "Lua.window.statusBar": false,

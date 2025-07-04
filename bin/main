@@ -20,7 +20,7 @@ git fetch -p >/dev/null 2>&1
 printf "$clr\r✔︎ Pruned local branches\n"
 
 # Delete local branches that have been deleted on remote
-deleted_branches=$(git branch -vv | grep 'origin/.*: gone]')
+deleted_branches=$(git branch -vv | grep 'origin/.*: gone]' || true)
 branches=$(echo "$deleted_branches" | grep -v '^+' | awk '{print $1}' || true)
 
 if [ -n "$branches" ]; then
