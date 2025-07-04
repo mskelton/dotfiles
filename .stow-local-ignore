@@ -1,0 +1,23 @@
+\.DS_Store
+\.git.*
+
+# Docs
+^/README.*
+^/CONTRIBUTING.*
+^/LICENSE.*
+^/docs
+
+# Yarn
+^/.yarn.*
+^/node_modules
+^/package.json
+^/yarn.lock
+
+# Formatting
+^/.prettier.*
+^/.stylua.*
+
+# Scripts
+^/install
+^/scripts
+^/dottie
