@@ -20,9 +20,7 @@ After installing pre-requisites, run the following to setup the dotfiles.
 ```bash
 git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
-git submodule init
-git submodule update --remote
-./install
+stow .
 ```
 
 ### Additional setup

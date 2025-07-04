@@ -1,0 +1,4 @@
+--dir=system
+--target=~
+--no-folding
+--ignore=.DS_Store
