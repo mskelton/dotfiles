@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Use Touch ID for sudo
+sed -e 's/^#auth/auth/' /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
+
 # Disable spotlight indexing
 sudo mdutil -a -i off
 
