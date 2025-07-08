@@ -1,0 +1,9 @@
+packages:
+  - source: ./system
+    targets:
+      - "~"
+
+  - source: ./vscode
+    targets:
+      - ~/Library/Application Support/Code/User
+      - ~/Library/Application Support/Cursor/User

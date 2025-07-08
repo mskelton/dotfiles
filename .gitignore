@@ -14,11 +14,8 @@ nvim/spell/*.spl
 # local packages at home/work.
 nvim/lazy-lock.json
 
-# Tmux logs
-*.log
-
 # EmmyLua annotations for hammerspoon
 .hammerspoon/Spoons/EmmyLua.spoon/annotations/
 
-# Nix
-result/
+# Farm lockfile
+farm.lock
