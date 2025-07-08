@@ -53,6 +53,7 @@
   "chat.editor.fontSize": 15,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.shouldAllowCustomModes": true,
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.cpp.disabledLanguages": ["plaintext"],
   "debug.console.fontSize": 15,
   "debug.openDebug": "openOnDebugBreak",
@@ -140,7 +141,6 @@
     ".stylelintrc": "json",
     "*.keymap": "dts"
   },
-  "files.dialog.defaultPath": "/Users/mskelton/dev",
   "files.exclude": {
     "**/*.iml": true,
     "**/.classpath": true,
@@ -849,6 +849,5 @@
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "cursor.composer.shouldChimeAfterChatFinishes": true
+  "workbench.tree.renderIndentGuides": "none"
 }
