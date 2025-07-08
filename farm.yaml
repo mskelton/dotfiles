@@ -2,7 +2,7 @@ packages:
   - source: ./system
     targets:
       - "~"
-    no_fold:
+    fold:
       - ".claude/commands"
       - ".config/nvim"
       - ".hammerspoon"
