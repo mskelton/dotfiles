@@ -20,6 +20,7 @@ EOF
 		cat <<EOF
 	cask "thebrowsercompany-dia"
 	cask "telegram"
+	cask "zoom"
 EOF
 	fi
 }
@@ -64,6 +65,7 @@ $brew bundle --file=- <<EOF
 	brew "zsh-fast-syntax-highlighting"
 
 	# Casks
+	cask "android-studio"
 	cask "arc"
 	cask "figma"
 	cask "firefox"
@@ -74,8 +76,6 @@ $brew bundle --file=- <<EOF
 	cask "raycast"
 	cask "shottr"
 	cask "visual-studio-code"
-	cask "zoom"
-	cask "android-studio"
 
 	# Conditional casks
 	$(get_conditional_casks)
