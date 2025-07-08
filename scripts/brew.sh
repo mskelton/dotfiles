@@ -8,76 +8,75 @@ if ! command -v brew &>/dev/null; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install formulae
-formula=(
-	ast-grep
-	bash
-	blueutil
-	ccache
-	clang-format
-	cmake
-	cocoapods
-	fd
-	ffmpeg
-	fish
-	flyctl
-	fnm
-	fzf
-	gh
-	git
-	gnu-sed
-	go
-	imagemagick
-	jesseduffield/lazygit/lazygit
-	jq
-	just
-	neovim
-	ninja
-	ripgrep
-	starship
-	task
-	tmux
-	trash
-	tree-sitter
-	watchman
-	wget
-	withgraphite/tap/graphite
-	yq
-	zsh-autosuggestions
-	zsh-fast-syntax-highlighting
-)
+get_conditional_casks() {
+	if [[ -f "$HOME/.work" ]]; then
+		cat <<EOF
+	cask "mic-drop"
+	cask "slack"
+	cask "logi-options-plus"
+	cask "logitune"
+EOF
+	else
+		cat <<EOF
+	cask "dia"
+	cask "telegram"
+EOF
+	fi
+}
 
-casks=(
-	arc
-	figma
-	firefox
-	font-jetbrains-mono
-	font-symbols-only-nerd-font
-	hammerspoon
-	logi-options-plus
-	logitune
-	microsoft-edge
-	raycast
-	shottr
-	visual-studio-code
-	zoom
-)
+# Install from Brewfile using heredoc
+echo "Installing packages from Brewfile..."
+$brew bundle --file=- <<EOF
+	# Taps
+	tap "jesseduffield/lazygit"
+	tap "withgraphite/tap"
 
-# Personal/work casks
-if [[ -f "$HOME/.work" ]]; then
-	casks+=(
-		android-studio
-		mic-drop
-		slack
-	)
-else
-	casks+=(
-		android-studio
-		docker
-		telegram
-	)
-fi
+	# Formulae
+	brew "ast-grep"
+	brew "bash"
+	brew "blueutil"
+	brew "fd"
+	brew "ffmpeg"
+	brew "fish"
+	brew "flyctl"
+	brew "fnm"
+	brew "fzf"
+	brew "gh"
+	brew "git"
+	brew "gnu-sed"
+	brew "go"
+	brew "imagemagick"
+	brew "jesseduffield/lazygit/lazygit"
+	brew "jq"
+	brew "just"
+	brew "neovim"
+	brew "ripgrep"
+	brew "starship"
+	brew "task"
+	brew "tmux"
+	brew "trash"
+	brew "tree-sitter"
+	brew "watchman"
+	brew "wget"
+	brew "withgraphite/tap/graphite"
+	brew "yq"
+	brew "zsh-autosuggestions"
+	brew "zsh-fast-syntax-highlighting"
 
-# Install formula and casks
-$brew install "${formula[@]}"
-$brew install --cask "${casks[@]}"
+	# Casks
+	cask "arc"
+	cask "figma"
+	cask "firefox"
+	cask "font-jetbrains-mono"
+	cask "font-symbols-only-nerd-font"
+	cask "hammerspoon"
+	cask "microsoft-edge"
+	cask "raycast"
+	cask "shottr"
+	cask "visual-studio-code"
+	cask "zoom"
+	cask "android-studio"
+
+	# Conditional casks
+	$(get_conditional_casks)
+EOF
