@@ -15,7 +15,7 @@ nvim/spell/*.spl
 nvim/lazy-lock.json
 
 # EmmyLua annotations for hammerspoon
-.hammerspoon/Spoons/EmmyLua.spoon/annotations/
+EmmyLua.spoon/annotations/
 
 # Farm lockfile
 farm.lock
