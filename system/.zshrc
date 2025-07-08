@@ -47,14 +47,11 @@ fi
 
 # Path for custom binaries and tools
 export PATH="$HOME/.local/bin""\
-:$HOME/.local/bin-work""\
 :$HOME/.cargo/bin""\
 :$HOME/.local/share/npm/bin""\
 :$HOME/.bun/bin""\
 :$HOME/go/bin""\
-:$HOME/flutter/bin""\
 :$HOME/Library/Application Support/fnm""\
-:$HOME/.slack/bin""\
 :$ANDROID_HOME/emulator""\
 :$ANDROID_HOME/platform-tools""\
 :/opt/homebrew/bin""\
