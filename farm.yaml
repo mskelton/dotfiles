@@ -11,3 +11,6 @@ packages:
     targets:
       - ~/Library/Application Support/Code/User
       - ~/Library/Application Support/Cursor/User
+
+ignore:
+  - EmmyLua.spoon/annotations
