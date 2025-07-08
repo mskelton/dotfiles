@@ -1,0 +1,9 @@
+#compdef bm
+
+_bm_complete_bookmarks() {
+  bm --json | jq -r '.slug'
+}
+
+_arguments \
+  '1:bookmark:($(_bm_complete_bookmarks))' \
+  '*::args:->args'

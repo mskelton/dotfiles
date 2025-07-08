@@ -1,0 +1,9 @@
+#compdef lorem
+
+_arguments \
+  '-s[sentence]:Generate lorem sentences' \
+  '--sentence[Generate lorem sentences]' \
+  '-v[version]:Print the version of lorem' \
+  '--version[Print the version of lorem]' \
+  '-h[help]:Help' \
+  '--help[Help]'

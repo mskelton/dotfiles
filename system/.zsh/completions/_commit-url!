@@ -1,0 +1,4 @@
+#compdef commit-url!
+
+# This is a wrapper for commit-url completion
+_commit-url "$@"

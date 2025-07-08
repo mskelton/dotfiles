@@ -1,0 +1,9 @@
+#compdef bob
+
+_bob_list_scripts() {
+  find $HOME/dev/bob/bin -type f -print | xargs -n 1 basename
+}
+
+_arguments \
+  '1:script:($(_bob_list_scripts))' \
+  '*::args:->args'

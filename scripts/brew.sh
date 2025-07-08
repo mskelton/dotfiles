@@ -43,6 +43,8 @@ formula=(
 	wget
 	withgraphite/tap/graphite
 	yq
+	zsh-autosuggestions
+	zsh-fast-syntax-highlighting
 )
 
 casks=(

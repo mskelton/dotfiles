@@ -1,0 +1,11 @@
+#compdef pkg
+
+_get_package_json_keys() {
+  if [[ -e package.json ]]; then
+    jq -r 'keys | join("\n")' package.json
+  fi
+}
+
+_arguments \
+  '1:key:($(_get_package_json_keys))' \
+  '*::args:->args'

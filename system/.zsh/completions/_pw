@@ -1,0 +1,8 @@
+#compdef pw
+
+_arguments \
+  '1:command:(screenshots video trace)' \
+  'screenshots:View test screenshots' \
+  'video:View test video' \
+  'trace:Open test trace' \
+  '*::args:->args'

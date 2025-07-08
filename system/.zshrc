@@ -7,6 +7,11 @@ setopt HIST_NO_STORE          # Do not save history commands
 setopt HIST_REDUCE_BLANKS     # Strip superfluous blanks
 setopt INC_APPEND_HISTORY     # Don’t wait for shell to exit to save history lines
 
+# Enable completion
+fpath=($HOME/.zsh/completions $fpath)
+autoload -U compinit
+compinit
+
 # Use Emacs keybindings
 set -o emacs
 
@@ -56,3 +61,7 @@ export PATH="$HOME/.local/bin""\
 :$ANDROID_HOME/platform-tools""\
 :/opt/homebrew/bin""\
 :$PATH"
+
+# Plugins
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
