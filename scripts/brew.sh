@@ -35,7 +35,6 @@ formula=(
 	ninja
 	ripgrep
 	starship
-	stow
 	task
 	tmux
 	trash

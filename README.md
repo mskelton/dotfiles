@@ -20,7 +20,9 @@ After installing pre-requisites, run the following to setup the dotfiles.
 ```bash
 git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
-stow .
+ln hooks/pre-commit .git/hooks/pre-commit
+curl -LSfs https://go.mskelton.dev/farm/install | sh
+farm link
 ```
 
 ### Additional setup
