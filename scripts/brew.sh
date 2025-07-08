@@ -18,7 +18,7 @@ get_conditional_casks() {
 EOF
 	else
 		cat <<EOF
-	cask "dia"
+	cask "thebrowsercompany-dia"
 	cask "telegram"
 EOF
 	fi
