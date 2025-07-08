@@ -2,6 +2,10 @@ packages:
   - source: ./system
     targets:
       - "~"
+    no_fold:
+      - ".claude/commands"
+      - ".config/nvim"
+      - ".hammerspoon"
 
   - source: ./vscode
     targets:
