@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Check if project name is provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <project-name>"
+  exit 1
+fi
+
+PROJECT_NAME="$1"
+PROJECT_PATH="$HOME/dev/$PROJECT_NAME"
+
+mkdir -p "$PROJECT_PATH"
+cd "$PROJECT_PATH"
+git init
+cursor .
