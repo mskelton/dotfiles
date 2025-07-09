@@ -433,6 +433,11 @@
       "silent": true
     },
     {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"],
+      "silent": true
+    },
+    {
       "before": ["g", "O"],
       "commands": ["editor.action.organizeImports"],
       "silent": true
