@@ -823,6 +823,12 @@
       "before": ["K"],
       "commands": ["editor.action.moveLinesUpAction"],
       "silent": true
+    },
+    // Sort selected lines
+    {
+      "before": ["<leader>", "s", "i"],
+      "commands": ["editor.action.sortLinesAscending"],
+      "silent": true
     }
   ],
   "window.dialogStyle": "custom",

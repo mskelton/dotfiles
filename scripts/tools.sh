@@ -51,6 +51,7 @@ cargo install --git https://github.com/mskelton/dtsfmt
 
 # Install go binaries
 go install github.com/mskelton/byte@latest
+go install github.com/mskelton/git-cleanup@latest
 go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pr@latest
 go install github.com/mskelton/prs@latest
