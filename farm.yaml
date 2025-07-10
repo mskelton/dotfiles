@@ -6,7 +6,6 @@ packages:
       - ".claude/commands"
       - ".config/nvim"
       - ".hammerspoon"
-      - ".local/bin"
       - ".zsh/completions"
 
   - source: ./vscode
