@@ -31,6 +31,7 @@ $brew bundle --file=- <<EOF
 	# Taps
 	tap "jesseduffield/lazygit"
 	tap "withgraphite/tap"
+	tap "xo/xo"
 
 	# Formulae
 	brew "ast-grep"
@@ -47,7 +48,7 @@ $brew bundle --file=- <<EOF
 	brew "gnu-sed"
 	brew "go"
 	brew "imagemagick"
-	brew "jesseduffield/lazygit/lazygit"
+	brew "lazygit"
 	brew "jq"
 	brew "just"
 	brew "neovim"
@@ -59,7 +60,8 @@ $brew bundle --file=- <<EOF
 	brew "tree-sitter"
 	brew "watchman"
 	brew "wget"
-	brew "withgraphite/tap/graphite"
+	brew "graphite"
+	brew "usql"
 	brew "yq"
 	brew "zsh-autosuggestions"
 	brew "zsh-fast-syntax-highlighting"

@@ -195,7 +195,10 @@
   // Open recent folders
   {
     "key": "cmd+shift+o",
-    "command": "workbench.action.openRecent"
+    "command": "open-project.open",
+    "args": {
+      "cwd": "~/dev"
+    }
   },
   {
     "key": "ctrl+r",
@@ -225,7 +228,10 @@
   },
   {
     "key": "space f o",
-    "command": "workbench.action.openRecent",
+    "command": "open-project.open",
+    "args": {
+      "cwd": "~/dev"
+    },
     "when": "!editorFocus && !inputFocus"
   },
   {

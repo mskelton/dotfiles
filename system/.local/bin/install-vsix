@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Install the latest *.visx file
 
+npx vsce package
 cursor --install-extension "$(ls -1v *.vsix | tail -n 1)"
