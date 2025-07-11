@@ -1,9 +1,5 @@
 # Dotfiles
 
-My dotfiles
-
-## Installation
-
 _If on a work device, run `touch ~/.work` before the following commands._
 
 ```bash
@@ -24,8 +20,6 @@ ln hooks/pre-commit .git/hooks/pre-commit
 curl -LSfs https://go.mskelton.dev/farm/install | sh
 farm link
 ```
-
-### Additional setup
 
 - [Setup tools](https://github.com/mskelton/dotfiles/tree/main/docs/tools.md)
 - [Install shortcuts](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
