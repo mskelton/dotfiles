@@ -358,5 +358,14 @@
     "key": "shift+cmd+j",
     "command": "-aiSettings.action.open",
     "when": "!isSettingsPaneOpen"
+  },
+  // Git
+  {
+    "key": "cmd+k cmd+p",
+    "command": "git.push"
+  },
+  {
+    "key": "cmd+k shift+cmd+p",
+    "command": "git.pull"
   }
 ]
