@@ -166,11 +166,6 @@
     "key": "cmd+m",
     "command": "editor.cpp.toggle"
   },
-  // Remove AI chat as much as possible
-  {
-    "key": "cmd+l",
-    "command": "-aichat.newchataction"
-  },
   // Use cmd+shift+k for Cursor AI popup
   {
     "key": "shift+cmd+k",
@@ -192,7 +187,7 @@
     "key": "cmd+k",
     "command": "-cursorai.action.generateInTerminal"
   },
-  // Open recent folders
+  // Open projects
   {
     "key": "cmd+shift+o",
     "command": "open-project.open",
@@ -362,10 +357,21 @@
   // Git
   {
     "key": "cmd+k cmd+p",
-    "command": "git.push"
+    "command": "git.push",
+    "when": "!terminalFocus"
   },
   {
     "key": "cmd+k shift+cmd+p",
-    "command": "git.pull"
+    "command": "git.pull",
+    "when": "!terminalFocus"
+  },
+  // Quick switch between compose modes
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+l",
+    "command": "composerMode.chat"
   }
 ]
