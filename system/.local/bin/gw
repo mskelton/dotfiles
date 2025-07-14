@@ -28,5 +28,4 @@ eval "$(direnv export bash)"
 gt track
 
 # Reload Cursor to the new directory
-read -n 1 -s -r -p "Press any key to continue: "
-cursor "$dir"
+cursor -n "$dir"

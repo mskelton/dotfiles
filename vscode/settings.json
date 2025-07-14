@@ -98,7 +98,7 @@
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [80],
   "editor.selectionHighlight": false,
-  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.maxLineCount": 5,
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
   "editor.suggestSelection": "first",
