@@ -19,8 +19,8 @@ set -o emacs
 bindkey '^B' backward-word
 bindkey '^F' forward-word
 
-# Setup starship prompt
-eval "$(starship init zsh)"
+# Setup basic prompt
+PROMPT='%F{%(?.green.red)}❯%f '
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
