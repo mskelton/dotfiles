@@ -302,6 +302,12 @@
     "NODE_ENV": null
   },
   "terminal.integrated.fontSize": 15,
+  "terminal.integrated.profiles.osx": {
+    "Claude": {
+      "path": "claude",
+      "args": ["--dangerously-skip-permissions"]
+    }
+  },
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,

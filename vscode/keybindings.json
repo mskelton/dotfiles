@@ -304,18 +304,7 @@
   },
   {
     "key": "cmd+escape",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "workbench.action.createTerminalEditorSide",
-        {
-          "command": "workbench.action.terminal.sendSequence",
-          "args": {
-            "text": "clear && c\n"
-          }
-        }
-      ]
-    },
+    "command": "ramp.run-claude-code",
     "when": "terminalProcessSupported"
   },
   // Navigate between editors/terminals, in the current group
