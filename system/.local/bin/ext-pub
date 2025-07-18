@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # Publish a VS Code extension
 
+# Check if package.json has private: true
+if jq -e '.private == true' package.json >/dev/null 2>&1; then
+  echo "error: cannot publish private packages"
+  exit 1
+fi
+
 vsce publish
 ovsx publish
