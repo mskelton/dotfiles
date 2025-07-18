@@ -356,13 +356,23 @@
   },
   // Git
   {
-    "key": "cmd+k cmd+p",
-    "command": "git.push",
+    "key": "cmd+k p",
+    "command": "ramp.git-push-force-with-lease",
     "when": "!terminalFocus"
   },
   {
-    "key": "cmd+k shift+cmd+p",
+    "key": "cmd+k shift+p",
     "command": "git.pull",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+k a",
+    "command": "ramp.git-append",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+k s",
+    "command": "ramp.git-sync",
     "when": "!terminalFocus"
   },
   // Quick switch between compose modes
@@ -373,5 +383,10 @@
   {
     "key": "cmd+l",
     "command": "composerMode.chat"
+  },
+  // Go to symbol
+  {
+    "key": "cmd+y",
+    "command": "workbench.action.gotoSymbol"
   }
 ]

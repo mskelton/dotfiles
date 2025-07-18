@@ -56,6 +56,7 @@
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.windowSwitcher.sidebarHoverCollapsed": true,
   "debug.console.fontSize": 15,
   "debug.onTaskErrors": "abort",
   "debug.openDebug": "openOnDebugBreak",
@@ -84,14 +85,13 @@
   "editor.gotoLocation.multipleReferences": "gotoAndPeek",
   "editor.gotoLocation.multipleTypeDefinitions": "gotoAndPeek",
   "editor.guides.bracketPairsHorizontal": false,
-  "editor.guides.highlightActiveBracketPair": false,
   "editor.guides.highlightActiveIndentation": false,
   "editor.guides.indentation": false,
   "editor.inlayHints.enabled": "off",
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
-  "editor.matchBrackets": "never",
+  "editor.matchBrackets": "near",
   "editor.occurrencesHighlight": "off",
   "editor.rename.enablePreview": false,
   "editor.renderControlCharacters": true,
@@ -221,10 +221,6 @@
   "gitlens.plusFeatures.enabled": false,
   "gitlens.remotes": [
     {
-      "domain": "github.com",
-      "type": "GitHub"
-    },
-    {
       "regex": "([^:]+):(.+)",
       "type": "Custom",
       "urls": {
@@ -281,7 +277,7 @@
   "outline.showKeys": false,
   "outline.showProperties": false,
   "outline.showVariables": false,
-  "playwright.reuseBrowser": false,
+  "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
   "prettier.requireConfig": true,
   "redhat.telemetry.enabled": false,
