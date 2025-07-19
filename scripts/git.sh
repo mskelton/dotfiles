@@ -11,12 +11,9 @@ work_keyfile="$HOME/.ssh/id_ed25519_sk_work"
 ssh-keygen -t ed25519 -N '' -f "$home_keyfile" -C "$personal_email"
 
 if [[ -f "$HOME/.work" ]]; then
-	ssh-keygen -t ed25519 -N '' -f "$work_keyfile" -C "$work_email"
+  ssh-keygen -t ed25519 -N '' -f "$work_keyfile" -C "$work_email"
 
-	cat <<EOF >"$HOME/.ssh/config"
-Host *
-  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
+  cat <<EOF >"$HOME/.ssh/config"
 Host home personal
   HostName github.com
   User git
@@ -26,11 +23,12 @@ Host home personal
 Host github.com work
   HostName github.com
   User git
+  IdentityAgent "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   IdentityFile $work_keyfile
   IdentitiesOnly yes
 EOF
 else
-	cat <<EOF >"$HOME/.ssh/config"
+  cat <<EOF >"$HOME/.ssh/config"
 Host github.com
   User git
   IdentityFile $home_keyfile
