@@ -2,30 +2,38 @@
 # Create a new worktree and open it in Cursor
 # Usage: gw <branch_name>
 
-# Check if a branch name is provided
 if [ -z "$1" ]; then
 	echo "Usage: gw <branch_name>"
 	exit 1
 fi
 
-cd "$HOME/dev/web"
+WEB_PATH="$HOME/dev/web"
+BRANCH_PREFIX=ms/
+LINEAR_PREFIX=mskelton/
 
-# Clean mskelton/ prefix that linear adds
-branch=${1/mskelton\//}
+cd "$WEB_PATH"
 
-dir="$HOME/dev/web-$branch"
-branch=ms/$branch
+# Order matters here
+WORKTREE_BRANCH=${1/$LINEAR_PREFIX/}
+WORKTREE_PATH="$WEB_PATH-${WORKTREE_BRANCH//\//-}"
+WORKTREE_BRANCH="$BRANCH_PREFIX$WORKTREE_BRANCH"
 
 # Create a new worktree
-git worktree add -b "$branch" "$dir"
+echo git worktree add -b "$WORKTREE_BRANCH" "$WORKTREE_PATH"
+exit 1
+
+# Copy over files
+mkdir -p "$WORKTREE_PATH/.vscode"
+cp "$WEB_PATH/.config/.env.local" "$WORKTREE_PATH/.config/.env.local"
+cp "$WEB_PATH/.vscode/settings.json" "$WORKTREE_PATH/.vscode/settings.json"
 
 # Reload direnv to install deps
-cd "$dir"
+cd "$WORKTREE_PATH"
 direnv allow .
 eval "$(direnv export bash)"
 
 # Configure Graphite
 gt track
 
-# Reload Cursor to the new directory
-cursor -n "$dir"
+# Open Cursor to the new directory
+cursor -n "$WORKTREE_PATH"
