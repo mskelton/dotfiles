@@ -55,6 +55,7 @@ $brew bundle --file=- <<EOF
 	brew "ripgrep"
 	brew "starship"
 	brew "task"
+	brew "timg"
 	brew "tmux"
 	brew "trash"
 	brew "tree-sitter"

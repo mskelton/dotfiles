@@ -33,7 +33,11 @@ view_test_screenshots() {
 			kitty +kitten icat --align left "$file"
 		done
 	else
-		cursor $files
+		# cursor $files
+		for file in $files; do
+			echo "$file"
+			timg -p sixel "$file"
+		done
 	fi
 
 	# If no files were found, return an error

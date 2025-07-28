@@ -311,6 +311,7 @@
   "terminal.external.osxExec": "kitty.app",
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.enableImages": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.env.osx": {
     "NODE_ENV": null
