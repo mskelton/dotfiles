@@ -1,5 +1,5 @@
 # Environment variables
-export ANTHROPIC_MODEL="opus"
+export ANTHROPIC_MODEL="sonnet"
 export ANTHROPIC_SMALL_FAST_MODEL="haiku"
 export IGNORE_SKIP_LIST=1
 

@@ -3,6 +3,7 @@ return {
 	arc = "Arc",
 	chat_gpt = "ChatGPT",
 	cursor = "Cursor",
+	chrome = "Google Chrome",
 	figma = "Figma",
 	finder = "Finder",
 	kitty = "kitty",
