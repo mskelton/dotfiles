@@ -7,11 +7,23 @@ packages:
       - ".config/nvim"
       - ".hammerspoon"
       - ".zsh/completions"
+    environments:
+      - home
+      - work
+
+  - source: ./home
+    targets:
+      - "~"
+    environments:
+      - home
 
   - source: ./vscode
     targets:
       - ~/Library/Application Support/Code/User
       - ~/Library/Application Support/Cursor/User
+    environments:
+      - home
+      - work
 
 ignore:
   - EmmyLua.spoon/annotations

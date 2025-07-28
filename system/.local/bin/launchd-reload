@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Reload all my custom launchd agents
 
-for file_path in "$HOME/dev/dotfiles/launchd/"*; do
+for file_path in "$HOME/dev/dotfiles/home/Library/LaunchAgents/"*; do
 	path="$HOME/Library/LaunchAgents/$(basename "$file_path")"
 
 	launchctl bootout "gui/$(id -u)" "$path"
