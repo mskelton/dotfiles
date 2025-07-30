@@ -887,7 +887,6 @@
     "errorLens.warningMessageBackground": "#ff942f19"
   },
   "workbench.colorTheme": "Catppuccin Macchiato",
-  "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": false,
