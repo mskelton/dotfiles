@@ -19,8 +19,7 @@ WORKTREE_PATH="$WEB_PATH-${WORKTREE_BRANCH//\//-}"
 WORKTREE_BRANCH="$BRANCH_PREFIX$WORKTREE_BRANCH"
 
 # Create a new worktree
-echo git worktree add -b "$WORKTREE_BRANCH" "$WORKTREE_PATH"
-exit 1
+git worktree add -b "$WORKTREE_BRANCH" "$WORKTREE_PATH"
 
 # Copy over files
 mkdir -p "$WORKTREE_PATH/.vscode"
