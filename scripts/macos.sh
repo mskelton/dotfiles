@@ -130,11 +130,11 @@ disable_shortcut="<dict><key>enabled</key><false/></dict>"
 
 enabled_shortcuts=(
   27  # Move focus to next window
-  52  # Dock hiding
+  52  # Toggle dock hiding
   59  # Toggle voice over
+  53  # Brightness down
+  54  # Brightness up
   163 # Toggle do not disturb
-  183 # Brightness down
-  184 # Brightness up
 )
 
 shortcuts_output=$(defaults read com.apple.symbolichotkeys AppleSymbolicHotKeys)
