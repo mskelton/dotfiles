@@ -151,5 +151,14 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 $dis
 #  ^   Control
 
 # Figma
-defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add "Show/Hide UI" -string '@$u'
-defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add "Copy as SVG" -string '@$s'
+defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Show/Hide UI' -string '@$u'
+defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Copy as SVG' -string '@$s'
+
+# Chrome
+for app in "Google Chrome" "Google Chrome Canary" "Google Chrome Beta" "Google Chrome Dev"; do
+  defaults write "$app" NSUserKeyEquivalents -dict-add 'Select Next Tab' -string '@e'
+  defaults write "$app" NSUserKeyEquivalents -dict-add 'Select Previous Tab' -string '@$e'
+  defaults write "$app" NSUserKeyEquivalents -dict-add 'Close Other Tabs' -string '@$k'
+done
+
+killall cfprefsd

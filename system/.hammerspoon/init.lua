@@ -61,7 +61,7 @@ hs.hotkey.bind(constants.keys.layer_key, "h", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "j", function()
-	hs.application.launchOrFocus(apps.arc)
+	hs.application.launchOrFocus(apps.chrome)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
@@ -104,7 +104,7 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
-		{ apps.arc,        nil,                     screens.laptop, hs.layout.maximized },
+		{ apps.chrome,     nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.kitty,      nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.cursor,     nil,                     screens.laptop, hs.layout.maximized },
 		{ apps.vscode,     nil,                     screens.laptop, hs.layout.maximized },
@@ -117,7 +117,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.zoom,       "Zoom Meeting",          screens.laptop, hs.layout.maximized },
 		{ apps.zoom,       "Zoom Workplace",        screens.laptop, layout.put_center },
 	}, {
-		{ apps.arc,        nil,                     screens.primary, hs.layout.maximized },
+		{ apps.chrome,     nil,                     screens.primary, hs.layout.maximized },
 		{ apps.kitty,      nil,                     screens.primary, hs.layout.maximized },
 		{ apps.cursor,     nil,                     screens.primary, hs.layout.maximized },
 		{ apps.vscode,     nil,                     screens.primary, hs.layout.maximized },
@@ -134,7 +134,7 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
-		{ apps.arc,        nil,                     screens.laptop, hs.layout.left50 },
+		{ apps.chrome,     nil,                     screens.laptop, hs.layout.left50 },
 		{ apps.kitty,      nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.cursor,     nil,                     screens.laptop, hs.layout.right50 },
 		{ apps.vscode,     nil,                     screens.laptop, hs.layout.right50 },
@@ -147,7 +147,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.zoom,       "Zoom Meeting",          screens.laptop, hs.layout.left50 },
 		{ apps.zoom,       "Zoom Workplace",        screens.laptop, layout.put_left },
 	}, {
-		{ apps.arc,        nil,                     screens.primary, hs.layout.left50 },
+		{ apps.chrome,     nil,                     screens.primary, hs.layout.left50 },
 		{ apps.kitty,      nil,                     screens.primary, hs.layout.right50 },
 		{ apps.cursor,     nil,                     screens.primary, hs.layout.right50 },
 		{ apps.vscode,     nil,                     screens.primary, hs.layout.right50 },
