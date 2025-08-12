@@ -128,19 +128,25 @@ defaults -currentHost write com.apple.controlcenter Sound -int 16
 
 disable_shortcut="<dict><key>enabled</key><false/></dict>"
 
-# Disable screenshot shortcuts to allow Shottr to use them
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 28 $disable_shortcut
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 $disable_shortcut
+enabled_shortcuts=(
+  27  # Move focus to next window
+  52  # Dock hiding
+  59  # Toggle voice over
+  163 # Toggle do not disturb
+  183 # Brightness down
+  184 # Brightness up
+)
 
-# Disable input source switching, it conflicts with Neovim autocompletion
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 60 $disable_shortcut
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 61 $disable_shortcut
+shortcuts_output=$(defaults read com.apple.symbolichotkeys AppleSymbolicHotKeys)
+shortcut_ids=$(echo "$shortcuts_output" | grep -E '^[[:space:]]*[0-9]+[[:space:]]*=' | sed 's/^[[:space:]]*\([0-9]*\).*/\1/')
 
-# Disable spotlight search
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 $disable_shortcut
+for id in $shortcut_ids; do
+  if [[ " ${enabled_shortcuts[@]} " =~ " ${id} " ]]; then
+    continue
+  fi
 
-# Disable Switch to Desktop 1, it conflicts with Arc shortcuts
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 $disable_shortcut
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$id" "$disable_shortcut"
+done
 
 ################################################################################
 ### APP SHORTCUTS ##############################################################
@@ -155,10 +161,10 @@ defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Show/Hide UI' -
 defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Copy as SVG' -string '@$s'
 
 # Chrome
-for app in "Google Chrome" "Google Chrome Canary" "Google Chrome Beta" "Google Chrome Dev"; do
-  defaults write "$app" NSUserKeyEquivalents -dict-add 'Select Next Tab' -string '@e'
-  defaults write "$app" NSUserKeyEquivalents -dict-add 'Select Previous Tab' -string '@$e'
-  defaults write "$app" NSUserKeyEquivalents -dict-add 'Close Other Tabs' -string '@$k'
+for app in "Chrome" "Chrome.canary" "Chrome.beta" "Chrome.dev"; do
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Next Tab' -string '@e'
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Previous Tab' -string '@$e'
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Close Other Tabs' -string '@$k'
 done
 
 killall cfprefsd
