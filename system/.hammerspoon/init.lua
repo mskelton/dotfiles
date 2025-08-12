@@ -76,7 +76,7 @@ hs.hotkey.bind(constants.keys.layer_key, ";", function()
 	if utils.is_work then
 		hs.eventtap.keyStroke({ "option", "shift" }, "down")
 	else
-		hs.application.launchOrFocus(apps.vscode)
+		hs.application.launchOrFocus(apps.android_studio)
 	end
 end)
 
