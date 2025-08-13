@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Pull default branch for the repo/worktree and clean up deleted branches
+set -euo pipefail
+
+default_branch=$(git default)
+
+# Escape sequence to clear the line
+clr="\033[2K"
+
+if [ "$(git branch --show-current)" != "$default_branch" ]; then
+  git checkout "$default_branch" >/dev/null 2>&1
+fi
+
+printf "○ Pulling latest changes"
+git pull origin "$default_branch" >/dev/null 2>&1
+printf "$clr\r✔︎ Pulled latest changes\n"
+
+printf "○ Pruning local branches"
+git fetch -p >/dev/null 2>&1
+printf "$clr\r✔︎ Pruned local branches\n"
+
+# Delete local branches that have been deleted on remote
+deleted_branches=$(git branch -vv | grep 'origin/.*: gone]' || true)
+branches=$(echo "$deleted_branches" | grep -v '^+' | awk '{print $1}' || true)
+
+if [ -n "$branches" ]; then
+  for branch in $branches; do
+    git branch -D "$branch" >/dev/null 2>&1
+    echo "✔︎ Deleted branch: $branch"
+  done
+fi
+
+# Reset worktrees when their branches have been deleted
+worktree_branches=$(echo "$deleted_branches" | grep '^+' | awk '{print $2}' || true)
+
+if [ -n "$worktree_branches" ]; then
+  for branch in $worktree_branches; do
+    echo "Removing worktree for branch: $branch"
+    #     # Lookup worktree path by branch name
+    #     worktree_path=$(git worktree list --porcelain | grep -B2 "^branch refs/heads/$branch$" | grep '^worktree' | sed 's/worktree //' | head -1 || true)
+    #     printf "○ Deleting worktree: ${worktree_path/$HOME\//\~/}"
+    #
+    #     if [ -n "$worktree_path" ]; then
+    #       git worktree remove "$worktree_path" >/dev/null 2>&1
+    #       git branch -D "$branch" >/dev/null 2>&1
+    #       printf "$clr\r✔︎ Deleted worktree: ${worktree_path/$HOME\//\~/}\n"
+    #     else
+    #       printf "$clr\r✖︎︎ Could not find worktree path for branch $branch\n"
+    #     fi
+  done
+fi
