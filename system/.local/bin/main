@@ -26,7 +26,7 @@ branches=$(echo "$deleted_branches" | grep -v '^+' | awk '{print $1}' || true)
 if [ -n "$branches" ]; then
   for branch in $branches; do
     git branch -D "$branch" >/dev/null 2>&1
-    echo "✔︎ Deleted branch: $branch"
+    printf "✔︎ Deleted branch: $branch\n"
   done
 fi
 
@@ -35,17 +35,19 @@ worktree_branches=$(echo "$deleted_branches" | grep '^+' | awk '{print $2}' || t
 
 if [ -n "$worktree_branches" ]; then
   for branch in $worktree_branches; do
-    echo "Removing worktree for branch: $branch"
-    #     # Lookup worktree path by branch name
-    #     worktree_path=$(git worktree list --porcelain | grep -B2 "^branch refs/heads/$branch$" | grep '^worktree' | sed 's/worktree //' | head -1 || true)
-    #     printf "○ Deleting worktree: ${worktree_path/$HOME\//\~/}"
-    #
-    #     if [ -n "$worktree_path" ]; then
-    #       git worktree remove "$worktree_path" >/dev/null 2>&1
-    #       git branch -D "$branch" >/dev/null 2>&1
-    #       printf "$clr\r✔︎ Deleted worktree: ${worktree_path/$HOME\//\~/}\n"
-    #     else
-    #       printf "$clr\r✖︎︎ Could not find worktree path for branch $branch\n"
-    #     fi
+    # Lookup worktree path by branch name
+    worktree_path=$(git worktree list --porcelain | grep -B2 "^branch refs/heads/$branch$" | grep '^worktree' | sed 's/worktree //' | head -1 || true)
+    printf "○ Resetting worktree: ${worktree_path/$HOME\//\~/}"
+
+    if [ -n "$worktree_path" ]; then
+      worktree_branch=$(basename "$worktree_path" | sed 's/^web-//')
+      git -C "$worktree_path" checkout -b "$worktree_branch" >/dev/null 2>&1
+      git branch -D "$branch" >/dev/null 2>&1
+
+      printf "$clr\r✔︎ Reset worktree: ${worktree_path/$HOME\//\~/}\n"
+      printf "✔︎ Deleted branch: $branch\n"
+    else
+      printf "$clr\r✖︎︎ Could not find worktree path for branch $branch\n"
+    fi
   done
 fi

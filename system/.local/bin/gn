@@ -1,4 +1,24 @@
 #!/usr/bin/env bash
 # Graphite new branch
 
+# If we are in a worktree, we handle this command a bit special
+if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
+  repo_path=$(git rev-parse --show-toplevel)
+  worktree_name=$(basename "$repo_path" | sed 's/^web-//')
+  current_branch=$(git branch --show-current)
+
+  # Check if current branch matches worktree branch
+  if [ "$current_branch" = "$worktree_name" ]; then
+    # Rename branch with prefix and format commit message as branch name
+    branch_name=$(echo "$*" | sed 's/[^a-zA-Z0-9]/-/g; s/-\{2,\}/-/g' | tr '[:upper:]' '[:lower:]')
+
+    gt track
+    git commit -am "$*"
+    gt rename "ms/$branch_name"
+
+    exit 0
+  fi
+fi
+
+# If not in a fresh worktree, just do a normal gt create
 gt c -am "$*"

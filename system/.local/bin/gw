@@ -8,18 +8,10 @@ if [ -z "$1" ]; then
 fi
 
 WEB_PATH="$HOME/dev/web"
-BRANCH_PREFIX=ms/
-LINEAR_PREFIX=mskelton/
-
-cd "$WEB_PATH"
-
-# Order matters here
-WORKTREE_BRANCH=${1/$LINEAR_PREFIX/}
-WORKTREE_PATH="$WEB_PATH-${WORKTREE_BRANCH//\//-}"
-WORKTREE_BRANCH="$BRANCH_PREFIX$WORKTREE_BRANCH"
+WORKTREE_PATH="$WEB_PATH-$1"
 
 # Create a new worktree
-git worktree add -b "$WORKTREE_BRANCH" "$WORKTREE_PATH"
+git -C "$WEB_PATH" worktree add -b "$1" "$WORKTREE_PATH"
 
 # Copy over files
 mkdir -p "$WORKTREE_PATH/.vscode"
