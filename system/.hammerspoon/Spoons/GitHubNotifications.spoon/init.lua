@@ -237,8 +237,6 @@ end
 --- Callback fired when the timer triggers
 --- @param source string
 function M:sync(source)
-	self.log.d("Syncing GitHub notifications. Triggerd by " .. source)
-
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
@@ -375,6 +373,7 @@ end
 --- Open the GitHub notifications page and clear the count
 function M:open_notifications()
 	self.last_checked = os.date("!%Y-%m-%dT%H:%M:%SZ")
+	hs.settings.set("github_last_checked", self.last_checked)
 	self:update_count(0)
 	hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
 end
@@ -389,6 +388,7 @@ end
 
 function M:start()
 	self:get_token()
+	self.last_checked = hs.settings.get("github_last_checked") or nil
 
 	if self.menu then
 		self.menu:returnToMenuBar()
