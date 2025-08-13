@@ -878,7 +878,7 @@
   "window.newWindowDimensions": "inherit",
   "window.openFoldersInNewWindow": "off",
   "window.systemColorTheme": "dark",
-  "window.title": "${rootName}${separator}${activeRepositoryBranchName}",
+  "window.title": "${activeRepositoryBranchName}${separator}${rootName}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
     "editorSuggestWidget.selectedBackground": "#2f334d",
