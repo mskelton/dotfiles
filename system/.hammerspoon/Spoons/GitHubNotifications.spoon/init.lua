@@ -226,7 +226,6 @@ function M:mark_as_read(notification_id, callback)
 		["Content-Type"] = "application/json",
 	}, function(status)
 		if status == 205 or status == 200 then
-			self.log.d("Marked notification " .. notification_id .. " as read")
 			callback(true)
 		else
 			self.log.d("Failed to mark notification as read: " .. status)
@@ -262,10 +261,6 @@ function M:sync(source)
 			return nil
 		end
 
-		self.log.d("Received " .. #notifications .. " notifications")
-		self.log.d("Last checked: " .. (self.last_checked or "nil"))
-		-- self.log.d(hs.inspect(notifications))
-
 		notifications = hs.fnutils.filter(notifications, function(notification)
 			--- Ignore read notifications
 			if notification.unread == false then
@@ -284,7 +279,7 @@ function M:sync(source)
 
 			--- Compare the last time notifications were checked to when the
 			--- notifications where last viewed on GitHub.
-			return notification.last_read_at > self.last_checked
+			return notification.last_read_at < self.last_checked
 		end)
 
 		--- Process pull request notifications with only bot comments
@@ -307,7 +302,6 @@ function M:sync(source)
 
 						processed_count = processed_count - 1
 						if processed_count == 0 then
-							self.log.d("Unread notifications after filtering: " .. #pending_notifications)
 							self:update_count(#pending_notifications)
 						end
 					else
@@ -328,7 +322,6 @@ function M:sync(source)
 
 							--- If all notifications have been processed, update the count
 							if processed_count == 0 then
-								self.log.d("Unread notifications after filtering: " .. #pending_notifications)
 								self:update_count(#pending_notifications)
 							end
 						end)
@@ -341,7 +334,6 @@ function M:sync(source)
 
 		--- If no PR notifications to process, update count immediately
 		if processed_count == 0 then
-			self.log.d("Unread notifications: " .. #pending_notifications)
 			self:update_count(#pending_notifications)
 		end
 	end, "ignoreLocalAndRemoteCache")
