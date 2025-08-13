@@ -53,6 +53,7 @@
   "chat.editor.fontSize": 15,
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
+  "cursor.composer.queueMessageDefaultBehavior": "queue",
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.cpp.disabledLanguages": ["plaintext"],
@@ -877,7 +878,7 @@
   "window.newWindowDimensions": "inherit",
   "window.openFoldersInNewWindow": "off",
   "window.systemColorTheme": "dark",
-  "window.title": "${rootName}",
+  "window.title": "${rootName}${separator}${activeRepositoryBranchName}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
     "editorSuggestWidget.selectedBackground": "#2f334d",
@@ -900,6 +901,5 @@
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "cursor.composer.queueMessageDefaultBehavior": "queue"
+  "workbench.tree.renderIndentGuides": "none"
 }
