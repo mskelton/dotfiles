@@ -1,4 +1,20 @@
 #!/usr/bin/env bash
 # Checkout main branch
 
-git checkout "$(git default)"
+default_branch=$(git default)
+
+# If we are in a worktree, we handle this command a bit special
+if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
+  worktree_branch=$(basename $(pwd) | sed 's/^web-//')
+
+  # Check if branch exists
+  if git show-ref --verify --quiet refs/heads/$worktree_branch; then
+    # Branch exists, checkout and rebase on master
+    git rebase "origin/$default_branch" "$worktree_branch"
+  else
+    # Branch doesn't exist, create new branch from master
+    git checkout -b "$worktree_branch" "origin/$default_branch"
+  fi
+else
+  git checkout "$default_branch"
+fi
