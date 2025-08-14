@@ -110,9 +110,9 @@ end
 
 --- Fetch all comments for a pull request (issue comments, reviews, and review comments)
 --- @param url string
---- @param callback fun(all_users: table|nil)
+--- @param callback fun(all_comments: table|nil)
 function M:fetch_pr_comments(url, callback)
-	local all_users = {}
+	local all_comments = {}
 	local requests_pending = 3
 	local has_error = false
 
@@ -131,16 +131,15 @@ function M:fetch_pr_comments(url, callback)
 		end
 
 		local data = hs.json.decode(body)
+
 		if data then
 			for _, item in ipairs(data) do
-				if item.user and item.user.login then
-					table.insert(all_users, item.user)
-				end
+				table.insert(all_comments, item)
 			end
 		end
 
 		if requests_pending == 0 then
-			callback(all_users)
+			callback(all_comments)
 		end
 	end
 
@@ -182,11 +181,11 @@ function M:fetch_pr_comments(url, callback)
 	end, "ignoreLocalAndRemoteCache")
 end
 
---- Check if all users are bots
---- @param users table
+--- Check if all comments are from bots
+--- @param comments table
 --- @return boolean
-function M:all_comments_from_bots(users)
-	if not users or #users == 0 then
+function M:all_comments_from_bots(comments)
+	if not comments or #comments == 0 then
 		return false
 	end
 
@@ -195,15 +194,19 @@ function M:all_comments_from_bots(users)
 		"%[bot%]$",
 	}
 
-	for _, user in ipairs(users) do
+	for _, comment in ipairs(comments) do
 		local is_bot = false
-		local username = user.login:lower()
+		local username = comment.user.login:lower()
 
 		for _, pattern in ipairs(bot_patterns) do
 			if username:match(pattern) then
 				is_bot = true
 				break
 			end
+		end
+
+		if comment.performed_via_github_app and comment.performed_via_github_app.name == "Graphite App" then
+			is_bot = true
 		end
 
 		if not is_bot then
@@ -277,7 +280,8 @@ function M:sync(source)
 
 			--- Compare the last time notifications were checked to when the
 			--- notifications where last viewed on GitHub.
-			return notification.last_read_at < self.last_checked
+			-- return notification.last_read_at < self.last_checked
+			return true
 		end)
 
 		--- Process pull request notifications with only bot comments
@@ -304,10 +308,10 @@ function M:sync(source)
 						end
 					else
 						--- If not merged, check for bot comments
-						self:fetch_pr_comments(notification.subject.url, function(users)
+						self:fetch_pr_comments(notification.subject.url, function(comments)
 							processed_count = processed_count - 1
 
-							if users and self:all_comments_from_bots(users) then
+							if comments and self:all_comments_from_bots(comments) then
 								self.log.d("PR " .. notification.id .. " has only bot activity, marking as read")
 								self:mark_as_read(notification.id, function(success)
 									if not success then
