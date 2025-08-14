@@ -10,10 +10,10 @@ if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
   # Check if branch exists
   if git show-ref --verify --quiet refs/heads/$worktree_branch; then
     # Branch exists, checkout and rebase on master
-    git rebase "origin/$default_branch" "$worktree_branch"
+    git rebase "$default_branch" "$worktree_branch"
   else
     # Branch doesn't exist, create new branch from master
-    git checkout -b "$worktree_branch" "origin/$default_branch"
+    git checkout -b "$worktree_branch" "$default_branch"
   fi
 else
   git checkout "$default_branch"
