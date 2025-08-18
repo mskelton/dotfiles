@@ -128,8 +128,8 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
-		{ apps.chrome,   nil,              screens.laptop, layout.left50 },
-		{ apps.cursor,   nil,              screens.laptop, layout.right50 },
+		{ apps.chrome,   nil,              screens.laptop, hs.layout.left50 },
+		{ apps.cursor,   nil,              screens.laptop, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.laptop, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.figma,    nil,              screens.laptop, hs.layout.maximized },
