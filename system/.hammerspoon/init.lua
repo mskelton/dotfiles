@@ -138,8 +138,8 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.zoom,     "Zoom Meeting",   screens.laptop, layout.left50 },
 		{ apps.zoom,     "Zoom Workplace", screens.laptop, layout.put_left },
 	}, {
-		{ apps.chrome,   nil,              screens.primary, layout.left45 },
-		{ apps.cursor,   nil,              screens.primary, layout.right55 },
+		{ apps.chrome,   nil,              screens.primary, hs.layout.left50 },
+		{ apps.cursor,   nil,              screens.primary, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.primary, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.primary, hs.layout.maximized },
 		{ apps.figma,    nil,              screens.primary, hs.layout.maximized },
