@@ -9,6 +9,16 @@
           }
         ]
       }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Submarine.aiff"
+          }
+        ]
+      }
     ]
   },
   "permissions": {
@@ -58,5 +68,6 @@
       "WebSearch"
     ],
     "deny": ["Bash(rmdir:*)", "Bash(rm -rf:*)"]
-  }
+  },
+  "includeCoAuthoredBy": false
 }
