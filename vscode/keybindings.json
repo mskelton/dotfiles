@@ -29,18 +29,6 @@
     "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
   },
   {
-    "key": "cmd+n",
-    "command": "runCommands",
-    "when": "terminalEditorFocus && terminalProcessSupported",
-    "args": {
-      "commands": [
-        "workbench.action.unlockEditorGroup",
-        "workbench.action.createTerminalEditor",
-        "workbench.action.lockEditorGroup"
-      ]
-    }
-  },
-  {
     "key": "ctrl+shift+`",
     "command": "-workbench.action.terminal.new",
     "when": "terminalProcessSupported"

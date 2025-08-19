@@ -895,7 +895,6 @@
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.navigationScope": "editorGroup",
-  "workbench.editor.pinnedTabSizing": "shrink",
   "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
   "workbench.settings.editor": "json",
