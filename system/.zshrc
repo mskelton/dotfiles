@@ -19,8 +19,18 @@ set -o emacs
 bindkey '^B' backward-word
 bindkey '^F' forward-word
 
-# Setup basic prompt
-PROMPT='%F{%(?.green.red)}❯%f '
+# Trim ~/dev/ off the prompt if present
+_prompt_path() {
+  if [[ $PWD == $HOME/dev/* ]]; then
+    print -r -- "${PWD#$HOME/dev/}"
+  else
+    print -r -- "%~"
+  fi
+}
+
+# Basic prompt
+setopt prompt_subst
+PROMPT='$(_prompt_path) %F{%(?.green.red)}❯%f '
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
