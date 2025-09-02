@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+for dir in ../web-*; do
+  cp .vscode/settings.json "$dir/.vscode/settings.json"
+  cp .config/.env.local "$dir/.config/.env.local"
+done
