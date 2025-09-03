@@ -232,6 +232,67 @@ function M:mark_as_read(notification_id, callback)
 	end, "ignoreLocalAndRemoteCache")
 end
 
+--- Filter notifications
+--- @param notifications table
+--- @param callback fun(filtered_notifications: table)
+function M:filter_notifications(notifications, callback)
+	local remaining = #notifications
+	local filtered_notifications = {}
+
+	local function decide(notification, keep)
+		remaining = remaining - 1
+
+		if keep then
+			table.insert(filtered_notifications, notification)
+		end
+
+		if remaining == 0 then
+			callback(filtered_notifications)
+		end
+	end
+
+	for _, notification in ipairs(notifications) do
+		if notification.subject.type == "PullRequest" and notification.subject.url then
+			self:get_pull_request(notification.subject.url, function(data)
+				--- If the PR is not found, keep the notification anyway
+				if not data then
+					decide(notification, true)
+					return
+				end
+
+
+				--- Mark all merged PRs as read
+				if data.merged == true then
+					self.log.d("PR #" .. data.number .. " is merged, marking as read")
+					self:mark_as_read(notification.id, function(success)
+						decide(notification, not success)
+					end)
+					return
+				end
+
+				--- Skip my PRs where the only activity is bot comments
+				if string.find(data.user.login, "^mskelton") == nil then
+					self:fetch_pr_comments(notification.subject.url, function(comments)
+						if comments and self:all_comments_from_bots(comments) then
+							self.log.d("PR #" .. data.number .. " has only bot activity, marking as read")
+							self:mark_as_read(notification.id, function(success)
+								decide(notification, not success)
+							end)
+						else
+							decide(notification, true)
+						end
+					end)
+				else
+					decide(notification, true)
+					return
+				end
+			end)
+		else
+			decide(notification, true)
+		end
+	end
+end
+
 --- Callback fired when the timer triggers
 --- @param source string
 function M:sync(source)
@@ -279,74 +340,10 @@ function M:sync(source)
 			return true
 		end)
 
-		--- Process pull request notifications with only bot comments
-		local processed_count = 0
-		local pending_notifications = {}
-
-		for _, notification in ipairs(notifications or {}) do
-			if notification.subject.type == "PullRequest" and notification.subject.url then
-				processed_count = processed_count + 1
-
-				--- First check if the PR is merged
-				self:get_pull_request(notification.subject.url, function(data)
-					if not data then
-						table.insert(pending_notifications, notification)
-						return
-					end
-
-
-					--- Mark all merged PRs as read
-					if data.merged == true then
-						self.log.d("PR " .. notification.id .. " is merged, marking as read")
-						self:mark_as_read(notification.id, function(success)
-							if not success then
-								table.insert(pending_notifications, notification)
-							end
-						end)
-
-						processed_count = processed_count - 1
-						if processed_count == 0 then
-							self:update_count(#pending_notifications)
-						end
-
-						return
-					end
-
-					--- Non-merged bot PRs always require manual review
-					if data.user.type == "Bot" then
-						table.insert(pending_notifications, notification)
-						return
-					end
-
-					--- Non-merged, non-bot PRs only require review if there is a human comment
-					self:fetch_pr_comments(notification.subject.url, function(comments)
-						processed_count = processed_count - 1
-
-						if comments and self:all_comments_from_bots(comments) then
-							self.log.d("PR " .. notification.id .. " has only bot activity, marking as read")
-							self:mark_as_read(notification.id, function(success)
-								if not success then
-									table.insert(pending_notifications, notification)
-								end
-							end)
-						else
-							table.insert(pending_notifications, notification)
-						end
-
-						--- If all notifications have been processed, update the count
-						if processed_count == 0 then
-							self:update_count(#pending_notifications)
-						end
-					end)
-				end)
-			else
-				table.insert(pending_notifications, notification)
-			end
-		end
-
-		--- If no PR notifications to process, update count immediately
-		if processed_count == 0 then
-			self:update_count(#pending_notifications)
+		if notifications and #notifications > 0 then
+			self:filter_notifications(notifications, function(filtered_notifications)
+				self:update_count(#filtered_notifications)
+			end)
 		end
 	end, "ignoreLocalAndRemoteCache")
 end
