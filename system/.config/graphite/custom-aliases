@@ -1,7 +1,7 @@
 con continue
 diff !git diff "$(gt parent)"..HEAD
 fix !git add . && gt continue
-go !gt modify --all && gt submit
+go !gt modify --all && git push --force-with-lease
 linear !linear
 ll log long
 ls log short

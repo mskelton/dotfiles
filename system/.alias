@@ -20,7 +20,8 @@ alias st="git status"
 alias gs="git status"
 alias stash="git stash push -u"
 alias unstash="git unstash"
-alias prd="pr -d"
+alias cpr="$HOME/go/bin/pr"
+alias cprd="$HOME/go/bin/pr -d"
 alias main="git-cleanup"
 
 # Tmux

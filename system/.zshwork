@@ -3,6 +3,8 @@ export ANTHROPIC_MODEL="sonnet"
 export ANTHROPIC_SMALL_FAST_MODEL="haiku"
 export IGNORE_SKIP_LIST=1
 export CLAUDE_TSGO_EDIT_HOOK="true"
+export RAMP_SKIP_YARN_INSTALL=1
+export PW_WORKERS=4
 
 # Path
 export PATH="$HOME/.local/share/uv/tools/devtool/bin:$PATH"
