@@ -187,6 +187,8 @@ function M:all_comments_from_bots(comments)
 	local bot_patterns = {
 		"github%-actions",
 		"%[bot%]$",
+		--- I'm not a bot, but I don't care to see my own comments
+		"^mskelton"
 	}
 
 	for _, comment in ipairs(comments) do
