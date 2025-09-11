@@ -334,7 +334,7 @@
   // Git
   {
     "key": "cmd+k p",
-    "command": "ramp.git-push-force-with-lease",
+    "command": "git.push",
     "when": "!terminalFocus"
   },
   {
