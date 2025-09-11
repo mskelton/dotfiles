@@ -186,6 +186,7 @@
     "markdown": true,
     "scminput": false
   },
+  "github.copilot.nextEditSuggestions.enabled": true,
   "githubIssues.issueCompletions.enabled": false,
   "githubIssues.userCompletions.enabled": false,
   "githubPullRequests.commentExpandState": "collapseAll",
@@ -904,5 +905,8 @@
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "yaml.schemas": {
+    "https://json.schemastore.org/yamllint.json": ["plugin.yml"]
+  }
 }
