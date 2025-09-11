@@ -13,7 +13,8 @@ if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
     branch_name=$(echo "$*" | sed 's/[^a-zA-Z0-9]/-/g; s/-\{2,\}/-/g' | tr '[:upper:]' '[:lower:]')
 
     gt track
-    git commit -am "$*"
+    git add .
+    git commit -m "$*"
     gt rename "ms/$branch_name"
 
     exit 0
