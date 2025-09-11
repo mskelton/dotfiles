@@ -292,7 +292,7 @@
   },
   {
     "key": "cmd+escape",
-    "command": "ramp.run-claude-code",
+    "command": "dangerous-claude.run-claude-code",
     "when": "terminalProcessSupported"
   },
   // Navigate between editors/terminals, in the current group
@@ -344,12 +344,12 @@
   },
   {
     "key": "cmd+k a",
-    "command": "ramp.git-append",
+    "command": "git-utils.git-append",
     "when": "!terminalFocus"
   },
   {
     "key": "cmd+k s",
-    "command": "ramp.git-sync",
+    "command": "git-utils.git-sync",
     "when": "!terminalFocus"
   },
   // Quick switch between compose modes
