@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 kill -9 $(lsof -i:3000 -t) 2>/dev/null
+kill -9 $(lsof -i:16823 -t) 2>/dev/null
 yarn start
