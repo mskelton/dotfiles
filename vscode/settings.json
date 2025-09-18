@@ -38,6 +38,9 @@
   "[shellscript]": {
     "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
   },
+  "[swift]": {
+    "editor.defaultFormatter": "sswg.swift-lang"
+  },
   "abolish.dictionary": {
     "MS": "Mark Skelton",
     "Null": "null",

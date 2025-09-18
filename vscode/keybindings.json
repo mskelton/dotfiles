@@ -73,7 +73,7 @@
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported"
   },
-  // Insert console.log snippet when pressing cmd+option+l
+  // User hyper+l for inserting a console.log snippet
   {
     "key": "cmd+alt+shift+ctrl+l",
     "command": "editor.action.insertSnippet",
