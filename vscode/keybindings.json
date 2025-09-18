@@ -365,5 +365,16 @@
   {
     "key": "cmd+y",
     "command": "workbench.action.gotoSymbol"
+  },
+  // Since I use cmd+option+f for maximize window, I need to adjust replace
+  {
+    "key": "ctrl+cmd+f",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
   }
 ]
