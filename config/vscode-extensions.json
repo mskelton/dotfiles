@@ -17,13 +17,15 @@
     "ms-playwright.playwright",
     "ms-python.debugpy",
     "ms-python.python",
-    "ms-python.vscode-pylance",
     "mskelton.abolish",
     "mskelton.adjacent",
     "mskelton.dtsfmt",
     "mskelton.notify",
     "mskelton.open-project",
     "mskelton.open-url-under-cursor",
+    "mskelton.unix-chmod",
+    "mskelton.vscode-git-utils",
+    "openai.chatgpt",
     "plorefice.devicetree",
     "qwtel.sqlite-viewer",
     "redhat.vscode-yaml",
@@ -31,11 +33,9 @@
     "rust-lang.rust-analyzer",
     "sleistner.vscode-fileutils",
     "sumneko.lua",
-    "sygene.auto-correct",
     "tamasfe.even-better-toml",
     "usernamehw.errorlens",
     "virgilsisoe.hammerspoon",
-    "vscodevim.vim",
-    "wycliffeassociates.usfmvscode"
+    "vscodevim.vim"
   ]
 }

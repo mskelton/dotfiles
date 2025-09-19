@@ -250,8 +250,7 @@
   },
   {
     "key": "cmd+escape",
-    "command": "dangerous-claude.run-claude-code",
-    "when": "terminalProcessSupported"
+    "command": "workbench.view.extension.codexViewContainer"
   },
   // Navigate between editors/terminals, in the current group
   {
