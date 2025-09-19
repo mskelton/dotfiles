@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Auto-merge a PR
+# Usage: auto-merge [-R <repo>] [branch]
+
+flags=()
+auto_merge_repos=(
+  "ramp/web"
+  "ramp/core"
+)
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -R)
+    repo="$2"
+    shift 2
+    ;;
+  *)
+    branch="$1"
+    shift
+    ;;
+  esac
+done
+
+# Set repo if -R was not specified
+if [[ -z "$repo" ]]; then
+  repo=$(gh repo view --json nameWithOwner --jq '.nameWithOwner')
+fi
+
+# Determine if we should add the auto merge flag
+if [[ " ${auto_merge_repos[@]} " =~ " $repo " ]]; then
+  flags+=("--auto")
+fi
+
+gh pr merge -R "$repo" "$branch" "${flags[@]}"

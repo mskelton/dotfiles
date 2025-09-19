@@ -3,7 +3,7 @@ aliases:
   approve: pr review --approve
   assign: '!gh pr edit --add-reviewer "$1" && gh copy'
   aus: pr merge --squash --auto
-  auto: pr merge --auto
+  auto: '!auto-merge "$@"'
   clone: repo clone
   co: pr checkout
   codegen: workflow run codegen.yml
