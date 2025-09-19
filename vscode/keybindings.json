@@ -199,42 +199,6 @@
     "command": "vim.showQuickpickCmdLine",
     "when": "!editorFocus && !inputFocus"
   },
-  {
-    "key": "space f p",
-    "command": "workbench.action.quickOpen",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "key": "space f s",
-    "command": "workbench.action.findInFiles",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "key": "space f o",
-    "command": "open-project.open",
-    "args": {
-      "cwd": "~/dev"
-    },
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "key": "space f n",
-    "command": "git.checkout",
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "key": "space t s",
-    "command": "workbench.action.findInFiles",
-    "args": {
-      "filesToInclude": "src/routes/Treasury/**,src/modules/financialProducts/**,playwright/tests/treasury/**"
-    },
-    "when": "!editorFocus && !inputFocus"
-  },
-  {
-    "key": "space l g",
-    "command": "workbench.view.scm",
-    "when": "!editorFocus && !inputFocus"
-  },
   // Open Git
   {
     "key": "shift+cmd+g",
@@ -244,12 +208,6 @@
   {
     "key": "shift+cmd+v",
     "command": "pr.markFileAsViewed"
-  },
-  // Close sidebar
-  {
-    "key": "space f d",
-    "command": "workbench.action.closeSidebar",
-    "when": "!editorFocus && !inputFocus && explorerViewletFocus && explorerViewletVisible"
   },
   // Close all the panes
   {
