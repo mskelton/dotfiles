@@ -347,40 +347,13 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Find
     {
-      "before": ["<leader>", "f", "p"],
-      "commands": ["workbench.action.quickOpen"],
-      "silent": true
-    },
-    {
       "before": ["<leader>", "f", "d"],
       "commands": ["workbench.files.action.showActiveFileInExplorer"],
       "silent": true
     },
     {
-      "before": ["<leader>", "f", "s"],
-      "commands": ["workbench.action.findInFiles"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "f", "o"],
-      "commands": [
-        {
-          "command": "open-project.open",
-          "args": {
-            "cwd": "~/dev"
-          }
-        }
-      ],
-      "silent": true
-    },
-    {
       "before": ["<leader>", "f", "n"],
       "commands": ["git.checkout"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "f", "y"],
-      "commands": ["workbench.action.gotoSymbol"],
       "silent": true
     },
     {
