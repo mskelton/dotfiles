@@ -1,13 +1,11 @@
 {
   "extensions": [
     "biomejs.biome",
-    "bradlc.vscode-tailwindcss",
     "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
     "charliermarsh.ruff",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
-    "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
     "fwcd.kotlin",
@@ -29,7 +27,6 @@
     "plorefice.devicetree",
     "qwtel.sqlite-viewer",
     "redhat.vscode-yaml",
-    "rodrigoscola.vscode-textobjects",
     "rust-lang.rust-analyzer",
     "sleistner.vscode-fileutils",
     "sumneko.lua",
