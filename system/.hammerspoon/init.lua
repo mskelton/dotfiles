@@ -33,10 +33,6 @@ Install:andUse("RestartBluetooth", {
 	start = true,
 })
 
-Install:andUse("FocusManager", {
-	start = true,
-})
-
 Install:andUse("Remote", {
 	disable = utils.is_work,
 	start = true,
@@ -210,12 +206,12 @@ end
 
 --- Play/pause media
 hs.hotkey.bind({ "option" }, ";", function()
-	utils.media("toggle")
+	hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
 end)
 
 --- Go to next track
 hs.hotkey.bind({ "option" }, "n", function()
-	utils.media("next")
+	utils.shortcut("Skip Forward")
 end)
 
 --- Open dev server
