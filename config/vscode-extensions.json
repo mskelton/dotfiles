@@ -1,6 +1,5 @@
 {
   "extensions": [
-    "biomejs.biome",
     "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
     "charliermarsh.ruff",
@@ -8,8 +7,6 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
-    "fwcd.kotlin",
-    "github.vscode-pull-request-github",
     "golang.go",
     "mads-hartmann.bash-ide-vscode",
     "ms-playwright.playwright",
@@ -32,7 +29,6 @@
     "sumneko.lua",
     "tamasfe.even-better-toml",
     "usernamehw.errorlens",
-    "virgilsisoe.hammerspoon",
     "vscodevim.vim"
   ]
 }
