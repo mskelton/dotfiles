@@ -306,7 +306,8 @@
   "search.decorations.colors": false,
   "search.exclude": {
     "**/.yarn": true,
-    "**/tsconfig.tsbuildinfo": true
+    "**/tsconfig.tsbuildinfo": true,
+    "**/*.svg": true
   },
   "search.quickOpen.history.filterSortOrder": "recency",
   "search.seedWithNearestWord": true,
