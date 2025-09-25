@@ -26,7 +26,7 @@
   {
     "key": "cmd+n",
     "command": "workbench.action.terminal.new",
-    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
+    "when": "view.terminal.visible && !terminalEditorFocus && terminalProcessSupported"
   },
   {
     "key": "ctrl+shift+`",
@@ -37,12 +37,12 @@
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
+    "when": "view.terminal.visible && !terminalEditorFocus && terminalProcessSupported"
   },
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.killEditor",
-    "when": "terminalFocus && terminalEditorFocus && terminalProcessSupported"
+    "when": "terminalEditorFocus && terminalProcessSupported"
   },
   {
     "key": "cmd+w",
@@ -71,7 +71,7 @@
   {
     "key": "cmd+d",
     "command": "workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported"
+    "when": "view.terminal.visible && terminalProcessSupported"
   },
   // User hyper+l for inserting a console.log snippet
   {
@@ -139,15 +139,6 @@
     "key": "ctrl+k",
     "command": "selectPrevSuggestion",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && suggestWidgetVisible"
-  },
-  // Open keybindings.json with cmd+shift+, similar to opening settings
-  {
-    "key": "shift+cmd+,",
-    "command": "workbench.action.openGlobalKeybindingsFile"
-  },
-  {
-    "key": "cmd+r cmd+s",
-    "command": "-workbench.action.openGlobalKeybindings"
   },
   // Toggle Cursor tab with cmd+m
   {
@@ -240,7 +231,7 @@
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": " \n" },
-    "when": "terminalFocus && terminalProcessSupported"
+    "when": "view.terminal.visible && terminalProcessSupported"
   },
   // Claude Code
   {
@@ -256,12 +247,12 @@
   {
     "key": "shift+cmd+[",
     "command": "workbench.action.previousEditorInGroup",
-    "when": "!terminalFocus || terminalEditorFocus"
+    "when": "!view.terminal.visible || terminalEditorFocus"
   },
   {
     "key": "shift+cmd+]",
     "command": "workbench.action.nextEditorInGroup",
-    "when": "!terminalFocus || terminalEditorFocus"
+    "when": "!view.terminal.visible || terminalEditorFocus"
   },
   {
     "key": "alt+cmd+left",
@@ -290,24 +281,29 @@
   },
   // Git
   {
+    "key": "cmd+k c",
+    "command": "git.checkout",
+    "when": "!view.terminal.visible"
+  },
+  {
     "key": "cmd+k p",
     "command": "git.push",
-    "when": "!terminalFocus"
+    "when": "!view.terminal.visible"
   },
   {
     "key": "cmd+k shift+p",
     "command": "git.pull",
-    "when": "!terminalFocus"
+    "when": "!view.terminal.visible"
   },
   {
     "key": "cmd+k a",
     "command": "git-utils.git-append",
-    "when": "!terminalFocus"
+    "when": "!view.terminal.visible"
   },
   {
     "key": "cmd+k s",
     "command": "git-utils.git-sync",
-    "when": "!terminalFocus"
+    "when": "!view.terminal.visible"
   },
   // Quick switch between compose modes
   {
