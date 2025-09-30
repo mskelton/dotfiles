@@ -1,6 +1,15 @@
 {
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "[dts]": {
     "editor.defaultFormatter": "mskelton.dtsfmt"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[go]": {
     "editor.codeActionsOnSave": {
