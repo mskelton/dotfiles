@@ -32,20 +32,6 @@ M.if_work = function(work, home)
 	return home
 end
 
---- Set the focus state
---- @param state string
-M.set_focus = function(state)
-	hs.execute("shortcuts run 'Focus' <<<'" .. state .. "'")
-end
-
---- Returns a function that sets the focus state
---- @param state string
-M.focus = function(state)
-	return function()
-		M.set_focus(state)
-	end
-end
-
 --- Returns true if a string starts with a given prefix
 --- @param str string
 --- @param prefix string

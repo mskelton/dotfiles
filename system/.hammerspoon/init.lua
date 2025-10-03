@@ -194,16 +194,6 @@ hs.hotkey.bind(constants.keys.layer_key, "f10", function()
 	hs.audiodevice.defaultOutputDevice():setOutputVolume(50)
 end)
 
---- Manage focus when in Zoom meetings
---- TODO: Re-enable this, but it's horrifically slow to start
-if false then
-	hs.window.filter.default
-			:setAppFilter(apps.zoom)
-			:subscribe(hs.window.filter.windowCreated, utils.focus("on"))
-			:subscribe(hs.window.filter.windowTitleChanged, utils.focus("on"))
-			:subscribe(hs.window.filter.windowDestroyed, utils.focus("off"))
-end
-
 --- Play/pause media
 hs.hotkey.bind({ "option" }, ";", function()
 	hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
