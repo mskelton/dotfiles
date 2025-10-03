@@ -46,12 +46,6 @@ M.focus = function(state)
 	end
 end
 
---- Run a shortcut
---- @param name string
-M.shortcut = function(name)
-	hs.execute("shortcuts run '" .. name .. "'")
-end
-
 --- Returns true if a string starts with a given prefix
 --- @param str string
 --- @param prefix string

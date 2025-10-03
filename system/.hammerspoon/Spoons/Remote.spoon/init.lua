@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 local M = {}
 
 --- Metadata
@@ -18,14 +16,17 @@ function M:start()
 			return "Only POST is supported\n", 400, {}
 		end
 
+
 		local handlers = {
-			["/play"] = hs.fnutils.partial(utils.media, "play"),
-			["/pause"] = hs.fnutils.partial(utils.media, "pause"),
-			["/toggle"] = hs.fnutils.partial(utils.media, "toggle"),
-			["/previous"] = hs.fnutils.partial(utils.media, "previous"),
-			["/next"] = hs.fnutils.partial(utils.media, "next"),
-			["/back"] = hs.fnutils.partial(utils.media, "back"),
-			["/forward"] = hs.fnutils.partial(utils.media, "forward"),
+			["/toggle"] = function()
+				hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+			end,
+			["/rewind"] = function()
+				hs.execute("shortcuts run 'Rewind'")
+			end,
+			["/fast-forward"] = function()
+				hs.execute("shortcuts run 'Fast Forward'")
+			end,
 			["/volume"] = function(req)
 				--- @type hs.audiodevice|nil
 				local device = hs.audiodevice.defaultOutputDevice()

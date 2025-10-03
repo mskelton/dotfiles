@@ -211,7 +211,7 @@ end)
 
 --- Go to next track
 hs.hotkey.bind({ "option" }, "n", function()
-	utils.shortcut("Skip Forward")
+	hs.execute("shortcuts run 'Skip Forward'")
 end)
 
 --- Open dev server
