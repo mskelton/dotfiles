@@ -1,26 +1,5 @@
 {
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Funk.aiff"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Funk.aiff"
-          }
-        ]
-      }
-    ]
-  },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(awk:*)",
@@ -67,7 +46,32 @@
       "WebFetch",
       "WebSearch"
     ],
-    "deny": ["Bash(rmdir:*)", "Bash(rm -rf:*)"]
+    "deny": [
+      "Bash(rmdir:*)",
+      "Bash(rm -rf:*)"
+    ]
   },
-  "includeCoAuthoredBy": false
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true
 }
