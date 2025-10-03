@@ -49,6 +49,7 @@ Install:andUse("GitHubNotifications", {
 	},
 	config = {
 		interval = 60,
+		ignore_merged_prs_from = { "ramp/web", "ramp/akuma" },
 	},
 })
 

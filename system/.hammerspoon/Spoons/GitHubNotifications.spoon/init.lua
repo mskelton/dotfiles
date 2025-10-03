@@ -13,6 +13,10 @@ M.log = hs.logger.new("gh_notif", "debug")
 --- @type number|nil
 M.count = nil
 
+--- Repositories to ignore merged PRs from (auto-mark as read)
+--- @type string[]
+M.ignore_merged_prs_from = {}
+
 --- Get the icon for the menu bar
 --- @param filename string
 --- @return hs.image|nil
@@ -263,13 +267,20 @@ function M:filter_notifications(notifications, callback)
 				end
 
 
-				--- Mark all merged PRs as read
-				if data.merged == true then
-					self.log.d("PR #" .. data.number .. " is merged, marking as read")
-					self:mark_as_read(notification.id, function(success)
-						decide(notification, not success)
-					end)
-					return
+				--- Mark merged PRs as read for configured repositories
+				if data.merged == true and #self.ignore_merged_prs_from > 0 then
+					local repo_full_name = data.base.repo.full_name
+
+					for _, repo in ipairs(self.ignore_merged_prs_from) do
+						if repo_full_name == repo then
+							self.log.d("PR #" .. data.number .. " is merged, marking as read")
+							self:mark_as_read(notification.id, function(success)
+								decide(notification, not success)
+							end)
+
+							return
+						end
+					end
 				end
 
 				--- Skip my PRs where the only activity is bot comments
