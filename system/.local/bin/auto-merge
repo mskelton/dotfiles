@@ -3,9 +3,8 @@
 # Usage: auto-merge [-R <repo>] [branch]
 
 flags=()
-auto_merge_repos=(
-  "ramp/web"
-  "ramp/core"
+squash_repos=(
+  "ramp/akuma"
 )
 
 while [[ $# -gt 0 ]]; do
@@ -26,9 +25,9 @@ if [[ -z "$repo" ]]; then
   repo=$(gh repo view --json nameWithOwner --jq '.nameWithOwner')
 fi
 
-# Determine if we should add the auto merge flag
-if [[ " ${auto_merge_repos[@]} " =~ " $repo " ]]; then
-  flags+=("--auto")
+# Determine if we should add the squash flag
+if [[ " ${squash_repos[@]} " =~ " $repo " ]]; then
+  flags+=("--squash")
 fi
 
-gh pr merge -R "$repo" "$branch" "${flags[@]}"
+gh pr merge -R "$repo" "$branch" --auto "${flags[@]}"

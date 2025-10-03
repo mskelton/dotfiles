@@ -63,6 +63,7 @@
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
   "chat.editor.fontSize": 15,
+  "claude-code.useNodeExecution": true,
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.queueMessageDefaultBehavior": "queue",
@@ -305,6 +306,9 @@
   "outline.showKeys": false,
   "outline.showProperties": false,
   "outline.showVariables": false,
+  "playwright.env": {
+    "HAR_RECORD": false
+  },
   "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
   "prettier.requireConfig": true,
@@ -332,12 +336,7 @@
     "NODE_ENV": null
   },
   "terminal.integrated.fontSize": 15,
-  "terminal.integrated.profiles.osx": {
-    "Claude": {
-      "path": "claude",
-      "args": ["--dangerously-skip-permissions"]
-    }
-  },
+  "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
   "typescript.experimental.useTsgo": false,

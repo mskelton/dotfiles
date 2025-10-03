@@ -26,7 +26,7 @@
   {
     "key": "cmd+n",
     "command": "workbench.action.terminal.new",
-    "when": "view.terminal.visible && !terminalEditorFocus && terminalProcessSupported"
+    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
   },
   {
     "key": "ctrl+shift+`",
@@ -37,7 +37,7 @@
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
-    "when": "view.terminal.visible && !terminalEditorFocus && terminalProcessSupported"
+    "when": "terminalFocus && !terminalEditorFocus && terminalProcessSupported"
   },
   {
     "key": "cmd+w",
@@ -71,7 +71,7 @@
   {
     "key": "cmd+d",
     "command": "workbench.action.terminal.split",
-    "when": "view.terminal.visible && terminalProcessSupported"
+    "when": "terminalFocus && terminalProcessSupported"
   },
   // User hyper+l for inserting a console.log snippet
   {
@@ -231,7 +231,7 @@
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": " \n" },
-    "when": "view.terminal.visible && terminalProcessSupported"
+    "when": "terminalFocus && terminalProcessSupported"
   },
   // Claude Code
   {
@@ -241,18 +241,18 @@
   },
   {
     "key": "cmd+escape",
-    "command": "workbench.view.extension.codexViewContainer"
+    "command": "claude-vscode.sidebar.open"
   },
   // Navigate between editors/terminals, in the current group
   {
     "key": "shift+cmd+[",
     "command": "workbench.action.previousEditorInGroup",
-    "when": "!view.terminal.visible || terminalEditorFocus"
+    "when": "!terminalFocus || terminalEditorFocus"
   },
   {
     "key": "shift+cmd+]",
     "command": "workbench.action.nextEditorInGroup",
-    "when": "!view.terminal.visible || terminalEditorFocus"
+    "when": "!terminalFocus || terminalEditorFocus"
   },
   {
     "key": "alt+cmd+left",
@@ -283,27 +283,27 @@
   {
     "key": "cmd+k c",
     "command": "git.checkout",
-    "when": "!view.terminal.visible"
+    "when": "!terminalFocus"
   },
   {
     "key": "cmd+k p",
     "command": "git.push",
-    "when": "!view.terminal.visible"
+    "when": "!terminalFocus"
   },
   {
     "key": "cmd+k shift+p",
     "command": "git.pull",
-    "when": "!view.terminal.visible"
+    "when": "!terminalFocus"
   },
   {
     "key": "cmd+k a",
     "command": "git-utils.git-append",
-    "when": "!view.terminal.visible"
+    "when": "!terminalFocus"
   },
   {
     "key": "cmd+k s",
     "command": "git-utils.git-sync",
-    "when": "!view.terminal.visible"
+    "when": "!terminalFocus"
   },
   // Quick switch between compose modes
   {
@@ -329,5 +329,9 @@
     "key": "alt+cmd+f",
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "-workbench.action.nextEditor"
   }
 ]
