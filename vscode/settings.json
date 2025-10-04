@@ -69,7 +69,6 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.accessibilitySupport": "off",
   "editor.autoClosingDelete": "always",
   "editor.autoClosingOvertype": "always",
   "editor.bracketPairColorization.enabled": false,
