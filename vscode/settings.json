@@ -69,6 +69,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.accessibilitySupport": "off",
   "editor.autoClosingDelete": "always",
   "editor.autoClosingOvertype": "always",
   "editor.bracketPairColorization.enabled": false,
@@ -625,11 +626,11 @@
       "silent": true
     }
   ],
+  "window.autoDetectColorScheme": true,
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
   "window.newWindowDimensions": "inherit",
   "window.openFoldersInNewWindow": "off",
-  "window.systemColorTheme": "dark",
   "window.title": "${activeRepositoryBranchName}${separator}${rootName}",
   "window.zoomPerWindow": false,
   "workbench.colorCustomizations": {
@@ -652,11 +653,14 @@
   },
   "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
+  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
+  "yaml.extension.recommendations": false,
   "yaml.schemas": {
     "https://json.schemastore.org/yamllint.json": ["plugin.yml"]
-  },
+  }
 }
