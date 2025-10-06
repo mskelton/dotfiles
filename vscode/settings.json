@@ -626,7 +626,6 @@
       "silent": true
     }
   ],
-  "window.autoDetectColorScheme": true,
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
   "window.newWindowDimensions": "inherit",
