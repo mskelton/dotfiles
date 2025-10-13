@@ -46,10 +46,7 @@
       "WebFetch",
       "WebSearch"
     ],
-    "deny": [
-      "Bash(rmdir:*)",
-      "Bash(rm -rf:*)"
-    ]
+    "deny": ["Bash(rmdir:*)", "Bash(rm -rf:*)"]
   },
   "hooks": {
     "Stop": [

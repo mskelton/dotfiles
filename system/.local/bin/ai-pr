@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Create a PR with AI
+
+claude --allowedTools 'Bash(git:*) Bash(gh:*)' -p 'Create a pull request using the GitHub CLI (gh).
+
+- The title should be the same as the first commit message
+- Inspect the diff to understand the changes and generate a short description
+- The description should be terse, do not add lots of details, just a very brief summary
+
+Example:
+
+gh pr create -t "Add QR code scanner" -b "## Description\n\nImplement QR code scanner in the account settings page."
+'

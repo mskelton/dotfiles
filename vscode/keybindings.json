@@ -241,7 +241,7 @@
   },
   {
     "key": "cmd+escape",
-    "command": "claude-vscode.sidebar.open"
+    "command": "dangerous-claude.run-claude-code"
   },
   // Navigate between editors/terminals, in the current group
   {
@@ -333,5 +333,16 @@
   {
     "key": "shift+cmd+]",
     "command": "-workbench.action.nextEditor"
+  },
+  // Toggle diff
+  {
+    "key": "shift+cmd+d",
+    "command": "git.openChange",
+    "when": "!inDiffEditor"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "git.closeAllDiffEditors",
+    "when": "inDiffEditor"
   }
 ]
