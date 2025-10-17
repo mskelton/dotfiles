@@ -17,6 +17,7 @@ export TURBO_NO_UPDATE_NOTIFIER=1
 export PAGER=less
 export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 export COREPACK_ENABLE_AUTO_PIN=0
+export DOTENV_CONFIG_QUIET=1
 
 # Hide Claude intro message
 export IS_DEMO=1

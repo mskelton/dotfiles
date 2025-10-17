@@ -31,6 +31,7 @@ Install:andUse("ReloadConfiguration", {
 
 Install:andUse("RestartBluetooth", {
 	start = true,
+	disable = true,
 })
 
 Install:andUse("Remote", {
