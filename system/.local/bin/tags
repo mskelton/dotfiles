@@ -71,7 +71,7 @@ _parse_args() {
 _get_rule() {
 	head="
 id: tags
-language: TSX
+language: Tsx
 utils:
   is-tag:
     any:
@@ -94,8 +94,8 @@ rule:
         kind: property_identifier
         regex: '^$attribute$'
     $(if [ -n "$value" ]; then
-      # TODO: Support boolean, boolean shorthand, null, undefined, and template literals
-      echo "
+			# TODO: Support boolean, boolean shorthand, null, undefined, and template literals
+			echo "
     - has:
         any:
           - kind: string
@@ -121,7 +121,7 @@ rule:
 
 # Format each line of the JSON output using the quickfix notation
 _format_as_qfix_list() {
-  jq -r '.[] | "\(.file):\(.range.start.line):\(.range.start.column):\(.lines | gsub("^\\s+"; ""))"'
+	jq -r '.[] | "\(.file):\(.range.start.line):\(.range.start.column):\(.lines | gsub("^\\s+"; ""))"'
 }
 
 # Run the scan in JSON or rich format
@@ -141,8 +141,8 @@ _find_tags() {
 	fi
 
 	_scan \
-    --config "$HOME/.sgconfig.yml" \
-    --inline-rules "$(_get_rule)" \
+		--config "$HOME/.sgconfig.yml" \
+		--inline-rules "$(_get_rule)" \
 		"$cwd"
 }
 
