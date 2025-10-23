@@ -12,7 +12,7 @@
   br = branch
   del = branch -D
   dump = "!f() { current=$(git branch --show-current) && git checkout $(git default) && git branch -D $current; }; f"
-  name = branch -m
+  rename = branch -m
   # Commit
   amend = commit --amend --no-edit
   append = !git add -A && git commit --amend --no-edit
