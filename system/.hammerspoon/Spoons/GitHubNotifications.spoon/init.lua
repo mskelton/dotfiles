@@ -17,6 +17,10 @@ M.count = nil
 --- @type string[]
 M.ignore_merged_prs_from = {}
 
+--- Minimum duration between notifications in seconds (0 = no limit)
+--- @type number
+M.notification_min_interval_sec = 0
+
 --- Get the icon for the menu bar
 --- @param filename string
 --- @return hs.image|nil
@@ -44,6 +48,17 @@ function M:maybe_notify(count)
 	end
 
 	if count > self.count then
+		--- Check if enough time has passed since the last notification
+		local current_time = os.time()
+		if self.notification_min_interval_sec > 0 and self.last_notification_time then
+			local elapsed = current_time - self.last_notification_time
+			if elapsed < self.notification_min_interval_sec then
+				self.log.d("Skipping notification, only " ..
+					elapsed .. "s elapsed (min: " .. self.notification_min_interval_sec .. "s)")
+				return
+			end
+		end
+
 		--- @type hs.notify|nil
 		local notification = hs.notify.new(function()
 			hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
@@ -55,6 +70,7 @@ function M:maybe_notify(count)
 
 		if notification then
 			notification:send()
+			self.last_notification_time = current_time
 		end
 	end
 end
