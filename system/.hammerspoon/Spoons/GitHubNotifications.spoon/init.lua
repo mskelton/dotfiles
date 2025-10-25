@@ -43,13 +43,15 @@ local unreadIcon = get_icon("github-unread.png")
 --- the current count.
 --- @param count number
 function M:maybe_notify(count)
+	local current_time = os.time()
+
 	if self.count == nil then
+		self.last_notification_time = current_time
 		return
 	end
 
 	if count > self.count then
 		--- Check if enough time has passed since the last notification
-		local current_time = os.time()
 		if self.notification_min_interval_sec > 0 and self.last_notification_time then
 			local elapsed = current_time - self.last_notification_time
 			if elapsed < self.notification_min_interval_sec then
