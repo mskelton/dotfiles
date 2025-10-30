@@ -53,9 +53,7 @@
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
-  "chat.editor.fontSize": 15,
   "chatgpt.commentCodeLensEnabled": false,
-  "claude-code.useNodeExecution": true,
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.queueMessageDefaultBehavior": "queue",
@@ -627,6 +625,7 @@
       "silent": true
     }
   ],
+  "window.customTitleBarVisibility": "never",
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
   "window.newWindowDimensions": "inherit",
