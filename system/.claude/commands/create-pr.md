@@ -1,0 +1,15 @@
+## Create a pull request
+
+Create a pull request using the GitHub CLI (gh).
+
+- The title should be the same as the first commit message
+- Inspect the diff to understand the changes and generate a short description
+- The description should be terse, do not add lots of details, just a very brief summary
+
+## Example
+
+gh pr create -t "Add QR code scanner" -b "## Description\n\nImplement QR code scanner in the account settings page."
+
+## Notes
+
+- If the branch is alpha, beta, charlie, delta, or echo, start by running `gn "commit message"`. This will rename the branch and commit the changes.  After this, continue with the PR creation.

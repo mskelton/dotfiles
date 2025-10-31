@@ -2,77 +2,77 @@
   "Arrow Function": {
     "body": ["() => {", "\t${1}", "}"],
     "prefix": "afn",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Arrow Function Inline": {
     "body": ["() => {${1}}"],
     "prefix": "afni",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Block Comment": {
     "body": "/** ${0} */",
     "prefix": "bc",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Console Log": {
     "body": "console.log(${1})${0}",
     "prefix": "cl",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "describe": {
     "body": ["describe('${1}', () => {", "\t${0}", "})"],
     "prefix": "desc",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Export Function": {
     "body": ["export function ${1}(${2}) {", "\t${0}", "}"],
     "prefix": "efn",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Function": {
     "body": ["function ${1}(${2}) {", "\t${0}", "}"],
     "prefix": "fn",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Import ESTree": {
     "body": "import * as ESTree from 'estree'",
     "prefix": "ime",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Import React": {
     "body": "import React from 'react'",
     "prefix": "imr",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Import Testing Library": {
     "body": "import { render, screen } from '@testing-library/react'",
     "prefix": "imt",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Import User Event": {
     "body": "import userEvent from '@testing-library/user-event'",
     "prefix": "imu",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Map": {
     "body": ["const ${1} = new Map([", "\t${0}", "])"],
     "prefix": "map",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright afterAll": {
     "body": ["test.afterAll(async (${1}) => {", "\t${2}", "})", "", "${0}"],
     "prefix": "paa",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright afterEach": {
     "body": ["test.afterEach(async (${1}) => {", "\t${2}", "})", "", "${0}"],
     "prefix": "pae",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright beforeAll": {
     "body": ["test.beforeAll(async (${1}) => {", "\t${2}", "})", "", "${0}"],
     "prefix": "pba",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright beforeEach": {
     "body": [
@@ -80,15 +80,15 @@
       "\t${2}",
       "})",
       "",
-      "${0}",
+      "${0}"
     ],
     "prefix": "pbe",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright describe": {
     "body": ["test.describe('${1}', () => {", "\t${3}", "})", "", "${0}"],
     "prefix": "pdesc",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Playwright test": {
     "body": [
@@ -96,50 +96,50 @@
       "\t${3}",
       "})",
       "",
-      "${0}",
+      "${0}"
     ],
     "prefix": "ptest",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Promise": {
     "body": ["return new Promise((resolve, reject) => {", "\t${0}", "})"],
     "prefix": "prom",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Set": {
     "body": ["const ${1} = new Set([", "\t${0}", "])"],
     "prefix": "set",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "setInterval": {
     "body": "setInterval(() => {${2}}, ${1:1000})",
     "prefix": "interval",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "setTimeout": {
     "body": "setTimeout(() => {${2}}, ${1:1000})",
     "prefix": "timeout",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Sleep": {
     "body": "await new Promise((r) => setTimeout(r, ${1:1000}))",
     "prefix": "sleep",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "Suspend": {
     "body": "throw new Promise(() => {})",
     "prefix": "sus",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "test": {
     "body": ["test('${1}', async () => {", "\t${0}", "})"],
     "prefix": "test",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "useEffect": {
     "body": ["useEffect(() => {", "\t${1}", "}, ${2:[]})"],
     "prefix": "rue",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "useEffect with cleanup": {
     "body": [
@@ -147,14 +147,14 @@
       "\t${1}",
       "",
       "\treturn () => ${2}",
-      "}, ${3:[]})",
+      "}, ${3:[]})"
     ],
     "prefix": "ruec",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
   },
   "useState": {
     "body": "const [${1:value}, set${1/(.)/${1:/upcase}/}] = useState(${0})",
     "prefix": "rus",
-    "scope": "javascript,javascriptreact,typescript,typescriptreact",
-  },
+    "scope": "javascript,javascriptreact,typescript,typescriptreact"
+  }
 }

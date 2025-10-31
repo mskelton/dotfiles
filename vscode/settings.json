@@ -54,6 +54,7 @@
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
   "chatgpt.commentCodeLensEnabled": false,
+  "claudeCode.allowDangerouslySkipPermissions": true,
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.queueMessageDefaultBehavior": "queue",
