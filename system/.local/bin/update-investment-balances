@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
 # Update investment balances in Lunch Money
-# Usage: update-investment-balances [brokerage] [yanna_401k] [mark_ira] [yanna_ira]
+# Usage: update-investment-balances [brokerage] [mark_ira] [yanna_ira]
 
 set -e
 
 # Check if positional args are provided
-if [ $# -eq 4 ]; then
+if [ $# -eq 3 ]; then
     BROKERAGE="$1"
-    YANNA_401K="$2"
-    MARK_IRA="$3"
-    YANNA_IRA="$4"
+    MARK_IRA="$2"
+    YANNA_IRA="$3"
 else
     # Prompt for balances
     echo "Enter investment balances:"
     echo
 
     read -p "Brokerage: $" BROKERAGE
-    read -p "Yanna's 401k: $" YANNA_401K
     read -p "Mark's Roth IRA: $" MARK_IRA
     read -p "Yanna's Roth IRA: $" YANNA_IRA
 fi
@@ -68,7 +66,6 @@ echo
 
 # Update each asset
 update_asset "158172" "$BROKERAGE" "Brokerage"
-update_asset "158168" "$YANNA_401K" "Yanna's 401k"
 update_asset "165634" "$MARK_IRA" "Mark's Roth IRA"
 update_asset "158171" "$YANNA_IRA" "Yanna's Roth IRA"
 
