@@ -226,23 +226,6 @@
     "key": "shift+cmd+[",
     "command": "-workbench.action.previousEditor"
   },
-  // Claude Code add newline
-  {
-    "key": "shift+enter",
-    "command": "workbench.action.terminal.sendSequence",
-    "args": { "text": " \n" },
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  // Claude Code
-  {
-    "key": "cmd+escape",
-    "command": "-claude-code.runClaude.keyboard",
-    "when": "claude-code.hasClaudeInPath"
-  },
-  {
-    "key": "cmd+escape",
-    "command": "dangerous-claude.run-claude-code"
-  },
   // Navigate between editors/terminals, in the current group
   {
     "key": "shift+cmd+[",
