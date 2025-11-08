@@ -55,6 +55,7 @@
   "breadcrumbs.enabled": false,
   "chatgpt.commentCodeLensEnabled": false,
   "claudeCode.allowDangerouslySkipPermissions": true,
+  "claudeCode.initialPermissionMode": "bypassPermissions",
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.queueMessageDefaultBehavior": "queue",
@@ -647,6 +648,10 @@
   "workbench.editor.dragToOpenWindow": false,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.excludeDirty": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 7,
   "workbench.editor.navigationScope": "editorGroup",
   "workbench.editorAssociations": {
     "*.svg": "default"
@@ -661,6 +666,9 @@
   "workbench.tree.renderIndentGuides": "none",
   "yaml.extension.recommendations": false,
   "yaml.schemas": {
-    "https://json.schemastore.org/yamllint.json": ["plugin.yml"]
+    "https://www.schemastore.org/yamllint.json": ["plugin.yml"],
+    "https://www.schemastore.org/github-workflow.json": [
+      ".github/workflows/*.yml"
+    ]
   }
 }
