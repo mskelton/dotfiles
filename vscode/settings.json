@@ -118,7 +118,6 @@
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "indent",
   "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-  "emmet.triggerExpansionOnTab": true,
   "errorLens.statusBarColorsEnabled": true,
   "errorLens.statusBarIconsAtZero": "hide",
   "errorLens.statusBarIconsEnabled": true,
