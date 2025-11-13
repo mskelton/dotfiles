@@ -288,15 +288,6 @@
     "command": "git-utils.git-sync",
     "when": "!terminalFocus"
   },
-  // Quick switch between compose modes
-  {
-    "key": "cmd+i",
-    "command": "composerMode.agent"
-  },
-  {
-    "key": "cmd+l",
-    "command": "composerMode.chat"
-  },
   // Go to symbol
   {
     "key": "cmd+y",

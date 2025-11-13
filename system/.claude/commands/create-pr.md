@@ -13,3 +13,4 @@ gh pr create -t "Add QR code scanner" -b "## Description\n\nImplement QR code sc
 ## Notes
 
 - If the branch is alpha, beta, charlie, delta, or echo, start by running `gn "commit message"`. This will rename the branch and commit the changes.  After this, continue with the PR creation.
+- After creating the pull request, display the pull request URL in the output with no other details.

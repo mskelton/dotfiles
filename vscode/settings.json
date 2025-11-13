@@ -330,7 +330,7 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
-  "typescript.experimental.useTsgo": false,
+  "typescript.experimental.useTsgo": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.inlayHints.parameterTypes.enabled": true,
