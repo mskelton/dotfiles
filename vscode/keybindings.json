@@ -258,22 +258,22 @@
   },
   {
     "key": "cmd+k p",
-    "command": "git-utils.push",
+    "command": "git-extras.push",
     "when": "!terminalFocus"
   },
   {
     "key": "cmd+k shift+p",
-    "command": "git-utils.pull",
+    "command": "git-extras.pull",
     "when": "!terminalFocus"
   },
   {
     "key": "cmd+k a",
-    "command": "git-utils.append",
+    "command": "git-extras.append",
     "when": "!terminalFocus"
   },
   {
     "key": "cmd+k s",
-    "command": "git-utils.sync",
+    "command": "git-extras.sync",
     "when": "!terminalFocus"
   },
   // Go to symbol
