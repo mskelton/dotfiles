@@ -48,25 +48,44 @@ view_test_screenshots() {
 }
 
 view_video() {
-	filename=$(fd -I '.webm' "$1" | one)
+	filename=$(fd -I '.webm' "$1")
 
-	if [ -n "$filename" ]; then
-		open "$filename"
-	else
+	if [ -z "$filename" ]; then
 		echo "[error]: No videos found"
 		return 1
 	fi
+
+	for file in $filename; do
+		open "$file"
+	done
 }
 
 open_trace() {
-	filename=$(fd -I '.zip' "$1" | one)
+	files=$(fd -I '.zip' "$1")
 
-	if [ -n "$filename" ]; then
-		yarn playwright show-trace "$filename"
-	else
+	# If no files were found, return an error
+	if [ -z "$files" ]; then
 		echo "[error]: No traces found"
 		return 1
 	fi
+
+	# Store PIDs of background jobs
+	pids=()
+
+	# Trap SIGINT/SIGTERM to kill all background jobs
+	trap 'kill "${pids[@]}" 2>/dev/null; exit 130' INT TERM
+
+	# Open all traces
+	for file in $files; do
+		yarn playwright show-trace "$file" &
+		pids+=($!)
+	done
+
+	# Wait for all jobs to complete
+	wait
+
+	# Clean up trap
+	trap - INT TERM
 }
 
 # Parse the command line args
