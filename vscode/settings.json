@@ -287,8 +287,6 @@
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
-  "kotlin.debugAdapter.enabled": false,
-  "kotlin.languageServer.enabled": false,
   "Lua.window.statusBar": false,
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,

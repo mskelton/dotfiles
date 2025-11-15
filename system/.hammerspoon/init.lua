@@ -68,7 +68,9 @@ hs.hotkey.bind(constants.keys.layer_key, "k", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
-	hs.application.launchOrFocus(utils.if_work(apps.slack, apps.telegram))
+	if utils.is_work then
+		hs.application.launchOrFocus(apps.slack)
+	end
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ";", function()
@@ -84,15 +86,17 @@ hs.hotkey.bind(constants.keys.layer_key, "n", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "m", function()
-	hs.application.launchOrFocus(apps.notion)
+	if utils.is_work then
+		hs.application.launchOrFocus(apps.notion)
+	end
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.kitty)
+	hs.application.launchOrFocus(apps.android_studio)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
-	hs.application.launchOrFocus(utils.if_work(apps.figma, apps.android_studio))
+	hs.application.launchOrFocus(apps.figma)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "/", function()
