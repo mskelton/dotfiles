@@ -113,6 +113,17 @@
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
+  // Use ctrl+l to trigger suggestions to match my Neovim setup
+  {
+    "key": "ctrl+l",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+  },
   // Use ctrl+j and ctrl+k to navigate suggestions
   {
     "key": "ctrl+j",
