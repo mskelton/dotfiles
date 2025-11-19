@@ -17,6 +17,10 @@ M.count = nil
 --- @type string[]
 M.ignore_merged_prs_from = {}
 
+--- How often to check for notifications in seconds
+--- @type number
+M.interval_sec = 60
+
 --- Minimum duration between notifications in seconds (0 = no limit)
 --- @type number
 M.notification_min_interval_sec = 0
@@ -459,7 +463,7 @@ function M:start()
 		end)
 	end
 
-	self.timer = hs.timer.new(self.interval or 60, function()
+	self.timer = hs.timer.new(self.interval_sec, function()
 		self:sync("timer")
 	end)
 	self.timer:start()

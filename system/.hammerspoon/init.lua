@@ -49,7 +49,7 @@ Install:andUse("GitHubNotifications", {
 		open = { constants.keys.layer_key, "p" },
 	},
 	config = {
-		interval = 60,
+		interval_sec = 60,
 		ignore_merged_prs_from = { "ramp/web", "ramp/akuma" },
 		notification_min_interval_sec = 600,
 	},
