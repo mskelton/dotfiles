@@ -287,6 +287,11 @@
     "command": "git-extras.sync",
     "when": "!terminalFocus"
   },
+  {
+    "key": "cmd+k m",
+    "command": "git-extras.checkout-default-branch",
+    "when": "!terminalFocus"
+  },
   // Go to symbol
   {
     "key": "cmd+y",
