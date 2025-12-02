@@ -264,33 +264,27 @@
   // Git
   {
     "key": "cmd+k c",
-    "command": "git.checkout",
-    "when": "!terminalFocus"
+    "command": "git.checkout"
   },
   {
     "key": "cmd+k p",
-    "command": "git-extras.push",
-    "when": "!terminalFocus"
+    "command": "git-extras.push"
   },
   {
     "key": "cmd+k shift+p",
-    "command": "git-extras.pull",
-    "when": "!terminalFocus"
+    "command": "git-extras.pull"
   },
   {
     "key": "cmd+k a",
-    "command": "git-extras.append",
-    "when": "!terminalFocus"
+    "command": "git-extras.append"
   },
   {
     "key": "cmd+k s",
-    "command": "git-extras.sync",
-    "when": "!terminalFocus"
+    "command": "git-extras.sync"
   },
   {
     "key": "cmd+k m",
-    "command": "git-extras.checkout-default-branch",
-    "when": "!terminalFocus"
+    "command": "git-extras.checkout-default-branch"
   },
   // Go to symbol
   {
