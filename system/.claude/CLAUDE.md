@@ -1,105 +1,20 @@
-# Development Guidelines for Claude
-
-## General
-
-- After receiving tool results, carefully reflect on their quality and determine
-  optimal next steps before proceeding. Use your thinking to plan and iterate
-  based on this new information, and then take the best next action.
-- For maximum efficiency, whenever you need to perform multiple independent
-  operations, invoke all relevant tools simultaneously using sub agents rather
-  than sequentially.
-
-## No Comments in Code
-
-Code should be self-documenting through clear naming and structure. Comments
-indicate that the code itself is not clear enough.
-
-```typescript
-// Avoid: Comments explaining what the code does
-const calculateDiscount = (price: number, customer: Customer): number => {
-  // Check if customer is premium
-  if (customer.tier === "premium") {
-    // Apply 20% discount for premium customers
-    return price * 0.8
-  }
-  // Regular customers get 10% discount
-  return price * 0.9
-}
-
-// Good: Self-documenting code with clear names
-const PREMIUM_DISCOUNT_MULTIPLIER = 0.8
-const STANDARD_DISCOUNT_MULTIPLIER = 0.9
-
-const isPremiumCustomer = (customer: Customer): boolean => {
-  return customer.tier === "premium"
-}
-
-const calculateDiscount = (price: number, customer: Customer): number => {
-  const discountMultiplier = isPremiumCustomer(customer)
-    ? PREMIUM_DISCOUNT_MULTIPLIER
-    : STANDARD_DISCOUNT_MULTIPLIER
-
-  return price * discountMultiplier
-}
-
-// Avoid: Complex logic with comments
-const processPayment = (payment: Payment): ProcessedPayment => {
-  // First validate the payment
-  if (!validatePayment(payment)) {
-    throw new Error("Invalid payment")
-  }
-
-  // Check if we need to apply 3D secure
-  if (payment.amount > 100 && payment.card.type === "credit") {
-    // Apply 3D secure for credit cards over £100
-    const securePayment = apply3DSecure(payment)
-    // Process the secure payment
-    return executePayment(securePayment)
-  }
-
-  // Process the payment
-  return executePayment(payment)
-}
-
-// Good: Extract to well-named functions
-const requires3DSecure = (payment: Payment): boolean => {
-  const SECURE_PAYMENT_THRESHOLD = 100
-  return (
-    payment.amount > SECURE_PAYMENT_THRESHOLD && payment.card.type === "credit"
-  )
-}
-
-const processPayment = (payment: Payment): ProcessedPayment => {
-  if (!validatePayment(payment)) {
-    throw new PaymentValidationError("Invalid payment")
-  }
-
-  const securedPayment = requires3DSecure(payment)
-    ? apply3DSecure(payment)
-    : payment
-
-  return executePayment(securedPayment)
-}
-```
-
-Exception: JSDoc comments for public APIs are acceptable when generating
-documentation, but the code should still be self-explanatory without them.
-
-## Commit Guidelines
-
-- Each commit should represent a complete, working change
-- Use conventional commits format:
-  ```
-  feat: add payment validation
-  fix: correct date formatting in payment processor
-  refactor: extract payment validation logic
-  test: add edge cases for payment validation
-  ```
-
-## Pull Request Standards
-
-- Every pull request must have all tests passing
-- All linting and quality checks must pass
-- Work in small increments that maintain a working state
-- Pull requests should be focused on a single feature or fix
-- Include description of the behavior change, not implementation details
+- Never use code comments as a way to explain what has changed or why you are
+  changing it. Never use code comments to communicate with the current user.
+  Never use code comments as a way to document edits.
+- Don't try to placate me. Always give honest feedback, and convey your true
+  thoughts.
+- Run git status before and after running any other git command
+- Commit messages should be a single line unless I explicitly tell you otherwise
+- Use the `--help` command line arg liberally to ensure correct usage of
+  non-standard CLI tools that you are using
+- I prefer brutal honesty and realistic takes than being led on paths of maybes
+  and 'it can work'.
+- Don't use the `cd` command unless absolutely necessary (this should be rare)
+- Don't be obsequious. I have no need of praise. Do not waste your tokens
+  expounding on the virtues of the work we have done.
+- Follow the wisdom "There should be one obvious way to do it" - reduces
+  complexity and decision fatigue.
+- Do the simplest thing that could possibly work
+- Simple is better than complex
+- **ALWAYS** use `fd` instead of `find`. Similarly, **ALWAYS** use `rg` instead
+  of `grep`

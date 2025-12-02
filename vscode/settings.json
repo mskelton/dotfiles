@@ -202,20 +202,8 @@
   "githubPullRequests.pullRequestDescription": "none",
   "githubPullRequests.queries": [
     {
-      "label": "Local Pull Request Branches",
-      "query": "default"
-    },
-    {
       "label": "Created By Me",
       "query": "repo:${owner}/${repository} is:open author:${user}"
-    },
-    {
-      "label": "Assigned To Me",
-      "query": "repo:${owner}/${repository} is:open assignee:${user}"
-    },
-    {
-      "label": "All Open",
-      "query": "default"
     }
   ],
   "gitlens.blame.avatars": false,
