@@ -50,7 +50,11 @@ Install:andUse("GitHubNotifications", {
 	},
 	config = {
 		interval_sec = 60,
-		ignore_merged_prs_from = { "ramp/web", "ramp/akuma" },
+		ignore_merged_prs_from = {
+		  "ramp/akuma",
+			"ramp/web",
+			"ramp/web-agent-ide",
+		},
 		notification_min_interval_sec = 600,
 	},
 })

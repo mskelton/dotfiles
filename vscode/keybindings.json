@@ -316,22 +316,5 @@
     "key": "shift+cmd+d",
     "command": "git.closeAllDiffEditors",
     "when": "inDiffEditor"
-  },
-  // Claude Code
-  {
-    "key": "cmd+escape",
-    "command": "claude-vscode.editor.open",
-    "when": "!editorIsOpen && !editorTextFocus && !config.claudeCode.useTerminal"
-  },
-  // Toggle agent view
-  {
-    "key": "shift+cmd+y",
-    "command": "cursor.toggleAgentWindowIDEUnification",
-    "when": "cursor.agentIdeUnification.featureGate && workbenchState != 'empty'"
-  },
-  {
-    "key": "cmd+e",
-    "command": "-cursor.toggleAgentWindowIDEUnification",
-    "when": "cursor.agentIdeUnification.featureGate && workbenchState != 'empty'"
   }
 ]
