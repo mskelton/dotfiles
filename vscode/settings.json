@@ -330,7 +330,6 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
-  "typescript.experimental.useTsgo": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.inlayHints.parameterTypes.enabled": true,
@@ -348,16 +347,6 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Find
     {
-      "before": ["<leader>", "f", "d"],
-      "commands": ["workbench.files.action.showActiveFileInExplorer"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "f", "n"],
-      "commands": ["git.checkout"],
-      "silent": true
-    },
-    {
       "before": ["<leader>", "f", "a"],
       "commands": ["adjacent.quickOpen"]
     },
@@ -373,15 +362,6 @@
       ],
       "silent": true
     },
-    // Treat the search editor like the quick fix list
-    {
-      "before": ["]", "q"],
-      "commands": ["search.action.focusNextSearchResult"]
-    },
-    {
-      "before": ["[", "q"],
-      "commands": ["search.action.focusPreviousSearchResult"]
-    },
     // Git
     {
       "before": ["<leader>", "v", "h"],
@@ -391,11 +371,6 @@
     {
       "before": ["<leader>", "v", "d"],
       "commands": ["gitlens.diffWithPrevious"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "v", "p"],
-      "commands": ["git.push"],
       "silent": true
     },
     {
@@ -413,16 +388,6 @@
       "silent": true
     },
     {
-      "before": ["<leader>", "v", "s"],
-      "commands": ["git.stageChange"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "v", "u"],
-      "commands": ["git.revertChange"],
-      "silent": true
-    },
-    {
       "before": ["[", "v"],
       "commands": ["workbench.action.editor.previousChange"],
       "silent": true
@@ -430,11 +395,6 @@
     {
       "before": ["]", "v"],
       "commands": ["workbench.action.editor.nextChange"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "l", "g"],
-      "commands": ["workbench.view.scm"],
       "silent": true
     },
     // LSP
@@ -490,32 +450,12 @@
       "commands": ["redo"],
       "silent": true
     },
-    // Open command line with ;
-    {
-      "before": [";"],
-      "after": [":"],
-      "silent": true
-    },
-    // Map leader semicolon to the original semicolon motion to still allow using
-    // (next f/t match) since that motion is quite handy. I don't use it much, so
-    // the extra keypress is fine.
-    {
-      "before": ["<leader>", ";"],
-      "after": [";"],
-      "silent": true
-    },
     // I frequently roll zv for visually selection which doesn't work great on my
     // keyboard since I use a multi-function key for z/ctrl. This mapping sets
     // zv to the same as C-v.
     {
       "before": ["z", "v"],
       "commands": ["extension.vim_ctrl+v"],
-      "silent": true
-    },
-    // q: is an odd key sequence, so <leader>q is easier to type
-    {
-      "before": ["<leader>", "q"],
-      "after": ["q", ":"],
       "silent": true
     },
     // Update the Y mapping to match the Neovim behavior of "yank to end of line".
@@ -538,27 +478,10 @@
       "commands": ["workbench.action.closeActiveEditor"],
       "silent": true
     },
-    // Close other editors (like Vim's :only)
-    {
-      "before": ["<leader>", "o", "n"],
-      "commands": ["workbench.action.closeOtherEditors"],
-      "silent": true
-    },
     // File utils
     {
       "before": ["<leader>", "r", "f"],
       "commands": ["fileutils.renameFile"],
-      "silent": true
-    },
-    // TODO: Confirm delete
-    {
-      "before": ["<leader>", "o", "d", "f"],
-      "commands": ["fileutils.removeFile"],
-      "silent": true
-    },
-    {
-      "before": ["<leader>", "o", "f"],
-      "commands": ["revealFileInOS"],
       "silent": true
     },
     // Make file executable
@@ -572,22 +495,10 @@
       ],
       "silent": true
     },
-    // Emmet
-    {
-      "before": ["<leader>", "e", "m"],
-      "commands": ["editor.emmet.action.wrapWithAbbreviation"],
-      "silent": true
-    },
     // Open URL under cursor
     {
       "before": ["g", "x"],
       "commands": ["open-url.openUrlUnderCursor"],
-      "silent": true
-    },
-    // TODO: Sort inner indent
-    {
-      "before": ["<leader>", "s", "i"],
-      "commands": [],
       "silent": true
     }
   ],

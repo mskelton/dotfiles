@@ -316,5 +316,10 @@
     "key": "shift+cmd+d",
     "command": "git.closeAllDiffEditors",
     "when": "inDiffEditor"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.toggleAgentWindowIDEUnification",
+    "when": "cursor.agentIdeUnification.featureGate && workbenchState != 'empty'"
   }
 ]
