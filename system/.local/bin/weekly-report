@@ -4,11 +4,10 @@
 claude --allowedTools 'Bash(git:*) Bash(gh:*)' -p '
 Generate a report of my work from last week by:
 
-1. Searching my GitHub pull requests for PRs created last Monday through Friday
+1. Searching my GitHub pull requests for PRs merged last Monday through Friday
 2. Organizing the report with:
-   - Summary statistics (PRs created vs merged)
-   - List of PRs, grouped by day
+   - List of PRs, grouped by project (one of Treasury, Ramp Inpsect, Buildkite, Testing, Other)
    - Lines of code added and removed for each PR (e.g. +1000 -500)
 
-Format as plain text
-'
+Format as markdown
+' | glow -
