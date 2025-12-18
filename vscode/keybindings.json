@@ -321,5 +321,18 @@
     "key": "cmd+e",
     "command": "-cursor.toggleAgentWindowIDEUnification",
     "when": "cursor.agentIdeUnification.featureGate && workbenchState != 'empty'"
+  },
+  // Modes
+  {
+    "key": "alt+cmd+k",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "alt+cmd+p",
+    "command": "composerMode.plan"
+  },
+  {
+    "key": "alt+cmd+l",
+    "command": "composerMode.chat"
   }
 ]

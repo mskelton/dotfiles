@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
 # Graphite new branch
 
+_print_help() {
+  echo "Create a new Graphite branch
+
+Usage: gn [options] <commit_message>
+
+Options:
+  -h, --help             Display this help message and exit
+
+Arguments:
+  <commit_message>       The commit message for the new branch. This will be used as the branch name and commit message (if there are uncommitted changes).
+"
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  _print_help
+  exit 0
+fi
+
 # If we are in a worktree, we handle this command a bit special
 if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
   repo_path=$(git rev-parse --show-toplevel)

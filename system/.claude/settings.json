@@ -22,18 +22,6 @@
     ],
     "deny": []
   },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Funk.aiff"
-          }
-        ]
-      }
-    ]
-  },
   "alwaysThinkingEnabled": true,
   "model": "opus"
 }
