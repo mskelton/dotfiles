@@ -18,11 +18,11 @@ git clone git@github.com:mskelton/dotfiles.git
 cd dotfiles
 ln hooks/pre-commit .git/hooks/pre-commit
 curl -LSfs https://go.mskelton.dev/farm/install | sh
-farm link
+[ -f $HOME/.work ] && farm link work || farm link home
 ```
 
-- [Setup tools](https://github.com/mskelton/dotfiles/tree/main/docs/tools.md)
-- [Install shortcuts](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
-- [Install Chromium extensions](https://github.com/mskelton/dotfiles/tree/main/docs/chromium-extensions.md)
-- [Copy data from old machine](https://github.com/mskelton/dotfiles/tree/main/docs/shortcuts.md)
-- [Configure apps](https://github.com/mskelton/dotfiles/tree/main/docs/configure-apps.md)
+- [Migration checklist](https://github.com/mskelton/dotfiles/tree/main/docs/01-migration-checklist.md)
+- [Setup tools](https://github.com/mskelton/dotfiles/tree/main/docs/02-tools.md)
+- [Configure apps](https://github.com/mskelton/dotfiles/tree/main/docs/03-configure-apps.md)
+- [Configure Chromium](https://github.com/mskelton/dotfiles/tree/main/docs/04-chromium.md)
+- [Configure shortcuts](https://github.com/mskelton/dotfiles/tree/main/docs/05-shortcuts.md)
