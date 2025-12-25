@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Allow fish to be used as a shell
-sudo sh -c "echo /opt/homebrew/bin/fish >> /etc/shells"
-
 # Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
