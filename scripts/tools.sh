@@ -36,9 +36,6 @@ npm config set update-notifier=false
 # Disable pnpm workspace root check
 npm config set ignore-workspace-root-check=true
 
-# Enable corepack
-sudo corepack enable
-
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -67,6 +64,3 @@ npm install -g ovsx
 # Install remote fonts
 curl -sL https://termicons.mskelton.dev/termicons.ttf -o $HOME/Library/Fonts/termicons.ttf
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o $HOME/Library/Fonts/codicon.ttf
-
-# Setup launchd services
-# launchd-reload

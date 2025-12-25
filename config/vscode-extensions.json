@@ -1,5 +1,6 @@
 {
   "extensions": [
+    "bradlc.vscode-tailwindcss",
     "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
     "charliermarsh.ruff",
@@ -7,6 +8,7 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
+    "fwcd.kotlin",
     "golang.go",
     "mads-hartmann.bash-ide-vscode",
     "ms-playwright.playwright",
@@ -20,15 +22,16 @@
     "mskelton.open-url-under-cursor",
     "mskelton.unix-chmod",
     "mskelton.vscode-git-utils",
-    "openai.chatgpt",
     "plorefice.devicetree",
     "qwtel.sqlite-viewer",
     "redhat.vscode-yaml",
     "rust-lang.rust-analyzer",
     "sleistner.vscode-fileutils",
+    "sswg.swift-lang",
     "sumneko.lua",
     "tamasfe.even-better-toml",
     "usernamehw.errorlens",
+    "vadimcn.vscode-lldb",
     "vscodevim.vim"
   ]
 }
