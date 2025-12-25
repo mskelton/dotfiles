@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Git status
+
+for dir in "$HOME/dev"/*; do
+  if [ -d "$dir" ]; then
+    echo "Auditing $dir"
+    if ! git -C "$dir" remote | grep -q .; then
+      echo "  No remote configured"
+      read
+      continue
+    fi
+
+    git -C "$dir" status
+    git -C "$dir" branch
+    read
+  fi
+done
