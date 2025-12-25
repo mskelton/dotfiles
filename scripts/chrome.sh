@@ -25,13 +25,13 @@ defaults write com.google.Chrome.plist ShowFullUrlsInAddressBar -bool true
 # https://developer.chrome.com/docs/extensions/mv3/external_extensions/#preferences
 extensions=()
 extensions+=(aeblfdkhhhdcdjpifhhbdiojplfjncoa) # 1Password
-extensions+=(eandejdimaomjfhmobeofcgljmmbgkde) # Bookmark Sync
 extensions+=(eimadpbcbfnmbkopoojfekhnkhdbieeh) # Dark Reader
+extensions+=(paichadkkbhdmkngdmkgmefiabjjcaai) # Goodnight Tabs
 extensions+=(bggfcpfjbdkhfhfmkjpbhnkhnpjjeomc) # Material Icons for GitHub
 extensions+=(hkgfoiooedgoejojocmhlaklaeopbecg) # Picture-in-Picture Extension
-extensions+=(pnjaodmkngahhkoihejjehlcdlnohgmp) # RSS Feed Reader
 extensions+=(fmkadmapgofadopljbjfkapdkoienihi) # React Developer Tools
 extensions+=(hlepfoohegkhhmjieoechaddaejaokhf) # Refined GitHub
+extensions+=(aanobjpajhiopeemffkkkoeepkelbblk) # Scholar
 extensions+=(nbhcbdghjpllgmfilhnhkllmkecfmpld) # User JavaScript and CSS
 extensions+=(pncfbmialoiaghdehhbnbhkkgmjanfhe) # uBlacklist
 
