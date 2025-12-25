@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Git status
+
+echo "Getting status for $1"
+git -C "$1" status
+git -C "$1" branch
