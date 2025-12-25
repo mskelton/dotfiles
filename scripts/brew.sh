@@ -12,13 +12,11 @@ get_conditional_casks() {
 	if [[ -f "$HOME/.work" ]]; then
 		cat <<EOF
 	cask "mic-drop"
-	cask "slack"
 	cask "logi-options-plus"
 	cask "logitune"
 EOF
 	else
 		cat <<EOF
-	cask "thebrowsercompany-dia"
 	cask "telegram"
 	cask "zoom"
 EOF
@@ -29,17 +27,17 @@ EOF
 echo "Installing packages from Brewfile..."
 $brew bundle --file=- <<EOF
 	# Taps
-	tap "jesseduffield/lazygit"
 	tap "withgraphite/tap"
+	tap "tursodatabase/tap/turso"
 	tap "xo/xo"
 
 	# Formulae
 	brew "ast-grep"
 	brew "bash"
+	brew "bash"
 	brew "blueutil"
 	brew "fd"
 	brew "ffmpeg"
-	brew "fish"
 	brew "flyctl"
 	brew "fnm"
 	brew "fzf"
@@ -47,18 +45,18 @@ $brew bundle --file=- <<EOF
 	brew "git"
 	brew "gnu-sed"
 	brew "go"
+	brew "gradle"
 	brew "imagemagick"
-	brew "lazygit"
 	brew "jq"
 	brew "just"
 	brew "neovim"
 	brew "ripgrep"
+	brew "sponge"
 	brew "starship"
 	brew "task"
 	brew "timg"
 	brew "tmux"
-	brew "trash"
-	brew "tree-sitter"
+	brew "turso"
 	brew "watchman"
 	brew "wget"
 	brew "graphite"
