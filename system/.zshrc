@@ -75,3 +75,6 @@ export PATH="$HOME/.local/bin""\
 # Plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# bun completions
+[ -s "/Users/mskelton/.bun/_bun" ] && source "/Users/mskelton/.bun/_bun"

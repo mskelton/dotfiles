@@ -23,18 +23,17 @@ mkdir ~/.cache/starship
 # Install lazy.nvim
 git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
 
-# Use a user directory so sudo is not required for installation
-npm config set prefix=~/.local/share/npm
-
-# Disable npm audit and npm fund, I dislike both
-npm config set audit=false
-npm config set fund=false
-
-# Disable pnpm update notifier
-npm config set update-notifier=false
-
-# Disable pnpm workspace root check
-npm config set ignore-workspace-root-check=true
+# 1. Use a user directory so sudo is not required for installation
+# 2. Disable npm audit and npm fund, I dislike both
+# 3. Disable pnpm update notifier
+# 4. Disable pnpm workspace root check
+cat <<EOF > "$HOME/.npmrc"
+prefix=/Users/mskelton/.local/share/npm
+audit=false
+fund=false
+update-notifier=false
+ignore-workspace-root-check=true
+EOF
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
