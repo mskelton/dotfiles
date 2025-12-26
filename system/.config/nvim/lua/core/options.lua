@@ -19,7 +19,7 @@ o.guicursor = o.guicursor + "c:ver25"
 
 --- Show trailing spaces
 o.list = true
-o.listchars = require("core.utils.trailer").standard
+o.listchars = "tab:  ,trail:·"
 
 --- Better split directions
 o.splitright = true

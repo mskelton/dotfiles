@@ -15,7 +15,7 @@ require("lazy").setup("plugins", {
 		rtp = {
 			disabled_plugins = {
 				"gzip",
-				--- "netrwPlugin",
+				"netrwPlugin",
 				"rplugin",
 				"tarPlugin",
 				"tohtml",
@@ -24,9 +24,4 @@ require("lazy").setup("plugins", {
 			},
 		},
 	},
-})
-
-vim.keymap.set("n", "<leader>op", require("lazy").home, {
-	silent = true,
-	desc = "Open lazy.nvim",
 })

@@ -270,7 +270,7 @@ return {
 						"--ignore-file=.gitignore",
 						string.format(
 							"--ignore-file=%s/.gitignore-global",
-							utils.home_dir()
+							os.getenv("HOME")
 						),
 					})
 				end
