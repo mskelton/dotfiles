@@ -3,7 +3,7 @@
   "description": "My dotfiles",
   "packageManager": "yarn@4.7.0",
   "scripts": {
-    "fmt": "prettier --write ."
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "prettier": "^3.5.3",
