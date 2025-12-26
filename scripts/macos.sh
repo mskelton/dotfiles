@@ -41,6 +41,8 @@ defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 # Disable delay when hovering toolbar title
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
+killall Finder
+
 ################################################################################
 ### DOCK #######################################################################
 ################################################################################
@@ -78,6 +80,8 @@ defaults write -g com.apple.trackpad.scaling -float 0.875
 # Enable tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
 
+killall SystemUIServer
+
 ################################################################################
 ### KEYBOARD ###################################################################
 ################################################################################
@@ -100,6 +104,8 @@ defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 # Disable default text replacement items
 defaults write -g NSUserDictionaryReplacementItems '()'
 
+killall SystemUIServer
+
 ################################################################################
 ### MENU BAR ###################################################################
 ################################################################################
@@ -118,6 +124,8 @@ defaults -currentHost write com.apple.controlcenter FocusModes -int 18
 
 # Show sound always
 defaults -currentHost write com.apple.controlcenter Sound -int 16
+
+killall SystemUIServer
 
 ################################################################################
 ### APP SHORTCUTS ##############################################################

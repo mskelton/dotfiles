@@ -23,17 +23,15 @@ mkdir ~/.cache/starship
 # Install lazy.nvim
 git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
 
-# 1. Use a user directory so sudo is not required for installation
-# 2. Disable npm audit and npm fund, I dislike both
-# 3. Disable pnpm update notifier
-# 4. Disable pnpm workspace root check
-cat <<EOF > "$HOME/.npmrc"
-prefix=/Users/mskelton/.local/share/npm
-audit=false
-fund=false
-update-notifier=false
-ignore-workspace-root-check=true
-EOF
+# Install latest LTS version of Node.js
+fnm install --lts
+
+# Use a user directory so sudo is not required for installation
+npm config set prefix=~/.local/share/npm
+
+# Disable npm audit and npm fund, I dislike both
+npm config set audit=false
+npm config set fund=false
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -61,5 +59,5 @@ npm install -g @vscode/vsce
 npm install -g ovsx
 
 # Install remote fonts
-curl -sL https://termicons.mskelton.dev/termicons.ttf -o $HOME/Library/Fonts/termicons.ttf
-curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o $HOME/Library/Fonts/codicon.ttf
+curl -sL https://termicons.mskelton.dev/termicons.ttf -o "$HOME/Library/Fonts/termicons.ttf"
+curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o "$HOME/Library/Fonts/codicon.ttf"

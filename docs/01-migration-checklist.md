@@ -1,5 +1,6 @@
 # Migration Checklist
 
+- Backup Raycast settings
 - Backup pictures and documents
 - Backup the following files:
   - `~/.gitconfig`

@@ -1,7 +1,52 @@
-# Configure Apps
+# Apps
 
 Below are configure steps for applications. This is typically only needed to be
 done when setting up new _accounts_ which only happens when changing jobs.
+
+# Shortcuts
+
+- [Rewind](https://www.icloud.com/shortcuts/16c6dd6d3d7f492f977a75aad724f185)
+- [Fast Forward](https://www.icloud.com/shortcuts/b6dd59539ee342319fd542bb6e2197b2)
+- [Skip Forward](https://www.icloud.com/shortcuts/405d85c171c846a8bcdc523e2128d772)
+
+## Chrome
+
+### Configure Refined GitHub
+
+1. Navigate to the extension options
+1. Expand the **Export options** panel and click **Import**
+1. Upload `config/refined-github.json`
+
+### Configure uBlacklist
+
+1. Navigate to the extension options
+1. Where it says "Restore settings", click **Restore**
+1. Upload `config/ublacklist-settings.json`
+
+### Configure User JavaScript and CSS
+
+1. Navigate to the extension options
+1. Click `Upload JSON`
+1. Upload `config/user-js-css.json`
+
+To update the saved settings, run the following steps:
+
+1. Navigate to the extension options
+1. Click `Download JSON`
+1. Run the following command
+   ```bash
+   ls $HOME/Downloads/user-js-css-*.json | xargs -I {} sh -c "cat {} | jq > $HOME/dev/dotfiles/config/user-js-css.json && rm {}"
+   ```
+1. Commit and push changes
+
+## Shottr
+
+- Set "Screenshots folder" to "~/Downloads"
+- Set "Fullscreen screenshot" to "cmd+shift+3"
+- Set "Area screenshot" to "cmd+shift+4"
+- Set "Active window screenshot" to "cmd+shift+2"
+- Set "Instant Text/QR recognition" to "cmd+shift+1"
+- Hide menu bar icon
 
 ## ChatGPT
 
