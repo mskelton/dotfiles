@@ -29,7 +29,7 @@ $brew bundle --file=- <<EOF
 	# Formulae
 	brew "ast-grep"
 	brew "bash"
-	brew "bash"
+	brew "bat"
 	brew "blueutil"
 	brew "fd"
 	brew "ffmpeg"
@@ -61,7 +61,9 @@ $brew bundle --file=- <<EOF
 	brew "zsh-fast-syntax-highlighting"
 
 	# Casks
+	cask "1password"
 	cask "android-studio"
+	cask "cursor"
 	cask "figma"
 	cask "firefox"
 	cask "font-jetbrains-mono"
