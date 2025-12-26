@@ -62,7 +62,6 @@ $brew bundle --file=- <<EOF
 
 	# Casks
 	cask "android-studio"
-	cask "arc"
 	cask "figma"
 	cask "firefox"
 	cask "font-jetbrains-mono"
