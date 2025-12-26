@@ -87,9 +87,6 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g KeyRepeat -int 2
 defaults write -g InitialKeyRepeat -int 15
 
-# Use all F1, F2 as standard keys
-defaults write -g com.apple.keyboard.fnState -bool true
-
 # Disable globe key
 defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 
@@ -121,32 +118,6 @@ defaults -currentHost write com.apple.controlcenter FocusModes -int 18
 
 # Show sound always
 defaults -currentHost write com.apple.controlcenter Sound -int 16
-
-################################################################################
-### SHORTCUTS ##################################################################
-################################################################################
-
-disable_shortcut="<dict><key>enabled</key><false/></dict>"
-
-enabled_shortcuts=(
-  27  # Move focus to next window
-  52  # Toggle dock hiding
-  59  # Toggle voice over
-  53  # Brightness down
-  54  # Brightness up
-  163 # Toggle do not disturb
-)
-
-shortcuts_output=$(defaults read com.apple.symbolichotkeys AppleSymbolicHotKeys)
-shortcut_ids=$(echo "$shortcuts_output" | grep -E '^[[:space:]]*[0-9]+[[:space:]]*=' | sed 's/^[[:space:]]*\([0-9]*\).*/\1/')
-
-for id in $shortcut_ids; do
-  if [[ " ${enabled_shortcuts[@]} " =~ " ${id} " ]]; then
-    continue
-  fi
-
-  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$id" "$disable_shortcut"
-done
 
 ################################################################################
 ### APP SHORTCUTS ##############################################################
