@@ -54,11 +54,6 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local context = require("cmp.config.context")
-		local format = require("lspkind").cmp_format({
-			mode = "symbol_text",
-			maxwidth = 50,
-			preset = "codicons",
-		})
 
 		cmp.setup({
 			completion = {
@@ -76,14 +71,14 @@ return {
 
 				--- Disable completion in prompt buffers (e.g. Telescope)
 				if
-					vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt"
+						vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt"
 				then
 					return false
 				end
 
 				--- Disable completion in markdown files
 				if
-					vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "markdown"
+						vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "markdown"
 				then
 					return false
 				end
@@ -138,35 +133,14 @@ return {
 
 						--- Only return Emmet results in styled-component template strings
 						return client_name ~= "emmet_language_server"
-							or entry.context.filetype == "css"
-							or context.in_treesitter_capture("styled")
+								or entry.context.filetype == "css"
+								or context.in_treesitter_capture("styled")
 					end,
 				},
 				{ name = "luasnip" },
 			}, {
 				{ name = "buffer" },
 			}),
-			formatting = {
-				fields = { "kind", "abbr", "menu" },
-				format = function(entry, vim_item)
-					local original_kind = vim_item.kind
-					local kind = format(entry, vim_item)
-
-					--- Split the kind from lspkind into two parts so we can place the icon
-					--- on the left and the text on the right. This allows for quick scanning
-					--- on the left near the text while still providing the full completion
-					--- information if needed.
-					local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-					kind.kind = strings[1] .. " "
-					kind.menu = "   " .. strings[2]
-
-					--- Highlight the menu text the same as the kind icon
-					kind.menu_hl_group = "CmpItemKind" .. original_kind
-
-					return kind
-				end,
-			},
 			sorting = {
 				comparators = {
 					--- Sort snippets first

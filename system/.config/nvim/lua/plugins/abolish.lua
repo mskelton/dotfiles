@@ -1,4 +1,3 @@
---- @vs-reviewed
 return {
 	{
 		"tpope/vim-abolish",

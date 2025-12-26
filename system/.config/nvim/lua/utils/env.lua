@@ -1,4 +1,3 @@
---- @vs-reviewed
 local M = {}
 
 --- Check if a file exists at the given path

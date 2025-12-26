@@ -1,4 +1,3 @@
---- @vs-reviewed
 local function default_branch()
 	return string.gsub(vim.fn.execute("Git default"), "\n", "")
 end

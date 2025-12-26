@@ -1,4 +1,3 @@
---- @vs-reviewed
 return {
 	"akinsho/bufferline.nvim",
 	event = "VeryLazy",

@@ -1,4 +1,3 @@
---- @vs-reviewed
 local function diff_source()
 	--- @diagnostic disable-next-line: undefined-field
 	local gitsigns = vim.b.gitsigns_status_dict
@@ -69,7 +68,7 @@ return {
 					{
 						"filename",
 						fmt = utils.trunc(50, {
-							{ max = 80, width = 15 },
+							{ max = 80,  width = 15 },
 							{ max = 120, width = 30 },
 							{ max = 140, width = 30 },
 						}),
@@ -111,7 +110,7 @@ return {
 					{
 						"branch",
 						fmt = utils.trunc(50, {
-							{ max = 80, width = 15 },
+							{ max = 80,  width = 15 },
 							{ max = 120, width = 30 },
 							{ max = 140, width = 30 },
 						}),
@@ -131,7 +130,7 @@ return {
 							return cwd
 						end,
 						fmt = utils.trunc(50, {
-							{ max = 80, width = 15 },
+							{ max = 80,  width = 15 },
 							{ max = 120, width = 30 },
 							{ max = 140, width = 30 },
 						}),

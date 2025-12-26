@@ -1,4 +1,3 @@
---- @vs-reviewed
 vim.filetype.add({
 	extension = {
 		mdx = "markdown",

@@ -1,4 +1,3 @@
---- @vs-reviewed
 local M = {}
 
 M.signs = { Error = "", Warn = "", Hint = "", Info = "" }

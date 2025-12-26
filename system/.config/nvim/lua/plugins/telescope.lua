@@ -1,4 +1,3 @@
---- @vs-reviewed
 local nv = { "n", "v" }
 
 local scoped_search = false
@@ -243,8 +242,8 @@ return {
 			local bufnr = vim.api.nvim_get_current_buf()
 			local status = require("telescope.state").get_status(bufnr)
 			local len = vim.api.nvim_win_get_width(status.results_win)
-				- status.picker.selection_caret:len()
-				- padding
+					- status.picker.selection_caret:len()
+					- padding
 
 			return require("plenary.strings").truncate(path, len, nil, -1)
 		end
@@ -335,7 +334,7 @@ return {
 						["<C-p>"] = function(bufnr)
 							local picker = actions_state.get_current_picker(bufnr)
 							local first_line =
-								vim.fn.getreg("+"):gsub("^%s*(.-)%s*$", "%1"):match("^[^\n]*")
+									vim.fn.getreg("+"):gsub("^%s*(.-)%s*$", "%1"):match("^[^\n]*")
 
 							picker:set_prompt(first_line)
 						end,
@@ -345,8 +344,8 @@ return {
 							local picker = actions_state.get_current_picker(bufnr)
 
 							if
-								state.picker_type ~= "find_files"
-								and state.picker_type ~= "live_grep"
+									state.picker_type ~= "find_files"
+									and state.picker_type ~= "live_grep"
 							then
 								return vim.notify(
 									string.format(
