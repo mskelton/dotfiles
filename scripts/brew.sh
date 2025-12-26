@@ -28,7 +28,6 @@ echo "Installing packages from Brewfile..."
 $brew bundle --file=- <<EOF
 	# Taps
 	tap "withgraphite/tap"
-	tap "tursodatabase/tap/turso"
 	tap "xo/xo"
 
 	# Formulae
@@ -56,7 +55,7 @@ $brew bundle --file=- <<EOF
 	brew "task"
 	brew "timg"
 	brew "tmux"
-	brew "turso"
+	brew "tursodatabase/tap/turso"
 	brew "watchman"
 	brew "wget"
 	brew "graphite"
