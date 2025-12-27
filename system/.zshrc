@@ -42,7 +42,7 @@ source <(fzf --zsh)
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # Setup fnm
-eval "$(fnm env --use-on-cd --corepack-enabled --log-level error --shell zsh)"
+eval "$(fnm env --use-on-cd --log-level error --shell zsh)"
 
 # Setup rustup
 [ -f $HOME/.cargo/env ] && . $HOME/.cargo/env
@@ -78,3 +78,11 @@ source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-high
 
 # bun completions
 [ -s "/Users/mskelton/.bun/_bun" ] && source "/Users/mskelton/.bun/_bun"
+
+# pnpm
+export PNPM_HOME="/Users/mskelton/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
