@@ -63,6 +63,7 @@ $brew bundle --file=- <<EOF
 	# Casks
 	cask "1password"
 	cask "android-studio"
+	cask "chatgpt"
 	cask "cursor"
 	cask "figma"
 	cask "firefox"
