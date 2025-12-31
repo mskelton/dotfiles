@@ -538,6 +538,7 @@
       "silent": true
     }
   ],
+  "window.autoDetectColorScheme": true,
   "window.customTitleBarVisibility": "never",
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,
