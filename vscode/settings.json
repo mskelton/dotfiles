@@ -222,6 +222,7 @@
   },
   "gitlens.mode.statusBar.enabled": false,
   "gitlens.plusFeatures.enabled": false,
+  "gitlens.rebaseEditor.openOnPausedRebase": false,
   "gitlens.remotes": [
     {
       "regex": "^([^:]+):(.+)\\.git$",
@@ -254,6 +255,7 @@
       }
     }
   ],
+  "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.statusBar.pullRequests.enabled": false,
   "gitlens.telemetry.enabled": false,
