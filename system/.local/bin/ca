@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Commit all changes
+
+set -euo pipefail
+
+_print_help() {
+  echo "Commit all changes
+
+Usage: ca <commit_message>
+
+Options:
+  -h, --help             Display this help message and exit
+
+Arguments:
+  <commit_message>       The commit message for the changes.
+"
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  _print_help
+  exit 0
+fi
+
+git add -A
+git commit -m "$*"
