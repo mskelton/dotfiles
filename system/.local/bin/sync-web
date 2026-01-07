@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-for dir in ../web-*; do
-  cp .vscode/settings.json "$dir/.vscode/settings.json"
-  cp .config/.env.local "$dir/.config/.env.local"
+current_dir=$(basename "$(pwd)")
+if [[ ! "$current_dir" =~ ^web(-.*)?$ ]]; then
+  echo "Error: Must be run from a web directory (web or web-*)"
+  exit 1
+fi
+
+for dir in ../web ../web-*; do
+  if [[ "$(realpath "$dir")" != "$(pwd)" ]]; then
+    cp "$(pwd)/.vscode/settings.json" "$dir/.vscode/settings.json"
+    cp "$(pwd)/.config/.env.local" "$dir/.config/.env.local"
+    echo "✔︎ Synced $(basename $(pwd)) -> $(basename "$dir")"
+  fi
 done
