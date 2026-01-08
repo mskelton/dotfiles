@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Create a new GitHub repository and push the current directory to it
+
+set -euo pipefail
+
+gh repo create --push --private --source .
+gh setup-repo
