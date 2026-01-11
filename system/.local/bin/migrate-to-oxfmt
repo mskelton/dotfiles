@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+# Migrate from Prettier to oxfmt
+
+set -e
+
+# Detect package manager
+detect_package_manager() {
+  if [ -f "bun.lockb" ] || command -v bun &> /dev/null && [ -f "package.json" ]; then
+    echo "bun"
+  elif [ -f "pnpm-lock.yaml" ]; then
+    echo "pnpm"
+  elif [ -f "yarn.lock" ]; then
+    echo "yarn"
+  elif [ -f "package-lock.json" ]; then
+    echo "npm"
+  else
+    # Default to npm if package.json exists
+    if [ -f "package.json" ]; then
+      echo "npm"
+    else
+      echo "unknown"
+    fi
+  fi
+}
+
+PM=$(detect_package_manager)
+
+if [ "$PM" = "unknown" ]; then
+  echo "Error: Could not detect package manager. Make sure you're in a project directory with package.json"
+  exit 1
+fi
+
+echo "Detected package manager: $PM"
+
+# Remove prettier packages
+echo "Removing prettier packages..."
+case $PM in
+  npm)
+    npm uninstall prettier prettier-plugin-sort-json
+    ;;
+  yarn)
+    yarn remove prettier prettier-plugin-sort-json
+    ;;
+  pnpm)
+    pnpm remove prettier prettier-plugin-sort-json
+    ;;
+  bun)
+    bun remove prettier prettier-plugin-sort-json
+    ;;
+esac
+
+# Install oxfmt
+echo "Installing oxfmt..."
+case $PM in
+  npm)
+    npm install --save-dev oxfmt
+    ;;
+  yarn)
+    yarn add -D oxfmt
+    ;;
+  pnpm)
+    pnpm add -D oxfmt
+    ;;
+  bun)
+    bun add -d oxfmt
+    ;;
+esac
+
+# Read .prettierignore if it exists
+IGNORE_PATTERNS=()
+if [ -f ".prettierignore" ]; then
+  echo "Reading .prettierignore..."
+  while IFS= read -r line || [ -n "$line" ]; do
+    # Skip empty lines and comments
+    if [[ -n "$line" && ! "$line" =~ ^[[:space:]]*# ]]; then
+      IGNORE_PATTERNS+=("$line")
+    fi
+  done < .prettierignore
+fi
+
+# Delete prettier files
+echo "Deleting prettier configuration files..."
+[ -f ".prettierrc" ] && rm .prettierrc
+[ -f ".prettierrc.json" ] && rm .prettierrc.json
+[ -f ".prettierrc.js" ] && rm .prettierrc.js
+[ -f ".prettierrc.cjs" ] && rm .prettierrc.cjs
+[ -f ".prettierrc.mjs" ] && rm .prettierrc.mjs
+[ -f ".prettierrc.yaml" ] && rm .prettierrc.yaml
+[ -f ".prettierrc.yml" ] && rm .prettierrc.yml
+[ -f ".prettierignore" ] && rm .prettierignore
+
+# Create .oxfmtrc.json
+echo "Creating .oxfmtrc.json..."
+
+# Build ignore array JSON
+IGNORE_JSON=""
+if [ ${#IGNORE_PATTERNS[@]} -gt 0 ]; then
+  IGNORE_JSON=",\n  \"ignorePatterns\": ["
+  for i in "${!IGNORE_PATTERNS[@]}"; do
+    if [ $i -gt 0 ]; then
+      IGNORE_JSON+=","
+    fi
+    IGNORE_JSON+="\n    \"${IGNORE_PATTERNS[$i]}\""
+  done
+  IGNORE_JSON+="\n  ]"
+fi
+
+# Create the .oxfmtrc.json file
+printf "{
+  \"\$schema\": \"./node_modules/oxfmt/configuration_schema.json\",
+  \"printWidth\": 100,
+  \"singleQuote\": true,
+  \"semi\": false,
+  \"objectWrap\": \"preserve\",
+  \"quoteProps\": \"consistent\",
+  \"experimentalSortImports\": {
+    \"newlinesBetween\": false,
+    \"enabled\": true
+  },
+  \"experimentalSortPackageJson\": true,
+  \"experimentalTailwindcss\": {
+    \"enabled\": true,
+    \"stylesheet\": \"src/index.css\",
+    \"functions\": [\"cn\", \"clsx\", \"cva\", \"tw\", \"twMerge\"]
+  }${IGNORE_JSON}
+}
+" > .oxfmtrc.json
+
+echo "Migration complete!"
+echo "Created .oxfmtrc.json with ${#IGNORE_PATTERNS[@]} ignore pattern(s) from .prettierignore"

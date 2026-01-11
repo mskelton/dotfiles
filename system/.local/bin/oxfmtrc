@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Create a .oxfmtrc file with my default settings
+
+printf '{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "semi": false,
+  "objectWrap": "always",
+  "quoteProps": "consistent",
+  "experimentalSortImports": {
+    "newlinesBetween": false,
+    "enabled": true
+  },
+  "experimentalSortPackageJson": true
+}
+' >.oxfmtrc.json

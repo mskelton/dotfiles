@@ -183,12 +183,6 @@
     "key": "cmd+alt+o",
     "command": "workbench.action.switchWindow"
   },
-  // Open Git command line
-  {
-    "key": ";",
-    "command": "vim.showQuickpickCmdLine",
-    "when": "!editorFocus && !inputFocus"
-  },
   // Open Git
   {
     "key": "shift+cmd+g",
