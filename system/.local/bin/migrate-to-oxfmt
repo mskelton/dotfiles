@@ -31,16 +31,16 @@ echo "Detected package manager: $PM"
 echo "Removing prettier packages..."
 case $PM in
   npm)
-    npm uninstall prettier prettier-plugin-sort-json
+    npm uninstall prettier
     ;;
   yarn)
-    yarn remove prettier prettier-plugin-sort-json
+    yarn remove prettier
     ;;
   pnpm)
-    pnpm remove prettier prettier-plugin-sort-json
+    pnpm remove prettier
     ;;
   bun)
-    bun remove prettier prettier-plugin-sort-json
+    bun remove prettier
     ;;
 esac
 
@@ -108,18 +108,25 @@ printf "{
   \"semi\": false,
   \"objectWrap\": \"preserve\",
   \"quoteProps\": \"consistent\",
+  \"experimentalSortPackageJson\": true,
   \"experimentalSortImports\": {
     \"newlinesBetween\": false,
     \"enabled\": true
-  },
-  \"experimentalSortPackageJson\": true,
-  \"experimentalTailwindcss\": {
-    \"enabled\": true,
-    \"stylesheet\": \"src/index.css\",
-    \"functions\": [\"cn\", \"clsx\", \"cva\", \"tw\", \"twMerge\"]
   }${IGNORE_JSON}
 }
 " > .oxfmtrc.json
+
+# Update package.json scripts
+if [ -f "package.json" ]; then
+  echo "Updating package.json scripts..."
+
+  sed -i '' \
+    -e 's/prettier --write /oxfmt /g' \
+    -e 's/prettier --check /oxfmt --check /g' \
+    package.json
+
+  echo "Updated package.json scripts"
+fi
 
 echo "Migration complete!"
 echo "Created .oxfmtrc.json with ${#IGNORE_PATTERNS[@]} ignore pattern(s) from .prettierignore"
