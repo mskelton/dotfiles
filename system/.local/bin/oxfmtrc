@@ -6,12 +6,12 @@ printf '{
   "printWidth": 100,
   "singleQuote": true,
   "semi": false,
-  "objectWrap": "always",
+  "objectWrap": "preserve",
   "quoteProps": "consistent",
+  "experimentalSortPackageJson": true,
   "experimentalSortImports": {
     "newlinesBetween": false,
     "enabled": true
-  },
-  "experimentalSortPackageJson": true
+  }
 }
 ' >.oxfmtrc.json

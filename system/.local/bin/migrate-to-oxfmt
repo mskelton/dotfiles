@@ -5,7 +5,7 @@ set -e
 
 # Detect package manager
 detect_package_manager() {
-  if [ -f "bun.lock" ]; then
+  if [ -f "bun.lock" ] || [ -f "bun.lockb" ]; then
     echo "bun"
   elif [ -f "pnpm-lock.yaml" ]; then
     echo "pnpm"
@@ -61,7 +61,7 @@ case $PM in
     ;;
 esac
 
-# Read .prettierignore if it exists
+# Read .prettierignore if it exists (before deleting it)
 IGNORE_PATTERNS=()
 if [ -f ".prettierignore" ]; then
   echo "Reading .prettierignore..."
@@ -84,37 +84,29 @@ echo "Deleting prettier configuration files..."
 [ -f ".prettierrc.yml" ] && rm .prettierrc.yml
 [ -f ".prettierignore" ] && rm .prettierignore
 
-# Create .oxfmtrc.json
+# Create .oxfmtrc.json using oxfmtrc binary
 echo "Creating .oxfmtrc.json..."
+oxfmtrc
 
-# Build ignore array JSON
-IGNORE_JSON=""
+# Add ignorePatterns using jq if patterns exist
 if [ ${#IGNORE_PATTERNS[@]} -gt 0 ]; then
-  IGNORE_JSON=",\n  \"ignorePatterns\": ["
+  echo "Adding ignore patterns to .oxfmtrc.json..."
+  TMP_FILE=$(mktemp)
+
+  # Build jq filter to add ignorePatterns array
+  JQ_FILTER='.ignorePatterns = ['
   for i in "${!IGNORE_PATTERNS[@]}"; do
     if [ $i -gt 0 ]; then
-      IGNORE_JSON+=","
+      JQ_FILTER+=','
     fi
-    IGNORE_JSON+="\n    \"${IGNORE_PATTERNS[$i]}\""
+    # Use jq to properly escape the string
+    ESCAPED=$(printf '%s' "${IGNORE_PATTERNS[$i]}" | jq -Rs .)
+    JQ_FILTER+="$ESCAPED"
   done
-  IGNORE_JSON+="\n  ]"
-fi
+  JQ_FILTER+=']'
 
-# Create the .oxfmtrc.json file
-printf "{
-  \"\$schema\": \"./node_modules/oxfmt/configuration_schema.json\",
-  \"printWidth\": 100,
-  \"singleQuote\": true,
-  \"semi\": false,
-  \"objectWrap\": \"preserve\",
-  \"quoteProps\": \"consistent\",
-  \"experimentalSortPackageJson\": true,
-  \"experimentalSortImports\": {
-    \"newlinesBetween\": false,
-    \"enabled\": true
-  }${IGNORE_JSON}
-}
-" > .oxfmtrc.json
+  jq "$JQ_FILTER" .oxfmtrc.json > "$TMP_FILE" && mv "$TMP_FILE" .oxfmtrc.json
+fi
 
 # Update package.json scripts
 if [ -f "package.json" ]; then
