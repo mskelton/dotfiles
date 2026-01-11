@@ -5,7 +5,7 @@ set -e
 
 # Detect package manager
 detect_package_manager() {
-  if [ -f "bun.lockb" ] || command -v bun &> /dev/null && [ -f "package.json" ]; then
+  if [ -f "bun.lock" ]; then
     echo "bun"
   elif [ -f "pnpm-lock.yaml" ]; then
     echo "pnpm"
@@ -14,12 +14,7 @@ detect_package_manager() {
   elif [ -f "package-lock.json" ]; then
     echo "npm"
   else
-    # Default to npm if package.json exists
-    if [ -f "package.json" ]; then
-      echo "npm"
-    else
-      echo "unknown"
-    fi
+    echo "unknown"
   fi
 }
 
