@@ -151,9 +151,6 @@
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*"
   },
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
-  },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     "*.ftl": "html",
@@ -209,7 +206,6 @@
   "gitlens.ai.enabled": false,
   "gitlens.blame.avatars": false,
   "gitlens.blame.heatmap.enabled": false,
-  "gitlens.blame.highlight.enabled": false,
   "gitlens.cloudIntegrations.enabled": false,
   "gitlens.cloudPatches.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
@@ -227,10 +223,8 @@
   "gitlens.graph.sidebar.enabled": false,
   "gitlens.graph.statusBar.enabled": false,
   "gitlens.home.preview.enabled": false,
-  "gitlens.hovers.annotations.enabled": false,
   "gitlens.hovers.autolinks.enabled": false,
   "gitlens.hovers.currentLine.enabled": false,
-  "gitlens.hovers.enabled": false,
   "gitlens.hovers.pullRequests.enabled": false,
   "gitlens.integrations.enabled": false,
   "gitlens.launchpad.indicator.enabled": false,

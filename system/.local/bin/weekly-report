@@ -10,4 +10,4 @@ Generate a report of my work from last week by:
    - Lines of code added and removed for each PR (e.g. +1000 -500)
 
 Format as markdown
-' | glow -
+' | glow -w 0 -
