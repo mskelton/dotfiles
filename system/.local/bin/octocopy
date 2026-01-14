@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Copy a PR link for Slack markdown
+
+json=$(gh pr view --json title,url,headRepository,additions,deletions 2>&1) || {
+  echo "$json" >&2
+  exit 1
+}
+
+title=$(jq -r '.title // "Untitled PR"' <<<"$json")
+url=$(jq -r '.url' <<<"$json")
+repo=$(jq -r '.headRepository.name' <<<"$json")
+additions=$(jq -r '.additions' <<<"$json")
+deletions=$(jq -r '.deletions' <<<"$json")
+
+diff=""
+[[ $additions -gt 0 ]] && diff="+$additions"
+[[ $deletions -gt 0 ]] && diff="${diff:+$diff/}-$deletions"
+
+if [[ -n $diff ]]; then
+  result="[$title]($url) ($repo $diff)"
+else
+  result="[$title]($url) ($repo)"
+fi
+
+printf "%s\n" "$result" | pbcopy
