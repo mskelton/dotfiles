@@ -50,3 +50,4 @@
 ### Trackpad
 
 - Enable "Tap to click"
+- Disable "Natural scrolling"
