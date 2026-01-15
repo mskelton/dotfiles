@@ -13,7 +13,7 @@ pr submit --stack --publish --cli
 prd submit --stack --draft --cli
 resatck restack
 sa !gt modify --all && gt squash -n 2>/dev/null
-squash squash --no-edit
+squash !gt track -q && gt squash --no-edit
 ss submit --stack
 su submit --stack --update-only
 sync sync -f

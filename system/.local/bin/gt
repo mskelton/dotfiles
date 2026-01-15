@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 # Wrapper around Graphite to fix some paper cuts
 
+set -euo pipefail
+
+gt=/opt/homebrew/bin/gt
+
+# Prevent recursive aliases
+if [[ -n "${GT_NO_ALIAS:-}" ]]; then
+	/opt/homebrew/bin/gt "$@"
+	exit
+fi
+
 get_alias() {
 	filename=$HOME/.config/graphite/custom-aliases
 
@@ -19,13 +29,12 @@ get_alias() {
 	done <"$filename"
 }
 
-gt=/opt/homebrew/bin/gt
 alias=$(get_alias "$1")
 
 if [ -z "$alias" ]; then
 	$gt "$@"
 elif [[ "$alias" == "!"* ]]; then
-	eval "${alias:1}"
+	GT_NO_ALIAS=1 eval "${alias:1}"
 else
 	$gt $alias "${@:2}"
 fi
