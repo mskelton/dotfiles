@@ -418,9 +418,6 @@ end
 
 --- Open the GitHub notifications page and clear the count
 function M:open_notifications()
-	self.last_checked = os.date("!%Y-%m-%dT%H:%M:%SZ")
-	hs.settings.set("github_last_checked", self.last_checked)
-	self:update_count(0)
 	hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
 end
 
