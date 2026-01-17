@@ -15,6 +15,8 @@ const CHECK = `${GREEN}✓${RESET}`
 const X = `${RED}✗${RESET}`
 
 const devDir = join(homedir(), "dev")
+const verbose =
+  process.argv.includes("-v") || process.argv.includes("--verbose")
 
 async function git(dir, args) {
   try {
@@ -68,9 +70,10 @@ async function getUnpushedBranches(dir) {
 async function auditRepo(dir) {
   const name = dir.split("/").pop()
   const issues = []
+  let unpushedBranches = []
 
   if (!(await isGitRepo(dir))) {
-    return { name, status: `${X} ${name} [?]` }
+    return { name, status: `${X} ${name} [?]`, details: [] }
   }
 
   const remote = await hasRemote(dir)
@@ -84,16 +87,20 @@ async function auditRepo(dir) {
   }
 
   if (remote) {
-    const unpushed = await getUnpushedBranches(dir)
-    if (unpushed.length > 0) {
+    unpushedBranches = await getUnpushedBranches(dir)
+    if (unpushedBranches.length > 0) {
       issues.push("^")
     }
   }
 
   if (issues.length === 0) {
-    return { name, status: `${CHECK} ${name}` }
+    return { name, status: `${CHECK} ${name}`, details: [] }
   } else {
-    return { name, status: `${X} ${name} [${issues.join(",")}]` }
+    return {
+      name,
+      status: `${X} ${name} [${issues.join(",")}]`,
+      details: unpushedBranches,
+    }
   }
 }
 
@@ -116,7 +123,13 @@ async function main() {
 
   function printReady() {
     while (printIndex < results.length && results[printIndex] !== undefined) {
-      console.log(results[printIndex].status)
+      const { status, details } = results[printIndex]
+      console.log(status)
+      if (verbose && details.length > 0) {
+        for (const branch of details) {
+          console.log(`    ${branch}`)
+        }
+      }
       printIndex++
     }
   }
