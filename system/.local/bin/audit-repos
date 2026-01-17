@@ -1,17 +1,132 @@
-#!/usr/bin/env bash
-# Git status
+#!/usr/bin/env node
 
-for dir in "$HOME/dev"/*; do
-  if [ -d "$dir" ]; then
-    echo "Auditing $dir"
-    if ! git -C "$dir" remote | grep -q .; then
-      echo "  No remote configured"
-      read
-      continue
-    fi
+const { exec } = require("child_process")
+const { readdir, stat } = require("fs/promises")
+const { join } = require("path")
+const { homedir } = require("os")
+const { promisify } = require("util")
 
-    git -C "$dir" status
-    git -C "$dir" branch
-    read
-  fi
-done
+const execAsync = promisify(exec)
+
+const GREEN = "\x1b[32m"
+const RED = "\x1b[31m"
+const RESET = "\x1b[0m"
+const CHECK = `${GREEN}✓${RESET}`
+const X = `${RED}✗${RESET}`
+
+const devDir = join(homedir(), "dev")
+
+async function git(dir, args) {
+  try {
+    const { stdout } = await execAsync(`git -C "${dir}" ${args}`)
+    return stdout.trim()
+  } catch {
+    return null
+  }
+}
+
+async function isGitRepo(dir) {
+  return (await git(dir, "rev-parse --git-dir")) !== null
+}
+
+async function hasRemote(dir) {
+  const remotes = await git(dir, "remote")
+  return remotes !== null && remotes.length > 0
+}
+
+async function hasUncommittedChanges(dir) {
+  const status = await git(dir, "status --porcelain")
+  return status !== null && status.length > 0
+}
+
+async function getUnpushedBranches(dir) {
+  const branches = await git(dir, "branch --format='%(refname:short)'")
+  if (!branches) return []
+
+  const branchList = branches.split("\n").filter(Boolean)
+  const results = await Promise.all(
+    branchList.map(async (branch) => {
+      const cleanBranch = branch.replace(/'/g, "")
+      const upstream = await git(
+        dir,
+        `config --get branch.${cleanBranch}.remote`,
+      )
+      if (!upstream) return cleanBranch
+
+      const ahead = await git(
+        dir,
+        `rev-list --count ${cleanBranch}@{upstream}..${cleanBranch}`,
+      )
+      if (ahead && parseInt(ahead, 10) > 0) return cleanBranch
+      return null
+    }),
+  )
+
+  return results.filter(Boolean)
+}
+
+async function auditRepo(dir) {
+  const name = dir.split("/").pop()
+  const issues = []
+
+  if (!(await isGitRepo(dir))) {
+    return { name, status: `${X} ${name} [?]` }
+  }
+
+  const remote = await hasRemote(dir)
+
+  if (!remote) {
+    issues.push("!")
+  }
+
+  if (await hasUncommittedChanges(dir)) {
+    issues.push("M")
+  }
+
+  if (remote) {
+    const unpushed = await getUnpushedBranches(dir)
+    if (unpushed.length > 0) {
+      issues.push("^")
+    }
+  }
+
+  if (issues.length === 0) {
+    return { name, status: `${CHECK} ${name}` }
+  } else {
+    return { name, status: `${X} ${name} [${issues.join(",")}]` }
+  }
+}
+
+async function main() {
+  const entries = await readdir(devDir, { withFileTypes: true })
+  const dirs = entries
+    .filter((d) => d.isDirectory())
+    .map((d) => join(devDir, d.name))
+    .sort()
+
+  console.log("Legend:")
+  console.log("  ? = not git repo")
+  console.log("  ! = no remote")
+  console.log("  M = uncommitted changes")
+  console.log("  ^ = unpushed commits")
+  console.log("")
+
+  const results = new Array(dirs.length)
+  let printIndex = 0
+
+  function printReady() {
+    while (printIndex < results.length && results[printIndex] !== undefined) {
+      console.log(results[printIndex].status)
+      printIndex++
+    }
+  }
+
+  await Promise.all(
+    dirs.map(async (dir, i) => {
+      results[i] = await auditRepo(dir)
+      printReady()
+    }),
+  )
+}
+
+main()
