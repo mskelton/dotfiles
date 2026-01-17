@@ -9,6 +9,7 @@ aliases:
   codegen: workflow run codegen.yml
   copy: "!gh url | pbcopy"
   draft: pr create --draft
+  force-merge: pr merge --admin --squash
   ls-codegen: '!prs --search "head:ci/run-codegen"'
   ls-ryu: '!prs --search "head:ci/bump-ryu"'
   ls-dependabot: "!prs --app dependabot"
@@ -16,7 +17,7 @@ aliases:
   pb: "!gh url | pbcopy"
   prc: pr create -w
   prw: pr view -w
-  ready: '!gh url "$1" | pbcopy && gh pr ready "$1"'
+  ready: '!octocopy | pbcopy && gh pr ready "$1"'
   setup-repo:
     '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -F
     "has_projects=false" -f "allow_merge_commit=false" -f
