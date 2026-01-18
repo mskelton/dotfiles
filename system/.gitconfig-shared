@@ -13,6 +13,7 @@
   del = branch -D
   dump = "!f() { current=$(git branch --show-current) && git checkout $(git default) && git branch -D $current; }; f"
   rename = branch -m
+  manage = !branch-manager
   # Commit
   amend = commit --amend --no-edit
   append = !git add -A && git commit --amend --no-edit
