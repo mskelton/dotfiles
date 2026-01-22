@@ -63,7 +63,9 @@
   "cursor.composer.queueMessageDefaultBehavior": "queue",
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
-  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.cpp.disabledLanguages": [
+    "plaintext"
+  ],
   "cursorBlame.editorDecoration.enabled": false,
   "debug.console.fontSize": 15,
   "debug.onTaskErrors": "abort",
@@ -78,7 +80,9 @@
   "editor.autoClosingDelete": "always",
   "editor.autoClosingOvertype": "always",
   "editor.bracketPairColorization.enabled": false,
-  "editor.codeActionsOnSave": ["source.fixAll"],
+  "editor.codeActionsOnSave": [
+    "source.fixAll"
+  ],
   "editor.colorDecorators": false,
   "editor.comments.ignoreEmptyLines": false,
   "editor.cursorBlinking": "phase",
@@ -104,7 +108,9 @@
   "editor.rename.enablePreview": false,
   "editor.renderControlCharacters": true,
   "editor.renderWhitespace": "trailing",
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   "editor.selectionHighlight": false,
   "editor.stickyScroll.maxLineCount": 5,
   "editor.suggest.preview": true,
@@ -178,9 +184,14 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "git.blame.statusBarItem.enabled": true,
-  "git.branchProtection": ["main", "master"],
+  "git.branchProtection": [
+    "main",
+    "master"
+  ],
   "git.branchProtectionPrompt": "alwaysCommit",
-  "git.checkoutType": ["local"],
+  "git.checkoutType": [
+    "local"
+  ],
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
@@ -319,7 +330,9 @@
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.suppressUpdateNotifications": true,
   "Lua.window.statusBar": false,
-  "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
+  "Lua.workspace.library": [
+    "~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+  ],
   "markdown.preview.fontSize": 15,
   "notebook.markup.fontSize": 15,
   "outline.showFields": false,
@@ -349,7 +362,9 @@
   "security.workspace.trust.startupPrompt": "never",
   "swift.disableAutoResolve": true,
   "terminal.external.osxExec": "kitty.app",
-  "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.openRecent"
+  ],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.enableImages": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -378,11 +393,21 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Find
     {
-      "before": ["<leader>", "f", "a"],
-      "commands": ["adjacent.quickOpen"]
+      "before": [
+        "<leader>",
+        "f",
+        "a"
+      ],
+      "commands": [
+        "adjacent.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "t", "s"],
+      "before": [
+        "<leader>",
+        "t",
+        "s"
+      ],
       "commands": [
         {
           "command": "workbench.action.findInFiles",
@@ -395,17 +420,33 @@
     },
     // Git
     {
-      "before": ["<leader>", "v", "h"],
-      "commands": ["gitlens.toggleFileBlame"],
+      "before": [
+        "<leader>",
+        "v",
+        "h"
+      ],
+      "commands": [
+        "gitlens.toggleFileBlame"
+      ],
       "silent": true
     },
     {
-      "before": ["<leader>", "v", "d"],
-      "commands": ["gitlens.diffWithPrevious"],
+      "before": [
+        "<leader>",
+        "v",
+        "d"
+      ],
+      "commands": [
+        "gitlens.diffWithPrevious"
+      ],
       "silent": true
     },
     {
-      "before": ["<leader>", "v", "w"],
+      "before": [
+        "<leader>",
+        "v",
+        "w"
+      ],
       "commands": [
         "gitlens.copyRemoteFileUrlToClipboard",
         {
@@ -419,117 +460,212 @@
       "silent": true
     },
     {
-      "before": ["[", "v"],
-      "commands": ["workbench.action.editor.previousChange"],
+      "before": [
+        "[",
+        "v"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ],
       "silent": true
     },
     {
-      "before": ["]", "v"],
-      "commands": ["workbench.action.editor.nextChange"],
+      "before": [
+        "]",
+        "v"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ],
       "silent": true
     },
     // LSP
     {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"],
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ],
       "silent": true
     },
     {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"],
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ],
       "silent": true
     },
     {
-      "before": ["K"],
-      "commands": ["editor.action.showDefinitionPreviewHover"],
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ],
       "silent": true
     },
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"],
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ],
       "silent": true
     },
     {
-      "before": ["g", "O"],
-      "commands": ["editor.action.organizeImports"],
+      "before": [
+        "g",
+        "O"
+      ],
+      "commands": [
+        "editor.action.organizeImports"
+      ],
       "silent": true
     },
     {
-      "before": ["<leader>", "r", "n"],
-      "commands": ["editor.action.rename"],
+      "before": [
+        "<leader>",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ],
       "silent": true
     },
     // Navigate to next/previous editor
     {
-      "before": ["[", "b"],
-      "commands": ["workbench.action.previousEditor"],
+      "before": [
+        "[",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ],
       "silent": true
     },
     {
-      "before": ["]", "b"],
-      "commands": ["workbench.action.nextEditor"],
+      "before": [
+        "]",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ],
       "silent": true
     },
     // Undo/redo
     {
-      "before": ["u"],
-      "commands": ["undo"],
+      "before": [
+        "u"
+      ],
+      "commands": [
+        "undo"
+      ],
       "silent": true
     },
     {
-      "before": ["<C-r>"],
-      "commands": ["redo"],
+      "before": [
+        "<C-r>"
+      ],
+      "commands": [
+        "redo"
+      ],
       "silent": true
     },
     // I frequently roll zv for visually selection which doesn't work great on my
     // keyboard since I use a multi-function key for z/ctrl. This mapping sets
     // zv to the same as C-v.
     {
-      "before": ["z", "v"],
-      "commands": ["extension.vim_ctrl+v"],
+      "before": [
+        "z",
+        "v"
+      ],
+      "commands": [
+        "extension.vim_ctrl+v"
+      ],
       "silent": true
     },
     // Update the Y mapping to match the Neovim behavior of "yank to end of line".
     // Yank entire line is easy with `yy` and yank to end of line is most often
     // what I want and also is consistent with my Neovim setup.
     {
-      "before": ["Y"],
-      "after": ["y", "$"],
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ],
       "silent": true
     },
     // Save file
     {
-      "before": [",", "s"],
-      "commands": ["workbench.action.files.save"],
+      "before": [
+        ",",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ],
       "silent": true
     },
     // Close window
     {
-      "before": [",", "w"],
-      "commands": ["workbench.action.closeActiveEditor"],
+      "before": [
+        ",",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ],
       "silent": true
     },
     // File utils
     {
-      "before": ["<leader>", "r", "f"],
-      "commands": ["fileutils.renameFile"],
+      "before": [
+        "<leader>",
+        "r",
+        "f"
+      ],
+      "commands": [
+        "fileutils.renameFile"
+      ],
       "silent": true
     },
     // Make file executable
     {
-      "before": ["<leader>", "o", "x"],
+      "before": [
+        "<leader>",
+        "o",
+        "x"
+      ],
       "commands": [
         {
           "command": "unix-chmod.chmod",
-          "args": ["+x"]
+          "args": [
+            "+x"
+          ]
         }
       ],
       "silent": true
     },
     // Open URL under cursor
     {
-      "before": ["g", "x"],
-      "commands": ["open-url.openUrlUnderCursor"],
+      "before": [
+        "g",
+        "x"
+      ],
+      "commands": [
+        "open-url.openUrlUnderCursor"
+      ],
       "silent": true
     }
   ],
@@ -537,7 +673,11 @@
   "vim.visualModeKeyBindings": [
     // Git
     {
-      "before": ["<leader>", "v", "w"],
+      "before": [
+        "<leader>",
+        "v",
+        "w"
+      ],
       "commands": [
         "gitlens.copyRemoteFileUrlToClipboard",
         {
@@ -552,19 +692,33 @@
     },
     // Move lines up and down
     {
-      "before": ["J"],
-      "commands": ["editor.action.moveLinesDownAction"],
+      "before": [
+        "J"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ],
       "silent": true
     },
     {
-      "before": ["K"],
-      "commands": ["editor.action.moveLinesUpAction"],
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ],
       "silent": true
     },
     // Sort selected lines
     {
-      "before": ["<leader>", "s", "i"],
-      "commands": ["editor.action.sortLinesAscending"],
+      "before": [
+        "<leader>",
+        "s",
+        "i"
+      ],
+      "commands": [
+        "editor.action.sortLinesAscending"
+      ],
       "silent": true
     }
   ],
@@ -607,9 +761,12 @@
   "workbench.tree.renderIndentGuides": "none",
   "yaml.extension.recommendations": false,
   "yaml.schemas": {
-    "https://www.schemastore.org/yamllint.json": ["plugin.yml"],
+    "https://www.schemastore.org/yamllint.json": [
+      "plugin.yml"
+    ],
     "https://www.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yml"
     ]
-  }
+  },
+  "git.useEditorAsCommitInput": false
 }
