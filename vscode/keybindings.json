@@ -77,13 +77,17 @@
   {
     "key": "cmd+alt+shift+ctrl+l",
     "command": "editor.action.insertSnippet",
-    "args": { "snippet": "console.log($0)" }
+    "args": {
+      "snippet": "console.log($0)"
+    }
   },
   // Use hyper+. for inserting an arrow function
   {
     "key": "cmd+ctrl+shift+alt+=",
     "command": "editor.action.insertSnippet",
-    "args": { "snippet": "() => ${1:{ $0 \\}}" }
+    "args": {
+      "snippet": "() => ${1:{ $0 \\}}"
+    }
   },
   // Clear existing ctrl+j and ctrl+k shortcuts
   {
