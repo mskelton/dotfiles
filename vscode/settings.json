@@ -64,6 +64,7 @@
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursorBlame.editorDecoration.enabled": false,
   "debug.console.fontSize": 15,
   "debug.onTaskErrors": "abort",
   "debug.openDebug": "openOnDebugBreak",

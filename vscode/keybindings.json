@@ -169,10 +169,21 @@
   // Open projects
   {
     "key": "cmd+shift+o",
+    "command": "open-project.open-in-new-window",
+    "args": {
+      "cwd": "~/dev"
+    }
+  },
+  {
+    "key": "cmd+ctrl+o",
     "command": "open-project.open",
     "args": {
       "cwd": "~/dev"
     }
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "workbench.action.mergeAllWindowTabs"
   },
   {
     "key": "ctrl+r",
@@ -329,4 +340,5 @@
     "key": "alt+cmd+l",
     "command": "composerMode.chat"
   }
+  // Ungrouped
 ]
