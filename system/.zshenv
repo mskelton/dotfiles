@@ -9,6 +9,7 @@ export EDITOR=nvim
 export GOPATH="$HOME/go"
 export BUN_INSTALL="$HOME/.bun"
 export HOMEBREW_NO_ENV_HINTS=true
+export HOMEBREW_NO_UPDATE_REPORT_NEW=1
 export GH_NO_UPDATE_NOTIFIER=true
 export PYENV_ROOT="$HOME/.pyenv"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
