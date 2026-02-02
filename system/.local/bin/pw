@@ -63,29 +63,22 @@ view_video() {
 open_trace() {
 	files=$(fd -I '.zip' "$1")
 
-	# If no files were found, return an error
 	if [ -z "$files" ]; then
 		echo "[error]: No traces found"
 		return 1
 	fi
 
-	# Store PIDs of background jobs
-	pids=()
-
-	# Trap SIGINT/SIGTERM to kill all background jobs
-	trap 'kill "${pids[@]}" 2>/dev/null; exit 130' INT TERM
-
-	# Open all traces
 	for file in $files; do
+		test_name=$(basename "$(dirname "$file")")
+		echo "$test_name"
+
 		yarn playwright show-trace "$file" &
-		pids+=($!)
+		pid=$!
+
+		read -r -p "Press any key to continue or ctrl-c to stop..."
+		kill "$pid" 2>/dev/null
+		wait "$pid" 2>/dev/null
 	done
-
-	# Wait for all jobs to complete
-	wait
-
-	# Clean up trap
-	trap - INT TERM
 }
 
 # Parse the command line args
