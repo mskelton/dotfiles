@@ -38,7 +38,7 @@
   rl = !git co - && git rebase origin/$(git default)
   ri = !git rebase $(git default)
   rc = rebase --continue
-  fix = !git add . && git rebase --continue
+  fix = !git add . && GIT_EDITOR=true git rebase --continue
   # Work
   reset-hars = !git checkout $(git default) playwright/hars/
 [branch]
