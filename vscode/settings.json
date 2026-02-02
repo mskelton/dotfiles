@@ -328,7 +328,8 @@
   "outline.showProperties": false,
   "outline.showVariables": false,
   "playwright.env": {
-    "HAR_RECORD": false
+    "PLAYWRIGHT_BASE_URL": "https://qa.ramp.com",
+    "HAR_RECORD": true
   },
   "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
@@ -368,7 +369,7 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.native-preview.goMemLimit": "4GiB",
-  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.tsserver.maxTsServerMemory": 4096,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.gdefault": true,
