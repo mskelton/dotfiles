@@ -429,6 +429,38 @@ end
 --- Open the GitHub notifications page and clear the count
 function M:open_notifications()
 	hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
+	self:start_fast_polling()
+end
+
+--- Start fast polling mode (7 second intervals, resets after 2 minutes)
+function M:start_fast_polling()
+	--- Cancel any existing reset timer
+	if self.reset_timer then
+		self.reset_timer:stop()
+		self.reset_timer = nil
+	end
+
+	--- Restart the timer with fast interval
+	if self.timer then
+		self.timer:stop()
+		self.timer = hs.timer.new(7, function()
+			self:sync("timer")
+		end)
+		self.timer:start()
+		self.timer:fire()
+	end
+
+	--- Schedule reset to default interval after 2 minutes
+	self.reset_timer = hs.timer.doAfter(120, function()
+		if self.timer then
+			self.timer:stop()
+			self.timer = hs.timer.new(self.interval_sec, function()
+				self:sync("timer")
+			end)
+			self.timer:start()
+		end
+		self.reset_timer = nil
+	end)
 end
 
 --- Delete the menu bar icon
@@ -495,6 +527,11 @@ function M:stop()
 
 	if self.timer then
 		self.timer:stop()
+	end
+
+	if self.reset_timer then
+		self.reset_timer:stop()
+		self.reset_timer = nil
 	end
 
 	if self.ipc then
