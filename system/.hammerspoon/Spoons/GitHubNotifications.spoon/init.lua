@@ -341,6 +341,8 @@ end
 --- Callback fired when the timer triggers
 --- @param source string
 function M:sync(source)
+	self.log.d("Syncing GitHub notifications from " .. source)
+
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
