@@ -318,6 +318,14 @@ function M:filter_notifications(notifications, callback)
 				--- Skip my PRs where the only activity is bot comments
 				if string.find(data.user.login, "^mskelton") ~= nil then
 					self:fetch_pr_comments(notification.subject.url, function(comments)
+						if #comments == 0 then
+							self.log.d("PR #" .. data.number .. " has no comments, marking as read")
+							self:mark_as_read(notification.id, function(success)
+								decide(notification, false)
+							end)
+							return
+						end
+
 						if comments and self:all_comments_from_bots(comments) then
 							self.log.d("PR #" .. data.number .. " has only bot activity, marking as read")
 							self:mark_as_read(notification.id, function(success)
