@@ -319,6 +319,12 @@
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://www.schemastore.org/package.json"
+    }
+  ],
   "lldb.launch.expressions": "native",
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.suppressUpdateNotifications": true,
@@ -332,7 +338,7 @@
   "outline.showVariables": false,
   "playwright.env": {
     "PLAYWRIGHT_BASE_URL": "https://qa.ramp.com",
-    "HAR_RECORD": true
+    "HAR_RECORD": false
   },
   "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
