@@ -21,6 +21,9 @@
   "[json]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
+  "[kotlin]": {
+    "editor.defaultFormatter": "ktfmt.ktfmt"
+  },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
