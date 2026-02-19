@@ -22,7 +22,7 @@
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[kotlin]": {
-    "editor.defaultFormatter": "ktfmt.ktfmt"
+    "editor.defaultFormatter": "mskelton.ktlint"
   },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
