@@ -51,6 +51,7 @@ $brew bundle --file=- <<EOF
 	brew "imagemagick"
 	brew "jq"
 	brew "just"
+	brew "ktlint"
 	brew "neovim"
 	brew "ripgrep"
 	brew "sponge"
