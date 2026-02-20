@@ -319,6 +319,14 @@
   "javascript.inlayHints.variableTypes.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true
+  },
   "json.schemas": [
     {
       "fileMatch": ["package.json"],
@@ -338,7 +346,7 @@
   "outline.showVariables": false,
   "playwright.env": {
     "PLAYWRIGHT_BASE_URL": "https://qa.ramp.com",
-    "HAR_RECORD": false
+    "HAR_RECORD": true
   },
   "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
@@ -360,6 +368,15 @@
   "security.workspace.trust.startupPrompt": "never",
   "swift.disableAutoResolve": true,
   "terminal.external.osxExec": "kitty.app",
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "docker-desktop"
+  ],
   "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.enableImages": true,
