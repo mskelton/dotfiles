@@ -1,27 +1,5 @@
 {
   "includeCoAuthoredBy": false,
-  "permissions": {
-    "allow": [
-      "Bash(awk:*)",
-      "Bash(cat:*)",
-      "Bash(diff:*)",
-      "Bash(echo:*)",
-      "Bash(find:*)",
-      "Bash(grep:*)",
-      "Bash(head:*)",
-      "Bash(jq:*)",
-      "Bash(ls:*)",
-      "Bash(rg:*)",
-      "Bash(sed:*)",
-      "Bash(tail:*)",
-      "Bash(wc:*)",
-      "Bash(which:*)",
-      "Bash(xargs:*)",
-      "WebFetch",
-      "WebSearch"
-    ],
-    "deny": []
-  },
   "model": "opus",
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true
