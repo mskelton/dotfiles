@@ -349,8 +349,13 @@ end
 --- Callback fired when the timer triggers
 --- @param source string
 function M:sync(source)
-	self.log.d("Syncing GitHub notifications from " .. source)
+	if self.syncing then
+		self.log.d("Sync already in progress, ignoring call from " .. source)
+		return
+	end
 
+	self.log.d("Syncing GitHub notifications")
+	self.syncing = true
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
@@ -359,17 +364,20 @@ function M:sync(source)
 		--- Ignore error if offline
 		if status == -1 then
 			self.log.d("Failed to fetch GitHub notifications: Offline")
+			self.syncing = false
 			return nil
 		end
 
 		if status ~= 200 then
 			show_error("Failed to fetch GitHub notifications")
+			self.syncing = false
 			return nil
 		end
 
 		local notifications = hs.json.decode(body)
 		if notifications == nil then
 			show_error("Unexpected JSON response")
+			self.syncing = false
 			return nil
 		end
 
@@ -398,7 +406,10 @@ function M:sync(source)
 		if notifications and #notifications > 0 then
 			self:filter_notifications(notifications, function(filtered_notifications)
 				self:update_count(#filtered_notifications)
+				self.syncing = false
 			end)
+		else
+			self.syncing = false
 		end
 	end, "ignoreLocalAndRemoteCache")
 end
