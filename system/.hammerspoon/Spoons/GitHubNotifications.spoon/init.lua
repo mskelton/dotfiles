@@ -450,7 +450,7 @@ end
 --- Open the GitHub notifications page and clear the count
 function M:open_notifications()
 	hs.urlevent.openURL("https://github.com/notifications?query=is%3Aunread")
-	self:start_fast_polling()
+	--- self:start_fast_polling()
 end
 
 --- Start fast polling mode (7 second intervals, resets after 2 minutes)
