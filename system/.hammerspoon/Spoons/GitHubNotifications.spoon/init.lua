@@ -84,6 +84,8 @@ end
 --- Updates the count of unread notifications
 --- @param count number
 function M:update_count(count)
+	self.log.d("update_count: " .. tostring(self.count) .. " -> " .. tostring(count))
+
 	if count > 0 then
 		self:maybe_notify(count)
 		self.menu:setIcon(unreadIcon)
@@ -114,17 +116,19 @@ end
 --- @param url string
 --- @param callback fun(data: any)
 function M:get_pull_request(url, callback)
+	self.log.d("get_pull_request: " .. url)
 	hs.http.doAsyncRequest(url, "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
 		["Content-Type"] = "application/json",
 	}, function(status, body)
 		if status ~= 200 then
-			self.log.d("Failed to fetch PR details: " .. status)
+			self.log.w("get_pull_request failed: url=" .. url .. " status=" .. tostring(status))
 			callback(nil)
 			return
 		end
 
+		self.log.d("get_pull_request success: " .. url)
 		callback(hs.json.decode(body))
 	end, "ignoreLocalAndRemoteCache")
 end
@@ -274,17 +278,26 @@ end
 --- @param notifications table
 --- @param callback fun(filtered_notifications: table)
 function M:filter_notifications(notifications, callback)
-	local remaining = #notifications
+	local total = #notifications
+	local remaining = total
 	local filtered_notifications = {}
+	local start_time = hs.timer.secondsSinceEpoch()
+
+	self.log.d("filter_notifications: filtering " .. total .. " notifications")
 
 	local function decide(notification, keep)
 		remaining = remaining - 1
+		self.log.d("filter_notifications: decide(" .. notification.id .. ", keep=" .. tostring(keep) ..
+			") remaining=" .. remaining .. "/" .. total)
 
 		if keep then
 			table.insert(filtered_notifications, notification)
 		end
 
 		if remaining == 0 then
+			local elapsed = hs.timer.secondsSinceEpoch() - start_time
+			self.log.d("filter_notifications: done in " ..
+				string.format("%.1f", elapsed) .. "s, kept " .. #filtered_notifications .. "/" .. total)
 			callback(filtered_notifications)
 		end
 	end
@@ -350,17 +363,33 @@ end
 --- @param source string
 function M:sync(source)
 	if self.syncing then
-		self.log.d("Sync already in progress, ignoring call from " .. source)
-		return
+		local stuck_for = ""
+		if self.sync_start_time then
+			stuck_for = string.format(" (started %.0fs ago)", hs.timer.secondsSinceEpoch() - self.sync_start_time)
+		end
+		self.log.w("Sync already in progress" .. stuck_for .. ", ignoring call from " .. source)
+
+		if self.sync_start_time and (hs.timer.secondsSinceEpoch() - self.sync_start_time) > 120 then
+			self.log.w("Sync appears stuck (>120s), forcing reset of syncing flag")
+			self.syncing = false
+		else
+			return
+		end
 	end
 
-	self.log.d("Syncing GitHub notifications")
+	self.log.d("Syncing GitHub notifications (source=" .. source .. ")")
 	self.syncing = true
+	self.sync_start_time = hs.timer.secondsSinceEpoch()
+
 	hs.http.doAsyncRequest("https://api.github.com/notifications", "GET", nil, {
 		["Accept"] = "application/vnd.github.v3+json",
 		["Authorization"] = "token " .. self.token,
 		["Content-Type"] = "application/json",
 	}, function(status, body)
+		local elapsed = hs.timer.secondsSinceEpoch() - self.sync_start_time
+		self.log.d("Notifications API responded: status=" .. tostring(status) .. " elapsed=" ..
+			string.format("%.1f", elapsed) .. "s body_len=" .. tostring(body and #body or 0))
+
 		--- Ignore error if offline
 		if status == -1 then
 			self.log.d("Failed to fetch GitHub notifications: Offline")
@@ -369,6 +398,7 @@ function M:sync(source)
 		end
 
 		if status ~= 200 then
+			self.log.w("Failed to fetch GitHub notifications: status=" .. tostring(status))
 			show_error("Failed to fetch GitHub notifications")
 			self.syncing = false
 			return nil
@@ -376,10 +406,13 @@ function M:sync(source)
 
 		local notifications = hs.json.decode(body)
 		if notifications == nil then
+			self.log.w("Failed to decode notifications JSON")
 			show_error("Unexpected JSON response")
 			self.syncing = false
 			return nil
 		end
+
+		self.log.d("Fetched " .. #notifications .. " raw notifications")
 
 		notifications = hs.fnutils.filter(notifications, function(notification)
 			--- Ignore read notifications
@@ -403,12 +436,17 @@ function M:sync(source)
 			return true
 		end)
 
+		self.log.d("After initial filter: " .. #notifications .. " notifications")
+
 		if notifications and #notifications > 0 then
 			self:filter_notifications(notifications, function(filtered_notifications)
 				self:update_count(#filtered_notifications)
+				self.log.d("Sync complete, syncing=false")
 				self.syncing = false
 			end)
 		else
+			self:update_count(0)
+			self.log.d("Sync complete (no notifications), syncing=false")
 			self.syncing = false
 		end
 	end, "ignoreLocalAndRemoteCache")
