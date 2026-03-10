@@ -343,6 +343,28 @@
   {
     "key": "alt+cmd+l",
     "command": "composerMode.chat"
+  },
+  // New chat and chat tab
+  {
+    "key": "cmd+t",
+    "command": "composer.createNewComposerTab",
+    "when": "agentsPaneFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || composerFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && activeEditor == 'workbench.editor.composer' || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  },
+  {
+    "key": "cmd+n",
+    "command": "-composer.createNewComposerTab",
+    "when": "agentsPaneFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || composerFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && activeEditor == 'workbench.editor.composer' || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  },
+  {
+    "key": "cmd+n",
+    "command": "composer.createNew",
+    "when": "agentsPaneFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || composerFocused && !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && activeEditor == 'workbench.editor.composer' || !editorTextFocus && !explorerViewletFocus && !filesExplorerFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  },
+  // Why cursor, just why
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindowOrEditorOnMac",
+    "when": "!cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || activeEditorGroupEmpty && currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !multipleEditorGroups || activeEditorGroupEmpty && cursor.agentIdeUnification.enabled && !composerFocused && !multipleEditorGroups"
   }
   // Ungrouped
 ]

@@ -15,4 +15,8 @@ if [ ! -f "$resolved_script" ]; then
 fi
 
 # Run the requested script
-$resolved_script "${@:2}"
+case "$resolved_script" in
+*.js) node "$resolved_script" "${@:2}" ;;
+*.py) python3 "$resolved_script" "${@:2}" ;;
+*) $resolved_script "${@:2}" ;;
+esac
