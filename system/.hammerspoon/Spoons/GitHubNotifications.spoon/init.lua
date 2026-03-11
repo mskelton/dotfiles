@@ -25,6 +25,10 @@ M.interval_sec = 60
 --- @type number
 M.notification_min_interval_sec = 0
 
+--- Whether to show notifications
+--- @type boolean
+M.show_notifications = false
+
 --- Whether to show the menu bar icon
 M.show_menu = false
 
@@ -50,6 +54,10 @@ local unreadIcon = get_icon("github-unread.png")
 --- the current count.
 --- @param count number
 function M:maybe_notify(count)
+	if not self.show_notifications then
+		return
+	end
+
 	local current_time = os.time()
 
 	if self.count == nil then
