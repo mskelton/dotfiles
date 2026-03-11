@@ -25,6 +25,9 @@ M.interval_sec = 60
 --- @type number
 M.notification_min_interval_sec = 0
 
+--- Whether to show the menu bar icon
+M.show_menu = false
+
 --- Get the icon for the menu bar
 --- @param filename string
 --- @return hs.image|nil
@@ -88,9 +91,11 @@ function M:update_count(count)
 
 	if count > 0 then
 		self:maybe_notify(count)
-		self.menu:setIcon(unreadIcon)
-		self.menu:setTitle(tostring(count))
-	else
+		if self.menu then
+			self.menu:setIcon(unreadIcon)
+			self.menu:setTitle(tostring(count))
+		end
+	elseif self.menu then
 		self.menu:setIcon(readIcon)
 		self.menu:setTitle(nil)
 	end
@@ -536,7 +541,7 @@ function M:start()
 
 	if self.menu then
 		self.menu:returnToMenuBar()
-	else
+	elseif self.show_menu then
 		--- @type hs.menubar|nil
 		self.menu = hs.menubar.new(true, "GitHubNotifications")
 		self.menu:setTooltip("GitHub Notifications")

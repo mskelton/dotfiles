@@ -49,13 +49,14 @@ Install:andUse("GitHubNotifications", {
 		open = { constants.keys.layer_key, "p" },
 	},
 	config = {
-		interval_sec = 20,
+		interval_sec = 60,
 		ignore_merged_prs_from = {
 		  "ramp/akuma",
 			"ramp/web",
 			"ramp/web-agent-ide",
 		},
 		notification_min_interval_sec = 600,
+		show_menu = false,
 	},
 })
 
