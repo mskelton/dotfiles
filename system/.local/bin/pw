@@ -76,6 +76,7 @@ open_trace() {
 		pid=$!
 
 		read -r -p "Press any key to continue or ctrl-c to stop..."
+		pkill -P "$pid" 2>/dev/null
 		kill "$pid" 2>/dev/null
 		wait "$pid" 2>/dev/null
 	done
