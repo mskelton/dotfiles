@@ -95,9 +95,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	if not utils.is_work then
-		hs.application.launchOrFocus(apps.android_studio)
-	end
+		hs.application.launchOrFocus(utils.if_work(apps.kitty, apps.android_studio))
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
