@@ -365,6 +365,12 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindowOrEditorOnMac",
     "when": "!cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || activeEditorGroupEmpty && currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !multipleEditorGroups || activeEditorGroupEmpty && cursor.agentIdeUnification.enabled && !composerFocused && !multipleEditorGroups"
+  },
+  // Remove reject partial edits shortcut
+  {
+    "key": "cmd+n",
+    "command": "-editor.action.inlineDiffs.rejectPartialEdit",
+    "when": "editorTextFocus && inlineDiffs.activeEditorWithDiffs"
   }
   // Ungrouped
 ]
