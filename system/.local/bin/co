@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
-# Alias for gh pr checkout
 
-gh pr checkout "$@"
+if git show-ref --verify --quiet "refs/heads/$1" 2>/dev/null; then
+  git checkout "$@"
+else
+  gh pr checkout "$@"
+fi
