@@ -70,6 +70,5 @@ alias ag="agent --force"
 # Misc
 alias def="dict -d '!'"
 alias pb="pbcopy"
-alias lg='lazygit'
 alias python='python3'
 alias xit="exit"

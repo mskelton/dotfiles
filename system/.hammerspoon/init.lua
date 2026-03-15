@@ -79,9 +79,7 @@ hs.hotkey.bind(constants.keys.layer_key, "l", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ";", function()
-	if utils.is_work then
-		hs.eventtap.keyStroke({ "option", "shift" }, "down")
-	end
+	hs.application.launchOrFocus(apps.android_studio)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "n", function()
@@ -95,7 +93,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-		hs.application.launchOrFocus(utils.if_work(apps.kitty, apps.android_studio))
+	hs.application.launchOrFocus(apps.kitty)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()

@@ -1,0 +1,15 @@
+# vim:ft=kitty
+
+new_tab dotfiles
+cd ~/dev/dotfiles
+launch
+
+new_tab versly
+cd ~/dev/versly/android
+launch
+
+new_tab eslint-plugin-playwright
+cd ~/dev/eslint-plugin-playwright
+launch
+
+focus_tab 0
