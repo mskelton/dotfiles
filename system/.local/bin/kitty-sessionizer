@@ -2,15 +2,16 @@
 # Switch or create Kitty tabs with ease
 # Inspired by ThePrimeagen
 
+
 function find_dirs() {
-	fd --type d --max-depth 1 . "$HOME/dev"
+	/opt/homebrew/bin/fd --type d --max-depth 1 . "$HOME/dev"
 }
 
 # Select the argument if provided otherwise use fzf
 if [[ -n "$1" ]]; then
 	selected=$1
 else
-	selected=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | fzf)
+	selected=$(find_dirs | sed "s+^$HOME/dev/++; s+/$++" | sort -f | /opt/homebrew/bin/fzf)
 fi
 
 # If no selection was made, exit
