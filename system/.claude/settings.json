@@ -1,9 +1,14 @@
 {
-  "includeCoAuthoredBy": false,
-  "model": "opus",
-  "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true"
-  }
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [],
+    "deny": [],
+    "defaultMode": "default"
+  },
+  "model": "opus[1m]",
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true
 }

@@ -20,8 +20,8 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-if [[ -z "$tab_exists" ]]; then
-	kitty @ launch --type=tab --tab-title "$selected_name" --cwd "$HOME/dev/$selected"
+if kitty @ focus-tab --match "title:$selected_name" 2>/dev/null; then
+	:
 else
-	kitty @ focus-tab --match title:"$selected_name"
+	kitty @ launch --type=tab --tab-title "$selected_name" --cwd "$HOME/dev/$selected"
 fi

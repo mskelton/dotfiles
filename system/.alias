@@ -61,11 +61,15 @@ alias icat="/Applications/kitty.app/Contents/MacOS/kitty +kitten icat --align=le
 alias dau="docker compose --profile app up"
 alias dad="docker compose --profile app down"
 
+# Agents
+alias cc="claude --dangerously-skip-permissions"
+alias ccr="claude --dangerously-skip-permissions --resume"
+alias cx="codex --dangerously-bypass-approvals-and-sandbox"
+alias ag="agent --force"
+
 # Misc
 alias def="dict -d '!'"
 alias pb="pbcopy"
 alias lg='lazygit'
 alias python='python3'
 alias xit="exit"
-alias cc="claude --dangerously-skip-permissions"
-alias ag="agent --force"
