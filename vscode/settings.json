@@ -209,6 +209,8 @@
     }
   ],
   "gitlens.ai.enabled": false,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "gitlens.blame.avatars": false,
   "gitlens.blame.heatmap.enabled": false,
   "gitlens.cloudIntegrations.enabled": false,
@@ -629,6 +631,7 @@
   "workbench.layoutControl.enabled": false,
   "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
