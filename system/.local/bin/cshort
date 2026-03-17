@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+
+for app in "Chrome" "Chrome.canary" "Chrome.beta" "Chrome.dev"; do
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Next Tab' -string '@e'
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Previous Tab' -string '@$e'
+  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Close Other Tabs' -string '@$k'
+done
+
+killall cfprefsd
+
+# Restart Chrome to apply changes
+osascript -e 'quit app "Google Chrome"'
+sleep 1
+open -a "Google Chrome"
