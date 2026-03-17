@@ -1,0 +1,23 @@
+# vim:ft=kitty
+
+new_tab dotfiles
+cd ~/dev/dotfiles
+launch
+
+new_tab web-alpha
+cd ~/dev/web-alpha
+launch
+
+new_tab web-beta
+cd ~/dev/web-beta
+launch
+
+new_tab core
+cd ~/dev/core
+launch
+
+new_tab ramp-inspect
+cd ~/dev/ramp-inspect
+launch
+
+focus_tab 0
