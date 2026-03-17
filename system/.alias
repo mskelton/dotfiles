@@ -64,8 +64,11 @@ alias dad="docker compose --profile app down"
 # Agents
 alias cc="claude --dangerously-skip-permissions"
 alias ccr="claude --dangerously-skip-permissions --resume"
+alias ccc="claude --dangerously-skip-permissions --continue"
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ag="agent --force"
+alias agr="agent --force --resume"
+alias agc="agent --force --continue"
 
 # Misc
 alias def="dict -d '!'"
