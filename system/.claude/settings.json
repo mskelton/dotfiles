@@ -10,6 +10,7 @@
   },
   "model": "opus[1m]",
   "alwaysThinkingEnabled": true,
+  "spinnerTipsEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
     "type": "command",

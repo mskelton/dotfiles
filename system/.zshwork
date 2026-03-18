@@ -3,6 +3,7 @@ export ANTHROPIC_MODEL="opus"
 export ANTHROPIC_SMALL_FAST_MODEL="haiku"
 export IGNORE_SKIP_LIST=1
 export PW_WORKERS=4
+export USE_RAMPY_AUTH=true
 
 # Path
 export PATH="$HOME/.local/share/uv/tools/devtool/bin:$PATH"
