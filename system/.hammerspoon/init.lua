@@ -69,7 +69,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	hs.application.launchOrFocus(apps.cursor)
+	hs.application.launchOrFocus(utils.if_work(apps.cursor, apps.vscode))
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
