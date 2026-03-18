@@ -3,6 +3,9 @@
 
 if [ -z "$1" ]; then
 	git diff HEAD
+	git ls-files --others --exclude-standard | while IFS= read -r file; do
+		git diff --no-index /dev/null "$file" || true
+	done
 else
 	git diff "$@"
 fi
