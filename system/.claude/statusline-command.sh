@@ -21,7 +21,7 @@ if git_dir=$(git -C "$cwd" rev-parse --git-dir 2>/dev/null); then
   branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
 
   # Dirty state (index + worktree, skip optional locks)
-  if git -C "$cwd" diff --no-lock-index --quiet 2>/dev/null && git -C "$cwd" diff --no-lock-index --cached --quiet 2>/dev/null; then
+  if git --no-optional-locks -C "$cwd" diff --quiet 2>/dev/null && git --no-optional-locks -C "$cwd" diff --cached --quiet 2>/dev/null; then
     dirty=""
   else
     dirty="*"
