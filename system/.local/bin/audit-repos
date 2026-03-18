@@ -15,6 +15,7 @@ const CHECK = `${GREEN}✓${RESET}`
 const X = `${RED}✗${RESET}`
 
 const devDir = join(homedir(), "dev")
+const ignoredRepos = ["npm-publisher", "management", "learning"]
 const verbose =
   process.argv.includes("-v") || process.argv.includes("--verbose")
 
@@ -107,7 +108,7 @@ async function auditRepo(dir) {
 async function main() {
   const entries = await readdir(devDir, { withFileTypes: true })
   const dirs = entries
-    .filter((d) => d.isDirectory())
+    .filter((d) => d.isDirectory() && !ignoredRepos.includes(d.name))
     .map((d) => join(devDir, d.name))
     .sort()
 
