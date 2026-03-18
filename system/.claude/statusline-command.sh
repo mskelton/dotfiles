@@ -20,16 +20,13 @@ git_part=""
 if git_dir=$(git -C "$cwd" rev-parse --git-dir 2>/dev/null); then
   branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
 
-  # Dirty state (index + worktree, skip optional locks)
-  if git --no-optional-locks -C "$cwd" diff --quiet 2>/dev/null && git --no-optional-locks -C "$cwd" diff --cached --quiet 2>/dev/null; then
+  # Dirty state (index + worktree + untracked, skip optional locks)
+  if git --no-optional-locks -C "$cwd" diff --quiet 2>/dev/null && \
+     git --no-optional-locks -C "$cwd" diff --cached --quiet 2>/dev/null && \
+     [[ -z $(git -C "$cwd" ls-files --others --exclude-standard 2>/dev/null) ]]; then
     dirty=""
   else
     dirty="*"
-  fi
-
-  # Untracked files
-  if [[ -n $(git -C "$cwd" ls-files --others --exclude-standard 2>/dev/null) ]]; then
-    dirty="${dirty}?"
   fi
 
   # Ahead/behind upstream
