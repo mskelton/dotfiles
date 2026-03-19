@@ -56,7 +56,7 @@ Install:andUse("GitHubNotifications", {
 			"ramp/web-agent-ide",
 		},
 		notification_min_interval_sec = 600,
-		show_menu = false,
+		show_menu = true,
 	},
 })
 
