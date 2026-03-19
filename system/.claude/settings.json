@@ -9,11 +9,11 @@
     "defaultMode": "default"
   },
   "model": "opus[1m]",
-  "alwaysThinkingEnabled": true,
-  "spinnerTipsEnabled": false,
-  "skipDangerousModePermissionPrompt": true,
   "statusLine": {
     "type": "command",
     "command": "bash /Users/mskelton/.claude/statusline-command.sh"
-  }
+  },
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true
 }
