@@ -83,13 +83,13 @@ hs.hotkey.bind(constants.keys.layer_key, ";", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "n", function()
-	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
-end)
-
-hs.hotkey.bind(constants.keys.layer_key, "m", function()
 	if utils.is_work then
 		hs.application.launchOrFocus(apps.notion)
 	end
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "m", function()
+	hs.application.launchOrFocus(apps.figma)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
@@ -97,7 +97,7 @@ hs.hotkey.bind(constants.keys.layer_key, ",", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
-	hs.application.launchOrFocus(apps.figma)
+	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "/", function()
