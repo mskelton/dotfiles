@@ -28,9 +28,16 @@ _prompt_path() {
   fi
 }
 
+# Git branch for prompt
+_prompt_git() {
+  local branch
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+  [[ -n "$branch" ]] && print -r -- " %F{magenta}${branch}%f"
+}
+
 # Basic prompt
 setopt prompt_subst
-PROMPT='$(_prompt_path) %F{%(?.green.red)}❯%f '
+PROMPT='$(_prompt_path)$(_prompt_git) %F{%(?.green.red)}❯%f '
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
