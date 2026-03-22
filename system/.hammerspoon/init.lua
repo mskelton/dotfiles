@@ -81,6 +81,8 @@ end)
 hs.hotkey.bind(constants.keys.layer_key, "n", function()
 	if utils.is_work then
 		hs.application.launchOrFocus(apps.notion)
+	else
+		hs.application.launchOrFocus(apps.todoist)
 	end
 end)
 
@@ -93,7 +95,9 @@ hs.hotkey.bind(constants.keys.layer_key, ",", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
-	hs.application.launchOrFocus(utils.if_work(apps.linear, apps.todoist))
+	if utils.is_work then
+		hs.application.launchOrFocus(apps.linear)
+	end
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "/", function()
