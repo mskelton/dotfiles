@@ -29,10 +29,6 @@ Install:andUse("ReloadConfiguration", {
 	start = true,
 })
 
-Install:andUse("RestartBluetooth", {
-	start = true,
-	disable = true,
-})
 
 Install:andUse("Remote", {
 	disable = utils.is_work,

@@ -12,7 +12,7 @@ get_conditional_casks() {
 	if [[ -f "$HOME/.work" ]]; then
 		cat <<EOF
 	cask "mic-drop"
-	cask "logi-options-plus"
+	cask "logi-options+"
 	cask "logitune"
 EOF
 	else
@@ -36,7 +36,6 @@ $brew bundle --file=- <<EOF
 	brew "ast-grep"
 	brew "bash"
 	brew "bat"
-	brew "blueutil"
 	brew "composer"
 	brew "fd"
 	brew "ffmpeg"
