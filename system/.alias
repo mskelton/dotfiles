@@ -69,6 +69,7 @@ alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ag="agent --force"
 alias agr="agent --force --resume"
 alias agc="agent --force --continue"
+alias crc="claude remote-control --permission-mode bypassPermissions"
 
 # Misc
 alias def="dict -d '!'"
