@@ -15,5 +15,6 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "voiceEnabled": false,
   "skipDangerousModePermissionPrompt": true
 }
