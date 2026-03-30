@@ -3,7 +3,7 @@
 
 url=$(portless get dev 2>/dev/null)
 if [[ -n "$url" ]]; then
-  open "$url"
+  (sleep 5 && open "$url") &
 fi
 
 yarn start-proxy
