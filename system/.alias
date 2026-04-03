@@ -24,15 +24,6 @@ alias cpr="$HOME/go/bin/pr"
 alias cprd="$HOME/go/bin/pr -d"
 alias main="git-cleanup"
 
-# Tmux
-alias ta="tmux attach"
-alias tk="tmux-kill-switch"
-alias tko="tmux kill-server"
-
-# Todo
-alias t="todo today"
-alias tw="clear && todo today"
-
 # Package managers
 alias b="bun"
 alias y="yarn"
@@ -57,14 +48,10 @@ alias oldbash="/bin/bash"
 # Kitty
 alias icat="/Applications/kitty.app/Contents/MacOS/kitty +kitten icat --align=left"
 
-# Docker
-alias dau="docker compose --profile app up"
-alias dad="docker compose --profile app down"
-
 # Agents
-alias cc="claude --dangerously-skip-permissions"
-alias ccr="claude --dangerously-skip-permissions --resume"
-alias ccc="claude --dangerously-skip-permissions --continue"
+alias c="claude --dangerously-skip-permissions"
+alias cr="claude --dangerously-skip-permissions --resume"
+alias cc="claude --dangerously-skip-permissions --continue"
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ag="agent --force"
 alias agr="agent --force --resume"
@@ -72,7 +59,6 @@ alias agc="agent --force --continue"
 alias crc="claude remote-control --permission-mode bypassPermissions"
 
 # Misc
-alias def="dict -d '!'"
 alias pb="pbcopy"
 alias python='python3'
 alias xit="exit"
