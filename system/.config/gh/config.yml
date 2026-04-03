@@ -10,7 +10,7 @@ aliases:
   copy: "!gh url | pbcopy"
   draft: pr create --draft
   force-merge: pr merge --admin --squash
-  ls-codegen: '!prs --search "head:ci/run-codegen"'
+  ls-codegen: '!prs --state all --limit 10 --search "head:ci/run-codegen"'
   ls-ryu: '!prs --search "head:ci/bump-ryu"'
   ls-dependabot: "!prs --app dependabot"
   mkrelease: workflow run release.yml
