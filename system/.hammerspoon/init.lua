@@ -110,6 +110,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
 		{ apps.chrome,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.cursor,   nil,              screens.laptop, hs.layout.maximized },
+		{ apps.vscode,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.slack,    nil,              screens.laptop, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.figma,    nil,              screens.laptop, hs.layout.maximized },
@@ -120,6 +121,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	}, {
 		{ apps.chrome,   nil,              screens.primary, hs.layout.maximized },
 		{ apps.cursor,   nil,              screens.primary, hs.layout.maximized },
+		{ apps.vscode,   nil,              screens.primary, hs.layout.maximized },
 		{ apps.slack,    nil,              screens.primary, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop,  hs.layout.maximized },
 		{ apps.figma,    nil,              screens.primary, hs.layout.maximized },
@@ -134,6 +136,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
 		{ apps.chrome,   nil,              screens.laptop, hs.layout.left50 },
 		{ apps.cursor,   nil,              screens.laptop, hs.layout.right50 },
+		{ apps.vscode,   nil,              screens.laptop, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.laptop, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.figma,    nil,              screens.laptop, hs.layout.maximized },
@@ -144,6 +147,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	}, {
 		{ apps.chrome,   nil,              screens.primary, hs.layout.left50 },
 		{ apps.cursor,   nil,              screens.primary, hs.layout.right50 },
+		{ apps.vscode,   nil,              screens.primary, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.primary, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop,  hs.layout.maximized },
 		{ apps.figma,    nil,              screens.primary, hs.layout.maximized },
