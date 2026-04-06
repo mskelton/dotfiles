@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Commit all current changes. Follow these steps:
+description: Commit all current changes
 ---
 
 # Commit
