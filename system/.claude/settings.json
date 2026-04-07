@@ -3,18 +3,23 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true",
     "ENABLE_CLAUDEAI_MCP_SERVERS": "false"
   },
-  "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": [],
+    "allow": [
+      "mcp__buildkite__list_builds",
+      "mcp__buildkite__get_build",
+      "mcp__buildkite__get_build_jobs",
+      "mcp__buildkite__get_job_log"
+    ],
     "ask": [],
     "deny": [],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
   },
+  "alwaysThinkingEnabled": true,
+  "includeCoAuthoredBy": false,
   "spinnerTipsEnabled": false,
-  "alwaysThinkingEnabled": true
+  "model": "opus[1m]"
 }
