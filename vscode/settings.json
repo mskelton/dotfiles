@@ -536,12 +536,12 @@
     // LSP
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"],
+      "commands": ["go-to-next-error.prev.error"],
       "silent": true
     },
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"],
+      "commands": ["go-to-next-error.next.error"],
       "silent": true
     },
     {
@@ -704,8 +704,6 @@
   },
   "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.layoutControl.enabled": false,
-  "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
-  "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,

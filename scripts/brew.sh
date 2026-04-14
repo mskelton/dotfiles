@@ -26,12 +26,6 @@ EOF
 # Install from Brewfile using heredoc
 echo "Installing packages from Brewfile..."
 $brew bundle --file=- <<EOF
-	# Taps
-	tap "anomalyco/tap"
-	tap "tursodatabase/tap"
-	tap "withgraphite/tap"
-	tap "xo/xo"
-
 	# Formulae
 	brew "ast-grep"
 	brew "bash"
@@ -47,13 +41,13 @@ $brew bundle --file=- <<EOF
 	brew "gnu-sed"
 	brew "go"
 	brew "gradle"
-	brew "graphite"
+	brew "withgraphite/tap/graphite"
 	brew "imagemagick"
 	brew "jq"
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
-	brew "opencode"
+	brew "anomalyco/tap/opencode"
 	brew "php"
 	brew "ripgrep"
 	brew "sponge"
@@ -61,8 +55,8 @@ $brew bundle --file=- <<EOF
 	brew "task"
 	brew "timg"
 	brew "tmux"
-	brew "turso"
-	brew "usql"
+	brew "tursodatabase/tap/turso"
+	brew "xo/xo/usql"
 	brew "watchman"
 	brew "wget"
 	brew "yq"
