@@ -7,11 +7,6 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # https://bun.sh
 curl -fsSL https://bun.sh/install | bash
 
-# Install Starship
-# https://starship.rs
-curl -sS https://starship.rs/install.sh | sh
-mkdir ~/.cache/starship
-
 # Install fzf keybindings
 /opt/homebrew/opt/fzf/install \
 	--no-update-rc \

@@ -1,9 +1,6 @@
 # FZF defaults
 export FZF_DEFAULT_OPTS="--reverse --info=inline"
 
-# Hide Starship command timeout warnings
-export STARSHIP_LOG=error
-
 # Environment variables
 export EDITOR=nvim
 export GOPATH="$HOME/go"

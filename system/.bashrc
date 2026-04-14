@@ -1,9 +1,6 @@
 # Hide macOS Bash 3.2 deprecation warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Starship theme
-eval "$(starship init bash)"
-
 # Custom aliases
 source "$HOME/.alias"
 
