@@ -2,8 +2,6 @@
 # VS Code Extensions Install Script
 # Usage: curl -fsSL https://raw.githubusercontent.com/mskelton/dotfiles/HEAD/scripts/vscode-extensions.sh | bash
 
-set -e
-
 echo "📦 Managing VS Code extensions..."
 
 extensions_file="$HOME/dev/dotfiles/config/vscode-extensions.json"
@@ -30,7 +28,9 @@ install_extensions() {
             if [[ -n "$extension" ]]; then
                 if ! echo "$installed_exts" | grep -q "^$extension$"; then
                     echo "  ➕ Installing $extension..."
-                    "$editor_cmd" --install-extension "$extension"
+                    if ! "$editor_cmd" --install-extension "$extension"; then
+                        echo "  ❌ Failed to install $extension"
+                    fi
                 fi
             fi
         done <<<"$extensions"

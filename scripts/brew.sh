@@ -11,13 +11,15 @@ fi
 get_conditional_packages() {
 	if [[ -f "$HOME/.work" ]]; then
 		cat <<EOF
-	cask "android-studio"
+	cask "granola"
 	cask "logi-options+"
 	cask "logitune"
 EOF
 	else
 		cat <<EOF
+	cask "android-studio"
 	brew "flyctl"
+	cask "firefox"
 	cask "telegram"
 	cask "zoom"
 EOF
@@ -49,7 +51,7 @@ $brew bundle --file=- <<EOF
 	brew "anomalyco/tap/opencode"
 	brew "php"
 	brew "ripgrep"
-	brew "sponge"
+	brew "uv"
 	brew "timg"
 	brew "xo/xo/usql"
 	brew "wget"
@@ -63,11 +65,10 @@ $brew bundle --file=- <<EOF
 	cask "chatgpt"
 	cask "cursor"
 	cask "figma"
-	cask "firefox"
 	cask "font-jetbrains-mono"
 	cask "font-symbols-only-nerd-font"
 	cask "hammerspoon"
-	cask "mic-drop"
+	cask "orbstack"
 	cask "raycast"
 	cask "shottr"
 	cask "visual-studio-code"
