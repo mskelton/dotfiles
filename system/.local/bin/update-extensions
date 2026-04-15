@@ -6,6 +6,7 @@ set -e
 ignored_extensions=(
     anthropic.claude-code
     anysphere.cursorpyright
+    ramp.ramp-inspect
 )
 
 echo "🔄 Updating VS Code extensions list..."

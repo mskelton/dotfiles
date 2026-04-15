@@ -1,6 +1,7 @@
 {
   "extensions": [
     "bradlc.vscode-tailwindcss",
+    "biomejs.biome",
     "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
     "charliermarsh.ruff",
@@ -10,6 +11,7 @@
     "formulahendry.auto-rename-tag",
     "fwcd.kotlin",
     "golang.go",
+    "hashicorp.terraform",
     "llvm-vs-code-extensions.lldb-dap",
     "mads-hartmann.bash-ide-vscode",
     "mathiasfrohlich.kotlin",
@@ -26,17 +28,16 @@
     "mskelton.unix-chmod",
     "mskelton.vscode-git-utils",
     "oxc.oxc-vscode",
-    "qwtel.sqlite-viewer",
+    "plorefice.devicetree",
     "redhat.vscode-yaml",
     "rust-lang.rust-analyzer",
     "sleistner.vscode-fileutils",
     "sswg.swift-lang",
-    "sumneko.lua",
-    "swiftlang.swift-vscode",
     "tamasfe.even-better-toml",
     "typescriptteam.native-preview",
     "usernamehw.errorlens",
     "vadimcn.vscode-lldb",
-    "vscodevim.vim"
+    "vscodevim.vim",
+    "yy0931.go-to-next-error"
   ]
 }
