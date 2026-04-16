@@ -32,6 +32,7 @@ $brew bundle --file=- <<EOF
 	# Formulae
 	brew "ast-grep"
 	brew "bash"
+	brew "cloudflared"
 	brew "composer"
 	brew "fd"
 	brew "ffmpeg"

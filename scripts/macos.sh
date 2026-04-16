@@ -64,9 +64,6 @@ killall Dock
 ### TRACKPAD ###################################################################
 ################################################################################
 
-# Disable natural scrolling
-defaults write -g com.apple.swipescrolldirection -int 0
-
 # Disable rubber band scrolling
 defaults write -g NSScrollViewRubberbanding -int 0
 
