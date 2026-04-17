@@ -1,15 +1,11 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true",
-    "ENABLE_CLAUDEAI_MCP_SERVERS": "false"
+    "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
+    "IS_DEMO": "1"
   },
+  "hooks": {},
   "permissions": {
-    "allow": [
-      "mcp__buildkite__list_builds",
-      "mcp__buildkite__get_build",
-      "mcp__buildkite__get_build_jobs",
-      "mcp__buildkite__get_job_log"
-    ],
+    "allow": [],
     "ask": [],
     "deny": [],
     "defaultMode": "default"
