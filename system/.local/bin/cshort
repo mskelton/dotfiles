@@ -8,8 +8,3 @@ for app in "Chrome" "Chrome.canary" "Chrome.beta" "Chrome.dev"; do
 done
 
 killall cfprefsd
-
-# Restart Chrome to apply changes
-osascript -e 'quit app "Google Chrome"'
-sleep 1
-open -a "Google Chrome"
