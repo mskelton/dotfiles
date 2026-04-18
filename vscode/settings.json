@@ -396,12 +396,16 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
-    "https://schemastore.azurewebsites.net/": true,
-    "https://raw.githubusercontent.com/": true,
-    "https://www.schemastore.org/": true,
-    "https://json.schemastore.org/": true,
+    "https://biomejs.dev": true,
+    "https://developer.microsoft.com/json-schemas/": true,
     "https://json-schema.org/": true,
-    "https://biomejs.dev": true
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://turborepo.dev": true,
+    "https://www.schemastore.org/": true
   },
   "json.schemas": [
     {
@@ -409,6 +413,8 @@
       "url": "https://www.schemastore.org/package.json"
     }
   ],
+  "kotlin.debugAdapter.enabled": false,
+  "kotlin.languageServer.enabled": false,
   "lldb.launch.expressions": "native",
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.suppressUpdateNotifications": true,
@@ -441,6 +447,7 @@
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.startupPrompt": "never",
+  "security.workspace.trust.untrustedFiles": "open",
   "swift.disableAutoResolve": true,
   "terminal.external.osxExec": "kitty.app",
   "terminal.integrated.allowedLinkSchemes": [
