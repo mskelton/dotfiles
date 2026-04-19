@@ -51,6 +51,7 @@ $brew bundle --file=- <<EOF
 	brew "neovim"
 	brew "anomalyco/tap/opencode"
 	brew "php"
+	brew "pre-commit"
 	brew "ripgrep"
 	brew "uv"
 	brew "timg"
