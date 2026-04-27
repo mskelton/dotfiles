@@ -181,6 +181,14 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "git-extras.remotes": [
+    {
+      "regex": "^([^:]+):(.+?)(?:\\.git)?$",
+      "repo": "https://github.com/${2}",
+      "file": "https://github.com/${2}/blob/${sha}/${file}${line}",
+      "blame": "https://github.com/${2}/blame/${sha}/${file}${line}"
+    }
+  ],
   "git.blame.statusBarItem.enabled": false,
   "git.branchProtection": ["main", "master"],
   "git.branchProtectionPrompt": "alwaysCommit",
@@ -197,123 +205,6 @@
     "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
-  "githubIssues.issueCompletions.enabled": false,
-  "githubIssues.userCompletions.enabled": false,
-  "githubPullRequests.commentExpandState": "collapseAll",
-  "githubPullRequests.experimental.notificationsView": true,
-  "githubPullRequests.notifications": "pullRequests",
-  "githubPullRequests.pullBranch": "never",
-  "githubPullRequests.pullRequestDescription": "none",
-  "githubPullRequests.queries": [
-    {
-      "label": "Created By Me",
-      "query": "repo:${owner}/${repository} is:open author:${user}"
-    }
-  ],
-  "gitlens.ai.enabled": false,
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "gitlens.blame.avatars": false,
-  "gitlens.blame.heatmap.enabled": false,
-  "gitlens.cloudIntegrations.enabled": false,
-  "gitlens.cloudPatches.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.currentLine.enabled": false,
-  "gitlens.currentLine.pullRequests.enabled": false,
-  "gitlens.gitCommands.avatars": false,
-  "gitlens.gitkraken.mcp.autoEnabled": false,
-  "gitlens.graph.avatars": false,
-  "gitlens.graph.issues.enabled": false,
-  "gitlens.graph.minimap.enabled": false,
-  "gitlens.graph.pullRequests.enabled": false,
-  "gitlens.graph.scrollMarkers.enabled": false,
-  "gitlens.graph.sidebar.enabled": false,
-  "gitlens.graph.statusBar.enabled": false,
-  "gitlens.home.preview.enabled": false,
-  "gitlens.hovers.autolinks.enabled": false,
-  "gitlens.hovers.currentLine.enabled": false,
-  "gitlens.hovers.pullRequests.enabled": false,
-  "gitlens.integrations.enabled": false,
-  "gitlens.launchpad.indicator.enabled": false,
-  "gitlens.launchpad.indicator.polling.enabled": false,
-  "gitlens.liveshare.enabled": false,
-  "gitlens.menus": {
-    "editorGroup": {
-      "blame": false,
-      "compare": false
-    }
-  },
-  "gitlens.mode.statusBar.enabled": false,
-  "gitlens.plusFeatures.enabled": false,
-  "gitlens.rebaseEditor.openOnPausedRebase": false,
-  "gitlens.remotes": [
-    {
-      "regex": "^([^:]+):(.+)\\.git$",
-      "type": "Custom",
-      "urls": {
-        "repository": "https://github.com/${repo}",
-        "branches": "https://github.com/${repo}/branches",
-        "branch": "https://github.com/${repo}/commits/${branch}",
-        "commit": "https://github.com/${repo}/commit/${id}",
-        "file": "https://github.com/${repo}?path=${file}${line}",
-        "fileInBranch": "https://github.com/${repo}/blob/${branch}/${file}${line}",
-        "fileInCommit": "https://github.com/${repo}/blob/${id}/${file}${line}",
-        "fileLine": "#L${line}",
-        "fileRange": "#L${start}-L${end}"
-      }
-    },
-    {
-      "regex": "^([^:]+):(.+)$",
-      "type": "Custom",
-      "urls": {
-        "repository": "https://github.com/${repo}",
-        "branches": "https://github.com/${repo}/branches",
-        "branch": "https://github.com/${repo}/commits/${branch}",
-        "commit": "https://github.com/${repo}/commit/${id}",
-        "file": "https://github.com/${repo}?path=${file}${line}",
-        "fileInBranch": "https://github.com/${repo}/blob/${branch}/${file}${line}",
-        "fileInCommit": "https://github.com/${repo}/blob/${id}/${file}${line}",
-        "fileLine": "#L${line}",
-        "fileRange": "#L${start}-L${end}"
-      }
-    }
-  ],
-  "gitlens.showWhatsNewAfterUpgrades": false,
-  "gitlens.statusBar.enabled": false,
-  "gitlens.statusBar.pullRequests.enabled": false,
-  "gitlens.telemetry.enabled": false,
-  "gitlens.terminalLinks.enabled": false,
-  "gitlens.views.branches.avatars": false,
-  "gitlens.views.branches.pullRequests.enabled": false,
-  "gitlens.views.commitDetails.autolinks.enabled": false,
-  "gitlens.views.commitDetails.avatars": false,
-  "gitlens.views.commitDetails.pullRequests.enabled": false,
-  "gitlens.views.commits.avatars": false,
-  "gitlens.views.commits.pullRequests.enabled": false,
-  "gitlens.views.contributors.avatars": false,
-  "gitlens.views.contributors.pullRequests.enabled": false,
-  "gitlens.views.drafts.avatars": false,
-  "gitlens.views.fileHistory.avatars": false,
-  "gitlens.views.fileHistory.pullRequests.enabled": false,
-  "gitlens.views.launchpad.avatars": false,
-  "gitlens.views.lineHistory.avatars": false,
-  // "gitlens.blame.format": "${author|30?} ${message|50?} ${agoOrDate|14-}"
-  "gitlens.views.patchDetails.avatars": false,
-  "gitlens.views.pullRequest.avatars": false,
-  "gitlens.views.remotes.avatars": false,
-  "gitlens.views.remotes.pullRequests.enabled": false,
-  "gitlens.views.repositories.avatars": false,
-  "gitlens.views.repositories.pullRequests.enabled": false,
-  "gitlens.views.searchAndCompare.avatars": false,
-  "gitlens.views.searchAndCompare.pullRequests.enabled": false,
-  "gitlens.views.tags.avatars": false,
-  "gitlens.views.workspaces.avatars": false,
-  "gitlens.views.workspaces.pullRequests.enabled": false,
-  "gitlens.views.worktrees.avatars": false,
-  "gitlens.views.worktrees.pullRequests.enabled": false,
-  "gitlens.virtualRepositories.enabled": false,
   "go.toolsManagement.autoUpdate": true,
   "html.format.wrapLineLength": 80,
   "intelephense.stubs": [
@@ -508,26 +399,17 @@
     // Git
     {
       "before": ["<leader>", "v", "h"],
-      "commands": ["gitlens.toggleFileBlame"],
+      "commands": ["git-extras.open-blame"],
       "silent": true
     },
     {
       "before": ["<leader>", "v", "d"],
-      "commands": ["gitlens.diffWithPrevious"],
+      "commands": ["git-extras.open-diff"],
       "silent": true
     },
     {
       "before": ["<leader>", "v", "w"],
-      "commands": [
-        "gitlens.copyRemoteFileUrlToClipboard",
-        {
-          "command": "notify.sendNotification",
-          "args": {
-            "message": "Remote URL copied to clipboard",
-            "type": "info"
-          }
-        }
-      ],
+      "commands": ["git-extras.copy-remote-url"],
       "silent": true
     },
     {
