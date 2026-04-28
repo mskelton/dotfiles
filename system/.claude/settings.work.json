@@ -156,5 +156,6 @@
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "autoAcceptMemories": true,
-  "defaultDirectory": "/Users/mskelton/dev"
+  "defaultDirectory": "/Users/mskelton/dev",
+  "awaySummaryEnabled": false
 }

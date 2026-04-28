@@ -8,3 +8,9 @@ for app in "Chrome" "Chrome.canary" "Chrome.beta" "Chrome.dev"; do
 done
 
 killall cfprefsd
+
+if pgrep -x "Google Chrome" >/dev/null; then
+  osascript -e 'tell application "Google Chrome" to quit'
+  while pgrep -x "Google Chrome" >/dev/null; do sleep 0.2; done
+  open -a "Google Chrome"
+fi
