@@ -376,6 +376,16 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindowOrEditorOnMac",
     "when": "activeEditorGroupEmpty && currentComposerIsEmpty && !multipleEditorGroups || activeEditorGroupEmpty && !composerFocused && !multipleEditorGroups"
+  },
+  // Copy path of active file
+  {
+    "key": "shift+cmd+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+shift+c",
+    "command": "copyFilePath"
   }
   // Ungrouped
 ]

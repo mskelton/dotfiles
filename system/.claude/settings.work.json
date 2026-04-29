@@ -55,10 +55,18 @@
       "mcp__granola__list_meetings",
       "mcp__granola__list_meeting_folders",
       "mcp__granola__get_meetings",
-      "mcp__granola__get_meeting_transcript"
+      "mcp__granola__get_meeting_transcript",
+      "mcp__snowflake__list_semantic_views",
+      "mcp__snowflake__describe_semantic_view",
+      "mcp__snowflake__read_documentation_introduction",
+      "mcp__snowflake__list_domain_documentation",
+      "mcp__snowflake__read_domain_documentation",
+      "mcp__snowflake__read_table_documentation",
+      "mcp__snowflake__search_tables",
+      "mcp__snowflake__search_jargon_glossary"
     ],
-    "deny": [],
     "ask": [],
+    "deny": [],
     "defaultMode": "default"
   },
   "model": "opus[1m]",
