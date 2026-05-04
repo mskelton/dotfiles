@@ -385,7 +385,16 @@
   },
   {
     "key": "cmd+shift+c",
-    "command": "copyFilePath"
+    "command": "copyRelativeFilePath"
+  },
+  // Claude Code keybinding to send newline
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\u001b\r"
+    },
+    "when": "terminalFocus"
   }
   // Ungrouped
 ]

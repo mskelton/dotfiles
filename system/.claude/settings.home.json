@@ -1,5 +1,6 @@
 {
   "env": {
+    "CLAUDE_CODE_HIDE_CWD": "1",
     "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
     "IS_DEMO": "1"
   },
