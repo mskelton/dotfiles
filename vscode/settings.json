@@ -57,6 +57,7 @@
   "biome.requireConfiguration": true,
   "biome.suggestInstallingGlobally": false,
   "breadcrumbs.enabled": false,
+  "chat.disableAIFeatures": true,
   "chatgpt.commentCodeLensEnabled": false,
   "claudeCode.allowDangerouslySkipPermissions": true,
   "claudeCode.initialPermissionMode": "bypassPermissions",
@@ -199,7 +200,7 @@
   "git.openRepositoryInParentFolders": "never",
   "git.useEditorAsCommitInput": false,
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
     "markdown": true,
     "scminput": false

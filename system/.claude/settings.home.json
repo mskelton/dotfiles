@@ -4,19 +4,20 @@
     "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
     "IS_DEMO": "1"
   },
-  "hooks": {},
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [],
-    "ask": [],
     "deny": [],
+    "ask": [],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
+  "hooks": {},
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
   },
-  "alwaysThinkingEnabled": true,
-  "includeCoAuthoredBy": false,
   "spinnerTipsEnabled": false,
-  "model": "opus[1m]"
+  "alwaysThinkingEnabled": true,
+  "awaySummaryEnabled": false
 }
