@@ -16,5 +16,4 @@ sa !gt modify --all && gt squash -n 2>/dev/null
 squash !gt track -q && gt squash --no-edit
 ss submit --stack
 su submit --stack --update-only
-sync sync -f
 untracked !untracked
