@@ -7,5 +7,7 @@ if jq -e '.private == true' package.json >/dev/null 2>&1; then
   exit 1
 fi
 
+export NODE_OPTIONS="--use-system-ca"
+
 vsce publish
 ovsx publish
