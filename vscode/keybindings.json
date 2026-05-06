@@ -395,6 +395,11 @@
       "text": "\u001b\r"
     },
     "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+,",
+    "command": "-aiSettings.action.open",
+    "when": "cursor.cmdCommaOpensCursorSettings"
   }
   // Ungrouped
 ]
