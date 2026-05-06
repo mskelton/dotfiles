@@ -67,16 +67,16 @@
       "mcp__snowflake__search_jargon_glossary",
       "mcp__linear__save_issue"
     ],
-    "ask": [],
     "deny": [
       "Bash(gws gmail*)",
       "Bash(gws drive*)",
       "Bash(gws calendar*)",
       "Bash(gws cal*)"
     ],
+    "ask": [],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -170,7 +170,7 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "awaySummaryEnabled": false,
   "autoAcceptMemories": true,
-  "defaultDirectory": "/Users/mskelton/dev",
-  "awaySummaryEnabled": false
+  "defaultDirectory": "/Users/mskelton/dev"
 }
