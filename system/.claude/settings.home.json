@@ -1,7 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_HIDE_CWD": "1",
     "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": 1,
     "IS_DEMO": "1"
   },
   "includeCoAuthoredBy": false,
@@ -11,7 +11,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {},
   "statusLine": {
     "type": "command",
@@ -19,5 +19,5 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
-  "awaySummaryEnabled": false
+  "effortLevel": "medium"
 }
