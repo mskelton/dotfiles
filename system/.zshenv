@@ -17,8 +17,7 @@ export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 export COREPACK_ENABLE_AUTO_PIN=0
 export DOTENV_CONFIG_QUIET=1
 
-# Hide Claude intro message
+# Claude Code
 export IS_DEMO=1
-
-# Make Claude think
-export MAX_THINKING_TOKENS=16000
+export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+export ENABLE_CLAUDEAI_MCP_SERVERS=false
