@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Update investment balances in Lunch Money
-# Usage: update-investment-balances [brokerage] [mark_ira] [yanna_ira]
+# Usage: update-investment-balances [brokerage] [mark_ira] [yanna_ira] [mark_hsa]
 
 set -e
 
 # Check if positional args are provided
-if [ $# -eq 3 ]; then
+if [ $# -eq 4 ]; then
     BROKERAGE="$1"
+    MARK_HSA="$4"
     MARK_IRA="$2"
     YANNA_IRA="$3"
 else
@@ -15,6 +16,7 @@ else
     echo
 
     read -p "Brokerage: $" BROKERAGE
+    read -p "Mark's HSA: $" MARK_HSA
     read -p "Mark's Roth IRA: $" MARK_IRA
     read -p "Yanna's Roth IRA: $" YANNA_IRA
 fi
@@ -43,6 +45,8 @@ update_asset() {
     local balance="$2"
     local asset_name="$3"
 
+    # Strip dollar signs from balance
+    balance=${balance//$/}
     echo "🔄 Updating $asset_name (ID: $asset_id) with balance: \$$balance"
 
     # Strip commas from balance
@@ -66,6 +70,7 @@ echo
 
 # Update each asset
 update_asset "158172" "$BROKERAGE" "Brokerage"
+update_asset "324370" "$MARK_HSA" "Mark's HSA"
 update_asset "165634" "$MARK_IRA" "Mark's Roth IRA"
 update_asset "158171" "$YANNA_IRA" "Yanna's Roth IRA"
 
