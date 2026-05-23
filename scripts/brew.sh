@@ -46,6 +46,7 @@ $brew bundle --file=- <<EOF
 	brew "withgraphite/tap/graphite"
 	brew "imagemagick"
 	brew "jq"
+	brew "mkcert"
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
