@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Clone a GitHub repo as a blobless partial clone
+
+gh repo clone "$1" -- --filter=blob:none
