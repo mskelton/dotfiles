@@ -47,7 +47,7 @@ Install:andUse("GitHubNotifications", {
 	config = {
 		interval_sec = 60,
 		ignore_merged_prs_from = {
-		  "ramp/akuma",
+			"ramp/akuma",
 			"ramp/web",
 			"ramp/web-agent-ide",
 		},
@@ -65,7 +65,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	hs.application.launchOrFocus(utils.if_work(apps.cursor, apps.vscode))
+	hs.application.launchOrFocus(apps.cursor)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -213,7 +213,8 @@ end)
 
 --- Go to next track
 hs.hotkey.bind({ "option" }, "n", function()
-	hs.execute("shortcuts run 'Skip Forward'")
+	hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
+	hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
 end)
 
 --- Open dev server
