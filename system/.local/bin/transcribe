@@ -5,12 +5,16 @@ _parse_args() {
 	while [[ $# -gt 0 ]]; do
 		case "$1" in
 		-h | --help)
-			echo "Usage: $0 [--all] <input_file>"
+			echo "Usage: $0 [-o <output_file>] [--trim] <input_file>"
 			exit 0
 			;;
-		-a | --all)
-			ALL_MODE=true
+		-t | --trim)
+			TRIM_MODE=true
 			shift
+			;;
+		-o | --output)
+			OUTPUT_FILE="$2"
+			shift 2
 			;;
 		*)
 			if [[ -z "$INPUT_FILE" ]]; then
@@ -31,8 +35,13 @@ _parse_args() {
 }
 
 INPUT_FILE=""
-ALL_MODE=false
+OUTPUT_FILE=""
+TRIM_MODE=false
 _parse_args "$@"
+
+if [[ -z "$OUTPUT_FILE" ]]; then
+	OUTPUT_FILE="${INPUT_FILE%.*}.txt"
+fi
 
 TMP_DIR=$(mktemp -d)
 trap "rm -rf '$TMP_DIR'" EXIT
@@ -42,10 +51,22 @@ EXTENSION="${INPUT_FILE##*.}"
 TRIMMED_FILE="$TMP_DIR/trimmed.$EXTENSION"
 
 echo "Transcribing $INPUT_FILE..."
-if [ "$ALL_MODE" = true ]; then
-	cp "$INPUT_FILE" "$TRIMMED_FILE"
-else
+if [ "$TRIM_MODE" = true ]; then
 	ffmpeg -y -t 60 -i "$INPUT_FILE" -acodec copy "$TRIMMED_FILE" -loglevel quiet
+else
+	cp "$INPUT_FILE" "$TRIMMED_FILE"
 fi
 
-PYTORCH_JIT=0 PYTHONWARNINGS="ignore" whisper "$TRIMMED_FILE" --model base --language English --output_format txt --output_dir "$TMP_DIR"
+WHISPER_TXT="$TMP_DIR/$(basename "${TRIMMED_FILE%.*}").txt"
+
+# PYTHONUNBUFFERED: whisper prints segments to stdout; without this, output is
+# block-buffered when piped and tee won't write to the file until the buffer fills.
+PYTHONUNBUFFERED=1 PYTORCH_JIT=0 PYTHONWARNINGS="ignore" whisper "$TRIMMED_FILE" \
+	--model base --language English --output_format txt --output_dir "$TMP_DIR" 2>&1 | tee "$OUTPUT_FILE"
+
+# whisper writes plain text only at the end; replace streamed verbose output with it
+if [[ -f "$WHISPER_TXT" ]]; then
+	cp "$WHISPER_TXT" "$OUTPUT_FILE"
+fi
+
+echo "Saved to $OUTPUT_FILE"
