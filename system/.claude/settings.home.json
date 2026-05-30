@@ -6,7 +6,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {},
   "statusLine": {
     "type": "command",
