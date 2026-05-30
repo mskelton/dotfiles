@@ -76,7 +76,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -168,8 +168,12 @@
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
   },
+  "enabledPlugins": {
+    "ralph-loop@claude-plugins-official": true
+  },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "awaySummaryEnabled": false,
   "autoAcceptMemories": true,
   "defaultDirectory": "/Users/mskelton/dev"

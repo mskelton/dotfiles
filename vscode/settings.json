@@ -64,6 +64,7 @@
   "claudeCode.preferredLocation": "panel",
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
+  "cursor.composer.conversationDensity": "compact-ungrouped",
   "cursor.composer.queueMessageDefaultBehavior": "queue",
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
@@ -563,6 +564,7 @@
       "silent": true
     }
   ],
+  "window.autoDetectColorScheme": false,
   "window.customTitleBarVisibility": "never",
   "window.dialogStyle": "custom",
   "window.nativeTabs": true,

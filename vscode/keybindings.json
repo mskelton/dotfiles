@@ -292,6 +292,10 @@
     "command": "git-extras.sync"
   },
   {
+    "key": "cmd+k cmd+s",
+    "command": "git-extras.sync"
+  },
+  {
     "key": "cmd+k m",
     "command": "git-extras.checkout-default-branch"
   },
