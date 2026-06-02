@@ -8,10 +8,6 @@
   },
   "model": "opus",
   "hooks": {},
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline.sh"
-  },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "awaySummaryEnabled": false

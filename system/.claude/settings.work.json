@@ -164,17 +164,12 @@
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline.sh"
-  },
-  "enabledPlugins": {
-    "ralph-loop@claude-plugins-official": true
-  },
+  "enabledPlugins": {},
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "awaySummaryEnabled": false,
+  "tui": "fullscreen",
   "autoAcceptMemories": true,
   "defaultDirectory": "/Users/mskelton/dev"
 }
