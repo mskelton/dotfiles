@@ -48,7 +48,7 @@ if [ -n "$worktree_branches" ]; then
     printf "○ Resetting worktree: ${worktree_path/$HOME\//\~/}"
 
     if [ -n "$worktree_path" ]; then
-      worktree_branch=$(basename "$worktree_path" | sed 's/^web-//')
+      worktree_branch=$(worktree-branch "$worktree_path")
       git -C "$worktree_path" checkout -b "$worktree_branch" >/dev/null 2>&1
       git -C "$repo_path" branch -D "$branch" >/dev/null 2>&1
 

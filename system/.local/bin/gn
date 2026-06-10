@@ -21,8 +21,7 @@ fi
 
 # If we are in a worktree, we handle this command a bit special
 if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
-  repo_path=$(git rev-parse --show-toplevel)
-  worktree_name=$(basename "$repo_path" | sed 's/^web-//')
+  worktree_name=$(worktree-branch)
   current_branch=$(git branch --show-current)
 
   # Check if current branch matches worktree branch

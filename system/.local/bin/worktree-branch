@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Print the branch name for a worktree, derived by stripping the main repo
+# directory name prefix (worktree dirs are named "<repo>-<branch>").
+# Usage: worktree-branch [path]
+
+set -euo pipefail
+
+target="${1:-$(git rev-parse --show-toplevel)}"
+main_repo=$(basename "$(git -C "$target" worktree list --porcelain | head -1 | sed 's/^worktree //')")
+worktree_dir=$(basename "$target")
+
+printf '%s\n' "${worktree_dir#"$main_repo"-}"
