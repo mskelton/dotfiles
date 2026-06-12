@@ -10,5 +10,7 @@
   "hooks": {},
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
-  "awaySummaryEnabled": false
+  "effortLevel": "high",
+  "awaySummaryEnabled": false,
+  "tui": "fullscreen"
 }

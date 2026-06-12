@@ -1,3 +1,0 @@
-# Environment variables
-export ANTHROPIC_MODEL="sonnet"
-export ANTHROPIC_SMALL_FAST_MODEL="haiku"
