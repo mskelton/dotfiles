@@ -1,5 +1,6 @@
 local M = {}
 
+local apps = require("apps")
 local constants = require("constants")
 
 --- Apply a layout based on the number of screens
@@ -90,6 +91,22 @@ M.tbl_count = function(tbl)
 	end
 
 	return count
+end
+
+--- Focus the Cursor editor window, not the Agents (glass) window
+M.focus_cursor_editor = function()
+	local app = hs.application.get(apps.cursor)
+	if app then
+		for _, win in ipairs(app:allWindows()) do
+			local title = win:title() or ""
+			if not title:match("^Cursor Agents") then
+				win:focus()
+				return
+			end
+		end
+	end
+
+	hs.application.launchOrFocus(apps.cursor)
 end
 
 --- Focuses the specified app if it's running, otherwise noop

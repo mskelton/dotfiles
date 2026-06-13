@@ -65,7 +65,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	hs.application.launchOrFocus(apps.cursor)
+	layout.focus_cursor_editor()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -91,7 +91,11 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.kitty)
+	if utils.is_work then
+		hs.application.launchOrFocus(apps.kitty)
+	else
+		hs.urlevent.openURL("cursor://anysphere.cursor-deeplink/glass")
+	end
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
