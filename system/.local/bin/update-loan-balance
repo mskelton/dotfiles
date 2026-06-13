@@ -1,0 +1,286 @@
+#!/usr/bin/env python3
+"""Update a Lunch Money loan balance from an amortization schedule.
+
+Configure ~/.config/loan-balance/config.json (see config.example.json), set
+LUNCH_MONEY_TOKEN, then run monthly:
+
+    update-loan-balance
+    update-loan-balance --dry-run
+    update-loan-balance --show-schedule
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+from datetime import date, datetime
+from decimal import Decimal, ROUND_HALF_UP
+from pathlib import Path
+
+API_BASE = "https://dev.lunchmoney.app/v1/assets"
+CONFIG_PATH = Path(
+    os.environ.get("LOAN_BALANCE_CONFIG", "~/.config/loan-balance/config.json")
+).expanduser()
+MONEY_PLACES = Decimal("0.01")
+
+
+def parse_date(value: str) -> date:
+    return datetime.strptime(value, "%Y-%m-%d").date()
+
+
+def months_between(start: date, end: date) -> int:
+    return (end.year - start.year) * 12 + (end.month - start.month)
+
+
+def load_config(path: Path) -> dict:
+    if not path.exists():
+        print(
+            f"Error: config not found at {path}\n"
+            "Copy ~/.config/loan-balance/config.example.json to config.json and edit it.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    with path.open() as config_file:
+        config = json.load(config_file)
+
+    required = [
+        "asset_id",
+        "loan_start",
+        "loan_end",
+        "annual_interest_rate",
+        "balance_as_of",
+        "balance",
+    ]
+    missing = [key for key in required if key not in config]
+    if missing:
+        print(f"Error: missing config keys: {', '.join(missing)}", file=sys.stderr)
+        sys.exit(1)
+
+    return config
+
+
+def quantize_money(value: Decimal) -> Decimal:
+    return value.quantize(MONEY_PLACES, rounding=ROUND_HALF_UP)
+
+
+def monthly_rate(annual_interest_rate: Decimal) -> Decimal:
+    return annual_interest_rate / Decimal("100") / Decimal("12")
+
+
+def balance_after_payments(
+    principal: Decimal, rate: Decimal, term_months: int, payments_made: int
+) -> Decimal:
+    if term_months <= 0:
+        return Decimal("0")
+    if payments_made <= 0:
+        return principal
+    if payments_made >= term_months:
+        return Decimal("0")
+
+    growth = (Decimal("1") + rate) ** term_months
+    paid = (Decimal("1") + rate) ** payments_made
+    return principal * (growth - paid) / (growth - Decimal("1"))
+
+
+def derive_initial_principal(
+    known_balance: Decimal,
+    rate: Decimal,
+    term_months: int,
+    payments_made: int,
+) -> Decimal:
+    if payments_made <= 0:
+        return known_balance
+    if payments_made >= term_months:
+        return Decimal("0")
+
+    growth = (Decimal("1") + rate) ** term_months
+    paid = (Decimal("1") + rate) ** payments_made
+    denominator = growth - paid
+    if denominator == 0:
+        raise ValueError("Cannot derive principal from the provided loan parameters")
+
+    return known_balance * (growth - Decimal("1")) / denominator
+
+
+def monthly_payment(principal: Decimal, rate: Decimal, term_months: int) -> Decimal:
+    if term_months <= 0:
+        return Decimal("0")
+    if rate == 0:
+        return principal / Decimal(term_months)
+
+    growth = (Decimal("1") + rate) ** term_months
+    return principal * rate * growth / (growth - Decimal("1"))
+
+
+def build_schedule(config: dict) -> tuple[list[dict], Decimal, Decimal]:
+    loan_start = parse_date(config["loan_start"])
+    loan_end = parse_date(config["loan_end"])
+    balance_as_of = parse_date(config["balance_as_of"])
+    known_balance = Decimal(str(config["balance"]))
+    annual_rate = Decimal(str(config["annual_interest_rate"]))
+
+    term_months = months_between(loan_start, loan_end)
+    if term_months <= 0:
+        raise ValueError("loan_end must be after loan_start")
+
+    anchor_month = months_between(loan_start, balance_as_of)
+    if anchor_month < 0 or anchor_month > term_months:
+        raise ValueError("balance_as_of must fall between loan_start and loan_end")
+
+    rate = monthly_rate(annual_rate)
+    principal = derive_initial_principal(known_balance, rate, term_months, anchor_month)
+    payment = monthly_payment(principal, rate, term_months)
+
+    schedule: list[dict] = []
+    for month_index in range(term_months + 1):
+        month_date = date(
+            loan_start.year + (loan_start.month - 1 + month_index) // 12,
+            (loan_start.month - 1 + month_index) % 12 + 1,
+            loan_start.day,
+        )
+        remaining = balance_after_payments(principal, rate, term_months, month_index)
+        schedule.append(
+            {
+                "month_index": month_index,
+                "date": month_date,
+                "balance": quantize_money(remaining),
+            }
+        )
+
+    return schedule, quantize_money(payment), quantize_money(principal)
+
+
+def balance_for_today(schedule: list[dict], loan_start: date, today: date) -> Decimal | None:
+    month_index = months_between(loan_start, today)
+    if month_index < 0:
+        return None
+    if month_index >= len(schedule):
+        return Decimal("0")
+    return schedule[month_index]["balance"]
+
+
+def format_money(value: Decimal) -> str:
+    return f"${value:,.2f}"
+
+
+def print_schedule(
+    schedule: list[dict],
+    payment: Decimal,
+    principal: Decimal,
+    today: date,
+    loan_start: date,
+) -> None:
+    current_month = months_between(loan_start, today)
+    print(f"Initial principal: {format_money(principal)}")
+    print(f"Monthly payment:   {format_money(payment)}")
+    print()
+    print("Month  Date        Balance")
+    print("-----  ----------  -------------")
+    for entry in schedule:
+        marker = " <-- current" if entry["month_index"] == current_month else ""
+        print(
+            f"{entry['month_index']:>5}  {entry['date'].isoformat()}  "
+            f"{format_money(entry['balance'])}{marker}"
+        )
+
+
+def update_lunch_money(asset_id: str, balance: Decimal, balance_as_of: str, token: str) -> dict:
+    payload = json.dumps(
+        {
+            "balance": str(balance),
+            "balance_as_of": balance_as_of,
+        }
+    ).encode()
+    request = urllib.request.Request(
+        f"{API_BASE}/{asset_id}",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+        },
+        method="PUT",
+    )
+
+    try:
+        with urllib.request.urlopen(request) as response:
+            return json.loads(response.read().decode())
+    except urllib.error.HTTPError as error:
+        body = error.read().decode()
+        print(f"Error: Lunch Money API returned {error.code}: {body}", file=sys.stderr)
+        sys.exit(1)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Update a Lunch Money loan balance from an amortization schedule."
+    )
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=CONFIG_PATH,
+        help=f"Path to config JSON (default: {CONFIG_PATH})",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Calculate and print the balance without calling Lunch Money",
+    )
+    parser.add_argument(
+        "--show-schedule",
+        action="store_true",
+        help="Print the full amortization schedule",
+    )
+    parser.add_argument(
+        "--date",
+        dest="as_of",
+        help="Override the update date (YYYY-MM-DD); defaults to today",
+    )
+    args = parser.parse_args()
+
+    config = load_config(args.config)
+    loan_start = parse_date(config["loan_start"])
+    today = parse_date(args.as_of) if args.as_of else date.today()
+    balance_as_of = today.isoformat()
+
+    schedule, payment, principal = build_schedule(config)
+    balance = balance_for_today(schedule, loan_start, today)
+    if balance is None:
+        print(
+            f"Error: {today.isoformat()} is before loan_start ({loan_start.isoformat()})",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    asset_name = config.get("asset_name", "loan")
+    month_index = months_between(loan_start, today)
+
+    if args.show_schedule:
+        print_schedule(schedule, payment, principal, today, loan_start)
+        print()
+
+    print(f"Loan: {asset_name}")
+    print(f"Payment month: {month_index} ({today.strftime('%B %Y')})")
+    print(f"Balance as of {balance_as_of}: {format_money(balance)}")
+
+    if args.dry_run:
+        print("Dry run: skipping Lunch Money update")
+        return
+
+    token = os.environ.get("LUNCH_MONEY_TOKEN")
+    if not token:
+        print("Error: LUNCH_MONEY_TOKEN environment variable is required", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"Updating Lunch Money asset {config['asset_id']}...")
+    response = update_lunch_money(config["asset_id"], balance, balance_as_of, token)
+    status = response.get("status", "unknown")
+    print(f"Done ({status})")
+
+
+if __name__ == "__main__":
+    main()

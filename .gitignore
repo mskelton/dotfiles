@@ -19,3 +19,6 @@ EmmyLua.spoon/annotations/
 
 # Farm lockfile
 farm.lock
+
+# Python
+__pycache__/
