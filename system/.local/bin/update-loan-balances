@@ -31,6 +31,35 @@ CONFIG_PATH = Path(
 MONEY_PLACES = Decimal("0.01")
 
 
+def load_shell_env(path: str) -> None:
+    if not os.path.isfile(path):
+        return
+
+    with open(path, encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            key = key.removeprefix("export ").strip()
+            value = value.strip().strip("'\"")
+            os.environ.setdefault(key, value)
+
+
+def get_token() -> str:
+    load_shell_env(os.path.expanduser("~/.zshcustom"))
+
+    token = os.environ.get("LUNCH_MONEY_TOKEN")
+    if token:
+        return token
+
+    print(
+        "Error: LUNCH_MONEY_TOKEN environment variable is required",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
+
 def parse_date(value: str) -> date:
     return datetime.strptime(value, "%Y-%m-%d").date()
 
@@ -387,12 +416,7 @@ def main() -> None:
             print(f"Error: {error}", file=sys.stderr)
             sys.exit(1)
 
-    token = None if args.dry_run else os.environ.get("LUNCH_MONEY_TOKEN")
-    if not args.dry_run and not token:
-        print(
-            "Error: LUNCH_MONEY_TOKEN environment variable is required", file=sys.stderr
-        )
-        sys.exit(1)
+    token = None if args.dry_run else get_token()
 
     for loan in loans:
         balance, detail = resolve_balance(loan, today, args.show_schedule)

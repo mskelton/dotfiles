@@ -31,12 +31,11 @@ def load_shell_env(path):
 
 
 def get_token():
-    load_shell_env(os.path.expanduser("~/.zshhome"))
+    load_shell_env(os.path.expanduser("~/.zshcustom"))
 
-    for name in ("LUNCH_MONEY_TOKEN", "LUNCH_MONEY_API_KEY"):
-        token = os.environ.get(name)
-        if token:
-            return token
+    token = os.environ.get("LUNCH_MONEY_TOKEN")
+    if token:
+        return token
 
     print(
         "Error: LUNCH_MONEY_TOKEN environment variable is required",
