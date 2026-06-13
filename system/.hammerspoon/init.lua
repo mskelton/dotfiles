@@ -94,7 +94,7 @@ hs.hotkey.bind(constants.keys.layer_key, ",", function()
 	if utils.is_work then
 		hs.application.launchOrFocus(apps.kitty)
 	else
-		hs.urlevent.openURL("cursor://anysphere.cursor-deeplink/glass")
+		layout.focus_cursor_agents()
 	end
 end)
 

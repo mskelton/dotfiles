@@ -109,6 +109,22 @@ M.focus_cursor_editor = function()
 	hs.application.launchOrFocus(apps.cursor)
 end
 
+--- Focus the Cursor agents window, not the Editor window
+M.focus_cursor_agents = function()
+	local app = hs.application.get(apps.cursor)
+	if app then
+		for _, win in ipairs(app:allWindows()) do
+			local title = win:title() or ""
+			if title:match("^Cursor Agents") then
+				win:focus()
+				return
+			end
+		end
+	end
+
+	hs.application.launchOrFocus(apps.cursor)
+end
+
 --- Focuses the specified app if it's running, otherwise noop
 --- @param hint string
 M.maybe_focus = function(hint)
