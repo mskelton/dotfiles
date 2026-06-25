@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Stash, checkout main branch, unstash
+set -euo pipefail
+
+is_dirty=$(git status --porcelain)
+
+if [ -n "$is_dirty" ]; then
+  echo '✔ Stashing changes'
+  git stash push -u >/dev/null 2>&1
+fi
+
+cm
+
+if [ -n "$is_dirty" ]; then
+  echo '✔ Unstashing changes'
+  git stash pop >/dev/null 2>&1
+fi
