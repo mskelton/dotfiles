@@ -39,7 +39,7 @@ Install:andUse("Remote", {
 })
 
 Install:andUse("GitHubNotifications", {
-	disable = not utils.is_work,
+	disable = true,
 	start = true,
 	hotkeys = {
 		open = { constants.keys.layer_key, "p" },
