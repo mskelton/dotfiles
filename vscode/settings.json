@@ -325,6 +325,7 @@
   "playwright.reuseBrowser": true,
   "playwright.showTrace": false,
   "prettier.requireConfig": true,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "redhat.telemetry.enabled": false,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
