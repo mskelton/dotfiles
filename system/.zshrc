@@ -19,31 +19,35 @@ set -o emacs
 bindkey '^B' backward-word
 bindkey '^F' forward-word
 
-# Trim ~/dev/ off the prompt if present
-_prompt_path() {
-  if [[ $PWD == $HOME/dev/* ]]; then
-    print -r -- "${PWD#$HOME/dev/}"
-  else
-    print -r -- "%~"
-  fi
-}
+if [[ -z "$CURSOR_AGENT" ]]; then
+  # Trim ~/dev/ off the prompt if present
+  _prompt_path() {
+    if [[ $PWD == $HOME/dev/* ]]; then
+      print -r -- "${PWD#$HOME/dev/}"
+    else
+      print -r -- "%~"
+    fi
+  }
 
-# Git branch for prompt
-_prompt_git() {
-  local branch
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-  [[ -n "$branch" ]] && print -r -- " %F{magenta}${branch}%f"
-}
+  # Git branch for prompt
+  _prompt_git() {
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+    [[ -n "$branch" ]] && print -r -- " %F{magenta}${branch}%f"
+  }
 
-# Basic prompt
-setopt prompt_subst
-PROMPT='$(_prompt_path)$(_prompt_git) %F{%(?.green.red)}❯%f '
+  # Basic prompt
+  setopt prompt_subst
+  PROMPT='$(_prompt_path)$(_prompt_git) %F{%(?.green.red)}❯%f '
+fi
 
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-# Setup fzf
-source <(fzf --zsh)
+if [[ -z "$CURSOR_AGENT" ]]; then
+  # Setup fzf
+  source <(fzf --zsh)
+fi
 
 # Setup direnv
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
@@ -79,12 +83,14 @@ export PATH="$HOME/.local/bin""\
 :/opt/homebrew/bin""\
 :$PATH"
 
-# Plugins
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+if [[ -z "$CURSOR_AGENT" ]]; then
+  # Plugins
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# bun completions
-[ -s "/Users/mskelton/.bun/_bun" ] && source "/Users/mskelton/.bun/_bun"
+  # bun completions
+  [ -s "/Users/mskelton/.bun/_bun" ] && source "/Users/mskelton/.bun/_bun"
+fi
 
 # pnpm
 export PNPM_HOME="/Users/mskelton/Library/pnpm"
