@@ -25,15 +25,7 @@ alias cprd="$HOME/go/bin/pr -d"
 alias main="git-cleanup"
 
 # Package managers
-alias b="bun"
 alias y="yarn"
-alias yd="yarn dev"
-alias yt="yarn test:e2e"
-alias yr="yarn test:e2e:record"
-alias yrl="yarn test:e2e:record --last-failed"
-alias pn="pnpm"
-alias pout="pnpm outdated --format=list"
-alias pup="pnpm up --filter='*' --latest"
 
 # Remap vim to nvim
 alias vim="nvim"
@@ -45,9 +37,6 @@ alias ovim="/usr/bin/vim"
 alias bash="/usr/bin/env bash"
 alias oldbash="/bin/bash"
 
-# Kitty
-alias icat="/Applications/kitty.app/Contents/MacOS/kitty +kitten icat --align=left"
-
 # Agents
 alias c="claude --dangerously-skip-permissions"
 alias cr="claude --dangerously-skip-permissions --resume"
@@ -56,7 +45,6 @@ alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ag="agent --force"
 alias agr="agent --force --resume"
 alias agc="agent --force --continue"
-alias crc="claude remote-control --permission-mode bypassPermissions"
 
 # Misc
 alias pb="pbcopy"

@@ -31,25 +31,14 @@ npm config set fund=false
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install cargo binaries
-cargo install --git https://github.com/mskelton/pngpaste
-cargo install --git https://github.com/mskelton/dtsfmt
-
 # Install go binaries
 go install github.com/mskelton/branch-manager@latest
-go install github.com/mskelton/byte@latest
 go install github.com/mskelton/git-cleanup@latest
-go install github.com/mskelton/lorem@latest
 go install github.com/mskelton/pr@latest
 go install github.com/mskelton/prs@latest
 go install github.com/mskelton/url@latest
-go install github.com/spf13/cobra-cli@latest
-
-# Install gh extensions
-gh extension install mislav/gh-license
 
 # Install npm binaries
-npm install -g turbo
 npm install -g @anthropic-ai/claude-code
 npm install -g @vscode/vsce
 npm install -g ovsx

@@ -2,7 +2,6 @@ con continue
 diff !git diff "$(gt parent)"..HEAD
 fix !git add . && gt continue
 go !gt modify --all && git push --force-with-lease
-linear !linear
 ll log long
 ls log short
 ma modify --all
@@ -16,4 +15,3 @@ sa !gt modify --all && gt squash -n 2>/dev/null
 squash !gt track -q && gt squash --no-edit
 ss submit --stack
 su submit --stack --update-only
-untracked !untracked

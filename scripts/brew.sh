@@ -30,9 +30,7 @@ EOF
 echo "Installing packages from Brewfile..."
 $brew bundle --file=- <<EOF
 	# Formulae
-	brew "ast-grep"
 	brew "bash"
-	brew "cloudflared"
 	brew "composer"
 	brew "fd"
 	brew "ffmpeg"
@@ -50,15 +48,12 @@ $brew bundle --file=- <<EOF
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
-	brew "anomalyco/tap/opencode"
 	brew "php"
 	brew "pre-commit"
 	brew "ripgrep"
 	brew "uv"
-	brew "timg"
 	brew "xo/xo/usql"
 	brew "wget"
-	brew "yq"
 	brew "zsh-autosuggestions"
 	brew "zsh-fast-syntax-highlighting"
 
@@ -74,7 +69,6 @@ $brew bundle --file=- <<EOF
 	cask "orbstack"
 	cask "raycast"
 	cask "shottr"
-	cask "visual-studio-code"
 
 	# Conditional casks
 	$(get_conditional_packages)

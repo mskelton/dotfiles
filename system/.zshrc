@@ -91,11 +91,3 @@ if [[ -z "$CURSOR_AGENT" ]]; then
   # bun completions
   [ -s "/Users/mskelton/.bun/_bun" ] && source "/Users/mskelton/.bun/_bun"
 fi
-
-# pnpm
-export PNPM_HOME="/Users/mskelton/Library/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
