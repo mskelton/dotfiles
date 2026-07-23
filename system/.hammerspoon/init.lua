@@ -39,20 +39,15 @@ Install:andUse("Remote", {
 })
 
 Install:andUse("GitHubNotifications", {
-	disable = true,
+	disable = not utils.is_work,
 	start = true,
 	hotkeys = {
 		open = { constants.keys.layer_key, "p" },
 	},
 	config = {
 		interval_sec = 60,
-		ignore_merged_prs_from = {
-			"ramp/akuma",
-			"ramp/web",
-			"ramp/web-agent-ide",
-		},
 		notification_min_interval_sec = 600,
-		show_menu = true,
+		show_menu = false,
 	},
 })
 
