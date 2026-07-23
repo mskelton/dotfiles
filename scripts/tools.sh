@@ -15,9 +15,6 @@ curl -fsSL https://bun.sh/install | bash
 	--no-bash \
 	--no-zsh
 
-# Install lazy.nvim
-git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
-
 # Install latest LTS version of Node.js
 fnm install --lts
 
@@ -44,5 +41,4 @@ npm install -g @vscode/vsce
 npm install -g ovsx
 
 # Install remote fonts
-curl -sL https://termicons.mskelton.dev/termicons.ttf -o "$HOME/Library/Fonts/termicons.ttf"
 curl -sL https://github.com/mskelton/vscode-codicons/raw/main/dist/codicon.ttf -o "$HOME/Library/Fonts/codicon.ttf"
