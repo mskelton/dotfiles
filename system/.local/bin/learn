@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Completes TaskWarrior tasks that have the +learn tag
-
-flags=
-if [[ "$1" == 'old' ]]; then
-	flags='+OVERDUE'
-fi
-
-task rc.bulk=999 +learn +PENDING $flags 'done'

@@ -1,5 +1,0 @@
-#compdef pw
-
-_arguments \
-  '1:command:(screenshots video trace)' \
-  '*::args:->args'

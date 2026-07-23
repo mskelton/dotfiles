@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Formats a list of npm install commands to npm resolutions
-
-cat | gsed -E 's/.*\s(@?\S+)@(\S*)/"\1": "\2",/'

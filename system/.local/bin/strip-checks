@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Strip Notion checkbox formatting form text
-
-cat | sed "s/- \[ \]  //"

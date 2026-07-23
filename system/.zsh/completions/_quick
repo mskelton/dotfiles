@@ -1,5 +1,0 @@
-#compdef quick
-
-_arguments \
-  '1:command:(list add close help)' \
-  '*::args:->args'

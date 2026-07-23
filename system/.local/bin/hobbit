@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# A shorter HOME
-
-cat | sed "s|$HOME|~|"

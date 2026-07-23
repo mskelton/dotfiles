@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Prints the freedom time
-
-last=$(date -jf "%Y-%m-%d" "2024-12-27" +%s)
-now=$(date +%s)
-
-# Calculate the difference in days
-diff=$(((now - last) / 86400))
-echo "$diff days of freedom"

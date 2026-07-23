@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Create a PR with AI
-
-claude --model claude-haiku-4-5 --allowedTools 'Bash(git:*) Bash(gh:*) Bash(gn:*)' --print '/create-pr'
