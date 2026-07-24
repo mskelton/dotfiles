@@ -24,7 +24,9 @@ set splitbelow
 
 " Spell checking
 set spelllang=en_us
-set spelloptions=camel,noplainbuffer
+if has('nvim')
+  set spelloptions=camel,noplainbuffer
+endif
 
 " I don't use the mouse often, in fact when I do it's often wrong. But
 " sometimes when you are in a meeting leaning back in your chair, just clicking
@@ -113,6 +115,7 @@ set signcolumn=yes
 
 " Enable full terminal colors
 set termguicolors
+colorscheme habamax
 
 " Auto save undo history
 set undofile
