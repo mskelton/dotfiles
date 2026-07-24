@@ -57,9 +57,6 @@
   colorMoved = default
   tool = kitty
   guitool = kitty.gui
-[diff "lockb"]
-  textconv = bun
-  binary = true
 [difftool]
   prompt = false
   trustExitCode = true

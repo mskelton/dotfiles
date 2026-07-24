@@ -1,33 +1,13 @@
 aliases:
-  aa: '!aa "$@"'
-  approve: pr review --approve
-  assign: '!gh pr edit --add-reviewer "$1" && gh copy'
-  aus: pr merge --squash --auto
   auto: '!auto-merge "$@"'
   clone: repo clone
-  co: pr checkout
-  codegen: workflow run codegen.yml
   copy: "!gh url | pbcopy"
-  draft: pr create --draft
-  force-merge: pr merge --admin --squash
-  ls-codegen:
-    '!prs -R ramp/web --state all --limit 10 --search "head:ci/run-codegen"'
-  ls-ryu: '!prs --search "head:ci/bump-ryu"'
-  ls-dependabot: "!prs --app dependabot"
-  mkrelease: workflow run release.yml
-  pb: "!gh url | pbcopy"
-  prc: pr create -w
-  prw: pr view -w
-  ready: '!octocopy | pbcopy && gh pr ready "$1"'
   setup-repo:
     '!gh api -X PATCH repos/{owner}/{repo} --silent -f "has_wiki=false" -F
     "has_projects=false" -f "allow_merge_commit=false" -f
     "allow_rebase_merge=false" -f "allow_auto_merge=true" -f
     "delete_branch_on_merge=true" && gh api -X PUT /user/starred/{owner}/{repo}
     --silent'
-  squash: pr merge --squash
-  undo: pr ready --undo
-  url: pr view --json url -q .url
   w: repo view -w
 editor: nvim
 version: "1"
