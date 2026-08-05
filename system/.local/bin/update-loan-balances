@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Update Lunch Money loan balances from amortization schedules or Google Sheets.
 
-Configure ~/.config/loan-balances/config.json (see config.example.json), set
-LUNCH_MONEY_TOKEN, then run monthly:
+Configure ~/.config/loan-balances/config.json, set LUNCH_MONEY_TOKEN, then run
+monthly. Amortization loans can include optional extra_payment and
+monthly_payment fields; extras are applied each month after balance_as_of.
 
     update-loan-balances
     update-loan-balances --dry-run
@@ -176,12 +177,32 @@ def monthly_payment(principal: Decimal, rate: Decimal, term_months: int) -> Deci
     return principal * rate * growth / (growth - Decimal("1"))
 
 
+def apply_monthly_payment(
+    balance: Decimal, rate: Decimal, payment: Decimal, extra_payment: Decimal
+) -> Decimal:
+    if balance <= 0:
+        return Decimal("0")
+
+    interest = quantize_money(balance * rate)
+    remaining = quantize_money(balance + interest - payment - extra_payment)
+    return remaining if remaining > 0 else Decimal("0")
+
+
+def month_date_from_start(loan_start: date, month_index: int) -> date:
+    return date(
+        loan_start.year + (loan_start.month - 1 + month_index) // 12,
+        (loan_start.month - 1 + month_index) % 12 + 1,
+        loan_start.day,
+    )
+
+
 def build_schedule(loan: dict) -> tuple[list[dict], Decimal, Decimal]:
     loan_start = parse_date(loan["loan_start"])
     loan_end = parse_date(loan["loan_end"])
     balance_as_of = parse_date(loan["balance_as_of"])
     known_balance = Decimal(str(loan["balance"]))
     annual_rate = Decimal(str(loan["annual_interest_rate"]))
+    extra_payment = Decimal(str(loan.get("extra_payment", 0)))
 
     term_months = months_between(loan_start, loan_end)
     if term_months <= 0:
@@ -193,22 +214,34 @@ def build_schedule(loan: dict) -> tuple[list[dict], Decimal, Decimal]:
             f"loan {loan['name']}: balance_as_of must fall between loan_start and loan_end"
         )
 
+    if extra_payment < 0:
+        raise ValueError(f"loan {loan['name']}: extra_payment must be >= 0")
+
     rate = monthly_rate(annual_rate)
     principal = derive_initial_principal(known_balance, rate, term_months, anchor_month)
-    payment = monthly_payment(principal, rate, term_months)
+
+    if "monthly_payment" in loan:
+        payment = Decimal(str(loan["monthly_payment"]))
+    else:
+        payment = monthly_payment(principal, rate, term_months)
 
     schedule: list[dict] = []
     for month_index in range(term_months + 1):
-        month_date = date(
-            loan_start.year + (loan_start.month - 1 + month_index) // 12,
-            (loan_start.month - 1 + month_index) % 12 + 1,
-            loan_start.day,
-        )
-        remaining = balance_after_payments(principal, rate, term_months, month_index)
+        if month_index < anchor_month:
+            remaining = balance_after_payments(
+                principal, rate, term_months, month_index
+            )
+        elif month_index == anchor_month:
+            remaining = known_balance
+        else:
+            remaining = apply_monthly_payment(
+                schedule[-1]["balance"], rate, payment, extra_payment
+            )
+
         schedule.append(
             {
                 "month_index": month_index,
-                "date": month_date,
+                "date": month_date_from_start(loan_start, month_index),
                 "balance": quantize_money(remaining),
             }
         )
@@ -238,11 +271,15 @@ def print_schedule(
     principal: Decimal,
     today: date,
     loan_start: date,
+    extra_payment: Decimal = Decimal("0"),
 ) -> None:
     current_month = months_between(loan_start, today)
     print(f"Loan: {loan_name}")
     print(f"Initial principal: {format_money(principal)}")
     print(f"Monthly payment:   {format_money(payment)}")
+    if extra_payment > 0:
+        print(f"Extra payment:     {format_money(extra_payment)}")
+        print(f"Total payment:     {format_money(payment + extra_payment)}")
     print()
     print("Month  Date        Balance")
     print("-----  ----------  -------------")
@@ -252,6 +289,8 @@ def print_schedule(
             f"{entry['month_index']:>5}  {entry['date'].isoformat()}  "
             f"{format_money(entry['balance'])}{marker}"
         )
+        if entry["balance"] == 0 and entry["month_index"] > current_month:
+            break
     print()
 
 
@@ -311,13 +350,22 @@ def resolve_balance(
                 f"loan {loan['name']}: {today.isoformat()} is before loan_start"
             )
 
+        extra_payment = Decimal(str(loan.get("extra_payment", 0)))
         if show_schedule:
             print_schedule(
-                loan["name"], schedule, payment, principal, today, loan_start
+                loan["name"],
+                schedule,
+                payment,
+                principal,
+                today,
+                loan_start,
+                extra_payment,
             )
 
         month_index = months_between(loan_start, today)
         detail = f"payment month {month_index} ({today.strftime('%B %Y')})"
+        if extra_payment > 0:
+            detail += f", extra {format_money(extra_payment)}/mo"
         return balance, detail
 
     raw_value = fetch_sheet_cell(
