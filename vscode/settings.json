@@ -568,7 +568,6 @@
   "window.autoDetectColorScheme": false,
   "window.customTitleBarVisibility": "never",
   "window.dialogStyle": "custom",
-  "window.nativeTabs": true,
   "window.newWindowDimensions": "inherit",
   "window.openFoldersInNewWindow": "off",
   "window.title": "${rootName}${separator}${activeRepositoryBranchName}",
