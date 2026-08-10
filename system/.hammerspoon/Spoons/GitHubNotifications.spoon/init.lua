@@ -232,7 +232,6 @@ function M:all_comments_from_bots(comments)
 
 	local app_patterns = {
 		"^Graphite App$",
-		"^Ramp %- Web CI$"
 	}
 
 	for _, comment in ipairs(comments) do
@@ -246,7 +245,7 @@ function M:all_comments_from_bots(comments)
 			end
 		end
 
-		if comment.performed_via_github_app  then
+		if comment.performed_via_github_app then
 			for _, app_pattern in ipairs(app_patterns) do
 				if comment.performed_via_github_app.name:match(app_pattern) then
 					is_bot = true
