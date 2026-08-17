@@ -85,6 +85,9 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
-[url "https://github.com/"]
-	insteadOf = git@github.com:
-	insteadOf = ssh://git@github.com/
+[url "https://github.com/ramp/"]
+	insteadOf = https://github.com/ramp/
+	insteadOf = git@github.com:ramp/
+	insteadOf = ssh://git@github.com/ramp/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
