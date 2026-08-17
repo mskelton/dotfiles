@@ -1,24 +1,21 @@
 {
   "extensions": [
-    "anysphere.remote-containers",
-    "anysphere.remote-ssh",
     "bmewburn.vscode-intelephense-client",
-    "catppuccin.catppuccin-vsc",
     "catppuccin.catppuccin-vsc-icons",
+    "catppuccin.catppuccin-vsc",
     "charliermarsh.ruff",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
     "golang.go",
-    "mads-hartmann.bash-ide-vscode",
     "michael4d45.mago-vscode",
-    "ms-playwright.playwright",
     "ms-python.debugpy",
     "ms-python.python",
     "ms-python.vscode-python-envs",
     "mskelton.abolish",
     "mskelton.adjacent",
     "mskelton.dtsfmt",
+    "mskelton.go-to-error",
     "mskelton.notify",
     "mskelton.open-project",
     "mskelton.open-url-under-cursor",
@@ -27,13 +24,9 @@
     "oxc.oxc-vscode",
     "redhat.vscode-yaml",
     "sleistner.vscode-fileutils",
-    "sswg.swift-lang",
     "sumneko.lua",
     "tamasfe.even-better-toml",
-    "typescriptteam.native-preview",
     "usernamehw.errorlens",
-    "vadimcn.vscode-lldb",
-    "vscodevim.vim",
-    "yy0931.go-to-next-error"
+    "vscodevim.vim"
   ]
 }
