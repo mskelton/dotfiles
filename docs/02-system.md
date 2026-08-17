@@ -52,6 +52,12 @@
 - Enable "Tap to click"
 - Disable "Natural scrolling"
 
+# Git
+
+- Add `~/.ssh/id_ed25519.pub` to the personal GitHub account as Authentication and Signing
+- Add `~/.ssh/id_ed25519_sk_work.pub` to the work GitHub account as Signing
+- `gh auth login` as the work account and leave it active
+
 # Applications
 
 ## Installation
