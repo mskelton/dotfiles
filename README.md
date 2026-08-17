@@ -24,4 +24,3 @@ curl -LSfs https://go.mskelton.dev/farm/install | sh
 
 - [Migration checklist](https://github.com/mskelton/dotfiles/tree/main/docs/01-migration-checklist.md)
 - [System](https://github.com/mskelton/dotfiles/tree/main/docs/02-system.md)
-- [Apps](https://github.com/mskelton/dotfiles/tree/main/docs/03-apps.md)
