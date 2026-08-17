@@ -1,6 +1,7 @@
 ---
 name: commit
 description: Commit all current changes
+disable-model-invocation: true
 ---
 
 # Commit

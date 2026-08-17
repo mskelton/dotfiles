@@ -5,6 +5,7 @@ description:
   the last 24h (or since Friday on Mondays) and post to Slack via webhook. Use
   when Mark types /granola-summary or when the weekday 9am launchd cron fires.
 user-invocable: true
+disable-model-invocation: true
 ---
 
 # Granola Daily Follow-ups

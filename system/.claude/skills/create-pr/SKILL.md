@@ -3,6 +3,7 @@ name: create-pr
 description:
   Create GitHub pull requests using the gh CLI. Use when the user asks to create
   a PR, open a pull request, or submit changes for review.
+disable-model-invocation: true
 ---
 
 # Create Pull Request

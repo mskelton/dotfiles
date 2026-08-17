@@ -4,6 +4,7 @@ description:
   Scaffold a new VS Code extension project with GitHub repository. Use when the
   user wants to create a VS Code extension, start a new extension project, or
   set up a vscode extension.
+disable-model-invocation: true
 ---
 
 # Create VS Code Extension
