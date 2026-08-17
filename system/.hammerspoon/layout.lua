@@ -1,6 +1,5 @@
 local M = {}
 
-local apps = require("apps")
 local constants = require("constants")
 
 --- Apply a layout based on the number of screens
@@ -93,36 +92,26 @@ M.tbl_count = function(tbl)
 	return count
 end
 
---- Focus the Cursor editor window, not the Agents (glass) window
-M.focus_cursor_editor = function()
-	local app = hs.application.get(apps.cursor)
+--- Focus a Cursor editor or Agents window for the given app
+--- @param bundle_id string
+--- @param kind "editor"|"agents"
+--- @param maybe? boolean If true, do not launch the app when it is not running
+M.focus_cursor_window = function(bundle_id, kind, maybe)
+	local app = hs.application.get(bundle_id)
 	if app then
 		for _, win in ipairs(app:allWindows()) do
 			local title = win:title() or ""
-			if not title:match("^Cursor Agents") then
+			local is_agents = title:match("^Cursor Agents") ~= nil
+			if (kind == "agents") == is_agents then
 				win:focus()
 				return
 			end
 		end
+	elseif maybe then
+		return
 	end
 
-	hs.application.launchOrFocus(apps.cursor)
-end
-
---- Focus the Cursor agents window, not the Editor window
-M.focus_cursor_agents = function()
-	local app = hs.application.get(apps.cursor)
-	if app then
-		for _, win in ipairs(app:allWindows()) do
-			local title = win:title() or ""
-			if title:match("^Cursor Agents") then
-				win:focus()
-				return
-			end
-		end
-	end
-
-	hs.application.launchOrFocus(apps.cursor)
+	hs.application.launchOrFocusByBundleID(bundle_id)
 end
 
 --- Focuses the specified app if it's running, otherwise noop
@@ -133,7 +122,7 @@ M.maybe_focus = function(hint)
 		return
 	end
 
-	app:activate()
+	app:activate(true)
 end
 
 return M

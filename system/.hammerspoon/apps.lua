@@ -3,6 +3,9 @@ return {
 	arc = "Arc",
 	chat_gpt = "ChatGPT",
 	cursor = "Cursor",
+	cursor_id = "com.todesktop.230313mzl4w4u92",
+	cursor_dev = "Cursor Dev",
+	cursor_dev_id = "co.anysphere.cursor.dev",
 	chrome = "Google Chrome",
 	figma = "Figma",
 	finder = "Finder",
@@ -15,4 +18,5 @@ return {
 	todoist = "Todoist",
 	vscode = "Visual Studio Code",
 	zoom = "zoom.us",
+	zoom_id = "us.zoom.xos",
 }

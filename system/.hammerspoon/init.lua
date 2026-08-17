@@ -39,7 +39,7 @@ Install:andUse("Remote", {
 })
 
 Install:andUse("GitHubNotifications", {
-	disable = not utils.is_work,
+	disable = true,
 	start = true,
 	hotkeys = {
 		open = { constants.keys.layer_key, "p" },
@@ -60,7 +60,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	layout.focus_cursor_editor()
+	layout.focus_cursor_window(apps.cursor_id, "editor")
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -82,15 +82,15 @@ hs.hotkey.bind(constants.keys.layer_key, "n", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "m", function()
-	hs.application.launchOrFocus(apps.figma)
+	layout.focus_cursor_window(apps.cursor_dev_id, "agents", true)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	if utils.is_work then
-		hs.application.launchOrFocus(apps.kitty)
-	else
-		layout.focus_cursor_agents()
-	end
+	layout.focus_cursor_window(apps.cursor_id, "agents")
+end)
+
+hs.hotkey.bind(constants.keys.layer_key, "p", function()
+	hs.application.launchOrFocus(apps.kitty)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ".", function()
@@ -101,7 +101,7 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, "/", function()
 	if utils.is_work then
-		layout.maybe_focus(apps.zoom)
+		layout.maybe_focus(apps.zoom_id)
 	end
 end)
 
@@ -229,13 +229,6 @@ end)
 hs.hotkey.bind({ "control", "option", "shift" }, "r", function()
 	if utils.is_work then
 		hs.urlevent.openURL("http://localhost:5555")
-	end
-end)
-
---- Open QA
-hs.hotkey.bind({ "control", "option", "shift" }, "q", function()
-	if utils.is_work then
-		hs.urlevent.openURL("https://qa.ramp.com/treasury")
 	end
 end)
 
