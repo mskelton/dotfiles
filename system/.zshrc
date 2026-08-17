@@ -7,19 +7,19 @@ setopt HIST_NO_STORE          # Do not save history commands
 setopt HIST_REDUCE_BLANKS     # Strip superfluous blanks
 setopt INC_APPEND_HISTORY     # Don’t wait for shell to exit to save history lines
 
-# Enable completion
-fpath=($HOME/.zsh/completions $fpath)
-autoload -U compinit
-compinit
+if [[ -z "$CURSOR_AGENT" && -z "$CLAUDECODE" && -z "$CODEX_CI" ]]; then
+  # Enable completion
+  fpath=($HOME/.zsh/completions $fpath)
+  autoload -U compinit
+  compinit
 
-# Use Emacs keybindings
-set -o emacs
+  # Use Emacs keybindings
+  set -o emacs
 
-# Word navigation keybindings
-bindkey '^B' backward-word
-bindkey '^F' forward-word
+  # Word navigation keybindings
+  bindkey '^B' backward-word
+  bindkey '^F' forward-word
 
-if [[ -z "$CURSOR_AGENT" ]]; then
   # Trim ~/dev/ off the prompt if present
   _prompt_path() {
     if [[ $PWD == $HOME/dev/* ]]; then
@@ -44,7 +44,7 @@ fi
 # Setup Homebrew env
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-if [[ -z "$CURSOR_AGENT" ]]; then
+if [[ -z "$CURSOR_AGENT" && -z "$CLAUDECODE" && -z "$CODEX_CI" ]]; then
   # Setup fzf
   source <(fzf --zsh)
 fi
@@ -74,7 +74,7 @@ fi
 # Path for custom binaries and tools
 [ -f "$HOME/.path" ] && source "$HOME/.path"
 
-if [[ -z "$CURSOR_AGENT" ]]; then
+if [[ -z "$CURSOR_AGENT" && -z "$CLAUDECODE" && -z "$CODEX_CI" ]]; then
   # Plugins
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh

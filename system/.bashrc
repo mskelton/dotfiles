@@ -8,7 +8,7 @@ source "$HOME/.alias"
 export EDITOR=nvim
 export GOPATH="$HOME/go"
 export BUN_INSTALL="$HOME/.bun"
-export CLOUDSDK_PYTHON="python3.9"
+export CLOUDSDK_PYTHON="python3"
 
 # Custom config
 [ -f "$HOME/.bashcustom" ] && source "$HOME/.bashcustom"
