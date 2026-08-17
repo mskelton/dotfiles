@@ -8,24 +8,6 @@ if ! command -v brew &>/dev/null; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-get_conditional_packages() {
-	if [[ -f "$HOME/.work" ]]; then
-		cat <<EOF
-	cask "granola"
-	cask "logi-options+"
-	cask "logitune"
-EOF
-	else
-		cat <<EOF
-	cask "android-studio"
-	brew "flyctl"
-	cask "firefox"
-	cask "telegram"
-	cask "zoom"
-EOF
-	fi
-}
-
 # Install from Brewfile using heredoc
 echo "Installing packages from Brewfile..."
 $brew bundle --file=- <<EOF
@@ -34,6 +16,7 @@ $brew bundle --file=- <<EOF
 	brew "composer"
 	brew "fd"
 	brew "ffmpeg"
+	brew "flyctl"
 	brew "fnm"
 	brew "fzf"
 	brew "gh"
@@ -58,18 +41,6 @@ $brew bundle --file=- <<EOF
 	brew "zsh-fast-syntax-highlighting"
 
 	# Casks
-	cask "1password"
-	cask "1password-cli"
-	cask "chatgpt"
-	cask "cursor"
-	cask "figma"
 	cask "font-jetbrains-mono"
 	cask "font-symbols-only-nerd-font"
-	cask "hammerspoon"
-	cask "orbstack"
-	cask "raycast"
-	cask "shottr"
-
-	# Conditional casks
-	$(get_conditional_packages)
 EOF

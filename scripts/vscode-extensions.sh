@@ -39,7 +39,6 @@ install_extensions() {
     fi
 }
 
-install_extensions "VS Code" "code"
 install_extensions "Cursor" "cursor"
 
 echo "✅ Extension management complete!"

@@ -15,10 +15,6 @@ defaults write com.apple.screencapture location -string "$HOME/Downloads"
 # Disable screenshot thumbnail after capture
 defaults write com.apple.screencapture show-thumbnail -bool false
 
-# Disable disk not ejected properly notification. This notification is very
-# annoying when flashing firmware to the Advantage 360 keyboard.
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd DADisableEjectNotification -bool true
-
 ################################################################################
 ### FINDER #####################################################################
 ################################################################################
@@ -125,22 +121,19 @@ defaults -currentHost write com.apple.controlcenter Sound -int 16
 killall SystemUIServer
 
 ################################################################################
-### APP SHORTCUTS ##############################################################
+### CHROME #####################################################################
 ################################################################################
-#  @   Command
-#  ~   Option
-#  $   Shift
-#  ^   Control
 
-# Figma
-defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Show/Hide UI' -string '@$u'
-defaults write com.figma.Desktop NSUserKeyEquivalents -dict-add 'Copy as SVG' -string '@$s'
+# Do not prompt to collect passwords
+defaults write com.google.Chrome.plist PasswordManagerEnabled -bool false
 
-# Chrome
-for app in "Chrome" "Chrome.canary" "Chrome.beta" "Chrome.dev"; do
-  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Next Tab' -string '@e'
-  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Select Previous Tab' -string '@$e'
-  defaults write "com.google.$app" NSUserKeyEquivalents -dict-add 'Close Other Tabs' -string '@$k'
-done
+# Do not attempt to autofill credit cards
+defaults write com.google.Chrome.plist AutofillCreditCardEnabled -bool false
 
-killall cfprefsd
+# Default to https connections
+defaults write com.google.Chrome.plist HttpsOnlyMode force_enabled
+
+# Clean up UI clutter
+defaults write com.google.Chrome.plist SideSearchEnabled -bool false
+defaults write com.google.Chrome.plist ShowHomeButton -bool false
+defaults write com.google.Chrome.plist ShowFullUrlsInAddressBar -bool true

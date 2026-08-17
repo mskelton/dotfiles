@@ -1,9 +1,0 @@
-[core]
-	fsmonitor = true
-[feature]
-  manyFiles = true
-[user]
-	email = mskelton@ramp.com
-  signingkey = /Users/mskelton/.ssh/id_ed25519_sk_work.pub
-
-# vim:ft=gitconfig

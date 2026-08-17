@@ -3,7 +3,37 @@
 Below are configure steps for applications. This is typically only needed to be
 done when setting up new _accounts_ which only happens when changing jobs.
 
-# Shortcuts
+## Installation
+
+Install the following apps:
+
+- 1Password
+- 1Password CLI
+- Android Studio
+- Cursor
+- Figma
+- Google Chrome
+- Hammerspoon
+- Logi Options+
+- Mic Drop
+- Orbstack/Docker
+- Raycast
+- Shottr
+- Zoom
+
+Then install the following extensions:
+
+- 1Password
+- Dark Reader
+- Goodnight Tabs
+- Material Icons for GitHub
+- Picture-in-Picture Extension
+- React Developer Tools
+- Refined GitHub
+- User JavaScript and CSS
+- uBlacklist
+
+## Shortcuts
 
 - [Rewind](https://www.icloud.com/shortcuts/16c6dd6d3d7f492f977a75aad724f185)
 - [Fast Forward](https://www.icloud.com/shortcuts/b6dd59539ee342319fd542bb6e2197b2)
