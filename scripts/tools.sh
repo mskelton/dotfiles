@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Load Homebrew environment
+eval "$(/opt/homebrew/bin/brew shellenv bash)"
+
 # Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
@@ -16,7 +19,10 @@ curl -fsSL https://bun.sh/install | bash
 	--no-zsh
 
 # Install latest LTS version of Node.js
+eval "$(fnm env --shell bash)"
 fnm install --lts
+fnm default lts-latest
+fnm use lts-latest
 
 # Use a user directory so sudo is not required for installation
 npm config set prefix=~/.local/share/npm
