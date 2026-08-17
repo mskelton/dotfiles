@@ -1,0 +1,13 @@
+# Shared PATH for bash and zsh (prepended)
+custom_path="$HOME/.local/bin"
+custom_path="$custom_path:$HOME/.cargo/bin"
+custom_path="$custom_path:$HOME/.local/share/npm/bin"
+custom_path="$custom_path:$HOME/.bun/bin"
+custom_path="$custom_path:$HOME/go/bin"
+custom_path="$custom_path:$HOME/Library/Application Support/fnm"
+custom_path="$custom_path:$ANDROID_HOME/emulator"
+custom_path="$custom_path:$ANDROID_HOME/platform-tools"
+custom_path="$custom_path:/opt/homebrew/bin"
+
+export PATH="$custom_path:$PATH"
+unset custom_path

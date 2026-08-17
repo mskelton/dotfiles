@@ -65,23 +65,14 @@ source $HOME/.alias
 [ -f $HOME/.zshcustom ] && source $HOME/.zshcustom
 
 # Work or home config
-if [[ -f $HOME/.work ]]; then
+if [ -f "$HOME/.work" ]; then
   source $HOME/.zshwork
 else
   source $HOME/.zshhome
 fi
 
 # Path for custom binaries and tools
-export PATH="$HOME/.local/bin""\
-:$HOME/.cargo/bin""\
-:$HOME/.local/share/npm/bin""\
-:$HOME/.bun/bin""\
-:$HOME/go/bin""\
-:$HOME/Library/Application Support/fnm""\
-:$ANDROID_HOME/emulator""\
-:$ANDROID_HOME/platform-tools""\
-:/opt/homebrew/bin""\
-:$PATH"
+[ -f "$HOME/.path" ] && source "$HOME/.path"
 
 if [[ -z "$CURSOR_AGENT" ]]; then
   # Plugins
