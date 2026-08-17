@@ -3,7 +3,6 @@ packages:
     targets:
       - "~"
     fold:
-      - ".claude/commands"
       - ".hammerspoon"
       - ".zsh/completions"
     environments:
