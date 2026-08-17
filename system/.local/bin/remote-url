@@ -4,9 +4,9 @@
 # Read the repo base URL from the git config
 url=$(git config --get remote.origin.url)
 
-# If the URL does not follow the `git@` format, replace it with the correct one
-# from the SSH config.
-if [[ $url != "git@"* ]]; then
+# If the URL is an SSH host alias (e.g. gh:owner/repo.git), replace it with the
+# real hostname from the SSH config. Skip protocol URLs and standard git@ URLs.
+if [[ $url != *"://"* && $url != "git@"* ]]; then
 	# Read the host alias from the git config
 	host=${url/:*/}
 
@@ -18,9 +18,10 @@ if [[ $url != "git@"* ]]; then
 fi
 
 # Take the git@hostname.com:account/repo.git format and turn it into
-# https://hostname.com/account/repo/commit/...
+# https://hostname.com/account/repo
+url=${url%.git}
 if [[ $url != "https://"* ]]; then
-	url=$(echo "$url" | sed 's/\.git$//' | sed 's/:/\//' | sed 's/^git@/https:\/\//')
+	url=$(echo "$url" | sed 's/:/\//' | sed 's/^git@/https:\/\//')
 fi
 
 echo "$url"
