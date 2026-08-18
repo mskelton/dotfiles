@@ -429,12 +429,12 @@
     // LSP
     {
       "before": ["[", "d"],
-      "commands": ["go-to-next-error.prev.error"],
+      "commands": ["go-to-error.prev"],
       "silent": true
     },
     {
       "before": ["]", "d"],
-      "commands": ["go-to-next-error.next.error"],
+      "commands": ["go-to-error.next"],
       "silent": true
     },
     {
