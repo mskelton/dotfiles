@@ -6,7 +6,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {},
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,

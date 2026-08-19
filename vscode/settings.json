@@ -316,6 +316,7 @@
   "Lua.workspace.library": ["~/.hammerspoon/Spoons/EmmyLua.spoon/annotations"],
   "markdown.preview.fontSize": 15,
   "notebook.markup.fontSize": 15,
+  "npm.autoDetect": "off",
   "outline.showFields": false,
   "outline.showKeys": false,
   "outline.showProperties": false,
