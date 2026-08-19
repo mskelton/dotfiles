@@ -3,8 +3,8 @@ name: work-queue
 description:
   Run one iteration of a work queue — either a markdown document or a Linear
   ticket queue. Pick the next item, implement it end-to-end, commit it as a
-  stacked branch via the graphite skill, submit the stack as draft PRs with `gt
-  submit --stack --draft`, then mark it done.
+  stacked branch via the gh-stack skill, submit the stack as draft PRs with `gh
+  stack submit --auto`, then mark it done.
 user-invocable: true
 disable-model-invocation: true
 ---
@@ -15,7 +15,8 @@ Implement **one** item from a work queue, commit it as a **stacked branch**,
 then mark it done. The queue can be a **markdown document** or a **Linear ticket
 queue**. Designed to be the body of a `/loop` so a queue gets ground down
 one-branch-at-a-time, but works fine as a one-shot too. After each branch, push
-and open/update **draft** PRs with `gt submit --stack --draft`.
+and open/update **draft** PRs with `gh stack submit --auto` (new PRs default to
+draft — do not add `--open`).
 
 ## Input
 
@@ -84,28 +85,36 @@ Everything below is the default behavior for documents that don't specify.
      the affected test file(s) — fix what you break before committing.
    - If the repo uses a changelog/changeset workflow, add an entry.
 
-5. **Commit a stacked branch** using the /graphite skill, stacking on **wherever
+5. **Commit a stacked branch** using the /gh-stack skill, stacking on **wherever
    you currently are**, then **submit the stack**.
 
-   - Do **not** navigate first — no `gt repo sync`, no `gt checkout master`, no
+   - Do **not** navigate first — no `gh stack sync`, no `git checkout main`, no
      jumping to the trunk or the tip of the stack. Start from the current
      branch, wherever it sits in the stack (mid-stack, tip, or trunk — all
      fine).
-   - Run `gt create -am "<message>"`. This creates the new branch as a child of
-     the current branch, so the work stacks directly on top of where you
-     started.
-   - Run `gt submit --stack --draft` to push all branches in the stack and
-     create or update **draft** PRs on GitHub. New PRs must open as drafts — do
-     not publish. Do **not** use `gh pr create` — Graphite owns PR creation and
-     base-branch targeting.
-   - `gt create` leaves you checked out on the new branch, so the **next**
-     iteration naturally stacks on this one — the queue chains into a clean
-     stack from your starting point onward.
+   - Stage the changes (`git add -A`).
+   - If the current branch is **not yet part of a stack** (e.g. you're on trunk,
+     or `gh stack view --short` errors/shows no stack), commit first
+     (`git commit -m "<message>"`), then run `gh stack init <branch-name>` to
+     adopt the current commit onto a new branch — pick a short kebab-case
+     `<branch-name>` from the item. This only happens on the very first
+     iteration of a fresh queue run.
+   - Otherwise (already inside a stack), run `gh stack add -Am "<message>"` in
+     one step — it stages, commits, and creates the new branch as a child of the
+     current branch (layer on top), with the branch name auto-generated from the
+     message.
+   - Run `gh stack submit --auto` to push all branches in the stack and create
+     or update **draft** PRs on GitHub. New PRs default to draft — do not pass
+     `--open`. Do **not** use `gh pr create` directly — gh-stack owns PR
+     creation and base-branch targeting.
+   - Both `gh stack init` and `gh stack add` leave you checked out on the new
+     branch, so the **next** iteration naturally stacks on this one — the queue
+     chains into a clean stack from your starting point onward.
    - Each item = one branch, stacked on the previous. Write a clear, tight
      commit message.
 
-6. **Mark it done.** Grab the **branch name** and **PR URL** from
-   `gt branch info` first.
+6. **Mark it done.** Grab the **branch name** and **PR URL** first:
+   `git branch --show-current` and `gh pr view --json url -q .url`.
 
    **Markdown document:** Edit the document in place — change the item's box to
    `[x]`, append the branch name and PR URL, and move the line into a `## Done`
@@ -127,9 +136,9 @@ Everything below is the default behavior for documents that don't specify.
 
 ## Guardrails
 
-- Start from a **clean working tree** — uncommitted changes will confuse
-  `gt create`. If the tree is dirty, stop and tell the user rather than sweeping
-  unrelated changes into the branch.
+- Start from a **clean working tree** — leftover uncommitted changes will get
+  swept into `gh stack add -A`/`init`. If the tree is dirty, stop and tell the
+  user rather than sweeping unrelated changes into the branch.
 - Keep each branch **small and self-contained** so the stack stays reviewable.
 - If implementing an item turns out to be ambiguous or much larger than one
   branch, stop and surface that to the user instead of guessing or shipping a
