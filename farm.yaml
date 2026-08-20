@@ -3,16 +3,9 @@ packages:
     targets:
       - "~"
     fold:
+      - ".config/nvim"
       - ".hammerspoon"
       - ".zsh/completions"
-    environments:
-      - home
-      - work
-
-  - source: ./vim/.vimrc
-    targets:
-      - "~/.vimrc"
-      - "~/.config/nvim/init.vim"
     environments:
       - home
       - work
