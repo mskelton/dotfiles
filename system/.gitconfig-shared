@@ -22,7 +22,7 @@
   cm = commit --edit
   edit = commit --amend
   msg = commit --amend -m
-  sync = "!f() { git add -A && git commit -m \"${1-Sync}\" && git push; }; f"
+  sync = "!f() { git add -A && { git diff --cached --quiet || git commit -m \"${1-Sync}\"; }; git push; }; f"
   # Checkout
   co = checkout
   m = !git checkout $(git default)
