@@ -12,5 +12,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "awaySummaryEnabled": false,
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true
 }
