@@ -11,6 +11,7 @@ function M:start()
 	--- @type hs.httpserver|nil
 	self.server = hs.httpserver.new()
 	self.server:setPort(self.port)
+	self.server:setName("Remote")
 	self.server:setCallback(function(method, path, _, request_body)
 		if method ~= "POST" then
 			return "Only POST is supported\n", 400, {}
