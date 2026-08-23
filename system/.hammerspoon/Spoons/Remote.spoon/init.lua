@@ -8,8 +8,15 @@ M.homepage = "https://github.com/mskelton/dotfiles"
 M.license = "ISC - https://opensource.org/licenses/ISC"
 
 function M:start()
+	--- Advertise with a real TXT record. Android NSD throws on an empty TXT key
+	--- and never delivers the service to the app.
+	--- @type hs.bonjour.service|nil
+	self.advertisement = hs.bonjour.service.new("Remote", "_http._tcp.", self.port)
+	self.advertisement:txtRecord({ path = "/" })
+	self.advertisement:publish()
+
 	--- @type hs.httpserver|nil
-	self.server = hs.httpserver.new()
+	self.server = hs.httpserver.new(false, false)
 	self.server:setPort(self.port)
 	self.server:setName("Remote")
 	self.server:setCallback(function(method, path, _, request_body)
@@ -88,6 +95,10 @@ function M:start()
 end
 
 function M:stop()
+	if self.advertisement then
+		self.advertisement:stop()
+		self.advertisement = nil
+	end
 	if self.server then
 		self.server:stop()
 	end
