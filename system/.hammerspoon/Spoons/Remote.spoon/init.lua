@@ -21,6 +21,8 @@ function M:start()
 			["/state"] = function() end,
 			["/toggle"] = function()
 				hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+				--- MediaRemote lags the key event; wait so get_state() is current.
+				hs.timer.usleep(200000)
 			end,
 			["/rewind"] = function()
 				hs.execute("shortcuts run 'Rewind'")
@@ -109,16 +111,20 @@ function M:get_state()
 	}
 end
 
+local MEDIA_CONTROL = "/opt/homebrew/bin/media-control"
+
 function M:is_playing()
-	local handle = io.popen("pmset -g")
-	if handle == nil then
+	local output = hs.execute(MEDIA_CONTROL .. " get --no-artwork")
+	if output == nil then
 		return false
 	end
 
-	local result = handle:read("*a")
-	handle:close()
+	local ok, info = pcall(hs.json.decode, output)
+	if not ok or type(info) ~= "table" then
+		return false
+	end
 
-	return result:find("display sleep prevented by") ~= nil
+	return info.playing == true
 end
 
 return M

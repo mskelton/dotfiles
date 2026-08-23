@@ -29,6 +29,7 @@ $brew bundle --file=- <<EOF
 	brew "imagemagick"
 	brew "jq"
 	brew "mkcert"
+	brew "media-control"
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
