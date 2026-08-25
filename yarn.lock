@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "dotfiles@workspace:.":
@@ -15,19 +15,19 @@ __metadata:
   linkType: soft
 
 "prettier-plugin-sort-json@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "prettier-plugin-sort-json@npm:4.1.1"
+  version: 4.2.0
+  resolution: "prettier-plugin-sort-json@npm:4.2.0"
   peerDependencies:
     prettier: ^3.0.0
-  checksum: 10c0/b3b86ea679e95d0329c367aa860af4033d8a3b83a0656d7393f2005b2df78e20d19fbe2c40fe7b531262210e40060318a4287459c2a4f61c6a6bd1c2757e2b7d
+  checksum: 10c0/e1eea20998bd32da682d226c0eeb39f8a33548299f7092aa89c28caf1c171524a408d6b06773ef953b688f48577edaa3bfd7965e4b39a7e64c78dd9796216be3
   languageName: node
   linkType: hard
 
 "prettier@npm:^3.5.3":
-  version: 3.5.3
-  resolution: "prettier@npm:3.5.3"
+  version: 3.9.6
+  resolution: "prettier@npm:3.9.6"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/3880cb90b9dc0635819ab52ff571518c35bd7f15a6e80a2054c05dbc8a3aa6e74f135519e91197de63705bcb38388ded7e7230e2178432a1468005406238b877
+  checksum: 10c0/9f7ddae234035868f3daab3dc34e6de7e54622185afb017378029f0c09a9c023248ccf6f34def0b17a0538e18c47aa1b3188bab72965d1bf735919baa0747e99
   languageName: node
   linkType: hard
