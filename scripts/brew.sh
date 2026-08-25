@@ -33,6 +33,7 @@ $brew bundle --file=- <<EOF
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
+	brew "tree-sitter-cli"
 	brew "php"
 	brew "ripgrep"
 	brew "uv"
