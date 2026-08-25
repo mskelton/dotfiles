@@ -156,10 +156,10 @@ return {
 					--- on the left and the text on the right. This allows for quick scanning
 					--- on the left near the text while still providing the full completion
 					--- information if needed.
-					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					local strings = vim.split(kind.kind or "", "%s", { trimempty = true })
 
-					kind.kind = strings[1] .. " "
-					kind.menu = "   " .. strings[2]
+					kind.kind = (strings[1] or "") .. " "
+					kind.menu = strings[2] and ("   " .. strings[2]) or ""
 
 					--- Highlight the menu text the same as the kind icon
 					kind.menu_hl_group = "CmpItemKind" .. original_kind
