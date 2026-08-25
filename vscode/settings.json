@@ -65,7 +65,6 @@
   "comments.visible": false,
   "cursor.chat.terminalShowHoverHint": false,
   "cursor.composer.conversationDensity": "compact-ungrouped",
-  "cursor.composer.queueManualSendBehavior": "interrupt",
   "cursor.composer.shouldAllowCustomModes": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.composer.showEmptyStateTips": false,
