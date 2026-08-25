@@ -34,6 +34,9 @@ npm config set prefix=~/.local/share/npm
 npm config set audit=false
 npm config set fund=false
 
+# Allow install scripts for global packages
+npm config set allow-scripts=@anthropic-ai/claude-code,@vscode/vsce,ovsx,yarn
+
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -48,6 +51,7 @@ go install github.com/mskelton/url@latest
 npm install -g @anthropic-ai/claude-code
 npm install -g @vscode/vsce
 npm install -g ovsx
+npm install -g yarn
 
 # Install remote fonts
 curl -sL https://termicons.mskelton.dev/termicons.ttf -o "$HOME/Library/Fonts/termicons.ttf"
