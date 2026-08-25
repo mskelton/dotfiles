@@ -72,7 +72,16 @@ else
 fi
 
 # Path for custom binaries and tools
-[ -f "$HOME/.path" ] && source "$HOME/.path"
+# Each line prepends; later entries take precedence over earlier ones
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/emulator:$PATH"
+export PATH="$HOME/Library/Application Support/fnm:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/.local/share/npm/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ -z "$CURSOR_AGENT" && -z "$CLAUDECODE" && -z "$CODEX_CI" ]]; then
   # Plugins
