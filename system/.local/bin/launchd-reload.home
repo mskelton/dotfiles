@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Reload all my custom launchd agents
 
-for file_path in "$HOME/dev/dotfiles/home/Library/LaunchAgents/"*; do
-	path="$HOME/Library/LaunchAgents/$(basename "$file_path")"
+for path in "$HOME/Library/LaunchAgents/dev.mskelton."*.plist; do
+	[[ -e "$path" ]] || continue
 
 	launchctl bootout "gui/$(id -u)" "$path"
 	launchctl bootstrap "gui/$(id -u)" "$path"

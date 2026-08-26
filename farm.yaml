@@ -10,12 +10,6 @@ packages:
       - home
       - work
 
-  - source: ./home
-    targets:
-      - "~"
-    environments:
-      - home
-
   - source: ./vscode
     targets:
       - ~/Library/Application Support/Code/User
