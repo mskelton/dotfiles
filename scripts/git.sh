@@ -22,6 +22,8 @@ cat <<EOF >"$HOME/.gitconfig"
 	path = $HOME/.gitconfig-shared
 [includeIf "hasconfig:remote.*.url:*:ramp/**"]
 	path = $HOME/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:https://github.com/ramp/**"]
+	path = $HOME/.gitconfig-work
 EOF
 
 
