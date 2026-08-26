@@ -6,6 +6,8 @@ brew=/opt/homebrew/bin/brew
 if ! command -v brew &>/dev/null; then
 	echo "Installing Homebrew..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+	brew trust --formula xo/xo/usql
 fi
 
 # Install from Brewfile using heredoc
