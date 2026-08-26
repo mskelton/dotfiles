@@ -1,20 +1,16 @@
 {
   "extensions": [
-    "bmewburn.vscode-intelephense-client",
     "catppuccin.catppuccin-vsc-icons",
     "catppuccin.catppuccin-vsc",
     "charliermarsh.ruff",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
-    "golang.go",
-    "michael4d45.mago-vscode",
     "ms-python.debugpy",
     "ms-python.python",
     "ms-python.vscode-python-envs",
     "mskelton.abolish",
     "mskelton.adjacent",
-    "mskelton.dtsfmt",
     "mskelton.go-to-error",
     "mskelton.notify",
     "mskelton.open-project",
@@ -24,8 +20,6 @@
     "oxc.oxc-vscode",
     "redhat.vscode-yaml",
     "sleistner.vscode-fileutils",
-    "sumneko.lua",
-    "tamasfe.even-better-toml",
     "usernamehw.errorlens",
     "vscodevim.vim"
   ]
