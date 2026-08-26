@@ -183,14 +183,6 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git-extras.remotes": [
-    {
-      "regex": "^([^:]+):(.+?)(?:\\.git)?$",
-      "repo": "https://github.com/${2}",
-      "file": "https://github.com/${2}/blob/${sha}/${file}${line}",
-      "blame": "https://github.com/${2}/blame/${sha}/${file}${line}"
-    }
-  ],
   "git.blame.statusBarItem.enabled": false,
   "git.branchProtection": ["main", "master"],
   "git.branchProtectionPrompt": "alwaysCommit",
