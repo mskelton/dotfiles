@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Squash all commits on the current branch
+set -euo pipefail
+
+branch=$(git branch --show-current)
+if [ -z "$branch" ]; then
+  echo 'fatal: not currently on a branch' >&2
+  exit 1
+fi
+
+default=$(git default)
+if [ "$branch" = "$default" ]; then
+  echo 'fatal: cannot squash on the default branch' >&2
+  exit 1
+fi
+
+base=$(git merge-base HEAD "$default")
+count=$(git rev-list --count "$base"..HEAD)
+
+if [ "$count" -eq 0 ]; then
+  echo 'fatal: no unique commits on this branch' >&2
+  exit 1
+fi
+
+if [ "$count" -eq 1 ]; then
+  echo 'fatal: only one commit on this branch' >&2
+  exit 1
+fi
+
+first=$(git rev-list --reverse --max-count=1 "$base"..HEAD)
+git reset --soft "$base"
+git commit -c "$first"
