@@ -27,7 +27,6 @@ $brew bundle --file=- <<EOF
 	brew "go"
 	brew "gradle"
 	brew "hk"
-	brew "withgraphite/tap/graphite"
 	brew "imagemagick"
 	brew "jq"
 	brew "mkcert"
