@@ -358,7 +358,6 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
-  "typescript.experimental.useTsgo": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.inlayHints.parameterTypes.enabled": true,
@@ -600,5 +599,6 @@
     "https://www.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yml"
     ]
-  }
+  },
+  "js/ts.experimental.useTsgo": true
 }
