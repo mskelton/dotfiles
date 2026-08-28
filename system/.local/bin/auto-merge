@@ -6,6 +6,8 @@ flags=()
 squash_repos=(
   "ramp/akuma"
   "ramp/ramp-legal"
+  "ramp/inspect"
+  "ramp/web-agent-ide"
 )
 
 while [[ $# -gt 0 ]]; do

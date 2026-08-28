@@ -29,4 +29,4 @@ fi
 
 first=$(git rev-list --reverse --max-count=1 "$base"..HEAD)
 git reset --soft "$base"
-git commit -c "$first"
+git commit -C "$first"
