@@ -7,6 +7,13 @@ setopt HIST_NO_STORE          # Do not save history commands
 setopt HIST_REDUCE_BLANKS     # Strip superfluous blanks
 setopt INC_APPEND_HISTORY     # Don’t wait for shell to exit to save history lines
 
+zshaddhistory() {
+  emulate -L zsh
+
+  # Don't add fly secrets commands to history
+  [[ $1 != *"fly secrets set"* && $1 != *"flyctl secrets set"* ]]
+}
+
 if [[ -z "$CURSOR_AGENT" && -z "$CLAUDECODE" && -z "$CODEX_CI" ]]; then
   # Enable completion
   fpath=($HOME/.zsh/completions $fpath)
