@@ -34,6 +34,7 @@ $brew bundle --file=- <<EOF
 	brew "just"
 	brew "ktlint"
 	brew "neovim"
+	brew "hashicorp/tap/terraform"
 	brew "tree-sitter-cli"
 	brew "php"
 	brew "ripgrep"
