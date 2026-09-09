@@ -4,7 +4,7 @@
     "allow": [],
     "deny": [],
     "ask": [],
-    "defaultMode": "default"
+    "defaultMode": "bypassPermissions"
   },
   "model": "sonnet",
   "hooks": {},

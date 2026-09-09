@@ -74,9 +74,9 @@
       "Bash(gws cal*)"
     ],
     "ask": [],
-    "defaultMode": "default"
+    "defaultMode": "bypassPermissions"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {},
   "enabledPlugins": {},
   "spinnerTipsEnabled": false,
