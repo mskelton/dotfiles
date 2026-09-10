@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Graphite new branch
+# Create a new branch in the current gh stack
 
 _print_help() {
-  echo "Create a new Graphite branch
+  echo "Create a new branch in the current gh stack
 
 Usage: gn [options] <commit_message>
 
@@ -19,24 +19,16 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   exit 0
 fi
 
-# If we are in a worktree, we handle this command a bit special
-if [[ $(git rev-parse --git-common-dir) != $(git rev-parse --git-dir) ]]; then
-  worktree_name=$(worktree-branch)
-  current_branch=$(git branch --show-current)
+_branch_name() {
+  echo "mskelton/$(echo "$*" | sed 's/[^a-zA-Z0-9]/-/g; s/-\{2,\}/-/g; s/^-//; s/-$//' | tr '[:upper:]' '[:lower:]')"
+}
 
-  # Check if current branch matches worktree branch
-  if [ "$current_branch" = "$worktree_name" ]; then
-    # Rename branch with prefix and format commit message as branch name
-    branch_name=$(echo "$*" | sed 's/[^a-zA-Z0-9]/-/g; s/-\{2,\}/-/g' | tr '[:upper:]' '[:lower:]')
+branch=$(_branch_name "$*")
 
-    gt track
-    git add .
-    git commit -m "$*"
-    gt rename "ms/$branch_name"
-
-    exit 0
-  fi
+# add -Am prompts before initializing. On trunk, start the stack silently
+# so add can commit in place on the empty first layer.
+if [[ "$(git branch --show-current)" == "$(git default)" ]]; then
+  gh stack init "$branch"
 fi
 
-# If not in a fresh worktree, just do a normal gt create
-gt c -am "$*"
+gh stack add -Am "$*" "$branch"
