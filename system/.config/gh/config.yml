@@ -10,5 +10,6 @@ aliases:
     --silent'
   w: repo view -w
   squash: pr merge --squash
+  submit: stack submit --auto --open
 editor: nvim
 version: "1"

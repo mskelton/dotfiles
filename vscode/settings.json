@@ -60,6 +60,7 @@
   "chat.disableAIFeatures": true,
   "chatgpt.commentCodeLensEnabled": false,
   "claudeCode.allowDangerouslySkipPermissions": true,
+  "claudeCode.hideOnboarding": true,
   "claudeCode.initialPermissionMode": "bypassPermissions",
   "claudeCode.preferredLocation": "panel",
   "comments.visible": false,
@@ -273,12 +274,16 @@
     "zlib",
     "wordpress"
   ],
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "literals",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "javascript.inlayHints.variableTypes.enabled": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.experimental.useTsgo": true,
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "js/ts.inlayHints.parameterTypes.enabled": true,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
+  "js/ts.inlayHints.variableTypes.enabled": true,
+  "js/ts.server.goMemLimit": "4GiB",
+  "js/ts.trace.server": "off",
+  "js/ts.tsserver.maxMemory": 4096,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
     "https://biomejs.dev": true,
@@ -358,14 +363,6 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.location": "left",
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "literals",
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "typescript.inlayHints.variableTypes.enabled": true,
-  // "typescript.native-preview.goMemLimit": "4GiB",
-  // "typescript.tsserver.maxTsServerMemory": 4096,
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.gdefault": true,
   "vim.handleKeys": {
@@ -599,6 +596,5 @@
     "https://www.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yml"
     ]
-  },
-  "js/ts.experimental.useTsgo": true
+  }
 }
