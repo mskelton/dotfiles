@@ -25,3 +25,7 @@ curl -LSfs https://go.mskelton.dev/farm/install | sh
 ## Pre-migration
 
 [Migration checklist](https://github.com/mskelton/dotfiles/tree/main/docs/01-migration-checklist.md)
+
+## A quick joke
+
+Hi! I'd tell you a joke about dotfiles, but they're hidden.
