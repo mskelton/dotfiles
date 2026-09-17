@@ -11,5 +11,6 @@ aliases:
   w: repo view -w
   squash: pr merge --squash
   submit: stack submit --auto --open
+  prw: pr view --web
 editor: nvim
 version: "1"

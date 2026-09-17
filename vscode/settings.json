@@ -184,6 +184,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
   "git.blame.statusBarItem.enabled": false,
   "git.branchProtection": ["main", "master"],
   "git.branchProtectionPrompt": "alwaysCommit",
