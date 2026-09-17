@@ -320,9 +320,10 @@ function M:filter_notifications(notifications, callback)
 				end
 
 
-				--- Mark merged PRs as read
-				if data.merged == true then
-					self.log.d("PR #" .. data.number .. " is merged, marking as read")
+				--- Mark closed PRs as read (includes merged)
+				if data.state == "closed" then
+					local reason = data.merged and "merged" or "closed"
+					self.log.d("PR #" .. data.number .. " is " .. reason .. ", marking as read")
 					self:mark_as_read(notification.id, function(success)
 						decide(notification, not success)
 					end)
