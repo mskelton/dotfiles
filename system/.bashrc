@@ -17,6 +17,7 @@ export CLOUDSDK_PYTHON="python3"
 # Each line prepends; later entries take precedence over earlier ones
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$ANDROID_HOME/emulator:$PATH"
 export PATH="$HOME/Library/Application Support/fnm:$PATH"

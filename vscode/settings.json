@@ -71,6 +71,12 @@
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "cursor.composer.showEmptyStateTips": false,
   "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
+  "cursor.general.globalCursorIgnoreList": [
+    ".env",
+    ".env.*",
+    "**/.env",
+    "**/.env.*"
+  ],
   "cursorBlame.editorDecoration.enabled": false,
   "debug.console.fontSize": 15,
   "debug.onTaskErrors": "abort",
