@@ -131,6 +131,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	})
 end)
 
+--- When all you have is Hammerspoon, every window looks like a nail.
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
 		{ apps.chrome,   nil,              screens.laptop, hs.layout.left50 },
