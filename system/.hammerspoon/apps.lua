@@ -7,6 +7,7 @@ return {
 	cursor_dev = "Cursor Dev",
 	cursor_dev_id = "co.anysphere.cursor.dev",
 	chrome = "Google Chrome",
+	claude = "Claude",
 	figma = "Figma",
 	finder = "Finder",
 	kitty = "kitty",
@@ -17,6 +18,7 @@ return {
 	telegram = "Telegram",
 	todoist = "Todoist",
 	vscode = "Visual Studio Code",
+	zed = "Zed",
 	zoom = "zoom.us",
 	zoom_id = "us.zoom.xos",
 }
