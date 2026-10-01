@@ -60,7 +60,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	hs.application.launchOrFocus(apps.zed)
+	layout.focus_cursor_window(apps.cursor_id, "editor")
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -86,7 +86,7 @@ hs.hotkey.bind(constants.keys.layer_key, "m", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	hs.application.launchOrFocus(apps.claude)
+	layout.focus_cursor_window(apps.cursor_id, "agents")
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "p", function()
