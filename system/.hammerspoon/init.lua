@@ -60,7 +60,7 @@ hs.hotkey.bind(constants.keys.layer_key, "j", function()
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "k", function()
-	layout.focus_cursor_window(apps.cursor_id, "editor")
+ 	hs.application.launchOrFocus(apps.zed)
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "l", function()
@@ -81,12 +81,12 @@ hs.hotkey.bind(constants.keys.layer_key, "n", function()
 	end
 end)
 
-hs.hotkey.bind(constants.keys.layer_key, "m", function()
-	layout.focus_cursor_window(apps.cursor_dev_id, "agents", true)
-end)
-
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
-	layout.focus_cursor_window(apps.cursor_id, "agents")
+  if utils.is_work then
+		hs.application.launchOrFocus(apps.claude)
+  else
+  	layout.focus_cursor_window(apps.cursor_id, "agents")
+  end
 end)
 
 hs.hotkey.bind(constants.keys.layer_key, "p", function()
@@ -108,7 +108,7 @@ end)
 hs.hotkey.bind(constants.keys.layer_key, "u", function()
 	layout.apply_layout({
 		{ apps.chrome,   nil,              screens.laptop, hs.layout.maximized },
-		{ apps.cursor,   nil,              screens.laptop, hs.layout.maximized },
+		{ apps.zed,      nil,              screens.laptop, hs.layout.maximized },
 		{ apps.vscode,   nil,              screens.laptop, hs.layout.maximized },
 		{ apps.slack,    nil,              screens.laptop, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop, hs.layout.maximized },
@@ -119,7 +119,7 @@ hs.hotkey.bind(constants.keys.layer_key, "u", function()
 		{ apps.zoom,     "Zoom Workplace", screens.laptop, layout.put_center },
 	}, {
 		{ apps.chrome,   nil,              screens.primary, hs.layout.maximized },
-		{ apps.cursor,   nil,              screens.primary, hs.layout.maximized },
+		{ apps.zed,      nil,              screens.primary, hs.layout.maximized },
 		{ apps.vscode,   nil,              screens.primary, hs.layout.maximized },
 		{ apps.slack,    nil,              screens.primary, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop,  hs.layout.maximized },
@@ -134,7 +134,7 @@ end)
 hs.hotkey.bind(constants.keys.layer_key, "i", function()
 	layout.apply_layout({
 		{ apps.chrome,   nil,              screens.laptop, hs.layout.left50 },
-		{ apps.cursor,   nil,              screens.laptop, hs.layout.right50 },
+		{ apps.zed,      nil,              screens.laptop, hs.layout.right50 },
 		{ apps.vscode,   nil,              screens.laptop, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.laptop, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop, hs.layout.maximized },
@@ -145,7 +145,7 @@ hs.hotkey.bind(constants.keys.layer_key, "i", function()
 		{ apps.zoom,     "Zoom Workplace", screens.laptop, layout.put_left },
 	}, {
 		{ apps.chrome,   nil,              screens.primary, hs.layout.left50 },
-		{ apps.cursor,   nil,              screens.primary, hs.layout.right50 },
+		{ apps.zed,      nil,              screens.primary, hs.layout.right50 },
 		{ apps.vscode,   nil,              screens.primary, hs.layout.right50 },
 		{ apps.slack,    nil,              screens.primary, hs.layout.maximized },
 		{ apps.linear,   nil,              screens.laptop,  hs.layout.maximized },
