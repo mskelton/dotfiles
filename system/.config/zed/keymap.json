@@ -1,0 +1,170 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      ", s": "workspace::Save"
+      // Put key bindings here if you want them to work in normal & visual mode.
+    }
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior: yank to end of line.
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore" // In insert mode, make jk escape to normal mode.
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Put key bindings here (in addition to the context above) if you want them to
+      // work when no editor exists.
+      // "space f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-g": "git_panel::ToggleFocus"
+    }
+  },
+  // Ported from vscode/keybindings.json
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-s": "workspace::SaveAll",
+      "cmd-shift-a": "pane::RevealInProjectPanel",
+      "cmd-shift-r": ["pane::DeploySearch", { "replace_enabled": true }],
+      "cmd-shift-c": "workspace::CopyRelativePath",
+      "cmd-shift-i": "workspace::CloseAllDocks",
+      "cmd-shift-j": "terminal_panel::Toggle",
+      "cmd-shift-'": "workspace::ActivateNextPane",
+      "cmd-y": "outline::Toggle",
+      "cmd-ctrl-o": "projects::OpenRecent",
+      "cmd-e": "workspace::ActivateNextWindow",
+      "cmd-shift-e": "workspace::ActivatePreviousWindow",
+      // Git
+      "cmd-k c": "git::Branch",
+      "cmd-k p": "git::Push",
+      "cmd-k shift-p": "git::Pull"
+    }
+  },
+  // Hyper+l inserts console.log, hyper+= inserts an arrow function
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "cmd-alt-shift-ctrl-l": [
+        "editor::InsertSnippet",
+        { "snippet": "console.log($0)" }
+      ],
+      "cmd-alt-shift-ctrl-=": [
+        "editor::InsertSnippet",
+        { "snippet": "() => ${1:{ $0 \\}}" }
+      ],
+      // Replace moved off cmd-alt-f since that's used to maximize the window
+      "ctrl-cmd-f": ["buffer_search::Deploy", { "replace_enabled": true }]
+    }
+  },
+  // ctrl+j/k navigate lists and suggestions, ctrl+l triggers suggestions
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    "context": "Editor && !showing_completions",
+    "bindings": {
+      "ctrl-l": "editor::ShowCompletions"
+    }
+  },
+  {
+    "context": "menu || Picker",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "cmd-n": "project_panel::NewFile"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-n": "workspace::NewTerminal",
+      "cmd-d": "pane::SplitRight",
+      // Claude Code: send newline
+      "shift-enter": ["terminal::SendText", "\u001b\r"]
+    }
+  },
+  // Ported from the Cursor AI bindings in vscode/keybindings.json
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-alt-c": ["agent::NewExternalAgentThread", { "agent": "claude_code" }]
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      // Cursor: cmd+shift+k inline popup, cmd+m toggle tab completion
+      "cmd-shift-k": "assistant::InlineAssist",
+      "cmd-m": "editor::ToggleEditPrediction"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      // Cursor: new chat / chat tab, and agent/plan/chat modes
+      "cmd-n": "agent::NewThread",
+      "cmd-t": "agent::NewThread",
+      "cmd-alt-k": "agent::CycleModeSelector"
+    }
+  },
+  // Bound on the focused contexts too so no default Editor/Pane binding wins
+  {
+    "context": "Editor || Pane || ProjectPanel",
+    "bindings": {
+      "cmd-shift-a": "pane::RevealInProjectPanel"
+    }
+  },
+  {
+    "context": "RecentProjects || RecentProjects > Picker > Editor",
+    "unbind": {
+      "cmd-shift-a": "workspace::AddFolderToProject"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-shift-g": "search::SelectPreviousMatch"
+    }
+  }
+]
