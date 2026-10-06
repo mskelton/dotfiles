@@ -83,7 +83,8 @@ end)
 
 hs.hotkey.bind(constants.keys.layer_key, ",", function()
   if utils.is_work then
-		hs.application.launchOrFocus(apps.claude)
+		-- hs.application.launchOrFocus(apps.claude)
+  	layout.focus_cursor_window(apps.cursor_id, "editor")
   else
   	layout.focus_cursor_window(apps.cursor_id, "agents")
   end

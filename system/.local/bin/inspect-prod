@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+justification=${1:-Need Inspect production access}
+
+exec cone get prod-eng-inspect \
+	--non-interactive \
+	--duration 1d \
+	--justification "$justification"
