@@ -167,6 +167,7 @@
     "*.s3db": "${capture}.${extname}-*"
   },
   "extensions.ignoreRecommendations": true,
+  "extensions.installCooldownHours": 12,
   "files.associations": {
     "*.ftl": "html",
     "*.mq5": "cpp",

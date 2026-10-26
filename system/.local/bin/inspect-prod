@@ -3,7 +3,9 @@ set -euo pipefail
 
 justification=${1:-Need Inspect production access}
 
-exec cone get prod-eng-inspect \
+exec cone get \
+	--app-id 2Siabg9TYWNpHjHsdQqKs9bfUM7 \
+	--entitlement-id 3GYAxfSEeuFTCuL4K0gWGtyfdOW \
 	--non-interactive \
 	--duration 1d \
 	--justification "$justification"

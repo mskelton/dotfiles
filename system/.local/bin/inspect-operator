@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+justification=${1:-Need Inspect operator access}
+
+exec cone get \
+	--app-id 3Ky19yyucE13oh8WbEjgtE60o3w \
+	--entitlement-id 3Ky1qwEH609JTFGl5ZGkIT93Cek \
+	--non-interactive \
+	--duration 1d \
+	--justification "$justification"
