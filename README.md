@@ -1,5 +1,7 @@
 # Dotfiles
 
+Why did the developer bring their dotfiles to therapy? They had too many hidden issues.
+
 ## Pre-requisites
 
 - Ensure Google Chrome is installed before running the following commands
