@@ -1,5 +1,7 @@
 # Dotfiles
 
+Why do programmers prefer dark mode? Because light attracts bugs.
+
 ## Pre-requisites
 
 - Ensure Google Chrome is installed before running the following commands
